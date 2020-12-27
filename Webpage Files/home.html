@@ -4,7 +4,7 @@
     <script src="/comms.js">
       Setup(this);
     </script>
-    <link rel="stylesheet" href="/userstyle.css"/>
+    <link rel="stylesheet" href="/home.css"/>
   </head>
   <body>
     <nav id="navigation-menu">
@@ -12,8 +12,52 @@
         <li><a onclick="/home">Home</a></li>
         <li><a href="/inventory">Inventory</a></li>
         <li><a onclick="/characters">Characters</a></li>
-        <li><a href="/test">tester</a></li>
+        <li><a id="user" href="/login">Login</a></li>
       </ul>
     </nav>
+    <ul id="statistics">
+      <li>
+        <div id="stats">
+          <div>
+            <h1>Raid Completions</h1>
+            <svg width="100" height="100">
+              <circle cx="50%" cy="50%" r="40" stroke="blue" stroke-width="4" fill="black" />
+              <text x=43% y="52%" fill="white">100%</text>
+            </svg>
+            <p>Total Completions:</p>
+            <p>Breakdown:</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div id="stats">
+          <div>
+            <h1>Gambit Completions</h1>
+            <svg width="100" height="100">
+              <circle cx="50%" cy="50%" r="40" stroke="blue" stroke-width="4" fill="black" />
+              <text x=43% y="52%" fill="white">100%</text>
+            </svg>
+            <p>Total Completions:</p>
+            <p>Breakdown:</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div id="stats">
+          <div>
+            <h1>Strike Completions</h1>
+            <svg width="100" height="100">
+              <circle cx="50%" cy="50%" r="40" stroke="blue" stroke-width="4" fill="black" />
+              <text x=43% y="52%" fill="white">100%</text>
+            </svg>
+            <p>Total Completions:</p>
+            <p>Breakdown:</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+
+
   </body>
 </html>

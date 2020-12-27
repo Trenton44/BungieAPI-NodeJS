@@ -47,7 +47,7 @@ app.get("/", function(request, response){
     getUserAccessData();
     console.log(userInfo.accessData);
   }
-  response.sendFile(webpages.main);
+  response.sendFile(webpages.home);
 
 });
 app.get("/loggedin", function(request, response){
@@ -76,10 +76,6 @@ app.get("/inventory",function(request,response){
 });
 app.get("/characters",function(request,response){
   response.sendFile(webpages.characters);
-});
-app.get("/test",function(request,response){
-  getUserAccessData();
-
 });
 httpsServer.listen(port);
 

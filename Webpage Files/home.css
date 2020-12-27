@@ -1,7 +1,7 @@
 body{
   margin: 0;
   padding: 0;
-  background-image: url("/background.jpg");
+  background-color: lightBlue;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -34,4 +34,37 @@ body{
 }
 #navigation-menu a:hover{
   background-color: rgba(10,10,10,0.6);
+}
+#statistics {
+  display: flex;
+  list-style-type: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+#stats {
+  display: block;
+  background-color: grey;
+  width: 100%;
+}
+#stats div {
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  border-bottom: 2px solid black;
+}
+#stats div h1{
+  margin: auto;
+  width: 80%;
+  border-bottom: 4px solid black;
+}
+#stats div svg{
+  text-align:center;
+  margin: auto;
+  width: 80%;
+  border-bottom: 4px solid black;
+}
+#stats div p {
+  text-align:left;
+  padding-left: 10%;
 }
