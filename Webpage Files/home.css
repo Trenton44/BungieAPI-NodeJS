@@ -1,9 +1,11 @@
 body{
   margin: 0;
   padding: 0;
-  background-color: lightBlue;
-  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  background-repeat:no-repeat;
   background-size: cover;
+  background-position: center;
 }
 #navigation-menu {
   height: 8vh;
@@ -37,34 +39,41 @@ body{
 }
 #statistics {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 2% 2% 0 2%;
+}
+#statistics div {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+#statistics div div {
+  width: 100%;
+  display: flex;
   list-style-type: none;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  border: 2px solid blue;
 }
-#stats {
-  display: block;
-  background-color: grey;
-  width: 100%;
+#statistics div section {
+  margin: 2% 2% 0 0;
+  align-self: flex-end;
+  display: none;
+  flex: 1;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 90%;
+  justify-content: space-between;
+
+
 }
-#stats div {
-  margin: auto;
-  width: 100%;
-  text-align: center;
-  border-bottom: 2px solid black;
+#statistics div section h1{
+  border: 2px solid blue;
 }
-#stats div h1{
-  margin: auto;
-  width: 80%;
-  border-bottom: 4px solid black;
-}
-#stats div svg{
-  text-align:center;
-  margin: auto;
-  width: 80%;
-  border-bottom: 4px solid black;
-}
-#stats div p {
-  text-align:left;
-  padding-left: 10%;
+#statistics div:hover section {
+  display: flex;
 }
