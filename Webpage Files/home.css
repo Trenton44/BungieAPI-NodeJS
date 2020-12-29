@@ -11,7 +11,7 @@ body{
   height: 8vh;
   background-color: #282828;
 }
-#navigation-menu ul{
+#navigation-menu > ul{
   height: 100%;
   width: 100%;
   display: flex;
@@ -21,18 +21,18 @@ body{
   justify-content: space-between;
   align-items: center;
 }
-#navigation-menu ul li{
+#navigation-menu > ul > li{
   list-style-type: none;
   width: 15%;
   height: 100%;
 }
-#navigation-menu ul:last-child li{
+#navigation-menu > ul:last-child > li{
   margin-right: 0;
 }
-#navigation-menu ul:first-child li{
+#navigation-menu > ul:first-child > li{
   background-color: white;
 }
-#navigation-menu ul li a {
+#navigation-menu > ul > li > a {
   display: block;
   width: 100%;
   height: 100%;
@@ -41,7 +41,7 @@ body{
   text-decoration: none;
   color: black;
 }
-#navigation-menu a:hover{
+#navigation-menu > a:hover{
   background-color: rgba(10,10,10,0.6);
 }
 #statistics {
@@ -52,45 +52,101 @@ body{
   align-items: center;
   margin: 2% 2% 0 2%;
 }
+#statistics > div{
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
 #statContainers {
+  background-color: black;
   padding: 2% 0 2% 0;
-  width: 100%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid red;
+  border-style:outset;
+  border-color: lightblue;
+  border-radius: 15px;
 }
-#statContainers h1 {
+#statContainers > h1 {
   text-align: center;
 }
-
-#statContainers div {
-  width: 60%;
-  background-repeat: no-repeat;
-  display: flex;
-  list-style-type: none;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-around;
+#statContainers > header{
+  width: 100%;
+  height: 100%;
   align-items: center;
-  border: 2px solid blue;
+  position: relative;
 }
+#statContainers > header > h1{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  color: white;
+}
+#statContainers > header > img{
+  display: block;
+  margin: auto;
+  width: 98%;
+  height: 95%;
+}
+
 #subStatContainers {
   display: none;
-  padding: 2% 0 2% 0;
+  margin: 2% 0 2% 0;
   flex: 1;
   flex-direction: column;
   flex-wrap: nowrap;
   width: 90%;
   align-items: center;
   justify-content: space-between;
+  background-color: #404040;
+  border-radius: 20px;
 }
-#subStatContainers div{
-  margin: 1% 0 1% 0;
+#subStatContainers > div{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+#subStatContainers > div > header {
+  align-items: center;
+  position: relative;
+}
+#subStatContainers > div > header> h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  color: white;
+}
+#subStatContainers > div > header > img{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+#subStatContainers > div > aside {
+  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-around;
-  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 2%;
+}
+#subStatContainers > div > aside > div {
+  width: 60%;
+  margin-right: 2%;
+}
+#subStatContainers > div > aside > div *{
+  text-align: left;
+  font-size: 150%;
+}
+#subStatContainers > div > aside > img {
+  width: 25%;
+  height: 50%;
+  padding: 2% 0% 2% 2%;
 }
