@@ -15,6 +15,7 @@ const bungieTokURL = "https://www.bungie.net/platform/app/oauth/token/";
 dotenv.config( { path: path.join(root,"process.env") } );
 const port = process.env.PORT;
 process.env['NODE_TLS_REJECT_UNAUTHORIZED']=0;
+var random = "";
 
 
 var userInfo = {
@@ -26,8 +27,8 @@ var webpages = {
   main: webpageRoot+"\\"+"main.html",
   webJS: webpageRoot+"\\"+"comms.js",
   home: webpageRoot+"\\"+"home.html",
-  inventory:webpageRoot+"\\"+"inventory.html",
-  characters:webpageRoot+"\\"+"characters.html"
+  inventory: webpageRoot+"\\"+"inventory.html",
+  characters: webpageRoot+"\\"+"characters.html"
 
 };
 var privatekey = fs.readFileSync(path.join(root,"key.pem"));
@@ -72,6 +73,7 @@ app.get("/home",function(request,response){
   response.sendFile(webpages.home);
 });
 app.get("/inventory",function(request,response){
+  getEmblemList();
   response.sendFile(webpages.inventory);
 });
 app.get("/characters",function(request,response){
@@ -80,7 +82,7 @@ app.get("/characters",function(request,response){
 httpsServer.listen(port);
 
 
-async function getUserAccessData(){
+/*async function getUserAccessData(){
   var body = new URLSearchParams();
   body.append("client_id",process.env.Bungie_ClientID);
   body.append("grant_type", "authorization_code");
@@ -95,4 +97,20 @@ async function getUserAccessData(){
   }).catch(function(error){
     console.error(error);
   });
-}
+}*/
+/*async function getEmblemList(){
+  var body = new URLSearchParams();
+  let request = await axios({
+    url: bungieRoot+"/Destiny2/SearchDestinyPlayer/3/KiMage/",
+    method: "GET",
+    headers:{"X-API-Key":process.env.Bungie_API_KEY},
+  }).then(function(response){
+    var meat =response.data.Response;
+    console.log(meat[0].membershipId);
+    console.log("SUCCESS");
+    getUserEmblem();
+  }).catch(function(error){
+    console.error(error);
+    console.error("FAILURE");
+  });
+}*/
