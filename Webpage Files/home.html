@@ -1,100 +1,78 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="/comms.js">
-      Setup(this);
-    </script>
+    <script src="/comms.js"></script>
     <link rel="stylesheet" href="/home.css"/>
   </head>
   <body>
     <nav id="navigation-menu">
       <ul>
-        <li><a onclick="/home">Home</a></li>
+        <li><a href="/home">Home</a></li>
         <!--<li><a href="/inventory">Inventory</a></li>
         <li><a onclick="/characters">Characters</a></li>-->
-        <li><a id="user" onclick="/login">Login</a></li>
+        <li><a id="user" href="/login">Login</a></li>
       </ul>
     </nav>
 
     <div id="statistics">
-      <div id="statContainers">
+      <div onclick="loadSubMenu(1)" id="statContainers">
         <div>
           <h1>Raids</h1>
         </div>
-        <section>
-          <div>
-            <h1>Garden of Salvation</h1>
-          </div>
-          <div>
-            <h1>Last Wish</h1>
-            <img src="graphtest.svg" width="100px" height="100px"/>
-            <p>Total Completions:</p>
-          </div>
-          <div>
-            <h1>Deep Stone Crypt</h1>
-            <img src="graphtest.svg" width="100px" height="100px"/>
-            <p>Total Completions:</p>
-          </div>
-        </section>
       </div>
-      <div id="statContainers">
-        <div style="background-image:url('/testbckgnd.png');">
+      <section id="subStatContainers">
+        <div>
+          <h1>Garden of Salvation</h1>
+        </div>
+        <div>
+          <h1>Last Wish</h1>
+        </div>
+        <div>
+          <h1>Deep Stone Crypt</h1>
+        </div>
+      </section>
+      <div onclick="loadSubMenu(2)" id="statContainers">
+        <div>
           <h1>Strikes</h1>
         </div>
-        <section>
-          <div>
-            <h1>Lake of Shadows</h1>
-            <img src="graphtest.svg" width="100px" height="100px"/>
-            <p>Total Completions:</p>
-          </div>
-          <div>
-            <h1>The Arms Dealer</h1>
-            <img src="graphtest.svg" width="100px" height="100px"/>
-            <p>Total Completions:</p>
-          </div>
-          <div>
-            <h1>Exodus Crash</h1>
-            <img src="graphtest.svg" width="100px" height="100px"/>
-            <p>Total Completions:</p>
-          </div>
-          <div>
-            <h1>The Inverted Spire</h1>
-            <img src="graphtest.svg" width="100px" height="100px"/>
-            <p>Total Completions:</p>
-          </div>
-          <div>
-            <h1>The Insight Terminus</h1>
-            <img src="graphtest.svg" width="100px" height="100px"/>
-            <p>Total Completions:</p>
-          </div>
-          <div>
-            <h1>Warden of Nothing</h1>
-            <img src="graphtest.svg" width="100px" height="100px"/>
-            <p>Total Completions:</p>
-          </div>
-          <div>
-            <h1>Broodhold</h1>
-            <img src="graphtest.svg" width="100px" height="100px"/>
-            <p>Total Completions:</p>
-          </div>
-          <div>
-            <h1>The Hollowed Lair</h1>
-            <img src="graphtest.svg" width="100px" height="100px"/>
-            <p>Total Completions:</p>
-          </div>
-          <div>
-            <h1>The Scarlet Keep</h1>
-            <img src="graphtest.svg" width="100px" height="100px"/>
-            <p>Total Completions:</p>
-          </div>
-          <div>
-            <h1>The Corrupted</h1>
-            <img src="graphtest.svg" width="100px" height="100px"/>
-            <p>Total Completions:</p>
-          </div>
-        </section>
       </div>
-
+      <section id="subStatContainers">
+        <div>
+          <h1>Lake of Shadows</h1>
+        </div>
+        <div>
+          <h1>The Arms Dealer</h1>
+        </div>
+        <div>
+          <h1>Exodus Crash</h1>
+        </div>
+        <div>
+          <h1>The Inverted Spire</h1>
+        </div>
+        <div>
+          <h1>The Insight Terminus</h1>
+        </div>
+        <div>
+          <h1>Warden of Nothing</h1>
+        </div>
+        <div>
+          <h1>Broodhold</h1>
+        </div>
+        <div>
+          <h1>The Hollowed Lair</h1>
+        </div>
+        <div>
+          <h1>The Scarlet Keep</h1>
+        </div>
+        <div>
+          <h1>The Corrupted</h1>
+        </div>
+      </section>
     </div>
+    <script type="text/javascript">
+      window.onload = function(){
+        loadInit(this);
+      };
+    </script>
   </body>
 </html>
