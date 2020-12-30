@@ -71,6 +71,27 @@ app.get("/inventory",function(request,response){
 app.get("/characters",function(request,response){
   response.sendFile(webpages.characters);
 });
+app.get("/characterData",function(request,response){
+  console.log("HEADERS");
+  console.log(request.headers.character);
+  switch(request.headers.character){
+    case "1":
+      console.log("return character 1");
+      break;
+    case "2":
+      console.log("return character 2");
+      break;
+    case "3":
+      console.log("return character 3");
+      break;
+    default:
+      console.log("Error parsing character request.");
+      console.log(request.headers.character);
+  };
+  response.append("Poop");
+  response.end();
+
+});
 httpsServer.listen(port);
 
 
