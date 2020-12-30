@@ -1,0 +1,37 @@
+
+<html >
+  <head>
+    <link rel="stylesheet" href="/inventory.css"/>
+  </head>
+  <body>
+    <nav id="navigation-menu">
+      <ul>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/inventory">Inventory</a></li>
+        <li><a href="/characters">Characters</a></li>
+        <li><a id="user" href="/login">Login</a></li>
+      </ul>
+    </nav>
+
+    <div id="characters">
+      <header onclick="loadCharacter(1)">
+        <h1 id="character1">Character 1</h1>
+      </header>
+      <header onclick="loadCharacter(2)">
+        <h1 id="character2">Character 2</h1>
+      </header>
+      <header onclick="loadCharacter(3)">
+        <h1 id="character3">Character 3</h1>
+      </header>
+    </div>
+    <div id="characterContent">
+      <div id="characterRender">
+        <h2>Character Name</h2>
+        <img src="background.jpg"/>
+      </div>
+      <div id="characterDetails">
+        <p>Details.</p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -38,29 +38,22 @@ app.use(express.static(webpageRoot));
 var httpsServer = https.createServer(credentials,app);
 
 app.get("/", function(request, response){
-  //console.log(response);
   var params = new URLSearchParams(request.query);
   var paramsS = params.toString();
-  console.log(paramsS);
   if(paramsS === "")
     console.log("nothing");
   else {
-    getUserAccessData();
-    console.log(userInfo.accessData);
+    let data = getUserAccessData();
+    console.log("DATA variable"+data);
+    data.then(function(d){
+      console.log('RESULT');
+      console.log(d);
+      console.log('END RESULT');
+    })
+    response.redirect("/home")
   }
   response.sendFile(webpages.home);
-
 });
-app.get("/loggedin", function(request, response){
-  console.log('response received from bungie API endpoint');
-  var params = new URLSearchParams(request.query);
-  console.log(params);
-  userInfo.authCode = params.get("code");
-  userInfo.state = params.get("state");
-  //console.log("loading new webpage with user content.");
-  //console.log(userInfo);
-  response.sendFile(webpages.home);
-})
 app.get("/login", function(request, response){
   console.log("user login requested.");
   var url = new URL("https://www.bungie.net/en/OAuth/Authorize");
@@ -73,7 +66,6 @@ app.get("/home",function(request,response){
   response.sendFile(webpages.home);
 });
 app.get("/inventory",function(request,response){
-  getEmblemList();
   response.sendFile(webpages.inventory);
 });
 app.get("/characters",function(request,response){
@@ -82,7 +74,7 @@ app.get("/characters",function(request,response){
 httpsServer.listen(port);
 
 
-/*async function getUserAccessData(){
+async function getUserAccessData(){
   var body = new URLSearchParams();
   body.append("client_id",process.env.Bungie_ClientID);
   body.append("grant_type", "authorization_code");
@@ -93,11 +85,15 @@ httpsServer.listen(port);
     headers:{"Content-Type": "application/x-www-form-urlencoded"},
     data: body
   }).then(function(response){
-    userInfo.accessData = response.data;
+    console.log(response.status);
+    if(response.status >= 200 && response.status <300){
+      userInfo.accessData = response.data;
+      return response.data;
+    }
   }).catch(function(error){
     console.error(error);
   });
-}*/
+}
 /*async function getEmblemList(){
   var body = new URLSearchParams();
   let request = await axios({

@@ -26,12 +26,6 @@ body{
   width: 15%;
   height: 100%;
 }
-#navigation-menu > ul:last-child > li{
-  margin-right: 0;
-}
-#navigation-menu > ul:first-child > li{
-  background-color: white;
-}
 #navigation-menu > ul > li > a {
   display: block;
   width: 100%;
@@ -58,7 +52,6 @@ body{
 }
 #statContainers {
   background-color: black;
-  padding: 2% 0 2% 0;
   width: 60%;
   display: flex;
   flex-direction: column;
@@ -88,21 +81,20 @@ body{
 #statContainers > header > img{
   display: block;
   margin: auto;
-  width: 98%;
+  width: 99%;
   height: 95%;
+  object-fit: cover;
+  z-index: -1;
 }
 
 #subStatContainers {
   display: none;
-  margin: 2% 0 2% 0;
   flex: 1;
   flex-direction: column;
   flex-wrap: nowrap;
   width: 90%;
   align-items: center;
   justify-content: space-between;
-  background-color: #404040;
-  border-radius: 20px;
 }
 #subStatContainers > div{
   display: flex;
@@ -111,6 +103,10 @@ body{
   justify-content: space-around;
   align-items: center;
   width: 100%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  background-color: #404040;
+  border-radius: 20px;
 }
 #subStatContainers > div > header {
   align-items: center;

@@ -7,9 +7,6 @@ function loadSubMenu(number){
   var parent = Window.document.getElementById("statistics");
   var children = parent.children;
   var childinQuestion = children[(number*2)-1];
-  //console.log(children);
-  //console.log(number);
-  //console.log(childinQuestion);
   if(childinQuestion.style.display == "none")
     childinQuestion.style.display = "flex";
   else
