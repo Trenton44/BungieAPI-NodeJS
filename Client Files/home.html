@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="/comms.js"></script>
-    <link rel="stylesheet" href="/home.css"/>
+    <script src="/client/comms.js"></script>
+    <link rel="stylesheet" href="/client/home.css"/>
   </head>
   <body>
     <nav id="navigation-menu">
       <ul>
-        <li><a href="/home">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="/inventory">Inventory</a></li>
-        <li><a href="/characters">Characters</a></li>
         <li><a id="user" href="/login">Login</a></li>
       </ul>
     </nav>
@@ -18,7 +17,7 @@
       <div onclick="loadSubMenu(1)" id="statContainers">
         <header>
           <h1>Raids</h1>
-          <img src="raids.png"/>
+          <img src="/assets/raids.png"/>
         </header>
       </div>
       <section id="subStatContainers">
@@ -28,7 +27,7 @@
             <img src="https://bungie.net/common/destiny2_content/icons/0ef1f430816ae4c29678784a7a388f91.jpg"/>
           </header>
           <aside>
-            <img src="/graphtest.svg"/>
+            <img src="/assets/graphtest.svg"/>
             <div>
               <p>Completions: </p>
               <p>Time Spent in Activity:</p>
@@ -44,7 +43,7 @@
             <img src="https://www.bungie.net/common/destiny2_content/icons/e485af0a531a03e66b90aedd4f63cf82.jpg"/>
           </header>
           <aside>
-            <img src="/graphtest.svg"/>
+            <img src="/assets/graphtest.svg"/>
             <div>
               <p>Completions: </p>
               <p>Time Spent in Activity:</p>
@@ -60,7 +59,7 @@
             <img src="https://www.bungie.net/common/destiny2_content/icons/88d3b8b27ec39d6c4b87a9e8110e0a1f.jpg"/>
           </header>
           <aside>
-            <img src="/graphtest.svg"/>
+            <img src="/assets/graphtest.svg"/>
             <div>
               <p>Completions: </p>
               <p>Time Spent in Activity:</p>
@@ -83,6 +82,11 @@
     <script type="text/javascript">
       window.onload = function(){
         loadInit(this);
+        /*requestUserData().then(function(result){
+          console.log(result);
+        }).catch(function(error){
+          console.error("Goddammit this shit is fucked.");
+        });*/
       };
     </script>
   </body>

@@ -49,7 +49,7 @@ body{
   align-content: center;
 }
 #characters > header {
-  background-image: url("/background.jpg");
+  background-image: url("/assets/background.jpg");
   border-radius: 20px;
   position: relative;
   width: 20%;

@@ -12,17 +12,11 @@ function loadSubMenu(number){
   else
     childinQuestion.style.display = "none";
 }
-async function loadCharacter(value){
-  console.log(value);
-  var request = new Request("/characterData", {
+async function requestUserData(){
+  var request = new Request("/userData", {
     method: "GET",
-    headers: {"character":value},
+    headers: {"Content-Type":"application/json"}
   });
-  let characterData = await fetch(request);
-  if(characterData.status >= 200 && characterData.status < 300){
-    console.log(characterData);
-  }
-  else
-    console.error("request failed.");
-
+  let requestee = await fetch(request);
+  return requestee;
 }

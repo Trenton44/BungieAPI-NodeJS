@@ -1,15 +1,14 @@
 
 <html >
   <head>
-    <script src="/comms.js"></script>
-    <link rel="stylesheet" href="/inventory.css"/>
+    <script src="/client/comms.js"></script>
+    <link rel="stylesheet" href="/client/inventory.css"/>
   </head>
   <body>
     <nav id="navigation-menu">
       <ul>
-        <li><a href="/home">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="/inventory">Inventory</a></li>
-        <li><a href="/characters">Characters</a></li>
         <li><a id="user" href="/login">Login</a></li>
       </ul>
     </nav>
@@ -28,7 +27,7 @@
     <div id="characterContent">
       <div id="characterRender">
         <h2>Character Name</h2>
-        <img src="background.jpg"/>
+        <img src="/assets/background.jpg"/>
       </div>
       <div id="characterDetails">
         <header>
@@ -52,5 +51,15 @@
         </div>
       </div>
     </div>
+    <script type="text/javascript">
+      window.onload = function(){
+        loadInit(this);
+        /*requestUserData().then(function(result){
+          console.log(result);
+        }).catch(function(error){
+          console.error("Goddammit this shit is fucked.");
+        });*/
+      };
+    </script>
   </body>
 </html>
