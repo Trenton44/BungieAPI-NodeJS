@@ -8,7 +8,8 @@ const axios = require('axios');
 const path = require("path");
 const dotenv = require("dotenv");
 const crypto = require("crypto");
-
+const tool = require("./functions");
+const DestinyEntities = require("./APIManifest.js").Entities;
 const root = path.join(__dirname,"..\\");
 const webpageRoot = path.join(__dirname,"..\\","Client Files");
 const serverRoot = path.join(__dirname,"..\\","Server Files");
@@ -24,43 +25,10 @@ var certificate = fs.readFileSync(path.join(root,"cert.pem"));
 var credentials = {key: privatekey, cert: certificate};
 var httpsServer = https.createServer(credentials,app);
 
-var bplatformComponents = {
-  profiles: 100,
-  vendorreceipts: 101,
-  profileinventories: 102,
-  profilecurrency: 103,
-  profileprogression: 104,
-  platformsilver: 105
-};
-var bcharacterComponents = {
-  characters: 200,
-  characterinventory: 201,
-  characterprogression: 202,
-  characterrenderdata: 203,
-  characteractivity: 204,
-  characterequipment: 205
-};
-var bitemComponents = {
-  iteminstances: 300,
-  itemobjectives: 301,
-  itemperks: 302,
-  itemrenderdata: 303,
-  itemstats: 304,
-  itemsockets: 305,
-};
-var bvendorcomponents = {
-  vendors: 400,
-  vendorcategory: 401,
-  vendorsales: 402,
-  kiosks: 500,
-  currencylookup: 600
-};
-var buserstatComponents = {
-  records: 900,
-  metrics: 1100
-};
 
+app.get("/test",function(request,response){
 
+})
 app.get("/assets/:id",function(request,response){
   console.log("--------------------------");
   console.log("The site has requested an asset to load.");
@@ -106,6 +74,7 @@ app.get("/", function(request, response){
   response.sendFile(webpageRoot+"/home.html");
 });
 app.get("/login",function(request,response){
+  console.log(request.ip);
   console.log("User has begun a login attempt to bungie.net");
   let state = crypto.randomBytes(16).toString("base64");
   request.session.authStatus = 1;
@@ -171,14 +140,15 @@ app.get("/authenticate", async function(request,response, next){
   if(requestee.status >= 200 && requestee.status < 300){
     console.log("TOKEN REQUEST SUCCESSFUL");
     request.session.data.token = requestee.data;
-    console.log("TOKEN STUFF");
+    response.redirect("/inventory");
   }
   else {
     console.error("request NOT successful");
     request.session.data = {};
     request.session.authStatus = 0;
+    response.redirect("/");
   }
-  response.redirect("/");
+
 });
 app.get("/inventory", async function(request, response,next){
   //Get user's linked profiles so that we can access the primary D2 account.
@@ -191,21 +161,23 @@ app.get("/inventory", async function(request, response,next){
   });
   if(requestee.status >= 200 && requestee.status < 300){
     console.log("Profiles associated with user "+id+" obtained.");
-    console.log(requestee.data);
     request.session.data.primary = null;
-    request.session.UAC = requestee.data.Response;
+    request.session.data.UAC = requestee.data.Response;
     for(i in requestee.data.Response.profiles){
       if(requestee.data.Response.profiles[i].isCrossSavePrimary)
         request.session.data.primary = i;
     }
-    console.log(requestee.data.Response.profiles);
-    response.redirect("/user/"+request.session.UAC.profiles[request.session.data.primary].membershipId)
+    response.redirect("/user/"+request.session.data.UAC.profiles[request.session.data.primary].membershipId)
   }
   else {
     response.status(400).json({error: "sorry, i suck at coding an fucked something up. I'll fix it soon, I promise."});
   }
 });
-app.get("/user/:id",function(request,response,next){
+app.get("/user/:membershipId",function(request,response,next){
   response.sendFile(webpageRoot+"/inventory.html");
-})
+});
+app.get("/character/:membershipId",function(request,response, next){
+
+  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+});
 httpsServer.listen(process.env.PORT);

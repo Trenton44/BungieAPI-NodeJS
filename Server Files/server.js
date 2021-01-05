@@ -85,7 +85,6 @@ app.use(
         console.log();
         console.log("NEW SESSION GANG, LET'S SEE WHO'S BEHIND THIS MASK");
         console.log("generating uuid for "+req.hostname);
-
         return genuuid.v4();
       },
       resave: false,
