@@ -1,4 +1,5 @@
 var Window;
+
 function loadInit(value){
   Window = value;
   console.log("logged");
@@ -11,12 +12,4 @@ function loadSubMenu(number){
     childinQuestion.style.display = "flex";
   else
     childinQuestion.style.display = "none";
-}
-async function requestUserData(){
-  var request = new Request("/userData", {
-    method: "GET",
-    headers: {"Content-Type":"application/json"}
-  });
-  let requestee = await fetch(request);
-  return requestee;
 }

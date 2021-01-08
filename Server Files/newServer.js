@@ -8,7 +8,8 @@ const axios = require('axios');
 const path = require("path");
 const dotenv = require("dotenv");
 const crypto = require("crypto");
-const tool = require("./functions");
+const d2api = require("./D2APIfunctions");
+const tools = require("./serverfunctions");
 const DestinyEntities = require("./APIManifest.js").Entities;
 const root = path.join(__dirname,"..\\");
 const webpageRoot = path.join(__dirname,"..\\","Client Files");
@@ -26,9 +27,7 @@ var credentials = {key: privatekey, cert: certificate};
 var httpsServer = https.createServer(credentials,app);
 
 
-app.get("/test",function(request,response){
 
-})
 app.get("/assets/:id",function(request,response){
   console.log("--------------------------");
   console.log("The site has requested an asset to load.");
@@ -59,125 +58,157 @@ app.use(
       cookie: { httpOnly: true, secure: true, expires: 120000},
   })
 );
-app.use(function(request,response,next){
-  if(request.session.data !== undefined){
-    console.log("no setup required.");
+app.use(prepSessionData);
+
+app.get("/", function(request, response){
+  if(isAuthorized(request)){
+    d2api.getBungieCurrentUserData(request.session.data.tokenData.access_token).then(function(result){
+      result.data.Response.destinyMemberships.forEach(element => {
+        if(element.membershipId == result.data.Response.primaryMembershipId){
+          request.session.data.primaryMembership = element;
+        }
+      });
+      response.redirect("/users/"+request.session.data.primaryMembership.membershipId);
+    }).catch(function(error){
+      console.error(error);
+      response.status(400).json({error: "Uhhh.. I might've broke something."});
+    });
   }
   else {
-    console.log("Monika fucked it up, some setup is required.");
-    request.session.data = {};
-    request.session.authStatus = 0;
+    response.status(200).sendFile(webpageRoot+"/home.html");
   }
-  next();
-});
-app.get("/", function(request, response){
-  response.sendFile(webpageRoot+"/home.html");
 });
 app.get("/login",function(request,response){
-  console.log(request.ip);
+  var url = buildAuthorizatonCodeRequest(request);
   console.log("User has begun a login attempt to bungie.net");
-  let state = crypto.randomBytes(16).toString("base64");
-  request.session.authStatus = 1;
-  request.session.data.state = state;
-  var url = new URL("https://www.bungie.net/en/OAuth/Authorize");
-  url.searchParams.append("client_id",process.env.Bungie_ClientID);
-  url.searchParams.append("response_type","code");
-  url.searchParams.append("state",state);
   response.redirect(url);
 });
-app.use(function(request,response,next){
-  console.log("Verifying user authentication.");
-  console.log("Searching for cookie stored.");
-  switch(request.session.authStatus){
-    case 0:
-      console.log("User has zero credentials, honestly kinda suss.");
-      response.redirect("/");
-      break;
-    case 1:
-      console.log("User is in progress logging in, allow access to /login and /bapi endpoints.");
-      next();
-      break;
-    case 2:
-      console.log("User is trying to obtain a token, and has an existing authcode.");
-      next();
-      break;
-    case 3:
-      console.log("User has an access token and is able to access sensitive information.");
-      next();
-      break;
-    default:
-      console.log("Yo Monika is doin some wild shit in this code.");
-  }
-})
-
-app.get("/bapi", async function(request,response){
+app.get("/bapi", function(request,response){
+  console.log("Response has been received from bungie, attempting to authorize using given parameters.");
   if(request.query.state !== request.session.data.state){
     console.error("State parameters DO NOT MATCH! ABORTING MISSION");
-    request.session.data.state = null;
-    request.session.authStatus = 0;
-    request.session.data = {};
+    request.session.data = undefined;
     response.redirect("/");
   }
   else {
     console.log("STATE PARAMETERS MATCH, therefore this login is valid and untampered. (we hope)");
-    request.session.data.codeparams = request.query;
-    request.session.authStatus = 2;
-  }
+    request.session.data.authCode = request.query.code;
     response.redirect("/authenticate");
-});
-app.get("/authenticate", async function(request,response, next){
-  var body = new URLSearchParams();
-  body.append("client_secret",process.env.Bungie_ClientSecret);
-  body.append("client_id", process.env.Bungie_ClientID);
-  body.append("grant_type", "authorization_code");
-  body.append("code",request.session.data.codeparams.code);
-  let requestee = await axios({
-    method:"POST",
-    url: bungieTokURL,
-    headers:{"Content-Type": "application/x-www-form-urlencoded"},
-    data: body
-  });
-  if(requestee.status >= 200 && requestee.status < 300){
-    console.log("TOKEN REQUEST SUCCESSFUL");
-    request.session.data.token = requestee.data;
-    response.redirect("/inventory");
   }
-  else {
-    console.error("request NOT successful");
-    request.session.data = {};
-    request.session.authStatus = 0;
+});
+app.get("/authenticate", function(request,response){
+  d2api.tokenRequest(request).then(function(result){
+      console.log("TOKEN REQUEST SUCCESSFUL");
+      request.session.data.tokenData = result.data;
+      request.session.data.authCode = null;
+      request.session.data.state = null;
+      response.redirect("/");
+  }).catch(function(error){
+    console.log(error);
+    console.error("TOKEN REQUEST NOT successful");
+    request.session.data = undefined;
     response.redirect("/");
-  }
-
-});
-app.get("/inventory", async function(request, response,next){
-  //Get user's linked profiles so that we can access the primary D2 account.
-  var id = request.session.data.token.membership_id;
-  var type = 3;
-  let requestee = await axios({
-    method:"GET",
-    url: bungieRoot+"/Destiny2/"+type+"/Profile/"+id+"/LinkedProfiles/",
-    headers:{"X-API-Key":process.env.Bungie_API_KEY},
   });
-  if(requestee.status >= 200 && requestee.status < 300){
-    console.log("Profiles associated with user "+id+" obtained.");
-    request.session.data.primary = null;
-    request.session.data.UAC = requestee.data.Response;
-    for(i in requestee.data.Response.profiles){
-      if(requestee.data.Response.profiles[i].isCrossSavePrimary)
-        request.session.data.primary = i;
-    }
-    response.redirect("/user/"+request.session.data.UAC.profiles[request.session.data.primary].membershipId)
+});
+//authorization verification. Everything past this point will require a token from bungie's API to be saved.
+app.use(function(request,response,next){
+  if(isAuthorized){
+    next();
   }
   else {
-    response.status(400).json({error: "sorry, i suck at coding an fucked something up. I'll fix it soon, I promise."});
+    response.status(401).json({error: "access is denied"});
   }
 });
-app.get("/user/:membershipId",function(request,response,next){
-  response.sendFile(webpageRoot+"/inventory.html");
+app.get("/users/:id",function(request,response){
+  response.status(200).sendFile(webpageRoot+"/inventory.html");
 });
-app.get("/character/:membershipId",function(request,response, next){
 
-  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+
+//Endpoints used to gather data for the characters by the serverRoot
+
+//Gets all characters of given player and returns data requested by components header. defaults to inventory if nothing is given.
+app.get("/users/:id/characters",function(request,response){
+  console.log("request made to /D2/characters endpoint.");
+  var memType = request.session.data.primaryMembership.membershipType;
+  var d2ID = request.session.data.primaryMembership.membershipId;
+  var components = ["200"];
+  d2api.getDestinyProfile(memType,d2ID,components).then(function(result){
+    response.send({data:result.data.Response});
+    response.end();
+  }).catch(function(error){
+    console.log(error);
+    response.json({error:"fuckin tiddies."});
+    response.end();
+  });
+
+});
+app.get("/users/:id/basicData",function(request,response){
+  var memType = request.session.data.primaryMembership.membershipType;
+  var d2ID = request.session.data.primaryMembership.membershipId;
+  var components = ["100"];
+  d2api.getDestinyProfile(memType,d2ID,components).then(function(result){
+    var data = result.data.Response.profile.data;
+    var transmittingData = {
+      characterIds: data.characterIds,
+      membershipId: data.userInfo.membershipId,
+      membershipType: data.userInfo.membershipType,
+      username: data.userInfo.displayName,
+    };
+    response.send({data:transmittingData});
+    response.end();
+  }).catch(function(error){
+    console.log(error);
+    response.json({error:"I might've broke it."});
+    response.end();
+  });
+});
+//Gets data of requested character and returns data requested by components header. defaults to inventory if nothing is given.
+app.get("/users/:id/character/:characterId",function(request,response){
+
+});
+app.get("/users/:id/inventories",function(request,response){
+
+});
+//Gets data of requested item and returns data requested by components header.
+app.get("/users/item",function(request,response){
+
 });
 httpsServer.listen(process.env.PORT);
+function prepSessionData(request,response,next){
+  if(request.session.data != undefined){
+    console.log("Prior data for user has been formatted already ");
+  }
+  else {
+    console.log("Session data does not exist, creating formatted data blueprint.");
+    data = {
+      authCode: null,
+      state: null,
+      tokenData: {
+        access_token: null,
+      },
+      primaryAccount: null,
+    };
+    request.session.data = data;
+    console.log("session data now has blueprint, proceeding to content.");
+  }
+  next();
+}
+function buildAuthorizatonCodeRequest(request){
+  let state = crypto.randomBytes(16).toString("base64");
+  request.session.data.state = state;
+  var url = new URL(bungieAuthURL);
+  url.searchParams.append("client_id",process.env.Bungie_ClientID);
+  url.searchParams.append("response_type","code");
+  url.searchParams.append("state",state);
+  return url;
+}
+function isAuthorized(request){
+  if(request.session.data.tokenData.access_token != null){
+    console.log("User has access token, and therefore should be authorized. allowing access to requested endpoint.");
+    return true;
+  }
+  else {
+    console.log("User does not possess credentials, access is denied.");
+    return false;
+  }
+}

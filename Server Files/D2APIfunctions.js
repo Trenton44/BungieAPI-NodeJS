@@ -1,7 +1,7 @@
 const dotenv = require("dotenv");
-const path = require("path");
-const root = path.join(__dirname,"..\\");
-dotenv.config( { path: path.join(root,"process.env") } );
+const ospath = require("path");
+const root = ospath.join(__dirname,"..\\");
+dotenv.config( { path: ospath.join(root,"process.env") } );
 const axios = require('axios');
 const https = require("https");
 const fs = require('fs');
@@ -12,7 +12,6 @@ const DestinyComponentType = require("./D2components").DestinyComponentType;
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
-
 function combineComponentString(value){
   var params = "";
   for(i in value){
@@ -27,117 +26,108 @@ function combineComponentString(value){
 }
 exports.combineComponentString = combineComponentString;
 //Requests of the GET Type.
-async function searchD2Player(type,displayName){
+function searchD2Player(type,displayName){
   var path = bungieRoot+"/Destiny2/SearchDestinyPlayer/"+type+"/"+displayName+"/";
-  let data = await getRequest(path);
-  return Object.assign(DestinyEntities.UserInfoCard, data.data.Response[0]);
+  return getRequest(path);
 };
 exports.searchD2Player = searchD2Player;
 
-async function getManifest(type,membership_id){
+function getManifest(type,membership_id){
   var path =bungieRoot+"/Destiny2/Manifest/";
-  let data = await getRequest(path);
-  return data.data;
+  return getRequest(path);
 };
 exports.getManifest = getManifest;
 /////////
 //EVERYTHING ABOVE THIS HAS BEEN RAN AND HAS HAD A SUCCESSFUL RETURN RESULT
 ////////
-async function getBungieUser(bungieID){
-  path = bungieRoot+"/User/GetBungieNetUserById/"+bungieID+"/";
-  let data = await getRequest(path);
-  return data;
+function getBungieUser(bungieID){
+  var path = bungieRoot+"/User/GetBungieNetUserById/"+bungieID+"/";
+  return getRequest(path);
 }
 exports.getBungieUser = getBungieUser;
-async function searchBungieuser(bungieID){
+function searchBungieuser(bungieID){
   path = bungieRoot+"/User/SearchUsers/?"+bungieID;
-  let data = await getRequest(path);
-  return data;
+  return getRequest(path);
 }
 exports.searchBungieuser = searchBungieuser;
-async function getCredentialsforAccount(membership_id){
-  path = bungieRoot+"/User/GetCredentialTypesForTargetAccount/"+membership_id+"/";
-  let data = await getRequest(path);
-  return data;
+function getCredentialsforAccount(membership_id){
+  var path = bungieRoot+"/User/GetCredentialTypesForTargetAccount/"+membership_id+"/";
+  return getRequest(path);
 }
 exports.getCredentialsforAccount = getCredentialsforAccount;
-async function getThemesAvailable(membership_id){
+function getThemesAvailable(membership_id){
   path = bungieRoot+"/User/GetAvailableThemes/";
-  let data = await getRequest(path);
-  return data;
+  return getRequest(path);
 }
 exports.getThemesAvailable = getThemesAvailable;
-async function getBungieMembershipData(membership_id,memType){
+function getBungieMembershipData(membership_id,memType){
   path = bungieRoot+"/User/GetMembershipsById/"+membership_id+"/"+memType+"/";
-  let data = await getRequest(path);
-  return data;
+  return getRequest(path);
 }
 exports.getBungieMembershipData = getBungieMembershipData;
-async function getBungieCurrentUserData(){
-  path = bungieRoot+"/User/GetMembershipsForCurrentUser/";
-  let data = await getRequest(path);
-  return data;
-}
+function getBungieCurrentUserData(token){
+  var path = bungieRoot+"/User/GetMembershipsForCurrentUser/";
+  return getRequestAuth(path,token);
+};
 exports.getBungieCurrentUserData = getBungieCurrentUserData;
-async function getBungieMemberDataviaCredential(crType,credential){
+function getBungieMemberDataviaCredential(crType,credential){
   path = bungieRoot+"/User/GetMembershipFromHardLinkedCredential/"+crType+"/"+credential+"/";
-  let data = await getRequest(path);
-  return data;
+  return getRequest(path);
 }
 exports.getBungieMemberDataviaCredential = getBungieMemberDataviaCredential;
-async function getDestinyEntityDefinition(entityType,hashID){
+function getDestinyEntityDefinition(entityType,hashID){
   path = bungieRoot+"/Destiny2/Manifest/"+entityType+"/"+hashID+"/";
-  let data = await getRequest(path);
-  return data;
+  return getRequest(path);
 }
 exports.getDestinyEntityDefinition = getDestinyEntityDefinition;
-async function getLinkedProfiles(type,membership_id){
+function getLinkedProfiles(type,membership_id){
   var path =bungieRoot+"/Destiny2/"+type+"/Profile/"+membership_id+"/LinkedProfiles/";
-  let data = await getRequest(path);
-  return Object.assign(DestinyEntities.LinkedProfilesResponse, data.data.Response);
+  return getRequest(path);
 };
 exports.getLinkedProfiles = getLinkedProfiles;
-async function getDestinyProfile(type, d2ID, components){
+function getDestinyProfile(type, d2ID, components){
   var params = combineComponentString(components);
-  var path =bungieRoot+"/Destiny2/"+type+"/Profile/"+d2ID+"/"+"?"+parameters.toString();
-  let data = await getRequest(path);
-  return Object.assign(DestinyEntities.DestinyProfileResponse, data.data.Response[0]);
+  var path =bungieRoot+"/Destiny2/"+type+"/Profile/"+d2ID+"/"+"?"+params.toString();
+  return getRequest(path);
 };
 exports.getDestinyProfile = getDestinyProfile;
 
-async function getCharacter(type, d2ID,characterID,components){
+function getCharacter(type, d2ID,characterID,components){
   var path = bungieRoot+"/Destiny2/"+type+"/Profile/"+d2ID+"/Character/"+characterID+"/";
-  let data = await getRequest(path);
-  return Object.assign(DestinyEntities.DestinyCharacterResponse, data.data.Response[0]);
+  return getRequest(path);
 };
 exports.getCharacter = getDestinyProfile;
 
-async function getItem(type, d2ID, itemID, components){
+function getItem(type, d2ID, itemID, components){
   var params= combineComponentString(components);
   var path = bungieRoot+"/Destiny2/"+type+"/Profile/"+d2ID+"/Item/"+itemID+"/?"+params;
-  let data = await getRequest(path);
-  return Object.assign(DestinyEntities.DestinyItemResponse, data.data.Response[0]);
+  return getRequest(path);
 };
 exports.getItem = getItem;
 //Requests of the POST Type.
 
 async function postRequest(path,body,token){
-  let request = await axios({
+  return axios({
     method:"POST",
     url: path,
     headers: {"X-API-Key":process.env.Bungie_API_KEY, "Authorization":"Bearer "+token},
     body: body
   });
-  return request;
 }
-async function getRequest(path){
-  let request = await axios({
+function getRequest(path){
+  return axios({
     method:"GET",
     url: path,
     headers: {"X-API-Key":process.env.Bungie_API_KEY},
   });
-  return request;
 };
+function getRequestAuth(path,token){
+  return axios({
+    method:"GET",
+    url: path,
+    headers: {"X-API-Key":process.env.Bungie_API_KEY, "Authorization":"Bearer "+token},
+  });
+}
 
 
 //Other useful functions that I haven't gotten around to wanting to do.
@@ -154,3 +144,18 @@ async function tokenRefresh(token){
   return request;
 }
 exports.tokenRefresh = tokenRefresh;
+async function tokenRequest(request){
+  var body = new URLSearchParams();
+  body.append("client_secret",process.env.Bungie_ClientSecret);
+  body.append("client_id", process.env.Bungie_ClientID);
+  body.append("grant_type", "authorization_code");
+  body.append("code",request.session.data.authCode);
+  let token = await axios({
+    method:"POST",
+    url: bungieTokURL,
+    headers:{"Content-Type": "application/x-www-form-urlencoded"},
+    data: body
+  });
+  return token;
+};
+exports.tokenRequest = tokenRequest;
