@@ -7,11 +7,6 @@ function loadInit(value){
   Window = value;
   console.log("logged");
 }
-async function requestProfileData(){
-  console.log("run");
-  var data = null;
-  return fetchRequest(Window.location.pathname+"/basicData");
-}
 /*function buildCharacters(chars){
   for(i in chars.data){
     console.log("building character "+i);

@@ -8,6 +8,7 @@ const axios = require('axios');
 const path = require("path");
 const dotenv = require("dotenv");
 const crypto = require("crypto");
+const mustache = require("mustache-express");
 const d2api = require("./D2APIfunctions");
 const tools = require("./serverfunctions");
 const DestinyEntities = require("./APIManifest.js").Entities;
@@ -16,6 +17,7 @@ const webpageRoot = path.join(__dirname,"..\\","Client Files");
 const serverRoot = path.join(__dirname,"..\\","Server Files");
 const assetRoot = path.join(__dirname,"..\\","assets");
 const bungieRoot = "https://www.bungie.net/Platform";
+var bungieCommon = "https://www.bungie.net";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
 dotenv.config( { path: path.join(root,"process.env") } );
@@ -25,8 +27,9 @@ var privatekey = fs.readFileSync(path.join(root,"key.pem"));
 var certificate = fs.readFileSync(path.join(root,"cert.pem"));
 var credentials = {key: privatekey, cert: certificate};
 var httpsServer = https.createServer(credentials,app);
-
-
+app.engine("html", mustache());
+app.set("view engine","html");
+app.set("views",webpageRoot);
 
 app.get("/assets/:id",function(request,response){
   console.log("--------------------------");
@@ -60,23 +63,8 @@ app.use(
 );
 app.use(prepSessionData);
 
-app.get("/", function(request, response){
-  if(isAuthorized(request)){
-    d2api.getBungieCurrentUserData(request.session.data.tokenData.access_token).then(function(result){
-      result.data.Response.destinyMemberships.forEach(element => {
-        if(element.membershipId == result.data.Response.primaryMembershipId){
-          request.session.data.primaryMembership = element;
-        }
-      });
-      response.redirect("/users/"+request.session.data.primaryMembership.membershipId);
-    }).catch(function(error){
-      console.error(error);
-      response.status(400).json({error: "Uhhh.. I might've broke something."});
-    });
-  }
-  else {
-    response.status(200).sendFile(webpageRoot+"/home.html");
-  }
+app.get("/home", function(request, response){
+  response.status(200).sendFile(webpageRoot+"/home.html");
 });
 app.get("/login",function(request,response){
   var url = buildAuthorizatonCodeRequest(request);
@@ -93,84 +81,62 @@ app.get("/bapi", function(request,response){
   else {
     console.log("STATE PARAMETERS MATCH, therefore this login is valid and untampered. (we hope)");
     request.session.data.authCode = request.query.code;
-    response.redirect("/authenticate");
-  }
-});
-app.get("/authenticate", function(request,response){
-  d2api.tokenRequest(request).then(function(result){
-      console.log("TOKEN REQUEST SUCCESSFUL");
-      request.session.data.tokenData = result.data;
-      request.session.data.authCode = null;
-      request.session.data.state = null;
+    d2api.tokenRequest(request).then(function(result){
+        console.log("TOKEN REQUEST SUCCESSFUL");
+        request.session.data.tokenData = result.data;
+        request.session.data.authCode = null;
+        request.session.data.state = null;
+        d2api.getBungieCurrentUserData(request.session.data.tokenData.access_token).then(function(result){
+          var primem = result.data.Response.primaryMembershipId;
+          var d2mems = result.data.Response.destinyMemberships;
+          request.session.data.primaryMembership = {};
+          request.session.data.secondaryMemberships = {};
+          d2mems.forEach(function(item, index){
+            if(item.membershipId == primem){ request.session.data.primaryMembership = item; }
+            else { request.session.data.secondaryMemberships[item.membershipId] = item; }
+          });
+          console.log("Obtained membership data for user.");
+          response.redirect("/users/"+request.session.data.primaryMembership.membershipId);
+        }).catch(function(error){
+          console.error(error);
+        });
+    }).catch(function(error){
+      console.log(error);
+      console.error("TOKEN REQUEST NOT successful");
+      request.session.data = undefined;
       response.redirect("/");
-  }).catch(function(error){
-    console.log(error);
-    console.error("TOKEN REQUEST NOT successful");
-    request.session.data = undefined;
-    response.redirect("/");
-  });
+    });
+  }
 });
 //authorization verification. Everything past this point will require a token from bungie's API to be saved.
 app.use(function(request,response,next){
-  if(isAuthorized){
+  console.log("check authorization");
+  if(isAuthorized(request)){
     next();
   }
   else {
-    response.status(401).json({error: "access is denied"});
+    console.log("Not authorized");
+    response.redirect("/home");
   }
 });
+
 app.get("/users/:id",function(request,response){
-  response.status(200).sendFile(webpageRoot+"/inventory.html");
-});
-
-
-//Endpoints used to gather data for the characters by the serverRoot
-
-//Gets all characters of given player and returns data requested by components header. defaults to inventory if nothing is given.
-app.get("/users/:id/characters",function(request,response){
-  console.log("request made to /D2/characters endpoint.");
+  var htmlData = {
+    userID:request.session.data.primaryMembership.membershipId,
+    platformIcon:bungieCommon+request.session.data.primaryMembership.iconPath,
+    username: request.session.data.primaryMembership.displayName
+  };
   var memType = request.session.data.primaryMembership.membershipType;
   var d2ID = request.session.data.primaryMembership.membershipId;
-  var components = ["200"];
+  components = ["100"];
   d2api.getDestinyProfile(memType,d2ID,components).then(function(result){
-    response.send({data:result.data.Response});
-    response.end();
+    console.log(result.data.Response.profile.data.userInfo);
+    console.log(result.data.Response.profile.data.characterIds);
+    response.render("DnDSheet",htmlData);
   }).catch(function(error){
-    console.log(error);
-    response.json({error:"fuckin tiddies."});
-    response.end();
+    console.error(error);
+    response.render("DnDSheet",htmlData);
   });
-
-});
-app.get("/users/:id/basicData",function(request,response){
-  var memType = request.session.data.primaryMembership.membershipType;
-  var d2ID = request.session.data.primaryMembership.membershipId;
-  var components = ["100"];
-  d2api.getDestinyProfile(memType,d2ID,components).then(function(result){
-    var data = result.data.Response.profile.data;
-    var transmittingData = {
-      characterIds: data.characterIds,
-      membershipId: data.userInfo.membershipId,
-      membershipType: data.userInfo.membershipType,
-      username: data.userInfo.displayName,
-    };
-    response.send({data:transmittingData});
-    response.end();
-  }).catch(function(error){
-    console.log(error);
-    response.json({error:"I might've broke it."});
-    response.end();
-  });
-});
-//Gets data of requested character and returns data requested by components header. defaults to inventory if nothing is given.
-app.get("/users/:id/character/:characterId",function(request,response){
-
-});
-app.get("/users/:id/inventories",function(request,response){
-
-});
-//Gets data of requested item and returns data requested by components header.
-app.get("/users/item",function(request,response){
 
 });
 httpsServer.listen(process.env.PORT);
@@ -186,7 +152,7 @@ function prepSessionData(request,response,next){
       tokenData: {
         access_token: null,
       },
-      primaryAccount: null,
+      primaryMembership: null,
     };
     request.session.data = data;
     console.log("session data now has blueprint, proceeding to content.");
