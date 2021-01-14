@@ -40,9 +40,9 @@ exports.getManifest = getManifest;
 /////////
 //EVERYTHING ABOVE THIS HAS BEEN RAN AND HAS HAD A SUCCESSFUL RETURN RESULT
 ////////
-function getBungieUser(bungieID){
-  var path = bungieRoot+"/User/GetBungieNetUserById/"+bungieID+"/";
-  return getRequest(path);
+function getBungieUser(id,token){
+  var path = bungieRoot+"/User/GetBungieNetUserById/"+id+"/";
+  return getRequestAuth(path,token);
 }
 exports.getBungieUser = getBungieUser;
 function searchBungieuser(bungieID){

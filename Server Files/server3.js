@@ -62,9 +62,8 @@ app.use(
   })
 );
 app.use(prepSessionData);
-
-app.get("/home", function(request, response){
-  response.status(200).sendFile(webpageRoot+"/home.html");
+app.get("/authError",function(request,response){
+  response.sendFile(webpageRoot+"/noAuthorization.html");
 });
 app.get("/login",function(request,response){
   var url = buildAuthorizatonCodeRequest(request);
@@ -76,7 +75,7 @@ app.get("/bapi", function(request,response){
   if(request.query.state !== request.session.data.state){
     console.error("State parameters DO NOT MATCH! ABORTING MISSION");
     request.session.data = undefined;
-    response.redirect("/");
+    response.redirect("/authError");
   }
   else {
     console.log("STATE PARAMETERS MATCH, therefore this login is valid and untampered. (we hope)");
@@ -86,29 +85,15 @@ app.get("/bapi", function(request,response){
         request.session.data.tokenData = result.data;
         request.session.data.authCode = null;
         request.session.data.state = null;
-        d2api.getBungieCurrentUserData(request.session.data.tokenData.access_token).then(function(result){
-          var primem = result.data.Response.primaryMembershipId;
-          var d2mems = result.data.Response.destinyMemberships;
-          request.session.data.primaryMembership = {};
-          request.session.data.secondaryMemberships = {};
-          d2mems.forEach(function(item, index){
-            if(item.membershipId == primem){ request.session.data.primaryMembership = item; }
-            else { request.session.data.secondaryMemberships[item.membershipId] = item; }
-          });
-          console.log("Obtained membership data for user.");
-          response.redirect("/users/"+request.session.data.primaryMembership.membershipId);
-        }).catch(function(error){
-          console.error(error);
-        });
+        response.redirect("/");
     }).catch(function(error){
       console.log(error);
       console.error("TOKEN REQUEST NOT successful");
       request.session.data = undefined;
-      response.redirect("/");
+      response.redirect("/authError");
     });
   }
 });
-//authorization verification. Everything past this point will require a token from bungie's API to be saved.
 app.use(function(request,response,next){
   console.log("check authorization");
   if(isAuthorized(request)){
@@ -116,30 +101,73 @@ app.use(function(request,response,next){
   }
   else {
     console.log("Not authorized");
-    response.redirect("/home");
+    response.redirect("/authError");
+  }
+});
+app.get("/",function(request,response){
+  var token = request.session.data.tokenData.access_token;
+  d2api.getBungieCurrentUserData(token).then(function(result){
+    request.session.data.memberships = {};
+    request.session.data.primaryMembershipId = result.data.Response.primaryMembershipId;
+    result = result.data.Response.destinyMemberships;
+    result.forEach(function(item, index){
+      request.session.data.memberships[item.membershipId] = item;
+    });
+    response.redirect("/"+request.session.data.primaryMembershipId+"/summary");
+  });
+});
+//endpoints that send webpages out
+app.get("/:id/summary",function(request,response){
+  console.log(request.params.id);
+  var profile = request.session.data.memberships[request.params.id];
+  if(profile !== undefined){
+    console.log("shit workin");
+    response.render("DnDSheet");
+  }
+  else {
+    response.redirect("/authError");
+    console.error("shit aint workin");
   }
 });
 
-app.get("/users/:id",function(request,response){
-  var htmlData = {
-    userID:request.session.data.primaryMembership.membershipId,
-    platformIcon:bungieCommon+request.session.data.primaryMembership.iconPath,
-    username: request.session.data.primaryMembership.displayName
-  };
-  var memType = request.session.data.primaryMembership.membershipType;
-  var d2ID = request.session.data.primaryMembership.membershipId;
-  components = ["100"];
-  d2api.getDestinyProfile(memType,d2ID,components).then(function(result){
-    console.log(result.data.Response.profile.data.userInfo);
-    console.log(result.data.Response.profile.data.characterIds);
-    response.render("DnDSheet",htmlData);
-  }).catch(function(error){
-    console.error(error);
-    response.render("DnDSheet",htmlData);
-  });
-
+//endpoints that send data for webpages out.
+app.get("/:id/data",function(request,response){
+  console.log(request.params.id);
+  var profile = request.session.data.memberships[request.params.id];
+  if(profile !== undefined){
+    components = ["100","102","104","105"];
+    console.log("shit workin");
+    d2api.getDestinyProfile(profile.membershipType,profile.membershipId,components).then(function(result){
+      response.status(200).json(result.data.Response);
+    }).catch(function(error){
+      console.log(error);
+    });
+  }
+  else {
+    response.redirect("/authError");
+    console.error("shit aint workin");
+  }
+});
+app.get("/:id/character/data",function(request,response){
+  console.log(request.params.id);
+  var profile = request.session.data.memberships[request.params.id];
+  if(profile !== undefined){
+    components = ["200","201","202","205","300"];
+    console.log("shit workin");
+    d2api.getDestinyProfile(profile.membershipType,profile.membershipId,components).then(function(result){
+      response.status(200).json(result.data.Response);
+    }).catch(function(error){
+      console.log(error);
+    });
+  }
+  else {
+    response.redirect("/authError");
+    console.error("shit aint workin");
+  }
 });
 httpsServer.listen(process.env.PORT);
+
+
 function prepSessionData(request,response,next){
   if(request.session.data != undefined){
     console.log("Prior data for user has been formatted already ");
@@ -152,7 +180,7 @@ function prepSessionData(request,response,next){
       tokenData: {
         access_token: null,
       },
-      primaryMembership: null,
+      primaryMembershipId: null,
     };
     request.session.data = data;
     console.log("session data now has blueprint, proceeding to content.");
