@@ -5,9 +5,6 @@ dotenv.config( { path: ospath.join(root,"process.env") } );
 const axios = require('axios');
 const https = require("https");
 const fs = require('fs');
-const D2Components = require("./D2components");
-const DestinyEntities = require("./D2components").Entities;
-const DestinyComponentType = require("./D2components").DestinyComponentType;
 
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
