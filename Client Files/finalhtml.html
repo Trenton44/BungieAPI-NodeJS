@@ -10,7 +10,7 @@
           <h1 id=character-class></h1>
           <h1>test</h1>
         </div>
-        <img src="https://www.bungie.net/common/destiny2_content/icons/fedcb91b7ab0584c12f0e9fec730702b.png"/>
+        <img id=Subclass />
         <div>
           <h1 id=character-light></h1>
           <h1 id=character-level></h1>
@@ -18,15 +18,12 @@
       </div>
 
     </div>
+    <div id=back-button onclick=loadCharacter(-1)><h1>back</h1></div>
     <div id=all-content>
-      <div id=back-button onclick=loadCharacter(-1)><h1>back</h1></div>
       <div id=start>
-        <div id=content-container>
-          <h1>Weapons</h1>
-          <h1>Armor</h1>
-        </div>
-          <div id="characterEquipment">
+          <div class=equipment-items id="characterEquipment">
             <div>
+              <h1>Weapons</h1>
               <div id="Kinetic Weapons"></div>
               <div id="Energy Weapons"></div>
               <div id="Power Weapons"></div>
@@ -37,6 +34,7 @@
             <div id=equipment-menu>
             </div>
             <div>
+              <h1>Armor</h1>
               <div id=Helmet></div>
               <div id=Gauntlets></div>
               <div id="Chest Armor"></div>
@@ -45,20 +43,18 @@
               <div id="Clan Banners"></div>
             </div>
           </div>
-          <div id=content-container>
-            <h1>Artifacts</h1>
+          <div class=content-container>
+            <h1>Miscellaneous</h1>
           </div>
-          <div id="characterEquipment">
-            <div>
-              <div id="Emblems"></div>
-              <div id="Finishers"></div>
-              <div id="Emotes"></div>
-              <div id="Seasonal Artifact"></div>
-            </div>
+          <div class=miscellaneous-items id="characterEquipment">
+            <div id="Emblems"></div>
+            <div id="Finishers"></div>
+            <div id="Emotes"></div>
+            <div id="Seasonal Artifact"></div>
           </div>
       </div>
-      <div id=next-button onclick=loadCharacter(1)><h1>next</h1></div>
     </div>
+    <div id=next-button onclick=loadCharacter(1)><h1>next</h1></div>
   </body>
   <script type="text/javascript">
     window.onload = function(){

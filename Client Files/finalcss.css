@@ -50,7 +50,8 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 80%;
+  float: left;
 }
 #start {
   width: 100%;
@@ -63,45 +64,52 @@ body {
 #start > * {
   width: 100%;
 }
-#content-container {
+.content-container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
 }
-#characterEquipment {
+.equipment-items {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
-#characterEquipment > div{
+.equipment-items > div{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   flex-basis: 20%;
   flex-grow: 1;
 }
-#characterEquipment > div:first-child{
+.equipment-items > div:first-child{
   align-items: flex-end;
 }
-#characterEquipment > div:last-child{
+.equipment-items > div:last-child{
   align-items: flex-start;
 }
-#characterEquipment > #equipment-menu{
+#equipment-menu{
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap;
 }
-#characterEquipment > div > div > img{
+.equipment-items > div > div > img{
   transform: scale(0.5,0.5);
 }
-
+.miscellaneous-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 #next-button {
   height: 100%;
+  width: 10%;
   float: right;
+  text-align: center;
 }
 #back-button {
   height: 100%;
+  width: 10%;
   float: left;
 }
