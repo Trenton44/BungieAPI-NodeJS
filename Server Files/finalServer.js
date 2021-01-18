@@ -82,13 +82,17 @@ app.use(checkAuthorization);
 //Entry point for authorized personnel. Make all requests for API data here prior to serving webpage.
 app.get("/",function(request,response){
   obtainInitialPlayerData(request).then(function(result){
+    console.log(result);
+    console.log("past access");
     response.sendFile(webpageRoot+"/finalhtml.html");
+  }).catch(function(error){
+    console.error(error);
   });
 });
-app.get("/test",function(request, response){
-  response.status(200).json(request.session.data.d2data);
-})
 app.get("/characterids",function(request, response){
+  console.log("============================");
+  console.log(request.session.data.d2data);
+  console.log("============================");
   response.status(200).json(request.session.data.d2data.IDs);
 });
 app.get("/manifest",function(request,response){
@@ -126,7 +130,7 @@ function verifyState(request){
 async function obtainInitialPlayerData(request){
   var token = request.session.data.tokenData.access_token;
   console.log("Accessing bnet user data");
-  return d2api.getBungieCurrentUserData(token).then(function(result){
+  await d2api.getBungieCurrentUserData(token).then(function(result){
     var userdata = d2api.parseBungieCurrentUserDataResponse(result.data.Response);
     //console.log(userdata);
     request.session.data.userdata = userdata;
@@ -135,10 +139,11 @@ async function obtainInitialPlayerData(request){
     var components = ["103","200","201","202","205","300","302"];
     console.log("Accessing d2 user data");
     return d2api.getDestinyProfileAuth(memType,d2ID,components,token).then(function(result){
+      console.log("accessed");
       var d2data = d2api.parseDestinyProfileAuthResponse(result.data.Response);
       request.session.data.d2data = d2data;
-      return true;
       console.log("all data successfully retrieved.");
+      return true;
     }).catch(function(error){
       console.log(error);
       return false;

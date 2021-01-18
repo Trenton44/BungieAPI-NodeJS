@@ -88,7 +88,12 @@ function getDestinyProfile(type, d2ID, components){
   return getRequest(path);
 };
 exports.getDestinyProfile = getDestinyProfile;
-
+function getDestinyProfileAuth(type, d2ID, components, token){
+  var params = combineComponentString(components);
+  var path =bungieRoot+"/Destiny2/"+type+"/Profile/"+d2ID+"/"+"?"+params.toString();
+  return getRequestAuth(path,token);
+};
+exports.getDestinyProfileAuth = getDestinyProfileAuth;
 function getCharacter(type, d2ID,characterID,components){
   var path = bungieRoot+"/Destiny2/"+type+"/Profile/"+d2ID+"/Character/"+characterID+"/";
   return getRequest(path);
@@ -156,3 +161,35 @@ async function tokenRequest(request){
   return token;
 };
 exports.tokenRequest = tokenRequest;
+
+function parseBungieCurrentUserDataResponse(data){
+  console.log(data);
+  var memberships = {};
+  var i = 0;
+  for(i in data.destinyMemberships){
+    memberships[data.destinyMemberships[i].membershipId] = data.destinyMemberships[i];
+  }
+  memberships.primaryMembershipId = data.primaryMembershipId;
+  memberships.bnetUser = data.bungieNetUser;
+  return memberships;
+}
+exports.parseBungieCurrentUserDataResponse = parseBungieCurrentUserDataResponse;
+function parseDestinyProfileAuthResponse(data){
+  //console.log(data);
+  var characters = {};
+  var cIDs = Object.keys(data.characters.data);
+  var i = 0;
+  for(i in cIDs){
+    characters[cIDs[i]] = {};
+    characters[cIDs[i]].characters = data.characters.data[cIDs[i]];
+    characters[cIDs[i]].characterInventories = data.characterInventories.data[cIDs[i]].items;
+    characters[cIDs[i]].characterProgressions = data.characterProgressions.data[cIDs[i]];
+    characters[cIDs[i]].characterEquipment = data.characterEquipment.data[cIDs[i]].items;
+  }
+  characters.profileCurrencies = data.profileCurrencies.data;
+  characters.itemComponents = data.itemComponents;
+  characters.IDs = cIDs;
+  //console.log(characters);
+  return characters;
+}
+exports.parseDestinyProfileAuthResponse = parseDestinyProfileAuthResponse;
