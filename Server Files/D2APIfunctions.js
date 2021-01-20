@@ -1,14 +1,18 @@
 const dotenv = require("dotenv");
-const ospath = require("path");
-const root = ospath.join(__dirname,"..\\");
-dotenv.config( { path: ospath.join(root,"process.env") } );
+const path = require("path");
+const root = path.join(__dirname,"..\\");
+dotenv.config( { path: path.join(root,"process.env") } );
 const axios = require('axios');
 const https = require("https");
 const fs = require('fs');
-
+const manifestRoot = path.join(__dirname,"..\\","manifestData");
+//const D2Manifest = require(manifestRoot+"/D2Manifest2.js").D2Manifest;
+const D2Manifest = require(manifestRoot+"/d2manifest.json");
+const d2components = require("./D2Components.js");
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
+const bungieCommon = "https://www.bungie.net";
 function combineComponentString(value){
   var params = "";
   for(i in value){
@@ -29,11 +33,6 @@ function searchD2Player(type,displayName){
 };
 exports.searchD2Player = searchD2Player;
 
-function getManifest(type,membership_id){
-  var path =bungieRoot+"/Destiny2/Manifest/";
-  return getRequest(path);
-};
-exports.getManifest = getManifest;
 /////////
 //EVERYTHING ABOVE THIS HAS BEEN RAN AND HAS HAD A SUCCESSFUL RETURN RESULT
 ////////
@@ -163,7 +162,7 @@ async function tokenRequest(request){
 exports.tokenRequest = tokenRequest;
 
 function parseBungieCurrentUserDataResponse(data){
-  console.log(data);
+  //console.log(data);
   var memberships = {};
   var i = 0;
   for(i in data.destinyMemberships){
@@ -193,3 +192,55 @@ function parseDestinyProfileAuthResponse(data){
   return characters;
 }
 exports.parseDestinyProfileAuthResponse = parseDestinyProfileAuthResponse;
+
+function loadManifest(){
+  var path =bungieRoot+"/Destiny2/Manifest/";
+  getRequest(path).then(function(result){
+    var d2contentManifest = bungieCommon+result.data.Response.jsonWorldContentPaths.en;
+    getRequest(d2contentManifest).then(function(result){
+      var manifestItems = Object.keys(result.data);
+      for(i in result.data){
+        console.log("Iteration: "+i);
+        let data = JSON.stringify(result.data[i], null, 2);
+        console.log("Now writing item "+i+" to  file "+i+".json");
+        fs.writeFileSync(manifestRoot+"/"+i+".json", data, function(error){
+          console.error(error);
+        });
+      }
+      console.log("Now writing entire manifest to d2manifest.json");
+      let data = JSON.stringify(result.data, null, 2);
+      fs.writeFileSync(manifestRoot+"/d2manifest.json", data, function(error){
+        console.error(error);
+      });
+      console.log("Done");
+    });
+  });
+}
+exports.loadManifest = loadManifest;
+function DestinyItemComponent(item){
+  var data = {};
+  data.itemData = D2Manifestitem.DestinyInventoryItemDefinition[item.itemHash];
+  data.itemInstanceId = item.itemInstanceId;
+  data.bucketData = D2Manifestitem.DestinyInventoryBucketDefinition[item.bucketHash];
+  data.transferStatus = item.transferStatus;
+  data.overrideStyleItemHash = D2Manifestitem.DestinyInventoryItemDefinition[item.overrideStyleItemHash];
+  data.versionNumber = item.versionNumber;
+  return data;
+}
+
+function parseResponse(data,components){
+  console.log("Parsing the following components:"+ components);
+  var parsedComponents = {};
+  for(i in components){
+    console.log();
+    console.log("Currently parsing: "+components[i]);
+    var componentMethod = d2components.components[components[i]];
+    console.log("Method used by component: "+componentMethod);
+    var datapassed = d2components[componentMethod](data[componentMethod]);
+    parsedComponents[componentMethod] = datapassed;
+    console.log("Component has been parsed");
+  }
+  console.log("All components have been parsed, returning data.");
+  return parsedComponents;
+}
+exports.parseResponse = parseResponse;

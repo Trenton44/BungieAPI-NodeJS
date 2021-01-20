@@ -13,11 +13,12 @@ function Initialize(value){
 };
 function loadCharacter(value){
   counter += value;
-  if(counter > characterIDs.length)
+  if(counter > characterIDs.length-1)
     counter = 0;
   if(counter < 0)
     counter = characterIDs.length;
   console.log("counter: "+counter);
+  console.log("requesting character id: "+characterIDs[counter]);
   loadCharacterElement(characterIDs[counter]);
   loadCharacterContent(characterIDs[counter]);
   loadCharacterSlots();
@@ -26,11 +27,11 @@ async function loadCharacterElement(characterID){
   var path = "/character/"+characterID;
   await fetchRequest(path).then(function(result){
     console.log(result);
-    console.log("setting up character element.");
+    //console.log("setting up character element.");
     //window.document.getElementById("character-info").style.backgroundImage ="url("+bungieCommon+result.characterData.emblemBackgroundPath+")";
-    window.document.getElementById("character-class").innerHTML = result.characters.classType;
-    window.document.getElementById("character-light").innerHTML = result.characters.light;
-    window.document.getElementById("character-level").innerHTML = result.characters.baseCharacterLevel;
+    //window.document.getElementById("character-class").innerHTML = result.characters.classType;
+    //window.document.getElementById("character-light").innerHTML = result.characters.light;
+    //window.document.getElementById("character-level").innerHTML = result.characters.baseCharacterLevel;
   });
 }
 function loadCharacterContent(characterID){
@@ -93,3 +94,9 @@ async function fetchRequest(path){
   else
   {return Promise.reject(new Error(response.statusText));}
 };
+function test(){
+  path = "/test";
+  fetchRequest(path).then(function(result){
+    console.log(result);
+  });
+}

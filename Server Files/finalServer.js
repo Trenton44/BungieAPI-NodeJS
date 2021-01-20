@@ -11,10 +11,13 @@ const crypto = require("crypto");
 const mustacheExpress = require("mustache-express");
 const d2api = require("./D2APIfunctions");
 const root = path.join(__dirname,"..\\");
-const D2Manifest = require(root+"/D2Manifest2.js").D2Manifest;
+const d2components = require("./D2Components.js");
 const webpageRoot = path.join(__dirname,"..\\","Client Files");
 const serverRoot = path.join(__dirname,"..\\","Server Files");
 const assetRoot = path.join(__dirname,"..\\","assets");
+const manifestRoot = path.join(__dirname,"..\\","manifestData");
+//const D2Manifest = require(manifestRoot+"/D2Manifest2.js").D2Manifest;
+const D2Manifest = require(manifestRoot+"/d2manifest.json");
 const bungieRoot = "https://www.bungie.net/Platform";
 var bungieCommon = "https://www.bungie.net";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
@@ -47,9 +50,6 @@ app.use(prepSessionData);
 app.get("/client/:id",function(request,response){
   response.status(200).sendFile(webpageRoot+"/"+request.params.id);
 });
-app.get("/authError",function(request,response){
-  response.redirect("/login");
-});
 app.get("/login",function(request,response){
   var url = buildAuthorizatonCodeRequest(request);
   console.log("User has begun a login attempt to bungie.net");
@@ -69,11 +69,11 @@ app.get("/bapi", function(request,response){
     }).catch(function(error){
       console.error("TOKEN REQUEST NOT successful");
       request.session.data = undefined;
-      response.redirect("/authError");
+      response.redirect("/login");
     });
   }
   else {
-    response.redirect("/authError");
+    response.redirect("/login");
   }
 });
 
@@ -82,7 +82,6 @@ app.use(checkAuthorization);
 //Entry point for authorized personnel. Make all requests for API data here prior to serving webpage.
 app.get("/",function(request,response){
   obtainInitialPlayerData(request).then(function(result){
-    console.log(result);
     console.log("past access");
     response.sendFile(webpageRoot+"/finalhtml.html");
   }).catch(function(error){
@@ -90,14 +89,25 @@ app.get("/",function(request,response){
   });
 });
 app.get("/characterids",function(request, response){
-  console.log("============================");
-  console.log(request.session.data.d2data);
-  console.log("============================");
   response.status(200).json(request.session.data.d2data.IDs);
 });
 app.get("/manifest",function(request,response){
   response.status(200).json(D2Manifest);
-})
+});
+app.get("/test",async function(request,response){
+  var token = request.session.data.tokenData.access_token;
+  var memType = request.session.data.userdata[request.session.data.userdata.primaryMembershipId].membershipType;
+  var d2ID = request.session.data.userdata.primaryMembershipId;
+  components = Object.keys(d2components.components);
+  console.log("comp:"+components);
+  await d2api.getDestinyProfileAuth(memType, d2ID, components, token).then(function(result){
+    var parsedData = d2api.parseResponse(result.data.Response,components);
+    response.status(200).json(parsedData);
+  }).catch(function(error){
+    console.error(error);
+  });
+
+});
 app.get("/character/:id",function(request, response){
   var value = request.session.data.d2data[request.params.id];
   response.status(200).json(value);
@@ -126,6 +136,31 @@ function verifyState(request){
     console.log("STATE PARAMETERS MATCH, therefore this login is valid and untampered. (we hope)");
     return true;
   }
+}
+async function SOONTOBEobtainInitialPlayerData(request){
+  var token = request.session.data.tokenData.access_token;
+  console.log("Accessing bnet user data");
+  await d2api.getBungieCurrentUserData(token).then(function(result){
+    var userdata = d2api.parseBungieCurrentUserDataResponse(result.data.Response);
+    request.session.data.userdata = userdata;
+    var memType = userdata[userdata.primaryMembershipId].membershipType;
+    var d2ID = userdata.primaryMembershipId;
+    var components = ["200","201","202","205"];
+    console.log("Accessing d2 user data");
+    return d2api.getDestinyProfileAuth(memType,d2ID,components,token).then(function(result){
+      console.log("accessed");
+      var d2data = d2api.parseResponse(result.data.Response,components);
+      request.session.data.d2data = d2data;
+      console.log("all data successfully retrieved.");
+      return true;
+    }).catch(function(error){
+      console.log(error);
+      return false;
+    });
+  }).catch(function(error){
+    console.error(error);
+    return false;
+  });
 }
 async function obtainInitialPlayerData(request){
   var token = request.session.data.tokenData.access_token;
@@ -161,8 +196,8 @@ function checkAuthorization(request,response,next){
     next();
   }
   else {
-    console.log("Not authorized");
-    response.redirect("/authError");
+    console.log("Not authorized, redirecting to login.");
+    response.redirect("/login");
   }
 }
 function prepSessionData(request,response,next){
