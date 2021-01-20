@@ -81,7 +81,7 @@ app.get("/bapi", function(request,response){
 app.use(checkAuthorization);
 //Entry point for authorized personnel. Make all requests for API data here prior to serving webpage.
 app.get("/",function(request,response){
-  obtainInitialPlayerData(request).then(function(result){
+  SOONTOBEobtainInitialPlayerData(request).then(function(result){
     console.log("past access");
     response.sendFile(webpageRoot+"/finalhtml.html");
   }).catch(function(error){
@@ -95,18 +95,7 @@ app.get("/manifest",function(request,response){
   response.status(200).json(D2Manifest);
 });
 app.get("/test",async function(request,response){
-  var token = request.session.data.tokenData.access_token;
-  var memType = request.session.data.userdata[request.session.data.userdata.primaryMembershipId].membershipType;
-  var d2ID = request.session.data.userdata.primaryMembershipId;
-  components = Object.keys(d2components.components);
-  console.log("comp:"+components);
-  await d2api.getDestinyProfileAuth(memType, d2ID, components, token).then(function(result){
-    var parsedData = d2api.parseResponse(result.data.Response,components);
-    response.status(200).json(parsedData);
-  }).catch(function(error){
-    console.error(error);
-  });
-
+  response.status(200).json(request.session.data.d2data);
 });
 app.get("/character/:id",function(request, response){
   var value = request.session.data.d2data[request.params.id];
@@ -145,11 +134,11 @@ async function SOONTOBEobtainInitialPlayerData(request){
     request.session.data.userdata = userdata;
     var memType = userdata[userdata.primaryMembershipId].membershipType;
     var d2ID = userdata.primaryMembershipId;
-    var components = ["200","201","202","205"];
+    var components = ["100","200","201","202","205"];
     console.log("Accessing d2 user data");
     return d2api.getDestinyProfileAuth(memType,d2ID,components,token).then(function(result){
       console.log("accessed");
-      var d2data = d2api.parseResponse(result.data.Response,components);
+      var d2data = d2api.parseComponentResponses(result.data.Response,components);
       request.session.data.d2data = d2data;
       console.log("all data successfully retrieved.");
       return true;

@@ -47,32 +47,42 @@ const components = {
 };
 exports.components = components;
 
+
+//The following functions are responsible for taking a component input from a d2api response
+//and building it with relevant data from the manifest files. makes it easy to access later by building
+//it as soon as it's recieved.
 var profile = function(data){
+  data = data.data;
   return data;
 };
 exports.profile = profile;
 
 var vendorReceipts = function(data){
+  data = data.data;
   return data;
 };
 exports.vendorReceipts = vendorReceipts;
 
-var profileInventory = function(data){;
+var profileInventory = function(data){
+  data = data.data;
   return data;
 };
 exports.profileInventory = profileInventory;
 
 var profileCurrencies = function(data){
+  data = data.data;
   return data;
 };
 exports.profileCurrencies = profileCurrencies;
 
 var profileProgression = function(data){
+  data = data.data;
   return data;
 };
 exports.profileProgression = profileProgression;
 
 var platformSilver = function(data){
+  data = data.data;
   return data;
 };
 exports.platformSilver = platformSilver;
@@ -125,12 +135,14 @@ var characterProgressions = function(data){
 exports.characterProgressions = characterProgressions;
 
 var characterRenderData = function(data){
-  return data;
+  characterlist = data.data;
+  return characterlist;
 };
 exports.characterRenderData = characterRenderData;
 
 var characterActivities = function(data){
-  return data;
+  characterlist = data.data;
+  return characterlist;
 };
 exports.characterActivities = characterActivities;
 
@@ -172,27 +184,52 @@ var vendorSales = function(data){
 };
 exports.vendorSales = vendorSales;
 
-var kiosks = function(data){
+var kiosks = function(datap,datac){
+  var data = {};
+  try{  data.profileKiosks= datap.data;  }
+  catch(e){ console.log("profileKiosks was nonexistent");  }
+  try{  data.characterKiosks= datac.data; }
+  catch(e){  console.log("characterKiosks was nonexistent");  }
   return data;
 };
 exports.kiosks = kiosks;
 
-var currencyLookups = function(data){
+var currencyLookups = function(datap,datac){
+  var data = {};
+  try{  data.profileCurrencyLookups= datap.data;  }
+  catch(e){ console.log("profileCurrencyLookups was nonexistent");  }
+  try{  data.characterCurrencyLookups= datac.data; }
+  catch(e){  console.log("characterCurrencyLookups was nonexistent");  }
   return data;
 };
 exports.currencyLookups = currencyLookups;
 
-var presentationNodes = function(data){
+var presentationNodes = function(datap,datac){
+  var data = {};
+  try{  data.profilePresentationNodes= datap.data;  }
+  catch(e){ console.log("profilePresentationNodes was nonexistent");  }
+  try{  data.characterPresentationNodes= datac.data; }
+  catch(e){  console.log("characterPresentationNodes was nonexistent");  }
   return data;
 };
 exports.presentationNodes = presentationNodes;
 
-var collectibles = function(data){
+var collectibles = function(datap,datac){
+  var data = {};
+  try{  data.profileCollectibles= datap.data;  }
+  catch(e){ console.log("profileCollectibles was nonexistent");  }
+  try{  data.characterCollectibles= datac.data; }
+  catch(e){  console.log("characterCollectibles was nonexistent");  }
   return data;
 };
 exports.collectibles = collectibles;
 
-var records = function(data){
+var records = function(datap,datac){
+  var data = {};
+  try{  data.profileRecords= datap.data;  }
+  catch(e){ console.log("profileRecords was nonexistent");  }
+  try{  data.characterRecords= datac.data; }
+  catch(e){  console.log("characterRecords was nonexistent");  }
   return data;
 };
 exports.records = records;
@@ -203,6 +240,7 @@ var profileTransitoryData = function(data){
 exports.profileTransitoryData = profileTransitoryData;
 
 var metrics = function(data){
-  return data;
+  var characterlist = data.data;
+  return characterlist;
 };
 exports.metrics = metrics;

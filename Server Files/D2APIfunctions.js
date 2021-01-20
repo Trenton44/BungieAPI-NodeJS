@@ -217,18 +217,8 @@ function loadManifest(){
   });
 }
 exports.loadManifest = loadManifest;
-function DestinyItemComponent(item){
-  var data = {};
-  data.itemData = D2Manifestitem.DestinyInventoryItemDefinition[item.itemHash];
-  data.itemInstanceId = item.itemInstanceId;
-  data.bucketData = D2Manifestitem.DestinyInventoryBucketDefinition[item.bucketHash];
-  data.transferStatus = item.transferStatus;
-  data.overrideStyleItemHash = D2Manifestitem.DestinyInventoryItemDefinition[item.overrideStyleItemHash];
-  data.versionNumber = item.versionNumber;
-  return data;
-}
 
-function parseResponse(data,components){
+function parseComponentResponses(data,components){
   console.log("Parsing the following components:"+ components);
   var parsedComponents = {};
   for(i in components){
@@ -236,11 +226,30 @@ function parseResponse(data,components){
     console.log("Currently parsing: "+components[i]);
     var componentMethod = d2components.components[components[i]];
     console.log("Method used by component: "+componentMethod);
-    var datapassed = d2components[componentMethod](data[componentMethod]);
+    switch(components[i]){
+      case "500":
+        var datapassed = d2components[componentMethod](data.profileKiosks,data.characterKiosks);
+        break;
+      case "600":
+        var datapassed = d2components[componentMethod](data.profileCurrencyLookups,data.characterCurrencyLookups);
+        break;
+      case "700":
+        var datapassed = d2components[componentMethod](data.profilePresentationNodes,data.characterPresentationNodes);
+        break;
+      case "800":
+        var datapassed = d2components[componentMethod](data.profileCollectibles,data.characterCollectibles);
+        break;
+      case "900":
+        var datapassed = d2components[componentMethod](data.profileRecords,data.characterRecords);
+        break;
+      default:
+        var datapassed = d2components[componentMethod](data[componentMethod]);
+        break;
+    }
     parsedComponents[componentMethod] = datapassed;
     console.log("Component has been parsed");
   }
   console.log("All components have been parsed, returning data.");
   return parsedComponents;
 }
-exports.parseResponse = parseResponse;
+exports.parseComponentResponses = parseComponentResponses;
