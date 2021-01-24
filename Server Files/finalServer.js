@@ -89,7 +89,7 @@ app.get("/",function(request,response){
   });
 });
 app.get("/characterids",function(request, response){
-  response.status(200).json(request.session.data.d2data.IDs);
+  response.status(200).json(request.session.data.d2data.profile.characterIds);
 });
 app.get("/manifest",function(request,response){
   response.status(200).json(D2Manifest);
@@ -98,18 +98,20 @@ app.get("/test",async function(request,response){
   response.status(200).json(request.session.data.d2data);
 });
 app.get("/character/:id",function(request, response){
-  var value = request.session.data.d2data[request.params.id];
-  response.status(200).json(value);
+  var data = request.session.data.d2data;
+  cID = request.params.id;
+  var cData = {
+    characterEquipment: data.characterEquipment[cID].items,
+    characterInventories: data.characterInventories[cID].items,
+    characterProgressions: data.characterProgressions[cID],
+    characters: data.characters[cID],
+  };
+  response.status(200).json(cData);
 });
 app.get("/character/:id/equipment",function(request,response){
-  var value = request.session.data.d2data[request.params.id];
-  var cEquip = value.characterEquipment;
-  var i = 0;
-  for(i in cEquip){
-    cEquip[i].itemHashData = D2Manifest.DestinyInventoryItemDefinition[cEquip[i].itemHash];
-    cEquip[i].bucketHashData = D2Manifest.DestinyInventoryBucketDefinition[cEquip[i].bucketHash];
-  }
-  response.status(200).json(cEquip);
+  cID = request.params.id;
+  var value = request.session.data.d2data.characterEquipment[cID].items;
+  response.status(200).json(value);
 });
 app.get("/inventory",function(request,response){
   response.status(200).json(request.session.data);

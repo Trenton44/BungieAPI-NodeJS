@@ -21,7 +21,7 @@ function loadCharacter(value){
   console.log("requesting character id: "+characterIDs[counter]);
   loadCharacterElement(characterIDs[counter]);
   loadCharacterContent(characterIDs[counter]);
-  loadCharacterSlots();
+  //loadCharacterSlots();
 }
 async function loadCharacterElement(characterID){
   var path = "/character/"+characterID;
@@ -37,6 +37,7 @@ async function loadCharacterElement(characterID){
 function loadCharacterContent(characterID){
   var path = "/character/"+characterID+"/equipment";
   fetchRequest(path).then(function(result){
+    console.log("Equipment:");
     console.log(result);
     for(i in result){
       var weaponType = result[i].bucketHashData.displayProperties.name;
