@@ -1,56 +1,64 @@
 body {
   background-color: #272627;
-  width: 99vw;
-  margin: 0;
+  width: 100vw;
+  margin: auto;
   padding: 0;
 }
 #character-header {
   z-index: -1;
   position: relative;
-  width: 75%;
+  width: 100%;
   height: 20%;
   margin: auto;
 }
-#character-info {
-  width: 50%;
-  height: 100%;
+#character-header > div {
   position: absolute;
-  padding: 0;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%,0);
+  width: 10%;
+  height: 80%;
+  top: 50%;
+  right: 10%;
+  transform: translate(0,-50%);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-wrap: nowrap;
 }
-#character-info > h1{
-  border-bottom: 2px solid white;
-  text-align: center;
+#character-header > div > h1{
+  margin: 0;
+  color: white;
+}
+#emblem-icon{
+  height: 80%;
+  position: absolute;
+  top: 50%;
   transform: translate(0,-50%);
-  margin: 0;
+  left: 0%;
+  z-index: 1;
 }
-#character-info > * {
-  flex-basis: 33%;
+#emblem-back{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: 0;
 }
-#character-info > div {
-  height: 100%:
+#Subclass {
+  position: absolute;
+  top: 50%;
+  transform: translate(0,-50%);
+  right: 2%;
+  width: 8%;
 }
-#character-info > div > h1:first-child {
-  border-bottom: 2px solid white;
-  text-align: center;
-  margin: 0;
-}
-#character-info >div >h1:last-child{
-  text-align: center;
-  margin: 0;
-}
+
 #all-content {
+  margin-top: 2%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 80%;
+  width: 100%;
   float: left;
 }
 #start {
@@ -88,7 +96,12 @@ body {
 .equipment-items > div:last-child{
   align-items: flex-start;
 }
+.equipment-icon {
+  border: 5px solid black;
+}
 #equipment-menu{
+  height: 30%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -105,11 +118,10 @@ body {
 #next-button {
   height: 100%;
   width: 10%;
-  float: right;
   text-align: center;
 }
 #back-button {
   height: 100%;
   width: 10%;
-  float: left;
+  text-align: center;
 }

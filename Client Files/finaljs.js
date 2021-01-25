@@ -7,7 +7,7 @@ function Initialize(value){
   var path = "/characterids";
   fetchRequest(path).then(function(result){
     characterIDs = result;
-    console.log(result);
+    //console.log(result);
     loadCharacter(characterIDs[counter]);
   });
 };
@@ -16,74 +16,47 @@ function loadCharacter(value){
   if(counter > characterIDs.length-1)
     counter = 0;
   if(counter < 0)
-    counter = characterIDs.length;
-  console.log("counter: "+counter);
-  console.log("requesting character id: "+characterIDs[counter]);
+    counter = characterIDs.length-1;
+  //console.log("counter: "+counter);
+  //console.log("requesting character id: "+characterIDs[counter]);
   loadCharacterElement(characterIDs[counter]);
   loadCharacterContent(characterIDs[counter]);
-  //loadCharacterSlots();
 }
 async function loadCharacterElement(characterID){
-  var path = "/character/"+characterID;
+  var path = "/character/"+characterID+"/general";
   await fetchRequest(path).then(function(result){
-    console.log(result);
+    //console.log(result);
     //console.log("setting up character element.");
-    //window.document.getElementById("character-info").style.backgroundImage ="url("+bungieCommon+result.characterData.emblemBackgroundPath+")";
-    //window.document.getElementById("character-class").innerHTML = result.characters.classType;
-    //window.document.getElementById("character-light").innerHTML = result.characters.light;
-    //window.document.getElementById("character-level").innerHTML = result.characters.baseCharacterLevel;
+    window.document.getElementById("emblem-back").src = bungieCommon+result.emblem.emblemExpanded.secondarySpecial;
+    window.document.getElementById("emblem-icon").src = bungieCommon+result.emblem.emblemExpanded.secondaryOverlay;
+    window.document.getElementById("character-class").innerHTML = "lvl "+result.level+" "+result.class.name;
+    window.document.getElementById("character-light").innerHTML = result.light;
   });
 }
 function loadCharacterContent(characterID){
   var path = "/character/"+characterID+"/equipment";
   fetchRequest(path).then(function(result){
-    console.log("Equipment:");
-    console.log(result);
+    //console.log("Equipment:");
+    //console.log(result);
     for(i in result){
-      var weaponType = result[i].bucketHashData.displayProperties.name;
+      var weaponType = result[i].bucketData.displayProperties.name;
       //console.log(weaponType);
       var element = window.document.getElementById(weaponType);
-      console.log(weaponType);
-      while(element.firstChild){
-        //console.log("element has children");
-        element.removeChild(element.firstChild);
-      }
+      //console.log(weaponType);
+      while(element.firstChild){ element.removeChild(element.firstChild); }
       if(weaponType == "Subclass"){
-        window.document.getElementById(weaponType).src = bungieCommon+result[i].itemHashData.displayProperties.icon;
+        window.document.getElementById(weaponType).src = bungieCommon+result[i].hashData.displayProperties.icon;
       }
       else {
         var img = window.document.createElement("img");
-        img.src = bungieCommon+result[i].itemHashData.displayProperties.icon;
-        var addEvent = function(t){
-          img.onmouseover = function(){
-            loadSlotEquipment(t);
-          }
-        };
-        addEvent(weaponType);
+        img.src = bungieCommon+result[i].hashData.displayProperties.icon;
         element.append(img);
       }
       //console.log("finished creation of element "+weaponType);
     }
   });
 }
-function loadSlotEquipment(weaponType){
-  //slotItems = characterSlotEquipment[weaponType];
-  var element = window.document.getElementById("equipment-menu");
-  while(element.firstChild){
-    //console.log("element has children");
-    element.removeChild(element.firstChild);
-  }
-  for(i in slotItems){
-    var img = window.document.createElement("img");
-    img.src = bungieCommon+slotItems[i].itemHashData.displayProperties.icon;
-    var addClick = function(t){
-      img.onclick = function(){
-      }
-    };
-    addClick(slotItems[i].itemHashData.displayProperties.name);
-    element.append(img);
-  }
-}
+
 async function fetchRequest(path){
   var request = new Request(path, {
     method: "GET",
@@ -95,8 +68,9 @@ async function fetchRequest(path){
   else
   {return Promise.reject(new Error(response.statusText));}
 };
+
 function test(){
-  path = "/test";
+  var path = "/character/"+characterIDs[0]+"/inventory";
   fetchRequest(path).then(function(result){
     console.log(result);
   });

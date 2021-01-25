@@ -133,14 +133,17 @@ function getRequestAuth(path,token){
 
 //Other useful functions that I haven't gotten around to wanting to do.
 async function tokenRefresh(token){
+  console.log("access token expired, requesting a new one");
   var body = new URLSearchParams();
   body.append("grant_type", "refresh_token");
   body.append("refresh_token", token);
+  body.append("client_secret",process.env.Bungie_ClientSecret);
+  body.append("client_id", process.env.Bungie_ClientID);
   let request = await axios({
     method:"POST",
     url: bungieTokURL,
     headers: {"X-API-Key":process.env.Bungie_API_KEY},
-    body: body
+    data: body
   });
   return request;
 }
@@ -173,25 +176,6 @@ function parseBungieCurrentUserDataResponse(data){
   return memberships;
 }
 exports.parseBungieCurrentUserDataResponse = parseBungieCurrentUserDataResponse;
-function parseDestinyProfileAuthResponse(data){
-  //console.log(data);
-  var characters = {};
-  var cIDs = Object.keys(data.characters.data);
-  var i = 0;
-  for(i in cIDs){
-    characters[cIDs[i]] = {};
-    characters[cIDs[i]].characters = data.characters.data[cIDs[i]];
-    characters[cIDs[i]].characterInventories = data.characterInventories.data[cIDs[i]].items;
-    characters[cIDs[i]].characterProgressions = data.characterProgressions.data[cIDs[i]];
-    characters[cIDs[i]].characterEquipment = data.characterEquipment.data[cIDs[i]].items;
-  }
-  characters.profileCurrencies = data.profileCurrencies.data;
-  characters.itemComponents = data.itemComponents;
-  characters.IDs = cIDs;
-  //console.log(characters);
-  return characters;
-}
-exports.parseDestinyProfileAuthResponse = parseDestinyProfileAuthResponse;
 
 function loadManifest(){
   var path =bungieRoot+"/Destiny2/Manifest/";
@@ -253,3 +237,13 @@ function parseComponentResponses(data,components){
   return parsedComponents;
 }
 exports.parseComponentResponses = parseComponentResponses;
+
+function saveTokenData(request, tokenData){
+  request.session.data.tokenData = tokenData;
+  request.session.data.tokenData.tokenExpiration = new Date().getTime()+(tokenData.expires_in*1000);
+  request.session.data.tokenData.refreshExpiration = new Date().getTime()+(tokenData.refresh_expires_in*1000);
+  console.log("New token expiration date: "+new Date(request.session.data.tokenData.tokenExpiration));
+  console.log("New refresh expiration date: "+new Date(request.session.data.tokenData.refreshExpiration));
+  return true;
+}
+exports.saveTokenData = saveTokenData;

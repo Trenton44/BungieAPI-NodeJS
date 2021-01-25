@@ -8,6 +8,8 @@ const webpageRoot = path.join(__dirname,"..\\","Client Files");
 const serverRoot = path.join(__dirname,"..\\","Server Files");
 const assetRoot = path.join(__dirname,"..\\","assets");
 const D2Manifest = require(manifestRoot+"/d2manifest.json");
+const ServerResponse = require(serverRoot+"/Server Responses.js");
+
 const components = {
   "100": "profile",
   "101": "vendorReceipts",
@@ -46,7 +48,6 @@ const components = {
   //unaccounted for: profilePlugSets
 };
 exports.components = components;
-
 
 //The following functions are responsible for taking a component input from a d2api response
 //and building it with relevant data from the manifest files. makes it easy to access later by building
@@ -108,21 +109,17 @@ var characters = function(data){
 exports.characters = characters;
 
 var characterInventories = function(data){
-  characterlist = data.data;
+  var characterlist = data.data;
   for(i in characterlist){
-    //apparently bungie's api splits your inventory into arrays of 100, idk why but im gonna plan for it here.
-    var itemarrays = characterlist[i];
-    for(j in itemarrays){
-      var itemlist = itemarrays[j];
-      var counter = 0;
-      for(z in itemlist){
-        //console.log("Building data for item "+counter);
-        itemlist[z].itemHashData = D2Manifest.DestinyInventoryItemDefinition[itemlist[z].itemHash];
-        itemlist[z].bucketHashData = D2Manifest.DestinyInventoryBucketDefinition[itemlist[z].bucketHash];
-        counter += 1;
-      }
+    var character = characterlist[i].items;
+    for(j in character){
+      var item = character[j];
+      item.itemHashData = D2Manifest.DestinyInventoryItemDefinition[item.itemHash];
+      item.bucketHashData = D2Manifest.DestinyInventoryBucketDefinition[item.bucketHash];
     }
+    characterlist[i] = character;
   }
+
   console.log("character inventory component has been completed");
   return characterlist;
 };
@@ -158,6 +155,7 @@ var characterEquipment = function(data){
       itemlist[z].bucketHashData = D2Manifest.DestinyInventoryBucketDefinition[itemlist[z].bucketHash];
       counter += 1;
     }
+    characterlist[i] = itemlist;
   }
   console.log("all data for characterEquipment has been built.");
   return characterlist;

@@ -18,6 +18,7 @@ const assetRoot = path.join(__dirname,"..\\","assets");
 const manifestRoot = path.join(__dirname,"..\\","manifestData");
 //const D2Manifest = require(manifestRoot+"/D2Manifest2.js").D2Manifest;
 const D2Manifest = require(manifestRoot+"/d2manifest.json");
+const ServerResponse = require(serverRoot+"/Server Responses.js");
 const bungieRoot = "https://www.bungie.net/Platform";
 var bungieCommon = "https://www.bungie.net";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
@@ -62,12 +63,13 @@ app.get("/bapi", function(request,response){
     request.session.data.authCode = request.query.code;
     d2api.tokenRequest(request).then(function(result){
         console.log("TOKEN REQUEST SUCCESSFUL");
-        request.session.data.tokenData = result.data;
+        d2api.saveTokenData(request, result.data);
         request.session.data.authCode = null;
         request.session.data.state = null;
         response.redirect("/");
     }).catch(function(error){
       console.error("TOKEN REQUEST NOT successful");
+      console.error(error);
       request.session.data = undefined;
       response.redirect("/login");
     });
@@ -81,7 +83,7 @@ app.get("/bapi", function(request,response){
 app.use(checkAuthorization);
 //Entry point for authorized personnel. Make all requests for API data here prior to serving webpage.
 app.get("/",function(request,response){
-  SOONTOBEobtainInitialPlayerData(request).then(function(result){
+  obtainInitialPlayerData(request).then(function(result){
     console.log("past access");
     response.sendFile(webpageRoot+"/finalhtml.html");
   }).catch(function(error){
@@ -91,32 +93,26 @@ app.get("/",function(request,response){
 app.get("/characterids",function(request, response){
   response.status(200).json(request.session.data.d2data.profile.characterIds);
 });
-app.get("/manifest",function(request,response){
-  response.status(200).json(D2Manifest);
-});
-app.get("/test",async function(request,response){
-  response.status(200).json(request.session.data.d2data);
-});
-app.get("/character/:id",function(request, response){
+app.get("/character/:id/general",function(request, response){
   var data = request.session.data.d2data;
-  cID = request.params.id;
-  var cData = {
-    characterEquipment: data.characterEquipment[cID].items,
-    characterInventories: data.characterInventories[cID].items,
-    characterProgressions: data.characterProgressions[cID],
-    characters: data.characters[cID],
-  };
-  response.status(200).json(cData);
+  var cID = request.params.id;
+  var returnData = ServerResponse.CharacterResponse(data.characters[cID]);
+  response.status(200).json(returnData);
 });
 app.get("/character/:id/equipment",function(request,response){
-  cID = request.params.id;
-  var value = request.session.data.d2data.characterEquipment[cID].items;
-  response.status(200).json(value);
+  var data = request.session.data.d2data;
+  var cID = request.params.id;
+  var returnData = ServerResponse.EquipmentItemsResponse(data.characterEquipment[cID]);
+  response.status(200).json(returnData);
 });
-app.get("/inventory",function(request,response){
-  response.status(200).json(request.session.data);
+app.get("/character/:id/inventory",function(request,response){
+  var data = request.session.data.d2data;
+  var cID = request.params.id;
+  var returnData = ServerResponse.InventoryItemsResponse(data.characterInventories[cID])
+  response.status(200).json(returnData);
 });
 httpsServer.listen(process.env.PORT);
+
 function verifyState(request){
   if(request.query.state !== request.session.data.state){
     console.error("State parameters DO NOT MATCH! ABORTING MISSION");
@@ -128,7 +124,7 @@ function verifyState(request){
     return true;
   }
 }
-async function SOONTOBEobtainInitialPlayerData(request){
+async function obtainInitialPlayerData(request){
   var token = request.session.data.tokenData.access_token;
   console.log("Accessing bnet user data");
   await d2api.getBungieCurrentUserData(token).then(function(result){
@@ -153,33 +149,7 @@ async function SOONTOBEobtainInitialPlayerData(request){
     return false;
   });
 }
-async function obtainInitialPlayerData(request){
-  var token = request.session.data.tokenData.access_token;
-  console.log("Accessing bnet user data");
-  await d2api.getBungieCurrentUserData(token).then(function(result){
-    var userdata = d2api.parseBungieCurrentUserDataResponse(result.data.Response);
-    //console.log(userdata);
-    request.session.data.userdata = userdata;
-    var memType = userdata[userdata.primaryMembershipId].membershipType;
-    var d2ID = userdata.primaryMembershipId;
-    var components = ["103","200","201","202","205","300","302"];
-    console.log("Accessing d2 user data");
-    return d2api.getDestinyProfileAuth(memType,d2ID,components,token).then(function(result){
-      console.log("accessed");
-      var d2data = d2api.parseDestinyProfileAuthResponse(result.data.Response);
-      request.session.data.d2data = d2data;
-      console.log("all data successfully retrieved.");
-      return true;
-    }).catch(function(error){
-      console.log(error);
-      return false;
-    });
-  }).catch(function(error){
-    console.error(error);
-    return false;
-  });
 
-}
 function checkAuthorization(request,response,next){
   console.log("check authorization");
   if(isAuthorized(request)){
@@ -208,6 +178,7 @@ function prepSessionData(request,response,next){
     request.session.data = data;
     console.log("session data now has blueprint, proceeding to content.");
   }
+
   next();
 }
 function buildAuthorizatonCodeRequest(request){
@@ -222,10 +193,56 @@ function buildAuthorizatonCodeRequest(request){
 function isAuthorized(request){
   if(request.session.data.tokenData.access_token != null){
     console.log("User has access token, and therefore should be authorized. allowing access to requested endpoint.");
+    if(new Date().getTime() > request.session.data.tokenData.tokenExpiration){
+      console.log("access token has expired, requesting with refresh token.");
+      if(new Date().getTime() > request.session.data.tokenData.refreshExpiration){
+        console.log("refresh token is also expired, redirecting to login page.");
+        return false;
+      }
+      else {
+        console.log("requesting refresh token.");
+        d2api.tokenRefresh(request.session.data.tokenData.refresh_token).then(function(result){
+          d2api.saveTokenData(request, result.data);
+          console.log("token refresh successful, new access token saved.");
+          return true;
+        }).catch(function(error){
+          console.log(error);
+          return false;
+        });
+      }
+    }
     return true;
   }
   else {
     console.log("User does not possess credentials, access is denied.");
     return false;
   }
+}
+
+async function OLDobtainInitialPlayerData(request){
+  var token = request.session.data.tokenData.access_token;
+  console.log("Accessing bnet user data");
+  await d2api.getBungieCurrentUserData(token).then(function(result){
+    var userdata = d2api.parseBungieCurrentUserDataResponse(result.data.Response);
+    //console.log(userdata);
+    request.session.data.userdata = userdata;
+    var memType = userdata[userdata.primaryMembershipId].membershipType;
+    var d2ID = userdata.primaryMembershipId;
+    var components = ["103","200","201","202","205","300","302"];
+    console.log("Accessing d2 user data");
+    return d2api.getDestinyProfileAuth(memType,d2ID,components,token).then(function(result){
+      console.log("accessed");
+      var d2data = d2api.parseDestinyProfileAuthResponse(result.data.Response);
+      request.session.data.d2data = d2data;
+      console.log("all data successfully retrieved.");
+      return true;
+    }).catch(function(error){
+      console.log(error);
+      return false;
+    });
+  }).catch(function(error){
+    console.error(error);
+    return false;
+  });
+
 }

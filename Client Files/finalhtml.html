@@ -5,56 +5,42 @@
   </head>
   <body>
     <div id=character-header>
-      <div id=character-info>
-        <div>
-          <h1 id=character-class></h1>
-          <h1>test</h1>
-        </div>
-        <img id=Subclass />
-        <div>
-          <h1 id=character-light></h1>
-          <h1 id=character-level></h1>
-        </div>
+      <img id=emblem-icon />
+      <img id=emblem-back />
+      <img id=Subclass />
+      <div>
+        <h1 id=character-class></h1>
+        <h1 id=character-light></h1>
       </div>
 
     </div>
-    <div id=back-button onclick=loadCharacter(-1)><h1>back</h1></div>
+
+
     <div id=all-content>
-      <div id=start>
-          <div class=equipment-items id="characterEquipment">
-            <div>
-              <h1>Weapons</h1>
-              <div id="Kinetic Weapons"></div>
-              <div id="Energy Weapons"></div>
-              <div id="Power Weapons"></div>
-              <div id=Ghost></div>
-              <div id=Vehicle></div>
-              <div id=Ships></div>
-            </div>
-            <div id=equipment-menu>
-            </div>
-            <div>
-              <h1>Armor</h1>
-              <div id=Helmet></div>
-              <div id=Gauntlets></div>
-              <div id="Chest Armor"></div>
-              <div id="Leg Armor"></div>
-              <div id="Class Armor"></div>
-              <div id="Clan Banners"></div>
-            </div>
-          </div>
-          <div class=content-container>
-            <h1>Miscellaneous</h1>
-          </div>
-          <div class=miscellaneous-items id="characterEquipment">
-            <div id="Emblems"></div>
-            <div id="Finishers"></div>
-            <div id="Emotes"></div>
-            <div id="Seasonal Artifact"></div>
-          </div>
-      </div>
+      <div id=back-button onclick=loadCharacter(-1)><h1>back</h1></div>
+      <div class=equipment-icon id="Kinetic Weapons"></div>
+      <div class=equipment-icon id="Energy Weapons"></div>
+      <div class=equipment-icon id="Power Weapons"></div>
+      <div class=equipment-icon id=Helmet></div>
+      <div class=equipment-icon id=Gauntlets></div>
+      <div class=equipment-icon id="Chest Armor"></div>
+      <div class=equipment-icon id="Leg Armor"></div>
+      <div class=equipment-icon id="Class Armor"></div>
+      <div id=next-button onclick=loadCharacter(1)><h1>next</h1></div>
     </div>
-    <div id=next-button onclick=loadCharacter(1)><h1>next</h1></div>
+
+    <div id=equipment-menu></div>
+
+    <div class=miscellaneous-items id="characterEquipment">
+      <div class=equipment-icon id="Emblems"></div>
+      <div class=equipment-icon id="Finishers"></div>
+      <div class=equipment-icon id="Emotes"></div>
+      <div class=equipment-icon id="Seasonal Artifact"></div>
+      <div class=equipment-icon id=Ghost></div>
+      <div class=equipment-icon id=Vehicle></div>
+      <div class=equipment-icon id=Ships></div>
+      <div class=equipment-icon id="Clan Banners"></div>
+    </div>
   </body>
   <script type="text/javascript">
     window.onload = function(){
@@ -62,3 +48,38 @@
     }
   </script>
 </html>
+
+
+<!-- <div id=start>
+    <div class=equipment-items id="characterEquipment">
+      <div>
+        <h1>Weapons</h1>
+        <div id="Kinetic Weapons"></div>
+        <div id="Energy Weapons"></div>
+        <div id="Power Weapons"></div>
+        <div id=Ghost></div>
+        <div id=Vehicle></div>
+        <div id=Ships></div>
+      </div>
+      <div id=equipment-menu>
+      </div>
+      <div>
+        <h1>Armor</h1>
+        <div id=Helmet></div>
+        <div id=Gauntlets></div>
+        <div id="Chest Armor"></div>
+        <div id="Leg Armor"></div>
+        <div id="Class Armor"></div>
+        <div id="Clan Banners"></div>
+      </div>
+    </div>
+    <div class=content-container>
+      <h1>Miscellaneous</h1>
+    </div>
+    <div class=miscellaneous-items id="characterEquipment">
+      <div id="Emblems"></div>
+      <div id="Finishers"></div>
+      <div id="Emotes"></div>
+      <div id="Seasonal Artifact"></div>
+    </div>
+</div> -->
