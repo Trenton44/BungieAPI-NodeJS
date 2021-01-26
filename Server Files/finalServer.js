@@ -103,6 +103,7 @@ app.get("/character/:id/equipment",function(request,response){
   var data = request.session.data.d2data;
   var cID = request.params.id;
   var returnData = ServerResponse.EquipmentItemsResponse(data.characterEquipment[cID]);
+  //var returnData = data.characterEquipment[cID];
   response.status(200).json(returnData);
 });
 app.get("/character/:id/inventory",function(request,response){

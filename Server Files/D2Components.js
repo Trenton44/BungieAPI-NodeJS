@@ -119,7 +119,6 @@ var characterInventories = function(data){
     }
     characterlist[i] = character;
   }
-
   console.log("character inventory component has been completed");
   return characterlist;
 };
@@ -147,10 +146,10 @@ var characterEquipment = function(data){
   var characterlist = data.data;
   for(i in characterlist){
     var itemlist = characterlist[i].items;
-    console.log("fetching data for "+i+"'s equipment.");
+    //console.log("fetching data for "+i+"'s equipment.");
     var counter = 0;
     for(z in itemlist){
-      console.log("Building data for item "+counter);
+      //console.log("Building data for item "+counter);
       itemlist[z].itemHashData = D2Manifest.DestinyInventoryItemDefinition[itemlist[z].itemHash];
       itemlist[z].bucketHashData = D2Manifest.DestinyInventoryBucketDefinition[itemlist[z].bucketHash];
       counter += 1;

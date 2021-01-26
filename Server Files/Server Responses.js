@@ -20,6 +20,8 @@ var EquipmentItemResponse = function(item){
       equippable: item.itemHashData.equippable,
       iconWatermark: item.itemHashData.iconWatermark,
       iconWatermarkShelved: item.itemHashData.iconWatermarkShelved,
+      equipSlot: D2Manifest.DestinyEquipmentSlotDefinition[item.itemHashData.equippingBlock.equipmentSlotTypeHash],
+      equipHash: item.itemHashData.equippingBlock.equipmentSlotTypeHash,
     },
     bucketData: {
       displayProperties: item.bucketHashData.displayProperties,
@@ -32,8 +34,9 @@ exports.EquipmentItemResponse = EquipmentItemResponse;
 
 var EquipmentItemsResponse = function(items){
   var itemscopy = Array.from(items);
-  for(i in items){
+  for(i in itemscopy){
     itemscopy[i] = EquipmentItemResponse(itemscopy[i]);
+    itemscopy[i].currentlyEquipped = true;
   }
   return itemscopy;
 };
@@ -41,10 +44,30 @@ exports.EquipmentItemsResponse = EquipmentItemsResponse;
 
 var InventoryItemsResponse = function(items){
   var itemscopy = Array.from(items);
-  for(i in items){
-    itemscopy[i] = InventoryItemResponse(itemscopy[i]);
+  var splitInventory = {equippable: {}, unequippable: {}, corporeal: {}};
+  var equipCounter = 0;
+  var nonquipCounter = 0;
+  var corporealCounter = 0;
+  for(i in itemscopy){
+    //console.log("new item.");
+    if(!itemscopy[i].bucketHashData.enabled){
+      //console.log("ITEM EFFECTIVELY CORPOREAL, SKIPPING");
+      splitInventory.corporeal[corporealCounter] = itemscopy[i];
+      corporealCounter+= 1;
+      continue;
+    }
+    //console.log(itemscopy[i]);
+    if(items[i].itemHashData.equippable){
+      splitInventory.equippable[equipCounter] = EquipmentItemResponse(itemscopy[i]);
+      splitInventory.equippable[equipCounter].currentlyEquipped = false;
+      equipCounter+= 1;
+    }
+    else {
+      splitInventory.unequippable[nonquipCounter] = InventoryItemResponse(itemscopy[i]);
+      nonquipCounter+= 1;
+    }
   }
-  return itemscopy;
+  return splitInventory;
 };
 exports.InventoryItemsResponse = InventoryItemsResponse;
 
@@ -52,10 +75,9 @@ var InventoryItemResponse = function(item){
   return item;
 };
 exports.InventoryItemResponse = InventoryItemResponse;
-
 var CharactersResponse = function(items){
   var itemscopy = Array.from(items);
-  for(i in items){
+  for(i in itemscopy){
     itemscopy[i] = CharacterResponse(itemscopy[i]);
   }
 };
