@@ -3,6 +3,7 @@ var bungieCommon = "https://www.bungie.net";
 var characterIDs;
 var counter = 0;
 function equipmentlist(htmlElement){
+  this.container = htmlElement+"-container";
   this.element = htmlElement;
   this._equipment = [];
   this.setequipment = function(value){
@@ -14,12 +15,12 @@ function equipmentlist(htmlElement){
   };
   this.addItem = function(value){
     this._equipment[this._equipment.length] = value;
+    var item = window.document.createElement("img");
+    item.id = htmlElement+this._equipment.length;
+    item.src = bungieCommon+value.hashData.displayProperties.icon;
+    window.document.getElementById(this.container).appendChild(item);
   };
-  this.wipe = function(){
-    this._equipment = [];
-    console.log(this.getequipment());
-  };
-  this.equipped = function(value){
+  this.equip = function(value){
     value.currentlyEquipped = true;
     this._equipment.unshift(value);
     window.document.getElementById(this.element).src = bungieCommon+value.hashData.displayProperties.icon;
@@ -27,16 +28,25 @@ function equipmentlist(htmlElement){
   this.getequipped = function(){
     return this._equipment[0];
   };
+  this.removeequipped = function(){
+    window.document.getElementById(this.element).src = "";
+    return this._equipment.shift();
+  }
   this.swapequipped = function(indexToSwap){
     var temp = this._equipment[indexToSwap];
-    var lastequip = this._equipment.shift();
+    var lastequip = this.removeequipped();
     lastequip.currentlyEquipped = false;
-    this._equipment[indexToSwap-1] = lastequip;
-    this.equipped(temp);
+    this.removeItem(indexToSwap-1);
+    this.addItem(lastequip);
+    this.equip(temp);
   }
   this.findItemIndex = function(value){
     return this._equipment.indexOf(value);
   };
+  this.removeItem = function(index){
+    this._equipment.splice(index,1);
+    window.document.getElementById(htmlElement+index).remove();
+  }
 }
 const character = {
   _class: "unavailable",
@@ -59,82 +69,82 @@ const character = {
   equipment: {
     subclasslist: new equipmentlist("Subclass"),
     set 3284755031(value){
-      if(value.currentlyEquipped){ this.subclasslist.equipped = value; }
+      if(value.currentlyEquipped){ this.subclasslist.equip(value); }
       else                       { this.subclasslist.addItem(value); }
     },
     kineticlist: new equipmentlist("kinetic"),
     set 1498876634(value){
-      if(value.currentlyEquipped){ this.kineticlist.equipped(value); }
+      if(value.currentlyEquipped){ this.kineticlist.equip(value); }
       else                       { this.kineticlist.addItem(value); }
     },
     speciallist: new equipmentlist("special"),
     set 2465295065(value){
-      if(value.currentlyEquipped){ this.speciallist.equipped(value); }
+      if(value.currentlyEquipped){ this.speciallist.equip(value); }
       else                       { this.speciallist.addItem(value); }
     },
     heavylist: new equipmentlist("heavy"),
     set 953998645(value){
-      if(value.currentlyEquipped){ this.heavylist.equipped(value); }
+      if(value.currentlyEquipped){ this.heavylist.equip(value); }
       else                       { this.heavylist.addItem(value); }
     },
     helmetlist: new equipmentlist("helmet"),
     set 3448274439(value){
-      if(value.currentlyEquipped){ this.helmetlist.equipped(value); }
+      if(value.currentlyEquipped){ this.helmetlist.equip(value); }
       else                       { this.helmetlist.addItem(value); }
     },
     gloveslist: new equipmentlist("gloves"),
     set 3551918588(value){
-      if(value.currentlyEquipped){ this.gloveslist.equipped(value); }
+      if(value.currentlyEquipped){ this.gloveslist.equip(value); }
       else                       { this.gloveslist.addItem(value); }
     },
     chestlist: new equipmentlist("chest"),
     set 14239492(value){
-      if(value.currentlyEquipped){ this.chestlist.equipped(value); }
+      if(value.currentlyEquipped){ this.chestlist.equip(value); }
       else                       { this.chestlist.addItem(value); }
     },
     legslist: new equipmentlist("legs"),
     set 20886954(value){
-      if(value.currentlyEquipped){ this.legslist.equipped(value); }
+      if(value.currentlyEquipped){ this.legslist.equip(value); }
       else                       { this.legslist.addItem(value); }
     },
     classarmorlist: new equipmentlist("class-armor"),
     set 1585787867(value){
-      if(value.currentlyEquipped){ this.classarmorlist.equipped(value); }
+      if(value.currentlyEquipped){ this.classarmorlist.equip(value); }
       else                       { this.classarmorlist.addItem(value); }
     },
     ghostlist: new equipmentlist("ghost"),
     set 4023194814(value){
-      if(value.currentlyEquipped){ this.ghostlist.equipped(value); }
+      if(value.currentlyEquipped){ this.ghostlist.equip(value); }
       else                       { this.ghostlist.addItem(value); }
     },
     vehiclelist: new equipmentlist("vehicle"),
     set 2025709351(value){
-      if(value.currentlyEquipped){ this.vehiclelist.equipped(value); }
+      if(value.currentlyEquipped){ this.vehiclelist.equip(value); }
       else                       { this.vehiclelist.addItem(value); }
     },
     shiplist: new equipmentlist("ship"),
     set 284967655(value){
-      if(value.currentlyEquipped){ this.shiplist.equipped(value); }
+      if(value.currentlyEquipped){ this.shiplist.equip(value); }
       else                       { this.shiplist.addItem(value); }
     },
     clanbannerlist: new equipmentlist("clanbanner"),
     set 4292445962(value){
-      if(value.currentlyEquipped){ this.clanbannerlist.equipped(value); }
+      if(value.currentlyEquipped){ this.clanbannerlist.equip(value); }
       else                       { this.clanbannerlist.addItem(value); }
     },
     emblemlist: new equipmentlist("emblem"),
     set 4274335291(value){
-      if(value.currentlyEquipped){ this.emblemlist.equipped(value); }
+      if(value.currentlyEquipped){ this.emblemlist.equip(value); }
       else                       { this.emblemlist.addItem(value); }
     },
     finisherlist: new equipmentlist("finisher"),
     set 3683254069(value){
-      if(value.currentlyEquipped){ this.finisherlist.equipped(value); }
+      if(value.currentlyEquipped){ this.finisherlist.equip(value); }
       else                       { this.finisherlist.addItem(value); }
     },
     emotelist: new equipmentlist("emotes"),
     set 1107761855(value){
-      if(value.currentlyEquipped){ this.emotelist.equipped(value); }
+      if(value.currentlyEquipped){ this.emotelist.equip(value); }
       else                       { this.emotelist.addItem(value); }
     },
     _artifact: "unavailable",
