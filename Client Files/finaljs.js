@@ -2,10 +2,24 @@ var window;
 var bungieCommon = "https://www.bungie.net";
 var characterIDs;
 var counter = 0;
+function displayContainer(value){
+  var children = window.document.getElementById("equipment-menu").childNodes;
+  window.document.getElementById("kinetic-container").style.display = "none";
+  window.document.getElementById("special-container").style.display = "none";
+  window.document.getElementById("heavy-container").style.display = "none";
+  window.document.getElementById("helmet-container").style.display = "none";
+  window.document.getElementById("gloves-container").style.display = "none";
+  window.document.getElementById("chest-container").style.display = "none";
+  window.document.getElementById("legs-container").style.display = "none";
+  window.document.getElementById("class-armor-container").style.display = "none";
+  window.document.getElementById(value).style.display = "flex";
+}
 function equipmentlist(htmlElement){
-  this.container = htmlElement+"-container";
-  this.element = htmlElement;
+  this.container = window.document.getElementById(htmlElement+"-container");
+  this.element = window.document.getElementById(htmlElement);
+  this.element.addEventListener("mouseover",function(){displayContainer(htmlElement+"-container")});
   this._equipment = [];
+
   this.setequipment = function(value){
     this._equipment = value;
     console.log(this.getequipment());
@@ -18,18 +32,18 @@ function equipmentlist(htmlElement){
     var item = window.document.createElement("img");
     item.id = htmlElement+this._equipment.length;
     item.src = bungieCommon+value.hashData.displayProperties.icon;
-    window.document.getElementById(this.container).appendChild(item);
+    this.container.appendChild(item);
   };
   this.equip = function(value){
     value.currentlyEquipped = true;
     this._equipment.unshift(value);
-    window.document.getElementById(this.element).src = bungieCommon+value.hashData.displayProperties.icon;
+    this.element.src = bungieCommon+value.hashData.displayProperties.icon;
   }
   this.getequipped = function(){
     return this._equipment[0];
   };
   this.removeequipped = function(){
-    window.document.getElementById(this.element).src = "";
+    this.element.src = "";
     return this._equipment.shift();
   }
   this.swapequipped = function(indexToSwap){

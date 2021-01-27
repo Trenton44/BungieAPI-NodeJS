@@ -1,6 +1,6 @@
 <html lang="en" dir="ltr">
   <head>
-    <script src="/client/finaljs.js"></script>
+    <script src="/client/finaljs.js" defer></script>
    <link rel="stylesheet" href="/client/finalcss.css"/>
   </head>
   <body>
@@ -17,18 +17,27 @@
 
     <div id=all-content>
       <div id=back-button onclick=loadCharacter(-1)><h1>back</h1></div>
-      <div class=equipment-icon id=kinetic-container><img id=kinetic /></div>
-      <div class=equipment-icon id=special-container><img id=special /></div>
-      <div class=equipment-icon id=heavy-container><img id=heavy /></div>
-      <div class=equipment-icon id=helmet-container><img id=helmet /></div>
-      <div class=equipment-icon id=gloves-container><img id=gloves /></div>
-      <div class=equipment-icon id=chest-container><img id=chest /></div>
-      <div class=equipment-icon id=legs-container><img id=legs /></div>
-      <div class=equipment-icon id=class-armor-container><img id=class-armor /></div>
+      <img id=kinetic />
+      <img id=special />
+      <img id=heavy />
+      <img id=helmet />
+      <img id=gloves />
+      <img id=chest />
+      <img id=legs />
+      <img id=class-armor />
       <div id=next-button onclick=loadCharacter(1)><h1>next</h1></div>
     </div>
 
-    <div id=equipment-menu></div>
+    <div id=equipment-menu>
+      <div class=equipment-icon id=kinetic-container></div>
+      <div class=equipment-icon id=special-container></div>
+      <div class=equipment-icon id=heavy-container></div>
+      <div class=equipment-icon id=helmet-container></div>
+      <div class=equipment-icon id=gloves-container></div>
+      <div class=equipment-icon id=chest-container></div>
+      <div class=equipment-icon id=legs-container></div>
+      <div class=equipment-icon id=class-armor-container></div>
+    </div>
 
     <div class=miscellaneous-items id="characterEquipment">
       <div class=equipment-icon id=emblem-container><img id=emblem /></div>
@@ -43,6 +52,7 @@
   </body>
   <script type="text/javascript">
     window.onload = function(){
+      console.log("Page loaded");
       Initialize(this);
     }
   </script>
