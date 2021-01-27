@@ -2,17 +2,41 @@ var window;
 var bungieCommon = "https://www.bungie.net";
 var characterIDs;
 var counter = 0;
-var equipmentlist = {
-  updatelist: function(value){
-  },
-  wipelist: function(){
-  },
-  removeitem:function(value){
-  },
-  swapitems: function(value,value){
-  },
-  getItem: function(value){
+function equipmentlist(htmlElement){
+  this.element = htmlElement;
+  this._equipment = [];
+  this.setequipment = function(value){
+    this._equipment = value;
+    console.log(this.getequipment());
+  };
+  this.getequipment = function(){
+    return this._equipment;
+  };
+  this.addItem = function(value){
+    this._equipment[this._equipment.length] = value;
+  };
+  this.wipe = function(){
+    this._equipment = [];
+    console.log(this.getequipment());
+  };
+  this.equipped = function(value){
+    value.currentlyEquipped = true;
+    this._equipment.unshift(value);
+    window.document.getElementById(this.element).src = bungieCommon+value.hashData.displayProperties.icon;
   }
+  this.getequipped = function(){
+    return this._equipment[0];
+  };
+  this.swapequipped = function(indexToSwap){
+    var temp = this._equipment[indexToSwap];
+    var lastequip = this._equipment.shift();
+    lastequip.currentlyEquipped = false;
+    this._equipment[indexToSwap-1] = lastequip;
+    this.equipped(temp);
+  }
+  this.findItemIndex = function(value){
+    return this._equipment.indexOf(value);
+  };
 }
 const character = {
   _class: "unavailable",
@@ -33,261 +57,85 @@ const character = {
     window.document.getElementById("emblem-back").src = bungieCommon+value.background;
   },
   equipment: {
-    _currentsubclass: "unavailable",
-    set currentsubclass(value){
-      this._currentsubclass = value;
-      window.document.getElementById("Subclass").src = bungieCommon+value.hashData.displayProperties.icon;
-    },
-    subclasslist: [],
+    subclasslist: new equipmentlist("Subclass"),
     set 3284755031(value){
-      //console.log("subclass property has been triggered.");
-      if(value.currentlyEquipped){
-        this.currentsubclass = value;
-      }
-      else {
-        //console.log("unequipped item added to subclass stack.");
-        this.subclasslist[this.subclasslist.length] = value;
-      }
+      if(value.currentlyEquipped){ this.subclasslist.equipped = value; }
+      else                       { this.subclasslist.addItem(value); }
     },
-    _currentkinetic: "unavailable",
-    set currentkinetic(value){
-      this._currentkinetic = value;
-      window.document.getElementById("kinetic").src = bungieCommon+value.hashData.displayProperties.icon;
-    },
-    kineticlist: [],
+    kineticlist: new equipmentlist("kinetic"),
     set 1498876634(value){
-      //console.log("kinetic property has been triggered.");
-      if(value.currentlyEquipped){
-        this.currentkinetic = value;
-      }
-      else {
-        //console.log("unequipped item added to kinetic stack.");
-        this.kineticlist[this.kineticlist.length] = value;
-      }
+      if(value.currentlyEquipped){ this.kineticlist.equipped(value); }
+      else                       { this.kineticlist.addItem(value); }
     },
-    _currentspecial: "unavailable",
-    set currentspecial(value){
-      this._currentspecial = value;
-      window.document.getElementById("special").src = bungieCommon+value.hashData.displayProperties.icon;
-    },
-    speciallist: [],
+    speciallist: new equipmentlist("special"),
     set 2465295065(value){
-      //console.log("special property has been triggered.");
-      if(value.currentlyEquipped){
-        this.currentspecial = value;
-      }
-      else {
-        //console.log("unequipped item added to special stack.");
-        this.speciallist[this.speciallist.length] = value;
-      }
+      if(value.currentlyEquipped){ this.speciallist.equipped(value); }
+      else                       { this.speciallist.addItem(value); }
     },
-    _currentheavy: "unavailable",
-    set currentheavy(value){
-      this._currentheavy = value;
-      window.document.getElementById("heavy").src = bungieCommon+value.hashData.displayProperties.icon;
-    },
-    heavylist: [],
+    heavylist: new equipmentlist("heavy"),
     set 953998645(value){
-      //console.log("heavy property has been triggered.");
-      if(value.currentlyEquipped){
-        this.currentheavy = value;
-      }
-      else {
-        //console.log("unequipped item added to heavy stack.");
-        this.heavylist[this.heavylist.length] = value;
-      }
+      if(value.currentlyEquipped){ this.heavylist.equipped(value); }
+      else                       { this.heavylist.addItem(value); }
     },
-    _currenthelmet: "unavailable",
-    set currenthelmet(value){
-      this._currenthelmet = value;
-      window.document.getElementById("helmet").src = bungieCommon+value.hashData.displayProperties.icon;
-    },
-    helmetlist: [],
+    helmetlist: new equipmentlist("helmet"),
     set 3448274439(value){
-      //console.log("helmet property has been triggered.");
-      if(value.currentlyEquipped){
-        this.currenthelmet = value;
-      }
-      else {
-        //console.log("unequipped item added to helmet stack.");
-        this.helmetlist[this.helmetlist.length] = value;
-      }
+      if(value.currentlyEquipped){ this.helmetlist.equipped(value); }
+      else                       { this.helmetlist.addItem(value); }
     },
-    _currentgloves: "unavailable",
-    set currentgloves(value){
-      this._currentgloves = value;
-      window.document.getElementById("gloves").src = bungieCommon+value.hashData.displayProperties.icon;
-    },
-    gloveslist: [],
+    gloveslist: new equipmentlist("gloves"),
     set 3551918588(value){
-      //console.log("gloves property has been triggered.");
-      if(value.currentlyEquipped){
-        this.currentgloves = value;
-      }
-      else {
-        //console.log("unequipped item added to helmet stack.");
-        this.gloveslist[this.gloveslist.length] = value;
-      }
+      if(value.currentlyEquipped){ this.gloveslist.equipped(value); }
+      else                       { this.gloveslist.addItem(value); }
     },
-    _currentchest: "unavailable",
-    set currentchest(value){
-      this._currentchest = value;
-      window.document.getElementById("chest").src = bungieCommon+value.hashData.displayProperties.icon;
-    },
-    chestlist: [],
+    chestlist: new equipmentlist("chest"),
     set 14239492(value){
-      //console.log("chest property has been triggered.");
-      if(value.currentlyEquipped){
-        this.currentchest = value;
-      }
-      else {
-        //console.log("unequipped item added to chest stack.");
-        this.chestlist[this.chestlist.length] = value;
-      }
+      if(value.currentlyEquipped){ this.chestlist.equipped(value); }
+      else                       { this.chestlist.addItem(value); }
     },
-    _currentleg: "unavailable",
-    set currentleg(value){
-      this._currentleg = value;
-      window.document.getElementById("legs").src = bungieCommon+value.hashData.displayProperties.icon;
-    },
-    legslist: [],
+    legslist: new equipmentlist("legs"),
     set 20886954(value){
-      //console.log("legs property has been triggered.");
-      if(value.currentlyEquipped){
-        this.currentleg = value;
-      }
-      else {
-        //console.log("unequipped item added to legs stack.");
-        this.legslist[this.legslist.length] = value;
-      }
+      if(value.currentlyEquipped){ this.legslist.equipped(value); }
+      else                       { this.legslist.addItem(value); }
     },
-    _currentclassarmor: "unavailable",
-    set currentclassarmor(value){
-      this._currentclassarmor = value;
-      window.document.getElementById("class-armor").src = bungieCommon+value.hashData.displayProperties.icon;
-    },
-    classarmorlist: [],
+    classarmorlist: new equipmentlist("class-armor"),
     set 1585787867(value){
-      //console.log("classarmor property has been triggered.");
-      if(value.currentlyEquipped){
-        this.currentclassarmor = value;
-      }
-      else {
-        //console.log("unequipped item added to classarmor stack.");
-        this.classarmorlist[this.classarmorlist.length] = value;
-      }
+      if(value.currentlyEquipped){ this.classarmorlist.equipped(value); }
+      else                       { this.classarmorlist.addItem(value); }
     },
-    _currentghost: "unavailable",
-    set currentghost(value){
-      this._currentghost = value;
-      window.document.getElementById("ghost").src = bungieCommon+value.hashData.displayProperties.icon;
-    },
-    ghostlist: [],
+    ghostlist: new equipmentlist("ghost"),
     set 4023194814(value){
-      //console.log("ghost property has been triggered.");
-      if(value.currentlyEquipped){
-        this.currentghost = value;
-      }
-      else {
-        //console.log("unequipped item added to ghost stack.");
-        this.ghostlist[this.ghostlist.length] = value;
-      }
+      if(value.currentlyEquipped){ this.ghostlist.equipped(value); }
+      else                       { this.ghostlist.addItem(value); }
     },
-    _currentvehicle: "unavailable",
-    set currentvehicle(value){
-      this._currentvehicle = value;
-      window.document.getElementById("vehicle").src = bungieCommon+value.hashData.displayProperties.icon;
-    },
-    vehiclelist: [],
+    vehiclelist: new equipmentlist("vehicle"),
     set 2025709351(value){
-      //console.log("vehicle property has been triggered.");
-      if(value.currentlyEquipped){
-        this.currentvehicle = value;
-      }
-      else {
-        //console.log("unequipped item added to vehicle stack.");
-        this.vehiclelist[this.vehiclelist.length] = value;
-      }
+      if(value.currentlyEquipped){ this.vehiclelist.equipped(value); }
+      else                       { this.vehiclelist.addItem(value); }
     },
-    _currentship: "unavailable",
-    set currentship(value){
-      this._currentship = value;
-        window.document.getElementById("ship").src = bungieCommon+value.hashData.displayProperties.icon;
-    },
-    shiplist: [],
+    shiplist: new equipmentlist("ship"),
     set 284967655(value){
-      //console.log("ship property has been triggered.");
-      if(value.currentlyEquipped){
-        this.currentship = value;
-      }
-      else {
-        //console.log("unequipped item added to ship stack.");
-        this.shiplist[this.shiplist.length] = value;
-      }
+      if(value.currentlyEquipped){ this.shiplist.equipped(value); }
+      else                       { this.shiplist.addItem(value); }
     },
-    _currentclanbanner: "unavailable",
-    set currentclanbanner(value){
-      this._currentclanbanner = value;
-      window.document.getElementById("clanbanner").src = bungieCommon+value.hashData.displayProperties.icon;
-    },
-    clanbannerlist: [],
+    clanbannerlist: new equipmentlist("clanbanner"),
     set 4292445962(value){
-      //console.log("clan banner property has been triggered.");
-      if(value.currentlyEquipped){
-        this.currentclanbanner = value;
-      }
-      else {
-        //console.log("unequipped item added to clan banner stack.");
-        this.clanbannerlist[this.clanbannerlist.length] = value;
-      }
+      if(value.currentlyEquipped){ this.clanbannerlist.equipped(value); }
+      else                       { this.clanbannerlist.addItem(value); }
     },
-    _currentemblem: "unavailable",
-    set currentemblem(value){
-      this._currentemblem = value;
-      window.document.getElementById("emblem").src = bungieCommon+value.hashData.displayProperties.icon;
-    },
-    emblemlist: [],
+    emblemlist: new equipmentlist("emblem"),
     set 4274335291(value){
-      //console.log("emblem property has been triggered.");
-      if(value.currentlyEquipped){
-        this.currentemblem = value;
-      }
-      else {
-        //console.log("unequipped item added to emblem stack.");
-        this.emblemlist[this.emblemlist.length] = value;
-      }
+      if(value.currentlyEquipped){ this.emblemlist.equipped(value); }
+      else                       { this.emblemlist.addItem(value); }
     },
-    _currentfinisher: "unavailable",
-    set currentfinisher(value){
-      this._currentfinisher = value;
-      window.document.getElementById("finisher").src = bungieCommon+value.hashData.displayProperties.icon;
-    },
-    finisherlist: [],
+    finisherlist: new equipmentlist("finisher"),
     set 3683254069(value){
-      //console.log("finisher property has been triggered.");
-      if(value.currentlyEquipped){
-        this.currentfinisher = value;
-      }
-      else {
-        //console.log("unequipped item added to finisher stack.");
-        this.finisherlist[this.finisherlist.length] = value;
-      }
+      if(value.currentlyEquipped){ this.finisherlist.equipped(value); }
+      else                       { this.finisherlist.addItem(value); }
     },
-    _currentemote: "unavailable",
-    set currentemote(value){
-      this._currentemote = value;
-      window.document.getElementById("emotes").src = bungieCommon+value.hashData.displayProperties.icon;
-    },
-    emotelist: [],
+    emotelist: new equipmentlist("emotes"),
     set 1107761855(value){
-      //console.log("emotes property has been triggered.");
-      if(value.currentlyEquipped){
-        this.currentemote = value;
-      }
-      else {
-        //console.log("unequipped item added to emotes stack.");
-        this.emotelist[this.emotelist.length] = value;
-      }
+      if(value.currentlyEquipped){ this.emotelist.equipped(value); }
+      else                       { this.emotelist.addItem(value); }
     },
     _artifact: "unavailable",
     set 1506418338(value){
