@@ -15,52 +15,51 @@ function displayContainer(value){
   window.document.getElementById(value).style.display = "flex";
 }
 function equipmentlist(htmlElement){
-  this.container = window.document.getElementById(htmlElement+"-container");
   this.element = window.document.getElementById(htmlElement);
+  this.container = window.document.getElementById(htmlElement+"-container");
   this.element.addEventListener("mouseover",function(){displayContainer(htmlElement+"-container")});
   this._equipment = [];
-
   this.setequipment = function(value){
     this._equipment = value;
-    console.log(this.getequipment());
+    this.reload();
   };
   this.getequipment = function(){
     return this._equipment;
   };
-  this.addItem = function(value){
-    this._equipment[this._equipment.length] = value;
-    var item = window.document.createElement("img");
-    item.id = htmlElement+this._equipment.length;
-    item.src = bungieCommon+value.hashData.displayProperties.icon;
-    this.container.appendChild(item);
-  };
-  this.equip = function(value){
-    value.currentlyEquipped = true;
-    this._equipment.unshift(value);
-    this.element.src = bungieCommon+value.hashData.displayProperties.icon;
-  }
-  this.getequipped = function(){
-    return this._equipment[0];
-  };
-  this.removeequipped = function(){
-    this.element.src = "";
-    return this._equipment.shift();
-  }
-  this.swapequipped = function(indexToSwap){
-    var temp = this._equipment[indexToSwap];
-    var lastequip = this.removeequipped();
-    lastequip.currentlyEquipped = false;
-    this.removeItem(indexToSwap-1);
-    this.addItem(lastequip);
-    this.equip(temp);
-  }
   this.findItemIndex = function(value){
     return this._equipment.indexOf(value);
   };
-  this.removeItem = function(index){
-    this._equipment.splice(index,1);
-    window.document.getElementById(htmlElement+index).remove();
-  }
+  this.swapEquipped = function(value){
+    if(value >= this._equipment.length){
+      console.log("invalid value");
+    }
+    else {
+      var index = this._equipment[value];
+      var current = this._equipment.shift();
+      current.currentlyEquipped = false;
+      index.currentlyEquipped = true;
+      this._equipment.unshift(index);
+      console.log(index);
+      console.log(current);
+      this._equipment[value] = current;
+      this.reload();
+    }
+  };
+  this.addItem = function(value){
+    console.log("item added");
+    var item = window.document.createElement("img");
+    item.id = htmlElement+this._equipment.length;
+    this._equipment[this._equipment.length] = value;
+    this.container.appendChild(item);
+    this.reload();
+  };
+
+  this.reload = function(){
+    this.element.src = bungieCommon+this._equipment[0].hashData.displayProperties.icon;
+    for(var i = 1; i< this._equipment.length; i++){
+      window.document.getElementById(htmlElement+i).src = bungieCommon+this._equipment[i].hashData.displayProperties.icon;
+    }
+  };
 }
 const character = {
   _class: "unavailable",
@@ -83,82 +82,82 @@ const character = {
   equipment: {
     subclasslist: new equipmentlist("Subclass"),
     set 3284755031(value){
-      if(value.currentlyEquipped){ this.subclasslist.equip(value); }
+      if(value.currentlyEquipped){ this.subclasslist.addItem(value); }
       else                       { this.subclasslist.addItem(value); }
     },
     kineticlist: new equipmentlist("kinetic"),
     set 1498876634(value){
-      if(value.currentlyEquipped){ this.kineticlist.equip(value); }
+      if(value.currentlyEquipped){ this.kineticlist.addItem(value); }
       else                       { this.kineticlist.addItem(value); }
     },
     speciallist: new equipmentlist("special"),
     set 2465295065(value){
-      if(value.currentlyEquipped){ this.speciallist.equip(value); }
+      if(value.currentlyEquipped){ this.speciallist.addItem(value); }
       else                       { this.speciallist.addItem(value); }
     },
     heavylist: new equipmentlist("heavy"),
     set 953998645(value){
-      if(value.currentlyEquipped){ this.heavylist.equip(value); }
+      if(value.currentlyEquipped){ this.heavylist.addItem(value); }
       else                       { this.heavylist.addItem(value); }
     },
     helmetlist: new equipmentlist("helmet"),
     set 3448274439(value){
-      if(value.currentlyEquipped){ this.helmetlist.equip(value); }
+      if(value.currentlyEquipped){ this.helmetlist.addItem(value); }
       else                       { this.helmetlist.addItem(value); }
     },
     gloveslist: new equipmentlist("gloves"),
     set 3551918588(value){
-      if(value.currentlyEquipped){ this.gloveslist.equip(value); }
+      if(value.currentlyEquipped){ this.gloveslist.addItem(value); }
       else                       { this.gloveslist.addItem(value); }
     },
     chestlist: new equipmentlist("chest"),
     set 14239492(value){
-      if(value.currentlyEquipped){ this.chestlist.equip(value); }
+      if(value.currentlyEquipped){ this.chestlist.addItem(value); }
       else                       { this.chestlist.addItem(value); }
     },
     legslist: new equipmentlist("legs"),
     set 20886954(value){
-      if(value.currentlyEquipped){ this.legslist.equip(value); }
+      if(value.currentlyEquipped){ this.legslist.addItem(value); }
       else                       { this.legslist.addItem(value); }
     },
     classarmorlist: new equipmentlist("class-armor"),
     set 1585787867(value){
-      if(value.currentlyEquipped){ this.classarmorlist.equip(value); }
+      if(value.currentlyEquipped){ this.classarmorlist.addItem(value); }
       else                       { this.classarmorlist.addItem(value); }
     },
     ghostlist: new equipmentlist("ghost"),
     set 4023194814(value){
-      if(value.currentlyEquipped){ this.ghostlist.equip(value); }
+      if(value.currentlyEquipped){ this.ghostlist.addItem(value); }
       else                       { this.ghostlist.addItem(value); }
     },
     vehiclelist: new equipmentlist("vehicle"),
     set 2025709351(value){
-      if(value.currentlyEquipped){ this.vehiclelist.equip(value); }
+      if(value.currentlyEquipped){ this.vehiclelist.addItem(value); }
       else                       { this.vehiclelist.addItem(value); }
     },
     shiplist: new equipmentlist("ship"),
     set 284967655(value){
-      if(value.currentlyEquipped){ this.shiplist.equip(value); }
+      if(value.currentlyEquipped){ this.shiplist.addItem(value); }
       else                       { this.shiplist.addItem(value); }
     },
     clanbannerlist: new equipmentlist("clanbanner"),
     set 4292445962(value){
-      if(value.currentlyEquipped){ this.clanbannerlist.equip(value); }
+      if(value.currentlyEquipped){ this.clanbannerlist.addItem(value); }
       else                       { this.clanbannerlist.addItem(value); }
     },
     emblemlist: new equipmentlist("emblem"),
     set 4274335291(value){
-      if(value.currentlyEquipped){ this.emblemlist.equip(value); }
+      if(value.currentlyEquipped){ this.emblemlist.addItem(value); }
       else                       { this.emblemlist.addItem(value); }
     },
     finisherlist: new equipmentlist("finisher"),
     set 3683254069(value){
-      if(value.currentlyEquipped){ this.finisherlist.equip(value); }
+      if(value.currentlyEquipped){ this.finisherlist.addItem(value); }
       else                       { this.finisherlist.addItem(value); }
     },
     emotelist: new equipmentlist("emotes"),
     set 1107761855(value){
-      if(value.currentlyEquipped){ this.emotelist.equip(value); }
+      if(value.currentlyEquipped){ this.emotelist.addItem(value); }
       else                       { this.emotelist.addItem(value); }
     },
     _artifact: "unavailable",
@@ -217,6 +216,7 @@ function loadInventory(characterID){
       var equippables = result.equippable;
       for(i in equippables){
         character.equipment[equippables[i].hashData.equipHash] = equippables[i];
+        console.log("loading item.");
       }
     });
 }
