@@ -33,9 +33,6 @@ function searchD2Player(type,displayName){
 };
 exports.searchD2Player = searchD2Player;
 
-/////////
-//EVERYTHING ABOVE THIS HAS BEEN RAN AND HAS HAD A SUCCESSFUL RETURN RESULT
-////////
 function getBungieUser(id,token){
   var path = bungieRoot+"/User/GetBungieNetUserById/"+id+"/";
   return getRequestAuth(path,token);
@@ -106,15 +103,15 @@ function getItem(type, d2ID, itemID, components){
 };
 exports.getItem = getItem;
 //Requests of the POST Type.
-
 async function postRequest(path,body,token){
   return axios({
     method:"POST",
     url: path,
     headers: {"X-API-Key":process.env.Bungie_API_KEY, "Authorization":"Bearer "+token},
-    body: body
+    data: body,
   });
-}
+};
+exports.postRequest = postRequest;
 function getRequest(path){
   return axios({
     method:"GET",

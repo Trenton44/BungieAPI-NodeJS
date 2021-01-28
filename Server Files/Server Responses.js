@@ -13,6 +13,7 @@ const D2Manifest = require(manifestRoot+"/d2manifest.json");
 var EquipmentItemResponse = function(item){
   return {
     itemhash: item.itemHash,
+    itemID: item.itemInstanceId,
     hashData: {
       displayProperties: item.itemHashData.displayProperties,
       damageType: D2Manifest.DestinyDamageTypeDefinition[item.itemHashData.defaultDamageTypeHash],

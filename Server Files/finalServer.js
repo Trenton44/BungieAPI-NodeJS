@@ -112,6 +112,30 @@ app.get("/character/:id/inventory",function(request,response){
   var returnData = ServerResponse.InventoryItemsResponse(data.characterInventories[cID])
   response.status(200).json(returnData);
 });
+app.get("/character/:id/equipmentInventory",function(request,response){
+  var data = request.session.data.d2data;
+  var cID = request.params.id;
+  var returnData = ServerResponse.InventoryItemsResponse(data.characterInventories[cID])
+  response.status(200).json(returnData.equippable);
+});
+app.get("/character/:Cid/equipItem/:Iid",function(request, response){
+  var userdata = request.session.data.userdata;
+  var memType = userdata[userdata.primaryMembershipId].membershipType;
+  var path = bungieRoot+"/Destiny2/Actions/Items/EquipItem/";
+  var body = {
+    characterId: request.params.Cid,
+    itemId: request.params.Iid,
+    membershipType: memType,
+  }
+  body = JSON.stringify(body);
+  d2api.postRequest(path,body,request.session.data.tokenData.access_token).then(function(result){
+    console.log(result);
+    response.status(200).json(result.data.Response);
+  }).catch(function(error){
+    console.log(error);
+    response.status(200).json(error);
+  });
+});
 httpsServer.listen(process.env.PORT);
 
 function verifyState(request){
