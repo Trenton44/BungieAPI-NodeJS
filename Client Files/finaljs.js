@@ -2,27 +2,11 @@ var window;
 var bungieCommon = "https://www.bungie.net";
 var characterIDs;
 var counter = 0;
-function displayContainer(value){
-  var children = window.document.getElementById("equipment-menu").childNodes;
-  window.document.getElementById("kinetic-container").style.display = "none";
-  window.document.getElementById("special-container").style.display = "none";
-  window.document.getElementById("heavy-container").style.display = "none";
-  window.document.getElementById("helmet-container").style.display = "none";
-  window.document.getElementById("gloves-container").style.display = "none";
-  window.document.getElementById("chest-container").style.display = "none";
-  window.document.getElementById("legs-container").style.display = "none";
-  window.document.getElementById("class-armor-container").style.display = "none";
-  window.document.getElementById(value).style.display = "flex";
-}
-function hideContainer(value){
-  window.document.getElementById(value).style.display = "none";
-}
+
 function equipmentlist(htmlElement){
   this.element = window.document.getElementById(htmlElement);
   this.container = window.document.getElementById(htmlElement+"-container");
-  this.element.addEventListener("mouseover",function(){displayContainer(htmlElement+"-container")});
-  //this.element.addEventListener("mouseleave",function(){hideContainer(htmlElement+"-container")});
-  this.container.addEventListener("mouseleave",function(){hideContainer(htmlElement+"-container")});
+  this.equipmentContainer = window.document.getElementById(htmlElement+"-equipment");
   this._equipment = [];
   this.setequipment = function(value){
     this._equipment = value;
@@ -45,9 +29,10 @@ function equipmentlist(htmlElement){
     item.id = htmlElement+this._equipment.length;
     this._equipment[this._equipment.length] = value;
     item.addEventListener("click",function(){
+      console.log("Item id: "+value.itemID);
       equipRequest(value.itemID);
     });
-    this.container.appendChild(item);
+    this.equipmentContainer.appendChild(item);
     this.reload();
   };
   this.wipe = function(){
@@ -63,8 +48,125 @@ function equipmentlist(htmlElement){
       window.document.getElementById(htmlElement+i).src = bungieCommon+this._equipment[i].hashData.displayProperties.icon;
     }
   };
-}
-const character = {
+};
+
+function equipment(){
+  this.id = "";
+  this.hashKeys = {
+    3284755031:"subclasslist",
+    1498876634:"kineticlist",
+    2465295065:"speciallist",
+    953998645:"heavylist",
+    3448274439:"helmetlist",
+    3551918588:"gloveslist",
+    14239492:"chestlist",
+    20886954:"legslist",
+    1585787867:"classarmorlist",
+    4023194814:"ghostlist",
+    2025709351:"vehiclelist",
+    284967655:"shiplist",
+    4292445962:"clanbannerlist",
+    4274335291:"emblemlist",
+    3683254069:"finisherlist",
+    1107761855:"emotelist",
+    1506418338:"_artifact",
+  };
+  this.slots = {
+    subclasslist: new equipmentlist("Subclass"),
+    kineticlist: new equipmentlist("kinetic"),
+    speciallist: new equipmentlist("special"),
+    heavylist: new equipmentlist("heavy"),
+    helmetlist: new equipmentlist("helmet"),
+    gloveslist: new equipmentlist("gloves"),
+    chestlist: new equipmentlist("chest"),
+    legslist: new equipmentlist("legs"),
+    classarmorlist: new equipmentlist("class-armor"),
+    ghostlist: new equipmentlist("ghost"),
+    vehiclelist: new equipmentlist("vehicle"),
+    shiplist: new equipmentlist("ship"),
+    clanbannerlist: new equipmentlist("clanbanner"),
+    emblemlist: new equipmentlist("emblem"),
+    finisherlist: new equipmentlist("finisher"),
+    emotelist: new equipmentlist("emotes"),
+    artifact: function(value){
+      window.document.getElementById("artifact").src = bungieCommon+value.hashData.displayProperties.icon;
+    },
+  };
+  this.equipmentWipe = function(){
+    for(i in this.slots){
+      if(i == "artifact"){
+        continue;
+      }
+      else {
+        this.slots[i].wipe();
+      }
+    }
+    window.document.getElementById("artifact").src = "";
+  };
+  this.loadEquipment = function(){
+    this.equipmentWipe();
+    var parent = this;
+    var path = "/character/"+parent.id+"/equipment";
+    fetchRequest(path).then(function(result){
+      for(i in result){
+        if(result[i].hashData.equipHash == 1506418338){ parent.slots.artifact(result[i]); }
+        else { parent.slots[parent.hashKeys[result[i].hashData.equipHash]].equip(result[i]); }
+      }
+      var path = "/character/"+parent.id+"/equipmentInventory";
+      fetchRequest(path).then(function(result){
+        for(i in result){
+          parent.slots[parent.hashKeys[result[i].hashData.equipHash]].addItem(result[i]);
+        }
+      });
+    });
+  };
+};
+function character(){
+  this.id = "";
+  this.setID = function(value){
+    this.id = value;
+    this.equipment.id = value;
+    console.log("test "+ this.equipment.id);
+  }
+  this.getID = function(){
+    return this.id;
+  };
+  this.class = "";
+  this.light = "";
+  this.setClass = function(value){
+    console.log("class type property has been triggered.");
+    this._class = value;
+    window.document.getElementById("character-class").innerHTML = "lvl "+value.level+" "+value.name;
+  };
+  this.setLight = function(value){
+    console.log("light property has been triggered.");
+    this._light = value;
+    window.document.getElementById("character-light").innerHTML = value ;
+  };
+  this.setEmblem = function(value){
+    console.log("emblem property has been triggered.");
+    window.document.getElementById("emblem-icon").src = bungieCommon+value.icon;
+    window.document.getElementById("emblem-back").src = bungieCommon+value.background;
+  };
+  this.loadGeneral = function(){
+    var parent = this;
+    var path = "/character/"+parent.id+"/general";
+    fetchRequest(path).then(function(result){
+      //console.log(result);
+      //console.log("setting up character element.");
+      var emblemData = {
+        icon: result.emblem.emblemExpanded.secondaryOverlay,
+        background: result.emblem.emblemExpanded.secondarySpecial,
+      };
+      var classData = {level: result.level, name: result.class.name};
+      parent.setEmblem(emblemData);
+      parent.setClass(classData);
+      parent.setLight(result.light);
+    });
+  };
+  this.equipment = new equipment();
+};
+/*const character = {
   id: "",
   _class: "unavailable",
   _light: "unavailable",
@@ -132,10 +234,10 @@ const character = {
     emblemlist: new equipmentlist("emblem"),
     finisherlist: new equipmentlist("finisher"),
     emotelist: new equipmentlist("emotes"),
-    /*set 1107761855(value){
+    set 1107761855(value){
       if(value.currentlyEquipped){ this.emotelist.addItem(value); }
       else                       { this.emotelist.addItem(value); }
-    },*/
+    },
     _artifact: function(value){
       window.document.getElementById("artifact").src = bungieCommon+value.hashData.displayProperties.icon;
     },
@@ -177,17 +279,16 @@ const character = {
         console.log("refilled.");
         console.log(parent);
       });
-
-
     },
   },
-};
+}; */
 function Initialize(value){
   window = value;
   var path = "/characterids";
   fetchRequest(path).then(function(result){
     characterIDs = result;
-    loadCharacter(characterIDs[counter]);
+    character = new character();
+    loadCharacter(counter);
   });
 };
 function loadCharacter(value){
@@ -196,9 +297,10 @@ function loadCharacter(value){
     counter = 0;
   if(counter < 0)
     counter = characterIDs.length-1;
-  character.id = characterIDs[counter];
-  character.loadGeneral(character, character.id);
-  character.equipment.loadEquipment(character.equipment, character.id);
+  console.log(characterIDs[counter]);
+  character.setID(characterIDs[counter]);
+  character.loadGeneral();
+  character.equipment.loadEquipment();
 }
 async function fetchRequest(path){
   var request = new Request(path, {
@@ -212,9 +314,9 @@ async function fetchRequest(path){
   {return Promise.reject(new Error(response.statusText));}
 };
 function equipRequest(item){
+  console.log("equip request.");
   var path = "/character/"+characterIDs[counter]+"/equipItem/"+item;
   fetchRequest(path).then(function(result){
-    console.log(result);
     character.equipment.loadEquipment(character.equipment, character.id);
   });
 }

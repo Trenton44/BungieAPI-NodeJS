@@ -16,6 +16,7 @@ const webpageRoot = path.join(__dirname,"..\\","Client Files");
 const serverRoot = path.join(__dirname,"..\\","Server Files");
 const assetRoot = path.join(__dirname,"..\\","assets");
 const manifestRoot = path.join(__dirname,"..\\","manifestData");
+const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 //const D2Manifest = require(manifestRoot+"/D2Manifest2.js").D2Manifest;
 const D2Manifest = require(manifestRoot+"/d2manifest.json");
 const ServerResponse = require(serverRoot+"/Server Responses.js");
@@ -90,35 +91,45 @@ app.get("/",function(request,response){
     console.error(error);
   });
 });
-app.get("/characterids",function(request, response){
-  response.status(200).json(request.session.data.d2data.profile.characterIds);
+app.get("/characterids",async function(request, response){
+  var components = ["100"];
+  var data = await componentDataRequest(request, components);
+  console.log("data obtained.");
+  console.log(data);
+  response.status(200).json(data.profile.characterIds);
 });
-app.get("/character/:id/general",function(request, response){
-  var data = request.session.data.d2data;
+app.get("/character/:id/general",async function(request, response){
+  var components = ["200"];
+  var data = await componentDataRequest(request, components);
   var cID = request.params.id;
   var returnData = ServerResponse.CharacterResponse(data.characters[cID]);
   response.status(200).json(returnData);
 });
-app.get("/character/:id/equipment",function(request,response){
-  var data = request.session.data.d2data;
+app.get("/character/:id/equipment",async function(request,response){
+  var components = ["205"];
+  var data = await componentDataRequest(request, components);
   var cID = request.params.id;
+  console.log("Equipment get: ");
+  console.log(data);
   var returnData = ServerResponse.EquipmentItemsResponse(data.characterEquipment[cID]);
   //var returnData = data.characterEquipment[cID];
   response.status(200).json(returnData);
 });
-app.get("/character/:id/inventory",function(request,response){
-  var data = request.session.data.d2data;
+app.get("/character/:id/inventory",async function(request,response){
+  var components = ["201"];
+  var data = await componentDataRequest(request, components);
   var cID = request.params.id;
-  var returnData = ServerResponse.InventoryItemsResponse(data.characterInventories[cID])
+  var returnData = ServerResponse.InventoryItemsResponse(data.characterInventories[cID]);
   response.status(200).json(returnData);
 });
-app.get("/character/:id/equipmentInventory",function(request,response){
-  var data = request.session.data.d2data;
+app.get("/character/:id/equipmentInventory",async function(request,response){
+  var components = ["201"];
+  var data = await componentDataRequest(request, components);
   var cID = request.params.id;
   var returnData = ServerResponse.InventoryItemsResponse(data.characterInventories[cID])
   response.status(200).json(returnData.equippable);
 });
-app.get("/character/:Cid/equipItem/:Iid",function(request, response){
+app.get("/character/:Cid/equipItem/:Iid",async function(request, response){
   var userdata = request.session.data.userdata;
   var memType = userdata[userdata.primaryMembershipId].membershipType;
   var path = bungieRoot+"/Destiny2/Actions/Items/EquipItem/";
@@ -127,10 +138,13 @@ app.get("/character/:Cid/equipItem/:Iid",function(request, response){
     itemId: request.params.Iid,
     membershipType: memType,
   }
+
   body = JSON.stringify(body);
   d2api.postRequest(path,body,request.session.data.tokenData.access_token).then(function(result){
     console.log(result);
-    response.status(200).json(result.data.Response);
+    sleep(1000).then(function(){
+      response.status(200).json(result.data.Response);
+    });
   }).catch(function(error){
     console.log(error);
     response.status(200).json(error);
@@ -149,26 +163,27 @@ function verifyState(request){
     return true;
   }
 }
+function componentDataRequest(request, components){
+  var userdata =request.session.data.userdata;
+  var token = request.session.data.tokenData.access_token;
+  var memType = userdata[userdata.primaryMembershipId].membershipType;
+  var d2ID = userdata.primaryMembershipId;
+  return d2api.getDestinyProfileAuth(memType,d2ID,components,token).then(function(result){
+    console.log("accessed");
+    var d2data = d2api.parseComponentResponses(result.data.Response,components);
+    console.log("Requested data retrieved from bungie.");
+    return d2data;
+  }).catch(function(error){
+    console.log(error);
+    return false;
+  });
+};
 async function obtainInitialPlayerData(request){
   var token = request.session.data.tokenData.access_token;
   console.log("Accessing bnet user data");
   await d2api.getBungieCurrentUserData(token).then(function(result){
-    var userdata = d2api.parseBungieCurrentUserDataResponse(result.data.Response);
-    request.session.data.userdata = userdata;
-    var memType = userdata[userdata.primaryMembershipId].membershipType;
-    var d2ID = userdata.primaryMembershipId;
-    var components = ["100","200","201","202","205"];
-    console.log("Accessing d2 user data");
-    return d2api.getDestinyProfileAuth(memType,d2ID,components,token).then(function(result){
-      console.log("accessed");
-      var d2data = d2api.parseComponentResponses(result.data.Response,components);
-      request.session.data.d2data = d2data;
-      console.log("all data successfully retrieved.");
-      return true;
-    }).catch(function(error){
-      console.log(error);
-      return false;
-    });
+    request.session.data.userdata = d2api.parseBungieCurrentUserDataResponse(result.data.Response);
+    return true;
   }).catch(function(error){
     console.error(error);
     return false;

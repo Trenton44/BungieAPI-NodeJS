@@ -9,6 +9,7 @@
       <img id=emblem-back />
       <img id=Subclass />
       <div id=Subclass-container></div>
+      <div class=item-container id=Subclass-equipment></div>
       <div>
         <h1 id=character-class></h1>
         <h1 id=character-light></h1>
@@ -17,45 +18,73 @@
 
     <div id=all-content>
       <div id=back-button onclick=loadCharacter(-1)><h1>back</h1></div>
-      <img id=kinetic />
-      <img id=special />
-      <img id=heavy />
-      <img id=helmet />
-      <img id=gloves />
-      <img id=chest />
-      <img id=legs />
-      <img id=class-armor />
-      <div id=next-button onclick=loadCharacter(1)><h1>next</h1></div>
+      <div class=item-slots id=kinetic-container>
+        <img class=primary-item id=kinetic />
+        <div class=item-container id=kinetic-equipment></div>
+      </div>
+      <div class=item-slots id=special-container>
+        <img class=primary-item id=special />
+        <div class=item-container id=special-equipment></div>
+      </div>
+      <div class=item-slots id=heavy-container>
+        <img class=primary-item id=heavy />
+        <div class=item-container id=heavy-equipment></div>
+      </div>
+      <div class=item-slots id=helmet-container>
+        <img class=primary-item id=helmet />
+        <div class=item-container id=helmet-equipment></div>
+      </div>
+      <div class=item-slots id=gloves-container>
+        <img class=primary-item id=gloves />
+        <div class=item-container id=gloves-equipment></div>
+      </div>
+      <div class=item-slots id=chest-container>
+        <img class=primary-item id=chest />
+        <div class=item-container id=chest-equipment></div>
+      </div>
+      <div class=item-slots id=legs-container>
+        <img class=primary-item id=legs />
+        <div class=item-container id=legs-equipment></div>
+      </div>
+      <div class=item-slots id=class-armor-container>
+        <img class=primary-item id=class-armor />
+        <div class=item-container id=class-armor-equipment></div>
+      </div>
+      <div class=item-slots id=emblem-container>
+        <img class=primary-item id=emblem />
+        <div class=item-container id=emblem-equipment></div>
+      </div>
+      <div class=item-slots id=finisher-container>
+        <img class=primary-item id=finisher />
+        <div class=item-container id=finisher-equipment></div>
+      </div>
+      <div class=item-slots id=emotes-container>
+        <img class=primary-item id=emotes />
+        <div class=item-container id=emotes-equipment></div>
+      </div>
+      <div class=item-slots id=artifact-container>
+        <img class=primary-item id=artifact />
+        <div class=item-container id=artifact-equipment></div>
+      </div>
+      <div class=item-slots id=ghost-container>
+        <img class=primary-item id=ghost />
+        <div class=item-container id=ghost-equipment></div>
+      </div>
+      <div class=item-slots id=vehicle-container>
+        <img class=primary-item id=vehicle />
+        <div class=item-container id=vehicle-equipment></div>
+      </div>
+      <div class=item-slots id=ship-container>
+        <img class=primary-item id=ship />
+        <div class=item-container id=ship-equipment></div>
+      </div>
+      <div class=item-slots id=clanbanner-container>
+        <img class=primary-item id=clanbanner />
+        <div class=item-container id=clanbanner-equipment></div>
+      </div>
+      <div class=item-slots id=next-button onclick=loadCharacter(1)><h1>next</h1></div>
     </div>
-
-    <div id=equipment-menu>
-      <div class=equipment-icon id=kinetic-container></div>
-      <div class=equipment-icon id=special-container></div>
-      <div class=equipment-icon id=heavy-container></div>
-      <div class=equipment-icon id=helmet-container></div>
-      <div class=equipment-icon id=gloves-container></div>
-      <div class=equipment-icon id=chest-container></div>
-      <div class=equipment-icon id=legs-container></div>
-      <div class=equipment-icon id=class-armor-container></div>
-      <div class=equipment-icon id=emblem-container></div>
-      <div class=equipment-icon id=finisher-container></div>
-      <div class=equipment-icon id=emotes-container></div>
-      <div class=equipment-icon id=artifact-container></div>
-      <div class=equipment-icon id=ghost-container></div>
-      <div class=equipment-icon id=vehicle-container></div>
-      <div class=equipment-icon id=ship-container></div>
-      <div class=equipment-icon id=clanbanner-container></div>
-    </div>
-
     <div class=miscellaneous-items id="characterEquipment">
-      <img class=equipment-icon id=emblem />
-      <img class=equipment-icon id=finisher />
-      <img class=equipment-icon id=emotes />
-      <img class=equipment-icon id=artifact />
-      <img class=equipment-icon id=ghost />
-      <img class=equipment-icon id=vehicle />
-      <img class=equipment-icon id=ship />
-      <img class=equipment-icon id=clanbanner />
     </div>
   </body>
   <script type="text/javascript">
