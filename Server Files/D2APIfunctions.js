@@ -129,23 +129,23 @@ function getRequestAuth(path,token){
 
 
 //Other useful functions that I haven't gotten around to wanting to do.
-async function tokenRefresh(token){
+function tokenRefresh(token){
   console.log("access token expired, requesting a new one");
   var body = new URLSearchParams();
   body.append("grant_type", "refresh_token");
   body.append("refresh_token", token);
   body.append("client_secret",process.env.Bungie_ClientSecret);
   body.append("client_id", process.env.Bungie_ClientID);
-  let request = await axios({
+  return axios({
     method:"POST",
     url: bungieTokURL,
     headers: {"X-API-Key":process.env.Bungie_API_KEY},
     data: body
   });
-  return request;
 }
 exports.tokenRefresh = tokenRefresh;
 async function tokenRequest(request){
+  request.session.data.tokenData.access_token = "sorry bungi, i just wanna see what this error returns.";
   var body = new URLSearchParams();
   body.append("client_secret",process.env.Bungie_ClientSecret);
   body.append("client_id", process.env.Bungie_ClientID);

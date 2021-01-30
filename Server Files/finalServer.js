@@ -48,10 +48,13 @@ app.use(
       cookie: { httpOnly: true, secure: true, expires: 120000},
   })
 );
-app.use(prepSessionData);
+
 app.get("/client/:id",function(request,response){
   response.status(200).sendFile(webpageRoot+"/"+request.params.id);
 });
+
+app.use(prepSessionData);
+
 app.get("/login",function(request,response){
   var url = buildAuthorizatonCodeRequest(request);
   console.log("User has begun a login attempt to bungie.net");
@@ -79,23 +82,21 @@ app.get("/bapi", function(request,response){
     response.redirect("/login");
   }
 });
-
-
-app.use(checkAuthorization);
 //Entry point for authorized personnel. Make all requests for API data here prior to serving webpage.
-app.get("/",function(request,response){
-  obtainInitialPlayerData(request).then(function(result){
-    console.log("past access");
+app.use(authorizationCheck);
+app.get("/",async function(request,response){
+  let userdata = await getBasicBnetInfo(request);
+  if(userdata !== null){
+    request.session.data.userdata = userdata
     response.sendFile(webpageRoot+"/finalhtml.html");
-  }).catch(function(error){
-    console.error(error);
-  });
+  }
+  else {
+    response.status(500).json({error: "fuck."});
+  }
 });
 app.get("/characterids",async function(request, response){
   var components = ["100"];
   var data = await componentDataRequest(request, components);
-  console.log("data obtained.");
-  console.log(data);
   response.status(200).json(data.profile.characterIds);
 });
 app.get("/character/:id/general",async function(request, response){
@@ -138,13 +139,10 @@ app.get("/character/:Cid/equipItem/:Iid",async function(request, response){
     itemId: request.params.Iid,
     membershipType: memType,
   }
-
-  body = JSON.stringify(body);
+  var body = JSON.stringify(body);
   d2api.postRequest(path,body,request.session.data.tokenData.access_token).then(function(result){
     console.log(result);
-    sleep(1000).then(function(){
-      response.status(200).json(result.data.Response);
-    });
+    response.status(200).json(result.data.Response);
   }).catch(function(error){
     console.log(error);
     response.status(200).json(error);
@@ -178,47 +176,52 @@ function componentDataRequest(request, components){
     return false;
   });
 };
-async function obtainInitialPlayerData(request){
+function getBasicBnetInfo(request){
   var token = request.session.data.tokenData.access_token;
   console.log("Accessing bnet user data");
-  await d2api.getBungieCurrentUserData(token).then(function(result){
-    request.session.data.userdata = d2api.parseBungieCurrentUserDataResponse(result.data.Response);
-    return true;
+  return d2api.getBungieCurrentUserData(token).then(function(result){
+    console.log("obtained data");
+    return d2api.parseBungieCurrentUserDataResponse(result.data.Response);
   }).catch(function(error){
     console.error(error);
-    return false;
+    return null;
   });
-}
-
-function checkAuthorization(request,response,next){
-  console.log("check authorization");
-  if(isAuthorized(request)){
-    console.log("authorized");
+};
+function authorizationCheck(request,response,next){
+  console.log(Object.keys(request.session.data.tokenData).length);
+  if(Object.keys(request.session.data.tokenData).length !== 0){
+    console.log("token data for user exists, no action necessary.");
     next();
   }
   else {
-    console.log("Not authorized, redirecting to login.");
+    console.log("user is not yet logged in, redirecting to login.");
     response.redirect("/login");
   }
 }
-function prepSessionData(request,response,next){
-  if(request.session.data != undefined){
-    console.log("Prior data for user has been formatted already ");
+async function prepSessionData(request,response,next){
+  var reset = false;
+  switch(request.session.data){
+    case undefined:
+      console.log("Session data does not exist, creating formatted data blueprint.");
+      reset = true;
+      console.log("session data now has blueprint, proceeding to content.");
+      break;
+    case null:
+      console.log("User has visited, but an error necessitated eliminating their stored data.");
+      reset = true;
+      break;
+    default:
+      console.log("There doesn't seem to be anything wrong here....");
   }
-  else {
-    console.log("Session data does not exist, creating formatted data blueprint.");
-    data = {
+  if(reset){
+    request.session.data = {
       authCode: null,
       state: null,
-      tokenData: {
-        access_token: null,
-      },
+      tokenData: {},
       primaryMembershipId: null,
+      userdata: null,
     };
-    request.session.data = data;
-    console.log("session data now has blueprint, proceeding to content.");
   }
-
   next();
 }
 function buildAuthorizatonCodeRequest(request){
@@ -229,60 +232,4 @@ function buildAuthorizatonCodeRequest(request){
   url.searchParams.append("response_type","code");
   url.searchParams.append("state",state);
   return url;
-}
-function isAuthorized(request){
-  if(request.session.data.tokenData.access_token != null){
-    console.log("User has access token, and therefore should be authorized. allowing access to requested endpoint.");
-    if(new Date().getTime() > request.session.data.tokenData.tokenExpiration){
-      console.log("access token has expired, requesting with refresh token.");
-      if(new Date().getTime() > request.session.data.tokenData.refreshExpiration){
-        console.log("refresh token is also expired, redirecting to login page.");
-        return false;
-      }
-      else {
-        console.log("requesting refresh token.");
-        d2api.tokenRefresh(request.session.data.tokenData.refresh_token).then(function(result){
-          d2api.saveTokenData(request, result.data);
-          console.log("token refresh successful, new access token saved.");
-          return true;
-        }).catch(function(error){
-          console.log(error);
-          return false;
-        });
-      }
-    }
-    return true;
-  }
-  else {
-    console.log("User does not possess credentials, access is denied.");
-    return false;
-  }
-}
-
-async function OLDobtainInitialPlayerData(request){
-  var token = request.session.data.tokenData.access_token;
-  console.log("Accessing bnet user data");
-  await d2api.getBungieCurrentUserData(token).then(function(result){
-    var userdata = d2api.parseBungieCurrentUserDataResponse(result.data.Response);
-    //console.log(userdata);
-    request.session.data.userdata = userdata;
-    var memType = userdata[userdata.primaryMembershipId].membershipType;
-    var d2ID = userdata.primaryMembershipId;
-    var components = ["103","200","201","202","205","300","302"];
-    console.log("Accessing d2 user data");
-    return d2api.getDestinyProfileAuth(memType,d2ID,components,token).then(function(result){
-      console.log("accessed");
-      var d2data = d2api.parseDestinyProfileAuthResponse(result.data.Response);
-      request.session.data.d2data = d2data;
-      console.log("all data successfully retrieved.");
-      return true;
-    }).catch(function(error){
-      console.log(error);
-      return false;
-    });
-  }).catch(function(error){
-    console.error(error);
-    return false;
-  });
-
 }

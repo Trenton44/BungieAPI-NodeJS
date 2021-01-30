@@ -13,17 +13,38 @@ body {
 }
 #character-header > div {
   position: absolute;
+}
+#character-header > div:hover > div {
+  display: flex;
+}
+#Subclass-slots {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 30%;
+  height: 100%;
+  top: 50%;
+  right: 0%;
+  transform: translate(0,-50%);
+}
+#Subclass-slots img {
+  height: 100%;
+}
+#Subclass-slots > div {
+  height: 100%;
+  display: none;
+  flex-direction: row;
+}
+#Subclass-slots:hover div {
+  display: flex;
+}
+#character-info {
   width: 10%;
   height: 80%;
   top: 50%;
-  right: 10%;
-  transform: translate(0,-50%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
+
 #character-header > div > h1{
   margin: 0;
   color: white;
@@ -44,15 +65,8 @@ body {
   left: 0%;
   z-index: 0;
 }
-#Subclass {
-  position: absolute;
-  top: 50%;
-  transform: translate(0,-50%);
-  right: 2%;
-  width: 8%;
-}
-#all-content {
-  margin-top: 2%;
+.character-equipment{
+  margin: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
