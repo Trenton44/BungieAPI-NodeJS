@@ -13,6 +13,9 @@ const bungieRoot = "https://www.bungie.net/Platform";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
 const bungieCommon = "https://www.bungie.net";
+
+//When a function takes a list of components as a parameter, this function is called to
+//combine those functions into a single search parameter the bungie API can understand.
 function combineComponentString(value){
   var params = "";
   for(i in value){
@@ -26,83 +29,94 @@ function combineComponentString(value){
   return parameters;
 }
 exports.combineComponentString = combineComponentString;
-//Requests of the GET Type.
+//GET REQUESTS -----------------------
+//Searches for a D2 player account using the given display name
+//and return a list of all D2 memberships tied to it.
+//https://bungie-net.github.io/multi/operation_get_Destiny2-SearchDestinyPlayer.html#operation_get_Destiny2-SearchDestinyPlayer
 function searchD2Player(type,displayName){
   var path = bungieRoot+"/Destiny2/SearchDestinyPlayer/"+type+"/"+displayName+"/";
   return getRequest(path);
 };
 exports.searchD2Player = searchD2Player;
 
-function getBungieUser(id,token){
+//obtains bungienet user data by searching for user with given id parameter.
+//https://bungie-net.github.io/multi/operation_get_User-GetBungieNetUserById.html#operation_get_User-GetBungieNetUserById
+function getBungieUser(id){
   var path = bungieRoot+"/User/GetBungieNetUserById/"+id+"/";
-  return getRequestAuth(path,token);
+  return getRequest(path);
 }
 exports.getBungieUser = getBungieUser;
-function searchBungieuser(bungieID){
-  path = bungieRoot+"/User/SearchUsers/?"+bungieID;
-  return getRequest(path);
-}
-exports.searchBungieuser = searchBungieuser;
-function getCredentialsforAccount(membership_id){
-  var path = bungieRoot+"/User/GetCredentialTypesForTargetAccount/"+membership_id+"/";
-  return getRequest(path);
-}
-exports.getCredentialsforAccount = getCredentialsforAccount;
-function getThemesAvailable(membership_id){
-  path = bungieRoot+"/User/GetAvailableThemes/";
-  return getRequest(path);
-}
-exports.getThemesAvailable = getThemesAvailable;
+
+//Obtains a list of accounts associated with the given id and type parameter.
+//https://bungie-net.github.io/multi/operation_get_User-GetMembershipDataById.html#operation_get_User-GetMembershipDataById
 function getBungieMembershipData(membership_id,memType){
   path = bungieRoot+"/User/GetMembershipsById/"+membership_id+"/"+memType+"/";
   return getRequest(path);
 }
 exports.getBungieMembershipData = getBungieMembershipData;
+
+//obtains basic bnet user data on the user identified by the token passed in the request.
+//Only works for users that have been authorized and given an access token by the bungie API.
+//https://bungie-net.github.io/multi/operation_get_User-GetMembershipDataForCurrentUser.html#operation_get_User-GetMembershipDataForCurrentUser
 function getBungieCurrentUserData(token){
   var path = bungieRoot+"/User/GetMembershipsForCurrentUser/";
   return getRequestAuth(path,token);
 };
 exports.getBungieCurrentUserData = getBungieCurrentUserData;
-function getBungieMemberDataviaCredential(crType,credential){
-  path = bungieRoot+"/User/GetMembershipFromHardLinkedCredential/"+crType+"/"+credential+"/";
-  return getRequest(path);
-}
-exports.getBungieMemberDataviaCredential = getBungieMemberDataviaCredential;
+
+//obtains the static "definition" of an D2 entity, using the type & hash id of the entity.
+//Note: beta endpoint according to D2 API, should be used sparingly.
+//https://bungie-net.github.io/multi/operation_get_Destiny2-GetDestinyEntityDefinition.html#operation_get_Destiny2-GetDestinyEntityDefinition
 function getDestinyEntityDefinition(entityType,hashID){
   path = bungieRoot+"/Destiny2/Manifest/"+entityType+"/"+hashID+"/";
   return getRequest(path);
 }
 exports.getDestinyEntityDefinition = getDestinyEntityDefinition;
+//obtains basic info about any/all profiles linked to given parameters.
+//Note: Does not return linked profiles user has specifically set to private.
+//Note: Passed ID/type can be of either bnet or D2 membership
+//https://bungie-net.github.io/multi/operation_get_Destiny2-GetLinkedProfiles.html#operation_get_Destiny2-GetLinkedProfiles
 function getLinkedProfiles(type,membership_id){
   var path =bungieRoot+"/Destiny2/"+type+"/Profile/"+membership_id+"/LinkedProfiles/";
   return getRequest(path);
 };
 exports.getLinkedProfiles = getLinkedProfiles;
+//obtains all requested data on the requested profile.
+//Data requested is determined by the components passed into the components parameter.
+//https://bungie-net.github.io/multi/operation_get_Destiny2-GetProfile.html#operation_get_Destiny2-GetProfile
 function getDestinyProfile(type, d2ID, components){
   var params = combineComponentString(components);
   var path =bungieRoot+"/Destiny2/"+type+"/Profile/"+d2ID+"/"+"?"+params.toString();
   return getRequest(path);
 };
 exports.getDestinyProfile = getDestinyProfile;
+
+//Functions exactly as getDestinyProfile(), however, it also passes the access token as an
+//authentication for the bungie API.
+//https://bungie-net.github.io/multi/operation_get_Destiny2-GetProfile.html#operation_get_Destiny2-GetProfile
 function getDestinyProfileAuth(type, d2ID, components, token){
   var params = combineComponentString(components);
   var path =bungieRoot+"/Destiny2/"+type+"/Profile/"+d2ID+"/"+"?"+params.toString();
   return getRequestAuth(path,token);
 };
 exports.getDestinyProfileAuth = getDestinyProfileAuth;
+//obtains all requested info on the corresponding character ID of the passed profile
+//Note: Info requested is determined by the components parameter.
 function getCharacter(type, d2ID,characterID,components){
   var path = bungieRoot+"/Destiny2/"+type+"/Profile/"+d2ID+"/Character/"+characterID+"/";
   return getRequest(path);
 };
 exports.getCharacter = getDestinyProfile;
-
+//obtains requested info of a specific Item in possession of a passed profile.
+//Note: Info requested is determined by the components parameter.
 function getItem(type, d2ID, itemID, components){
   var params= combineComponentString(components);
   var path = bungieRoot+"/Destiny2/"+type+"/Profile/"+d2ID+"/Item/"+itemID+"/?"+params;
   return getRequest(path);
 };
 exports.getItem = getItem;
-//Requests of the POST Type.
+
+//BASIC REQUESTS
 async function postRequest(path,body,token){
   return axios({
     method:"POST",
@@ -127,8 +141,7 @@ function getRequestAuth(path,token){
   });
 }
 
-
-//Other useful functions that I haven't gotten around to wanting to do.
+//Requests a new access token from the bungie API using an avaiable refresh token.
 function tokenRefresh(token){
   console.log("access token expired, requesting a new one");
   var body = new URLSearchParams();
@@ -140,10 +153,11 @@ function tokenRefresh(token){
     method:"POST",
     url: bungieTokURL,
     headers: {"X-API-Key":process.env.Bungie_API_KEY},
-    data: body
+    data: body,
   });
 }
 exports.tokenRefresh = tokenRefresh;
+//Requests an access token from the bungie API, using application credentials obtained via bungie
 async function tokenRequest(request){
   request.session.data.tokenData.access_token = "sorry bungi, i just wanna see what this error returns.";
   var body = new URLSearchParams();
@@ -161,6 +175,7 @@ async function tokenRequest(request){
 };
 exports.tokenRequest = tokenRequest;
 
+//Parses data of requests made to bungie API endpoints that return bnet user information.
 function parseBungieCurrentUserDataResponse(data){
   //console.log(data);
   var memberships = {};
@@ -174,6 +189,10 @@ function parseBungieCurrentUserDataResponse(data){
 }
 exports.parseBungieCurrentUserDataResponse = parseBungieCurrentUserDataResponse;
 
+//Loads the current d2 manifest from bungie api and saves to root.
+//Note: the manifest file as a whole is large enough to crash notepad,
+//so this splits each piece of the manifest into it's own json file so it can be
+//read, but also saves it as a whole json so it is easy to import into code later.
 function loadManifest(){
   var path =bungieRoot+"/Destiny2/Manifest/";
   getRequest(path).then(function(result){
@@ -199,6 +218,9 @@ function loadManifest(){
 }
 exports.loadManifest = loadManifest;
 
+//used to parse incoming component data from the bungie api.
+//Requires the list of components used in the api request, and the data returned from said request.
+//sends component data to prebuilt functions, which structure the data and return it here afterwards.
 function parseComponentResponses(data,components){
   console.log("Parsing the following components:"+ components);
   var parsedComponents = {};
@@ -235,6 +257,7 @@ function parseComponentResponses(data,components){
 }
 exports.parseComponentResponses = parseComponentResponses;
 
+//Used to overwrite token data currently stored inside the user's cookie. 
 function saveTokenData(request, tokenData){
   request.session.data.tokenData = tokenData;
   request.session.data.tokenData.tokenExpiration = new Date().getTime()+(tokenData.expires_in*1000);

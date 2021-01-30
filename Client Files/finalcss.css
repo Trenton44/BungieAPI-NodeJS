@@ -38,11 +38,10 @@ body {
   display: flex;
 }
 #character-info {
-  width: 10%;
-  height: 80%;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
+  text-align: center;
 }
 
 #character-header > div > h1{

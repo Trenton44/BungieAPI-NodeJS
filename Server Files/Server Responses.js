@@ -14,6 +14,7 @@ var EquipmentItemResponse = function(item){
   return {
     itemhash: item.itemHash,
     itemID: item.itemInstanceId,
+    location: item.location,
     hashData: {
       displayProperties: item.itemHashData.displayProperties,
       damageType: D2Manifest.DestinyDamageTypeDefinition[item.itemHashData.defaultDamageTypeHash],
@@ -59,9 +60,16 @@ var InventoryItemsResponse = function(items){
     }
     //console.log(itemscopy[i]);
     if(items[i].itemHashData.equippable){
-      splitInventory.equippable[equipCounter] = EquipmentItemResponse(itemscopy[i]);
-      splitInventory.equippable[equipCounter].currentlyEquipped = false;
-      equipCounter+= 1;
+      console.log(items[i].location);
+      if(items[i].location == 1){
+        splitInventory.equippable[equipCounter] = EquipmentItemResponse(itemscopy[i]);
+        splitInventory.equippable[equipCounter].currentlyEquipped = false;
+        equipCounter+= 1;
+      }
+      else {
+        console.log("This item exists somewhere other than the player's inventory.");
+        continue;
+      }
     }
     else {
       splitInventory.unequippable[nonquipCounter] = InventoryItemResponse(itemscopy[i]);

@@ -2,7 +2,13 @@ var window;
 var bungieCommon = "https://www.bungie.net";
 var characterIDs;
 var counter = 0;
-
+var placeholderItem = {
+  hashData: {
+    displayProperties: {
+      icon: "",
+    },
+  },
+};
 function equipmentlist(htmlElement){
   this.element = window.document.getElementById(htmlElement);
   this.container = window.document.getElementById(htmlElement+"-container");
@@ -23,7 +29,7 @@ function equipmentlist(htmlElement){
   }
   this.addItem = function(value){
     if(this._equipment.length == 0){
-      this._equipment[0] = "placeholder";
+      this._equipment[0] = placeholderItem;
     }
     var item = window.document.createElement("img");
     item.id = htmlElement+this._equipment.length;
@@ -112,12 +118,12 @@ function equipment(){
         if(result[i].hashData.equipHash == 1506418338){ parent.slots.artifact(result[i]); }
         else { parent.slots[parent.hashKeys[result[i].hashData.equipHash]].equip(result[i]); }
       }
-      var path = "/character/"+parent.id+"/equipmentInventory";
-      fetchRequest(path).then(function(result){
-        for(i in result){
-          parent.slots[parent.hashKeys[result[i].hashData.equipHash]].addItem(result[i]);
-        }
-      });
+    });
+    var path = "/character/"+parent.id+"/equipmentInventory";
+    fetchRequest(path).then(function(result){
+      for(i in result){
+        parent.slots[parent.hashKeys[result[i].hashData.equipHash]].addItem(result[i]);
+      }
     });
   };
 };
@@ -318,5 +324,7 @@ function equipRequest(item){
   var path = "/character/"+characterIDs[counter]+"/equipItem/"+item;
   fetchRequest(path).then(function(result){
     character.equipment.loadEquipment(character.equipment, character.id);
+  }).catch(function(error){
+    console.log("There was an error equipping the item.");
   });
 }
