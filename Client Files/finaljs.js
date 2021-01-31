@@ -27,6 +27,8 @@ function Item(){
     test.id = elementID;
     this.container.append(test);
     this.element = test;
+    var localthis = this;
+    this.element.oncontextmenu = function(event){localthis.clickEvent(event)};
     this.changeData(data);
   };
   this.changeData = function(value){
@@ -35,6 +37,16 @@ function Item(){
   };
   this.changeElement = function(value){
     this.element = value;
+  };
+  this.clickEvent = function(event){
+    event.preventDefault();
+    console.log(event);
+    var xy = this.element.getBoundingClientRect();
+    var popup = window.document.getElementById("popup-item-menu");
+    popup.style.top = xy.bottom;
+    popup.style.left = xy.right;
+    popup.style.display = "block";
+
   };
 }
 //Constructor function that loads a equipment list "object", so to speak.
@@ -268,8 +280,28 @@ function loadCharacter(value){
   character.setID(characterIDs[counter]);
   character.loadGeneral();
   character.equipment.loadEquipment();
+  console.log("Counter: "+counter);
+  loadPopupCharacters(counter);
+  window.document.body.oncontextmenu = function(event){
+    event.preventDefault();
+    if(event.path.length <= 6){
+      window.document.getElementById("popup-item-menu").style.display = "none";
+    }
+  };
 }
-
+async function loadPopupCharacters(indexUsed){
+  var temp = Array.from(characterIDs);
+  temp.splice(indexUsed,1);
+  for(var i = 0; i< temp.length; i++){
+    var path = "/character/"+temp[i]+"/general";
+    await fetchRequest(path).then(function(result){
+      console.log(result);
+      console.log(i+2);
+      var img = window.document.getElementById("c"+(i+2)+"-icon");
+      img.src = bungieCommon+result.emblem.emblemExpanded.displayProperties.icon;
+    });
+  }
+};
 //Fetch Request function
 async function fetchRequest(path){
   var request = new Request(path, {
