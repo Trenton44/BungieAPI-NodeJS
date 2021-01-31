@@ -8,7 +8,7 @@ const fs = require('fs');
 const manifestRoot = path.join(__dirname,"..\\","manifestData");
 //const D2Manifest = require(manifestRoot+"/D2Manifest2.js").D2Manifest;
 const D2Manifest = require(manifestRoot+"/d2manifest.json");
-const d2components = require("./D2Components.js");
+const D2Components = require("./D2Components.js");
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
@@ -103,10 +103,17 @@ exports.getDestinyProfileAuth = getDestinyProfileAuth;
 //obtains all requested info on the corresponding character ID of the passed profile
 //Note: Info requested is determined by the components parameter.
 function getCharacter(type, d2ID,characterID,components){
-  var path = bungieRoot+"/Destiny2/"+type+"/Profile/"+d2ID+"/Character/"+characterID+"/";
+  var params = combineComponentString(components);
+  var path = bungieRoot+"/Destiny2/"+type+"/Profile/"+d2ID+"/Character/"+characterID+"/"+"?"+params.toString();
   return getRequest(path);
 };
 exports.getCharacter = getDestinyProfile;
+function getCharacterAuth(type, d2ID,characterID,components, token){
+  var params = combineComponentString(components);
+  var path = bungieRoot+"/Destiny2/"+type+"/Profile/"+d2ID+"/Character/"+characterID+"/"+"?"+params.toString();
+  return getRequestAuth(path, token);
+};
+exports.getCharacterAuth = getCharacterAuth;
 //obtains requested info of a specific Item in possession of a passed profile.
 //Note: Info requested is determined by the components parameter.
 function getItem(type, d2ID, itemID, components){
@@ -221,43 +228,27 @@ exports.loadManifest = loadManifest;
 //used to parse incoming component data from the bungie api.
 //Requires the list of components used in the api request, and the data returned from said request.
 //sends component data to prebuilt functions, which structure the data and return it here afterwards.
-function parseComponentResponses(data,components){
-  console.log("Parsing the following components:"+ components);
-  var parsedComponents = {};
-  for(i in components){
-    console.log();
-    console.log("Currently parsing: "+components[i]);
-    var componentMethod = d2components.components[components[i]];
-    console.log("Method used by component: "+componentMethod);
-    switch(components[i]){
-      case "500":
-        var datapassed = d2components[componentMethod](data.profileKiosks,data.characterKiosks);
-        break;
-      case "600":
-        var datapassed = d2components[componentMethod](data.profileCurrencyLookups,data.characterCurrencyLookups);
-        break;
-      case "700":
-        var datapassed = d2components[componentMethod](data.profilePresentationNodes,data.characterPresentationNodes);
-        break;
-      case "800":
-        var datapassed = d2components[componentMethod](data.profileCollectibles,data.characterCollectibles);
-        break;
-      case "900":
-        var datapassed = d2components[componentMethod](data.profileRecords,data.characterRecords);
-        break;
-      default:
-        var datapassed = d2components[componentMethod](data[componentMethod]);
-        break;
-    }
-    parsedComponents[componentMethod] = datapassed;
-    console.log("Component has been parsed");
+function parseCharacterComponents(data){
+  var componentTypes = Object.keys(data);
+  var parsedData = {};
+  for(i in componentTypes){
+    var name = componentTypes[i];
+    parsedData[name] = D2Components[name](data[name]);
   }
-  console.log("All components have been parsed, returning data.");
-  return parsedComponents;
+  return parsedData;
+};
+exports.parseCharacterComponents = parseCharacterComponents;
+function parseProfileComponents(data){
+  var componentTypes = Object.keys(data);
+  var parsedData = {};
+  for(i in componentTypes){
+    var name = componentTypes[i];
+    parsedData[name] = D2Components[name](data[name]);
+  }
+  return parsedData;
 }
-exports.parseComponentResponses = parseComponentResponses;
-
-//Used to overwrite token data currently stored inside the user's cookie. 
+exports.parseProfileComponents = parseProfileComponents;
+//Used to overwrite token data currently stored inside the user's cookie.
 function saveTokenData(request, tokenData){
   request.session.data.tokenData = tokenData;
   request.session.data.tokenData.tokenExpiration = new Date().getTime()+(tokenData.expires_in*1000);

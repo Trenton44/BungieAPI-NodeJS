@@ -86,6 +86,7 @@ app.get("/bapi", function(request,response){
 app.use(authorizationCheck);
 app.get("/",async function(request,response){
   let userdata = await getBasicBnetInfo(request);
+  console.log(userdata);
   if(userdata !== null){
     request.session.data.userdata = userdata
     response.sendFile(webpageRoot+"/finalhtml.html");
@@ -97,47 +98,38 @@ app.get("/",async function(request,response){
 //Returns a list of the character ID's of the current d2 profile.
 app.get("/characterids",async function(request, response){
   var components = ["100"];
-  var data = await componentDataRequest(request, components);
+  var data = await profileComponentRequest(request, components);
   response.status(200).json(data.profile.characterIds);
 });
 //Sends request to GetProfile endpoint, cleans up result,
 //returns general information about the requested character
 app.get("/character/:id/general",async function(request, response){
   var components = ["200"];
-  var data = await componentDataRequest(request, components);
   var cID = request.params.id;
-  var returnData = ServerResponse.CharacterResponse(data.characters[cID]);
+  var data = await characterComponentRequest(request, components,cID);
+  var returnData = ServerResponse.CharacterResponse(data.character);
   response.status(200).json(returnData);
 });
 //Sends request to GetProfile endpoint, cleans up result, and
 //returns list of equipment character currently has equipped.
 app.get("/character/:id/equipment",async function(request,response){
-  var components = ["205"];
-  var data = await componentDataRequest(request, components);
+  var components = ["201", "205"];
   var cID = request.params.id;
-  console.log("Equipment get: ");
-  console.log(data);
-  var returnData = ServerResponse.EquipmentItemsResponse(data.characterEquipment[cID]);
-  //var returnData = data.characterEquipment[cID];
+  var data = await characterComponentRequest(request, components,cID);
+  var returnData = {
+    equipment: ServerResponse.EquipmentItemsResponse(data.equipment),
+    inventory: ServerResponse.InventoryItemsResponse(data.inventory).equippable,
+  };
   response.status(200).json(returnData);
 });
 //sents request to GetProfile endpoint, cleans up result, and
 //returns entire character inventory
 app.get("/character/:id/inventory",async function(request,response){
   var components = ["201"];
-  var data = await componentDataRequest(request, components);
   var cID = request.params.id;
-  var returnData = ServerResponse.InventoryItemsResponse(data.characterInventories[cID]);
+  var data = await characterComponentRequest(request, components,cID);
+  var returnData = ServerResponse.InventoryItemsResponse(data.inventory);
   response.status(200).json(returnData);
-});
-//Sends request to GetProfile endpoint, cleans up result and
-//returns inventory items that are able to be equipped to a character equipment slot.
-app.get("/character/:id/equipmentInventory",async function(request,response){
-  var components = ["201"];
-  var data = await componentDataRequest(request, components);
-  var cID = request.params.id;
-  var returnData = ServerResponse.InventoryItemsResponse(data.characterInventories[cID]);
-  response.status(200).json(returnData.equippable);
 });
 
 //Sends a POST request to bungie API EquipItem endpoint, returns result of request.
@@ -158,6 +150,14 @@ app.get("/character/:Cid/equipItem/:Iid",async function(request, response){
     response.status(400).json(error);
   });
 });
+/*app.get("/test/:id",async function(request,response){
+
+  var components = Object.keys(d2components.components);
+  var cID = request.params.id;
+  var data = await characterComponentRequest(request, components, cID);
+  var data2 = await profileComponentRequest(request, components);
+  response.status(200).json({characterLevel: data, profileLevel: data2,});
+});*/
 httpsServer.listen(process.env.PORT);
 
 function verifyState(request){
@@ -172,14 +172,29 @@ function verifyState(request){
   }
 }
 //Makes bungie api requests, then parses and returns data.
-function componentDataRequest(request, components){
+function characterComponentRequest(request, components,cID){
+  var userdata =request.session.data.userdata;
+  var token = request.session.data.tokenData.access_token;
+  var memType = userdata[userdata.primaryMembershipId].membershipType;
+  var d2ID = userdata.primaryMembershipId;
+  return d2api.getCharacterAuth(memType,d2ID,cID,components,token).then(function(result){
+    console.log("accessed");
+    var d2data = d2api.parseCharacterComponents(result.data.Response);
+    console.log("Requested data retrieved from bungie.");
+    return d2data;
+  }).catch(function(error){
+    console.log(error);
+    return false;
+  });
+};
+function profileComponentRequest(request, components){
   var userdata =request.session.data.userdata;
   var token = request.session.data.tokenData.access_token;
   var memType = userdata[userdata.primaryMembershipId].membershipType;
   var d2ID = userdata.primaryMembershipId;
   return d2api.getDestinyProfileAuth(memType,d2ID,components,token).then(function(result){
     console.log("accessed");
-    var d2data = d2api.parseComponentResponses(result.data.Response,components);
+    var d2data = d2api.parseProfileComponents(result.data.Response);
     console.log("Requested data retrieved from bungie.");
     return d2data;
   }).catch(function(error){

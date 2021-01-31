@@ -10,7 +10,7 @@ const assetRoot = path.join(__dirname,"..\\","assets");
 const D2Manifest = require(manifestRoot+"/d2manifest.json");
 const ServerResponse = require(serverRoot+"/Server Responses.js");
 
-const components = {
+/*const components = {
   "100": "profile",
   "101": "vendorReceipts",
   "102": "profileInventory",
@@ -49,195 +49,286 @@ const components = {
 };
 exports.components = components;
 
-//The following functions are responsible for taking a component input from a d2api response
-//and building it with relevant data from the manifest files. makes it easy to access later by building
-//it as soon as it's recieved.
-var profile = function(data){
-  data = data.data;
+//CHARACTER LEVEL COMPONENTS
+var activities = function(data){
+  var data = data.data;
   return data;
 };
-exports.profile = profile;
+exports.activities = activities;
 
-var vendorReceipts = function(data){
-  data = data.data;
-  return data;
-};
-exports.vendorReceipts = vendorReceipts;
-
-var profileInventory = function(data){
-  data = data.data;
-  return data;
-};
-exports.profileInventory = profileInventory;
-
-var profileCurrencies = function(data){
-  data = data.data;
-  return data;
-};
-exports.profileCurrencies = profileCurrencies;
-
-var profileProgression = function(data){
-  data = data.data;
-  return data;
-};
-exports.profileProgression = profileProgression;
-
-var platformSilver = function(data){
-  data = data.data;
-  return data;
-};
-exports.platformSilver = platformSilver;
-
-var characters = function(data){
-  characterlist = data.data;
-  for(i in characterlist){
-    var character = characterlist[i];
-    character.class = D2Manifest.DestinyClassDefinition[character.classHash];
-    character.gender = D2Manifest.DestinyGenderDefinition[character.genderHash];
-    character.race = D2Manifest.DestinyRaceDefinition[character.raceHash];
+var character = function(data){
+  var data = data.data;
+    data.class = D2Manifest.DestinyClassDefinition[data.classHash];
+    data.gender = D2Manifest.DestinyGenderDefinition[data.genderHash];
+    data.race = D2Manifest.DestinyRaceDefinition[data.raceHash];
     var statsinfo = {};
-    for(z in character.stats){
+    for(z in data.stats){
       statsinfo[z] = {};
-      statsinfo[z].value = character.stats[z];
+      statsinfo[z].value = data.stats[z];
       statsinfo[z].info = D2Manifest.DestinyStatDefinition[z];
     }
-    character.stats = statsinfo;
-    character.emblemExpanded = D2Manifest.DestinyInventoryItemDefinition[character.emblemHash];
-  }
-  return characterlist;
+    data.stats = statsinfo;
+    data.emblemExpanded = D2Manifest.DestinyInventoryItemDefinition[data.emblemHash];
+  return data;
 };
-exports.characters = characters;
+exports.character = character;
 
-var characterInventories = function(data){
-  var characterlist = data.data;
-  for(i in characterlist){
-    var character = characterlist[i].items;
-    for(j in character){
-      var item = character[j];
-      item.itemHashData = D2Manifest.DestinyInventoryItemDefinition[item.itemHash];
-      item.bucketHashData = D2Manifest.DestinyInventoryBucketDefinition[item.bucketHash];
-    }
-    characterlist[i] = character;
+var collectibles = function(data){
+  var data = data.data;
+  return data;
+};
+exports.collectibles = collectibles;
+
+var currencyLookups = function(data){
+  var data = data.data;
+  return data;
+};
+exports.currencyLookups = currencyLookups;
+
+var equipment = function(data){
+  var data = data.data;
+  var itemlist = data.items;
+  for(z in itemlist){
+    itemlist[z].itemHashData = D2Manifest.DestinyInventoryItemDefinition[itemlist[z].itemHash];
+    itemlist[z].bucketHashData = D2Manifest.DestinyInventoryBucketDefinition[itemlist[z].bucketHash];
   }
+  data = itemlist;
+  console.log("all data for characterEquipment has been built.");
+  return data;
+};
+exports.equipment = equipment;
+
+var inventory = function(data){
+  var data = data.data;
+  var itemlist = data.items;
+  for(z in itemlist){
+    itemlist[z].itemHashData = D2Manifest.DestinyInventoryItemDefinition[itemlist[z].itemHash];
+    itemlist[z].bucketHashData = D2Manifest.DestinyInventoryBucketDefinition[itemlist[z].bucketHash];
+  }
+  data = itemlist;
   console.log("character inventory component has been completed");
-  return characterlist;
+  return data;
 };
-exports.characterInventories = characterInventories;
+exports.inventory = inventory;
 
-var characterProgressions = function(data){
-  characterlist = data.data;
-  return characterlist;
+var itemComponents = function(data){
+  var data = data;
+  return data;
 };
-exports.characterProgressions = characterProgressions;
+exports.itemComponents = itemComponents;
 
-var characterRenderData = function(data){
-  characterlist = data.data;
-  return characterlist;
+var kiosks = function(data){
+  var data = data.data;
+  return data;
 };
-exports.characterRenderData = characterRenderData;
+exports.kiosks = kiosks;
 
+var plugSets = function(data){
+  var data = data.data;
+  return data;
+};
+exports.plugSets = plugSets;
+
+var presentationNodes = function(data){
+  var data = data.data;
+  return data;
+};
+exports.presentationNodes = presentationNodes;
+
+var progressions = function(data){
+  var data = data.data;
+  return data;
+};
+exports.progressions = progressions;
+
+var records = function(data){
+  var data = data.data;
+  return data;
+};
+exports.records = records;
+
+var renderData = function(data){
+  var data = data.data;
+  return data;
+};
+exports.renderData = renderData;
+
+var uninstancedItemComponents = function(data){
+  var data = data;
+  return data;
+};
+exports.uninstancedItemComponents = uninstancedItemComponents;
+
+//PROFILE LEVEL COMPONENT Responses
 var characterActivities = function(data){
-  characterlist = data.data;
-  return characterlist;
+  var data = data.data;
+  return data;
 };
 exports.characterActivities = characterActivities;
+
+var characterCollectibles = function(data){
+  var data = data.data;
+  return data;
+};
+exports.characterCollectibles = characterCollectibles;
+
+var characterCurrencyLookups = function(data){
+  var data = data.data;
+  return data;
+};
+exports.characterCurrencyLookups = characterCurrencyLookups;
 
 var characterEquipment = function(data){
   var characterlist = data.data;
   for(i in characterlist){
-    var itemlist = characterlist[i].items;
-    //console.log("fetching data for "+i+"'s equipment.");
-    var counter = 0;
-    for(z in itemlist){
-      //console.log("Building data for item "+counter);
-      itemlist[z].itemHashData = D2Manifest.DestinyInventoryItemDefinition[itemlist[z].itemHash];
-      itemlist[z].bucketHashData = D2Manifest.DestinyInventoryBucketDefinition[itemlist[z].bucketHash];
-      counter += 1;
-    }
-    characterlist[i] = itemlist;
+    characterlist[i] = equipment({data: characterlist[i]});
   }
   console.log("all data for characterEquipment has been built.");
   return characterlist;
 };
 exports.characterEquipment = characterEquipment;
 
+var characterInventories = function(data){
+  var characterlist = data.data;
+  for(i in characterlist){
+    characterlist[i] = inventory({data: characterlist[i]});
+  }
+  console.log("character inventory component has been completed");
+  return characterlist;
+};
+exports.characterInventories = characterInventories;
+
+var characterKiosks = function(data){
+  var data = data.data;
+  return data;
+};
+exports.characterKiosks = characterKiosks;
+
+var characterPlugSets = function(data){
+  var data = data.data;
+  return data;
+};
+exports.characterPlugSets = characterPlugSets;
+
+var characterPresentationNodes = function(data){
+  var data = data.data;
+  return data;
+};
+exports.characterPresentationNodes = characterPresentationNodes;
+
+var characterProgressions = function(data){
+  var data = data.data;
+  return data;
+};
+exports.characterProgressions = characterProgressions;
+
+var characterRenderData = function(data){
+  var data = data.data;
+  return data;
+};
+exports.characterRenderData = characterRenderData;
+
+var characterRecords = function(data){
+  var data = data.data;
+  return data;
+};
+exports.characterRecords = characterRecords;
+
+var characterUninstancedItemComponents = function(data){
+  var data = data;
+  return data;
+};
+exports.characterUninstancedItemComponents = characterUninstancedItemComponents;
+
+var characters = function(data){
+  var characterlist = data.data;
+  for(i in characterlist){
+    characterlist[i] = character({data: characterlist[i]});
+  }
+  return characterlist;
+};
+exports.characters = characters;
+
 var itemComponents = function(data){
+  var data = data;
   return data;
 };
 exports.itemComponents = itemComponents;
 
-var vendors = function(data){
+var metrics = function(data){
+  var data = data.data;
   return data;
 };
-exports.vendors = vendors;
+exports.metrics = metrics;
 
-var vendorCategories = function(data){
+var platformSilver = function(data){
+  var data = data.data;
   return data;
 };
-exports.vendorCategories = vendorCategories;
+exports.platformSilver = platformSilver;
 
-var vendorSales = function(data){
+var profile = function(data){
+  var data = data.data;
   return data;
 };
-exports.vendorSales = vendorSales;
+exports.profile = profile;
 
-var kiosks = function(datap,datac){
-  var data = {};
-  try{  data.profileKiosks= datap.data;  }
-  catch(e){ console.log("profileKiosks was nonexistent");  }
-  try{  data.characterKiosks= datac.data; }
-  catch(e){  console.log("characterKiosks was nonexistent");  }
+var profileCollectibles = function(data){
+  var data = data.data;
   return data;
 };
-exports.kiosks = kiosks;
+exports.profileCollectibles = profileCollectibles;
 
-var currencyLookups = function(datap,datac){
-  var data = {};
-  try{  data.profileCurrencyLookups= datap.data;  }
-  catch(e){ console.log("profileCurrencyLookups was nonexistent");  }
-  try{  data.characterCurrencyLookups= datac.data; }
-  catch(e){  console.log("characterCurrencyLookups was nonexistent");  }
+var profileCurrencies = function(data){
+  var data = data.data;
   return data;
 };
-exports.currencyLookups = currencyLookups;
+exports.profileCurrencies = profileCurrencies;
 
-var presentationNodes = function(datap,datac){
-  var data = {};
-  try{  data.profilePresentationNodes= datap.data;  }
-  catch(e){ console.log("profilePresentationNodes was nonexistent");  }
-  try{  data.characterPresentationNodes= datac.data; }
-  catch(e){  console.log("characterPresentationNodes was nonexistent");  }
+var profileInventory = function(data){
+  var data = data.data;
   return data;
 };
-exports.presentationNodes = presentationNodes;
+exports.profileInventory = profileInventory;
 
-var collectibles = function(datap,datac){
-  var data = {};
-  try{  data.profileCollectibles= datap.data;  }
-  catch(e){ console.log("profileCollectibles was nonexistent");  }
-  try{  data.characterCollectibles= datac.data; }
-  catch(e){  console.log("characterCollectibles was nonexistent");  }
+var profileKiosks = function(data){
+  var data = data.data;
   return data;
 };
-exports.collectibles = collectibles;
+exports.profileKiosks = profileKiosks;
 
-var records = function(datap,datac){
-  var data = {};
-  try{  data.profileRecords= datap.data;  }
-  catch(e){ console.log("profileRecords was nonexistent");  }
-  try{  data.characterRecords= datac.data; }
-  catch(e){  console.log("characterRecords was nonexistent");  }
+var profilePlugSets = function(data){
+  var data = data.data;
   return data;
 };
-exports.records = records;
+exports.profilePlugSets = profilePlugSets;
+
+var profilePresentationNodes = function(data){
+  var data = data.data;
+  return data;
+};
+exports.profilePresentationNodes = profilePresentationNodes;
+
+var profileProgression = function(data){
+  var data = data.data;
+  return data;
+};
+exports.profileProgression = profileProgression;
+
+var profileRecords = function(data){
+  var data = data.data;
+  return data;
+};
+exports.profileRecords = profileRecords;
 
 var profileTransitoryData = function(data){
+  var data = data;
   return data;
 };
 exports.profileTransitoryData = profileTransitoryData;
 
-var metrics = function(data){
-  var characterlist = data.data;
-  return characterlist;
+var vendorReceipts = function(data){
+  var data = data.data;
+  return data;
 };
-exports.metrics = metrics;
+exports.vendorReceipts = vendorReceipts;

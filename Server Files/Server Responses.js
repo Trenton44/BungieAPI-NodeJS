@@ -60,16 +60,9 @@ var InventoryItemsResponse = function(items){
     }
     //console.log(itemscopy[i]);
     if(items[i].itemHashData.equippable){
-      console.log(items[i].location);
-      if(items[i].location == 1){
-        splitInventory.equippable[equipCounter] = EquipmentItemResponse(itemscopy[i]);
-        splitInventory.equippable[equipCounter].currentlyEquipped = false;
-        equipCounter+= 1;
-      }
-      else {
-        console.log("This item exists somewhere other than the player's inventory.");
-        continue;
-      }
+      splitInventory.equippable[equipCounter] = EquipmentItemResponse(itemscopy[i]);
+      splitInventory.equippable[equipCounter].currentlyEquipped = false;
+      equipCounter+= 1;
     }
     else {
       splitInventory.unequippable[nonquipCounter] = InventoryItemResponse(itemscopy[i]);
