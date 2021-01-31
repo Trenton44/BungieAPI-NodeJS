@@ -14,7 +14,7 @@ var EquipmentItemResponse = function(item){
   return {
     itemhash: item.itemHash,
     itemID: item.itemInstanceId,
-    location: item.location,
+    location: item.bucketHashData.location,
     hashData: {
       displayProperties: item.itemHashData.displayProperties,
       damageType: D2Manifest.DestinyDamageTypeDefinition[item.itemHashData.defaultDamageTypeHash],
@@ -60,9 +60,11 @@ var InventoryItemsResponse = function(items){
     }
     //console.log(itemscopy[i]);
     if(items[i].itemHashData.equippable){
-      splitInventory.equippable[equipCounter] = EquipmentItemResponse(itemscopy[i]);
-      splitInventory.equippable[equipCounter].currentlyEquipped = false;
-      equipCounter+= 1;
+      if(items[i].bucketHashData.location == 1){
+        splitInventory.equippable[equipCounter] = EquipmentItemResponse(itemscopy[i]);
+        splitInventory.equippable[equipCounter].currentlyEquipped = false;
+        equipCounter+= 1;
+      }
     }
     else {
       splitInventory.unequippable[nonquipCounter] = InventoryItemResponse(itemscopy[i]);
@@ -108,55 +110,3 @@ var CharacterResponse = function(item){
   };
 };
 exports.CharacterResponse = CharacterResponse;
-/*
-}*/
-#character-header {
-  position: relative;
-  width: 100%;
-  height: 30%;
-}
-#yes-man{
-  width: 100%;
-  height:100%;
-}
-#character-info {
-  width: 30%;
-  height: 100%;
-  float: left;
-}
-#emblem-icon {
-  position:absolute;
-  z-index: 1;
-  height: 80%;
-  top: 50%;
-  transform: translate(0,-50%);
-  left: 0%;
-}
-#emblem-back {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  z-index: -1;
-}
-#subclass-container{
-  display: flex;
-  flex-direction: row-reverse;
-  height: 100%;
-  float: right;
-}
-#subclass {
-  height: 60%;
-}
-#subclass-equipment {
-  height: 100%;
-  display: none;
-  flex-direction: row;
-}
-#subclass-equipment > img {
-  height: 60%;
-}
-#subclass-container:hover >div {
-  display: flex;
-}

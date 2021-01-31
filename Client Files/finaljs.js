@@ -18,6 +18,9 @@ function Item(){
   this.container;
   this.data;
   this.element;
+  this.getData = function(){
+    return this.data;
+  }
   this.Initialize = function(container, elementID, data){
     this.container = container;
     var test = window.document.createElement("img");
@@ -25,7 +28,6 @@ function Item(){
     this.container.append(test);
     this.element = test;
     this.changeData(data);
-    this.element.addEventListener("click",equipRequest);
   };
   this.changeData = function(value){
     this.data = value;
@@ -43,20 +45,23 @@ function equipmentlist(htmlElement){
   this.equipmentContainer = window.document.getElementById(htmlElement+"-equipment"); //HTML Element containing all the non-equipped items.
   this._equipment = [];
   this._equipment.length = 9;
+  this.requestrunning = false;
   this.Initialize = function(){
     this._equipment[0] = new Item();
     this._equipment[0].element = this.element;
+    window.document.getElementById(htmlElement+"-primary-container").ondrop = this.swapItems;
     this.equip(placeholderItem());
     for(var i = 1; i < this._equipment.length; i++){
-      console.log(i);
       this._equipment[i] = new Item();
       this._equipment[i].Initialize(this.equipmentContainer,htmlElement+i,placeholderItem());
+      var temp = this;
+      this._equipment[i].element.ondblclick = function(event){temp.swapItems(event.srcElement);};
     }
-    console.log("Init of "+htmlElement+" finished. for confirmation: ");
-    console.log(this._equipment);
+    console.log("Init of "+htmlElement+" finished.");
   };
   this.equip = function(value){
     this._equipment[0].changeData(value);
+
   };
   this.newItems = function(values){
     for(i in values){
@@ -65,7 +70,6 @@ function equipmentlist(htmlElement){
     }
   };
   this.newItem = function(value){
-    console.log(this._equipment);
     for(var i = 1; i< this._equipment.length; i++){
       if(this._equipment[i].data.placeholder){
         value.placeholder = false;
@@ -74,6 +78,28 @@ function equipmentlist(htmlElement){
       }
     }
   };
+  this.swapItems = function(eventSource){
+    if(this.requestrunning){
+      console.log("A request is already in progress, please try again once the current one has resolved.");
+    }
+    else{
+      this.requestrunning = true;
+      var localthis = this;
+      var index = eventSource.id.slice(-1);
+      equipRequest(this._equipment[index].data).then(function(result){
+         var newEquip = localthis._equipment[index].getData();
+         var oldEquip = localthis._equipment[0].getData();
+         console.log(newEquip);
+         console.log(oldEquip);
+         localthis.equip(newEquip);
+         localthis._equipment[index].changeData(oldEquip);
+         localthis.requestrunning = false;
+      }).catch(function(error){
+        console.error("Uhhh, the equip request went horribly wrong..");
+        console.error(error);
+      });
+    }
+  }
   this.wipe = function(){
     for(i in this._equipment){
       this._equipment[i].changeData(placeholderItem());
@@ -227,6 +253,7 @@ function Initialize(value){
     console.log(result);
     characterIDs = result;
     character = new character();
+    character.equipment.Intitialize();
     loadCharacter(counter);
   });
 };
@@ -240,7 +267,6 @@ function loadCharacter(value){
   console.log(characterIDs[counter]);
   character.setID(characterIDs[counter]);
   character.loadGeneral();
-  character.equipment.Intitialize();
   character.equipment.loadEquipment();
 }
 
@@ -264,24 +290,13 @@ async function fetchImage(path){
   if(response.status >=200 && response.status < 300)
   {return response.body;}
   else
-  {return Promise.reject(new Error(response.statusText));}
+  {console.log(response);return Promise.reject(new Error(response));}
 };
 //Makes requests to server for equipping new items from existing non-equipped items.
-function equipRequest(){
-  console.log("equip request.");
-  var itemSlot = this.id.slice(0,this.id.length-1);
-  var itemIndex = this.id.slice(-1);
-  console.log(itemSlot);
-  var item = character.equipment.slots[itemSlot+"list"]._equipment[itemIndex];
-  console.log("Item in question: ");
-  console.log(item);
-  console.log("character id: "+characterIDs[counter]+" item id: "+item.data.itemID);
-  var path = "/character/"+characterIDs[counter]+"/equipItem/"+item.data.itemID;
-  fetchRequest(path).then(function(result){
-    character.equipment.loadEquipment(character.equipment, character.id);
-  }).catch(function(error){
-    console.log("There was an error equipping the item.");
-  });
+function equipRequest(itemData){
+  console.log("character id: "+characterIDs[counter]+" item id: "+itemData.itemID);
+  var path = "/character/"+characterIDs[counter]+"/equipItem/"+itemData.itemID;
+  return fetchRequest(path);
 }
 function test(id){
   var path = "/test/"+id;

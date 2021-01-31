@@ -4,7 +4,6 @@ body {
   margin: auto;
   padding: 0;
 }
-
 #character-header {
   position: relative;
   width: 100%;
@@ -54,10 +53,13 @@ body {
   display: none;
   flex-direction: row;
 }
-#subclass-equipment > img {
+#subclass-primary-container {
   height: 60%;
 }
-#subclass-container:hover >div {
+#subclass-primary-container > img {
+  height: 100%;
+}
+#subclass-container:hover > #subclass-equipment {
   display: flex;
 }
 .character-equipment{
@@ -85,6 +87,9 @@ body {
   left: -0%;
   width: 350%;
   padding-top: 20px;
+}
+.primary-item {
+  border-style: 10px solid white;
 }
 #next-button {
   height: 100%;
