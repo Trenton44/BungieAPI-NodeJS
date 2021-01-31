@@ -10,7 +10,7 @@ const assetRoot = path.join(__dirname,"..\\","assets");
 const D2Manifest = require(manifestRoot+"/d2manifest.json");
 const ServerResponse = require(serverRoot+"/Server Responses.js");
 
-/*const components = {
+const components = {
   "100": "profile",
   "101": "vendorReceipts",
   "102": "profileInventory",

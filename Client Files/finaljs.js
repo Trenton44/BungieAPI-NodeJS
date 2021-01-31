@@ -4,14 +4,37 @@ var characterIDs;
 var counter = 0;
 
 //A basic item so the reload() function inside of the equipment list doesn't lose it.
-var placeholderItem = {
-  hashData: {
-    displayProperties: {
-      icon: "",
+function placeholderItem(){
+  return {
+    placeholder: true,
+    hashData:{
+      displayProperties: {
+        icon: "",
+      },
     },
-  },
+  };
 };
-
+function Item(){
+  this.container;
+  this.data;
+  this.element;
+  this.Initialize = function(container, elementID, data){
+    this.container = container;
+    var test = window.document.createElement("img");
+    test.id = elementID;
+    this.container.append(test);
+    this.element = test;
+    this.changeData(data);
+    this.element.addEventListener("click",equipRequest);
+  };
+  this.changeData = function(value){
+    this.data = value;
+    this.element.src = bungieCommon+this.data.hashData.displayProperties.icon;
+  };
+  this.changeElement = function(value){
+    this.element = value;
+  };
+}
 //Constructor function that loads a equipment list "object", so to speak.
 //Handles updating and interfacing the html elements with the item data from the bungie API.
 function equipmentlist(htmlElement){
@@ -19,55 +42,56 @@ function equipmentlist(htmlElement){
   this.container = window.document.getElementById(htmlElement+"-container"); //HTML element containing the equipment+equipped slot
   this.equipmentContainer = window.document.getElementById(htmlElement+"-equipment"); //HTML Element containing all the non-equipped items.
   this._equipment = [];
-  this.setequipment = function(value){
-    this._equipment = value;
-  };
-  this.getequipment = function(){
-    return this._equipment;
-  };
-  this.findItemIndex = function(value){
-    return this._equipment.indexOf(value);
-  };
-  this.addItem = function(value){
-    if(value.currentlyEquipped){
-      this._equipment[0] = value;
+  this._equipment.length = 9;
+  this.Initialize = function(){
+    this._equipment[0] = new Item();
+    this._equipment[0].element = this.element;
+    this.equip(placeholderItem());
+    for(var i = 1; i < this._equipment.length; i++){
+      console.log(i);
+      this._equipment[i] = new Item();
+      this._equipment[i].Initialize(this.equipmentContainer,htmlElement+i,placeholderItem());
     }
-    else {
-      if(this._equipment.length == 0){
-        this._equipment[0] = placeholderItem;
-      }
-      else {
-        var item = window.document.createElement("img");
-        item.id = htmlElement+this._equipment.length;
-        this._equipment[this._equipment.length] = value;
-        item.addEventListener("click",function(){
-          console.log("Item id: "+value.itemID);
-          equipRequest(value.itemID);
-        });
-        this.equipmentContainer.appendChild(item);
-      }
-    }
-    this.reload();
+    console.log("Init of "+htmlElement+" finished. for confirmation: ");
+    console.log(this._equipment);
   };
-  this.wipe = function(){ //Wipes the current array and removes all generated html for equipment inventory.
-    this.element.src = "";
+  this.equip = function(value){
+    this._equipment[0].changeData(value);
+  };
+  this.newItems = function(values){
+    for(i in values){
+      console.log("changing data in "+htmlElement+", value "+i);
+      this._equipment[i].changeData(values[i]);
+    }
+  };
+  this.newItem = function(value){
+    console.log(this._equipment);
     for(var i = 1; i< this._equipment.length; i++){
-      window.document.getElementById(htmlElement+i).remove();
+      if(this._equipment[i].data.placeholder){
+        value.placeholder = false;
+        this._equipment[i].changeData(value);
+        break;
+      }
     }
-    this._equipment = [];
-  }
-  this.reload = function(){
-
-    this.element.src = bungieCommon+this._equipment[0].hashData.displayProperties.icon;
-    for(var i = 1; i< this._equipment.length; i++){
-      console.log(htmlElement+i);
-      window.document.getElementById(htmlElement+i).src = bungieCommon+this._equipment[i].hashData.displayProperties.icon;
+  };
+  this.wipe = function(){
+    for(i in this._equipment){
+      this._equipment[i].changeData(placeholderItem());
     }
   };
 };
 
 function equipment(){
   this.id = "";
+  this.Intitialize = function(){
+    this.slots.subclasslist._equipment.length = 4;
+    for(i in this.slots){
+      if(i !== "artifact"){
+        console.log("Intitalizing "+i);
+        this.slots[i].Initialize();
+      }
+    }
+  };
   this.hashKeys = {
     3284755031:"subclasslist",
     1498876634:"kineticlist",
@@ -90,7 +114,7 @@ function equipment(){
   //"equipment slots" containing a equipment list of each weapon/armor type in the game.\
   //the goal was self-updating...
   this.slots = {
-    subclasslist: new equipmentlist("Subclass"),
+    subclasslist: new equipmentlist("subclass"),
     kineticlist: new equipmentlist("kinetic"),
     speciallist: new equipmentlist("special"),
     heavylist: new equipmentlist("heavy"),
@@ -129,16 +153,17 @@ function equipment(){
     var parent = this;
     var path = "/character/"+parent.id+"/equipment";
     fetchRequest(path).then(function(result){
-      console.log(result);
       var equipment = result.equipment;
       var inventory = result.inventory;
       for(i in equipment){
         if(equipment[i].hashData.equipHash == 1506418338){ parent.slots.artifact(equipment[i]); }
-        else { parent.slots[parent.hashKeys[equipment[i].hashData.equipHash]].addItem(equipment[i]); }
+        else { parent.slots[parent.hashKeys[equipment[i].hashData.equipHash]].equip(equipment[i]); }
       }
       for(i in inventory){
         if(inventory[i].hashData.equipHash == 1506418338){ parent.slots.artifact(inventory[i]); }
-        else { parent.slots[parent.hashKeys[inventory[i].hashData.equipHash]].addItem(inventory[i]); }
+        else {
+          parent.slots[parent.hashKeys[inventory[i].hashData.equipHash]].newItem(inventory[i]);
+        }
       }
     });
   };
@@ -215,6 +240,7 @@ function loadCharacter(value){
   console.log(characterIDs[counter]);
   character.setID(characterIDs[counter]);
   character.loadGeneral();
+  character.equipment.Intitialize();
   character.equipment.loadEquipment();
 }
 
@@ -230,11 +256,27 @@ async function fetchRequest(path){
   else
   {return Promise.reject(new Error(response.statusText));}
 };
-
+async function fetchImage(path){
+  var request = new Request(path, {
+    method: "GET",
+  });
+  let response = await fetch(request);
+  if(response.status >=200 && response.status < 300)
+  {return response.body;}
+  else
+  {return Promise.reject(new Error(response.statusText));}
+};
 //Makes requests to server for equipping new items from existing non-equipped items.
-function equipRequest(item){
+function equipRequest(){
   console.log("equip request.");
-  var path = "/character/"+characterIDs[counter]+"/equipItem/"+item;
+  var itemSlot = this.id.slice(0,this.id.length-1);
+  var itemIndex = this.id.slice(-1);
+  console.log(itemSlot);
+  var item = character.equipment.slots[itemSlot+"list"]._equipment[itemIndex];
+  console.log("Item in question: ");
+  console.log(item);
+  console.log("character id: "+characterIDs[counter]+" item id: "+item.data.itemID);
+  var path = "/character/"+characterIDs[counter]+"/equipItem/"+item.data.itemID;
   fetchRequest(path).then(function(result){
     character.equipment.loadEquipment(character.equipment, character.id);
   }).catch(function(error){
