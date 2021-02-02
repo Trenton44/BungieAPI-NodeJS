@@ -2,7 +2,8 @@ var window;
 var bungieCommon = "https://www.bungie.net";
 var characterIDs;
 var counter = 0;
-
+var globalQueue = new equipQueue();
+globalQueue.Initialize();
 //A basic item so the reload() function inside of the equipment list doesn't lose it.
 function placeholderItem(){
   return {
@@ -14,6 +15,23 @@ function placeholderItem(){
     },
   };
 };
+
+function equipQueue(){
+  this.queue = [];
+  this.element;
+  this.Initialize = function(){
+    this.element = window.document.getElementById("item-queue");
+  };
+  this.addToQueue = function(item){
+    var itemElement = item.element;
+    var itemData = JSON.parse(item.data);
+    console.log(itemElement);
+    console.log(itemData);
+  }
+  this.removeFromQueue = function(item){
+
+  }
+}
 function Item(){
   this.container;
   this.data;
@@ -28,8 +46,13 @@ function Item(){
     this.container.append(test);
     this.element = test;
     var localthis = this;
-    this.element.oncontextmenu = function(event){localthis.clickEvent(event)};
     this.changeData(data);
+    this.element.draggable = true;
+    var localthis = this;
+    this.element.ondragstart = function(ev){
+      ev.dataTransfer.setData("element", localthis.element);
+      ev.dataTransfer.setData("data",JSON.stringify(localthis.data));
+    };
   };
   this.changeData = function(value){
     this.data = value;
@@ -37,16 +60,6 @@ function Item(){
   };
   this.changeElement = function(value){
     this.element = value;
-  };
-  this.clickEvent = function(event){
-    event.preventDefault();
-    console.log(event);
-    var xy = this.element.getBoundingClientRect();
-    var popup = window.document.getElementById("popup-item-menu");
-    popup.style.top = xy.bottom;
-    popup.style.left = xy.right;
-    popup.style.display = "block";
-
   };
 }
 //Constructor function that loads a equipment list "object", so to speak.
@@ -59,15 +72,24 @@ function equipmentlist(htmlElement){
   this._equipment.length = 9;
   this.requestrunning = false;
   this.Initialize = function(){
+    var localthis = this;
+    this.container.ondrop = function(ev){
+      event.preventDefault();
+      var transferItem = {
+        element: ev.dataTransfer.getData("element"),
+        data: ev.dataTransfer.getData("data"),
+      };
+      globalQueue.addToQueue(transferItem);
+    };
+    this.container.ondragover = function(event){event.preventDefault();};
     this._equipment[0] = new Item();
     this._equipment[0].element = this.element;
-    window.document.getElementById(htmlElement+"-primary-container").ondrop = this.swapItems;
     this.equip(placeholderItem());
     for(var i = 1; i < this._equipment.length; i++){
       this._equipment[i] = new Item();
       this._equipment[i].Initialize(this.equipmentContainer,htmlElement+i,placeholderItem());
       var temp = this;
-      this._equipment[i].element.ondblclick = function(event){temp.swapItems(event.srcElement);};
+      this._equipment[i].element.ondblclick = function(ev){ temp.swapItems(ev.srcElement); };
     }
     console.log("Init of "+htmlElement+" finished.");
   };
@@ -101,8 +123,6 @@ function equipmentlist(htmlElement){
       equipRequest(this._equipment[index].data).then(function(result){
          var newEquip = localthis._equipment[index].getData();
          var oldEquip = localthis._equipment[0].getData();
-         console.log(newEquip);
-         console.log(oldEquip);
          localthis.equip(newEquip);
          localthis._equipment[index].changeData(oldEquip);
          localthis.requestrunning = false;
@@ -222,14 +242,20 @@ function character(){
   };
   this.class = "";
   this.light = "";
+  this.race = ""
   this.setClass = function(value){
     console.log("class type property has been triggered.");
-    this._class = value;
-    window.document.getElementById("character-class").innerHTML = "lvl "+value.level+" "+value.name;
+    this.class = value;
+    window.document.getElementById("character-class").innerHTML = value.name;
   };
+  this.setRace = function(value){
+    console.log("race type property has been triggered.");
+    this.race = value;
+    window.document.getElementById("character-race").innerHTML = value.name;
+  }
   this.setLight = function(value){
     console.log("light property has been triggered.");
-    this._light = value;
+    this.light = value;
     window.document.getElementById("character-light").innerHTML = value ;
   };
   this.setEmblem = function(value){
@@ -247,9 +273,9 @@ function character(){
         icon: result.emblem.emblemExpanded.secondaryOverlay,
         background: result.emblem.emblemExpanded.secondarySpecial,
       };
-      var classData = {level: result.level, name: result.class.name};
+      parent.setRace(result.race);
       parent.setEmblem(emblemData);
-      parent.setClass(classData);
+      parent.setClass(result.class);
       parent.setLight(result.light);
     });
   };
@@ -281,27 +307,7 @@ function loadCharacter(value){
   character.loadGeneral();
   character.equipment.loadEquipment();
   console.log("Counter: "+counter);
-  loadPopupCharacters(counter);
-  window.document.body.oncontextmenu = function(event){
-    event.preventDefault();
-    if(event.path.length <= 6){
-      window.document.getElementById("popup-item-menu").style.display = "none";
-    }
-  };
 }
-async function loadPopupCharacters(indexUsed){
-  var temp = Array.from(characterIDs);
-  temp.splice(indexUsed,1);
-  for(var i = 0; i< temp.length; i++){
-    var path = "/character/"+temp[i]+"/general";
-    await fetchRequest(path).then(function(result){
-      console.log(result);
-      console.log(i+2);
-      var img = window.document.getElementById("c"+(i+2)+"-icon");
-      img.src = bungieCommon+result.emblem.emblemExpanded.displayProperties.icon;
-    });
-  }
-};
 //Fetch Request function
 async function fetchRequest(path){
   var request = new Request(path, {
@@ -327,16 +333,4 @@ function equipRequest(itemData){
   console.log("character id: "+characterIDs[counter]+" item id: "+itemData.itemID);
   var path = "/character/"+characterIDs[counter]+"/equipItem/"+itemData.itemID;
   return fetchRequest(path);
-}
-function test(id){
-  var path = "/test/"+id;
-  fetchRequest(path).then(function(result){
-    console.log(result);
-  }).catch(function(error){
-    console.log(error);
-  });
-}
-function processServerError(error){
-  console.log(error);
-
 }

@@ -9,8 +9,16 @@
       <img id=emblem-back />
       <div id=yes-man>
         <div id=character-info>
-          <h1 id=character-class></h1>
-          <h1 id=character-light></h1>
+          <div id=back-button onclick=loadCharacter(-1)><h1>back</h1></div>
+          <div>
+            <div>
+              <h1 id=character-race></h1>
+              <h1 id=character-class></h1>
+            </div>
+            <h1 id=character-light></h1>
+          </div>
+
+          <div class=item-slots id=next-button onclick=loadCharacter(1)><h1>next</h1></div>
         </div>
         <div id=subclass-container>
           <div id=subclass-primary-container > <img id=subclass /> </div>
@@ -20,9 +28,9 @@
     </div>
 
     <div class=character-equipment>
-      <div id=back-button onclick=loadCharacter(-1)><h1>back</h1></div>
+
       <div class=item-slots id=kinetic-container>
-        <div id=kinetic-primary-container class=primary-item> <img id=kinetic /> </div>
+        <div id=kinetic-primary-container class=primary-item > <img id=kinetic /> </div>
         <div class=item-container id=kinetic-equipment></div>
       </div>
       <div class=item-slots id=special-container>
@@ -85,16 +93,10 @@
         <div id=clanbanner-primary-container class=primary-item> <img id=clanbanner /> </div>
         <div class=item-container id=clanbanner-equipment></div>
       </div>
-      <div class=item-slots id=next-button onclick=loadCharacter(1)><h1>next</h1></div>
     </div>
     <div class=miscellaneous-items id="characterEquipment">
     </div>
-    <footer>
-    </footer>
-    <div id=popup-item-menu>
-      <div id=c2-popup> <img id=c2-icon /> </div>
-      <div id=c3-popup> <img id=c3-icon /> </div>
-    </div>
+    <footer id=item-queue></footer>
   </body>
   <script type="text/javascript">
     window.onload = function(){

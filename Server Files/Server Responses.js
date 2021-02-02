@@ -9,7 +9,10 @@ const serverRoot = path.join(__dirname,"..\\","Server Files");
 const assetRoot = path.join(__dirname,"..\\","assets");
 const D2Manifest = require(manifestRoot+"/d2manifest.json");
 
+var Errors = {
 
+};
+exports.Errors = Errors;
 var EquipmentItemResponse = function(item){
   return {
     itemhash: item.itemHash,

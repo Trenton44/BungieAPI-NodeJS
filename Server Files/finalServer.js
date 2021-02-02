@@ -8,8 +8,8 @@ const axios = require('axios');
 const path = require("path");
 const dotenv = require("dotenv");
 const crypto = require("crypto");
-const mustacheExpress = require("mustache-express");
 const d2api = require("./D2APIfunctions");
+const helmet = require("helmet");
 const root = path.join(__dirname,"..\\");
 const d2components = require("./D2Components.js");
 const webpageRoot = path.join(__dirname,"..\\","Client Files");
@@ -34,12 +34,9 @@ var httpsServer = https.createServer(credentials,app);
 app.use(
   session(
     {
-      name: "UserCookie",
-      secret: "Secret!",
-      genid: function(req){
-        console.log("New Session created, generating uuid for "+req.hostname);
-        return genuuid.v4();
-      },
+      name: "sAk3m3",
+      secret: "secreto!alabastro@",
+      genid: function(req){ return genuuid.v4(); },
       resave: true,
       saveUninitialized: true,
       cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
