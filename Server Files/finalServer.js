@@ -31,9 +31,6 @@ var privatekey = fs.readFileSync(path.join(root,"key.pem"));
 var certificate = fs.readFileSync(path.join(root,"cert.pem"));
 var credentials = {key: privatekey, cert: certificate};
 var httpsServer = https.createServer(credentials,app);
-app.engine('html', mustacheExpress());
-app.set('view engine','html');
-app.set('views',webpageRoot);
 app.use(
   session(
     {
@@ -43,9 +40,9 @@ app.use(
         console.log("New Session created, generating uuid for "+req.hostname);
         return genuuid.v4();
       },
-      resave: false,
-      saveUninitialized: false,
-      cookie: { httpOnly: true, secure: true, expires: 120000},
+      resave: true,
+      saveUninitialized: true,
+      cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
 );
 
@@ -86,7 +83,6 @@ app.get("/bapi", function(request,response){
 app.use(authorizationCheck);
 app.get("/",async function(request,response){
   let userdata = await getBasicBnetInfo(request);
-  console.log(userdata);
   if(userdata !== null){
     request.session.data.userdata = userdata
     response.sendFile(webpageRoot+"/finalhtml.html");
@@ -150,14 +146,6 @@ app.get("/character/:Cid/equipItem/:Iid",async function(request, response){
     response.status(400).json(error);
   });
 });
-/*app.get("/test/:id",async function(request,response){
-
-  var components = Object.keys(d2components.components);
-  var cID = request.params.id;
-  var data = await characterComponentRequest(request, components, cID);
-  var data2 = await profileComponentRequest(request, components);
-  response.status(200).json({characterLevel: data, profileLevel: data2,});
-});*/
 httpsServer.listen(process.env.PORT);
 
 function verifyState(request){
@@ -214,14 +202,45 @@ function getBasicBnetInfo(request){
   });
 };
 function authorizationCheck(request,response,next){
-  console.log(Object.keys(request.session.data.tokenData).length);
+  console.log("__________________________________");
+  console.log("BEGINNING OF AUTHRIZATION CHECK: ");
+  console.log("Requested endpoint access: "+request.url);
+  console.log("Session ID: "+request.session.id);
+  console.log("Session Data: ");
+  console.log(request.session.data.tokenData);
   if(Object.keys(request.session.data.tokenData).length !== 0){
     console.log("token data for user exists, no action necessary.");
-    next();
+    console.log("Current time: "+ new Date().getTime());
+    console.log("Expiration of token: "+request.session.data.tokenData.tokenExpiration);
+    if(new Date().getTime() > request.session.data.tokenData.tokenExpiration){
+      console.log("ACCESS TOKEN HAS EXPIRED, CLIENT REQUIRES A NEW ONE.");
+        d2api.tokenRefresh(request.session.data.tokenData.refresh_token).then(function(result){
+          console.log("token refresh was successful.");
+          d2api.saveTokenData(request,result.data);
+          next();
+        }).catch(function(error){
+          console.log("There was an error refreshing the token.");
+          if(request.url == "/"){
+            response.redirect("/login");
+          }
+          else {
+            response.status(400).json({error:"requires login."});
+          }
+        });
+    }
+    else {
+      console.log("access token still valid, so that's neat.");
+      next();
+    }
   }
   else {
     console.log("user is not yet logged in, redirecting to login.");
-    response.redirect("/login");
+    if(request.url == "/"){
+      response.redirect("/login");
+    }
+    else {
+      response.status(400).json({error:"requires login."});
+    }
   }
 }
 async function prepSessionData(request,response,next){

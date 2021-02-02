@@ -149,11 +149,11 @@ function getRequestAuth(path,token){
 }
 
 //Requests a new access token from the bungie API using an avaiable refresh token.
-function tokenRefresh(token){
+function tokenRefresh(refreshtoken){
   console.log("access token expired, requesting a new one");
   var body = new URLSearchParams();
   body.append("grant_type", "refresh_token");
-  body.append("refresh_token", token);
+  body.append("refresh_token", refreshtoken);
   body.append("client_secret",process.env.Bungie_ClientSecret);
   body.append("client_id", process.env.Bungie_ClientID);
   return axios({
@@ -251,7 +251,7 @@ exports.parseProfileComponents = parseProfileComponents;
 //Used to overwrite token data currently stored inside the user's cookie.
 function saveTokenData(request, tokenData){
   request.session.data.tokenData = tokenData;
-  request.session.data.tokenData.tokenExpiration = new Date().getTime()+(tokenData.expires_in*1000);
+  request.session.data.tokenData.tokenExpiration = new Date().getTime()+((tokenData.expires_in)*1000); //took 5 minutes off the given expiration time to make sure it updated before actual expiration.
   request.session.data.tokenData.refreshExpiration = new Date().getTime()+(tokenData.refresh_expires_in*1000);
   console.log("New token expiration date: "+new Date(request.session.data.tokenData.tokenExpiration));
   console.log("New refresh expiration date: "+new Date(request.session.data.tokenData.refreshExpiration));

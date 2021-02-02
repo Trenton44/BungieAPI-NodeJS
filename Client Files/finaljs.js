@@ -315,9 +315,7 @@ async function fetchRequest(path){
   {return Promise.reject(new Error(response.statusText));}
 };
 async function fetchImage(path){
-  var request = new Request(path, {
-    method: "GET",
-  });
+  var request = new Request(path, { method: "GET", });
   let response = await fetch(request);
   if(response.status >=200 && response.status < 300)
   {return response.body;}
@@ -337,4 +335,8 @@ function test(id){
   }).catch(function(error){
     console.log(error);
   });
+}
+function processServerError(error){
+  console.log(error);
+
 }
