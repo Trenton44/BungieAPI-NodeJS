@@ -11,7 +11,7 @@ const https = require("https");
 const fs = require('fs');
 const dotenv = require("dotenv");
 console.log("Poggers.");
-const D2Manifest = require(manifestRoot);
+//const D2Manifest = require(manifestRoot);
 console.log("Sucual");
 const D2Components = require(serverRoot+"/D2Components.js");
 const bungieRoot = "https://www.bungie.net/Platform";
