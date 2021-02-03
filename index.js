@@ -206,8 +206,6 @@ function authorizationCheck(request,response,next){
   console.log("BEGINNING OF AUTHRIZATION CHECK: ");
   console.log("Requested endpoint access: "+request.url);
   console.log("Session ID: "+request.session.id);
-  console.log("Session Data: ");
-  console.log(request.session.data.tokenData);
   if(Object.keys(request.session.data.tokenData).length !== 0){
     console.log("token data for user exists, no action necessary.");
     console.log("Current time: "+ new Date().getTime());
