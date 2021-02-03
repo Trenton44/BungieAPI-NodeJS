@@ -1,7 +1,6 @@
 const path = require("path");
-const root = path.dirname(__dirname);
+const root = path.join(__dirname,'..');
 const webpageRoot = root+"/Client Files";
-console.log(path.join(__dirname,'..'));
 
 const serverRoot = root+"/Server Files";
 const assetRoot = root+"/assets";
