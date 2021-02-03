@@ -21,36 +21,13 @@ const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
-loadManifest().then(function(result){
-  console.log("Now writing entire manifest to d2manifest.json");
-  console.log(result.data);
-  let data = JSON.stringify(result.data, null, 2);
-  fs.writeFileSync(manifestRoot+"/d2manifest.json", data, function(error){
-    console.error(error);
-  });
-  console.log("Done.");
-  console.log("Continuing load of server.");
-  console.log("Root:"+root);
-  console.log("Manifest: "+manifestRoot);
-  console.log("Contents of root: ");
-  var testFolder = root;
-  fs.readdirSync(testFolder).forEach(file => {
-    console.log(file);
-  })
-  console.log("Contents of manifest: ");
-  var testFolder = manifestRoot;
-  fs.readdirSync(testFolder).forEach(file => {
-    console.log(file);
-  })
-  const D2Manifest = require(manifestRoot+"/d2manifest.json");
-  console.log("poggers.");
-  const d2api = require(serverRoot+"/D2APIfunctions");
-  const d2components = require(serverRoot+"/D2Components.js");
-  const ServerResponse = require(serverRoot+"/Server Responses.js");
 
-  dotenv.config( { path: path.join(root,"process.env") } );
-  if(process.env.NODE_ENV == "production"){ console.log("I'll allow it.");process.env['NODE_TLS_REJECT_UNAUTHORIZED']=0;}
-});
+const d2api = require(serverRoot+"/D2APIfunctions");
+const d2components = require(serverRoot+"/D2Components.js");
+const ServerResponse = require(serverRoot+"/Server Responses.js");
+
+dotenv.config( { path: path.join(root,"process.env") } );
+if(process.env.NODE_ENV == "production"){ console.log("I'll allow it.");process.env['NODE_TLS_REJECT_UNAUTHORIZED']=0;}
 
 //var privatekey = fs.readFileSync(path.join(root,"key.pem"));
 //var certificate = fs.readFileSync(path.join(root,"cert.pem"));
@@ -312,9 +289,14 @@ async function loadManifest(){
   var data = await getRequest(path);
   console.log("proceeding to next request.");
   var path = bungieCommon+data.data.Response.jsonWorldContentPaths.en;
-  var data = await getRequest(path);
+  var result = await getRequest(path);
   console.log("both completed.");
-  return data;
+  console.log("Now writing entire manifest to d2manifest.json");
+  var data = JSON.stringify(result.data, null, 2);
+  fs.writeFileSync(manifestRoot+"/d2manifest.json", data, function(error){
+    console.error(error);
+  });
+  console.log("Done.");
   /*await getRequest(path).then(function(result){
     var d2contentManifest = bungieCommon+result.data.Response.jsonWorldContentPaths.en;
     return getRequest(d2contentManifest).then(function(result){

@@ -8,7 +8,8 @@ const webpageRoot = root+"/Client Files";
 const serverRoot = root+"/Server Files";
 const assetRoot = root+"/assets";
 const manifestRoot = root+"/Manifest";
-const D2Manifest = require(manifestRoot+"/d2manifest.json");
+const DestinyDamageTypeDefinition = require(manifestRoot+"DestinyDamageTypeDefinition.json");
+const DestinyEquipmentSlotDefinition = require(manifestRoot+"DestinyEquipmentSlotDefinition.json");
 
 var Errors = {
 
@@ -21,12 +22,12 @@ var EquipmentItemResponse = function(item){
     location: item.bucketHashData.location,
     hashData: {
       displayProperties: item.itemHashData.displayProperties,
-      damageType: D2Manifest.DestinyDamageTypeDefinition[item.itemHashData.defaultDamageTypeHash],
+      damageType: DestinyDamageTypeDefinition[item.itemHashData.defaultDamageTypeHash],
       aquisition: item.itemHashData.displaySource,
       equippable: item.itemHashData.equippable,
       iconWatermark: item.itemHashData.iconWatermark,
       iconWatermarkShelved: item.itemHashData.iconWatermarkShelved,
-      equipSlot: D2Manifest.DestinyEquipmentSlotDefinition[item.itemHashData.equippingBlock.equipmentSlotTypeHash],
+      equipSlot: DestinyEquipmentSlotDefinition[item.itemHashData.equippingBlock.equipmentSlotTypeHash],
       equipHash: item.itemHashData.equippingBlock.equipmentSlotTypeHash,
     },
     bucketData: {

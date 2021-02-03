@@ -8,7 +8,13 @@ const webpageRoot = root+"/Client Files";
 const serverRoot = root+"/Server Files";
 const assetRoot = root+"/assets";
 const manifestRoot = root+"/Manifest";
-const D2Manifest = require(manifestRoot+"/d2manifest.json");
+const DestinyClassDefinition = require(manifestRoot+"DestinyClassDefinition.json");
+const DestinyGenderDefinition = require(manifestRoot+"DestinyGenderDefinition.json");
+const DestinyRaceDefinition = require(manifestRoot+"DestinyRaceDefinition.json");
+const DestinyStatDefinition = require(manifestRoot+"DestinyStatDefinition.json");
+const DestinyInventoryItemDefinition = require(manifestRoot+"DestinyInventoryItemDefinition.json");
+const DestinyInventoryBucketDefinition = require(manifestRoot+"DestinyInventoryBucketDefinition.json");
+const DestinyStatDefinition = require(manifestRoot+"DestinyStatDefinition.json");
 const ServerResponse = require(serverRoot+"/Server Responses.js");
 
 const components = {
@@ -59,17 +65,17 @@ exports.activities = activities;
 
 var character = function(data){
   var data = data.data;
-    data.class = D2Manifest.DestinyClassDefinition[data.classHash];
-    data.gender = D2Manifest.DestinyGenderDefinition[data.genderHash];
-    data.race = D2Manifest.DestinyRaceDefinition[data.raceHash];
+    data.class = DestinyClassDefinition[data.classHash];
+    data.gender = DestinyGenderDefinition[data.genderHash];
+    data.race = DestinyRaceDefinition[data.raceHash];
     var statsinfo = {};
     for(z in data.stats){
       statsinfo[z] = {};
       statsinfo[z].value = data.stats[z];
-      statsinfo[z].info = D2Manifest.DestinyStatDefinition[z];
+      statsinfo[z].info = DestinyStatDefinition[z];
     }
     data.stats = statsinfo;
-    data.emblemExpanded = D2Manifest.DestinyInventoryItemDefinition[data.emblemHash];
+    data.emblemExpanded = DestinyInventoryItemDefinition[data.emblemHash];
   return data;
 };
 exports.character = character;
@@ -90,8 +96,8 @@ var equipment = function(data){
   var data = data.data;
   var itemlist = data.items;
   for(z in itemlist){
-    itemlist[z].itemHashData = D2Manifest.DestinyInventoryItemDefinition[itemlist[z].itemHash];
-    itemlist[z].bucketHashData = D2Manifest.DestinyInventoryBucketDefinition[itemlist[z].bucketHash];
+    itemlist[z].itemHashData = DestinyInventoryItemDefinition[itemlist[z].itemHash];
+    itemlist[z].bucketHashData = DestinyInventoryBucketDefinition[itemlist[z].bucketHash];
   }
   data = itemlist;
   console.log("all data for characterEquipment has been built.");
@@ -103,8 +109,8 @@ var inventory = function(data){
   var data = data.data;
   var itemlist = data.items;
   for(z in itemlist){
-    itemlist[z].itemHashData = D2Manifest.DestinyInventoryItemDefinition[itemlist[z].itemHash];
-    itemlist[z].bucketHashData = D2Manifest.DestinyInventoryBucketDefinition[itemlist[z].bucketHash];
+    itemlist[z].itemHashData = DestinyInventoryItemDefinition[itemlist[z].itemHash];
+    itemlist[z].bucketHashData = DestinyInventoryBucketDefinition[itemlist[z].bucketHash];
   }
   data = itemlist;
   console.log("character inventory component has been completed");

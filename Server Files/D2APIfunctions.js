@@ -10,7 +10,6 @@ const axios = require('axios');
 const https = require("https");
 const fs = require('fs');
 const dotenv = require("dotenv");
-const D2Manifest = require(manifestRoot+"/d2manifest.json");
 const D2Components = require(serverRoot+"/D2Components.js");
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
