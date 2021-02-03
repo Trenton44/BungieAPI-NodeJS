@@ -30,6 +30,11 @@ var testFolder = root;
 fs.readdirSync(testFolder).forEach(file => {
   console.log(file);
 })
+console.log("Contents of manifest: ");
+var testFolder = manifestRoot;
+fs.readdirSync(testFolder).forEach(file => {
+  console.log(file);
+})
 const D2Manifest = require(manifestRoot+"/d2manifest.json");
 console.log("poggers.");
 const d2api = require(serverRoot+"/D2APIfunctions");
