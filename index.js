@@ -21,7 +21,13 @@ const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
-loadManifest();
+loadManifest().then(function(result){
+  console.log("Now writing entire manifest to d2manifest.json");
+  let data = JSON.stringify(result.data, null, 2);
+  fs.writeFileSync(manifestRoot+"/d2manifest.json", data, function(error){
+    console.error(error);
+  });
+});
 console.log("Continuing load of server.");
 console.log("Root:"+root);
 console.log("Manifest: "+manifestRoot);
@@ -300,9 +306,13 @@ function buildAuthorizatonCodeRequest(request){
 //so this splits each piece of the manifest into it's own json file so it can be
 //read, but also saves it as a whole json so it is easy to import into code later.
 async function loadManifest(){
-  var path =bungieRoot+"/Destiny2/Manifest/";
+  var path = bungieRoot+"/Destiny2/Manifest/";
   console.log("Obtaining Destiny Manifest from Bungie.");
-  await getRequest(path).then(function(result){
+  let data = await getRequest(path);
+  let path = bungieCommon+data.data.Response.jsonWorldContentPaths.en;
+  let data = await getRequest(path);
+  return data;
+  /*await getRequest(path).then(function(result){
     var d2contentManifest = bungieCommon+result.data.Response.jsonWorldContentPaths.en;
     return getRequest(d2contentManifest).then(function(result){
       /*var manifestItems = Object.keys(result.data);
@@ -313,13 +323,9 @@ async function loadManifest(){
         fs.writeFileSync(manifestRoot+"/"+i+".json", data, function(error){
           console.error(error);
         });
-      }*/
-      console.log("Now writing entire manifest to d2manifest.json");
-      let data = JSON.stringify(result.data, null, 2);
-      fs.writeFileSync(manifestRoot+"/d2manifest.json", data, function(error){
-        console.error(error);
-      });
+      }
+
       return true;
     });
-  });
+  });*/
 };
