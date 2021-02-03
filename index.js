@@ -21,6 +21,8 @@ const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
+loadManifest();
+console.log("Continuing load of server.");
 const d2api = require(serverRoot+"/D2APIfunctions");
 const d2components = require(serverRoot+"/D2Components.js");
 const ServerResponse = require(serverRoot+"/Server Responses.js");
@@ -278,3 +280,32 @@ function buildAuthorizatonCodeRequest(request){
   url.searchParams.append("state",state);
   return url;
 }
+
+//Loads the current d2 manifest from bungie api and saves to root.
+//Note: the manifest file as a whole is large enough to crash notepad,
+//so this splits each piece of the manifest into it's own json file so it can be
+//read, but also saves it as a whole json so it is easy to import into code later.
+async function loadManifest(){
+  var path =bungieRoot+"/Destiny2/Manifest/";
+  console.log("Obtaining Destiny Manifest from Bungie.");
+  await getRequest(path).then(function(result){
+    var d2contentManifest = bungieCommon+result.data.Response.jsonWorldContentPaths.en;
+    await getRequest(d2contentManifest).then(function(result){
+      /*var manifestItems = Object.keys(result.data);
+      or(i in result.data){
+        console.log("Iteration: "+i);
+        let data = JSON.stringify(result.data[i], null, 2);
+        console.log("Now writing item "+i+" to  file "+i+".json");
+        fs.writeFileSync(manifestRoot+"/"+i+".json", data, function(error){
+          console.error(error);
+        });
+      }*/
+      console.log("Now writing entire manifest to d2manifest.json");
+      let data = JSON.stringify(result.data, null, 2);
+      fs.writeFileSync(manifestRoot+"/d2manifest.json", data, function(error){
+        console.error(error);
+      });
+      console.log("Done");
+    });
+  });
+};
