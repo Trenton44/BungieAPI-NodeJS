@@ -25,8 +25,8 @@ loadManifest();
 console.log("Continuing load of server.");
 console.log("Root:"+root);
 console.log("Manifest: "+manifestRoot);
-console.log("Contents of manifest root: ");
-var testFolder = manifestRoot;
+console.log("Contents of root: ");
+var testFolder = root;
 fs.readdirSync(testFolder).forEach(file => {
   console.log(file);
 })
