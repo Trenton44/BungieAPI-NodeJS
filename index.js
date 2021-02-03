@@ -1,3 +1,4 @@
+const path = require("path");
 const root = path.join(__dirname,"..\\");
 const webpageRoot = path.join(__dirname,"..\\","Client Files");
 const serverRoot = path.join(__dirname,"..\\","Server Files");
@@ -10,7 +11,6 @@ const session = require("express-session");
 const genuuid = require("uuid");
 const app = new express();
 const axios = require('axios');
-const path = require("path");
 const dotenv = require("dotenv");
 const crypto = require("crypto");
 const helmet = require("helmet");
