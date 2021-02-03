@@ -1,8 +1,8 @@
 const path = require("path");
-const root = path.join(__dirname,"..\\");
-const webpageRoot = path.join(__dirname,"..\\","Client Files");
-const serverRoot = path.join(__dirname,"..\\","Server Files");
-const assetRoot = path.join(__dirname,"..\\","assets");
+const root = __dirname;
+const webpageRoot = root+"/Client Files";
+const serverRoot = root+"/Server Files";
+const assetRoot = root+"/assets";
 
 const https = require("https");
 const fs = require('fs');
@@ -19,10 +19,10 @@ const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
-const d2api = require(path.join(__dirname,"/Server Files/D2APIfunctions"));
+const d2api = require(serverRoot+"/D2APIfunctions");
 const d2components = require(serverRoot+"/D2Components.js");
-const manifestRoot = path.join(__dirname,"manifestData");
-const D2Manifest = require("d2manifest.json");
+const manifestRoot = root+"Manifest";
+//const D2Manifest = require("d2manifest.json");
 const ServerResponse = require(serverRoot+"/Server Responses.js");
 
 dotenv.config( { path: path.join(root,"process.env") } );

@@ -200,7 +200,7 @@ exports.parseBungieCurrentUserDataResponse = parseBungieCurrentUserDataResponse;
 //Note: the manifest file as a whole is large enough to crash notepad,
 //so this splits each piece of the manifest into it's own json file so it can be
 //read, but also saves it as a whole json so it is easy to import into code later.
-function loadManifest(){
+/*function loadManifest(){
   var path =bungieRoot+"/Destiny2/Manifest/";
   getRequest(path).then(function(result){
     var d2contentManifest = bungieCommon+result.data.Response.jsonWorldContentPaths.en;
@@ -223,7 +223,7 @@ function loadManifest(){
     });
   });
 }
-exports.loadManifest = loadManifest;
+exports.loadManifest = loadManifest;*/
 
 //used to parse incoming component data from the bungie api.
 //Requires the list of components used in the api request, and the data returned from said request.
