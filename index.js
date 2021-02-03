@@ -310,6 +310,7 @@ async function loadManifest(){
   var path = bungieRoot+"/Destiny2/Manifest/";
   console.log("Obtaining Destiny Manifest from Bungie.");
   var data = await getRequest(path);
+  console.log("proceeding to next request.");
   var path = bungieCommon+data.data.Response.jsonWorldContentPaths.en;
   var data = await getRequest(path);
   return data;
