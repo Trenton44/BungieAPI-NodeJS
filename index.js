@@ -5,7 +5,8 @@ const serverRoot = root+"/Server Files";
 const assetRoot = root+"/assets";
 const manifestRoot = root+"/Manifest";
 
-const https = require("https");
+const https = require('http');
+//const https = require("https");
 const fs = require('fs');
 const express = require("express");
 const session = require("express-session");
