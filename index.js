@@ -329,3 +329,10 @@ async function loadManifest(){
     });
   });*/
 };
+function getRequest(path){
+  return axios({
+    method:"GET",
+    url: path,
+    headers: {"X-API-Key":process.env.Bungie_API_KEY},
+  });
+};
