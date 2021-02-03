@@ -42,7 +42,7 @@ app.use(
       genid: function(req){ return genuuid.v4(); },
       resave: true,
       saveUninitialized: true,
-      cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
+      cookie: { httpOnly: true, secure: false, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
 );
 
@@ -235,8 +235,6 @@ function authorizationCheck(request,response,next){
   }
   else {
     console.log("user is not yet logged in, redirecting to login.");
-    console.log("URL INFO");
-    console.log(request.url);
     if(request.url == "/"){
       response.redirect("/login");
     }
