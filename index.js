@@ -22,7 +22,6 @@ const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
 const d2api = require(serverRoot+"/D2APIfunctions");
 const d2components = require(serverRoot+"/D2Components.js");
-const D2Manifest = require(manifestRoot);
 const ServerResponse = require(serverRoot+"/Server Responses.js");
 
 dotenv.config( { path: path.join(root,"process.env") } );

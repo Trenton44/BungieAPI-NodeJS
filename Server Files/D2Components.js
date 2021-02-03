@@ -8,7 +8,7 @@ const webpageRoot = root+"/Client Files";
 const serverRoot = root+"/Server Files";
 const assetRoot = root+"/assets";
 const manifestRoot = root+"/Manifest";
-//const D2Manifest = require(manifestRoot);
+const D2Manifest = require(manifestRoot+"/DestinyInventoryItemDefinition.json");
 const ServerResponse = require(serverRoot+"/Server Responses.js");
 
 const components = {
