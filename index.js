@@ -27,29 +27,29 @@ loadManifest().then(function(result){
   fs.writeFileSync(manifestRoot+"/d2manifest.json", data, function(error){
     console.error(error);
   });
+  console.log("Done.");
+  console.log("Continuing load of server.");
+  console.log("Root:"+root);
+  console.log("Manifest: "+manifestRoot);
+  console.log("Contents of root: ");
+  var testFolder = root;
+  fs.readdirSync(testFolder).forEach(file => {
+    console.log(file);
+  })
+  console.log("Contents of manifest: ");
+  var testFolder = manifestRoot;
+  fs.readdirSync(testFolder).forEach(file => {
+    console.log(file);
+  })
+  const D2Manifest = require(manifestRoot+"/d2manifest.json");
+  console.log("poggers.");
+  const d2api = require(serverRoot+"/D2APIfunctions");
+  const d2components = require(serverRoot+"/D2Components.js");
+  const ServerResponse = require(serverRoot+"/Server Responses.js");
+
+  dotenv.config( { path: path.join(root,"process.env") } );
+  if(process.env.NODE_ENV == "production"){ console.log("I'll allow it.");process.env['NODE_TLS_REJECT_UNAUTHORIZED']=0;}
 });
-console.log("Continuing load of server.");
-console.log("Root:"+root);
-console.log("Manifest: "+manifestRoot);
-console.log("Contents of root: ");
-var testFolder = root;
-fs.readdirSync(testFolder).forEach(file => {
-  console.log(file);
-})
-console.log("Contents of manifest: ");
-var testFolder = manifestRoot;
-fs.readdirSync(testFolder).forEach(file => {
-  console.log(file);
-})
-const D2Manifest = require(manifestRoot+"/d2manifest.json");
-console.log("poggers.");
-const d2api = require(serverRoot+"/D2APIfunctions");
-const d2components = require(serverRoot+"/D2Components.js");
-const ServerResponse = require(serverRoot+"/Server Responses.js");
-
-dotenv.config( { path: path.join(root,"process.env") } );
-if(process.env.NODE_ENV == "production"){ console.log("I'll allow it.");process.env['NODE_TLS_REJECT_UNAUTHORIZED']=0;}
-
 
 //var privatekey = fs.readFileSync(path.join(root,"key.pem"));
 //var certificate = fs.readFileSync(path.join(root,"cert.pem"));
