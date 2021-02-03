@@ -14,7 +14,6 @@ const DestinyRaceDefinition = require(manifestRoot+"DestinyRaceDefinition.json")
 const DestinyStatDefinition = require(manifestRoot+"DestinyStatDefinition.json");
 const DestinyInventoryItemDefinition = require(manifestRoot+"DestinyInventoryItemDefinition.json");
 const DestinyInventoryBucketDefinition = require(manifestRoot+"DestinyInventoryBucketDefinition.json");
-const DestinyStatDefinition = require(manifestRoot+"DestinyStatDefinition.json");
 const ServerResponse = require(serverRoot+"/Server Responses.js");
 
 const components = {
