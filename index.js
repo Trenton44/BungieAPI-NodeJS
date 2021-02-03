@@ -28,8 +28,8 @@ dotenv.config( { path: path.join(root,"process.env") } );
 if(process.env.NODE_ENV == "production"){ console.log("I'll allow it.");process.env['NODE_TLS_REJECT_UNAUTHORIZED']=0;}
 
 
-var privatekey = fs.readFileSync(path.join(root,"key.pem"));
-var certificate = fs.readFileSync(path.join(root,"cert.pem"));
+//var privatekey = fs.readFileSync(path.join(root,"key.pem"));
+//var certificate = fs.readFileSync(path.join(root,"cert.pem"));
 //var credentials = {key: privatekey, cert: certificate};
 //var httpsServer = https.createServer(credentials,app);
 var httpsServer = http.createServer(app);
