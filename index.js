@@ -308,9 +308,9 @@ function buildAuthorizatonCodeRequest(request){
 async function loadManifest(){
   var path = bungieRoot+"/Destiny2/Manifest/";
   console.log("Obtaining Destiny Manifest from Bungie.");
-  let data = await getRequest(path);
-  let path = bungieCommon+data.data.Response.jsonWorldContentPaths.en;
-  let data = await getRequest(path);
+  var data = await getRequest(path);
+  var path = bungieCommon+data.data.Response.jsonWorldContentPaths.en;
+  var data = await getRequest(path);
   return data;
   /*await getRequest(path).then(function(result){
     var d2contentManifest = bungieCommon+result.data.Response.jsonWorldContentPaths.en;
