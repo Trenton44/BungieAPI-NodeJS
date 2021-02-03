@@ -23,6 +23,7 @@ const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
 loadManifest().then(function(result){
   console.log("Now writing entire manifest to d2manifest.json");
+  console.log(result.data);
   let data = JSON.stringify(result.data, null, 2);
   fs.writeFileSync(manifestRoot+"/d2manifest.json", data, function(error){
     console.error(error);
