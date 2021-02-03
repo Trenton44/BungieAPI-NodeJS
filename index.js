@@ -3,7 +3,7 @@ const root = __dirname;
 const webpageRoot = root+"/Client Files";
 const serverRoot = root+"/Server Files";
 const assetRoot = root+"/assets";
-const manifestRoot = root+"Manifest";
+const manifestRoot = root+"/Manifest";
 
 const https = require("https");
 const fs = require('fs');
