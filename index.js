@@ -236,6 +236,7 @@ function authorizationCheck(request,response,next){
   else {
     console.log("user is not yet logged in, redirecting to login.");
     if(request.url == "/"){
+      console.log(request.url);
       response.redirect("/login");
     }
     else {
