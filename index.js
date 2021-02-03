@@ -1,3 +1,8 @@
+const root = path.join(__dirname,"..\\");
+const webpageRoot = path.join(__dirname,"..\\","Client Files");
+const serverRoot = path.join(__dirname,"..\\","Server Files");
+const assetRoot = path.join(__dirname,"..\\","assets");
+
 const https = require("https");
 const fs = require('fs');
 const express = require("express");
@@ -8,22 +13,18 @@ const axios = require('axios');
 const path = require("path");
 const dotenv = require("dotenv");
 const crypto = require("crypto");
-const d2api = require(serverRoot+"D2APIfunctions");
 const helmet = require("helmet");
-const root = path.join(__dirname,"..\\");
-const d2components = require(serverRoot+"/D2Components.js");
-const webpageRoot = path.join(__dirname,"..\\","Client Files");
-const serverRoot = path.join(__dirname,"..\\","Server Files");
-const assetRoot = path.join(__dirname,"..\\","assets");
-const manifestRoot = path.join(__dirname,"..\\","manifestData");
-const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
-//const D2Manifest = require(manifestRoot+"/D2Manifest2.js").D2Manifest;
-const D2Manifest = require(manifestRoot+"/d2manifest.json");
-const ServerResponse = require(serverRoot+"/Server Responses.js");
+
 const bungieRoot = "https://www.bungie.net/Platform";
-var bungieCommon = "https://www.bungie.net";
+const bungieCommon = "https://www.bungie.net";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
+const d2api = require(serverRoot+"D2APIfunctions");
+const d2components = require(serverRoot+"/D2Components.js");
+const manifestRoot = path.join(__dirname,"..\\","manifestData");
+const D2Manifest = require("d2manifest.json");
+const ServerResponse = require(serverRoot+"/Server Responses.js");
+
 dotenv.config( { path: path.join(root,"process.env") } );
 process.env['NODE_TLS_REJECT_UNAUTHORIZED']=0;
 
