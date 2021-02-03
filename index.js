@@ -313,6 +313,7 @@ async function loadManifest(){
   console.log("proceeding to next request.");
   var path = bungieCommon+data.data.Response.jsonWorldContentPaths.en;
   var data = await getRequest(path);
+  console.log("both completed.");
   return data;
   /*await getRequest(path).then(function(result){
     var d2contentManifest = bungieCommon+result.data.Response.jsonWorldContentPaths.en;
