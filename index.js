@@ -221,6 +221,7 @@ function authorizationCheck(request,response,next){
         }).catch(function(error){
           console.log("There was an error refreshing the token.");
           if(request.url == "/"){
+            console.log(request.url);
             response.redirect("/login");
           }
           else {
