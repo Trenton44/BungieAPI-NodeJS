@@ -4,7 +4,7 @@
   "description": "\"An experiment with VueJS using a previous project.\"",
   "main": "main.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "index.js"
   },
   "repository": {
     "type": "git",
