@@ -23,6 +23,13 @@ const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
 loadManifest();
 console.log("Continuing load of server.");
+console.log("Root:"+root);
+console.log("Manifest: "+manifestRoot);
+console.log("Contents of manifest root: ");
+var testFolder = manifestRoot;
+fs.readdirSync(testFolder).forEach(file => {
+  console.log(file);
+})
 const D2Manifest = require(manifestRoot+"/d2manifest.json");
 console.log("poggers.");
 const d2api = require(serverRoot+"/D2APIfunctions");
