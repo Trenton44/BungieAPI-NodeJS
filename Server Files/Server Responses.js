@@ -8,8 +8,8 @@ const webpageRoot = root+"/Client Files";
 const serverRoot = root+"/Server Files";
 const assetRoot = root+"/assets";
 const manifestRoot = root+"/Manifest";
-const DestinyDamageTypeDefinition = require(manifestRoot+"DestinyDamageTypeDefinition.json");
-const DestinyEquipmentSlotDefinition = require(manifestRoot+"DestinyEquipmentSlotDefinition.json");
+const DestinyDamageTypeDefinition = require(manifestRoot+"/DestinyDamageTypeDefinition.json");
+const DestinyEquipmentSlotDefinition = require(manifestRoot+"/DestinyEquipmentSlotDefinition.json");
 
 var Errors = {
 
