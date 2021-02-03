@@ -253,6 +253,7 @@ function saveTokenData(request, tokenData){
   request.session.data.tokenData = tokenData;
   request.session.data.tokenData.tokenExpiration = new Date().getTime()+((tokenData.expires_in)*1000); //took 5 minutes off the given expiration time to make sure it updated before actual expiration.
   request.session.data.tokenData.refreshExpiration = new Date().getTime()+(tokenData.refresh_expires_in*1000);
+  request.session.cookie.maxAge = request.session.data.tokenData.refreshExpiration;
   console.log("New token expiration date: "+new Date(request.session.data.tokenData.tokenExpiration));
   console.log("New refresh expiration date: "+new Date(request.session.data.tokenData.refreshExpiration));
   return true;

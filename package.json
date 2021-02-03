@@ -1,0 +1,27 @@
+{
+  "name": "draw.net-vue",
+  "version": "1.0.0",
+  "description": "\"An experiment with VueJS using a previous project.\"",
+  "main": "main.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Trenton44/Draw.Net-Vue.git"
+  },
+  "author": "Trenton Choate",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Trenton44/Draw.Net-Vue/issues"
+  },
+  "homepage": "https://github.com/Trenton44/Draw.Net-Vue#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "helmet": "^4.4.1",
+    "uuid": "^8.3.2"
+  }
+}
