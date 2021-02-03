@@ -3,11 +3,12 @@ const bungieRoot = "https://www.bungie.net/Platform";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
 const bungieCommon = "https://www.bungie.net";
-const manifestRoot = path.join(__dirname,"..\\","manifestData");
-const webpageRoot = path.join(__dirname,"..\\","Client Files");
-const serverRoot = path.join(__dirname,"..\\","Server Files");
-const assetRoot = path.join(__dirname,"..\\","assets");
-const D2Manifest = require(manifestRoot+"/d2manifest.json");
+
+const webpageRoot = root+"/Client Files";
+const serverRoot = root+"/Server Files";
+const assetRoot = root+"/assets";
+const manifestRoot = root+"Manifest";
+const D2Manifest = require(manifestRoot);
 
 var Errors = {
 

@@ -1,19 +1,23 @@
-//const dotenv = require("dotenv");
 const path = require("path");
 const root = __dirname;
-dotenv.config( { path: path.join(root,"process.env") } );
+const webpageRoot = root+"/Client Files";
+const serverRoot = root+"/Server Files";
+const assetRoot = root+"/assets";
+const manifestRoot = root+"Manifest";
+
 const axios = require('axios');
 const https = require("https");
 const fs = require('fs');
-const manifestRoot = path.join(__dirname,"..\\","manifestData");
-//const D2Manifest = require(manifestRoot+"/D2Manifest2.js").D2Manifest;
-const D2Manifest = require(manifestRoot+"/d2manifest.json");
-const D2Components = require("./D2Components.js");
+const dotenv = require("dotenv");
+
+const D2Manifest = require(manifestRoot);
+const D2Components = require(serverRoot+"/D2Components.js");
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
 const bungieCommon = "https://www.bungie.net";
 
+dotenv.config( { path: path.join(root,"process.env") } );
 //When a function takes a list of components as a parameter, this function is called to
 //combine those functions into a single search parameter the bungie API can understand.
 function combineComponentString(value){
