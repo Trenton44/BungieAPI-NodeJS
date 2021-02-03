@@ -1,0 +1,4795 @@
+{
+  "52071242": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 2500,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 52071242,
+    "index": 126,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "99690594": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 2500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 99690594,
+    "index": 156,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "99690595": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 2500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 99690595,
+    "index": 157,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "99690596": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 2500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 99690596,
+    "index": 154,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "99690597": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 2500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 99690597,
+    "index": 155,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "99690599": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 25,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 99690599,
+    "index": 153,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "108789637": {
+    "materials": [
+      {
+        "itemHash": 3592324052,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 108789637,
+    "index": 142,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "108835217": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 24000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 30,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 4257549984,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 4257549985,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 108835217,
+    "index": 198,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "130662630": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 500,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 685157383,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 7,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 130662630,
+    "index": 159,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "139151346": {
+    "materials": [
+      {
+        "itemHash": 2817410917,
+        "deleteOnAction": true,
+        "count": 25,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 139151346,
+    "index": 93,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "139151347": {
+    "materials": [
+      {
+        "itemHash": 2817410917,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 139151347,
+    "index": 92,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "200721500": {
+    "materials": [
+      {
+        "itemHash": 2817410917,
+        "deleteOnAction": true,
+        "count": 450,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 200721500,
+    "index": 124,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "245139275": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 2000,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 245139275,
+    "index": 200,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "251037925": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 500,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 251037925,
+    "index": 80,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "266623546": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 266623546,
+    "index": 130,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "357059935": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1000,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 4,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 357059935,
+    "index": 105,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "432591303": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 250,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 432591303,
+    "index": 57,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "444819116": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 50,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 444819116,
+    "index": 98,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "455529194": {
+    "materials": [
+      {
+        "itemHash": 583548063,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 455529194,
+    "index": 106,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "455529195": {
+    "materials": [
+      {
+        "itemHash": 583548063,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 455529195,
+    "index": 107,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "489534282": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 489534282,
+    "index": 62,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "518484847": {
+    "materials": [
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 518484847,
+    "index": 54,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "585769096": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 3000,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 585769096,
+    "index": 210,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "593856806": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 250,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 593856806,
+    "index": 79,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "604222368": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 250,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 604222368,
+    "index": 69,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "650867077": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 250,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 650867077,
+    "index": 101,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "690387059": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 690387059,
+    "index": 63,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "723759326": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 250,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 723759326,
+    "index": 204,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "745689032": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 500,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 745689032,
+    "index": 70,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "856029439": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 250,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 856029439,
+    "index": 115,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "976736818": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 7500,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 976736818,
+    "index": 119,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "983547049": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 500,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 685157383,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 983547049,
+    "index": 113,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1082015990": {
+    "materials": [
+      {
+        "itemHash": 4084398230,
+        "deleteOnAction": true,
+        "count": 500,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 1082015990,
+    "index": 55,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1096424763": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 500,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 685157383,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 7,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 1096424763,
+    "index": 158,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1100702562": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 50,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 1100702562,
+    "index": 95,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1132830599": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 50,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 1132830599,
+    "index": 94,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1168053688": {
+    "materials": [
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 50,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 1168053688,
+    "index": 108,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1228020973": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 6000,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 8,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 1228020973,
+    "index": 203,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1328393472": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 2500,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 1328393472,
+    "index": 102,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1463078728": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 1463078728,
+    "index": 160,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1488841134": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1000,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 1488841134,
+    "index": 199,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1514656542": {
+    "materials": [
+      {
+        "itemHash": 2817410917,
+        "deleteOnAction": true,
+        "count": 175,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 1514656542,
+    "index": 121,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1524569442": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 250,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 685157383,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 1524569442,
+    "index": 114,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1546074050": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1700,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 1546074050,
+    "index": 221,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1546074051": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 4,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 1546074051,
+    "index": 220,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1546074056": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 1546074056,
+    "index": 215,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1546074057": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 300,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 1546074057,
+    "index": 214,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1546074058": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 250,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 1546074058,
+    "index": 213,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1546074060": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1300,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 4,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 1546074060,
+    "index": 219,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1546074061": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1100,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 1546074061,
+    "index": 218,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1546074062": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 900,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 1546074062,
+    "index": 217,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1546074063": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 700,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 1546074063,
+    "index": 216,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1564811296": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 500,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 1564811296,
+    "index": 212,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1575099945": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 250,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 1575099945,
+    "index": 73,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1585604029": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 5000,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 1585604029,
+    "index": 78,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1633988883": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 5000,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 1633988883,
+    "index": 75,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1656458293": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 500,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 1656458293,
+    "index": 72,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1670230647": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 1670230647,
+    "index": 132,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1681842564": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 1681842564,
+    "index": 64,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1708432873": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 750,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 1708432873,
+    "index": 103,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1920773870": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 777,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 7,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 685157383,
+        "deleteOnAction": true,
+        "count": 7,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 1920773870,
+    "index": 110,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1921496923": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 500,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 1921496923,
+    "index": 205,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2007311294": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2007311294,
+    "index": 133,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2019714558": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 250,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 2817410917,
+        "deleteOnAction": true,
+        "count": 40,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 2019714558,
+    "index": 117,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2082271808": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 3000,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 2082271808,
+    "index": 202,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2133881383": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 50,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 2133881383,
+    "index": 67,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2164656339": {
+    "materials": [
+      {
+        "itemHash": 2817410917,
+        "deleteOnAction": true,
+        "count": 875,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 2164656339,
+    "index": 122,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2185512656": {
+    "materials": [
+      {
+        "itemHash": 3010348880,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998403,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2185512656,
+    "index": 5,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2185512657": {
+    "materials": [
+      {
+        "itemHash": 3010348880,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998402,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2185512657,
+    "index": 4,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2185512658": {
+    "materials": [
+      {
+        "itemHash": 3010348881,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3010348889,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2185512658,
+    "index": 7,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2185512659": {
+    "materials": [
+      {
+        "itemHash": 3010348882,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998404,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2185512659,
+    "index": 6,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2185512660": {
+    "materials": [
+      {
+        "itemHash": 3010348883,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998401,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2185512660,
+    "index": 1,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2185512661": {
+    "materials": [
+      {
+        "itemHash": 3010348880,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3010348887,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2185512661,
+    "index": 0,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2185512662": {
+    "materials": [
+      {
+        "itemHash": 3010348881,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998404,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2185512662,
+    "index": 3,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2185512663": {
+    "materials": [
+      {
+        "itemHash": 3010348883,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998400,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2185512663,
+    "index": 2,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2185512668": {
+    "materials": [
+      {
+        "itemHash": 3010348883,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3010348886,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2185512668,
+    "index": 9,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2185512669": {
+    "materials": [
+      {
+        "itemHash": 3010348881,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3010348888,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2185512669,
+    "index": 8,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2192786535": {
+    "materials": [
+      {
+        "itemHash": 2817410917,
+        "deleteOnAction": true,
+        "count": 150,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 2192786535,
+    "index": 123,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2196926153": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2196926153,
+    "index": 131,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2214836462": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 250,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2214836462,
+    "index": 81,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2223640740": {
+    "materials": [],
+    "hash": 2223640740,
+    "index": 58,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2324226256": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 3000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2324226256,
+    "index": 176,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2324226257": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 3000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 4,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2324226257,
+    "index": 177,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2324226258": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2324226258,
+    "index": 174,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2324226259": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 2500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2324226259,
+    "index": 175,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2324226260": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2324226260,
+    "index": 172,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2324226261": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2324226261,
+    "index": 173,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2324226263": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2324226263,
+    "index": 171,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2324226270": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 4000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 4,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 4257549984,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2324226270,
+    "index": 178,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2324226271": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 4000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 4257549984,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2324226271,
+    "index": 179,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2332444919": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 50,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 2332444919,
+    "index": 96,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2413613994": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1500,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 2413613994,
+    "index": 208,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2446543652": {
+    "materials": [
+      {
+        "itemHash": 1505278293,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2446543652,
+    "index": 77,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2463837317": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 6000,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 8,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 2463837317,
+    "index": 211,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2507128937": {
+    "materials": [],
+    "hash": 2507128937,
+    "index": 109,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2548257894": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 750,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 2548257894,
+    "index": 125,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2575562186": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1000,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 2575562186,
+    "index": 68,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2611197965": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1000,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 2611197965,
+    "index": 207,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2680836210": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 15000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 19,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 4257549984,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2680836210,
+    "index": 196,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2680836211": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 19000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 24,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 4257549984,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2680836211,
+    "index": 197,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2680836216": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2680836216,
+    "index": 190,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2680836217": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2680836217,
+    "index": 191,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2680836220": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 8000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 11,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2680836220,
+    "index": 194,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2680836221": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 11000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2680836221,
+    "index": 195,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2680836222": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 2500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2680836222,
+    "index": 192,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2680836223": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 5000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 8,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2680836223,
+    "index": 193,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2704230363": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 250,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2704230363,
+    "index": 86,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2732484384": {
+    "materials": [],
+    "hash": 2732484384,
+    "index": 66,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2832851160": {
+    "materials": [
+      {
+        "itemHash": 3010348880,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998404,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2832851160,
+    "index": 50,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2832851161": {
+    "materials": [
+      {
+        "itemHash": 3010348882,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3010348888,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2832851161,
+    "index": 49,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2832851162": {
+    "materials": [
+      {
+        "itemHash": 3010348883,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998408,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2832851162,
+    "index": 48,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2832851163": {
+    "materials": [
+      {
+        "itemHash": 3010348882,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998405,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2832851163,
+    "index": 47,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2832851165": {
+    "materials": [
+      {
+        "itemHash": 3010348885,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998409,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2832851165,
+    "index": 53,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2832851166": {
+    "materials": [
+      {
+        "itemHash": 3010348882,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998408,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2832851166,
+    "index": 52,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2832851167": {
+    "materials": [
+      {
+        "itemHash": 3010348884,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998406,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2832851167,
+    "index": 51,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2833495166": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1000,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2833495166,
+    "index": 89,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2833495167": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 750,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2833495167,
+    "index": 88,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2844144231": {
+    "materials": [
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 20,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2844144231,
+    "index": 82,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2849628742": {
+    "materials": [
+      {
+        "itemHash": 3010348884,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998409,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2849628742,
+    "index": 45,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2849628743": {
+    "materials": [
+      {
+        "itemHash": 3010348880,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998406,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2849628743,
+    "index": 46,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2849628744": {
+    "materials": [
+      {
+        "itemHash": 3010348885,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3010348887,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2849628744,
+    "index": 43,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2849628745": {
+    "materials": [
+      {
+        "itemHash": 3010348881,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998402,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2849628745,
+    "index": 44,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2849628746": {
+    "materials": [
+      {
+        "itemHash": 3010348885,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3010348888,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2849628746,
+    "index": 41,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2849628747": {
+    "materials": [
+      {
+        "itemHash": 3010348881,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998407,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2849628747,
+    "index": 42,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2849628748": {
+    "materials": [
+      {
+        "itemHash": 3010348884,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998401,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2849628748,
+    "index": 39,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2849628749": {
+    "materials": [
+      {
+        "itemHash": 3010348884,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3010348889,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2849628749,
+    "index": 40,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2849628750": {
+    "materials": [
+      {
+        "itemHash": 3010348882,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3010348886,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2849628750,
+    "index": 37,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2849628751": {
+    "materials": [
+      {
+        "itemHash": 3010348885,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998400,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2849628751,
+    "index": 38,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2881877872": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2881877872,
+    "index": 150,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2881877873": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2881877873,
+    "index": 151,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2881877881": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2881877881,
+    "index": 143,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2881877882": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 2500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2881877882,
+    "index": 144,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2881877883": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 2500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2881877883,
+    "index": 145,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2881877884": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 2500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2881877884,
+    "index": 146,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2881877885": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 2500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2881877885,
+    "index": 147,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2881877886": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2881877886,
+    "index": 148,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2881877887": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2881877887,
+    "index": 149,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2884799297": {
+    "materials": [
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 25,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2884799297,
+    "index": 85,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2888594036": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1000,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2888594036,
+    "index": 128,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2895945826": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 500,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 2895945826,
+    "index": 60,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2899539364": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 250,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2899539364,
+    "index": 76,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2988464829": {
+    "materials": [
+      {
+        "itemHash": 2014411539,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 2988464829,
+    "index": 136,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3020732508": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 500,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 3020732508,
+    "index": 100,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3103910193": {
+    "materials": [
+      {
+        "itemHash": 3487922223,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3103910193,
+    "index": 139,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3196647503": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 4000,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 3196647503,
+    "index": 127,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3207656126": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 250,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3207656126,
+    "index": 116,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3297098952": {
+    "materials": [
+      {
+        "itemHash": 486401634,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3297098952,
+    "index": 56,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3369639570": {
+    "materials": [
+      {
+        "itemHash": 49145143,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3369639570,
+    "index": 138,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3384842521": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 50,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 3384842521,
+    "index": 97,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3493515811": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1500,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 3493515811,
+    "index": 209,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3497929822": {
+    "materials": [
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3497929822,
+    "index": 90,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3497929823": {
+    "materials": [
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 25,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3497929823,
+    "index": 91,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3520961090": {
+    "materials": [
+      {
+        "itemHash": 3010348883,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3010348886,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3520961090,
+    "index": 36,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3520961091": {
+    "materials": [
+      {
+        "itemHash": 3010348881,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3010348888,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3520961091,
+    "index": 35,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3520961096": {
+    "materials": [
+      {
+        "itemHash": 3010348881,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998404,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3520961096,
+    "index": 30,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3520961097": {
+    "materials": [
+      {
+        "itemHash": 3010348883,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998400,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3520961097,
+    "index": 29,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3520961098": {
+    "materials": [
+      {
+        "itemHash": 3010348883,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998401,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3520961098,
+    "index": 28,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3520961099": {
+    "materials": [
+      {
+        "itemHash": 3010348880,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3010348887,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3520961099,
+    "index": 27,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3520961100": {
+    "materials": [
+      {
+        "itemHash": 3010348881,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3010348889,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3520961100,
+    "index": 34,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3520961101": {
+    "materials": [
+      {
+        "itemHash": 3010348882,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998404,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3520961101,
+    "index": 33,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3520961102": {
+    "materials": [
+      {
+        "itemHash": 3010348880,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998403,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3520961102,
+    "index": 32,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3520961103": {
+    "materials": [
+      {
+        "itemHash": 3010348880,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998402,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3520961103,
+    "index": 31,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3549770944": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3549770944,
+    "index": 163,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3549770945": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3549770945,
+    "index": 162,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3549770946": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3549770946,
+    "index": 161,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3549770948": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 2500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3549770948,
+    "index": 167,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3549770949": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3549770949,
+    "index": 166,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3549770950": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3549770950,
+    "index": 165,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3549770951": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3549770951,
+    "index": 164,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3549770954": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 3000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 4,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 4257549984,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3549770954,
+    "index": 169,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3549770955": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 3000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 4,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 4257549984,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3549770955,
+    "index": 168,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3557732400": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1000,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 3557732400,
+    "index": 206,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3588361558": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 4000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 4257549985,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3588361558,
+    "index": 170,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3674878801": {
+    "materials": [
+      {
+        "itemHash": 31293053,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3674878801,
+    "index": 137,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3686585038": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 2000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 6,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3686585038,
+    "index": 222,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3688316323": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 400,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 3688316323,
+    "index": 74,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3705371007": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 500,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 3705371007,
+    "index": 59,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3705602764": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 16000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 25,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 4257549984,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 4257549985,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3705602764,
+    "index": 189,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3748578940": {
+    "materials": [
+      {
+        "itemHash": 1177810185,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3748578940,
+    "index": 140,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3772980459": {
+    "materials": [
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3772980459,
+    "index": 83,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3785659211": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3785659211,
+    "index": 152,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3850076036": {
+    "materials": [
+      {
+        "itemHash": 3010348884,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998409,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3850076036,
+    "index": 18,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3850076037": {
+    "materials": [
+      {
+        "itemHash": 3010348880,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998406,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3850076037,
+    "index": 19,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3850076040": {
+    "materials": [
+      {
+        "itemHash": 3010348885,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3010348888,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3850076040,
+    "index": 14,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3850076041": {
+    "materials": [
+      {
+        "itemHash": 3010348881,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998407,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3850076041,
+    "index": 15,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3850076042": {
+    "materials": [
+      {
+        "itemHash": 3010348885,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3010348887,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3850076042,
+    "index": 16,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3850076043": {
+    "materials": [
+      {
+        "itemHash": 3010348881,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998402,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3850076043,
+    "index": 17,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3850076044": {
+    "materials": [
+      {
+        "itemHash": 3010348882,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3010348886,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3850076044,
+    "index": 10,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3850076045": {
+    "materials": [
+      {
+        "itemHash": 3010348885,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998400,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3850076045,
+    "index": 11,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3850076046": {
+    "materials": [
+      {
+        "itemHash": 3010348884,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998401,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3850076046,
+    "index": 12,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3850076047": {
+    "materials": [
+      {
+        "itemHash": 3010348884,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3010348889,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3850076047,
+    "index": 13,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3852497618": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 250,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 3852497618,
+    "index": 71,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3867545234": {
+    "materials": [
+      {
+        "itemHash": 592227263,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3867545234,
+    "index": 141,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3880411699": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 250,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 3880411699,
+    "index": 111,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3900408896": {
+    "materials": [
+      {
+        "itemHash": 3010348882,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998408,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3900408896,
+    "index": 25,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3900408897": {
+    "materials": [
+      {
+        "itemHash": 3010348884,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998406,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3900408897,
+    "index": 24,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3900408899": {
+    "materials": [
+      {
+        "itemHash": 3010348885,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998409,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3900408899,
+    "index": 26,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3900408900": {
+    "materials": [
+      {
+        "itemHash": 3010348883,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998408,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3900408900,
+    "index": 21,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3900408901": {
+    "materials": [
+      {
+        "itemHash": 3010348882,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998405,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3900408901,
+    "index": 20,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3900408902": {
+    "materials": [
+      {
+        "itemHash": 3010348880,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3331998404,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3900408902,
+    "index": 23,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3900408903": {
+    "materials": [
+      {
+        "itemHash": 3010348882,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3010348888,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1878753218,
+        "deleteOnAction": true,
+        "count": 15,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3900408903,
+    "index": 22,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3906126011": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3906126011,
+    "index": 129,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3933714686": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 750,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 3933714686,
+    "index": 118,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3947675841": {
+    "materials": [
+      {
+        "itemHash": 2817410917,
+        "deleteOnAction": true,
+        "count": 100,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 3947675841,
+    "index": 120,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3964552737": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 500,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 3964552737,
+    "index": 99,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3967414853": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 5000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 6,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 4257549985,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 3967414853,
+    "index": 180,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "4021893553": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1000,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 4021893553,
+    "index": 112,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "4032750400": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 4000,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 5,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 4032750400,
+    "index": 201,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "4076440615": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 4076440615,
+    "index": 61,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "4080982664": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 500,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 4080982664,
+    "index": 87,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "4110426674": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 250,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 4110426674,
+    "index": 104,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "4111161157": {
+    "materials": [
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1000,
+        "omitFromRequirements": true
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 4,
+        "omitFromRequirements": true
+      }
+    ],
+    "hash": 4111161157,
+    "index": 65,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "4116823696": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 2500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 6,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 4116823696,
+    "index": 184,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "4116823697": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 4,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 4116823697,
+    "index": 183,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "4116823698": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 6000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 12,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 4116823698,
+    "index": 186,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "4116823699": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 3500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 9,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 4116823699,
+    "index": 185,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "4116823702": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 1000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 2,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 4116823702,
+    "index": 182,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "4116823703": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 500,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 4116823703,
+    "index": 181,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "4116823708": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 12000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 20,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 4257549984,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 4116823708,
+    "index": 188,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "4116823709": {
+    "materials": [
+      {
+        "itemHash": 2979281381,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3159615086,
+        "deleteOnAction": true,
+        "count": 9000,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 16,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 3,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 4257549984,
+        "deleteOnAction": true,
+        "count": 1,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 4116823709,
+    "index": 187,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "4144131749": {
+    "materials": [
+      {
+        "itemHash": 3853748946,
+        "deleteOnAction": true,
+        "count": 10,
+        "omitFromRequirements": false
+      },
+      {
+        "itemHash": 1022552290,
+        "deleteOnAction": true,
+        "count": 25,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 4144131749,
+    "index": 84,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "4154879933": {
+    "materials": [
+      {
+        "itemHash": 1305274547,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 4154879933,
+    "index": 134,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "4211982558": {
+    "materials": [
+      {
+        "itemHash": 950899352,
+        "deleteOnAction": true,
+        "count": 0,
+        "omitFromRequirements": false
+      }
+    ],
+    "hash": 4211982558,
+    "index": 135,
+    "redacted": false,
+    "blacklisted": false
+  }
+}

@@ -1,6 +1,6 @@
-const dotenv = require("dotenv");
+//const dotenv = require("dotenv");
 const path = require("path");
-const root = path.join(__dirname,"..\\");
+const root = __dirname;
 dotenv.config( { path: path.join(root,"process.env") } );
 const axios = require('axios');
 const https = require("https");
