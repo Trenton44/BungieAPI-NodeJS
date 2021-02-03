@@ -221,7 +221,6 @@ function authorizationCheck(request,response,next){
         }).catch(function(error){
           console.log("There was an error refreshing the token.");
           if(request.url == "/"){
-            console.log(request.url);
             response.redirect("/login");
           }
           else {
@@ -236,8 +235,9 @@ function authorizationCheck(request,response,next){
   }
   else {
     console.log("user is not yet logged in, redirecting to login.");
+    console.log("URL INFO");
+    console.log(request.url);
     if(request.url == "/"){
-      console.log(request.url);
       response.redirect("/login");
     }
     else {
