@@ -302,9 +302,9 @@ function buildAuthorizatonCodeRequest(request){
 async function loadManifest(){
   var path =bungieRoot+"/Destiny2/Manifest/";
   console.log("Obtaining Destiny Manifest from Bungie.");
-  await getRequest(path).then( async function(result){
+  await getRequest(path).then(function(result){
     var d2contentManifest = bungieCommon+result.data.Response.jsonWorldContentPaths.en;
-    await getRequest(d2contentManifest).then(function(result){
+    return getRequest(d2contentManifest).then(function(result){
       /*var manifestItems = Object.keys(result.data);
       or(i in result.data){
         console.log("Iteration: "+i);
@@ -319,7 +319,7 @@ async function loadManifest(){
       fs.writeFileSync(manifestRoot+"/d2manifest.json", data, function(error){
         console.error(error);
       });
-      console.log("Done");
+      return true;
     });
   });
 };
