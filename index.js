@@ -1,3 +1,4 @@
+console.log("Starting index.js preload.");
 const path = require("path");
 const root = __dirname;
 const webpageRoot = root+"/Client Files";
@@ -26,7 +27,7 @@ const d2api = require(serverRoot+"/D2APIfunctions");
 const d2components = require(serverRoot+"/D2Components.js");
 const ServerResponse = require(serverRoot+"/Server Responses.js");
 
-
+console.log("Finished index.js preload.");
 /*const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Revomage44:<"+process.env.Mongo_DB_PW+">@glimmer-gains-1.hjydh.mongodb.net/<dbname>?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
