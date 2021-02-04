@@ -23,7 +23,7 @@ const bungieCommon = "https://www.bungie.net";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
 console.log("Finished index.js preload.");
-//const d2api = require(serverRoot+"/D2APIfunctions");
+const d2api = require(serverRoot+"/D2APIfunctions");
 //const d2components = require(serverRoot+"/D2Components.js");
 //const ServerResponse = require(serverRoot+"/Server Responses.js");
 
@@ -39,7 +39,7 @@ client.connect(err => {
 });*/
 
 dotenv.config( { path: path.join(root,"process.env") } );
-if(process.env.NODE_ENV == "production"){ console.log("I'll allow it.");process.env['NODE_TLS_REJECT_UNAUTHORIZED']=0;}
+if(process.env.NODE_ENV == "development"){ console.log("I'll allow it.");process.env['NODE_TLS_REJECT_UNAUTHORIZED']=0;}
 
 //var privatekey = fs.readFileSync(path.join(root,"key.pem"));
 //var certificate = fs.readFileSync(path.join(root,"cert.pem"));
