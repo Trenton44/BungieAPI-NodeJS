@@ -1,3 +1,4 @@
+console.log("Starting D2APIfunctions.js preload.");
 const path = require("path");
 const root = path.join(__dirname,'..');
 const webpageRoot = root+"/Client Files";
@@ -15,7 +16,7 @@ const bungieRoot = "https://www.bungie.net/Platform";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
 const bungieCommon = "https://www.bungie.net";
-
+console.log("Ending D2APIfunctions.js preload.");
 dotenv.config( { path: path.join(root,"process.env") } );
 //When a function takes a list of components as a parameter, this function is called to
 //combine those functions into a single search parameter the bungie API can understand.

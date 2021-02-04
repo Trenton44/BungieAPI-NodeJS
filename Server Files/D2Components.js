@@ -1,3 +1,4 @@
+console.log("Starting D2Components.js preload.");
 const path = require("path");
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
