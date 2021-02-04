@@ -27,25 +27,44 @@ const d2api = require(serverRoot+"/D2APIfunctions");
 const d2components = require(serverRoot+"/D2Components.js");
 const ServerResponse = require(serverRoot+"/Server Responses.js");
 
+dotenv.config( { path: path.join(root,"process.env") } );
 
+dbConnectOptions = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+
+};
+const mongo = require('mongodb');
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://Revomage44:<"+process.env.Mongo_DB_PW+">@glimmer-gains-1.hjydh.mongodb.net/<dbname>?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
+const client = new MongoClient(process.env.Mongo_DB_URI, dbConnectOptions);
+var sessionIdStore;
 client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  console.log("Client connected successfully.");
+  console.log(uri);
+  if(err)
+    throw err;
+  sessionIdStore = client.collection("Sessions");
+  var obj = {sessionID: "123", data:"jlfkdsa;jfds"};
+  sessionIdStore.insertOne(obj,function(error,result){
+    if(error){ throw error; }
+    console.log(result);
+  });
   // perform actions on the collection object
-  client.close();
 });
 
-dotenv.config( { path: path.join(root,"process.env") } );
-if(process.env.NODE_ENV == "development"){ console.log("I'll allow it.");process.env['NODE_TLS_REJECT_UNAUTHORIZED']=0;}
 
-//var privatekey = fs.readFileSync(path.join(root,"key.pem"));
-//var certificate = fs.readFileSync(path.join(root,"cert.pem"));
-//var credentials = {key: privatekey, cert: certificate};
-//var httpsServer = https.createServer(credentials,app);
-var httpsServer = https.createServer(app);
+if(process.env.NODE_ENV == "development"){
+   console.log("I'll allow it.");
+   process.env['NODE_TLS_REJECT_UNAUTHORIZED']=0;
+   var privatekey = fs.readFileSync(path.join(root,"key.pem"));
+   var certificate = fs.readFileSync(path.join(root,"cert.pem"));
+   var credentials = {key: privatekey, cert: certificate};
+   var httpsServer = https.createServer(credentials,app);
+ }
+ else {
+   var httpsServer = https.createServer(app);
+ }
+
+
 app.use(
   session(
     {
