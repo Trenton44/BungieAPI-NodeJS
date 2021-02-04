@@ -24,8 +24,8 @@ const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
 console.log("Finished index.js preload.");
 const d2api = require(serverRoot+"/D2APIfunctions");
-//const d2components = require(serverRoot+"/D2Components.js");
-//const ServerResponse = require(serverRoot+"/Server Responses.js");
+const d2components = require(serverRoot+"/D2Components.js");
+const ServerResponse = require(serverRoot+"/Server Responses.js");
 
 
 /*const MongoClient = require('mongodb').MongoClient;
