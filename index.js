@@ -41,7 +41,7 @@ var sessionIdStore;
 client.connect(err => {
   if(err)
     throw err;
-  sessionIdStore = client.collection("Sessions");
+  sessionIdStore = client.db("users").collection("Sessions");
   var obj = {sessionID: "123", data:"jlfkdsa;jfds"};
   sessionIdStore.insertOne(obj,function(error,result){
     if(error){ throw error; }
