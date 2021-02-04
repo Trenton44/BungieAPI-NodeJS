@@ -26,6 +26,17 @@ const d2api = require(serverRoot+"/D2APIfunctions");
 const d2components = require(serverRoot+"/D2Components.js");
 const ServerResponse = require(serverRoot+"/Server Responses.js");
 
+
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://Revomage44:<"+process.env.Mongo_DB_PW+">@glimmer-gains-1.hjydh.mongodb.net/<dbname>?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  console.log("Client connected successfully.");
+  // perform actions on the collection object
+  client.close();
+});
+
 dotenv.config( { path: path.join(root,"process.env") } );
 if(process.env.NODE_ENV == "production"){ console.log("I'll allow it.");process.env['NODE_TLS_REJECT_UNAUTHORIZED']=0;}
 
