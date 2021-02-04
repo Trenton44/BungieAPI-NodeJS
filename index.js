@@ -39,7 +39,6 @@ const MongoClient = require('mongodb').MongoClient;
 const client = new MongoClient(process.env.Mongo_DB_URI, dbConnectOptions);
 var sessionIdStore;
 client.connect(err => {
-  console.log(uri);
   if(err)
     throw err;
   sessionIdStore = client.collection("Sessions");
