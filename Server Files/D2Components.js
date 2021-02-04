@@ -9,13 +9,14 @@ const webpageRoot = root+"/Client Files";
 const serverRoot = root+"/Server Files";
 const assetRoot = root+"/assets";
 const manifestRoot = root+"/Manifest";
+const ServerResponse = require(serverRoot+"/Server Responses.js");
 const DestinyClassDefinition = require(manifestRoot+"/DestinyClassDefinition.json");
 const DestinyGenderDefinition = require(manifestRoot+"/DestinyGenderDefinition.json");
 const DestinyRaceDefinition = require(manifestRoot+"/DestinyRaceDefinition.json");
 const DestinyStatDefinition = require(manifestRoot+"/DestinyStatDefinition.json");
 const DestinyInventoryItemDefinition = require(manifestRoot+"/DestinyInventoryItemDefinition.json");
 const DestinyInventoryBucketDefinition = require(manifestRoot+"/DestinyInventoryBucketDefinition.json");
-const ServerResponse = require(serverRoot+"/Server Responses.js");
+
 
 const components = {
   "100": "profile",
