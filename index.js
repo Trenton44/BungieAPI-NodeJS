@@ -22,12 +22,12 @@ const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
-
+console.log("Finished index.js preload.");
 const d2api = require(serverRoot+"/D2APIfunctions");
 const d2components = require(serverRoot+"/D2Components.js");
 const ServerResponse = require(serverRoot+"/Server Responses.js");
 
-console.log("Finished index.js preload.");
+
 /*const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Revomage44:<"+process.env.Mongo_DB_PW+">@glimmer-gains-1.hjydh.mongodb.net/<dbname>?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
