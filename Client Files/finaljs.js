@@ -211,6 +211,7 @@ function equipment(){
     var parent = this;
     var path = "/character/"+parent.id+"/equipment";
     fetchRequest(path).then(function(result){
+      console.log(result);
       var equipment = result.equipment;
       var inventory = result.inventory;
       for(i in equipment){
