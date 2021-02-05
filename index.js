@@ -31,7 +31,7 @@ const d2components = require(serverRoot+"/D2Components.js");
 const ServerResponse = require(serverRoot+"/Server Responses.js");
 
 dotenv.config( { path: path.join(root,"process.env") } );
-
+var httpsServer;
 
 if(process.env.NODE_ENV == "development"){
    console.log("I'll allow it.");
@@ -39,10 +39,10 @@ if(process.env.NODE_ENV == "development"){
    var privatekey = fs.readFileSync(path.join(root,"key.pem"));
    var certificate = fs.readFileSync(path.join(root,"cert.pem"));
    var credentials = {key: privatekey, cert: certificate};
-   var httpsServer = https.createServer(credentials,app);
+  httpsServer = https.createServer(credentials,app);
  }
  else {
-   var httpsServer = https.createServer(app);
+  httpsServer = https.createServer(app);
  }
 
  var store = new MongoDBStore({
@@ -53,6 +53,7 @@ if(process.env.NODE_ENV == "development"){
  store.on("error", function(error){
    console.error(error);
  });
+
 app.use(
   session({
       name: "sAk3m3",
@@ -61,7 +62,7 @@ app.use(
       resave: true,
       store: store,
       saveUninitialized: true,
-      cookie: { httpOnly: true, secure: false, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
+      cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
 );
 
@@ -186,9 +187,14 @@ function characterComponentRequest(request, components,cID){
   var d2ID = userdata.primaryMembershipId;
   return d2api.getCharacterAuth(memType,d2ID,cID,components,token).then(function(result){
     console.log("accessed");
-    var d2data = d2api.parseCharacterComponents(result.data.Response);
-    console.log("Requested data retrieved from bungie.");
-    return d2data;
+    try{
+      var d2data = d2api.parseCharacterComponents(result.data.Response);
+      console.log("Requested data retrieved from bungie.");
+      return d2data;
+    }catch(e){
+      console.log("error caught: ");
+      console.error(e);
+    }
   }).catch(function(error){
     console.log(error);
     return false;
@@ -201,9 +207,14 @@ function profileComponentRequest(request, components){
   var d2ID = userdata.primaryMembershipId;
   return d2api.getDestinyProfileAuth(memType,d2ID,components,token).then(function(result){
     console.log("accessed");
-    var d2data = d2api.parseProfileComponents(result.data.Response);
-    console.log("Requested data retrieved from bungie.");
-    return d2data;
+    try{
+      var d2data = d2api.parseProfileComponents(result.data.Response);
+      console.log("Requested data retrieved from bungie.");
+      return d2data;
+    }catch(e){
+      console.log("error caught: ");
+      console.error(e);
+    }
   }).catch(function(error){
     console.log(error);
     return false;
