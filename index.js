@@ -132,10 +132,10 @@ app.get("/character/:id/equipment",async function(request,response){
   var components = ["201", "205"];
   var cID = request.params.id;
   var data = await characterComponentRequest(request, components,cID);
-  var returnData = {
+  /*var returnData = {
     equipment: ServerResponse.EquipmentItemsResponse(data.equipment),
     inventory: ServerResponse.InventoryItemsResponse(data.inventory).equippable,
-  };
+  };*/
   response.status(200).json(data);
 });
 //sents request to GetProfile endpoint, cleans up result, and
