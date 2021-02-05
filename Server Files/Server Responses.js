@@ -17,7 +17,13 @@ var Errors = {
 };
 exports.Errors = Errors;
 var EquipmentItemResponse = function(item){
-  return item;
+  var equipSlot;
+  if(item.itemHashData.redacted){
+    equipSlot = null;
+  }
+  else {
+    DestinyEquipmentSlotDefinition[item.itemHashData.equippingBlock.equipmentSlotTypeHash];
+  }
   return {
     itemhash: item.itemHash,
     itemID: item.itemInstanceId,
@@ -29,7 +35,7 @@ var EquipmentItemResponse = function(item){
       equippable: item.itemHashData.equippable,
       iconWatermark: item.itemHashData.iconWatermark,
       iconWatermarkShelved: item.itemHashData.iconWatermarkShelved,
-      equipSlot: DestinyEquipmentSlotDefinition[item.itemHashData.equippingBlock.equipmentSlotTypeHash],
+      equipSlot: equipSlot,
       equipHash: item.itemHashData.equippingBlock.equipmentSlotTypeHash,
     },
     bucketData: {
