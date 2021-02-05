@@ -17,6 +17,7 @@ var Errors = {
 };
 exports.Errors = Errors;
 var EquipmentItemResponse = function(item){
+  return item;
   return {
     itemhash: item.itemHash,
     itemID: item.itemInstanceId,
