@@ -6,6 +6,8 @@ const serverRoot = root+"/Server Files";
 const assetRoot = root+"/assets";
 const manifestRoot = root+"/Manifest";
 
+const mongo = require('mongodb');
+const MongoClient = require('mongodb').MongoClient;
 const https = require('http');
 //const https = require("https");
 const fs = require('fs');
@@ -17,6 +19,7 @@ const axios = require('axios');
 const dotenv = require("dotenv");
 const crypto = require("crypto");
 const helmet = require("helmet");
+const MongoDBStore = require("connect-mongodb-session")(session);
 
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
@@ -28,27 +31,6 @@ const d2components = require(serverRoot+"/D2Components.js");
 const ServerResponse = require(serverRoot+"/Server Responses.js");
 
 dotenv.config( { path: path.join(root,"process.env") } );
-
-dbConnectOptions = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-
-};
-const mongo = require('mongodb');
-const MongoClient = require('mongodb').MongoClient;
-const client = new MongoClient(process.env.Mongo_DB_URI, dbConnectOptions);
-var sessionIdStore;
-client.connect(err => {
-  if(err)
-    throw err;
-  sessionIdStore = client.db("users").collection("Sessions");
-  var obj = {sessionID: "123", data:"jlfkdsa;jfds"};
-  sessionIdStore.insertOne(obj,function(error,result){
-    if(error){ throw error; }
-    console.log(result);
-  });
-  // perform actions on the collection object
-});
 
 
 if(process.env.NODE_ENV == "development"){
@@ -63,14 +45,21 @@ if(process.env.NODE_ENV == "development"){
    var httpsServer = https.createServer(app);
  }
 
-
+ var store = new MongoDBStore({
+   uri: process.env.Mongo_DB_URI,
+   databaseName: "users",
+   collection: "Sessions",
+ });
+ store.on("error", function(error){
+   console.error(error);
+ });
 app.use(
-  session(
-    {
+  session({
       name: "sAk3m3",
       secret: "secreto!alabastro@",
       genid: function(req){ return genuuid.v4(); },
       resave: true,
+      store: store,
       saveUninitialized: true,
       cookie: { httpOnly: true, secure: false, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
