@@ -22,7 +22,7 @@ var EquipmentItemResponse = function(item){
     equipSlot = null;
   }
   else {
-    DestinyEquipmentSlotDefinition[item.itemHashData.equippingBlock.equipmentSlotTypeHash];
+    equipSlot = DestinyEquipmentSlotDefinition[item.itemHashData.equippingBlock.equipmentSlotTypeHash];
   }
   return {
     itemhash: item.itemHash,
