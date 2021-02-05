@@ -124,7 +124,7 @@ app.get("/character/:id/general",async function(request, response){
   var cID = request.params.id;
   var data = await characterComponentRequest(request, components,cID);
   var returnData = ServerResponse.CharacterResponse(data.character);
-  response.status(200).json(returnData);
+  response.status(200).json(data);
 });
 //Sends request to GetProfile endpoint, cleans up result, and
 //returns list of equipment character currently has equipped.
