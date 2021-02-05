@@ -1,32 +1,46 @@
+console.log("Starting ServerResponses.js preload.");
 const path = require("path");
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
 const bungieCommon = "https://www.bungie.net";
-const manifestRoot = path.join(__dirname,"..\\","manifestData");
-const webpageRoot = path.join(__dirname,"..\\","Client Files");
-const serverRoot = path.join(__dirname,"..\\","Server Files");
-const assetRoot = path.join(__dirname,"..\\","assets");
-const D2Manifest = require(manifestRoot+"/d2manifest.json");
+const root = path.join(__dirname,'..');
+const webpageRoot = root+"/Client Files";
+const serverRoot = root+"/Server Files";
+const assetRoot = root+"/assets";
+const manifestRoot = root+"/Manifest";
+const DestinyDamageTypeDefinition = require(manifestRoot+"/DestinyDamageTypeDefinition.json");
+const DestinyEquipmentSlotDefinition = require(manifestRoot+"/DestinyEquipmentSlotDefinition.json");
 
 var Errors = {
 
 };
 exports.Errors = Errors;
 var EquipmentItemResponse = function(item){
+  var equipSlot;
+  var equipHash;
+  console.log("Item Redacted Status: "+item.itemHashData.redacted);
+  if(item.itemHashData.redacted){
+    equipSlot = null;
+    equipHash = null;
+  }
+  else {
+    equipSlot = DestinyEquipmentSlotDefinition[item.itemHashData.equippingBlock.equipmentSlotTypeHash];
+    equipHash = null;
+  }
   return {
     itemhash: item.itemHash,
     itemID: item.itemInstanceId,
     location: item.bucketHashData.location,
     hashData: {
       displayProperties: item.itemHashData.displayProperties,
-      damageType: D2Manifest.DestinyDamageTypeDefinition[item.itemHashData.defaultDamageTypeHash],
+      damageType: DestinyDamageTypeDefinition[item.itemHashData.defaultDamageTypeHash],
       aquisition: item.itemHashData.displaySource,
       equippable: item.itemHashData.equippable,
       iconWatermark: item.itemHashData.iconWatermark,
       iconWatermarkShelved: item.itemHashData.iconWatermarkShelved,
-      equipSlot: D2Manifest.DestinyEquipmentSlotDefinition[item.itemHashData.equippingBlock.equipmentSlotTypeHash],
-      equipHash: item.itemHashData.equippingBlock.equipmentSlotTypeHash,
+      equipSlot: equipSlot,
+      equipHash: equipHash,
     },
     bucketData: {
       displayProperties: item.bucketHashData.displayProperties,

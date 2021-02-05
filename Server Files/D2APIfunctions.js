@@ -1,19 +1,23 @@
-const dotenv = require("dotenv");
+console.log("Starting D2APIfunctions.js preload.");
 const path = require("path");
-const root = path.join(__dirname,"..\\");
-dotenv.config( { path: path.join(root,"process.env") } );
+const root = path.join(__dirname,'..');
+const webpageRoot = root+"/Client Files";
+
+const serverRoot = root+"/Server Files";
+const assetRoot = root+"/assets";
+const manifestRoot = root+"/Manifest";
+
 const axios = require('axios');
 const https = require("https");
 const fs = require('fs');
-const manifestRoot = path.join(__dirname,"..\\","manifestData");
-//const D2Manifest = require(manifestRoot+"/D2Manifest2.js").D2Manifest;
-const D2Manifest = require(manifestRoot+"/d2manifest.json");
-const D2Components = require("./D2Components.js");
+const dotenv = require("dotenv");
+const D2Components = require(serverRoot+"/D2Components.js");
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
 const bungieCommon = "https://www.bungie.net";
-
+console.log("Ending D2APIfunctions.js preload.");
+dotenv.config( { path: path.join(root,"process.env") } );
 //When a function takes a list of components as a parameter, this function is called to
 //combine those functions into a single search parameter the bungie API can understand.
 function combineComponentString(value){
@@ -195,35 +199,6 @@ function parseBungieCurrentUserDataResponse(data){
   return memberships;
 }
 exports.parseBungieCurrentUserDataResponse = parseBungieCurrentUserDataResponse;
-
-//Loads the current d2 manifest from bungie api and saves to root.
-//Note: the manifest file as a whole is large enough to crash notepad,
-//so this splits each piece of the manifest into it's own json file so it can be
-//read, but also saves it as a whole json so it is easy to import into code later.
-function loadManifest(){
-  var path =bungieRoot+"/Destiny2/Manifest/";
-  getRequest(path).then(function(result){
-    var d2contentManifest = bungieCommon+result.data.Response.jsonWorldContentPaths.en;
-    getRequest(d2contentManifest).then(function(result){
-      var manifestItems = Object.keys(result.data);
-      for(i in result.data){
-        console.log("Iteration: "+i);
-        let data = JSON.stringify(result.data[i], null, 2);
-        console.log("Now writing item "+i+" to  file "+i+".json");
-        fs.writeFileSync(manifestRoot+"/"+i+".json", data, function(error){
-          console.error(error);
-        });
-      }
-      console.log("Now writing entire manifest to d2manifest.json");
-      let data = JSON.stringify(result.data, null, 2);
-      fs.writeFileSync(manifestRoot+"/d2manifest.json", data, function(error){
-        console.error(error);
-      });
-      console.log("Done");
-    });
-  });
-}
-exports.loadManifest = loadManifest;
 
 //used to parse incoming component data from the bungie api.
 //Requires the list of components used in the api request, and the data returned from said request.

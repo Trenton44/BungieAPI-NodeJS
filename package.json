@@ -1,27 +1,31 @@
 {
-  "name": "draw.net-vue",
+  "name": "bungieapi-nodejs",
   "version": "1.0.0",
-  "description": "\"An experiment with VueJS using a previous project.\"",
-  "main": "main.html",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Trenton44/Draw.Net-Vue.git"
-  },
-  "author": "Trenton Choate",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Trenton44/Draw.Net-Vue/issues"
-  },
-  "homepage": "https://github.com/Trenton44/Draw.Net-Vue#readme",
+  "description": "A personal project implementing the API used by Bungie for their Destiny IP",
+  "main": "index.js",
   "dependencies": {
     "axios": "^0.21.1",
+    "connect-mongodb-session": "^2.4.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "helmet": "^4.4.1",
+    "mongodb": "^3.6.4",
     "uuid": "^8.3.2"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Trenton44/BungieAPI-NodeJS.git"
+  },
+  "author": "Trenton Choate",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Trenton44/BungieAPI-NodeJS/issues"
+  },
+  "homepage": "https://github.com/Trenton44/BungieAPI-NodeJS#readme"
 }
