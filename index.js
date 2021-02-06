@@ -15,7 +15,7 @@ const express = require("express");
 const session = require("express-session");
 const genuuid = require("uuid");
 var sslRe = require("heroku-ssl-redirect");
-console.log(sslRe);
+console.log(sslRe.sslRedirect);
 const app = new express();
 const axios = require('axios');
 const dotenv = require("dotenv");
