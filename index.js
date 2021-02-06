@@ -13,6 +13,7 @@ const https = require("https");
 const fs = require('fs');
 const express = require("express");
 const session = require("express-session");
+const sslRedirect = require("heroku-ssl-redirect");
 const genuuid = require("uuid");
 const app = new express();
 const axios = require('axios');
@@ -54,6 +55,7 @@ if(process.env.NODE_ENV == "development"){
    console.error(error);
  });
 
+app.use(sslRedirect());
 app.use(
   session({
       name: "sAk3m3",
