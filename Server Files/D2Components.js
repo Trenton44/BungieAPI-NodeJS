@@ -290,12 +290,22 @@ exports.profileCollectibles = profileCollectibles;
 
 var profileCurrencies = function(data){
   var data = data.data;
+  data = data.items;
+  for(i in data){
+    data[i].itemHashData = DestinyInventoryItemDefinition[data[i].itemHash];
+    data[i].bucketHashData = DestinyInventoryBucketDefinition[data[i].bucketHash];
+  }
   return data;
 };
 exports.profileCurrencies = profileCurrencies;
 
 var profileInventory = function(data){
   var data = data.data;
+  data = data.items;
+  for(i in data){
+    data[i].itemHashData = DestinyInventoryItemDefinition[data[i].itemHash];
+    data[i].bucketHashData = DestinyInventoryBucketDefinition[data[i].bucketHash];
+  }
   return data;
 };
 exports.profileInventory = profileInventory;

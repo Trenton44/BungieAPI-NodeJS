@@ -62,8 +62,10 @@ var CharacterResponse = function(item){
 };
 exports.CharacterResponse = CharacterResponse;
 
-
-function SortInventoryItems(items){
+function SortProfileInventory(items){
+};
+exports.SortProfileInventory = SortProfileInventory;
+function SortCharacterInventory(items){
   var itemscopy = Array.from(items);
   var bucketCategory = {
     Invisible:[],
@@ -72,7 +74,6 @@ function SortInventoryItems(items){
     Equippable:[],
     Ignored:[],
   };
-
   for(i in itemscopy){
     var bucket = DestinyBucketCategory[itemscopy[i].bucketHashData.category];
     bucketCategory[bucket].push(itemscopy[i]);
@@ -80,7 +81,7 @@ function SortInventoryItems(items){
   bucketCategory.Equippable = SortEquippablesBucket(bucketCategory.Equippable);
   return bucketCategory;
 };
-exports.SortInventoryItems = SortInventoryItems;
+exports.SortCharacterInventory = SortCharacterInventory;
 
 function SortEquippablesBucket(items){
   var sortedEquipment = {};
