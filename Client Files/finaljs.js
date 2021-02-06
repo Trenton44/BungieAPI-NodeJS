@@ -128,6 +128,7 @@ function equipmentlist(htmlElement){
       }).catch(function(error){
         console.error("Uhhh, the equip request went horribly wrong..");
         console.error(error);
+        localthis.requestrunning = false;
       });
     }
   }
@@ -138,91 +139,22 @@ function equipmentlist(htmlElement){
   };
 };
 
-function equipment(){
-  this.id = "";
-  this.Intitialize = function(){
-    this.slots.Subclass._equipment.length = 4;
-    for(i in this.slots){
-      if(i !== "artifact"){
-        console.log("Intitalizing "+i);
-        this.slots[i].Initialize();
-      }
-    }
-  };
-  //"equipment slots" containing a equipment list of each weapon/armor type in the game.\
-  //the goal was self-updating...
-  this.slots = {
-    Subclass: new equipmentlist("subclass"),
-    KineticWeapons: new equipmentlist("kinetic"),
-    EnergyWeapons: new equipmentlist("special"),
-    PowerWeapons: new equipmentlist("heavy"),
-    Helmet: new equipmentlist("helmet"),
-    Gauntlets: new equipmentlist("gloves"),
-    ChestArmor: new equipmentlist("chest"),
-    LegArmor: new equipmentlist("legs"),
-    ClassArmor: new equipmentlist("class-armor"),
-    Ghost: new equipmentlist("ghost"),
-    Vehicle: new equipmentlist("vehicle"),
-    Ships: new equipmentlist("ship"),
-    Emblems: new equipmentlist("emblem"),
-    Finishers: new equipmentlist("finisher"),
-    SeasonalArtifact: new equipmentlist("artifact"),
-  };
-  //triggers wipe() function in all of the equipment lists shown above.
-  this.equipmentWipe = function(){
-    for(i in this.slots){
-      this.slots[i].wipe();
-    }
-  };
-  //Pulls equipped+nonequipped equipment using server endpoint,
-  //sends new data to equipment lists
-  this.loadEquipment = function(){
-    this.equipmentWipe();
-    var parent = this;
-    var path = "/character/"+parent.id+"/equipment";
-    fetchRequest(path).then(function(result){
-      var keys = Object.keys(result.equipment);
-      console.log(keys);
-      console.log("equipment: ");
-      for(i in keys){
-        console.log(keys[i]+": ");
-        console.log(result.equipment[keys[i]][0]);
-        parent.slots[keys[i]].equip(result.equipment[keys[i]][0]);
-      }
-      console.log("inventory: ");
-      for(i in keys){
-        var equipcategory = result.inventory[keys[i]];
-        console.log(equipcategory+": ");
-        for(z in equipcategory){
-          console.log(equipcategory[z]);
-          parent.slots[keys[i]].newItem(equipcategory[z]);
-        }
-      }
-      /*var equipment = result.equipment;
-      var inventory = result.inventory;
-      for(i in equipment){
-        if(equipment[i].hashData.equipHash == 1506418338){ parent.slots.artifact(equipment[i]); }
-        else { parent.slots[parent.hashKeys[equipment[i].hashData.equipHash]].equip(equipment[i]); }
-      }
-      for(i in inventory){
-        if(inventory[i].hashData.equipHash == 1506418338){ parent.slots.artifact(inventory[i]); }
-        else {
-          parent.slots[parent.hashKeys[inventory[i].hashData.equipHash]].newItem(inventory[i]);
-        }
-      }*/
-    });
-  };
-};
-
 //A character object, meant to hold all information pertaining
 //to the displayed character on the screen.
 //It's not quite self-containing yet, but that is the goal.
 function character(){
-  this.id = "";
+  this.Initialize = function(){
+    this.equipment.Subclass._equipment.length = 4;
+    this.equipment.SeasonalArtifact._equipment.length = 0;
+    for(i in this.equipment){
+      this.equipment[i].Initialize();
+    }
+  }
+  this.id;
   this.setID = function(value){
     this.id = value;
-    this.equipment.id = value;
-    console.log("test "+ this.equipment.id);
+    this.loadGeneral();
+    this.loadEquipment();
   }
   this.getID = function(){
     return this.id;
@@ -266,7 +198,54 @@ function character(){
       parent.setLight(result.light);
     });
   };
-  this.equipment = new equipment();
+  this.equipment = {
+    Subclass: new equipmentlist("subclass"),
+    KineticWeapons: new equipmentlist("kinetic"),
+    EnergyWeapons: new equipmentlist("special"),
+    PowerWeapons: new equipmentlist("heavy"),
+    Helmet: new equipmentlist("helmet"),
+    Gauntlets: new equipmentlist("gloves"),
+    ChestArmor: new equipmentlist("chest"),
+    LegArmor: new equipmentlist("legs"),
+    ClassArmor: new equipmentlist("class-armor"),
+    Ghost: new equipmentlist("ghost"),
+    Vehicle: new equipmentlist("vehicle"),
+    Ships: new equipmentlist("ship"),
+    Emblems: new equipmentlist("emblem"),
+    Finishers: new equipmentlist("finisher"),
+    SeasonalArtifact: new equipmentlist("artifact"),
+  },
+  this.equipmentWipe = function(){
+    for(i in this.equipment){
+      this.equipment[i].wipe();
+    }
+  }
+  //Pulls equipped+nonequipped equipment using server endpoint,
+  //sends new data to equipment lists
+  this.loadEquipment = function(){
+    this.equipmentWipe();
+    var parent = this;
+    var path = "/character/"+parent.id+"/equipment";
+    fetchRequest(path).then(function(result){
+      var keys = Object.keys(result.equipment);
+      console.log(keys);
+      console.log("equipment: ");
+      for(i in keys){
+        console.log(keys[i]+": ");
+        console.log(result.equipment[keys[i]][0]);
+        parent.equipment[keys[i]].equip(result.equipment[keys[i]][0]);
+      }
+      console.log("inventory: ");
+      for(i in keys){
+        var equipcategory = result.inventory[keys[i]];
+        console.log(keys[i]+": ");
+        for(z in equipcategory){
+          console.log(equipcategory[z]);
+          parent.equipment[keys[i]].newItem(equipcategory[z]);
+        }
+      }
+    });
+  };
 };
 
 //Passes window to javascript and requests the character id's
@@ -278,7 +257,7 @@ function Initialize(value){
     console.log(result);
     characterIDs = result;
     character = new character();
-    character.equipment.Intitialize();
+    character.Initialize();
     loadCharacter(counter);
   });
 };
@@ -289,11 +268,7 @@ function loadCharacter(value){
     counter = 0;
   if(counter < 0)
     counter = characterIDs.length-1;
-  console.log(characterIDs[counter]);
   character.setID(characterIDs[counter]);
-  character.loadGeneral();
-  character.equipment.loadEquipment();
-  console.log("Counter: "+counter);
 }
 //Fetch Request function
 async function fetchRequest(path){

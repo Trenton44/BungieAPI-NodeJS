@@ -134,8 +134,8 @@ app.get("/character/:id/equipment",async function(request,response){
   var data = await characterComponentRequest(request, components,cID);
   //console.log(data.equipment);
   var returnData = {
-    equipment: ServerResponse.SortInventoryItems(data.equipment).Equippable,//ServerResponse.EquipmentItemsResponse(data.equipment),
-    inventory: ServerResponse.SortInventoryItems(data.inventory).Equippable,
+    equipment: ServerResponse.SortCharacterInventory(data.equipment).Equippable,
+    inventory: ServerResponse.SortCharacterInventory(data.inventory).Equippable,
   };
   response.status(200).json(returnData);
 });
@@ -145,10 +145,18 @@ app.get("/character/:id/inventory",async function(request,response){
   var components = ["201"];
   var cID = request.params.id;
   var data = await characterComponentRequest(request, components,cID);
-  var returnData = ServerResponse.SortInventoryItems(data.inventory);
+  var returnData = ServerResponse.SortCharacterInventory(data.inventory);
   response.status(200).json(returnData);
 });
-
+app.get("/profile/inventory", async function(request,response){
+  var components = ["102","103"];
+  var data = await profileComponentRequest(request, components);
+  var returnData = {
+    currency: data.profileCurrencies,
+    inventory: ServerResponse.SortCharacterInventory(data.profileInventory),
+  };
+  response.status(200).json(returnData);
+});
 //Sends a POST request to bungie API EquipItem endpoint, returns result of request.
 app.get("/character/:Cid/equipItem/:Iid",async function(request, response){
   var userdata = request.session.data.userdata;
