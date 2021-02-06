@@ -8,12 +8,12 @@ const manifestRoot = root+"/Manifest";
 
 const mongo = require('mongodb');
 const MongoClient = require('mongodb').MongoClient;
-//const https = require('http');
-const https = require("https");
+const https = require('http');
+//const https = require("https");
 const fs = require('fs');
 const express = require("express");
 const session = require("express-session");
-import sslRedirect from "heroku-ssl-redirect";
+var sslRedirect = require("heroku-ssl-redirect");
 const genuuid = require("uuid");
 const app = new express();
 const axios = require('axios');
