@@ -15,6 +15,7 @@ const express = require("express");
 const session = require("express-session");
 const genuuid = require("uuid");
 var sslRe = require("heroku-ssl-redirect");
+console.log(sslRe);
 const app = new express();
 const axios = require('axios');
 const dotenv = require("dotenv");
@@ -44,7 +45,7 @@ if(process.env.NODE_ENV == "development"){
  }
  else {
   httpsServer = https.createServer(app);
-  app.use(sslRe);
+  app.use(sslRe());
  }
  var store = new MongoDBStore({
    uri: process.env.Mongo_DB_URI,
