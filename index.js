@@ -63,7 +63,7 @@ app.use(
       resave: true,
       store: store,
       saveUninitialized: true,
-      cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
+      cookie: { httpOnly: true, secure: false, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
 );
 
