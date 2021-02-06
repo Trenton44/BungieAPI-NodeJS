@@ -8,7 +8,7 @@ globalQueue.Initialize();
 function placeholderItem(){
   return {
     placeholder: true,
-    hashData:{
+    itemHashData:{
       displayProperties: {
         icon: "",
       },
@@ -56,7 +56,7 @@ function Item(){
   };
   this.changeData = function(value){
     this.data = value;
-    this.element.src = bungieCommon+this.data.hashData.displayProperties.icon;
+    this.element.src = bungieCommon+this.data.itemHashData.displayProperties.icon;
   };
   this.changeElement = function(value){
     this.element = value;
@@ -95,7 +95,6 @@ function equipmentlist(htmlElement){
   };
   this.equip = function(value){
     this._equipment[0].changeData(value);
-
   };
   this.newItems = function(values){
     for(i in values){
@@ -142,7 +141,7 @@ function equipmentlist(htmlElement){
 function equipment(){
   this.id = "";
   this.Intitialize = function(){
-    this.slots.subclasslist._equipment.length = 4;
+    this.slots.Subclass._equipment.length = 4;
     for(i in this.slots){
       if(i !== "artifact"){
         console.log("Intitalizing "+i);
@@ -150,59 +149,30 @@ function equipment(){
       }
     }
   };
-  this.hashKeys = {
-    3284755031:"subclasslist",
-    1498876634:"kineticlist",
-    2465295065:"speciallist",
-    953998645:"heavylist",
-    3448274439:"helmetlist",
-    3551918588:"gloveslist",
-    14239492:"chestlist",
-    20886954:"legslist",
-    1585787867:"classarmorlist",
-    4023194814:"ghostlist",
-    2025709351:"vehiclelist",
-    284967655:"shiplist",
-    4292445962:"clanbannerlist",
-    4274335291:"emblemlist",
-    3683254069:"finisherlist",
-    1107761855:"emotelist",
-    1506418338:"_artifact",
-  };
   //"equipment slots" containing a equipment list of each weapon/armor type in the game.\
   //the goal was self-updating...
   this.slots = {
-    subclasslist: new equipmentlist("subclass"),
-    kineticlist: new equipmentlist("kinetic"),
-    speciallist: new equipmentlist("special"),
-    heavylist: new equipmentlist("heavy"),
-    helmetlist: new equipmentlist("helmet"),
-    gloveslist: new equipmentlist("gloves"),
-    chestlist: new equipmentlist("chest"),
-    legslist: new equipmentlist("legs"),
-    classarmorlist: new equipmentlist("class-armor"),
-    ghostlist: new equipmentlist("ghost"),
-    vehiclelist: new equipmentlist("vehicle"),
-    shiplist: new equipmentlist("ship"),
-    clanbannerlist: new equipmentlist("clanbanner"),
-    emblemlist: new equipmentlist("emblem"),
-    finisherlist: new equipmentlist("finisher"),
-    emotelist: new equipmentlist("emotes"),
-    artifact: function(value){
-      window.document.getElementById("artifact").src = bungieCommon+value.hashData.displayProperties.icon;
-    },
+    Subclass: new equipmentlist("subclass"),
+    KineticWeapons: new equipmentlist("kinetic"),
+    EnergyWeapons: new equipmentlist("special"),
+    PowerWeapons: new equipmentlist("heavy"),
+    Helmet: new equipmentlist("helmet"),
+    Gauntlets: new equipmentlist("gloves"),
+    ChestArmor: new equipmentlist("chest"),
+    LegArmor: new equipmentlist("legs"),
+    ClassArmor: new equipmentlist("class-armor"),
+    Ghost: new equipmentlist("ghost"),
+    Vehicle: new equipmentlist("vehicle"),
+    Ships: new equipmentlist("ship"),
+    Emblems: new equipmentlist("emblem"),
+    Finishers: new equipmentlist("finisher"),
+    SeasonalArtifact: new equipmentlist("artifact"),
   };
   //triggers wipe() function in all of the equipment lists shown above.
   this.equipmentWipe = function(){
     for(i in this.slots){
-      if(i == "artifact"){
-        continue;
-      }
-      else {
-        this.slots[i].wipe();
-      }
+      this.slots[i].wipe();
     }
-    window.document.getElementById("artifact").src = "";
   };
   //Pulls equipped+nonequipped equipment using server endpoint,
   //sends new data to equipment lists
@@ -211,8 +181,24 @@ function equipment(){
     var parent = this;
     var path = "/character/"+parent.id+"/equipment";
     fetchRequest(path).then(function(result){
-      console.log(result);
-      var equipment = result.equipment;
+      var keys = Object.keys(result.equipment);
+      console.log(keys);
+      console.log("equipment: ");
+      for(i in keys){
+        console.log(keys[i]+": ");
+        console.log(result.equipment[keys[i]][0]);
+        parent.slots[keys[i]].equip(result.equipment[keys[i]][0]);
+      }
+      console.log("inventory: ");
+      for(i in keys){
+        var equipcategory = result.inventory[keys[i]];
+        console.log(equipcategory+": ");
+        for(z in equipcategory){
+          console.log(equipcategory[z]);
+          parent.slots[keys[i]].newItem(equipcategory[z]);
+        }
+      }
+      /*var equipment = result.equipment;
       var inventory = result.inventory;
       for(i in equipment){
         if(equipment[i].hashData.equipHash == 1506418338){ parent.slots.artifact(equipment[i]); }
@@ -223,7 +209,7 @@ function equipment(){
         else {
           parent.slots[parent.hashKeys[inventory[i].hashData.equipHash]].newItem(inventory[i]);
         }
-      }
+      }*/
     });
   };
 };
@@ -331,7 +317,7 @@ async function fetchImage(path){
 };
 //Makes requests to server for equipping new items from existing non-equipped items.
 function equipRequest(itemData){
-  console.log("character id: "+characterIDs[counter]+" item id: "+itemData.itemID);
-  var path = "/character/"+characterIDs[counter]+"/equipItem/"+itemData.itemID;
+  console.log("character id: "+characterIDs[counter]+" item id: "+itemData.itemInstanceId);
+  var path = "/character/"+characterIDs[counter]+"/equipItem/"+itemData.itemInstanceId;
   return fetchRequest(path);
 }

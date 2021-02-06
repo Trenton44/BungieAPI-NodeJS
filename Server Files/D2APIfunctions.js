@@ -234,3 +234,33 @@ function saveTokenData(request, tokenData){
   return true;
 }
 exports.saveTokenData = saveTokenData;
+
+//Loads the current d2 manifest from bungie api and saves to root.
+//Note: the manifest file as a whole is large enough to crash notepad,
+//so this splits each piece of the manifest into it's own json file so it can be
+//read, but also saves it as a whole json so it is easy to import into code later.
+async function loadManifest(){
+  var path = bungieRoot+"/Destiny2/Manifest/";
+  console.log("Obtaining Destiny Manifest from Bungie.");
+  var data = await getRequest(path);
+  console.log("proceeding to next request.");
+  var path = bungieCommon+data.data.Response.jsonWorldContentPaths.en;
+  var result = await getRequest(path);
+  console.log("both completed.");
+  await getRequest(path).then(function(result){
+    var d2contentManifest = bungieCommon+result.data.Response.jsonWorldContentPaths.en;
+    return getRequest(d2contentManifest).then(function(result){
+      var manifestItems = Object.keys(result.data);
+      for(i in result.data){
+        console.log("Iteration: "+i);
+        let data = JSON.stringify(result.data[i], null, 2);
+        console.log("Now writing item "+i+" to  file "+i+".json");
+        fs.writeFileSync(manifestRoot+"/"+i+".json", data, function(error){
+          console.error(error);
+        });
+      }
+      return true;
+    });
+  });
+};
+exports.loadManifest = loadManifest;
