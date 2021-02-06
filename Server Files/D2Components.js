@@ -55,6 +55,7 @@ const components = {
   //unaccounted for: characterPlugSets & characterUninstancedItemComponents(i think this one is in one of the item components)
   //unaccounted for: profilePlugSets
 };
+
 exports.components = components;
 
 //CHARACTER LEVEL COMPONENTS

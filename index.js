@@ -6,10 +6,10 @@ const serverRoot = root+"/Server Files";
 const assetRoot = root+"/assets";
 const manifestRoot = root+"/Manifest";
 
-const mongo = require('mongodb');
-const MongoClient = require('mongodb').MongoClient;
-const https = require('http');
-//const https = require("https");
+//const mongo = require('mongodb');
+//const MongoClient = require('mongodb').MongoClient;
+//const https = require('http');
+const https = require("https");
 const fs = require('fs');
 const express = require("express");
 const session = require("express-session");
@@ -19,7 +19,7 @@ const axios = require('axios');
 const dotenv = require("dotenv");
 const crypto = require("crypto");
 const helmet = require("helmet");
-const MongoDBStore = require("connect-mongodb-session")(session);
+//const MongoDBStore = require("connect-mongodb-session")(session);
 
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
@@ -45,14 +45,14 @@ if(process.env.NODE_ENV == "development"){
   httpsServer = https.createServer(app);
  }
 
- var store = new MongoDBStore({
+ /*var store = new MongoDBStore({
    uri: process.env.Mongo_DB_URI,
    databaseName: "users",
    collection: "Sessions",
  });
  store.on("error", function(error){
    console.error(error);
- });
+ });*/
 
 app.use(
   session({
@@ -60,7 +60,7 @@ app.use(
       secret: "secreto!alabastro@",
       genid: function(req){ return genuuid.v4(); },
       resave: true,
-      store: store,
+      //store: store,
       saveUninitialized: true,
       cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
@@ -132,9 +132,10 @@ app.get("/character/:id/equipment",async function(request,response){
   var components = ["201", "205"];
   var cID = request.params.id;
   var data = await characterComponentRequest(request, components,cID);
+  //console.log(data.equipment);
   var returnData = {
-    equipment: ServerResponse.EquipmentItemsResponse(data.equipment),
-    inventory: ServerResponse.InventoryItemsResponse(data.inventory).equippable,
+    equipment: ServerResponse.SortInventoryItems(data.equipment).Equippable,//ServerResponse.EquipmentItemsResponse(data.equipment),
+    inventory: ServerResponse.SortInventoryItems(data.inventory).Equippable,
   };
   response.status(200).json(returnData);
 });
@@ -144,7 +145,7 @@ app.get("/character/:id/inventory",async function(request,response){
   var components = ["201"];
   var cID = request.params.id;
   var data = await characterComponentRequest(request, components,cID);
-  var returnData = ServerResponse.InventoryItemsResponse(data.inventory);
+  var returnData = ServerResponse.SortInventoryItems(data.inventory);
   response.status(200).json(returnData);
 });
 
@@ -187,14 +188,9 @@ function characterComponentRequest(request, components,cID){
   var d2ID = userdata.primaryMembershipId;
   return d2api.getCharacterAuth(memType,d2ID,cID,components,token).then(function(result){
     console.log("accessed");
-    try{
-      var d2data = d2api.parseCharacterComponents(result.data.Response);
-      console.log("Requested data retrieved from bungie.");
-      return d2data;
-    }catch(e){
-      console.log("error caught: ");
-      console.error(e);
-    }
+    var d2data = d2api.parseCharacterComponents(result.data.Response);
+    console.log("Requested data retrieved from bungie.");
+    return d2data;
   }).catch(function(error){
     console.log(error);
     return false;
@@ -207,14 +203,9 @@ function profileComponentRequest(request, components){
   var d2ID = userdata.primaryMembershipId;
   return d2api.getDestinyProfileAuth(memType,d2ID,components,token).then(function(result){
     console.log("accessed");
-    try{
-      var d2data = d2api.parseProfileComponents(result.data.Response);
-      console.log("Requested data retrieved from bungie.");
-      return d2data;
-    }catch(e){
-      console.log("error caught: ");
-      console.error(e);
-    }
+    var d2data = d2api.parseProfileComponents(result.data.Response);
+    console.log("Requested data retrieved from bungie.");
+    return d2data;
   }).catch(function(error){
     console.log(error);
     return false;
@@ -306,46 +297,3 @@ function buildAuthorizatonCodeRequest(request){
   url.searchParams.append("state",state);
   return url;
 }
-
-//Loads the current d2 manifest from bungie api and saves to root.
-//Note: the manifest file as a whole is large enough to crash notepad,
-//so this splits each piece of the manifest into it's own json file so it can be
-//read, but also saves it as a whole json so it is easy to import into code later.
-async function loadManifest(){
-  var path = bungieRoot+"/Destiny2/Manifest/";
-  console.log("Obtaining Destiny Manifest from Bungie.");
-  var data = await getRequest(path);
-  console.log("proceeding to next request.");
-  var path = bungieCommon+data.data.Response.jsonWorldContentPaths.en;
-  var result = await getRequest(path);
-  console.log("both completed.");
-  console.log("Now writing entire manifest to d2manifest.json");
-  var data = JSON.stringify(result.data, null, 2);
-  fs.writeFileSync(manifestRoot+"/d2manifest.json", data, function(error){
-    console.error(error);
-  });
-  console.log("Done.");
-  /*await getRequest(path).then(function(result){
-    var d2contentManifest = bungieCommon+result.data.Response.jsonWorldContentPaths.en;
-    return getRequest(d2contentManifest).then(function(result){
-      /*var manifestItems = Object.keys(result.data);
-      or(i in result.data){
-        console.log("Iteration: "+i);
-        let data = JSON.stringify(result.data[i], null, 2);
-        console.log("Now writing item "+i+" to  file "+i+".json");
-        fs.writeFileSync(manifestRoot+"/"+i+".json", data, function(error){
-          console.error(error);
-        });
-      }
-
-      return true;
-    });
-  });*/
-};
-function getRequest(path){
-  return axios({
-    method:"GET",
-    url: path,
-    headers: {"X-API-Key":process.env.Bungie_API_KEY},
-  });
-};

@@ -11,99 +11,33 @@ const assetRoot = root+"/assets";
 const manifestRoot = root+"/Manifest";
 const DestinyDamageTypeDefinition = require(manifestRoot+"/DestinyDamageTypeDefinition.json");
 const DestinyEquipmentSlotDefinition = require(manifestRoot+"/DestinyEquipmentSlotDefinition.json");
-
-var Errors = {
-
+const DestinyInventoryBucketDefinition = require(manifestRoot+"/DestinyInventoryBucketDefinition.json");
+const DestinyBucketCategory = {
+  "0": "Invisible",
+  "1": "Item",
+  "2": "Currency",
+  "3": "Equippable",
+  "4": "Ignored",
 };
-exports.Errors = Errors;
-var EquipmentItemResponse = function(item){
-  var equipSlot;
-  var equipHash;
-  console.log("Item Redacted Status: "+item.itemHashData.redacted);
-  if(item.itemHashData.redacted){
-    equipSlot = null;
-    equipHash = null;
-  }
-  else {
-    equipSlot = DestinyEquipmentSlotDefinition[item.itemHashData.equippingBlock.equipmentSlotTypeHash];
-    equipHash = null;
-  }
+var EquippableItemResponse = function(item){
   return {
+    bucketHash: item.bucketHash,
     itemhash: item.itemHash,
-    itemID: item.itemInstanceId,
-    location: item.bucketHashData.location,
-    hashData: {
+    itemInstanceId: item.itemInstanceId,
+    bucketHashData: {
+
+    },
+    itemHashData: {
       displayProperties: item.itemHashData.displayProperties,
-      damageType: DestinyDamageTypeDefinition[item.itemHashData.defaultDamageTypeHash],
-      aquisition: item.itemHashData.displaySource,
-      equippable: item.itemHashData.equippable,
-      iconWatermark: item.itemHashData.iconWatermark,
-      iconWatermarkShelved: item.itemHashData.iconWatermarkShelved,
-      equipSlot: equipSlot,
-      equipHash: equipHash,
+      defaultDamageType: item.itemHashData.defaultDamageType,
+      itemTypeDisplayName: item.itemHashData.itemTypeDisplayName,
+      redacted: item.itemHashData.redacted,
+      secondaryIcon: item.itemHashData.secondaryIcon,
+
     },
-    bucketData: {
-      displayProperties: item.bucketHashData.displayProperties,
-      itemCount: item.bucketHashData.itemCount,
-      redacted: item.bucketHashData.redacted,
-    },
+    lockable: item.lockable,
   };
-};
-exports.EquipmentItemResponse = EquipmentItemResponse;
-
-var EquipmentItemsResponse = function(items){
-  var itemscopy = Array.from(items);
-  for(i in itemscopy){
-    itemscopy[i] = EquipmentItemResponse(itemscopy[i]);
-    itemscopy[i].currentlyEquipped = true;
-  }
-  return itemscopy;
-};
-exports.EquipmentItemsResponse = EquipmentItemsResponse;
-
-var InventoryItemsResponse = function(items){
-  var itemscopy = Array.from(items);
-  var splitInventory = {equippable: {}, unequippable: {}, corporeal: {}};
-  var equipCounter = 0;
-  var nonquipCounter = 0;
-  var corporealCounter = 0;
-  for(i in itemscopy){
-    //console.log("new item.");
-    if(!itemscopy[i].bucketHashData.enabled){
-      //console.log("ITEM EFFECTIVELY CORPOREAL, SKIPPING");
-      splitInventory.corporeal[corporealCounter] = itemscopy[i];
-      corporealCounter+= 1;
-      continue;
-    }
-    //console.log(itemscopy[i]);
-    if(items[i].itemHashData.equippable){
-      if(items[i].bucketHashData.location == 1){
-        splitInventory.equippable[equipCounter] = EquipmentItemResponse(itemscopy[i]);
-        splitInventory.equippable[equipCounter].currentlyEquipped = false;
-        equipCounter+= 1;
-      }
-    }
-    else {
-      splitInventory.unequippable[nonquipCounter] = InventoryItemResponse(itemscopy[i]);
-      nonquipCounter+= 1;
-    }
-  }
-  return splitInventory;
-};
-exports.InventoryItemsResponse = InventoryItemsResponse;
-
-var InventoryItemResponse = function(item){
-  return item;
-};
-exports.InventoryItemResponse = InventoryItemResponse;
-var CharactersResponse = function(items){
-  var itemscopy = Array.from(items);
-  for(i in itemscopy){
-    itemscopy[i] = CharacterResponse(itemscopy[i]);
-  }
-};
-exports.CharactersResponse = CharactersResponse;
-
+}
 var CharacterResponse = function(item){
   return {
     level: item.baseCharacterLevel,
@@ -127,3 +61,47 @@ var CharacterResponse = function(item){
   };
 };
 exports.CharacterResponse = CharacterResponse;
+
+
+function SortInventoryItems(items){
+  var itemscopy = Array.from(items);
+  var bucketCategory = {
+    Invisible:[],
+    Item:[],
+    Currency:[],
+    Equippable:[],
+    Ignored:[],
+  };
+
+  for(i in itemscopy){
+    var bucket = DestinyBucketCategory[itemscopy[i].bucketHashData.category];
+    bucketCategory[bucket].push(itemscopy[i]);
+  }
+  bucketCategory.Equippable = SortEquippablesBucket(bucketCategory.Equippable);
+  return bucketCategory;
+};
+exports.SortInventoryItems = SortInventoryItems;
+
+function SortEquippablesBucket(items){
+  var sortedEquipment = {};
+  for(i in items){
+    var buckethash = items[i].bucketHash;
+    var bucketname = DestinyInventoryBucketDefinition[buckethash].displayProperties.name;
+    bucketname = bucketname.split(" ").join("");
+    if(sortedEquipment[bucketname] == undefined)
+      { sortedEquipment[bucketname] = []; }
+    if(items[i].itemHashData.redacted)
+      { console.log("Item is redacted, so i will not add it to the list of equipment.");}
+    else
+      { sortedEquipment[bucketname].push(EquippableItemResponse(items[i])); }
+  }
+  return sortedEquipment;
+}
+
+var CharactersResponse = function(items){
+  var itemscopy = Array.from(items);
+  for(i in itemscopy){
+    itemscopy[i] = CharacterResponse(itemscopy[i]);
+  }
+};
+exports.CharactersResponse = CharactersResponse;
