@@ -94,10 +94,10 @@ function SortEquippablesBucket(items){
        console.log("Notice: Redacted Item identified. No guaruntees if it will respond well with the api currently.");
     }
     sortedEquipment[bucketname].push(EquippableItemResponse(items[i]));
+
   }
   return sortedEquipment;
 }
-
 var CharactersResponse = function(items){
   var itemscopy = Array.from(items);
   for(i in itemscopy){

@@ -47,13 +47,6 @@ if(process.env.NODE_ENV == "development"){
   app.use(sslRedirect());
  }
  var store = new MongoDBStore({
-   uri: process.env.Mongo_DB_URI,
-   databaseName: "users",
-   collection: "Sessions",
- });
- store.on("error", function(error){
-   console.error(error);
- });
 
 app.use(
   session({
@@ -63,7 +56,7 @@ app.use(
       resave: true,
       store: store,
       saveUninitialized: true,
-      cookie: { httpOnly: true, secure: false, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
+      cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
 );
 
@@ -182,6 +175,7 @@ app.get("/character/:Cid/equipItems/:Iid",async function(request, response){
 app.get("/character/:Cid/transferRequest/:Iid",async function(request, response){
 
 };
+
 //Sends a POST request to bungie API EquipItem endpoint, returns result of request.
 app.get("/character/:Cid/equipItem/:Iid",async function(request, response){
   var userdata = request.session.data.userdata;
