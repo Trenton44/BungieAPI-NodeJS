@@ -119,7 +119,7 @@ function equipmentlist(htmlElement){
       this.requestrunning = true;
       var localthis = this;
       var index = eventSource.id.slice(-1);
-      equipRequest(this._equipment[index].data).then(function(result){
+      equipItem(this._equipment[index].data).then(function(result){
          var newEquip = localthis._equipment[index].getData();
          var oldEquip = localthis._equipment[0].getData();
          localthis.equip(newEquip);
@@ -282,17 +282,50 @@ async function fetchRequest(path){
   else
   {return Promise.reject(new Error(response.statusText));}
 };
-async function fetchImage(path){
-  var request = new Request(path, { method: "GET", });
+async function postRequest(path, body){
+  console.log(body);
+  var request = new Request(path, {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify(body),
+  });
   let response = await fetch(request);
   if(response.status >=200 && response.status < 300)
-  {return response.body;}
+  {return response.json();}
   else
-  {console.log(response);return Promise.reject(new Error(response));}
-};
+  {return Promise.reject(new Error(response.statusText));}
+}
 //Makes requests to server for equipping new items from existing non-equipped items.
-function equipRequest(itemData){
-  console.log("character id: "+characterIDs[counter]+" item id: "+itemData.itemInstanceId);
-  var path = "/character/"+characterIDs[counter]+"/equipItem/"+itemData.itemInstanceId;
-  return fetchRequest(path);
+function equipItem(itemData, rcID){
+  var path = "/character/equipItem";
+  var body = {
+    item: itemData,
+    cID: rcID,
+  };
+  return postRequest(path, body);
+}
+function equipItems(items, rcID){
+  var path = "/character/equipItems";
+  var body = {
+    items: items,
+    characterReceiving: rcID,
+  };
+  return postRequest(path, body);
+}
+function lockItemState(itemData, rcID){
+  var path = "/character/lockItem";
+  var body = {
+    item: itemData,
+    characterReceiving: rcID,
+  };
+  return postRequest(path, body);
+};
+function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = transferring character
+  var path = "/character/transferItem/"
+  var body = {
+    item: itemData,
+    characterTransferring: tcID,
+    characterReceiving: rcID,
+  };
+  return postRequest(path, body);
 }
