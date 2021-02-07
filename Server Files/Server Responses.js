@@ -34,7 +34,7 @@ var EquippableItemResponse = function(item){
       redacted: item.itemHashData.redacted,
       secondaryIcon: item.itemHashData.secondaryIcon,
     },
-    lockable: item.lockable,
+    lockState: item.lockable,
   };
 }
 var CharacterResponse = function(item){

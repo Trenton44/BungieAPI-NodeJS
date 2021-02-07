@@ -158,6 +158,30 @@ app.get("/profile/inventory", async function(request,response){
   };
   response.status(200).json(returnData);
 });
+app.get("/character/:Cid/setLockState/:Iid",async function(request, response){
+  var userdata = request.session.data.userdata;
+  var memType = userdata[userdata.primaryMembershipId].membershipType;
+  var path = bungieRoot+"/Destiny2/Actions/Items/SetLockState/";
+  var body = {
+    characterId: request.params.Cid,
+    itemId: request.params.Iid,
+    membershipType: memType,
+    state: !request.body.lockState,
+  }
+  var body = JSON.stringify(body);
+  d2api.postRequest(path,body,request.session.data.tokenData.access_token).then(function(result){
+    response.status(200).json(result.data.Response);
+  }).catch(function(error){
+    console.log(error);
+    response.status(400).json(error);
+  });
+};
+app.get("/character/:Cid/equipItems/:Iid",async function(request, response){
+
+};
+app.get("/character/:Cid/transferRequest/:Iid",async function(request, response){
+
+};
 //Sends a POST request to bungie API EquipItem endpoint, returns result of request.
 app.get("/character/:Cid/equipItem/:Iid",async function(request, response){
   var userdata = request.session.data.userdata;
