@@ -33,9 +33,8 @@ var EquippableItemResponse = function(item){
       itemTypeDisplayName: item.itemHashData.itemTypeDisplayName,
       redacted: item.itemHashData.redacted,
       secondaryIcon: item.itemHashData.secondaryIcon,
-
     },
-    lockable: item.lockable,
+    lockState: item.lockable,
   };
 }
 var CharacterResponse = function(item){
@@ -91,14 +90,14 @@ function SortEquippablesBucket(items){
     bucketname = bucketname.split(" ").join("");
     if(sortedEquipment[bucketname] == undefined)
       { sortedEquipment[bucketname] = []; }
-    if(items[i].itemHashData.redacted)
-      { console.log("Item is redacted, so i will not add it to the list of equipment.");}
-    else
-      { sortedEquipment[bucketname].push(EquippableItemResponse(items[i])); }
+    if(items[i].itemHashData.redacted){
+       console.log("Notice: Redacted Item identified. No guaruntees if it will respond well with the api currently.");
+    }
+    sortedEquipment[bucketname].push(EquippableItemResponse(items[i]));
+
   }
   return sortedEquipment;
 }
-
 var CharactersResponse = function(items){
   var itemscopy = Array.from(items);
   for(i in itemscopy){

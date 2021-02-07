@@ -6,20 +6,21 @@ const serverRoot = root+"/Server Files";
 const assetRoot = root+"/assets";
 const manifestRoot = root+"/Manifest";
 
-//const mongo = require('mongodb');
-//const MongoClient = require('mongodb').MongoClient;
-//const https = require('http');
-const https = require("https");
+const mongo = require('mongodb');
+const MongoClient = require('mongodb').MongoClient;
+const https = require('http');
+//const https = require("https");
 const fs = require('fs');
 const express = require("express");
 const session = require("express-session");
 const genuuid = require("uuid");
+var sslRedirect = require("heroku-ssl-redirect").default;
 const app = new express();
 const axios = require('axios');
 const dotenv = require("dotenv");
 const crypto = require("crypto");
 const helmet = require("helmet");
-//const MongoDBStore = require("connect-mongodb-session")(session);
+const MongoDBStore = require("connect-mongodb-session")(session);
 
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
@@ -43,16 +44,9 @@ if(process.env.NODE_ENV == "development"){
  }
  else {
   httpsServer = https.createServer(app);
+  app.use(sslRedirect());
  }
-
- /*var store = new MongoDBStore({
-   uri: process.env.Mongo_DB_URI,
-   databaseName: "users",
-   collection: "Sessions",
- });
- store.on("error", function(error){
-   console.error(error);
- });*/
+ var store = new MongoDBStore({
 
 app.use(
   session({
@@ -60,7 +54,7 @@ app.use(
       secret: "secreto!alabastro@",
       genid: function(req){ return genuuid.v4(); },
       resave: true,
-      //store: store,
+      store: store,
       saveUninitialized: true,
       cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
@@ -157,6 +151,31 @@ app.get("/profile/inventory", async function(request,response){
   };
   response.status(200).json(returnData);
 });
+app.get("/character/:Cid/setLockState/:Iid",async function(request, response){
+  var userdata = request.session.data.userdata;
+  var memType = userdata[userdata.primaryMembershipId].membershipType;
+  var path = bungieRoot+"/Destiny2/Actions/Items/SetLockState/";
+  var body = {
+    characterId: request.params.Cid,
+    itemId: request.params.Iid,
+    membershipType: memType,
+    state: !request.body.lockState,
+  }
+  var body = JSON.stringify(body);
+  d2api.postRequest(path,body,request.session.data.tokenData.access_token).then(function(result){
+    response.status(200).json(result.data.Response);
+  }).catch(function(error){
+    console.log(error);
+    response.status(400).json(error);
+  });
+};
+app.get("/character/:Cid/equipItems/:Iid",async function(request, response){
+
+};
+app.get("/character/:Cid/transferRequest/:Iid",async function(request, response){
+
+};
+
 //Sends a POST request to bungie API EquipItem endpoint, returns result of request.
 app.get("/character/:Cid/equipItem/:Iid",async function(request, response){
   var userdata = request.session.data.userdata;
