@@ -308,16 +308,24 @@ function equipItems(items, rcID){
   var path = "/character/equipItems";
   var body = {
     items: items,
-    cID: rcID,
+    characterReceiving: rcID,
   };
   return postRequest(path, body);
 }
+function lockItemState(itemData, rcID){
+  var path = "/character/lockItem";
+  var body = {
+    item: itemData,
+    characterReceiving: rcID,
+  };
+  return postRequest(path, body);
+};
 function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = transferring character
   var path = "/character/transferItem/"
   var body = {
     item: itemData,
     characterTransferring: tcID,
-    characterReceiving: cID,
+    characterReceiving: rcID,
   };
   return postRequest(path, body);
 }

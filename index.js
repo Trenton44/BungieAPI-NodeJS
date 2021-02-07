@@ -158,15 +158,15 @@ app.get("/profile/inventory", async function(request,response){
   };
   response.status(200).json(returnData);
 });
-app.get("/character/:Cid/setLockState/:Iid",async function(request, response){
+app.post("/character/lockItem",async function(request, response){
   var userdata = request.session.data.userdata;
   var memType = userdata[userdata.primaryMembershipId].membershipType;
   var path = bungieRoot+"/Destiny2/Actions/Items/SetLockState/";
   var body = {
-    characterId: request.params.Cid,
-    itemId: request.params.Iid,
+    characterId: request.body.characterReceiving,
+    itemId: request.body.itemInstanceId,
     membershipType: memType,
-    state: !request.body.lockState,
+    state: !request.body.item.lockState,
   }
   var body = JSON.stringify(body);
   d2api.postRequest(path,body,request.session.data.tokenData.access_token).then(function(result){
@@ -176,9 +176,7 @@ app.get("/character/:Cid/setLockState/:Iid",async function(request, response){
     response.status(400).json(error);
   });
 });
-app.get("/character/equipItems",async function(request, response){
 
-});
 app.post("/character/transferItem",async function(request, response){
   var userdata = request.session.data.userdata;
   var memType = userdata[userdata.primaryMembershipId].membershipType;
@@ -213,10 +211,29 @@ app.post("/character/equipItem",async function(request, response){
   var memType = userdata[userdata.primaryMembershipId].membershipType;
   var path = bungieRoot+"/Destiny2/Actions/Items/EquipItem/";
   var body = {
-    characterId: request.body.cID,
+    characterId: request.body.characterReceiving,
     itemId: request.body.item.itemInstanceId,
     membershipType: memType,
   }
+  var body = JSON.stringify(body);
+  d2api.postRequest(path,body,request.session.data.tokenData.access_token).then(function(result){
+    response.status(200).json(result.data.Response);
+  }).catch(function(error){
+    console.log(error);
+    response.status(400).json(error);
+  });
+});
+app.get("/character/equipItems",async function(request, response){
+  var userdata = request.session.data.userdata;
+  var memType = userdata[userdata.primaryMembershipId].membershipType;
+  var path = "/Destiny2/Actions/Items/EquipItems/";
+  var instanceIDs = [];
+  for(i in request.body.items){ instanceIDs.push(request.body.items[i].itemInstanceId); }
+  var body = {
+    itemIds: instanceIDs,
+    characterId: request.body.characterReceiving,
+    membershipType: memType,
+  };
   var body = JSON.stringify(body);
   d2api.postRequest(path,body,request.session.data.tokenData.access_token).then(function(result){
     response.status(200).json(result.data.Response);
