@@ -6,21 +6,21 @@ const serverRoot = root+"/Server Files";
 const assetRoot = root+"/assets";
 const manifestRoot = root+"/Manifest";
 
-const mongo = require('mongodb');
-const MongoClient = require('mongodb').MongoClient;
-const https = require('http');
-//const https = require("https");
+//const mongo = require('mongodb');
+//const MongoClient = require('mongodb').MongoClient;
+//const https = require('http');
+const https = require("https");
 const fs = require('fs');
 const express = require("express");
 const session = require("express-session");
 const genuuid = require("uuid");
-var sslRedirect = require("heroku-ssl-redirect").default;
+//var sslRedirect = require("heroku-ssl-redirect").default;
 const app = new express();
 const axios = require('axios');
 const dotenv = require("dotenv");
 const crypto = require("crypto");
 const helmet = require("helmet");
-const MongoDBStore = require("connect-mongodb-session")(session);
+//const MongoDBStore = require("connect-mongodb-session")(session);
 
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
@@ -46,15 +46,22 @@ if(process.env.NODE_ENV == "development"){
   httpsServer = https.createServer(app);
   app.use(sslRedirect());
  }
- var store = new MongoDBStore({
-
+ /*var store = new MongoDBStore({
+   uri: process.env.Mongo_DB_URI,
+   databaseName: "users",
+   collection: "Sessions",
+ });
+ store.on("error", function(error){
+   console.error(error);
+ });*/
+app.use(express.json());
 app.use(
   session({
       name: "sAk3m3",
       secret: "secreto!alabastro@",
       genid: function(req){ return genuuid.v4(); },
       resave: true,
-      store: store,
+      //store: store,
       saveUninitialized: true,
       cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
@@ -168,13 +175,38 @@ app.get("/character/:Cid/setLockState/:Iid",async function(request, response){
     console.log(error);
     response.status(400).json(error);
   });
-};
+});
 app.get("/character/:Cid/equipItems/:Iid",async function(request, response){
 
-};
-app.get("/character/:Cid/transferRequest/:Iid",async function(request, response){
+});
+app.post("/character/transferItem",async function(request, response){
+  var userdata = request.session.data.userdata;
+  var memType = userdata[userdata.primaryMembershipId].membershipType;
+  var path = bungieRoot+"/Destiny2/Actions/Items/TransferItem/";
+  var body = {
+    itemReferenceHash: request.body.itemReferenceHash,
+    ItemId: request.body.ItemId,
+    stackSize:request.body.stackSize,
+    transferToVault: true,
+    characterId: request.body.characterTransferring,
+    membershipType: memType,
+  };
+  console.log(body);
+  d2api.postRequest(path,body,request.session.data.tokenData.access_token).then(function(result){
+    console.log(result.data);
+    body.transferToVault = false;
+    body.characterId = request.body.characterReceiving;
+    d2api.postRequest(path,body,request.session.data.tokenData.access_token).then(function(result){
+      console.log(result.data);
+      response.status(200).json(result.data.Response);
+    });
 
-};
+  }).catch(function(error){
+    console.log(error);
+    response.status(400).json(error);
+  });
+
+});
 
 //Sends a POST request to bungie API EquipItem endpoint, returns result of request.
 app.get("/character/:Cid/equipItem/:Iid",async function(request, response){

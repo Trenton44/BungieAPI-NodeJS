@@ -282,17 +282,39 @@ async function fetchRequest(path){
   else
   {return Promise.reject(new Error(response.statusText));}
 };
-async function fetchImage(path){
-  var request = new Request(path, { method: "GET", });
+async function postRequest(path, body){
+  console.log(body);
+  var request = new Request(path, {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify(body),
+  });
   let response = await fetch(request);
   if(response.status >=200 && response.status < 300)
-  {return response.body;}
+  {return response.json();}
   else
-  {console.log(response);return Promise.reject(new Error(response));}
-};
+  {return Promise.reject(new Error(response.statusText));}
+}
+
 //Makes requests to server for equipping new items from existing non-equipped items.
 function equipRequest(itemData){
   console.log("character id: "+characterIDs[counter]+" item id: "+itemData.itemInstanceId);
   var path = "/character/"+characterIDs[counter]+"/equipItem/"+itemData.itemInstanceId;
   return fetchRequest(path);
+}
+function transferRequest(itemData, cID){
+  if(cID == undefined){cID = null;}
+  var body = {
+    itemReferenceHash: itemData.itemHash,
+    stackSize: itemData.quantity,
+    ItemId: itemData.itemInstanceId,
+    characterTransferring: characterIDs[counter],
+    characterReceiving: cID,
+  };
+  var path = "/character/transferItem/"
+  postRequest(path, body).then(function(result){
+    console.log(result);
+  }).catch(function(error){
+    console.error(error);
+  });
 }

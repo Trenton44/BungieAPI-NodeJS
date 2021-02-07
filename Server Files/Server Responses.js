@@ -22,7 +22,8 @@ const DestinyBucketCategory = {
 var EquippableItemResponse = function(item){
   return {
     bucketHash: item.bucketHash,
-    itemhash: item.itemHash,
+    itemHash: item.itemHash,
+    quantity: item.quantity,
     itemInstanceId: item.itemInstanceId,
     bucketHashData: {
 
