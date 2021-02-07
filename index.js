@@ -176,7 +176,7 @@ app.get("/character/:Cid/setLockState/:Iid",async function(request, response){
     response.status(400).json(error);
   });
 });
-app.get("/character/:Cid/equipItems/:Iid",async function(request, response){
+app.get("/character/equipItems",async function(request, response){
 
 });
 app.post("/character/transferItem",async function(request, response){
@@ -184,14 +184,13 @@ app.post("/character/transferItem",async function(request, response){
   var memType = userdata[userdata.primaryMembershipId].membershipType;
   var path = bungieRoot+"/Destiny2/Actions/Items/TransferItem/";
   var body = {
-    itemReferenceHash: request.body.itemReferenceHash,
-    ItemId: request.body.ItemId,
-    stackSize:request.body.stackSize,
+    itemReferenceHash: request.body.item.itemHash,
+    ItemId: request.body.item.itemInstanceId,
+    stackSize:request.body.item.quantity,
     transferToVault: true,
     characterId: request.body.characterTransferring,
     membershipType: memType,
   };
-  console.log(body);
   d2api.postRequest(path,body,request.session.data.tokenData.access_token).then(function(result){
     console.log(result.data);
     body.transferToVault = false;
@@ -209,13 +208,13 @@ app.post("/character/transferItem",async function(request, response){
 });
 
 //Sends a POST request to bungie API EquipItem endpoint, returns result of request.
-app.get("/character/:Cid/equipItem/:Iid",async function(request, response){
+app.post("/character/equipItem",async function(request, response){
   var userdata = request.session.data.userdata;
   var memType = userdata[userdata.primaryMembershipId].membershipType;
   var path = bungieRoot+"/Destiny2/Actions/Items/EquipItem/";
   var body = {
-    characterId: request.params.Cid,
-    itemId: request.params.Iid,
+    characterId: request.body.cID,
+    itemId: request.body.item.itemInstanceId,
     membershipType: memType,
   }
   var body = JSON.stringify(body);

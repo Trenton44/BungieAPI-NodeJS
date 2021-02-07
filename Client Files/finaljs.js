@@ -119,7 +119,7 @@ function equipmentlist(htmlElement){
       this.requestrunning = true;
       var localthis = this;
       var index = eventSource.id.slice(-1);
-      equipRequest(this._equipment[index].data).then(function(result){
+      equipItem(this._equipment[index].data).then(function(result){
          var newEquip = localthis._equipment[index].getData();
          var oldEquip = localthis._equipment[0].getData();
          localthis.equip(newEquip);
@@ -295,26 +295,29 @@ async function postRequest(path, body){
   else
   {return Promise.reject(new Error(response.statusText));}
 }
-
 //Makes requests to server for equipping new items from existing non-equipped items.
-function equipRequest(itemData){
-  console.log("character id: "+characterIDs[counter]+" item id: "+itemData.itemInstanceId);
-  var path = "/character/"+characterIDs[counter]+"/equipItem/"+itemData.itemInstanceId;
-  return fetchRequest(path);
-}
-function transferRequest(itemData, cID){
-  if(cID == undefined){cID = null;}
+function equipItem(itemData, rcID){
+  var path = "/character/equipItem";
   var body = {
-    itemReferenceHash: itemData.itemHash,
-    stackSize: itemData.quantity,
-    ItemId: itemData.itemInstanceId,
-    characterTransferring: characterIDs[counter],
+    item: itemData,
+    cID: rcID,
+  };
+  return postRequest(path, body);
+}
+function equipItems(items, rcID){
+  var path = "/character/equipItems";
+  var body = {
+    items: items,
+    cID: rcID,
+  };
+  return postRequest(path, body);
+}
+function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = transferring character
+  var path = "/character/transferItem/"
+  var body = {
+    item: itemData,
+    characterTransferring: tcID,
     characterReceiving: cID,
   };
-  var path = "/character/transferItem/"
-  postRequest(path, body).then(function(result){
-    console.log(result);
-  }).catch(function(error){
-    console.error(error);
-  });
+  return postRequest(path, body);
 }
