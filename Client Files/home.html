@@ -1,0 +1,131 @@
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="/client/home.css"/>
+    <script src="/client/home.js" defer></script>
+  </head>
+  <body>
+    <nav>
+      <div id=nav-framework>
+        <div class=nav-element><img /></div>
+        <div class=nav-element><h1>Character</h1></div>
+        <div class=nav-element><h1>Inventory</h1></div>
+      </div>
+    </nav>
+    <div id=content-framework>
+      <div id=character-render></div>
+      <div id=character-content>
+        <div class=character-nav>
+          <div class=character-info>
+            <img id=c1-emblem />
+            <h1 class=class-name id=c1-class></h1>
+            <h1 class=light-level id=c1-light></h1>
+            <h1 class=race-type id=c1-race></h1>
+          </div>
+          <div class=character-info>
+            <img id=c0-emblem />
+            <h1 class=class-name id=c0-class></h1>
+            <h1 class=light-level id=c0-light></h1>
+            <h1 class=race-type id=c0-race></h1>
+          </div>
+          <div class=character-info>
+            <img id=c2-emblem />
+            <h1 class=class-name id=c2-class></h1>
+            <h1 class=light-level id=c2-light></h1>
+            <h1 class=race-type id=c2-race></h1>
+          </div>
+        </div>
+        <div class=character-detailed>
+          <div  id=subclass-container>
+            <div id=subclass-primary-container class=primary-item > <img id=subclass /> </div>
+            <div class=item-container id=subclass-equipment></div>
+          </div>
+          <img src=https://www.bungie.net/common/destiny2_content/icons/59732534ce7060dba681d1ba84c055a6.png />
+          <h1 id=Intellect></h1>
+
+          <img src=https://www.bungie.net/common/destiny2_content/icons/9f5f65d08b24defb660cebdfd7bae727.png />
+          <h1 id=Resilience></h1>
+
+          <img src=https://www.bungie.net/common/destiny2_content/icons/ca62128071dc254fe75891211b98b237.png />
+          <h1 id=Discipline></h1>
+
+          <img src=https://www.bungie.net/common/destiny2_content/icons/47e16a27c8387243dcf9b5d94e26ccc4.png />
+          <h1 id=Recovery></h1>
+
+          <img src=https://www.bungie.net/common/destiny2_content/icons/c9aa8439fc71c9ee336ba713535569ad.png />
+          <h1 id=Mobility></h1>
+
+          <img src=https://www.bungie.net/common/destiny2_content/icons/c7eefc8abbaa586eeab79e962a79d6ad.png />
+          <h1 id=Strength></h1>
+        </div>
+        <div class=character-equipment>
+          <div class=item-slots id=kinetic-container>
+            <div id=kinetic-primary-container class=primary-item > <img id=kinetic /> </div>
+            <div class=item-container id=kinetic-equipment></div>
+          </div>
+          <div class=item-slots id=special-container>
+            <div id=special-primary-container class=primary-item> <img id=special /> </div>
+            <div class=item-container id=special-equipment></div>
+          </div>
+          <div class=item-slots id=heavy-container>
+            <div id=heavy-primary-container class=primary-item> <img id=heavy /> </div>
+            <div class=item-container id=heavy-equipment></div>
+          </div>
+          <div class=item-slots id=helmet-container>
+            <div id=helmet-primary-container class=primary-item> <img id=helmet /> </div>
+            <div class=item-container id=helmet-equipment></div>
+          </div>
+          <div class=item-slots id=gloves-container>
+            <div id=gloves-primary-container class=primary-item> <img id=gloves /> </div>
+            <div class=item-container id=gloves-equipment></div>
+          </div>
+          <div class=item-slots id=chest-container>
+            <div id=chest-primary-container class=primary-item> <img id=chest /> </div>
+            <div class=item-container id=chest-equipment></div>
+          </div>
+          <div class=item-slots id=legs-container>
+            <div id=legs-primary-container class=primary-item> <img id=legs /> </div>
+            <div class=item-container id=legs-equipment></div>
+          </div>
+          <div class=item-slots id=class-armor-container>
+            <div id=class-armor-primary-container class=primary-item><img id=class-armor /> </div>
+            <div class=item-container id=class-armor-equipment></div>
+          </div>
+          <div class=item-slots id=emblem-container>
+            <div id=emblem-primary-container class=primary-item> <img id=emblem /> </div>
+            <div class=item-container id=emblem-equipment></div>
+          </div>
+          <div class=item-slots id=finisher-container>
+            <div id=finisher-primary-container class=primary-item> <img id=finisher /> </div>
+            <div class=item-container id=finisher-equipment></div>
+          </div>
+          <div class=item-slots id=artifact-container>
+            <div id=artifact-primary-container class=primary-item> <img id=artifact /> </div>
+            <div class=item-container id=artifact-equipment></div>
+          </div>
+          <div class=item-slots id=ghost-container>
+            <div id=ghost-primary-container class=primary-item> <img id=ghost /> </div>
+            <div class=item-container id=ghost-equipment></div>
+          </div>
+          <div class=item-slots id=vehicle-container>
+            <div id=vehicle-primary-container class=primary-item>  <img id=vehicle /> </div>
+            <div class=item-container id=vehicle-equipment></div>
+          </div>
+          <div class=item-slots id=ship-container>
+            <div id=ship-primary-container class=primary-item> <img id=ship /> </div>
+            <div class=item-container id=ship-equipment></div>
+          </div>
+        </div>
+        <div class=postmaster>
+          <h1>Postmaster</h1>
+          <div id=postmaster-items></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    window.onload = function(){
+      console.log("Page loaded");
+      Initialize(this);
+    }
+  </script>
+</html>

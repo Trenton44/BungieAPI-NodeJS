@@ -73,6 +73,7 @@ function equipmentlist(htmlElement){
   this.requestrunning = false;
   this.Initialize = function(){
     var localthis = this;
+    console.log(localthis);
     this.container.ondrop = function(ev){
       event.preventDefault();
       var transferItem = {

@@ -72,6 +72,7 @@ var character = function(data){
     data.race = DestinyRaceDefinition[data.raceHash];
     var statsinfo = {};
     for(z in data.stats){
+      if(z == "1935470627") continue;
       statsinfo[z] = {};
       statsinfo[z].value = data.stats[z];
       statsinfo[z].info = DestinyStatDefinition[z];

@@ -106,7 +106,7 @@ app.get("/",async function(request,response){
   let userdata = await getBasicBnetInfo(request);
   if(userdata !== null){
     request.session.data.userdata = userdata
-    response.sendFile(webpageRoot+"/finalhtml.html");
+    response.sendFile(webpageRoot+"/home.html");
   }
   else {
     response.status(500).json({error: "fuck."});
