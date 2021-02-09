@@ -12,7 +12,7 @@ function placeholderItem(){
       },
     },
   };
-
+};
 async function Initialize(value){
   window = value;
   var path = "/characterids";
@@ -27,7 +27,7 @@ async function Initialize(value){
     }
   }
   console.log("All characters successfully loaded.");
-}
+};
 
 function character(){
   this.htmlIdentifier;
@@ -56,15 +56,16 @@ function character(){
   };
   this.stats = {};
   this.setStats = function(value){
-    for(i in value) this.stats[value[i].info.displayProperties.name] = value[i].value;
+    for(z in value) this.stats[value[z].info.displayProperties.name] = value[z].value;
   };
   this.showStats = function(){
     var keys = Object.keys(this.stats);
-    for(i in keys){
-      window.document.getElementById(keys[i]).innerHTML = this.stats[i];
+    console.log(keys);
+    for(z in keys){
+      window.document.getElementById(keys[z]).innerHTML = this.stats[keys[z]];
     }
   };
-  this.update(){
+  this.update = function(){
     window.document.getElementById("c"+this.htmlIdentifier+"-light").innerHTML = this.light;
     window.document.getElementById("c"+this.htmlIdentifier+"-race").innerHTML = this.race;
     window.document.getElementById("c"+this.htmlIdentifier+"-class").innerHTML = this.class;
@@ -73,16 +74,16 @@ function character(){
   this.Initialize = function(htmlID, characterID){
     this.setIdentifier(htmlID);
     this.setCID(characterID);
-    return loadCharacter();
+    return this.loadCharacter();
   };
   this.loadCharacter = async function(){
     var localthis = this;
     var path = "/character/"+this.characterID+"/general";
     var data = await fetchRequest(path);
-    this.setLight(result.light);
-    this.setRace(result.race.name);
-    this.setClass(result.class.name);
-    this.setEmblem(result.emblem.emblemBackgroundPath);
+    this.setLight(data.light);
+    this.setRace(data.race.name);
+    this.setClass(data.class.name);
+    this.setEmblem(data.emblem.emblemBackgroundPath);
     this.setStats(data.stats);
     this.update();
     return true;
@@ -107,8 +108,8 @@ function slotController(){
     SeasonalArtifact: new slot("artifact"),
   };
   this.Initialize = function(){
-    this.SeasonalArtifact.equipment.length = 0;
-    this.Subclass.equipment.length = 4;
+    this.slots.SeasonalArtifact.equipment.length = 0;
+    this.slots.Subclass.equipment.length = 4;
     for(i in this.slots){
       this.slots[i].Initialize();
     }
@@ -119,12 +120,12 @@ function slotController(){
     var localthis = this;
     var path = "/character/"+characterID+"/equipment";
     var data = await fetchRequest(path);
-    var keys = Object.keys(result.equipment);
+    var keys = Object.keys(data.equipment);
     for(i in keys){
-      this.slots[keys[i]].equip(result.equipment[keys[i]][0]);
+      this.slots[keys[i]].equip(data.equipment[keys[i]][0]);
     }
     for(i in keys){
-      var equipcategory = result.inventory[keys[i]];
+      var equipcategory = data.inventory[keys[i]];
       for(z in equipcategory){ this.slots[keys[i]].newItem(equipcategory[z]); }
     }
   };
@@ -194,7 +195,7 @@ function slot(htmlElement){
         localthis.requestrunning = false;
       });
     }
-  }
+  };
   this.wipe = function(){
     for(i in this.equipment){
       this.equipment[i].changeData(placeholderItem());
@@ -282,11 +283,11 @@ function lockItemState(itemData, rcID){
   return postRequest(path, body);
 };
 function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = transferring character
-  var path = "/character/transferItem/"
+  var path = "/character/transferItem/";
   var body = {
     item: itemData,
     characterTransferring: tcID,
     characterReceiving: rcID,
   };
   return postRequest(path, body);
-}
+};
