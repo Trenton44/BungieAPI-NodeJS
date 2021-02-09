@@ -1,7 +1,7 @@
 var window;
 var bungieCommon = "https://www.bungie.net";
 var playerCharacters = [];
-
+var slotController = new slotController();
 //A basic item so the reload() function inside of the equipment list doesn't lose it.
 function placeholderItem(){
   return {
@@ -15,7 +15,17 @@ function placeholderItem(){
 
 async function Initialize(value){
   window = value;
-
+  var path = "/characterids";
+  slotController.Initialize();
+  var ids = await fetchRequest(path);
+  for(i in ids){
+    playerCharacters.push(new character());
+    await playerCharacters[i].Initialize(i,ids[i]);
+    if(i == 1){
+      playerCharacters[i].showStats();
+      slotController.fetchLoadout(playerCharacters[i].characterID);
+    }
+  }
 }
 
 function character(){
@@ -122,4 +132,65 @@ function slotController(){
       this.slots[i].wipe();
     }
   };
+};
+
+
+//Fetch Request function
+async function fetchRequest(path){
+  var request = new Request(path, {
+    method: "GET",
+    headers: {"Content-Type":"application/json"},
+  });
+  let response = await fetch(request);
+  if(response.status >=200 && response.status < 300)
+  {return response.json();}
+  else
+  {return Promise.reject(new Error(response.statusText));}
+};
+async function postRequest(path, body){
+  console.log(body);
+  var request = new Request(path, {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify(body),
+  });
+  let response = await fetch(request);
+  if(response.status >=200 && response.status < 300)
+  {return response.json();}
+  else
+  {return Promise.reject(new Error(response.statusText));}
+}
+//Makes requests to server for equipping new items from existing non-equipped items.
+function equipItem(itemData, rcID){
+  var path = "/character/equipItem";
+  var body = {
+    item: itemData,
+    cID: rcID,
+  };
+  return postRequest(path, body);
+}
+function equipItems(items, rcID){
+  var path = "/character/equipItems";
+  var body = {
+    items: items,
+    characterReceiving: rcID,
+  };
+  return postRequest(path, body);
+}
+function lockItemState(itemData, rcID){
+  var path = "/character/lockItem";
+  var body = {
+    item: itemData,
+    characterReceiving: rcID,
+  };
+  return postRequest(path, body);
+};
+function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = transferring character
+  var path = "/character/transferItem/"
+  var body = {
+    item: itemData,
+    characterTransferring: tcID,
+    characterReceiving: rcID,
+  };
+  return postRequest(path, body);
 }
