@@ -26,6 +26,7 @@ async function Initialize(value){
       slotController.fetchLoadout(playerCharacters[i].characterID);
     }
   }
+  console.log("All characters successfully loaded.");
 }
 
 function character(){
@@ -134,7 +135,102 @@ function slotController(){
   };
 };
 
+function slot(htmlElement){
+  this.element = window.document.getElementById(htmlElement); //HTML element of the equipped slot
+  this.container = window.document.getElementById(htmlElement+"-container"); //HTML element containing the equipment+equipped slot
+  this.equipmentContainer = window.document.getElementById(htmlElement+"-equipment"); //HTML Element containing all the non-equipped items.
+  this.equipment = [];
+  this.equipment.length = 9;
+  this.requestrunning = false;
+  this.Initialize = function(){
+    this.container.ondrop = function(ev){
+      event.preventDefault();
+      var transferItem = {
+        element: ev.dataTransfer.getData("element"),
+        data: ev.dataTransfer.getData("data"),
+      };
+    };
+    this.container.ondragover = function(event){event.preventDefault();};
+    this.equipment[0] = new Item();
+    this.equipment[0].element = this.element;
+    this.equip(placeholderItem());
+    var localthis = this;
+    for(var i = 1; i < this.equipment.length; i++){
+      this.equipment[i] = new Item();
+      this.equipment[i].Initialize(this.equipmentContainer,htmlElement+i,placeholderItem());
+      this.equipment[i].element.ondblclick = function(ev){ localthis.swapItems(ev.srcElement); };
+    }
+    console.log("Init of "+htmlElement+" finished.");
+  };
+  this.equip = function(value){
+    this.equipment[0].changeData(value);
+  };
+  this.newItem = function(value){
+    for(var i = 1; i< this.equipment.length; i++){
+      if(this.equipment[i].data.placeholder){
+        value.placeholder = false;
+        this.equipment[i].changeData(value);
+        break;
+      }
+    }
+  };
+  this.swapItems = function(eventSource){
+    if(this.requestrunning){
+      console.log("A request is already in progress, please try again once the current one has resolved.");
+    }
+    else{
+      this.requestrunning = true;
+      var localthis = this;
+      var index = eventSource.id.slice(-1);
+      equipItem(this.equipment[index].data).then(function(result){
+         var newEquip = localthis.equipment[index].getData();
+         var oldEquip = localthis.equipment[0].getData();
+         localthis.equip(newEquip);
+         localthis.equipment[index].changeData(oldEquip);
+         localthis.requestrunning = false;
+      }).catch(function(error){
+        console.error("Uhhh, the equip request went horribly wrong..");
+        console.error(error);
+        localthis.requestrunning = false;
+      });
+    }
+  }
+  this.wipe = function(){
+    for(i in this.equipment){
+      this.equipment[i].changeData(placeholderItem());
+    }
+  };
+};
 
+function Item(){
+  this.container;
+  this.data;
+  this.element;
+  this.getData = function(){
+    return this.data;
+  }
+  this.Initialize = function(container, elementID, data){
+    this.container = container;
+    var test = window.document.createElement("img");
+    test.id = elementID;
+    this.container.append(test);
+    this.element = test;
+    this.changeData(data);
+    this.element.draggable = true;
+    var localthis = this;
+    this.element.ondragstart = function(ev){
+      ev.dataTransfer.setData("element", localthis.element);
+      ev.dataTransfer.setData("data",JSON.stringify(localthis.data));
+    };
+  };
+  this.changeData = function(value){
+    this.data = value;
+    this.element.src = bungieCommon+this.data.itemHashData.displayProperties.icon;
+  };
+  this.changeElement = function(value){
+    this.element = value;
+  };
+};
 //Fetch Request function
 async function fetchRequest(path){
   var request = new Request(path, {
