@@ -21,7 +21,7 @@ async function Initialize(value){
   for(i in ids){
     playerCharacters.push(new character());
     await playerCharacters[i].Initialize(i,ids[i]);
-    if(i == 1){
+    if(i == 0){
       playerCharacters[i].showStats();
       slotController.fetchLoadout(playerCharacters[i].characterID);
     }
