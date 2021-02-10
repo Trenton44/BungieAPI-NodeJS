@@ -70,7 +70,9 @@ app.use(
 app.get("/client/:id",function(request,response){
   response.status(200).sendFile(webpageRoot+"/"+request.params.id);
 });
-
+app.get("/assets/:id",function(request,response){
+  response.status(200).sendFile(assetRoot+"/"+request.params.id);
+});
 app.use(prepSessionData);
 
 app.get("/login",function(request,response){
