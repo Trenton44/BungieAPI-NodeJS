@@ -18,39 +18,37 @@ async function Initialize(value){
   var path = "/characterids";
   slotController.Initialize();
   var ids = await fetchRequest(path);
-  for(i in ids){
+  for(i in ids) {
     playerCharacters.push(new character());
-    await playerCharacters[i].Initialize(i,ids[i]);
-    if(i == 0){
-      playerCharacters[i].showStats();
-      slotController.fetchLoadout(playerCharacters[i].characterID);
-    }
+    playerCharacters[i].Initialize(i, ids[i]);
   }
-  console.log("All characters successfully loaded.");
-  for(i in playerCharacters){
-    console.log(playerCharacters[i].characterID);
-  }
+  updateCharacters();
 };
 function changeCharacter(characterlistLocation){
   if(characterlistLocation == 0){console.log("Character is already loaded.");}
   else{
-    for(i in playerCharacters){
-      console.log(playerCharacters[i].characterID);
-    }
+    var backup = Array.from(playerCharacters);
     var temp = playerCharacters.splice(characterlistLocation,1);
     var temp2 = playerCharacters.shift();
     playerCharacters.unshift(temp2);
     playerCharacters.push(temp[0]);
-    for(i in playerCharacters){
-      console.log(playerCharacters[i].characterID);
-    }
-    for(i in playerCharacters){
-      playerCharacters[i].setIdentifier(i);
-      playerCharacters[i].loadCharacter();
-    }
-    playerCharacters[0].showStats();
-    slotController.fetchLoadout(playerCharacters[0].characterID);
+    for(i in playerCharacters) playerCharacters[i].setIdentifier(i);
+    updateCharacters(backup);
   }
+};
+function updateCharacters(backup){
+  console.log("loading characters");
+  Promise.all([playerCharacters[0].loadCharacter(),playerCharacters[1].loadCharacter(),playerCharacters[2].loadCharacter()]).then(function(values){
+    slotController.fetchLoadout(playerCharacters[0].characterID).then(function(result){
+      console.log("character data has been successfully retrieved, loading data now.");
+      for(i in playerCharacters) playerCharacters[i].update();
+      slotController.update();
+      playerCharacters[0].showStats();
+    }).catch(function(error){
+      if(backup != null || backup != undefined) playerCharacters = backup;
+      console.error("an error occurred that prevented your characters from being loaded.");
+    });
+  });
 };
 function character(){
   this.htmlIdentifier;
@@ -85,7 +83,6 @@ function character(){
   };
   this.showStats = function(){
     var keys = Object.keys(this.stats);
-    console.log(keys);
     for(z in keys){
       window.document.getElementById(keys[z]).innerHTML = this.stats[keys[z]];
     }
@@ -98,11 +95,8 @@ function character(){
   }
   this.Initialize = function(htmlID, characterID){
     this.setIdentifier(htmlID);
-    console.log(this.element);
-    localthis = this;
     this.element.ondblclick = function(){changeCharacter(this.htmlIdentifier);};
     this.setCID(characterID);
-    return this.loadCharacter();
   };
   this.loadCharacter = async function(){
     var localthis = this;
@@ -113,7 +107,6 @@ function character(){
     this.setClass(data.class.name);
     this.setEmblem(data.emblem.emblemBackgroundPath);
     this.setStats(data.stats);
-    this.update();
     return true;
   };
 };
@@ -161,6 +154,11 @@ function slotController(){
   this.wipe = function(){
     for(i in this.slots){
       this.slots[i].wipe();
+    }
+  };
+  this.update = function(){
+    for(i in this.slots){
+      this.slots[i].update();
     }
   };
 };
@@ -228,6 +226,8 @@ function slot(htmlElement){
          var oldEquip = localthis.equipment[0].getData();
          localthis.equip(newEquip);
          localthis.equipment[index].changeData(oldEquip);
+         localthis.equipment[0].update();
+         localthis.equipment[index].update();
          localthis.requestrunning = false;
       }).catch(function(error){
         console.error("Uhhh, the equip request went horribly wrong..");
@@ -246,6 +246,7 @@ function slot(htmlElement){
       var index = itemElementID.slice(-1);
       transferRequest(this.equipment[index].data,characterID,playerCharacters[0].characterID).then(function(result){
          localthis.equipment[index].changeData(placeholderItem());
+         localthis.equipment[index].update();
          localthis.requestrunning = false;
       }).catch(function(error){
         console.error("Uhhh, the equip request went horribly wrong..");
@@ -257,6 +258,11 @@ function slot(htmlElement){
   this.wipe = function(){
     for(i in this.equipment){
       this.equipment[i].changeData(placeholderItem());
+    }
+  };
+  this.update = function(){
+    for(i in this.equipment){
+      this.equipment[i].update();
     }
   };
 };
@@ -285,12 +291,14 @@ function Item(){
   };
   this.changeData = function(value){
     this.data = value;
-    if(value.placeholder){ this.element.src = "";}
-    else {this.element.src = bungieCommon+this.data.itemHashData.displayProperties.icon;}
   };
   this.changeElement = function(value){
     this.element = value;
   };
+  this.update = function(){
+    if(this.data.placeholder){ this.element.src = "";}
+    else {this.element.src = bungieCommon+this.data.itemHashData.displayProperties.icon;}
+  }
 };
 //Fetch Request function
 async function fetchRequest(path){
