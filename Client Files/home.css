@@ -70,7 +70,7 @@ body {
 }
 .character-nav div:nth-of-type(2) {
   flex-grow: 2;
-  height: 90%;
+  height: 80%;
   opacity: 1;
 }
 .character-nav div:nth-of-type(2) > img {

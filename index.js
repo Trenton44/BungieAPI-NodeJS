@@ -5,7 +5,7 @@ const webpageRoot = root+"/Client Files";
 const serverRoot = root+"/Server Files";
 const assetRoot = root+"/assets";
 const manifestRoot = root+"/Manifest";
-
+const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 //const mongo = require('mongodb');
 //const MongoClient = require('mongodb').MongoClient;
 //const https = require('http');
@@ -189,15 +189,18 @@ app.post("/character/transferItem",async function(request, response){
     characterId: request.body.characterTransferring,
     membershipType: memType,
   };
-  d2api.postRequest(path,body,request.session.data.tokenData.access_token).then(function(result){
+  console.log(body);
+  d2api.postRequest(path,body,request.session.data.tokenData.access_token).then(async function(result){
     console.log(result.data);
     body.transferToVault = false;
     body.characterId = request.body.characterReceiving;
+    await sleep(1000);
     d2api.postRequest(path,body,request.session.data.tokenData.access_token).then(function(result){
       console.log(result.data);
       response.status(200).json(result.data.Response);
+    }).catch(function(error){
+      console.log(error);
     });
-
   }).catch(function(error){
     console.log(error);
     response.status(400).json(error);
