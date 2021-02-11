@@ -144,20 +144,34 @@ function slotController(){
       }
     }
   };
+  this.swapEquipped = function(slot, index){
+    var item = this.slots[slot];
+    item = item[index];
+    var localthis = this;
+    equipItem(item.data, playerCharacters[0].characterID).then(function(result){
+      var currentEquip = localthis.slots[slot][0];
+      var temp = Object.assign(currentEquip.data);
+      var temp2 = Object.assign(item.data);
+      item.changeData(temp);
+      currentEquip.changeData(temp2);
+      console.log("Equip request was successful.");
+    }).catch(function(error){
+      console.error("There was an error equipping this item.");
+      console.log(error);
+    });
+  }
   this.fetchLoadout = async function(characterID){
     this.wipe();
     var localthis = this;
     var path = "/character/"+characterID+"/equipment";
     var data = await fetchRequest(path);
     var keys = Object.keys(data.equipment);
-    console.log("Entering equipment items.");
-    console.log(data);
     for(i in keys){
       var newItem = new Item();
-      newItem.Initialize(keys[i],0,data.equipment[keys[i]][0]);
+      var newItemData = data.equipment[keys[i]];
+      newItem.Initialize(keys[i],0,newItemData[0]);
       this.slots[keys[i]][0] = newItem;
     }
-    console.log("Entering inventory Items: ");
     for(i in keys){
       var itemSlot = this.slots[keys[i]];
       var inventoryArray = data.inventory[keys[i]];
@@ -167,7 +181,6 @@ function slotController(){
         itemSlot[itemSlot.length] = newItem;
       }
     }
-    console.log(this.slots);
   };
 };
 
@@ -189,7 +202,7 @@ function Item(){
       this.HTMLElement.draggable = true;
       var localthis = this;
       this.HTMLElement.ondragend = function(ev){localthis.drop(ev);};
-      this.HTMLElement.ondblclick = function(ev){ slotController[this.slotName].swapEquipped(this.index); };
+      this.HTMLElement.ondblclick = function(ev){ slotController.swapEquipped(localthis.slotName, localthis.index); };
     }
     this.changeData(data);
   };
@@ -213,10 +226,8 @@ function Item(){
   this.drop = function(ev){
     var localthis = this;
     var targetElementID = window.document.elementFromPoint(ev.clientX,ev.clientY).id.split("-")[0];
-    console.log(playerCharacters[targetElementID.slice(-1)]);
     var characterID = playerCharacters[targetElementID.slice(-1)].characterID;
     if(targetElementID == "c1" || targetElementID == "c2"){
-      console.log(localthis);
       transferRequest(localthis.data,characterID).then(function(result){
         console.log("transfer was successful.");
         localthis.destroy(false);
@@ -241,7 +252,6 @@ async function fetchRequest(path){
   {return Promise.reject(new Error(response.statusText));}
 };
 async function postRequest(path, body){
-  console.log(body);
   var request = new Request(path, {
     method: "POST",
     headers: {"Content-Type":"application/json"},
@@ -258,7 +268,7 @@ function equipItem(itemData, rcID){
   var path = "/character/equipItem";
   var body = {
     item: itemData,
-    cID: rcID,
+    characterReceiving: rcID,
   };
   return postRequest(path, body);
 }
@@ -281,7 +291,6 @@ function lockItemState(itemData, rcID){
 function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = transferring character
   if(tcID == null || tcID == undefined) tcID = playerCharacters[0].characterID;
   var path = "/character/transferItem/";
-  console.log(itemData);
   var body = {
     item: itemData,
     characterTransferring: tcID,

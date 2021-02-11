@@ -108,7 +108,7 @@ app.get("/",async function(request,response){
   let userdata = await getBasicBnetInfo(request);
   if(userdata !== null){
     request.session.data.userdata = userdata
-    response.sendFile(webpageRoot+"/homerework.html");
+    response.sendFile(webpageRoot+"/home.html");
   }
   else {
     response.status(500).json({error: "fuck."});
@@ -219,7 +219,8 @@ app.post("/character/equipItem",async function(request, response){
     characterId: request.body.characterReceiving,
     itemId: request.body.item.itemInstanceId,
     membershipType: memType,
-  }
+  };
+  console.log(body);
   var body = JSON.stringify(body);
   d2api.postRequest(path,body,request.session.data.tokenData.access_token).then(function(result){
     response.status(200).json(result.data.Response);
