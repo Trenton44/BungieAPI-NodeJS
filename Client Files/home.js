@@ -215,6 +215,7 @@ function Item(){
       this.HTMLElement.ondblclick = function(ev){ slotController.swapEquipped(localthis.slotName, localthis.index); };
     }
     this.changeData(data);
+    if(this.data.state == "Masterwork") this.HTMLElement.style.border = "2px solid gold";
   };
   this.changeData = function(value){
     this.data = value;

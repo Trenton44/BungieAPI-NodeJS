@@ -26,16 +26,22 @@ const DestinyItemLocation = {
   "3": "Vendor",
   "4": "Postmaster",
 };
+const DestinyItemState = {
+  "0": "None",
+  "1": "Locked",
+  "2": "Tracked",
+  "4": "Masterwork",
+};
 var EquippableItemResponse = function(item){
   return {
     bucketHash: item.bucketHash,
     itemHash: item.itemHash,
     quantity: item.quantity,
     itemInstanceId: item.itemInstanceId,
-    bucketHashData: {
-
-    },
+    state: DestinyItemState[item.state],
     itemHashData: {
+      damageType: DestinyDamageTypeDefinition[item.itemHashData.defaultDamageTypeHash],
+      itemSource: item.itemHashData.displaySource,
       displayProperties: item.itemHashData.displayProperties,
       defaultDamageType: item.itemHashData.defaultDamageType,
       itemTypeDisplayName: item.itemHashData.itemTypeDisplayName,
