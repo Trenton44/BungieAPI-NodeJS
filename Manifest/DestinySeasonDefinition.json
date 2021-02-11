@@ -131,17 +131,37 @@
   "2809059426": {
     "displayProperties": {
       "description": "",
-      "name": "Season of [REDACTED]",
-      "icon": "/common/destiny2_content/icons/af3a842ef2637aa0aab68a0535ea1cc9.png",
-      "hasIcon": true
+      "name": "Season of the Chosen",
+      "hasIcon": false
     },
     "seasonNumber": 13,
     "startDate": "2021-02-09T17:00:00Z",
     "endDate": "2021-05-11T17:00:00Z",
     "seasonPassHash": 2698636901,
-    "seasonPassProgressionHash": 477676543,
+    "seasonPassProgressionHash": 4030656982,
+    "artifactItemHash": 3234265291,
+    "sealPresentationNodeHash": 1321008462,
     "startTimeInSeconds": "0",
+    "seasonalChallengesPresentationNodeHash": 3443694067,
     "seasonPassUnlockHash": 0,
+    "preview": {
+      "description": "Get the Season Pass and instantly unlock the new Seasonal armor set and the new Solar Bow, Ticuu's Divination. You also get an XP boost that speeds up your Seasonal ranks and engram unlocks.",
+      "linkPath": "/SeasonOfTheChosen",
+      "images": [
+        {
+          "thumbnailImage": "/img/destiny_content/seasons/preview/season13/bow-thumbnail.jpg",
+          "highResImage": "/img/destiny_content/seasons/preview/season13/bow-high-res.jpg"
+        },
+        {
+          "thumbnailImage": "/img/destiny_content/seasons/preview/season13/armor-thumbnail.jpg",
+          "highResImage": "/img/destiny_content/seasons/preview/season13/armor-high-res.jpg"
+        },
+        {
+          "thumbnailImage": "/img/destiny_content/seasons/preview/season13/rewards-thumbnail.jpg",
+          "highResImage": "/img/destiny_content/seasons/preview/season13/rewards-high-res.jpg"
+        }
+      ]
+    },
     "hash": 2809059426,
     "index": 12,
     "redacted": false,
@@ -155,7 +175,7 @@
     },
     "seasonNumber": 12,
     "startDate": "2020-11-10T17:00:00Z",
-    "endDate": "2021-02-09T17:00:00Z",
+    "endDate": "2020-02-09T17:00:00Z",
     "seasonPassHash": 348169624,
     "seasonPassProgressionHash": 477676543,
     "artifactItemHash": 4221096044,
@@ -169,15 +189,16 @@
   },
   "2809059428": {
     "displayProperties": {
-      "description": "",
+      "description": "[REDACTED]",
       "name": "Season of [REDACTED]",
-      "icon": "/common/destiny2_content/icons/af3a842ef2637aa0aab68a0535ea1cc9.png",
+      "icon": "/common/destiny2_content/icons/3c8e5b023cec526a5dd12c129ff603c2.png",
       "hasIcon": true
     },
     "seasonNumber": 15,
     "seasonPassHash": 2698636901,
-    "seasonPassProgressionHash": 477676543,
+    "seasonPassProgressionHash": 4030656982,
     "startTimeInSeconds": "0",
+    "seasonalChallengesPresentationNodeHash": 3443694067,
     "seasonPassUnlockHash": 0,
     "hash": 2809059428,
     "index": 14,
@@ -186,15 +207,16 @@
   },
   "2809059429": {
     "displayProperties": {
-      "description": "",
+      "description": "[REDACTED]",
       "name": "Season of [REDACTED]",
-      "icon": "/common/destiny2_content/icons/af3a842ef2637aa0aab68a0535ea1cc9.png",
+      "icon": "/common/destiny2_content/icons/3c8e5b023cec526a5dd12c129ff603c2.png",
       "hasIcon": true
     },
     "seasonNumber": 14,
-    "seasonPassHash": 2698636901,
-    "seasonPassProgressionHash": 477676543,
+    "seasonPassHash": 3730318234,
+    "seasonPassProgressionHash": 4030656982,
     "startTimeInSeconds": "0",
+    "seasonalChallengesPresentationNodeHash": 3443694067,
     "seasonPassUnlockHash": 0,
     "hash": 2809059429,
     "index": 13,

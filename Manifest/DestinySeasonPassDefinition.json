@@ -49,11 +49,11 @@
   },
   "2698636901": {
     "displayProperties": {
-      "name": "Season of the Hunt",
+      "name": "Season of the Chosen",
       "hasIcon": false
     },
-    "rewardProgressionHash": 477676543,
-    "prestigeProgressionHash": 2304468497,
+    "rewardProgressionHash": 4030656982,
+    "prestigeProgressionHash": 2068785426,
     "hash": 2698636901,
     "index": 5,
     "redacted": false,
@@ -68,6 +68,18 @@
     "prestigeProgressionHash": 2140885848,
     "hash": 3418508152,
     "index": 1,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3730318234": {
+    "displayProperties": {
+      "name": "Season of the Chosen",
+      "hasIcon": false
+    },
+    "rewardProgressionHash": 4030656982,
+    "prestigeProgressionHash": 2068785426,
+    "hash": 3730318234,
+    "index": 6,
     "redacted": false,
     "blacklisted": false
   }

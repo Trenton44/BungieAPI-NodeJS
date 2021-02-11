@@ -91,7 +91,8 @@ function SortEquippablesBucket(items){
     bucketname = bucketname.split(" ").join("");
     if(sortedEquipment[bucketname] == undefined)
       { sortedEquipment[bucketname] = []; }
-    if(items[i].itemHashData.redacted){
+    console.log(items[i]);
+    if(items[i].itemHashData.redacted == true){
        console.log("Notice: Redacted Item identified. No guaruntees if it will respond well with the api currently.");
     }
     sortedEquipment[bucketname].push(EquippableItemResponse(items[i]));

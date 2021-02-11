@@ -9,8 +9,8 @@
           "hasIcon": false
         },
         "position": {
-          "x": 325,
-          "y": 360,
+          "x": 640,
+          "y": 350,
           "z": 1
         },
         "featuringStates": [],
@@ -36,8 +36,8 @@
           "hasIcon": false
         },
         "position": {
-          "x": 955,
-          "y": 360,
+          "x": 1070,
+          "y": 535,
           "z": 1
         },
         "featuringStates": [],
@@ -716,6 +716,9 @@
         ],
         "states": [
           {
+            "state": 0
+          },
+          {
             "state": 4
           },
           {
@@ -728,8 +731,8 @@
       {
         "nodeId": 3059991999,
         "overrideDisplay": {
-          "description": "",
-          "name": "",
+          "description": "Embody the will of the Traveler and hunt those who would serve the Darkness.",
+          "name": "Harbinger",
           "icon": "/common/destiny2_content/icons/dd5201a6487163139e08d741dc782b33.jpg",
           "iconSequences": [
             {
@@ -749,7 +752,12 @@
           "z": 1
         },
         "featuringStates": [],
-        "activities": [],
+        "activities": [
+          {
+            "nodeActivityId": 3059991999,
+            "activityHash": 1738383283
+          }
+        ],
         "states": [
           {
             "state": 3
@@ -783,6 +791,9 @@
         "states": [
           {
             "state": 4
+          },
+          {
+            "state": 0
           }
         ],
         "uiActivityTypeOverrideHash": 0,
@@ -997,7 +1008,13 @@
         ],
         "states": [
           {
+            "state": 0
+          },
+          {
             "state": 4
+          },
+          {
+            "state": 0
           }
         ],
         "uiActivityTypeOverrideHash": 0,
@@ -1114,6 +1131,9 @@
           },
           {
             "state": 4
+          },
+          {
+            "state": 0
           }
         ],
         "uiActivityTypeOverrideHash": 0,
@@ -1237,6 +1257,36 @@
           {
             "nodeActivityId": 1242600699,
             "activityHash": 2361093350
+          }
+        ],
+        "states": [
+          {
+            "state": 0
+          },
+          {
+            "state": 4
+          }
+        ],
+        "uiActivityTypeOverrideHash": 0,
+        "uiStyleHash": 0
+      },
+      {
+        "nodeId": 4193338934,
+        "overrideDisplay": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "position": {
+          "x": 20,
+          "y": 180,
+          "z": 1
+        },
+        "featuringStates": [],
+        "activities": [
+          {
+            "nodeActivityId": 4193338934,
+            "activityHash": 3959604832
           }
         ],
         "states": [
@@ -1405,6 +1455,36 @@
         ],
         "uiActivityTypeOverrideHash": 0,
         "uiStyleHash": 0
+      },
+      {
+        "nodeId": 1228366033,
+        "overrideDisplay": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "position": {
+          "x": 612,
+          "y": 409,
+          "z": 1
+        },
+        "featuringStates": [],
+        "activities": [
+          {
+            "nodeActivityId": 1228366033,
+            "activityHash": 3458232326
+          }
+        ],
+        "states": [
+          {
+            "state": 0
+          },
+          {
+            "state": 4
+          }
+        ],
+        "uiActivityTypeOverrideHash": 0,
+        "uiStyleHash": 0
       }
     ],
     "artElements": [],
@@ -1468,6 +1548,36 @@
           {
             "nodeActivityId": 737664188,
             "activityHash": 2999697936
+          }
+        ],
+        "states": [
+          {
+            "state": 0
+          },
+          {
+            "state": 4
+          }
+        ],
+        "uiActivityTypeOverrideHash": 0,
+        "uiStyleHash": 0
+      },
+      {
+        "nodeId": 3929841832,
+        "overrideDisplay": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "position": {
+          "x": 200,
+          "y": 100,
+          "z": 1
+        },
+        "featuringStates": [],
+        "activities": [
+          {
+            "nodeActivityId": 3929841832,
+            "activityHash": 1771176108
           }
         ],
         "states": [
@@ -1615,8 +1725,8 @@
         "overview": "European Dead Zone"
       },
       {
-        "description": "A frozen moon of Jupiter where shadowed secrets lie, half-buried in the snow.",
-        "name": "Europa",
+        "description": "A desolate and frozen moon, testament to humanity's ambition and hubris.",
+        "name": "Rathmore Chaos, Europa",
         "unlockExpression": {
           "scope": 3
         },
@@ -1810,8 +1920,8 @@
           "hasIcon": false
         },
         "position": {
-          "x": 401,
-          "y": 348,
+          "x": 640,
+          "y": 280,
           "z": 1
         },
         "featuringStates": [],
@@ -1840,8 +1950,8 @@
           "hasIcon": false
         },
         "position": {
-          "x": 360,
-          "y": 200,
+          "x": 450,
+          "y": 280,
           "z": 1
         },
         "featuringStates": [],
@@ -1870,12 +1980,28 @@
           "hasIcon": false
         },
         "position": {
-          "x": 723,
-          "y": 348,
+          "x": 639,
+          "y": 535,
           "z": 1
         },
         "featuringStates": [],
         "activities": [
+          {
+            "nodeActivityId": 3160621859,
+            "activityHash": 557845330
+          },
+          {
+            "nodeActivityId": 3160621859,
+            "activityHash": 557845329
+          },
+          {
+            "nodeActivityId": 3160621859,
+            "activityHash": 557845328
+          },
+          {
+            "nodeActivityId": 3160621859,
+            "activityHash": 557845335
+          },
           {
             "nodeActivityId": 3160621859,
             "activityHash": 2599001915
@@ -1891,10 +2017,6 @@
           {
             "nodeActivityId": 3160621859,
             "activityHash": 2599001918
-          },
-          {
-            "nodeActivityId": 3160621859,
-            "activityHash": 2599001919
           },
           {
             "nodeActivityId": 3160621859,
@@ -1914,10 +2036,6 @@
           },
           {
             "nodeActivityId": 3160621859,
-            "activityHash": 1495545956
-          },
-          {
-            "nodeActivityId": 3160621859,
             "activityHash": 3233498450
           },
           {
@@ -1931,10 +2049,6 @@
           {
             "nodeActivityId": 3160621859,
             "activityHash": 3233498455
-          },
-          {
-            "nodeActivityId": 3160621859,
-            "activityHash": 3233498454
           },
           {
             "nodeActivityId": 3160621859,
@@ -1954,10 +2068,6 @@
           },
           {
             "nodeActivityId": 3160621859,
-            "activityHash": 265186825
-          },
-          {
-            "nodeActivityId": 3160621859,
             "activityHash": 2136458564
           },
           {
@@ -1971,10 +2081,6 @@
           {
             "nodeActivityId": 3160621859,
             "activityHash": 2136458561
-          },
-          {
-            "nodeActivityId": 3160621859,
-            "activityHash": 2136458560
           },
           {
             "nodeActivityId": 3160621859,
@@ -1994,10 +2100,6 @@
           },
           {
             "nodeActivityId": 3160621859,
-            "activityHash": 3812135451
-          },
-          {
-            "nodeActivityId": 3160621859,
             "activityHash": 1753547897
           },
           {
@@ -2011,10 +2113,6 @@
           {
             "nodeActivityId": 3160621859,
             "activityHash": 1753547900
-          },
-          {
-            "nodeActivityId": 3160621859,
-            "activityHash": 1753547901
           },
           {
             "nodeActivityId": 3160621859,
@@ -2034,10 +2132,6 @@
           },
           {
             "nodeActivityId": 3160621859,
-            "activityHash": 3029388704
-          },
-          {
-            "nodeActivityId": 3160621859,
             "activityHash": 3109193572
           },
           {
@@ -2051,10 +2145,6 @@
           {
             "nodeActivityId": 3160621859,
             "activityHash": 3109193569
-          },
-          {
-            "nodeActivityId": 3160621859,
-            "activityHash": 3109193568
           },
           {
             "nodeActivityId": 3160621859,
@@ -2074,7 +2164,51 @@
           },
           {
             "nodeActivityId": 3160621859,
-            "activityHash": 2416314393
+            "activityHash": 2103025319
+          },
+          {
+            "nodeActivityId": 3160621859,
+            "activityHash": 2103025316
+          },
+          {
+            "nodeActivityId": 3160621859,
+            "activityHash": 2103025317
+          },
+          {
+            "nodeActivityId": 3160621859,
+            "activityHash": 2103025314
+          },
+          {
+            "nodeActivityId": 3160621859,
+            "activityHash": 1203950596
+          },
+          {
+            "nodeActivityId": 3160621859,
+            "activityHash": 1203950599
+          },
+          {
+            "nodeActivityId": 3160621859,
+            "activityHash": 1203950598
+          },
+          {
+            "nodeActivityId": 3160621859,
+            "activityHash": 1203950593
+          },
+          {
+            "nodeActivityId": 3160621859,
+            "activityHash": 3293630128
+          },
+          {
+            "nodeActivityId": 3160621859,
+            "activityHash": 3293630131
+          },
+          {
+            "nodeActivityId": 3160621859,
+            "activityHash": 3293630130
+          },
+          {
+            "nodeActivityId": 3160621859,
+            "activityHash": 3293630133
           }
         ],
         "states": [
@@ -2096,35 +2230,35 @@
           "hasIcon": false
         },
         "position": {
-          "x": 800,
-          "y": 408,
+          "x": 1062,
+          "y": 480,
           "z": 1
         },
         "featuringStates": [],
         "activities": [
           {
             "nodeActivityId": 2629153579,
-            "activityHash": 89113250
+            "activityHash": 1446478334
           },
           {
             "nodeActivityId": 2629153579,
-            "activityHash": 4197461112
+            "activityHash": 2112435491
           },
           {
             "nodeActivityId": 2629153579,
-            "activityHash": 281497220
+            "activityHash": 3418624832
           },
           {
             "nodeActivityId": 2629153579,
-            "activityHash": 707920309
+            "activityHash": 3871967157
           },
           {
             "nodeActivityId": 2629153579,
-            "activityHash": 3381711459
+            "activityHash": 676886831
           },
           {
             "nodeActivityId": 2629153579,
-            "activityHash": 3449817631
+            "activityHash": 554830595
           },
           {
             "nodeActivityId": 2629153579,
@@ -2137,6 +2271,226 @@
           },
           {
             "state": 4
+          }
+        ],
+        "uiActivityTypeOverrideHash": 0,
+        "uiStyleHash": 0
+      },
+      {
+        "nodeId": 2595090906,
+        "overrideDisplay": {
+          "description": "Ritualistic Combat",
+          "name": "Battlegrounds",
+          "hasIcon": false
+        },
+        "position": {
+          "x": 290,
+          "y": 535,
+          "z": 1
+        },
+        "featuringStates": [],
+        "activities": [
+          {
+            "nodeActivityId": 2595090906,
+            "activityHash": 3207968872
+          }
+        ],
+        "states": [
+          {
+            "state": 2
+          },
+          {
+            "state": 4
+          }
+        ],
+        "uiActivityTypeOverrideHash": 0,
+        "uiStyleHash": 0
+      },
+      {
+        "nodeId": 904388514,
+        "overrideDisplay": {
+          "description": "Challenge yourself to the highest-difficulty strike to get the best reward.",
+          "name": "The Ordeal: Grandmaster",
+          "hasIcon": false
+        },
+        "position": {
+          "x": 990,
+          "y": 535,
+          "z": 1
+        },
+        "featuringStates": [],
+        "activities": [
+          {
+            "nodeActivityId": 904388514,
+            "activityHash": 557845334
+          },
+          {
+            "nodeActivityId": 904388514,
+            "activityHash": 2599001919
+          },
+          {
+            "nodeActivityId": 904388514,
+            "activityHash": 1495545956
+          },
+          {
+            "nodeActivityId": 904388514,
+            "activityHash": 3233498454
+          },
+          {
+            "nodeActivityId": 904388514,
+            "activityHash": 265186825
+          },
+          {
+            "nodeActivityId": 904388514,
+            "activityHash": 2136458560
+          },
+          {
+            "nodeActivityId": 904388514,
+            "activityHash": 3812135451
+          },
+          {
+            "nodeActivityId": 904388514,
+            "activityHash": 1753547901
+          },
+          {
+            "nodeActivityId": 904388514,
+            "activityHash": 3029388704
+          },
+          {
+            "nodeActivityId": 904388514,
+            "activityHash": 3109193568
+          },
+          {
+            "nodeActivityId": 904388514,
+            "activityHash": 2416314393
+          },
+          {
+            "nodeActivityId": 904388514,
+            "activityHash": 2103025315
+          },
+          {
+            "nodeActivityId": 904388514,
+            "activityHash": 1203950592
+          },
+          {
+            "nodeActivityId": 904388514,
+            "activityHash": 3293630132
+          }
+        ],
+        "states": [
+          {
+            "state": 0
+          },
+          {
+            "state": 4
+          }
+        ],
+        "uiActivityTypeOverrideHash": 0,
+        "uiStyleHash": 0
+      },
+      {
+        "nodeId": 2043080791,
+        "overrideDisplay": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "position": {
+          "x": 1100,
+          "y": 450,
+          "z": 1
+        },
+        "featuringStates": [],
+        "activities": [
+          {
+            "nodeActivityId": 2043080791,
+            "activityHash": 1418633249
+          }
+        ],
+        "states": [
+          {
+            "state": 3
+          },
+          {
+            "state": 4
+          },
+          {
+            "state": 0
+          },
+          {
+            "state": 0
+          }
+        ],
+        "uiActivityTypeOverrideHash": 0,
+        "uiStyleHash": 0
+      },
+      {
+        "nodeId": 4015105097,
+        "overrideDisplay": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "position": {
+          "x": 1100,
+          "y": 450,
+          "z": 1
+        },
+        "featuringStates": [],
+        "activities": [
+          {
+            "nodeActivityId": 4015105097,
+            "activityHash": 420235875
+          }
+        ],
+        "states": [
+          {
+            "state": 3
+          },
+          {
+            "state": 4
+          },
+          {
+            "state": 0
+          },
+          {
+            "state": 0
+          }
+        ],
+        "uiActivityTypeOverrideHash": 0,
+        "uiStyleHash": 0
+      },
+      {
+        "nodeId": 3434307460,
+        "overrideDisplay": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "position": {
+          "x": 1100,
+          "y": 450,
+          "z": 1
+        },
+        "featuringStates": [],
+        "activities": [
+          {
+            "nodeActivityId": 3434307460,
+            "activityHash": 2816660150
+          }
+        ],
+        "states": [
+          {
+            "state": 3
+          },
+          {
+            "state": 4
+          },
+          {
+            "state": 0
+          },
+          {
+            "state": 0
           }
         ],
         "uiActivityTypeOverrideHash": 0,
@@ -2193,6 +2547,9 @@
         "states": [
           {
             "state": 4
+          },
+          {
+            "state": 0
           }
         ],
         "uiActivityTypeOverrideHash": 0,
@@ -2220,6 +2577,9 @@
         "states": [
           {
             "state": 4
+          },
+          {
+            "state": 0
           }
         ],
         "uiActivityTypeOverrideHash": 0,
@@ -2245,6 +2605,102 @@
           }
         ],
         "states": [
+          {
+            "state": 4
+          },
+          {
+            "state": 0
+          }
+        ],
+        "uiActivityTypeOverrideHash": 0,
+        "uiStyleHash": 0
+      },
+      {
+        "nodeId": 1860024718,
+        "overrideDisplay": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "position": {
+          "x": 785,
+          "y": -238,
+          "z": 1
+        },
+        "featuringStates": [],
+        "activities": [
+          {
+            "nodeActivityId": 1860024718,
+            "activityHash": 1754609040
+          }
+        ],
+        "states": [
+          {
+            "state": 0
+          },
+          {
+            "state": 4
+          },
+          {
+            "state": 0
+          }
+        ],
+        "uiActivityTypeOverrideHash": 0,
+        "uiStyleHash": 0
+      },
+      {
+        "nodeId": 4030986110,
+        "overrideDisplay": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "position": {
+          "x": 337,
+          "y": -30,
+          "z": 1
+        },
+        "featuringStates": [],
+        "activities": [
+          {
+            "nodeActivityId": 4030986110,
+            "activityHash": 925348811
+          }
+        ],
+        "states": [
+          {
+            "state": 0
+          },
+          {
+            "state": 4
+          }
+        ],
+        "uiActivityTypeOverrideHash": 0,
+        "uiStyleHash": 0
+      },
+      {
+        "nodeId": 3597357790,
+        "overrideDisplay": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "position": {
+          "x": 721,
+          "y": 353,
+          "z": 1
+        },
+        "featuringStates": [],
+        "activities": [
+          {
+            "nodeActivityId": 3597357790,
+            "activityHash": 679234423
+          }
+        ],
+        "states": [
+          {
+            "state": 0
+          },
           {
             "state": 4
           }
@@ -2289,6 +2745,9 @@
         "states": [
           {
             "state": 4
+          },
+          {
+            "state": 0
           }
         ],
         "uiActivityTypeOverrideHash": 0,
@@ -2316,6 +2775,9 @@
         "states": [
           {
             "state": 4
+          },
+          {
+            "state": 0
           }
         ],
         "uiActivityTypeOverrideHash": 0,
@@ -2343,6 +2805,9 @@
         "states": [
           {
             "state": 4
+          },
+          {
+            "state": 0
           }
         ],
         "uiActivityTypeOverrideHash": 0,
@@ -2767,6 +3232,40 @@
         ],
         "uiActivityTypeOverrideHash": 0,
         "uiStyleHash": 0
+      },
+      {
+        "nodeId": 3767990203,
+        "overrideDisplay": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "position": {
+          "x": 78,
+          "y": -124,
+          "z": 1
+        },
+        "featuringStates": [],
+        "activities": [
+          {
+            "nodeActivityId": 3767990203,
+            "activityHash": 2124066889
+          },
+          {
+            "nodeActivityId": 3767990203,
+            "activityHash": 4212753278
+          }
+        ],
+        "states": [
+          {
+            "state": 4
+          },
+          {
+            "state": 0
+          }
+        ],
+        "uiActivityTypeOverrideHash": 0,
+        "uiStyleHash": 0
       }
     ],
     "artElements": [],
@@ -2808,6 +3307,75 @@
           },
           {
             "state": 4
+          },
+          {
+            "state": 0
+          }
+        ],
+        "uiActivityTypeOverrideHash": 0,
+        "uiStyleHash": 0
+      },
+      {
+        "nodeId": 2837479395,
+        "overrideDisplay": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "position": {
+          "x": 685,
+          "y": 350,
+          "z": 1
+        },
+        "featuringStates": [],
+        "activities": [
+          {
+            "nodeActivityId": 2837479395,
+            "activityHash": 1917776943
+          }
+        ],
+        "states": [
+          {
+            "state": 0
+          },
+          {
+            "state": 4
+          },
+          {
+            "state": 0
+          }
+        ],
+        "uiActivityTypeOverrideHash": 0,
+        "uiStyleHash": 0
+      },
+      {
+        "nodeId": 2413242583,
+        "overrideDisplay": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "position": {
+          "x": 1185,
+          "y": 265,
+          "z": 1
+        },
+        "featuringStates": [],
+        "activities": [
+          {
+            "nodeActivityId": 2413242583,
+            "activityHash": 3777220691
+          }
+        ],
+        "states": [
+          {
+            "state": 0
+          },
+          {
+            "state": 4
+          },
+          {
+            "state": 0
           }
         ],
         "uiActivityTypeOverrideHash": 0,
@@ -2842,6 +3410,36 @@
         ],
         "uiActivityTypeOverrideHash": 0,
         "uiStyleHash": 0
+      },
+      {
+        "nodeId": 1019449318,
+        "overrideDisplay": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "position": {
+          "x": 81,
+          "y": 392,
+          "z": 1
+        },
+        "featuringStates": [],
+        "activities": [
+          {
+            "nodeActivityId": 1019449318,
+            "activityHash": 920521905
+          }
+        ],
+        "states": [
+          {
+            "state": 0
+          },
+          {
+            "state": 4
+          }
+        ],
+        "uiActivityTypeOverrideHash": 0,
+        "uiStyleHash": 0
       }
     ],
     "artElements": [],
@@ -2867,7 +3465,7 @@
         },
         "position": {
           "x": 640,
-          "y": 330,
+          "y": 268,
           "z": 1
         },
         "featuringStates": [],
@@ -2893,8 +3491,8 @@
           "hasIcon": false
         },
         "position": {
-          "x": 425,
-          "y": 483,
+          "x": 430,
+          "y": 545,
           "z": 1
         },
         "featuringStates": [],
@@ -2920,8 +3518,8 @@
           "hasIcon": false
         },
         "position": {
-          "x": 385,
-          "y": 258,
+          "x": 210,
+          "y": 545,
           "z": 1
         },
         "featuringStates": [],
@@ -2947,8 +3545,8 @@
           "hasIcon": false
         },
         "position": {
-          "x": 895,
-          "y": 258,
+          "x": 640,
+          "y": 545,
           "z": 1
         },
         "featuringStates": [],
@@ -2974,8 +3572,8 @@
           "hasIcon": false
         },
         "position": {
-          "x": 990,
-          "y": 320,
+          "x": 708,
+          "y": 480,
           "z": 1
         },
         "featuringStates": [],
@@ -3001,9 +3599,9 @@
           "hasIcon": false
         },
         "position": {
-          "x": 1162,
-          "y": 605,
-          "z": 2
+          "x": 1060,
+          "y": 545,
+          "z": 1
         },
         "featuringStates": [],
         "activities": [
@@ -3028,9 +3626,9 @@
           "hasIcon": false
         },
         "position": {
-          "x": 855,
-          "y": 483,
-          "z": 2
+          "x": 850,
+          "y": 545,
+          "z": 1
         },
         "featuringStates": [],
         "activities": [
@@ -3058,9 +3656,9 @@
           "hasIcon": false
         },
         "position": {
-          "x": 855,
-          "y": 483,
-          "z": 2
+          "x": 850,
+          "y": 545,
+          "z": 1
         },
         "featuringStates": [],
         "activities": [
@@ -3088,9 +3686,9 @@
           "hasIcon": false
         },
         "position": {
-          "x": 855,
-          "y": 483,
-          "z": 2
+          "x": 850,
+          "y": 545,
+          "z": 1
         },
         "featuringStates": [],
         "activities": [
@@ -3118,9 +3716,9 @@
           "hasIcon": false
         },
         "position": {
-          "x": 855,
-          "y": 483,
-          "z": 2
+          "x": 850,
+          "y": 545,
+          "z": 1
         },
         "featuringStates": [],
         "activities": [
@@ -3148,9 +3746,9 @@
           "hasIcon": false
         },
         "position": {
-          "x": 855,
-          "y": 483,
-          "z": 2
+          "x": 850,
+          "y": 545,
+          "z": 1
         },
         "featuringStates": [],
         "activities": [
@@ -3178,9 +3776,9 @@
           "hasIcon": false
         },
         "position": {
-          "x": 855,
-          "y": 483,
-          "z": 2
+          "x": 850,
+          "y": 545,
+          "z": 1
         },
         "featuringStates": [],
         "activities": [
@@ -3208,9 +3806,9 @@
           "hasIcon": false
         },
         "position": {
-          "x": 855,
-          "y": 483,
-          "z": 2
+          "x": 850,
+          "y": 545,
+          "z": 1
         },
         "featuringStates": [],
         "activities": [
@@ -3238,9 +3836,9 @@
           "hasIcon": false
         },
         "position": {
-          "x": 855,
-          "y": 483,
-          "z": 2
+          "x": 850,
+          "y": 545,
+          "z": 1
         },
         "featuringStates": [],
         "activities": [
@@ -3268,8 +3866,8 @@
           "hasIcon": false
         },
         "position": {
-          "x": 640,
-          "y": 528,
+          "x": 890,
+          "y": 315,
           "z": 1
         },
         "featuringStates": [],
@@ -3285,6 +3883,9 @@
           },
           {
             "state": 4
+          },
+          {
+            "state": 2
           }
         ],
         "uiActivityTypeOverrideHash": 0,
@@ -3298,8 +3899,8 @@
           "hasIcon": false
         },
         "position": {
-          "x": 745,
-          "y": 600,
+          "x": 980,
+          "y": 240,
           "z": 1
         },
         "featuringStates": [],
@@ -3328,8 +3929,8 @@
           "hasIcon": false
         },
         "position": {
-          "x": 640,
-          "y": 140,
+          "x": 390,
+          "y": 315,
           "z": 1
         },
         "featuringStates": [],
@@ -3345,6 +3946,9 @@
           },
           {
             "state": 4
+          },
+          {
+            "state": 2
           }
         ],
         "uiActivityTypeOverrideHash": 0,
@@ -3358,8 +3962,8 @@
           "hasIcon": false
         },
         "position": {
-          "x": 640,
-          "y": 38,
+          "x": 390,
+          "y": 232,
           "z": 1
         },
         "featuringStates": [],

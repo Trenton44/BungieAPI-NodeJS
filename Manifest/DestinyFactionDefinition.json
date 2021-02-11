@@ -3,7 +3,7 @@
     "displayProperties": {
       "description": "Emperor Calus of the Cabal seeks champions.",
       "name": "Leviathan",
-      "icon": "/common/destiny2_content/icons/b8177e166f01c2cd914fc3e925ae902d.png",
+      "icon": "/common/destiny2_content/icons/2151f51f3e561c5adc7b23549a87601f.png",
       "hasIcon": true
     },
     "progressionHash": 1482334108,
@@ -13,7 +13,7 @@
     "rewardItemHash": 3191466416,
     "rewardVendorHash": 0,
     "hash": 24856709,
-    "index": 22,
+    "index": 24,
     "redacted": false,
     "blacklisted": false
   },
@@ -28,7 +28,7 @@
     "rewardItemHash": 0,
     "rewardVendorHash": 0,
     "hash": 185244751,
-    "index": 39,
+    "index": 41,
     "redacted": false,
     "blacklisted": false
   },
@@ -50,7 +50,7 @@
       }
     ],
     "hash": 258170974,
-    "index": 34,
+    "index": 36,
     "redacted": false,
     "blacklisted": false
   },
@@ -58,7 +58,7 @@
     "displayProperties": {
       "description": "Enigmatic and reclusive, the Nine appear to take an interest in the affairs of Guardians.",
       "name": "The Nine",
-      "icon": "/common/destiny2_content/icons/a737739088d3af999fe4bd018f75745e.png",
+      "icon": "/common/destiny2_content/icons/d342c57125e13c9bb078eb6bb812a0ea.png",
       "hasIcon": true
     },
     "progressionHash": 3468066401,
@@ -68,7 +68,7 @@
     "rewardItemHash": 3496337357,
     "rewardVendorHash": 3496337357,
     "hash": 469305170,
-    "index": 24,
+    "index": 26,
     "redacted": false,
     "blacklisted": false
   },
@@ -76,7 +76,7 @@
     "displayProperties": {
       "description": "Commander Zavala oversees the Vanguard's tactical operations and conducts regular strikes against the City's enemies.",
       "name": "Vanguard Tactical",
-      "icon": "/common/destiny2_content/icons/723b88191f3d20cf38f8eedc3ba2efb2.png",
+      "icon": "/common/destiny2_content/icons/32049558a076b04b18cd26b7b060061c.png",
       "hasIcon": true
     },
     "progressionHash": 611314723,
@@ -93,7 +93,7 @@
       }
     ],
     "hash": 611314723,
-    "index": 25,
+    "index": 27,
     "redacted": false,
     "blacklisted": false
   },
@@ -115,7 +115,7 @@
       }
     ],
     "hash": 672350002,
-    "index": 23,
+    "index": 25,
     "redacted": false,
     "blacklisted": false
   },
@@ -137,18 +137,18 @@
       }
     ],
     "hash": 685177497,
-    "index": 35,
+    "index": 37,
     "redacted": false,
     "blacklisted": false
   },
   "697030790": {
     "displayProperties": {
-      "description": "The Crucible is a live-fire training exercise where Guardians train and compete.",
+      "description": "Compete in the Crucible. Earn armor and weapons at each rank, and powerful upgrades at major ranks.",
       "name": "The Crucible",
-      "icon": "/common/destiny2_content/icons/40f743b82b4d0b5a27171e6b1be7b38e.png",
+      "icon": "/common/destiny2_content/icons/98c3899397a6083bcca1af0347ee9753.png",
       "hasIcon": true
     },
-    "progressionHash": 697030790,
+    "progressionHash": 2626549951,
     "tokenValues": {
       "183980811": 100
     },
@@ -162,7 +162,7 @@
       }
     ],
     "hash": 697030790,
-    "index": 12,
+    "index": 14,
     "redacted": false,
     "blacklisted": false
   },
@@ -176,18 +176,18 @@
     "rewardItemHash": 0,
     "rewardVendorHash": 0,
     "hash": 699972949,
-    "index": 36,
+    "index": 38,
     "redacted": false,
     "blacklisted": false
   },
   "796555788": {
     "displayProperties": {
-      "description": "The name says it all.",
+      "description": "Compete in Gambit. Earn armor and weapons at each rank, and powerful upgrades at major ranks.",
       "name": "Rogue Lightbearer",
-      "icon": "/common/destiny2_content/icons/ec78f1d061bafbd01571e7628cfe7efc.png",
+      "icon": "/common/destiny2_content/icons/1847401e9e7bb8bce4ee2ad1656f7edf.png",
       "hasIcon": true
     },
-    "progressionHash": 0,
+    "progressionHash": 2772425241,
     "rewardItemHash": 0,
     "rewardVendorHash": 0,
     "vendors": [
@@ -198,7 +198,7 @@
       }
     ],
     "hash": 796555788,
-    "index": 29,
+    "index": 31,
     "redacted": false,
     "blacklisted": false
   },
@@ -206,14 +206,14 @@
     "displayProperties": {
       "description": "An elite Golden Age weaponsmith",
       "name": "The Black Armory",
-      "icon": "/common/destiny2_content/icons/c4bcb828026f69d2802ce6ef8fbd463b.png",
+      "icon": "/common/destiny2_content/icons/5870edaad0fcea195fcc6c791490dcb2.png",
       "hasIcon": true
     },
     "progressionHash": 0,
     "rewardItemHash": 0,
     "rewardVendorHash": 0,
     "hash": 918027507,
-    "index": 32,
+    "index": 34,
     "redacted": false,
     "blacklisted": false
   },
@@ -266,7 +266,7 @@
       }
     ],
     "hash": 976973631,
-    "index": 10,
+    "index": 11,
     "redacted": false,
     "blacklisted": false
   },
@@ -274,7 +274,7 @@
     "displayProperties": {
       "description": "Gunsmiths maintain the Guardian arsenal, procuring and fixing the weapons Guardians use in their travels.",
       "name": "Gunsmith",
-      "icon": "/common/destiny2_content/icons/bbca73bc78c4bcea7db4120fea6aa9eb.png",
+      "icon": "/common/destiny2_content/icons/94acfb3560b231dedfb0d0bcdc2e8461.png",
       "hasIcon": true
     },
     "progressionHash": 1021210278,
@@ -292,7 +292,7 @@
       }
     ],
     "hash": 1021210278,
-    "index": 16,
+    "index": 18,
     "redacted": false,
     "blacklisted": false
   },
@@ -300,7 +300,7 @@
     "displayProperties": {
       "description": "Enigmatic and reclusive, the Nine appear to take an interest in the affairs of Guardians.",
       "name": "The Nine",
-      "icon": "/common/destiny2_content/icons/a737739088d3af999fe4bd018f75745e.png",
+      "icon": "/common/destiny2_content/icons/d342c57125e13c9bb078eb6bb812a0ea.png",
       "hasIcon": true
     },
     "progressionHash": 0,
@@ -314,7 +314,7 @@
       }
     ],
     "hash": 1357903713,
-    "index": 20,
+    "index": 22,
     "redacted": false,
     "blacklisted": false
   },
@@ -336,7 +336,7 @@
       }
     ],
     "hash": 1393733616,
-    "index": 15,
+    "index": 17,
     "redacted": false,
     "blacklisted": false
   },
@@ -400,7 +400,7 @@
       }
     ],
     "hash": 1647279527,
-    "index": 13,
+    "index": 15,
     "redacted": false,
     "blacklisted": false
   },
@@ -408,7 +408,7 @@
     "displayProperties": {
       "description": "A Golden Age AI marooned on  Nessus, Failsafe stands watch over the wreckage of her ship.",
       "name": "Exodus Black AI",
-      "icon": "/common/destiny2_content/icons/a802d6f4595db175154f3c465210af0f.png",
+      "icon": "/common/destiny2_content/icons/f7080dd480e919fc16e2c24b323b51a5.png",
       "hasIcon": true
     },
     "progressionHash": 1660497607,
@@ -427,7 +427,7 @@
       }
     ],
     "hash": 1660497607,
-    "index": 19,
+    "index": 21,
     "redacted": false,
     "blacklisted": false
   },
@@ -442,7 +442,7 @@
     "rewardItemHash": 0,
     "rewardVendorHash": 0,
     "hash": 1687859061,
-    "index": 37,
+    "index": 39,
     "redacted": false,
     "blacklisted": false
   },
@@ -450,7 +450,7 @@
     "displayProperties": {
       "description": "The Iron Banner is a Crucible tournament held to honor long-lost heroes.",
       "name": "Iron Banner",
-      "icon": "/common/destiny2_content/icons/1d006c1576409a7a188bda7879857784.png",
+      "icon": "/common/destiny2_content/icons/f08f443401e044517482f9d86aba9f80.png",
       "hasIcon": true
     },
     "progressionHash": 1761642340,
@@ -467,7 +467,7 @@
       }
     ],
     "hash": 1761642340,
-    "index": 18,
+    "index": 20,
     "redacted": false,
     "blacklisted": false
   },
@@ -511,7 +511,7 @@
       }
     ],
     "hash": 1838583129,
-    "index": 21,
+    "index": 23,
     "redacted": false,
     "blacklisted": false
   },
@@ -526,7 +526,33 @@
     "rewardItemHash": 0,
     "rewardVendorHash": 0,
     "hash": 2126988316,
-    "index": 41,
+    "index": 43,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2139865751": {
+    "displayProperties": {
+      "name": "Crypto-Archeology",
+      "icon": "/common/destiny2_content/icons/d789e8379461ae7b2dfe0239b8223856.png",
+      "hasIcon": true
+    },
+    "progressionHash": 2139865751,
+    "rewardItemHash": 0,
+    "rewardVendorHash": 0,
+    "vendors": [
+      {
+        "vendorHash": 2100650132,
+        "destinationHash": 3929841832,
+        "backgroundImagePath": "/img/destiny_content/factions/vendors/tower_helm_prismatic_recaster.jpg"
+      },
+      {
+        "vendorHash": 2881385775,
+        "destinationHash": 3929841832,
+        "backgroundImagePath": "/img/destiny_content/factions/vendors/tower_helm_prismatic_recaster.jpg"
+      }
+    ],
+    "hash": 2139865751,
+    "index": 10,
     "redacted": false,
     "blacklisted": false
   },
@@ -541,7 +567,7 @@
     "rewardItemHash": 0,
     "rewardVendorHash": 0,
     "hash": 2468902004,
-    "index": 40,
+    "index": 42,
     "redacted": false,
     "blacklisted": false
   },
@@ -570,7 +596,7 @@
     "displayProperties": {
       "description": "Devrim Kay stands watch in the EDZ, protecting the small group of people who now call the Farm their home.",
       "name": "Clan Steward",
-      "icon": "/common/destiny2_content/icons/367067358c84628ec66d896bf6a5602c.png",
+      "icon": "/common/destiny2_content/icons/92a9b307bdec0b3ff4bd7f293d7d97a8.png",
       "hasIcon": true
     },
     "progressionHash": 0,
@@ -584,7 +610,7 @@
       }
     ],
     "hash": 2550874616,
-    "index": 11,
+    "index": 13,
     "redacted": false,
     "blacklisted": false
   },
@@ -592,7 +618,7 @@
     "displayProperties": {
       "description": "Brother Vance leads the Followers of Osiris on Mercury, studying the life and teachings of Osiris and standing watch over the Infinite Forest.",
       "name": "Follower of Osiris",
-      "icon": "/common/destiny2_content/icons/54af55fd53ef164c2bd2b542f1cdd70f.png",
+      "icon": "/common/destiny2_content/icons/ceed5608a366af3bfffae4fe44c1a78f.png",
       "hasIcon": true
     },
     "progressionHash": 2677528157,
@@ -604,7 +630,7 @@
     "rewardItemHash": 10653108,
     "rewardVendorHash": 10653108,
     "hash": 2677528157,
-    "index": 26,
+    "index": 28,
     "redacted": false,
     "blacklisted": false
   },
@@ -626,7 +652,7 @@
       }
     ],
     "hash": 2943125217,
-    "index": 31,
+    "index": 33,
     "redacted": false,
     "blacklisted": false
   },
@@ -639,7 +665,29 @@
     "rewardItemHash": 0,
     "rewardVendorHash": 0,
     "hash": 3012573310,
-    "index": 43,
+    "index": 45,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3125858369": {
+    "displayProperties": {
+      "description": "A tactical display hub to track the Vanguard combat operations against Caiatl's Commanders.",
+      "name": "Vanguard Operations",
+      "icon": "/common/destiny2_content/icons/e85d8017ad41765ec3aef1fa192fa089.png",
+      "hasIcon": true
+    },
+    "progressionHash": 1218232032,
+    "rewardItemHash": 0,
+    "rewardVendorHash": 0,
+    "vendors": [
+      {
+        "vendorHash": 3450165804,
+        "destinationHash": 3929841832,
+        "backgroundImagePath": "/img/destiny_content/factions/vendors/tower_helm_war_table.jpg"
+      }
+    ],
+    "hash": 3125858369,
+    "index": 12,
     "redacted": false,
     "blacklisted": false
   },
@@ -647,7 +695,7 @@
     "displayProperties": {
       "description": "Ikora Rey oversees the Vanguard's research and intelligence operations. Guardians and scholars seek her mentorship from far and wide.",
       "name": "Vanguard Research",
-      "icon": "/common/destiny2_content/icons/b4c725009c37c15148c6860fa86ee90d.png",
+      "icon": "/common/destiny2_content/icons/c133c32c83264a988b1fba5f1782ac2b.png",
       "hasIcon": true
     },
     "progressionHash": 0,
@@ -664,7 +712,7 @@
       }
     ],
     "hash": 3231773039,
-    "index": 17,
+    "index": 19,
     "redacted": false,
     "blacklisted": false
   },
@@ -679,7 +727,7 @@
     "rewardItemHash": 0,
     "rewardVendorHash": 0,
     "hash": 3258748553,
-    "index": 42,
+    "index": 44,
     "redacted": false,
     "blacklisted": false
   },
@@ -715,7 +763,7 @@
       }
     ],
     "hash": 3344595739,
-    "index": 30,
+    "index": 32,
     "redacted": false,
     "blacklisted": false
   },
@@ -723,7 +771,7 @@
     "displayProperties": {
       "description": "A Fallen criminal enterprise based on the Tangled Shore and led by the Spider.",
       "name": "Spider's Crime Syndicate",
-      "icon": "/common/destiny2_content/icons/5ab7c5a1014de38f351da53284634dea.png",
+      "icon": "/common/destiny2_content/icons/2e7b4ecb113bff17e30e82f17b17cf05.png",
       "hasIcon": true
     },
     "progressionHash": 3611983588,
@@ -813,7 +861,7 @@
     "displayProperties": {
       "description": "Ana Bray oversees operations in the Hellas Basin, and serves as a liaison between the Vanguard and Rasputin.",
       "name": "Voice of Rasputin",
-      "icon": "/common/destiny2_content/icons/2bac93455a813a0e2959bb8562cd39aa.png",
+      "icon": "/common/destiny2_content/icons/ac0d964be27180bd67bbefda39a092de.png",
       "hasIcon": true
     },
     "progressionHash": 3859807381,
@@ -825,7 +873,7 @@
     "rewardItemHash": 3780056901,
     "rewardVendorHash": 3780056901,
     "hash": 3859807381,
-    "index": 27,
+    "index": 29,
     "redacted": false,
     "blacklisted": false
   },
@@ -833,14 +881,14 @@
     "displayProperties": {
       "description": "A magnificent statue of Calus, generously placed here for worthy creatures to kneel before.",
       "name": "Visage of Calus",
-      "icon": "/common/destiny2_content/icons/b8177e166f01c2cd914fc3e925ae902d.png",
+      "icon": "/common/destiny2_content/icons/2151f51f3e561c5adc7b23549a87601f.png",
       "hasIcon": true
     },
     "progressionHash": 0,
     "rewardItemHash": 0,
     "rewardVendorHash": 0,
     "hash": 4026419037,
-    "index": 33,
+    "index": 35,
     "redacted": false,
     "blacklisted": false
   },
@@ -848,7 +896,7 @@
     "displayProperties": {
       "description": "",
       "name": "Hero of Six Fronts",
-      "icon": "/common/destiny2_content/icons/0cb6a9411484d163cfbd09202485fa58.png",
+      "icon": "/common/destiny2_content/icons/45a2b89fff4d663b80b3777b16c852c8.png",
       "hasIcon": true
     },
     "progressionHash": 2920727472,
@@ -865,7 +913,7 @@
       }
     ],
     "hash": 4177752187,
-    "index": 38,
+    "index": 40,
     "redacted": false,
     "blacklisted": false
   },
@@ -873,7 +921,7 @@
     "displayProperties": {
       "description": "Devrim Kay stands watch in the EDZ, protecting the small group of people who now call the Farm their home.",
       "name": "Dead Zone Scout",
-      "icon": "/common/destiny2_content/icons/367067358c84628ec66d896bf6a5602c.png",
+      "icon": "/common/destiny2_content/icons/92a9b307bdec0b3ff4bd7f293d7d97a8.png",
       "hasIcon": true
     },
     "progressionHash": 4235119312,
@@ -892,7 +940,7 @@
       }
     ],
     "hash": 4235119312,
-    "index": 14,
+    "index": 16,
     "redacted": false,
     "blacklisted": false
   },
@@ -944,7 +992,7 @@
       }
     ],
     "hash": 4281866885,
-    "index": 28,
+    "index": 30,
     "redacted": false,
     "blacklisted": false
   }

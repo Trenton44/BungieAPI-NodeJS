@@ -47,7 +47,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 70699614,
-    "index": 75,
+    "index": 80,
     "redacted": false,
     "blacklisted": false
   },
@@ -156,7 +156,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 181878872,
-    "index": 51,
+    "index": 54,
     "redacted": false,
     "blacklisted": false
   },
@@ -201,7 +201,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 185244751,
-    "index": 66,
+    "index": 69,
     "redacted": false,
     "blacklisted": false
   },
@@ -2994,7 +2994,7 @@
       }
     ],
     "hash": 477676543,
-    "index": 46,
+    "index": 44,
     "redacted": false,
     "blacklisted": false
   },
@@ -3192,14 +3192,14 @@
       "displayUnitsName": "Reputation",
       "description": "Commander Zavala oversees the Vanguard's tactical operations and conducts regular strikes against the City's enemies.",
       "name": "Vanguard Tactical",
-      "icon": "/common/destiny2_content/icons/723b88191f3d20cf38f8eedc3ba2efb2.png",
+      "icon": "/common/destiny2_content/icons/32049558a076b04b18cd26b7b060061c.png",
       "hasIcon": true
     },
     "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
       "displayUnitsName": "Reputation",
       "description": "Commander Zavala oversees the Vanguard's tactical operations and conducts regular strikes against the City's enemies.",
       "name": "Vanguard Tactical",
-      "icon": "/common/destiny2_content/icons/723b88191f3d20cf38f8eedc3ba2efb2.png",
+      "icon": "/common/destiny2_content/icons/32049558a076b04b18cd26b7b060061c.png",
       "hasIcon": true
     },
     "scope": 1,
@@ -3228,7 +3228,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 611314723,
-    "index": 61,
+    "index": 64,
     "redacted": false,
     "blacklisted": false
   },
@@ -3237,14 +3237,14 @@
       "displayUnitsName": "",
       "description": "Your Nightfall rank based on personal high scores set in different Nightfall strikes.",
       "name": "Nightfall Rank",
-      "icon": "/common/destiny2_content/icons/723b88191f3d20cf38f8eedc3ba2efb2.png",
+      "icon": "/common/destiny2_content/icons/32049558a076b04b18cd26b7b060061c.png",
       "hasIcon": true
     },
     "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
       "displayUnitsName": "",
       "description": "Your Nightfall rank based on personal high scores set in different Nightfall strikes.",
       "name": "Nightfall Rank",
-      "icon": "/common/destiny2_content/icons/723b88191f3d20cf38f8eedc3ba2efb2.png",
+      "icon": "/common/destiny2_content/icons/32049558a076b04b18cd26b7b060061c.png",
       "hasIcon": true
     },
     "scope": 8,
@@ -3262,7 +3262,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 689153319,
-    "index": 64,
+    "index": 67,
     "redacted": false,
     "blacklisted": false
   },
@@ -3342,13 +3342,12 @@
       }
     ],
     "visible": true,
-    "factionHash": 697030790,
     "progressToNextStepScaling": 0,
     "storageMappingIndex": 0,
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 697030790,
-    "index": 53,
+    "index": 56,
     "redacted": false,
     "blacklisted": false
   },
@@ -3380,144 +3379,11 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 765647305,
-    "index": 71,
+    "index": 76,
     "redacted": false,
     "blacklisted": false
   },
-  "1021210278": {
-    "displayProperties": {
-      "displayUnitsName": "Reputation",
-      "description": "Commander Zavala oversees the Vanguard's tactical operations and conducts regular strikes against the City's enemies.",
-      "name": "Vanguard Tactical",
-      "icon": "/common/destiny2_content/icons/723b88191f3d20cf38f8eedc3ba2efb2.png",
-      "hasIcon": true
-    },
-    "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
-      "displayUnitsName": "Reputation",
-      "description": "Commander Zavala oversees the Vanguard's tactical operations and conducts regular strikes against the City's enemies.",
-      "name": "Vanguard Tactical",
-      "icon": "/common/destiny2_content/icons/723b88191f3d20cf38f8eedc3ba2efb2.png",
-      "hasIcon": true
-    },
-    "scope": 1,
-    "repeatLastStep": true,
-    "steps": [
-      {
-        "stepName": "",
-        "displayEffectType": 0,
-        "progressTotal": 3000
-      },
-      {
-        "stepName": "",
-        "displayEffectType": 0,
-        "progressTotal": 3000
-      },
-      {
-        "stepName": "",
-        "displayEffectType": 0,
-        "progressTotal": 3000
-      }
-    ],
-    "visible": true,
-    "factionHash": 1021210278,
-    "progressToNextStepScaling": 0,
-    "storageMappingIndex": 0,
-    "currentResetCountUnlockValueHash": 0,
-    "rewardItems": [],
-    "hash": 1021210278,
-    "index": 55,
-    "redacted": false,
-    "blacklisted": false
-  },
-  "1062449239": {
-    "displayProperties": {
-      "displayUnitsName": "",
-      "description": "",
-      "name": "",
-      "hasIcon": false
-    },
-    "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
-      "displayUnitsName": "",
-      "description": "",
-      "name": "",
-      "hasIcon": false
-    },
-    "scope": 1,
-    "repeatLastStep": false,
-    "steps": [
-      {
-        "stepName": "",
-        "displayEffectType": 0,
-        "progressTotal": 1
-      },
-      {
-        "stepName": "",
-        "displayEffectType": 0,
-        "progressTotal": 1
-      },
-      {
-        "stepName": "",
-        "displayEffectType": 0,
-        "progressTotal": 1
-      },
-      {
-        "stepName": "",
-        "displayEffectType": 0,
-        "progressTotal": 1
-      },
-      {
-        "stepName": "",
-        "displayEffectType": 0,
-        "progressTotal": 1
-      },
-      {
-        "stepName": "",
-        "displayEffectType": 0,
-        "progressTotal": 1
-      },
-      {
-        "stepName": "",
-        "displayEffectType": 0,
-        "progressTotal": 1
-      }
-    ],
-    "visible": true,
-    "progressToNextStepScaling": 0,
-    "storageMappingIndex": 0,
-    "currentResetCountUnlockValueHash": 0,
-    "rewardItems": [],
-    "hash": 1062449239,
-    "index": 49,
-    "redacted": false,
-    "blacklisted": false
-  },
-  "1149018548": {
-    "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
-    },
-    "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
-    },
-    "scope": 0,
-    "repeatLastStep": false,
-    "visible": false,
-    "progressToNextStepScaling": 0,
-    "storageMappingIndex": 0,
-    "currentResetCountUnlockValueHash": 0,
-    "hash": 1149018548,
-    "index": 0,
-    "redacted": true,
-    "blacklisted": false
-  },
-  "1183600353": {
+  "978389300": {
     "displayProperties": {
       "displayUnitsName": "",
       "description": "",
@@ -3894,12 +3760,57 @@
     "storageMappingIndex": 0,
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
-    "hash": 1183600353,
-    "index": 45,
+    "hash": 978389300,
+    "index": 47,
     "redacted": false,
     "blacklisted": false
   },
-  "1196593248": {
+  "1021210278": {
+    "displayProperties": {
+      "displayUnitsName": "Reputation",
+      "description": "Commander Zavala oversees the Vanguard's tactical operations and conducts regular strikes against the City's enemies.",
+      "name": "Vanguard Tactical",
+      "icon": "/common/destiny2_content/icons/32049558a076b04b18cd26b7b060061c.png",
+      "hasIcon": true
+    },
+    "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
+      "displayUnitsName": "Reputation",
+      "description": "Commander Zavala oversees the Vanguard's tactical operations and conducts regular strikes against the City's enemies.",
+      "name": "Vanguard Tactical",
+      "icon": "/common/destiny2_content/icons/32049558a076b04b18cd26b7b060061c.png",
+      "hasIcon": true
+    },
+    "scope": 1,
+    "repeatLastStep": true,
+    "steps": [
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 3000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 3000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 3000
+      }
+    ],
+    "visible": true,
+    "factionHash": 1021210278,
+    "progressToNextStepScaling": 0,
+    "storageMappingIndex": 0,
+    "currentResetCountUnlockValueHash": 0,
+    "rewardItems": [],
+    "hash": 1021210278,
+    "index": 58,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1062449239": {
     "displayProperties": {
       "displayUnitsName": "",
       "description": "",
@@ -3912,68 +3823,43 @@
       "name": "",
       "hasIcon": false
     },
-    "scope": 0,
+    "scope": 1,
     "repeatLastStep": false,
     "steps": [
       {
         "stepName": "",
         "displayEffectType": 0,
-        "progressTotal": 0
+        "progressTotal": 1
       },
       {
         "stepName": "",
         "displayEffectType": 0,
-        "progressTotal": 40000
+        "progressTotal": 1
       },
       {
         "stepName": "",
         "displayEffectType": 0,
-        "progressTotal": 60000
+        "progressTotal": 1
       },
       {
         "stepName": "",
         "displayEffectType": 0,
-        "progressTotal": 100000
+        "progressTotal": 1
       },
       {
         "stepName": "",
         "displayEffectType": 0,
-        "progressTotal": 200000
+        "progressTotal": 1
       },
       {
         "stepName": "",
         "displayEffectType": 0,
-        "progressTotal": 246000
+        "progressTotal": 1
       },
       {
         "stepName": "",
         "displayEffectType": 0,
-        "progressTotal": 274000
-      },
-      {
-        "stepName": "",
-        "displayEffectType": 0,
-        "progressTotal": 420000
-      },
-      {
-        "stepName": "",
-        "displayEffectType": 0,
-        "progressTotal": 500000
-      },
-      {
-        "stepName": "",
-        "displayEffectType": 0,
-        "progressTotal": 600000
-      },
-      {
-        "stepName": "",
-        "displayEffectType": 0,
-        "progressTotal": 790000
-      },
-      {
-        "stepName": "",
-        "displayEffectType": 0,
-        "progressTotal": 900000
+        "progressTotal": 1
       }
     ],
     "visible": true,
@@ -3981,8 +3867,74 @@
     "storageMappingIndex": 0,
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
-    "hash": 1196593248,
-    "index": 44,
+    "hash": 1062449239,
+    "index": 52,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1149018548": {
+    "displayProperties": {
+      "description": "Keep it secret.  Keep it safe.",
+      "name": "Classified",
+      "icon": "/img/misc/missing_icon_d2.png",
+      "highResIcon": "/img/misc/missing_icon_d2.png",
+      "hasIcon": false
+    },
+    "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
+      "description": "Keep it secret.  Keep it safe.",
+      "name": "Classified",
+      "icon": "/img/misc/missing_icon_d2.png",
+      "highResIcon": "/img/misc/missing_icon_d2.png",
+      "hasIcon": false
+    },
+    "scope": 0,
+    "repeatLastStep": false,
+    "visible": false,
+    "progressToNextStepScaling": 0,
+    "storageMappingIndex": 0,
+    "currentResetCountUnlockValueHash": 0,
+    "hash": 1149018548,
+    "index": 0,
+    "redacted": true,
+    "blacklisted": false
+  },
+  "1218232032": {
+    "displayProperties": {
+      "displayUnitsName": "Battleground Bravery",
+      "description": "Increase your strategic acumen to become the ultimate challenger.",
+      "name": "Challenger's Tactics",
+      "icon": "/common/destiny2_content/icons/e85d8017ad41765ec3aef1fa192fa089.png",
+      "hasIcon": true
+    },
+    "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
+      "displayUnitsName": "Battleground Bravery",
+      "description": "Increase your strategic acumen to become the ultimate challenger.",
+      "name": "Challenger's Tactics",
+      "icon": "/common/destiny2_content/icons/e85d8017ad41765ec3aef1fa192fa089.png",
+      "hasIcon": true
+    },
+    "scope": 0,
+    "repeatLastStep": true,
+    "steps": [
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 1000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 1000
+      }
+    ],
+    "visible": true,
+    "factionHash": 3125858369,
+    "progressToNextStepScaling": 0,
+    "storageMappingIndex": 0,
+    "currentResetCountUnlockValueHash": 0,
+    "rewardItems": [],
+    "hash": 1218232032,
+    "index": 48,
     "redacted": false,
     "blacklisted": false
   },
@@ -4174,14 +4126,14 @@
       "displayUnitsName": "Reputation",
       "description": "Emperor Calus of the Cabal seeks champions.",
       "name": "Leviathan",
-      "icon": "/common/destiny2_content/icons/b8177e166f01c2cd914fc3e925ae902d.png",
+      "icon": "/common/destiny2_content/icons/2151f51f3e561c5adc7b23549a87601f.png",
       "hasIcon": true
     },
     "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
       "displayUnitsName": "Reputation",
       "description": "Emperor Calus of the Cabal seeks champions.",
       "name": "Leviathan",
-      "icon": "/common/destiny2_content/icons/b8177e166f01c2cd914fc3e925ae902d.png",
+      "icon": "/common/destiny2_content/icons/2151f51f3e561c5adc7b23549a87601f.png",
       "hasIcon": true
     },
     "scope": 1,
@@ -4210,7 +4162,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 1482334108,
-    "index": 58,
+    "index": 61,
     "redacted": false,
     "blacklisted": false
   },
@@ -9340,14 +9292,14 @@
       "displayUnitsName": "Reputation",
       "description": "A Golden Age AI marooned on  Nessus, Failsafe stands watch over the wreckage of her ship.",
       "name": "Failsafe",
-      "icon": "/common/destiny2_content/icons/a802d6f4595db175154f3c465210af0f.png",
+      "icon": "/common/destiny2_content/icons/f7080dd480e919fc16e2c24b323b51a5.png",
       "hasIcon": true
     },
     "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
       "displayUnitsName": "Reputation",
       "description": "A Golden Age AI marooned on  Nessus, Failsafe stands watch over the wreckage of her ship.",
       "name": "Failsafe",
-      "icon": "/common/destiny2_content/icons/a802d6f4595db175154f3c465210af0f.png",
+      "icon": "/common/destiny2_content/icons/f7080dd480e919fc16e2c24b323b51a5.png",
       "hasIcon": true
     },
     "scope": 1,
@@ -9376,7 +9328,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 1660497607,
-    "index": 59,
+    "index": 62,
     "redacted": false,
     "blacklisted": false
   },
@@ -9688,14 +9640,14 @@
       "displayUnitsName": "Reputation",
       "description": "The Iron Banner is a Crucible tournament held to honor long-lost heroes.",
       "name": "Iron Banner",
-      "icon": "/common/destiny2_content/icons/1d006c1576409a7a188bda7879857784.png",
+      "icon": "/common/destiny2_content/icons/f08f443401e044517482f9d86aba9f80.png",
       "hasIcon": true
     },
     "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
       "displayUnitsName": "Reputation",
       "description": "The Iron Banner is a Crucible tournament held to honor long-lost heroes.",
       "name": "Iron Banner",
-      "icon": "/common/destiny2_content/icons/1d006c1576409a7a188bda7879857784.png",
+      "icon": "/common/destiny2_content/icons/f08f443401e044517482f9d86aba9f80.png",
       "hasIcon": true
     },
     "scope": 1,
@@ -9724,7 +9676,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 1761642340,
-    "index": 57,
+    "index": 60,
     "redacted": false,
     "blacklisted": false
   },
@@ -9794,79 +9746,79 @@
         "stepName": "BRAVE I",
         "displayEffectType": 0,
         "progressTotal": 170,
-        "icon": "/common/destiny2_content/icons/a652adff89291a43497e3540861429dd.png"
+        "icon": "/common/destiny2_content/icons/0629f53dd8bade3b870eea9754d5d23d.png"
       },
       {
         "stepName": "BRAVE II",
         "displayEffectType": 0,
         "progressTotal": 295,
-        "icon": "/common/destiny2_content/icons/93b2db96858f8d97139eb1bf64251d92.png"
+        "icon": "/common/destiny2_content/icons/28d62e94db586f3e2f14fbb006f10695.png"
       },
       {
         "stepName": "BRAVE III",
         "displayEffectType": 0,
         "progressTotal": 385,
-        "icon": "/common/destiny2_content/icons/a0fbd43a4804dc05c408276903721abe.png"
+        "icon": "/common/destiny2_content/icons/ce083dc79e289ce7f6495db77cf71d04.png"
       },
       {
         "stepName": "HEROIC I",
         "displayEffectType": 0,
         "progressTotal": 210,
-        "icon": "/common/destiny2_content/icons/03e7107bd1ca1730d861b8d087f521b4.png"
+        "icon": "/common/destiny2_content/icons/e1226743ca7fc88ef3b3c6cc8e8d89fd.png"
       },
       {
         "stepName": "HEROIC II",
         "displayEffectType": 0,
         "progressTotal": 365,
-        "icon": "/common/destiny2_content/icons/bfc9db66df9dc929869c63265417ee99.png"
+        "icon": "/common/destiny2_content/icons/97771261c06c1634af8d31a892ff02aa.png"
       },
       {
         "stepName": "HEROIC III",
         "displayEffectType": 0,
         "progressTotal": 475,
-        "icon": "/common/destiny2_content/icons/132fbb2eb49238c5c19d4a4cfab15f50.png"
+        "icon": "/common/destiny2_content/icons/dd405099922645be7a7afdb24a9bb73d.png"
       },
       {
         "stepName": "FABLED I",
         "displayEffectType": 0,
         "progressTotal": 280,
-        "icon": "/common/destiny2_content/icons/01e2a72e0b6b8e8b5b80046e60553108.png"
+        "icon": "/common/destiny2_content/icons/34feda51e0830badec5210ad382bef63.png"
       },
       {
         "stepName": "FABLED II",
         "displayEffectType": 0,
         "progressTotal": 490,
-        "icon": "/common/destiny2_content/icons/226e5ee489600fb1e9b9fae03ffbfaff.png"
+        "icon": "/common/destiny2_content/icons/2b79733d39f9479ceeecf726cbf21a56.png"
       },
       {
         "stepName": "FABLED III",
         "displayEffectType": 0,
         "progressTotal": 630,
-        "icon": "/common/destiny2_content/icons/e56fb16b56da64456b0e8b840c3603eb.png"
+        "icon": "/common/destiny2_content/icons/6942df6806d792bf868aaf6a24944baf.png"
       },
       {
         "stepName": "MYTHIC I",
         "displayEffectType": 0,
         "progressTotal": 380,
-        "icon": "/common/destiny2_content/icons/308a0f6971c76985b77c0d3c8cdcf865.png"
+        "icon": "/common/destiny2_content/icons/af3fd8ef4924878d76b6be39584e09dc.png"
       },
       {
         "stepName": "MYTHIC II",
         "displayEffectType": 0,
         "progressTotal": 665,
-        "icon": "/common/destiny2_content/icons/0ab789f44e4a62c4c000e9a8c6428473.png"
+        "icon": "/common/destiny2_content/icons/127990a0cd66574144163a9c8ec467bc.png"
       },
       {
         "stepName": "MYTHIC III",
         "displayEffectType": 0,
         "progressTotal": 905,
-        "icon": "/common/destiny2_content/icons/e7469d93b21961a75367a1da73d5ac88.png"
+        "icon": "/common/destiny2_content/icons/5ea55ef5aec8fcbc588a8a790800731b.png"
       },
       {
         "stepName": "Legend",
         "displayEffectType": 0,
         "progressTotal": 50,
-        "icon": "/common/destiny2_content/icons/d0cf2b35891cd4f07a355af2af568221.png"
+        "icon": "/common/destiny2_content/icons/b4bb3f9c12f402e7093bf3a71d2ebab2.png"
       }
     ],
     "visible": true,
@@ -9882,7 +9834,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 2000925172,
-    "index": 79,
+    "index": 84,
     "redacted": false,
     "blacklisted": false
   },
@@ -9973,6 +9925,38 @@
     "redacted": false,
     "blacklisted": false
   },
+  "2068785426": {
+    "displayProperties": {
+      "displayUnitsName": "",
+      "description": "",
+      "name": "",
+      "hasIcon": false
+    },
+    "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
+      "displayUnitsName": "",
+      "description": "",
+      "name": "",
+      "hasIcon": false
+    },
+    "scope": 0,
+    "repeatLastStep": true,
+    "steps": [
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      }
+    ],
+    "visible": true,
+    "progressToNextStepScaling": 0,
+    "storageMappingIndex": 0,
+    "currentResetCountUnlockValueHash": 0,
+    "rewardItems": [],
+    "hash": 2068785426,
+    "index": 50,
+    "redacted": false,
+    "blacklisted": false
+  },
   "2093709363": {
     "displayProperties": {
       "displayUnitsName": "",
@@ -10011,7 +9995,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 2093709363,
-    "index": 48,
+    "index": 51,
     "redacted": false,
     "blacklisted": false
   },
@@ -10088,7 +10072,52 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 2126988316,
-    "index": 68,
+    "index": 71,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2139865751": {
+    "displayProperties": {
+      "displayUnitsName": "Umbral Decryptions",
+      "description": "",
+      "name": "Crypto-Archeology",
+      "icon": "/common/destiny2_content/icons/d789e8379461ae7b2dfe0239b8223856.png",
+      "hasIcon": true
+    },
+    "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
+      "displayUnitsName": "Umbral Decryptions",
+      "description": "",
+      "name": "Crypto-Archeology",
+      "icon": "/common/destiny2_content/icons/d789e8379461ae7b2dfe0239b8223856.png",
+      "hasIcon": true
+    },
+    "scope": 0,
+    "repeatLastStep": true,
+    "steps": [
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 5000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 5000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 5000
+      }
+    ],
+    "visible": true,
+    "factionHash": 2139865751,
+    "progressToNextStepScaling": 0,
+    "storageMappingIndex": 0,
+    "currentResetCountUnlockValueHash": 0,
+    "rewardItems": [],
+    "hash": 2139865751,
+    "index": 74,
     "redacted": false,
     "blacklisted": false
   },
@@ -10172,7 +10201,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 2203850209,
-    "index": 77,
+    "index": 82,
     "redacted": false,
     "blacklisted": false
   },
@@ -10328,7 +10357,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 2304468497,
-    "index": 47,
+    "index": 45,
     "redacted": false,
     "blacklisted": false
   },
@@ -10452,7 +10481,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 2468902004,
-    "index": 67,
+    "index": 70,
     "redacted": false,
     "blacklisted": false
   },
@@ -10504,20 +10533,20 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 2572719399,
-    "index": 74,
+    "index": 79,
     "redacted": false,
     "blacklisted": false
   },
   "2626549951": {
     "displayProperties": {
-      "displayUnitsName": "Valor Rank Points",
+      "displayUnitsName": "Valor Rank Progress",
       "description": "\"A Guardian's best tool in combat is their Valor. Your light must be sharp if it is to cut through our enemies.\" —Lord Shaxx\n\nA progression rank that goes up as you complete matches. Winning helps you move up faster, and there are no loss penalties.",
       "name": "Valor Rank",
       "icon": "/common/destiny2_content/icons/e9a8cf9f7df5b792d34c67df0fc85fe5.png",
       "hasIcon": true
     },
     "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
-      "displayUnitsName": "Valor Rank Points",
+      "displayUnitsName": "Valor Rank Progress",
       "description": "\"A Guardian's best tool in combat is their Valor. Your light must be sharp if it is to cut through our enemies.\" —Lord Shaxx\n\nA progression rank that goes up as you complete matches. Winning helps you move up faster, and there are no loss penalties.",
       "name": "Valor Rank",
       "icon": "/common/destiny2_content/icons/e9a8cf9f7df5b792d34c67df0fc85fe5.png",
@@ -10548,82 +10577,83 @@
         "stepName": "BRAVE I",
         "displayEffectType": 0,
         "progressTotal": 60,
-        "icon": "/common/destiny2_content/icons/580e3e21b58ca83cd0379ace41f6f00d.png"
+        "icon": "/common/destiny2_content/icons/39d308cc4d87f10a17511693555e1a75.png"
       },
       {
         "stepName": "BRAVE II",
         "displayEffectType": 0,
         "progressTotal": 105,
-        "icon": "/common/destiny2_content/icons/483665374e47cd9c898fcef0f64cf53c.png"
+        "icon": "/common/destiny2_content/icons/4118919554c2bf9de0d9c7f3f4e80a03.png"
       },
       {
         "stepName": "BRAVE III",
         "displayEffectType": 0,
         "progressTotal": 135,
-        "icon": "/common/destiny2_content/icons/905e4e1ebbe68b1e17946aac15c6df84.png"
+        "icon": "/common/destiny2_content/icons/bbdd521cf7661d7c3992fb2460fda09c.png"
       },
       {
         "stepName": "HEROIC I",
         "displayEffectType": 0,
         "progressTotal": 70,
-        "icon": "/common/destiny2_content/icons/1f370b04671564c5d4a367d3fd2ce1eb.png"
+        "icon": "/common/destiny2_content/icons/004a721bb35c7ddf1f524e8d4adcd6d7.png"
       },
       {
         "stepName": "HEROIC II",
         "displayEffectType": 0,
         "progressTotal": 130,
-        "icon": "/common/destiny2_content/icons/acfd144c95d16b9ea6be7a5da004b010.png"
+        "icon": "/common/destiny2_content/icons/cae95dda34c89611b211f481cf3c55b6.png"
       },
       {
         "stepName": "HEROIC III",
         "displayEffectType": 0,
         "progressTotal": 150,
-        "icon": "/common/destiny2_content/icons/47f3ba4e4760f37866eed2f71c40b2ec.png"
+        "icon": "/common/destiny2_content/icons/278a06fc6d7cda8b261e252c837f64e1.png"
       },
       {
         "stepName": "FABLED I",
         "displayEffectType": 0,
         "progressTotal": 90,
-        "icon": "/common/destiny2_content/icons/24b1ee7609de9b945c8a16ad768beed4.png"
+        "icon": "/common/destiny2_content/icons/3c5188679b2f17a216a25925db88bf3a.png"
       },
       {
         "stepName": "FABLED II",
         "displayEffectType": 0,
         "progressTotal": 150,
-        "icon": "/common/destiny2_content/icons/68220bfe366b829d3dddaa969664fdc1.png"
+        "icon": "/common/destiny2_content/icons/5705d3ca0d17171a45ae5f877d09e12d.png"
       },
       {
         "stepName": "FABLED III",
         "displayEffectType": 0,
         "progressTotal": 210,
-        "icon": "/common/destiny2_content/icons/96cb19faabc0cc2ba6a2c34ca21bde5c.png"
+        "icon": "/common/destiny2_content/icons/9a9dbfd8b73a76ef3d9771b6a83e59f4.png"
       },
       {
         "stepName": "MYTHIC I",
         "displayEffectType": 0,
         "progressTotal": 130,
-        "icon": "/common/destiny2_content/icons/b71bd323e293b24221fc525016992c9c.png"
+        "icon": "/common/destiny2_content/icons/2775459250ff3ebc831384783cc63098.png"
       },
       {
         "stepName": "MYTHIC II",
         "displayEffectType": 0,
         "progressTotal": 230,
-        "icon": "/common/destiny2_content/icons/253541979b34a6e0f2737579d4a900bb.png"
+        "icon": "/common/destiny2_content/icons/6db02eca22b460859566ab813bd3a24b.png"
       },
       {
         "stepName": "MYTHIC III",
         "displayEffectType": 0,
         "progressTotal": 290,
-        "icon": "/common/destiny2_content/icons/628b4cc575769a3e9b2379c738887b54.png"
+        "icon": "/common/destiny2_content/icons/6f5e82e9a44a06fcf9467160c2b43c09.png"
       },
       {
         "stepName": "Legend",
         "displayEffectType": 0,
         "progressTotal": 200,
-        "icon": "/common/destiny2_content/icons/60d01610f4733635564523a1212f047a.png"
+        "icon": "/common/destiny2_content/icons/4ee0935f123b0a23ce1dd2ef5fb318b9.png"
       }
     ],
     "visible": true,
+    "factionHash": 697030790,
     "progressToNextStepScaling": 0,
     "storageMappingIndex": 0,
     "color": {
@@ -10636,7 +10666,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 2626549951,
-    "index": 78,
+    "index": 83,
     "redacted": false,
     "blacklisted": false
   },
@@ -10645,14 +10675,14 @@
       "displayUnitsName": "Reputation",
       "description": "Brother Vance leads the Followers of Osiris on Mercury, studying the life and teachings of Osiris and standing watch over the Infinite Forest.",
       "name": "Follower of Osiris",
-      "icon": "/common/destiny2_content/icons/54af55fd53ef164c2bd2b542f1cdd70f.png",
+      "icon": "/common/destiny2_content/icons/ceed5608a366af3bfffae4fe44c1a78f.png",
       "hasIcon": true
     },
     "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
       "displayUnitsName": "Reputation",
       "description": "Brother Vance leads the Followers of Osiris on Mercury, studying the life and teachings of Osiris and standing watch over the Infinite Forest.",
       "name": "Follower of Osiris",
-      "icon": "/common/destiny2_content/icons/54af55fd53ef164c2bd2b542f1cdd70f.png",
+      "icon": "/common/destiny2_content/icons/ceed5608a366af3bfffae4fe44c1a78f.png",
       "hasIcon": true
     },
     "scope": 1,
@@ -10681,7 +10711,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 2677528157,
-    "index": 62,
+    "index": 65,
     "redacted": false,
     "blacklisted": false
   },
@@ -10706,38 +10736,33 @@
       {
         "stepName": "Guardian",
         "displayEffectType": 0,
-        "progressTotal": 200,
-        "icon": "/common/destiny2_content/icons/1cfb099643339b6d7c3742c2c52f7c20.png"
+        "progressTotal": 200
       },
       {
         "stepName": "Brave",
         "displayEffectType": 0,
-        "progressTotal": 850,
-        "icon": "/common/destiny2_content/icons/ca6eef0e1e2ab36bf8324f1d1793fd2b.png"
+        "progressTotal": 850
       },
       {
         "stepName": "Heroic",
         "displayEffectType": 0,
-        "progressTotal": 1050,
-        "icon": "/common/destiny2_content/icons/1413f8f1f18579925dc46f99f43444d8.png"
+        "progressTotal": 1050
       },
       {
         "stepName": "Fabled",
         "displayEffectType": 0,
-        "progressTotal": 1400,
-        "icon": "/common/destiny2_content/icons/943b34c46e7e54b91180de60d6d19e9f.png"
+        "progressTotal": 1400
       },
       {
         "stepName": "Mythic",
         "displayEffectType": 0,
-        "progressTotal": 1950,
-        "icon": "/common/destiny2_content/icons/5247316069949d5102981813ef0d0a6e.png"
+        "progressTotal": 1950
       },
       {
         "stepName": "Legend",
         "displayEffectType": 0,
         "progressTotal": 50,
-        "icon": "/common/destiny2_content/icons/d0cf2b35891cd4f07a355af2af568221.png"
+        "icon": "/common/destiny2_content/icons/b4bb3f9c12f402e7093bf3a71d2ebab2.png"
       }
     ],
     "visible": true,
@@ -10753,7 +10778,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 2679551909,
-    "index": 72,
+    "index": 77,
     "redacted": false,
     "blacklisted": false
   },
@@ -10785,14 +10810,14 @@
   },
   "2772425241": {
     "displayProperties": {
-      "displayUnitsName": "Infamy Rank Points",
+      "displayUnitsName": "Infamy Rank Progress",
       "description": "\"I don't care if you win or lose. I just want you to get paid. Heh.\" —The Drifter \n\nWin Gambit matches to gain Infamy. Multiple wins in a row help you rank up faster.",
       "name": "Infamy Rank",
       "icon": "/common/destiny2_content/icons/bcbc0ca71df2379ce17c089dcc6c6106.png",
       "hasIcon": true
     },
     "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
-      "displayUnitsName": "Infamy Rank Points",
+      "displayUnitsName": "Infamy Rank Progress",
       "description": "\"I don't care if you win or lose. I just want you to get paid. Heh.\" —The Drifter \n\nWin Gambit matches to gain Infamy. Multiple wins in a row help you rank up faster.",
       "name": "Infamy Rank",
       "icon": "/common/destiny2_content/icons/bcbc0ca71df2379ce17c089dcc6c6106.png",
@@ -10895,10 +10920,11 @@
         "stepName": "Legend",
         "displayEffectType": 0,
         "progressTotal": 3000,
-        "icon": "/common/destiny2_content/icons/ca325cfd9a3ef802f7d6599fa2ee6138.png"
+        "icon": "/common/destiny2_content/icons/a7fbd4b3fbba795fcb36029b88ba279c.png"
       }
     ],
     "visible": true,
+    "factionHash": 796555788,
     "progressToNextStepScaling": 0,
     "storageMappingIndex": 0,
     "color": {
@@ -10911,7 +10937,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 2772425241,
-    "index": 80,
+    "index": 85,
     "redacted": false,
     "blacklisted": false
   },
@@ -10977,7 +11003,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 2920727472,
-    "index": 50,
+    "index": 53,
     "redacted": false,
     "blacklisted": false
   },
@@ -13591,7 +13617,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 2939151659,
-    "index": 81,
+    "index": 86,
     "redacted": false,
     "blacklisted": false
   },
@@ -13618,6 +13644,93 @@
     "rewardItems": [],
     "hash": 2996146975,
     "index": 16,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3094108685": {
+    "displayProperties": {
+      "displayUnitsName": "",
+      "description": "",
+      "name": "XP",
+      "hasIcon": false
+    },
+    "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
+      "displayUnitsName": "",
+      "description": "",
+      "name": "XP",
+      "hasIcon": false
+    },
+    "scope": 0,
+    "repeatLastStep": false,
+    "steps": [
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 0
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 40000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 60000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 200000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 246000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 274000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 420000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 500000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 600000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 790000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 900000
+      }
+    ],
+    "visible": true,
+    "progressToNextStepScaling": 0,
+    "storageMappingIndex": 0,
+    "currentResetCountUnlockValueHash": 0,
+    "rewardItems": [],
+    "hash": 3094108685,
+    "index": 46,
     "redacted": false,
     "blacklisted": false
   },
@@ -13690,14 +13803,14 @@
       "displayUnitsName": "Reputation",
       "description": "Ikora Rey oversees the Vanguard's research and intelligence operations. Guardians and scholars seek her mentorship from far and wide.",
       "name": "Vanguard Research",
-      "icon": "/common/destiny2_content/icons/b4c725009c37c15148c6860fa86ee90d.png",
+      "icon": "/common/destiny2_content/icons/c133c32c83264a988b1fba5f1782ac2b.png",
       "hasIcon": true
     },
     "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
       "displayUnitsName": "Reputation",
       "description": "Ikora Rey oversees the Vanguard's research and intelligence operations. Guardians and scholars seek her mentorship from far and wide.",
       "name": "Vanguard Research",
-      "icon": "/common/destiny2_content/icons/b4c725009c37c15148c6860fa86ee90d.png",
+      "icon": "/common/destiny2_content/icons/c133c32c83264a988b1fba5f1782ac2b.png",
       "hasIcon": true
     },
     "scope": 1,
@@ -13725,7 +13838,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 3231773039,
-    "index": 56,
+    "index": 59,
     "redacted": false,
     "blacklisted": false
   },
@@ -16395,7 +16508,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 3258748553,
-    "index": 69,
+    "index": 72,
     "redacted": false,
     "blacklisted": false
   },
@@ -16404,14 +16517,30 @@
       "displayUnitsName": "",
       "description": "",
       "name": "XP",
-      "icon": "/common/destiny2_content/icons/a06f9ce9ed99752ef5eebf39736f9673.png",
+      "icon": "/common/destiny2_content/icons/097c2e9534bb893b8fd939f5aa4fb866.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/097c2e9534bb893b8fd939f5aa4fb866.png",
+            "/common/destiny2_content/icons/a66388190263f50a44ee16f0b305d337.png"
+          ]
+        }
+      ],
       "hasIcon": true
     },
     "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
       "displayUnitsName": "",
       "description": "",
       "name": "XP",
-      "icon": "/common/destiny2_content/icons/a06f9ce9ed99752ef5eebf39736f9673.png",
+      "icon": "/common/destiny2_content/icons/097c2e9534bb893b8fd939f5aa4fb866.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/097c2e9534bb893b8fd939f5aa4fb866.png",
+            "/common/destiny2_content/icons/a66388190263f50a44ee16f0b305d337.png"
+          ]
+        }
+      ],
       "hasIcon": true
     },
     "scope": 1,
@@ -16471,7 +16600,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 3379401853,
-    "index": 76,
+    "index": 81,
     "redacted": false,
     "blacklisted": false
   },
@@ -16537,14 +16666,14 @@
       "displayUnitsName": "",
       "description": "",
       "name": "",
-      "icon": "/common/destiny2_content/icons/a737739088d3af999fe4bd018f75745e.png",
+      "icon": "/common/destiny2_content/icons/d342c57125e13c9bb078eb6bb812a0ea.png",
       "hasIcon": true
     },
     "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
       "displayUnitsName": "",
       "description": "",
       "name": "",
-      "icon": "/common/destiny2_content/icons/a737739088d3af999fe4bd018f75745e.png",
+      "icon": "/common/destiny2_content/icons/d342c57125e13c9bb078eb6bb812a0ea.png",
       "hasIcon": true
     },
     "scope": 1,
@@ -16568,7 +16697,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 3468066401,
-    "index": 60,
+    "index": 63,
     "redacted": false,
     "blacklisted": false
   },
@@ -16625,7 +16754,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 3556521410,
-    "index": 52,
+    "index": 55,
     "redacted": false,
     "blacklisted": false
   },
@@ -16634,14 +16763,14 @@
       "displayUnitsName": "",
       "description": "Gather recon data to burnish your reputation with Crow.",
       "name": "Reputation",
-      "icon": "/common/destiny2_content/icons/5ab7c5a1014de38f351da53284634dea.png",
+      "icon": "/common/destiny2_content/icons/2e7b4ecb113bff17e30e82f17b17cf05.png",
       "hasIcon": true
     },
     "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
       "displayUnitsName": "",
       "description": "Gather recon data to burnish your reputation with Crow.",
       "name": "Reputation",
-      "icon": "/common/destiny2_content/icons/5ab7c5a1014de38f351da53284634dea.png",
+      "icon": "/common/destiny2_content/icons/2e7b4ecb113bff17e30e82f17b17cf05.png",
       "hasIcon": true
     },
     "scope": 0,
@@ -16665,7 +16794,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 3611983588,
-    "index": 70,
+    "index": 73,
     "redacted": false,
     "blacklisted": false
   },
@@ -16783,14 +16912,14 @@
       "displayUnitsName": "Reputation",
       "description": "Ana Bray oversees operations in the Hellas Basin, and serves as a liaison between the Vanguard and Rasputin.",
       "name": "Voice of Rasputin",
-      "icon": "/common/destiny2_content/icons/2bac93455a813a0e2959bb8562cd39aa.png",
+      "icon": "/common/destiny2_content/icons/ac0d964be27180bd67bbefda39a092de.png",
       "hasIcon": true
     },
     "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
       "displayUnitsName": "Reputation",
       "description": "Ana Bray oversees operations in the Hellas Basin, and serves as a liaison between the Vanguard and Rasputin.",
       "name": "Voice of Rasputin",
-      "icon": "/common/destiny2_content/icons/2bac93455a813a0e2959bb8562cd39aa.png",
+      "icon": "/common/destiny2_content/icons/ac0d964be27180bd67bbefda39a092de.png",
       "hasIcon": true
     },
     "scope": 1,
@@ -16819,20 +16948,20 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 3859807381,
-    "index": 63,
+    "index": 66,
     "redacted": false,
     "blacklisted": false
   },
   "3882308435": {
     "displayProperties": {
-      "displayUnitsName": "Valor Rank Points",
+      "displayUnitsName": "Valor Rank Progress",
       "description": "\"A Guardian's best tool in combat is their Valor. Your light must be sharp if it is to cut through our enemies.\" —Lord Shaxx\n\nA progression rank that goes up as you complete matches. Winning helps you move up faster, and there are no loss penalties.",
       "name": "Valor Rank",
       "icon": "/common/destiny2_content/icons/e9a8cf9f7df5b792d34c67df0fc85fe5.png",
       "hasIcon": true
     },
     "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
-      "displayUnitsName": "Valor Rank Points",
+      "displayUnitsName": "Valor Rank Progress",
       "description": "\"A Guardian's best tool in combat is their Valor. Your light must be sharp if it is to cut through our enemies.\" —Lord Shaxx\n\nA progression rank that goes up as you complete matches. Winning helps you move up faster, and there are no loss penalties.",
       "name": "Valor Rank",
       "icon": "/common/destiny2_content/icons/e9a8cf9f7df5b792d34c67df0fc85fe5.png",
@@ -16844,38 +16973,33 @@
       {
         "stepName": "Guardian",
         "displayEffectType": 0,
-        "progressTotal": 50,
-        "icon": "/common/destiny2_content/icons/1cfb099643339b6d7c3742c2c52f7c20.png"
+        "progressTotal": 50
       },
       {
         "stepName": "Brave",
         "displayEffectType": 0,
-        "progressTotal": 300,
-        "icon": "/common/destiny2_content/icons/a64c15399357c3000c874ac7a7d4f249.png"
+        "progressTotal": 300
       },
       {
         "stepName": "Heroic",
         "displayEffectType": 0,
-        "progressTotal": 350,
-        "icon": "/common/destiny2_content/icons/51588deb98896678ea9a8c5512bf1c1e.png"
+        "progressTotal": 350
       },
       {
         "stepName": "Fabled",
         "displayEffectType": 0,
-        "progressTotal": 450,
-        "icon": "/common/destiny2_content/icons/c918d2d032cbe81231454692caa5e169.png"
+        "progressTotal": 450
       },
       {
         "stepName": "Mythic",
         "displayEffectType": 0,
-        "progressTotal": 650,
-        "icon": "/common/destiny2_content/icons/5272b5c7c4e03d0c0fa2ae5b431d3296.png"
+        "progressTotal": 650
       },
       {
         "stepName": "Legend",
         "displayEffectType": 0,
         "progressTotal": 200,
-        "icon": "/common/destiny2_content/icons/60d01610f4733635564523a1212f047a.png"
+        "icon": "/common/destiny2_content/icons/4ee0935f123b0a23ce1dd2ef5fb318b9.png"
       }
     ],
     "visible": true,
@@ -16891,7 +17015,39 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 3882308435,
-    "index": 73,
+    "index": 78,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3898543340": {
+    "displayProperties": {
+      "displayUnitsName": "",
+      "description": "Tier III Focuses remaining. Resets each week.",
+      "name": "Focuses Available",
+      "hasIcon": false
+    },
+    "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
+      "displayUnitsName": "",
+      "description": "Tier III Focuses remaining. Resets each week.",
+      "name": "Focuses Available",
+      "hasIcon": false
+    },
+    "scope": 8,
+    "repeatLastStep": true,
+    "steps": [
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 1
+      }
+    ],
+    "visible": true,
+    "progressToNextStepScaling": 0,
+    "storageMappingIndex": 0,
+    "currentResetCountUnlockValueHash": 0,
+    "rewardItems": [],
+    "hash": 3898543340,
+    "index": 75,
     "redacted": false,
     "blacklisted": false
   },
@@ -16927,19 +17083,2626 @@
     "redacted": false,
     "blacklisted": false
   },
+  "4030656982": {
+    "displayProperties": {
+      "displayUnitsName": "",
+      "description": "",
+      "name": "",
+      "hasIcon": false
+    },
+    "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
+      "displayUnitsName": "",
+      "description": "",
+      "name": "",
+      "hasIcon": false
+    },
+    "scope": 0,
+    "repeatLastStep": false,
+    "steps": [
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 0
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      },
+      {
+        "stepName": "",
+        "displayEffectType": 0,
+        "progressTotal": 100000
+      }
+    ],
+    "visible": true,
+    "progressToNextStepScaling": 0,
+    "storageMappingIndex": 0,
+    "currentResetCountUnlockValueHash": 0,
+    "rewardItems": [
+      {
+        "rewardedAtProgressionLevel": 2,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 2979281381,
+        "quantity": 3
+      },
+      {
+        "rewardedAtProgressionLevel": 3,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 3159615086,
+        "quantity": 8000
+      },
+      {
+        "rewardedAtProgressionLevel": 4,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 2979281381,
+        "quantity": 3
+      },
+      {
+        "rewardedAtProgressionLevel": 5,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3673119885,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 5,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3350504921,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 5,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3245065734,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 6,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 3159615086,
+        "quantity": 8000
+      },
+      {
+        "rewardedAtProgressionLevel": 7,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 1968811824,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 8,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 2979281381,
+        "quantity": 3
+      },
+      {
+        "rewardedAtProgressionLevel": 9,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 2817410917,
+        "quantity": 200
+      },
+      {
+        "rewardedAtProgressionLevel": 10,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 48951631,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 10,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 1947723211,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 10,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 2804094976,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 11,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 2979281381,
+        "quantity": 2
+      },
+      {
+        "rewardedAtProgressionLevel": 12,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 3159615086,
+        "quantity": 6000
+      },
+      {
+        "rewardedAtProgressionLevel": 13,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 1968811824,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 14,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 2979281381,
+        "quantity": 2
+      },
+      {
+        "rewardedAtProgressionLevel": 15,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 1010644330,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 15,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 1659172686,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 15,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 2803792315,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 16,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 3159615086,
+        "quantity": 6000
+      },
+      {
+        "rewardedAtProgressionLevel": 17,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 1968811824,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 18,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 2979281381,
+        "quantity": 2
+      },
+      {
+        "rewardedAtProgressionLevel": 19,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 2817410917,
+        "quantity": 250
+      },
+      {
+        "rewardedAtProgressionLevel": 20,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3100185651,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 20,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 412014143,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 20,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 2166974634,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 21,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 2979281381,
+        "quantity": 2
+      },
+      {
+        "rewardedAtProgressionLevel": 23,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 1968811824,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 25,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 505747572,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 25,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 4003170632,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 25,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3311198527,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 26,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 2979281381,
+        "quantity": 2
+      },
+      {
+        "rewardedAtProgressionLevel": 27,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 1968811824,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 29,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 2817410917,
+        "quantity": 300
+      },
+      {
+        "rewardedAtProgressionLevel": 30,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 3075224551,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 33,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 1968811824,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 35,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 3260753130,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 37,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 1968811824,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 40,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 2817410917,
+        "quantity": 400
+      },
+      {
+        "rewardedAtProgressionLevel": 43,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 1968811824,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 45,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 2121785039,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 47,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 1968811824,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 50,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 2817410917,
+        "quantity": 500
+      },
+      {
+        "rewardedAtProgressionLevel": 53,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 1968811824,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 55,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 3467984096,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 57,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 1968811824,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 60,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 2817410917,
+        "quantity": 650
+      },
+      {
+        "rewardedAtProgressionLevel": 63,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 1968811824,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 65,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 3875551374,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 67,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 1968811824,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 70,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 2817410917,
+        "quantity": 800
+      },
+      {
+        "rewardedAtProgressionLevel": 73,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 1968811824,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 77,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 1968811824,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 80,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 2817410917,
+        "quantity": 1000
+      },
+      {
+        "rewardedAtProgressionLevel": 83,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 1968811824,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 87,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 1968811824,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 90,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 2817410917,
+        "quantity": 1400
+      },
+      {
+        "rewardedAtProgressionLevel": 93,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 1968811824,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 97,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 1968811824,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 100,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "free",
+        "claimUnlockDisplayStrings": [],
+        "itemHash": 2817410917,
+        "quantity": 2000
+      },
+      {
+        "rewardedAtProgressionLevel": 1,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 3259015686,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 1,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 2856381562,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 1,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 38072003,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 2,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 2825640475,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 3,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 2993358482,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 4,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3853748946,
+        "quantity": 5
+      },
+      {
+        "rewardedAtProgressionLevel": 5,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 2611387731,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 6,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 532530776,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 7,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3423657811,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 8,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3104539653,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 9,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 2320367075,
+        "quantity": 5
+      },
+      {
+        "rewardedAtProgressionLevel": 10,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 2922021463,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 11,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3216662864,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 12,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3309706454,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 13,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 1260977951,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 14,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 3673119885,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 14,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 3350504921,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 14,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 3245065734,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 15,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3853748946,
+        "quantity": 5
+      },
+      {
+        "rewardedAtProgressionLevel": 16,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3423657810,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 17,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 48951631,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 17,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 1947723211,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 17,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 2804094976,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 18,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 1955679597,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 19,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3104539653,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 20,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3699571852,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 21,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 1022552290,
+        "quantity": 25
+      },
+      {
+        "rewardedAtProgressionLevel": 22,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3216662865,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 23,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3159615086,
+        "quantity": 10000
+      },
+      {
+        "rewardedAtProgressionLevel": 24,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 1010644330,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 24,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 1659172686,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 24,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 2803792315,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 25,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3875551374,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 26,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 2611387730,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 27,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 3100185651,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 27,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 412014143,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 27,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 2166974634,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 28,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3993658232,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 29,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3104539653,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 30,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 2817410917,
+        "quantity": 800
+      },
+      {
+        "rewardedAtProgressionLevel": 31,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 1022552290,
+        "quantity": 25
+      },
+      {
+        "rewardedAtProgressionLevel": 32,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 2825640474,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 33,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3853748946,
+        "quantity": 5
+      },
+      {
+        "rewardedAtProgressionLevel": 34,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 505747572,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 34,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 4003170632,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 34,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 3311198527,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 35,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 1260977951,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 36,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3423657809,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 37,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 3673119885,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 37,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 3350504921,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 37,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 3245065734,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 38,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 2028925874,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 39,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3104539653,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 40,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 2320367074,
+        "quantity": 5
+      },
+      {
+        "rewardedAtProgressionLevel": 41,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 1260977951,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 42,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3159615086,
+        "quantity": 12000
+      },
+      {
+        "rewardedAtProgressionLevel": 43,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 960701048,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 44,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 48951631,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 44,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 1947723211,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 44,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 2804094976,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 45,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3853748946,
+        "quantity": 5
+      },
+      {
+        "rewardedAtProgressionLevel": 46,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3423657808,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 47,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 1010644330,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 47,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 1659172686,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 47,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 2803792315,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 48,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 4097264333,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 49,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3104539653,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 50,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 970919108,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 51,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 1954757103,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 52,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3309706454,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 53,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 1821925607,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 54,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 3100185651,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 54,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 412014143,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 54,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 2166974634,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 55,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 1260977951,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 56,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 2611387729,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 57,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 505747572,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 57,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 4003170632,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 57,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 3311198527,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 58,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 875141776,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 59,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3104539653,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 60,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 4257549984,
+        "quantity": 3
+      },
+      {
+        "rewardedAtProgressionLevel": 61,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 1954757102,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 62,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3159615086,
+        "quantity": 14000
+      },
+      {
+        "rewardedAtProgressionLevel": 63,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 1102202760,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 64,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 3592193383,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 64,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 2942529901,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 64,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 999504644,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 65,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3875551374,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 66,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3423657815,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 67,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 2344999081,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 67,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 3188871471,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 67,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 2547166766,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 68,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3155738721,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 69,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3104539653,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 70,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 4257549984,
+        "quantity": 3
+      },
+      {
+        "rewardedAtProgressionLevel": 71,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 1092391807,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 72,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 2825640473,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 73,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 1070704066,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 74,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3875551374,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 75,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3282419336,
+        "quantity": 5
+      },
+      {
+        "rewardedAtProgressionLevel": 76,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3423657814,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 77,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 2227552940,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 77,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 251217994,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 77,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 3099145329,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 78,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 2817410917,
+        "quantity": 1000
+      },
+      {
+        "rewardedAtProgressionLevel": 79,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3104539653,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 80,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 4257549985,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 81,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 1859205363,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 82,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3159615086,
+        "quantity": 16000
+      },
+      {
+        "rewardedAtProgressionLevel": 83,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 2001788985,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 84,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3282419336,
+        "quantity": 5
+      },
+      {
+        "rewardedAtProgressionLevel": 85,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 4257549985,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 86,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 2611387728,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 87,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 32123025,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 87,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 1916301843,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 87,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 1813208572,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 88,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3875551374,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 89,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3104539653,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 90,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3886820084,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 91,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3939524004,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 92,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3309706454,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 93,
+        "acquisitionBehavior": 0,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3707800132,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 94,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 4257549985,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 95,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3104539653,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 96,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 2817410917,
+        "quantity": 1200
+      },
+      {
+        "rewardedAtProgressionLevel": 97,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 2388099734,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 97,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 4111701460,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 97,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          "",
+          ""
+        ],
+        "itemHash": 2365135029,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 98,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 3875551374,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 99,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 2884151045,
+        "quantity": 1
+      },
+      {
+        "rewardedAtProgressionLevel": 100,
+        "acquisitionBehavior": 1,
+        "itemClaimedUnlockHash": 0,
+        "uiDisplayStyle": "premium",
+        "claimUnlockDisplayStrings": [
+          ""
+        ],
+        "itemHash": 2528315727,
+        "quantity": 1
+      }
+    ],
+    "hash": 4030656982,
+    "index": 49,
+    "redacted": false,
+    "blacklisted": false
+  },
   "4235119312": {
     "displayProperties": {
       "displayUnitsName": "Reputation",
       "description": "Devrim Kay stands watch in the EDZ, protecting the small group of people who now call the Farm their home.",
       "name": "Devrim Kay",
-      "icon": "/common/destiny2_content/icons/367067358c84628ec66d896bf6a5602c.png",
+      "icon": "/common/destiny2_content/icons/92a9b307bdec0b3ff4bd7f293d7d97a8.png",
       "hasIcon": true
     },
     "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
       "displayUnitsName": "Reputation",
       "description": "Devrim Kay stands watch in the EDZ, protecting the small group of people who now call the Farm their home.",
       "name": "Devrim Kay",
-      "icon": "/common/destiny2_content/icons/367067358c84628ec66d896bf6a5602c.png",
+      "icon": "/common/destiny2_content/icons/92a9b307bdec0b3ff4bd7f293d7d97a8.png",
       "hasIcon": true
     },
     "scope": 1,
@@ -16968,7 +19731,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 4235119312,
-    "index": 54,
+    "index": 57,
     "redacted": false,
     "blacklisted": false
   },
@@ -17003,14 +19766,14 @@
       "displayUnitsName": "",
       "description": "Commander Zavala oversees the Vanguard's tactical operations and conducts regular strikes against the City's enemies.",
       "name": "Vanguard Rank",
-      "icon": "/common/destiny2_content/icons/723b88191f3d20cf38f8eedc3ba2efb2.png",
+      "icon": "/common/destiny2_content/icons/32049558a076b04b18cd26b7b060061c.png",
       "hasIcon": true
     },
     "BungieNet.Engine.Contract.Destiny.World.Definitions.IDestinyDisplayDefinition.displayProperties": {
       "displayUnitsName": "",
       "description": "Commander Zavala oversees the Vanguard's tactical operations and conducts regular strikes against the City's enemies.",
       "name": "Vanguard Rank",
-      "icon": "/common/destiny2_content/icons/723b88191f3d20cf38f8eedc3ba2efb2.png",
+      "icon": "/common/destiny2_content/icons/32049558a076b04b18cd26b7b060061c.png",
       "hasIcon": true
     },
     "scope": 8,
@@ -17028,7 +19791,7 @@
     "currentResetCountUnlockValueHash": 0,
     "rewardItems": [],
     "hash": 4267260456,
-    "index": 65,
+    "index": 68,
     "redacted": false,
     "blacklisted": false
   }

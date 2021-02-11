@@ -26,7 +26,7 @@
       }
     ],
     "hash": 12852182,
-    "index": 257,
+    "index": 272,
     "redacted": false,
     "blacklisted": false
   },
@@ -88,7 +88,7 @@
       }
     ],
     "hash": 26034448,
-    "index": 471,
+    "index": 495,
     "redacted": false,
     "blacklisted": false
   },
@@ -119,7 +119,7 @@
       }
     ],
     "hash": 26034453,
-    "index": 468,
+    "index": 492,
     "redacted": false,
     "blacklisted": false
   },
@@ -150,7 +150,7 @@
       }
     ],
     "hash": 26034454,
-    "index": 469,
+    "index": 493,
     "redacted": false,
     "blacklisted": false
   },
@@ -181,7 +181,7 @@
       }
     ],
     "hash": 26034455,
-    "index": 470,
+    "index": 494,
     "redacted": false,
     "blacklisted": false
   },
@@ -212,7 +212,7 @@
       }
     ],
     "hash": 70223475,
-    "index": 232,
+    "index": 246,
     "redacted": false,
     "blacklisted": false
   },
@@ -243,7 +243,7 @@
       }
     ],
     "hash": 89083650,
-    "index": 313,
+    "index": 337,
     "redacted": false,
     "blacklisted": false
   },
@@ -274,7 +274,7 @@
       }
     ],
     "hash": 96595073,
-    "index": 258,
+    "index": 273,
     "redacted": false,
     "blacklisted": false
   },
@@ -305,7 +305,7 @@
       }
     ],
     "hash": 134638099,
-    "index": 52,
+    "index": 53,
     "redacted": false,
     "blacklisted": false
   },
@@ -336,7 +336,7 @@
       }
     ],
     "hash": 189387520,
-    "index": 27,
+    "index": 28,
     "redacted": false,
     "blacklisted": false
   },
@@ -380,7 +380,7 @@
       }
     ],
     "hash": 209545810,
-    "index": 215,
+    "index": 228,
     "redacted": false,
     "blacklisted": false
   },
@@ -411,7 +411,7 @@
       }
     ],
     "hash": 217242552,
-    "index": 154,
+    "index": 160,
     "redacted": false,
     "blacklisted": false
   },
@@ -442,7 +442,7 @@
       }
     ],
     "hash": 255549864,
-    "index": 239,
+    "index": 253,
     "redacted": false,
     "blacklisted": false
   },
@@ -473,7 +473,7 @@
       }
     ],
     "hash": 258812074,
-    "index": 467,
+    "index": 491,
     "redacted": false,
     "blacklisted": false
   },
@@ -504,7 +504,7 @@
       }
     ],
     "hash": 258812076,
-    "index": 465,
+    "index": 489,
     "redacted": false,
     "blacklisted": false
   },
@@ -535,7 +535,7 @@
       }
     ],
     "hash": 258812077,
-    "index": 466,
+    "index": 490,
     "redacted": false,
     "blacklisted": false
   },
@@ -566,8 +566,15 @@
       }
     ],
     "hash": 258812079,
-    "index": 464,
+    "index": 488,
     "redacted": false,
+    "blacklisted": false
+  },
+  "290073973": {
+    "vendorHash": 0,
+    "hash": 290073973,
+    "index": 256,
+    "redacted": true,
     "blacklisted": false
   },
   "291130968": {
@@ -676,7 +683,7 @@
       }
     ],
     "hash": 291130968,
-    "index": 267,
+    "index": 282,
     "redacted": false,
     "blacklisted": false
   },
@@ -707,7 +714,7 @@
       }
     ],
     "hash": 303140593,
-    "index": 18,
+    "index": 19,
     "redacted": false,
     "blacklisted": false
   },
@@ -738,7 +745,7 @@
       }
     ],
     "hash": 316663753,
-    "index": 437,
+    "index": 461,
     "redacted": false,
     "blacklisted": false
   },
@@ -769,7 +776,7 @@
       }
     ],
     "hash": 316663754,
-    "index": 438,
+    "index": 462,
     "redacted": false,
     "blacklisted": false
   },
@@ -800,7 +807,7 @@
       }
     ],
     "hash": 316663755,
-    "index": 439,
+    "index": 463,
     "redacted": false,
     "blacklisted": false
   },
@@ -831,7 +838,7 @@
       }
     ],
     "hash": 316663756,
-    "index": 440,
+    "index": 464,
     "redacted": false,
     "blacklisted": false
   },
@@ -875,7 +882,7 @@
       }
     ],
     "hash": 333070027,
-    "index": 283,
+    "index": 298,
     "redacted": false,
     "blacklisted": false
   },
@@ -928,7 +935,7 @@
       }
     ],
     "hash": 367290952,
-    "index": 152,
+    "index": 158,
     "redacted": false,
     "blacklisted": false
   },
@@ -959,7 +966,7 @@
       }
     ],
     "hash": 373809891,
-    "index": 435,
+    "index": 459,
     "redacted": false,
     "blacklisted": false
   },
@@ -1069,7 +1076,7 @@
       }
     ],
     "hash": 374559165,
-    "index": 272,
+    "index": 287,
     "redacted": false,
     "blacklisted": false
   },
@@ -1100,7 +1107,7 @@
       }
     ],
     "hash": 394396317,
-    "index": 39,
+    "index": 40,
     "redacted": false,
     "blacklisted": false
   },
@@ -1131,7 +1138,7 @@
       }
     ],
     "hash": 394396318,
-    "index": 38,
+    "index": 39,
     "redacted": false,
     "blacklisted": false
   },
@@ -1162,7 +1169,7 @@
       }
     ],
     "hash": 394396319,
-    "index": 37,
+    "index": 38,
     "redacted": false,
     "blacklisted": false
   },
@@ -1207,7 +1214,7 @@
       }
     ],
     "hash": 403319292,
-    "index": 96,
+    "index": 97,
     "redacted": false,
     "blacklisted": false
   },
@@ -1251,7 +1258,7 @@
       }
     ],
     "hash": 405582238,
-    "index": 147,
+    "index": 153,
     "redacted": false,
     "blacklisted": false
   },
@@ -1282,7 +1289,7 @@
       }
     ],
     "hash": 409532308,
-    "index": 337,
+    "index": 361,
     "redacted": false,
     "blacklisted": false
   },
@@ -1313,7 +1320,7 @@
       }
     ],
     "hash": 409532309,
-    "index": 338,
+    "index": 362,
     "redacted": false,
     "blacklisted": false
   },
@@ -1344,7 +1351,7 @@
       }
     ],
     "hash": 409532311,
-    "index": 336,
+    "index": 360,
     "redacted": false,
     "blacklisted": false
   },
@@ -1375,7 +1382,7 @@
       }
     ],
     "hash": 414721491,
-    "index": 119,
+    "index": 124,
     "redacted": false,
     "blacklisted": false
   },
@@ -1410,7 +1417,7 @@
       }
     ],
     "hash": 415748883,
-    "index": 28,
+    "index": 29,
     "redacted": false,
     "blacklisted": false
   },
@@ -1441,7 +1448,7 @@
       }
     ],
     "hash": 418916558,
-    "index": 31,
+    "index": 32,
     "redacted": false,
     "blacklisted": false
   },
@@ -1472,7 +1479,7 @@
       }
     ],
     "hash": 419019016,
-    "index": 329,
+    "index": 353,
     "redacted": false,
     "blacklisted": false
   },
@@ -1503,7 +1510,7 @@
       }
     ],
     "hash": 421191019,
-    "index": 433,
+    "index": 457,
     "redacted": false,
     "blacklisted": false
   },
@@ -1534,7 +1541,7 @@
       }
     ],
     "hash": 453894673,
-    "index": 365,
+    "index": 389,
     "redacted": false,
     "blacklisted": false
   },
@@ -1565,7 +1572,7 @@
       }
     ],
     "hash": 453894674,
-    "index": 366,
+    "index": 390,
     "redacted": false,
     "blacklisted": false
   },
@@ -1596,7 +1603,7 @@
       }
     ],
     "hash": 453894675,
-    "index": 367,
+    "index": 391,
     "redacted": false,
     "blacklisted": false
   },
@@ -1627,7 +1634,7 @@
       }
     ],
     "hash": 454223136,
-    "index": 415,
+    "index": 439,
     "redacted": false,
     "blacklisted": false
   },
@@ -1658,7 +1665,7 @@
       }
     ],
     "hash": 454223137,
-    "index": 414,
+    "index": 438,
     "redacted": false,
     "blacklisted": false
   },
@@ -1689,7 +1696,7 @@
       }
     ],
     "hash": 454223138,
-    "index": 413,
+    "index": 437,
     "redacted": false,
     "blacklisted": false
   },
@@ -1720,7 +1727,7 @@
       }
     ],
     "hash": 478692853,
-    "index": 218,
+    "index": 231,
     "redacted": false,
     "blacklisted": false
   },
@@ -1751,7 +1758,7 @@
       }
     ],
     "hash": 482786303,
-    "index": 6,
+    "index": 7,
     "redacted": false,
     "blacklisted": false
   },
@@ -1782,7 +1789,7 @@
       }
     ],
     "hash": 496480704,
-    "index": 250,
+    "index": 265,
     "redacted": false,
     "blacklisted": false
   },
@@ -1813,7 +1820,7 @@
       }
     ],
     "hash": 496480707,
-    "index": 251,
+    "index": 266,
     "redacted": false,
     "blacklisted": false
   },
@@ -1877,7 +1884,38 @@
       }
     ],
     "hash": 524493250,
-    "index": 296,
+    "index": 320,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "530134044": {
+    "vendorHash": 0,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "Travel to Eventide Ruins",
+          "name": "Eventide Ruins",
+          "hasIcon": false
+        },
+        "spawnPoint": 782826392,
+        "destinationHash": 1729879943,
+        "activityHash": 1813752023,
+        "activityGraphHash": 1729879943,
+        "activityGraphNodeHash": 0,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          -449,
+          5,
+          102,
+          0
+        ]
+      }
+    ],
+    "hash": 530134044,
+    "index": 121,
     "redacted": false,
     "blacklisted": false
   },
@@ -1908,7 +1946,7 @@
       }
     ],
     "hash": 531186161,
-    "index": 237,
+    "index": 251,
     "redacted": false,
     "blacklisted": false
   },
@@ -1939,7 +1977,7 @@
       }
     ],
     "hash": 535567547,
-    "index": 244,
+    "index": 259,
     "redacted": false,
     "blacklisted": false
   },
@@ -1970,7 +2008,7 @@
       }
     ],
     "hash": 558845180,
-    "index": 222,
+    "index": 236,
     "redacted": false,
     "blacklisted": false
   },
@@ -2001,7 +2039,7 @@
       }
     ],
     "hash": 588265481,
-    "index": 97,
+    "index": 98,
     "redacted": false,
     "blacklisted": false
   },
@@ -2032,7 +2070,7 @@
       }
     ],
     "hash": 599230447,
-    "index": 23,
+    "index": 24,
     "redacted": false,
     "blacklisted": false
   },
@@ -2077,7 +2115,7 @@
       }
     ],
     "hash": 612586127,
-    "index": 95,
+    "index": 96,
     "redacted": false,
     "blacklisted": false
   },
@@ -2108,7 +2146,7 @@
       }
     ],
     "hash": 651463125,
-    "index": 430,
+    "index": 454,
     "redacted": false,
     "blacklisted": false
   },
@@ -2139,7 +2177,7 @@
       }
     ],
     "hash": 653479373,
-    "index": 77,
+    "index": 78,
     "redacted": false,
     "blacklisted": false
   },
@@ -2170,7 +2208,7 @@
       }
     ],
     "hash": 662235145,
-    "index": 78,
+    "index": 79,
     "redacted": false,
     "blacklisted": false
   },
@@ -2201,7 +2239,7 @@
       }
     ],
     "hash": 662235146,
-    "index": 79,
+    "index": 80,
     "redacted": false,
     "blacklisted": false
   },
@@ -2245,7 +2283,7 @@
       }
     ],
     "hash": 668739034,
-    "index": 285,
+    "index": 300,
     "redacted": false,
     "blacklisted": false
   },
@@ -2321,7 +2359,7 @@
       }
     ],
     "hash": 697087985,
-    "index": 387,
+    "index": 411,
     "redacted": false,
     "blacklisted": false
   },
@@ -2352,7 +2390,7 @@
       }
     ],
     "hash": 697087987,
-    "index": 386,
+    "index": 410,
     "redacted": false,
     "blacklisted": false
   },
@@ -2383,7 +2421,7 @@
       }
     ],
     "hash": 697087990,
-    "index": 388,
+    "index": 412,
     "redacted": false,
     "blacklisted": false
   },
@@ -2414,7 +2452,38 @@
       }
     ],
     "hash": 724311033,
-    "index": 193,
+    "index": 206,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "732898351": {
+    "vendorHash": 0,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 3129078390,
+        "activityHash": 3207968872,
+        "activityGraphHash": 3129078390,
+        "activityGraphNodeHash": 2595090906,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "hash": 732898351,
+    "index": 233,
     "redacted": false,
     "blacklisted": false
   },
@@ -2445,7 +2514,7 @@
       }
     ],
     "hash": 735805371,
-    "index": 120,
+    "index": 125,
     "redacted": false,
     "blacklisted": false
   },
@@ -2476,7 +2545,7 @@
       }
     ],
     "hash": 751675181,
-    "index": 194,
+    "index": 207,
     "redacted": false,
     "blacklisted": false
   },
@@ -2529,7 +2598,51 @@
       }
     ],
     "hash": 772064587,
-    "index": 69,
+    "index": 70,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "773273986": {
+    "vendorHash": 773273986,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "Vanguard mail receptacle.",
+          "name": "Post Box",
+          "icon": "/common/destiny2_content/icons/9e51aec21591f3482e02884090854b6f.png",
+          "iconSequences": [
+            {
+              "frames": [
+                "/common/destiny2_content/icons/9e51aec21591f3482e02884090854b6f.png",
+                "/common/destiny2_content/icons/6a992e703c4735a47cac25da7d765a5e.png",
+                "/common/destiny2_content/icons/c69507a8bcac240d4c6a3580d075dd19.png"
+              ]
+            }
+          ],
+          "hasIcon": true
+        },
+        "smallTransparentIcon": "/common/destiny2_content/icons/9e51aec21591f3482e02884090854b6f.png",
+        "mapIcon": "/common/destiny2_content/icons/6a992e703c4735a47cac25da7d765a5e.png",
+        "largeTransparentIcon": "/common/destiny2_content/icons/c69507a8bcac240d4c6a3580d075dd19.png",
+        "spawnPoint": 0,
+        "destinationHash": 3929841832,
+        "activityHash": 1771176108,
+        "activityGraphHash": 1737926756,
+        "activityGraphNodeHash": 3929841832,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          -6,
+          47,
+          59,
+          0
+        ]
+      }
+    ],
+    "hash": 773273986,
+    "index": 313,
     "redacted": false,
     "blacklisted": false
   },
@@ -2560,7 +2673,7 @@
       }
     ],
     "hash": 774950070,
-    "index": 157,
+    "index": 163,
     "redacted": false,
     "blacklisted": false
   },
@@ -2591,7 +2704,7 @@
       }
     ],
     "hash": 779080673,
-    "index": 89,
+    "index": 90,
     "redacted": false,
     "blacklisted": false
   },
@@ -2622,7 +2735,38 @@
       }
     ],
     "hash": 779080674,
-    "index": 90,
+    "index": 91,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "809033732": {
+    "vendorHash": 0,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 3929841832,
+        "activityHash": 1771176108,
+        "activityGraphHash": 1737926756,
+        "activityGraphNodeHash": 3929841832,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          0,
+          48,
+          60,
+          0
+        ]
+      }
+    ],
+    "hash": 809033732,
+    "index": 318,
     "redacted": false,
     "blacklisted": false
   },
@@ -2653,7 +2797,7 @@
       }
     ],
     "hash": 809835829,
-    "index": 161,
+    "index": 167,
     "redacted": false,
     "blacklisted": false
   },
@@ -2684,7 +2828,7 @@
       }
     ],
     "hash": 812867422,
-    "index": 98,
+    "index": 99,
     "redacted": false,
     "blacklisted": false
   },
@@ -2794,7 +2938,7 @@
       }
     ],
     "hash": 842084602,
-    "index": 263,
+    "index": 278,
     "redacted": false,
     "blacklisted": false
   },
@@ -2825,7 +2969,7 @@
       }
     ],
     "hash": 842833905,
-    "index": 394,
+    "index": 418,
     "redacted": false,
     "blacklisted": false
   },
@@ -2856,7 +3000,7 @@
       }
     ],
     "hash": 842833908,
-    "index": 392,
+    "index": 416,
     "redacted": false,
     "blacklisted": false
   },
@@ -2887,7 +3031,7 @@
       }
     ],
     "hash": 842833911,
-    "index": 393,
+    "index": 417,
     "redacted": false,
     "blacklisted": false
   },
@@ -2918,7 +3062,7 @@
       }
     ],
     "hash": 846542508,
-    "index": 301,
+    "index": 325,
     "redacted": false,
     "blacklisted": false
   },
@@ -2949,7 +3093,7 @@
       }
     ],
     "hash": 850386848,
-    "index": 179,
+    "index": 185,
     "redacted": false,
     "blacklisted": false
   },
@@ -3014,7 +3158,7 @@
       }
     ],
     "hash": 855427459,
-    "index": 62,
+    "index": 63,
     "redacted": false,
     "blacklisted": false
   },
@@ -3045,7 +3189,7 @@
       }
     ],
     "hash": 872958800,
-    "index": 445,
+    "index": 469,
     "redacted": false,
     "blacklisted": false
   },
@@ -3076,7 +3220,7 @@
       }
     ],
     "hash": 872958802,
-    "index": 447,
+    "index": 471,
     "redacted": false,
     "blacklisted": false
   },
@@ -3107,7 +3251,7 @@
       }
     ],
     "hash": 872958803,
-    "index": 446,
+    "index": 470,
     "redacted": false,
     "blacklisted": false
   },
@@ -3138,7 +3282,7 @@
       }
     ],
     "hash": 872958805,
-    "index": 448,
+    "index": 472,
     "redacted": false,
     "blacklisted": false
   },
@@ -3147,8 +3291,8 @@
     "locationReleases": [
       {
         "displayProperties": {
-          "description": "",
-          "name": "",
+          "description": "Embody the will of the Traveler and hunt those who would serve the Darkness.",
+          "name": "Harbinger",
           "icon": "/common/destiny2_content/icons/dd5201a6487163139e08d741dc782b33.jpg",
           "iconSequences": [
             {
@@ -3167,7 +3311,7 @@
         "largeTransparentIcon": "/common/destiny2_content/icons/e0642cab70be59c5299323419d1de849.png",
         "spawnPoint": 0,
         "destinationHash": 697502628,
-        "activityHash": 0,
+        "activityHash": 1738383283,
         "activityGraphHash": 697502628,
         "activityGraphNodeHash": 0,
         "activityBubbleName": 0,
@@ -3183,7 +3327,7 @@
       }
     ],
     "hash": 908444761,
-    "index": 56,
+    "index": 57,
     "redacted": false,
     "blacklisted": false
   },
@@ -3214,7 +3358,60 @@
       }
     ],
     "hash": 922913959,
-    "index": 122,
+    "index": 127,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "923802867": {
+    "vendorHash": 0,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 677774031,
+        "activityHash": 2829206727,
+        "activityGraphHash": 677774031,
+        "activityGraphNodeHash": 0,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          159,
+          -288,
+          29,
+          0
+        ]
+      },
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 677774031,
+        "activityHash": 2829206720,
+        "activityGraphHash": 677774031,
+        "activityGraphNodeHash": 0,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          159,
+          -288,
+          29,
+          0
+        ]
+      }
+    ],
+    "hash": 923802867,
+    "index": 192,
     "redacted": false,
     "blacklisted": false
   },
@@ -3245,7 +3442,7 @@
       }
     ],
     "hash": 967343404,
-    "index": 176,
+    "index": 182,
     "redacted": false,
     "blacklisted": false
   },
@@ -3276,7 +3473,7 @@
       }
     ],
     "hash": 975434549,
-    "index": 209,
+    "index": 222,
     "redacted": false,
     "blacklisted": false
   },
@@ -3307,7 +3504,7 @@
       }
     ],
     "hash": 990005776,
-    "index": 325,
+    "index": 349,
     "redacted": false,
     "blacklisted": false
   },
@@ -3351,7 +3548,38 @@
       }
     ],
     "hash": 1009301819,
-    "index": 253,
+    "index": 268,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1024145590": {
+    "vendorHash": 0,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 1729879943,
+        "activityHash": 0,
+        "activityGraphHash": 1729879943,
+        "activityGraphNodeHash": 4193338934,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "hash": 1024145590,
+    "index": 113,
     "redacted": false,
     "blacklisted": false
   },
@@ -3382,7 +3610,7 @@
       }
     ],
     "hash": 1033940874,
-    "index": 121,
+    "index": 126,
     "redacted": false,
     "blacklisted": false
   },
@@ -3435,7 +3663,7 @@
       }
     ],
     "hash": 1037654802,
-    "index": 173,
+    "index": 179,
     "redacted": false,
     "blacklisted": false
   },
@@ -3466,7 +3694,7 @@
       }
     ],
     "hash": 1048979121,
-    "index": 228,
+    "index": 242,
     "redacted": false,
     "blacklisted": false
   },
@@ -3497,7 +3725,7 @@
       }
     ],
     "hash": 1050167326,
-    "index": 17,
+    "index": 18,
     "redacted": false,
     "blacklisted": false
   },
@@ -3528,7 +3756,7 @@
       }
     ],
     "hash": 1050566762,
-    "index": 233,
+    "index": 247,
     "redacted": false,
     "blacklisted": false
   },
@@ -3581,7 +3809,7 @@
       }
     ],
     "hash": 1052827723,
-    "index": 150,
+    "index": 156,
     "redacted": false,
     "blacklisted": false
   },
@@ -3612,7 +3840,7 @@
       }
     ],
     "hash": 1056512101,
-    "index": 213,
+    "index": 226,
     "redacted": false,
     "blacklisted": false
   },
@@ -3656,7 +3884,7 @@
       }
     ],
     "hash": 1070597417,
-    "index": 149,
+    "index": 155,
     "redacted": false,
     "blacklisted": false
   },
@@ -3687,7 +3915,7 @@
       }
     ],
     "hash": 1082339388,
-    "index": 230,
+    "index": 244,
     "redacted": false,
     "blacklisted": false
   },
@@ -3718,7 +3946,7 @@
       }
     ],
     "hash": 1085611537,
-    "index": 404,
+    "index": 428,
     "redacted": false,
     "blacklisted": false
   },
@@ -3749,7 +3977,7 @@
       }
     ],
     "hash": 1085611538,
-    "index": 405,
+    "index": 429,
     "redacted": false,
     "blacklisted": false
   },
@@ -3780,7 +4008,7 @@
       }
     ],
     "hash": 1085611539,
-    "index": 406,
+    "index": 430,
     "redacted": false,
     "blacklisted": false
   },
@@ -3811,7 +4039,7 @@
       }
     ],
     "hash": 1104277145,
-    "index": 358,
+    "index": 382,
     "redacted": false,
     "blacklisted": false
   },
@@ -3842,7 +4070,7 @@
       }
     ],
     "hash": 1130716683,
-    "index": 169,
+    "index": 175,
     "redacted": false,
     "blacklisted": false
   },
@@ -3887,7 +4115,7 @@
       }
     ],
     "hash": 1141782482,
-    "index": 102,
+    "index": 103,
     "redacted": false,
     "blacklisted": false
   },
@@ -3918,7 +4146,7 @@
       }
     ],
     "hash": 1149052883,
-    "index": 436,
+    "index": 460,
     "redacted": false,
     "blacklisted": false
   },
@@ -3949,7 +4177,7 @@
       }
     ],
     "hash": 1172275072,
-    "index": 340,
+    "index": 364,
     "redacted": false,
     "blacklisted": false
   },
@@ -3980,7 +4208,7 @@
       }
     ],
     "hash": 1172275073,
-    "index": 341,
+    "index": 365,
     "redacted": false,
     "blacklisted": false
   },
@@ -4011,7 +4239,7 @@
       }
     ],
     "hash": 1172275075,
-    "index": 339,
+    "index": 363,
     "redacted": false,
     "blacklisted": false
   },
@@ -4042,7 +4270,7 @@
       }
     ],
     "hash": 1178399601,
-    "index": 235,
+    "index": 249,
     "redacted": false,
     "blacklisted": false
   },
@@ -4073,7 +4301,7 @@
       }
     ],
     "hash": 1185558151,
-    "index": 45,
+    "index": 46,
     "redacted": false,
     "blacklisted": false
   },
@@ -4104,7 +4332,82 @@
       }
     ],
     "hash": 1190652820,
-    "index": 36,
+    "index": 37,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1202548077": {
+    "vendorHash": 0,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 1729879943,
+        "activityHash": 0,
+        "activityGraphHash": 1729879943,
+        "activityGraphNodeHash": 0,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          756,
+          897,
+          -198,
+          0
+        ]
+      }
+    ],
+    "hash": 1202548077,
+    "index": 152,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1217590901": {
+    "vendorHash": 1217590901,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "Manufactured Cryptarch",
+          "name": "Umbral Decoder",
+          "icon": "/common/destiny2_content/icons/26a3c580befaa0426a02f68dc3cadbf2.png",
+          "iconSequences": [
+            {
+              "frames": [
+                "/common/destiny2_content/icons/26a3c580befaa0426a02f68dc3cadbf2.png",
+                "/common/destiny2_content/icons/25cb99cbbe842bd7e9102e9efa3cb0a9.png",
+                "/common/destiny2_content/icons/1ce9f709222be8e12d2f35a06c81f9de.png"
+              ]
+            }
+          ],
+          "hasIcon": true
+        },
+        "smallTransparentIcon": "/common/destiny2_content/icons/26a3c580befaa0426a02f68dc3cadbf2.png",
+        "mapIcon": "/common/destiny2_content/icons/25cb99cbbe842bd7e9102e9efa3cb0a9.png",
+        "largeTransparentIcon": "/common/destiny2_content/icons/1ce9f709222be8e12d2f35a06c81f9de.png",
+        "spawnPoint": 0,
+        "destinationHash": 3929841832,
+        "activityHash": 1771176108,
+        "activityGraphHash": 1737926756,
+        "activityGraphNodeHash": 3929841832,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          -12,
+          61,
+          61,
+          0
+        ]
+      }
+    ],
+    "hash": 1217590901,
+    "index": 312,
     "redacted": false,
     "blacklisted": false
   },
@@ -4135,7 +4438,7 @@
       }
     ],
     "hash": 1218479904,
-    "index": 324,
+    "index": 348,
     "redacted": false,
     "blacklisted": false
   },
@@ -4166,7 +4469,7 @@
       }
     ],
     "hash": 1223899988,
-    "index": 84,
+    "index": 85,
     "redacted": false,
     "blacklisted": false
   },
@@ -4197,7 +4500,7 @@
       }
     ],
     "hash": 1241340670,
-    "index": 180,
+    "index": 186,
     "redacted": false,
     "blacklisted": false
   },
@@ -4250,7 +4553,7 @@
       }
     ],
     "hash": 1245626401,
-    "index": 67,
+    "index": 68,
     "redacted": false,
     "blacklisted": false
   },
@@ -4281,7 +4584,7 @@
       }
     ],
     "hash": 1272480319,
-    "index": 24,
+    "index": 25,
     "redacted": false,
     "blacklisted": false
   },
@@ -4312,7 +4615,7 @@
       }
     ],
     "hash": 1291818945,
-    "index": 434,
+    "index": 458,
     "redacted": false,
     "blacklisted": false
   },
@@ -4396,7 +4699,7 @@
       }
     ],
     "hash": 1307415118,
-    "index": 208,
+    "index": 221,
     "redacted": false,
     "blacklisted": false
   },
@@ -4427,7 +4730,7 @@
       }
     ],
     "hash": 1316781308,
-    "index": 249,
+    "index": 264,
     "redacted": false,
     "blacklisted": false
   },
@@ -4537,7 +4840,7 @@
       }
     ],
     "hash": 1333256981,
-    "index": 273,
+    "index": 288,
     "redacted": false,
     "blacklisted": false
   },
@@ -4568,7 +4871,7 @@
       }
     ],
     "hash": 1351393033,
-    "index": 357,
+    "index": 381,
     "redacted": false,
     "blacklisted": false
   },
@@ -4599,7 +4902,7 @@
       }
     ],
     "hash": 1359356956,
-    "index": 345,
+    "index": 369,
     "redacted": false,
     "blacklisted": false
   },
@@ -4630,7 +4933,7 @@
       }
     ],
     "hash": 1359356958,
-    "index": 347,
+    "index": 371,
     "redacted": false,
     "blacklisted": false
   },
@@ -4661,7 +4964,7 @@
       }
     ],
     "hash": 1359356959,
-    "index": 346,
+    "index": 370,
     "redacted": false,
     "blacklisted": false
   },
@@ -4692,7 +4995,7 @@
       }
     ],
     "hash": 1365519785,
-    "index": 92,
+    "index": 93,
     "redacted": false,
     "blacklisted": false
   },
@@ -4723,7 +5026,7 @@
       }
     ],
     "hash": 1365924616,
-    "index": 363,
+    "index": 387,
     "redacted": false,
     "blacklisted": false
   },
@@ -4754,7 +5057,7 @@
       }
     ],
     "hash": 1365924617,
-    "index": 364,
+    "index": 388,
     "redacted": false,
     "blacklisted": false
   },
@@ -4785,7 +5088,51 @@
       }
     ],
     "hash": 1365924619,
-    "index": 362,
+    "index": 386,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1371010340": {
+    "vendorHash": 1037843411,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "Terminal",
+          "name": "Vault",
+          "icon": "/common/destiny2_content/icons/42284fb3e73118f37cc7563c6ae70097.png",
+          "iconSequences": [
+            {
+              "frames": [
+                "/common/destiny2_content/icons/42284fb3e73118f37cc7563c6ae70097.png",
+                "/common/destiny2_content/icons/ade425b05f906ddf69e7e3506dd777ad.png",
+                "/common/destiny2_content/icons/62c2fd046d87adf3006632aebbfb13f0.png"
+              ]
+            }
+          ],
+          "hasIcon": true
+        },
+        "smallTransparentIcon": "/common/destiny2_content/icons/42284fb3e73118f37cc7563c6ae70097.png",
+        "mapIcon": "/common/destiny2_content/icons/ade425b05f906ddf69e7e3506dd777ad.png",
+        "largeTransparentIcon": "/common/destiny2_content/icons/62c2fd046d87adf3006632aebbfb13f0.png",
+        "spawnPoint": 0,
+        "destinationHash": 3929841832,
+        "activityHash": 1771176108,
+        "activityGraphHash": 1737926756,
+        "activityGraphNodeHash": 3929841832,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          6,
+          47,
+          61,
+          0
+        ]
+      }
+    ],
+    "hash": 1371010340,
+    "index": 314,
     "redacted": false,
     "blacklisted": false
   },
@@ -4895,7 +5242,7 @@
       }
     ],
     "hash": 1376633469,
-    "index": 268,
+    "index": 283,
     "redacted": false,
     "blacklisted": false
   },
@@ -4939,7 +5286,7 @@
       }
     ],
     "hash": 1378079612,
-    "index": 47,
+    "index": 48,
     "redacted": false,
     "blacklisted": false
   },
@@ -4970,7 +5317,7 @@
       }
     ],
     "hash": 1393013595,
-    "index": 170,
+    "index": 176,
     "redacted": false,
     "blacklisted": false
   },
@@ -5001,7 +5348,7 @@
       }
     ],
     "hash": 1393958625,
-    "index": 432,
+    "index": 456,
     "redacted": false,
     "blacklisted": false
   },
@@ -5032,7 +5379,7 @@
       }
     ],
     "hash": 1398003332,
-    "index": 129,
+    "index": 134,
     "redacted": false,
     "blacklisted": false
   },
@@ -5063,7 +5410,7 @@
       }
     ],
     "hash": 1398003333,
-    "index": 130,
+    "index": 135,
     "redacted": false,
     "blacklisted": false
   },
@@ -5138,7 +5485,7 @@
       }
     ],
     "hash": 1398003334,
-    "index": 131,
+    "index": 136,
     "redacted": false,
     "blacklisted": false
   },
@@ -5169,7 +5516,7 @@
       }
     ],
     "hash": 1398022651,
-    "index": 255,
+    "index": 270,
     "redacted": false,
     "blacklisted": false
   },
@@ -5200,7 +5547,7 @@
       }
     ],
     "hash": 1398022652,
-    "index": 256,
+    "index": 271,
     "redacted": false,
     "blacklisted": false
   },
@@ -5231,7 +5578,7 @@
       }
     ],
     "hash": 1428146127,
-    "index": 12,
+    "index": 13,
     "redacted": false,
     "blacklisted": false
   },
@@ -5262,7 +5609,7 @@
       }
     ],
     "hash": 1449129642,
-    "index": 115,
+    "index": 119,
     "redacted": false,
     "blacklisted": false
   },
@@ -5293,7 +5640,7 @@
       }
     ],
     "hash": 1450489451,
-    "index": 214,
+    "index": 227,
     "redacted": false,
     "blacklisted": false
   },
@@ -5324,7 +5671,7 @@
       }
     ],
     "hash": 1450639532,
-    "index": 353,
+    "index": 377,
     "redacted": false,
     "blacklisted": false
   },
@@ -5355,7 +5702,7 @@
       }
     ],
     "hash": 1450639533,
-    "index": 352,
+    "index": 376,
     "redacted": false,
     "blacklisted": false
   },
@@ -5386,7 +5733,7 @@
       }
     ],
     "hash": 1450639534,
-    "index": 351,
+    "index": 375,
     "redacted": false,
     "blacklisted": false
   },
@@ -5417,7 +5764,7 @@
       }
     ],
     "hash": 1455573357,
-    "index": 114,
+    "index": 118,
     "redacted": false,
     "blacklisted": false
   },
@@ -5448,7 +5795,7 @@
       }
     ],
     "hash": 1482201645,
-    "index": 410,
+    "index": 434,
     "redacted": false,
     "blacklisted": false
   },
@@ -5479,7 +5826,7 @@
       }
     ],
     "hash": 1482201646,
-    "index": 411,
+    "index": 435,
     "redacted": false,
     "blacklisted": false
   },
@@ -5510,7 +5857,7 @@
       }
     ],
     "hash": 1482201647,
-    "index": 412,
+    "index": 436,
     "redacted": false,
     "blacklisted": false
   },
@@ -5541,7 +5888,7 @@
       }
     ],
     "hash": 1490464192,
-    "index": 41,
+    "index": 42,
     "redacted": false,
     "blacklisted": false
   },
@@ -5572,7 +5919,7 @@
       }
     ],
     "hash": 1490464193,
-    "index": 40,
+    "index": 41,
     "redacted": false,
     "blacklisted": false
   },
@@ -5603,7 +5950,7 @@
       }
     ],
     "hash": 1490464195,
-    "index": 42,
+    "index": 43,
     "redacted": false,
     "blacklisted": false
   },
@@ -5634,7 +5981,7 @@
       }
     ],
     "hash": 1496074017,
-    "index": 91,
+    "index": 92,
     "redacted": false,
     "blacklisted": false
   },
@@ -5665,7 +6012,7 @@
       }
     ],
     "hash": 1501522169,
-    "index": 417,
+    "index": 441,
     "redacted": false,
     "blacklisted": false
   },
@@ -5696,7 +6043,7 @@
       }
     ],
     "hash": 1501522170,
-    "index": 418,
+    "index": 442,
     "redacted": false,
     "blacklisted": false
   },
@@ -5727,7 +6074,7 @@
       }
     ],
     "hash": 1501522171,
-    "index": 419,
+    "index": 443,
     "redacted": false,
     "blacklisted": false
   },
@@ -5758,7 +6105,60 @@
       }
     ],
     "hash": 1503547562,
-    "index": 221,
+    "index": 235,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1506681459": {
+    "vendorHash": 0,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 677774031,
+        "activityHash": 3911969233,
+        "activityGraphHash": 677774031,
+        "activityGraphNodeHash": 0,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          474,
+          210,
+          -30,
+          0
+        ]
+      },
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 677774031,
+        "activityHash": 3911969238,
+        "activityGraphHash": 677774031,
+        "activityGraphNodeHash": 0,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          474,
+          210,
+          -30,
+          0
+        ]
+      }
+    ],
+    "hash": 1506681459,
+    "index": 193,
     "redacted": false,
     "blacklisted": false
   },
@@ -5802,7 +6202,7 @@
       }
     ],
     "hash": 1531108150,
-    "index": 290,
+    "index": 305,
     "redacted": false,
     "blacklisted": false
   },
@@ -5855,7 +6255,7 @@
       }
     ],
     "hash": 1538425132,
-    "index": 7,
+    "index": 8,
     "redacted": false,
     "blacklisted": false
   },
@@ -5898,7 +6298,7 @@
       }
     ],
     "hash": 1542802112,
-    "index": 109,
+    "index": 110,
     "redacted": false,
     "blacklisted": false
   },
@@ -5929,7 +6329,7 @@
       }
     ],
     "hash": 1557324513,
-    "index": 246,
+    "index": 261,
     "redacted": false,
     "blacklisted": false
   },
@@ -5960,7 +6360,7 @@
       }
     ],
     "hash": 1588499917,
-    "index": 26,
+    "index": 27,
     "redacted": false,
     "blacklisted": false
   },
@@ -5991,7 +6391,7 @@
       }
     ],
     "hash": 1589320650,
-    "index": 241,
+    "index": 255,
     "redacted": false,
     "blacklisted": false
   },
@@ -6022,7 +6422,7 @@
       }
     ],
     "hash": 1593372699,
-    "index": 229,
+    "index": 243,
     "redacted": false,
     "blacklisted": false
   },
@@ -6053,7 +6453,7 @@
       }
     ],
     "hash": 1595048548,
-    "index": 74,
+    "index": 75,
     "redacted": false,
     "blacklisted": false
   },
@@ -6084,7 +6484,7 @@
       }
     ],
     "hash": 1595048549,
-    "index": 73,
+    "index": 74,
     "redacted": false,
     "blacklisted": false
   },
@@ -6115,7 +6515,7 @@
       }
     ],
     "hash": 1595048550,
-    "index": 76,
+    "index": 77,
     "redacted": false,
     "blacklisted": false
   },
@@ -6146,7 +6546,7 @@
       }
     ],
     "hash": 1595048551,
-    "index": 75,
+    "index": 76,
     "redacted": false,
     "blacklisted": false
   },
@@ -6177,7 +6577,7 @@
       }
     ],
     "hash": 1599441836,
-    "index": 160,
+    "index": 166,
     "redacted": false,
     "blacklisted": false
   },
@@ -6208,7 +6608,7 @@
       }
     ],
     "hash": 1604758845,
-    "index": 247,
+    "index": 262,
     "redacted": false,
     "blacklisted": false
   },
@@ -6239,7 +6639,7 @@
       }
     ],
     "hash": 1604939812,
-    "index": 82,
+    "index": 83,
     "redacted": false,
     "blacklisted": false
   },
@@ -6270,7 +6670,7 @@
       }
     ],
     "hash": 1613064205,
-    "index": 117,
+    "index": 122,
     "redacted": false,
     "blacklisted": false
   },
@@ -6380,7 +6780,7 @@
       }
     ],
     "hash": 1618198986,
-    "index": 276,
+    "index": 291,
     "redacted": false,
     "blacklisted": false
   },
@@ -6411,7 +6811,7 @@
       }
     ],
     "hash": 1621531100,
-    "index": 191,
+    "index": 204,
     "redacted": false,
     "blacklisted": false
   },
@@ -6442,7 +6842,7 @@
       }
     ],
     "hash": 1634347392,
-    "index": 113,
+    "index": 117,
     "redacted": false,
     "blacklisted": false
   },
@@ -6473,7 +6873,7 @@
       }
     ],
     "hash": 1638481049,
-    "index": 397,
+    "index": 421,
     "redacted": false,
     "blacklisted": false
   },
@@ -6504,7 +6904,7 @@
       }
     ],
     "hash": 1638481053,
-    "index": 395,
+    "index": 419,
     "redacted": false,
     "blacklisted": false
   },
@@ -6535,7 +6935,7 @@
       }
     ],
     "hash": 1638481054,
-    "index": 396,
+    "index": 420,
     "redacted": false,
     "blacklisted": false
   },
@@ -6566,7 +6966,7 @@
       }
     ],
     "hash": 1639692983,
-    "index": 172,
+    "index": 178,
     "redacted": false,
     "blacklisted": false
   },
@@ -6597,7 +6997,7 @@
       }
     ],
     "hash": 1639862007,
-    "index": 219,
+    "index": 232,
     "redacted": false,
     "blacklisted": false
   },
@@ -6641,7 +7041,7 @@
       }
     ],
     "hash": 1642258776,
-    "index": 287,
+    "index": 302,
     "redacted": false,
     "blacklisted": false
   },
@@ -6672,7 +7072,7 @@
       }
     ],
     "hash": 1664136457,
-    "index": 300,
+    "index": 324,
     "redacted": false,
     "blacklisted": false
   },
@@ -6703,7 +7103,7 @@
       }
     ],
     "hash": 1685610039,
-    "index": 141,
+    "index": 146,
     "redacted": false,
     "blacklisted": false
   },
@@ -6734,7 +7134,7 @@
       }
     ],
     "hash": 1687266479,
-    "index": 429,
+    "index": 453,
     "redacted": false,
     "blacklisted": false
   },
@@ -6765,7 +7165,7 @@
       }
     ],
     "hash": 1691738063,
-    "index": 167,
+    "index": 173,
     "redacted": false,
     "blacklisted": false
   },
@@ -6796,7 +7196,7 @@
       }
     ],
     "hash": 1703109146,
-    "index": 416,
+    "index": 440,
     "redacted": false,
     "blacklisted": false
   },
@@ -6841,7 +7241,7 @@
       }
     ],
     "hash": 1712070260,
-    "index": 100,
+    "index": 101,
     "redacted": false,
     "blacklisted": false
   },
@@ -6886,7 +7286,7 @@
       }
     ],
     "hash": 1717091390,
-    "index": 111,
+    "index": 112,
     "redacted": false,
     "blacklisted": false
   },
@@ -6917,7 +7317,7 @@
       }
     ],
     "hash": 1728053820,
-    "index": 332,
+    "index": 356,
     "redacted": false,
     "blacklisted": false
   },
@@ -6948,7 +7348,7 @@
       }
     ],
     "hash": 1728053821,
-    "index": 331,
+    "index": 355,
     "redacted": false,
     "blacklisted": false
   },
@@ -6979,7 +7379,7 @@
       }
     ],
     "hash": 1728053822,
-    "index": 330,
+    "index": 354,
     "redacted": false,
     "blacklisted": false
   },
@@ -7010,7 +7410,7 @@
       }
     ],
     "hash": 1731983673,
-    "index": 177,
+    "index": 183,
     "redacted": false,
     "blacklisted": false
   },
@@ -7041,7 +7441,7 @@
       }
     ],
     "hash": 1734015938,
-    "index": 165,
+    "index": 171,
     "redacted": false,
     "blacklisted": false
   },
@@ -7094,7 +7494,7 @@
       }
     ],
     "hash": 1762028283,
-    "index": 8,
+    "index": 9,
     "redacted": false,
     "blacklisted": false
   },
@@ -7204,7 +7604,7 @@
       }
     ],
     "hash": 1778248786,
-    "index": 270,
+    "index": 285,
     "redacted": false,
     "blacklisted": false
   },
@@ -7248,7 +7648,7 @@
       }
     ],
     "hash": 1778680599,
-    "index": 284,
+    "index": 299,
     "redacted": false,
     "blacklisted": false
   },
@@ -7279,7 +7679,7 @@
       }
     ],
     "hash": 1782578320,
-    "index": 368,
+    "index": 392,
     "redacted": false,
     "blacklisted": false
   },
@@ -7310,7 +7710,7 @@
       }
     ],
     "hash": 1782578322,
-    "index": 370,
+    "index": 394,
     "redacted": false,
     "blacklisted": false
   },
@@ -7341,7 +7741,7 @@
       }
     ],
     "hash": 1782578323,
-    "index": 369,
+    "index": 393,
     "redacted": false,
     "blacklisted": false
   },
@@ -7372,7 +7772,7 @@
       }
     ],
     "hash": 1784338842,
-    "index": 444,
+    "index": 468,
     "redacted": false,
     "blacklisted": false
   },
@@ -7403,7 +7803,7 @@
       }
     ],
     "hash": 1784338844,
-    "index": 442,
+    "index": 466,
     "redacted": false,
     "blacklisted": false
   },
@@ -7434,7 +7834,7 @@
       }
     ],
     "hash": 1784338845,
-    "index": 443,
+    "index": 467,
     "redacted": false,
     "blacklisted": false
   },
@@ -7465,7 +7865,7 @@
       }
     ],
     "hash": 1784338847,
-    "index": 441,
+    "index": 465,
     "redacted": false,
     "blacklisted": false
   },
@@ -7529,7 +7929,7 @@
       }
     ],
     "hash": 1806934477,
-    "index": 298,
+    "index": 322,
     "redacted": false,
     "blacklisted": false
   },
@@ -7643,7 +8043,7 @@
       }
     ],
     "hash": 1819809801,
-    "index": 46,
+    "index": 47,
     "redacted": false,
     "blacklisted": false
   },
@@ -7674,7 +8074,42 @@
       }
     ],
     "hash": 1820595515,
-    "index": 238,
+    "index": 252,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1822093886": {
+    "vendorHash": 3450165804,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "Vanguard Operations",
+          "name": "War Table",
+          "icon": "/common/destiny2_content/icons/3510677d93f2f629cc9d1a6699b4e477.png",
+          "hasIcon": true
+        },
+        "smallTransparentIcon": "/common/destiny2_content/icons/3510677d93f2f629cc9d1a6699b4e477.png",
+        "mapIcon": "/img/misc/missing_icon_d2.png",
+        "largeTransparentIcon": "/img/misc/missing_icon_d2.png",
+        "spawnPoint": 0,
+        "destinationHash": 3929841832,
+        "activityHash": 1771176108,
+        "activityGraphHash": 1737926756,
+        "activityGraphNodeHash": 3929841832,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          1,
+          16,
+          61,
+          0
+        ]
+      }
+    ],
+    "hash": 1822093886,
+    "index": 315,
     "redacted": false,
     "blacklisted": false
   },
@@ -7771,7 +8206,7 @@
       }
     ],
     "hash": 1827449462,
-    "index": 140,
+    "index": 145,
     "redacted": false,
     "blacklisted": false
   },
@@ -7802,7 +8237,7 @@
       }
     ],
     "hash": 1832266506,
-    "index": 32,
+    "index": 33,
     "redacted": false,
     "blacklisted": false
   },
@@ -7833,7 +8268,7 @@
       }
     ],
     "hash": 1854914588,
-    "index": 136,
+    "index": 141,
     "redacted": false,
     "blacklisted": false
   },
@@ -7864,7 +8299,7 @@
       }
     ],
     "hash": 1854914589,
-    "index": 137,
+    "index": 142,
     "redacted": false,
     "blacklisted": false
   },
@@ -7895,7 +8330,7 @@
       }
     ],
     "hash": 1854914590,
-    "index": 138,
+    "index": 143,
     "redacted": false,
     "blacklisted": false
   },
@@ -7926,7 +8361,7 @@
       }
     ],
     "hash": 1854914591,
-    "index": 139,
+    "index": 144,
     "redacted": false,
     "blacklisted": false
   },
@@ -8036,7 +8471,7 @@
       }
     ],
     "hash": 1856019864,
-    "index": 278,
+    "index": 293,
     "redacted": false,
     "blacklisted": false
   },
@@ -8081,7 +8516,7 @@
       }
     ],
     "hash": 1865229962,
-    "index": 105,
+    "index": 106,
     "redacted": false,
     "blacklisted": false
   },
@@ -8112,7 +8547,7 @@
       }
     ],
     "hash": 1874233352,
-    "index": 327,
+    "index": 351,
     "redacted": false,
     "blacklisted": false
   },
@@ -8143,7 +8578,7 @@
       }
     ],
     "hash": 1875591600,
-    "index": 334,
+    "index": 358,
     "redacted": false,
     "blacklisted": false
   },
@@ -8174,7 +8609,7 @@
       }
     ],
     "hash": 1875591601,
-    "index": 335,
+    "index": 359,
     "redacted": false,
     "blacklisted": false
   },
@@ -8205,7 +8640,7 @@
       }
     ],
     "hash": 1875591603,
-    "index": 333,
+    "index": 357,
     "redacted": false,
     "blacklisted": false
   },
@@ -8249,7 +8684,7 @@
       }
     ],
     "hash": 1877983093,
-    "index": 93,
+    "index": 94,
     "redacted": false,
     "blacklisted": false
   },
@@ -8280,7 +8715,7 @@
       }
     ],
     "hash": 1888485873,
-    "index": 380,
+    "index": 404,
     "redacted": false,
     "blacklisted": false
   },
@@ -8311,7 +8746,7 @@
       }
     ],
     "hash": 1888485874,
-    "index": 381,
+    "index": 405,
     "redacted": false,
     "blacklisted": false
   },
@@ -8342,7 +8777,7 @@
       }
     ],
     "hash": 1888485875,
-    "index": 382,
+    "index": 406,
     "redacted": false,
     "blacklisted": false
   },
@@ -8373,7 +8808,7 @@
       }
     ],
     "hash": 1894942932,
-    "index": 205,
+    "index": 218,
     "redacted": false,
     "blacklisted": false
   },
@@ -8404,7 +8839,7 @@
       }
     ],
     "hash": 1894942933,
-    "index": 206,
+    "index": 219,
     "redacted": false,
     "blacklisted": false
   },
@@ -8435,7 +8870,7 @@
       }
     ],
     "hash": 1894942934,
-    "index": 207,
+    "index": 220,
     "redacted": false,
     "blacklisted": false
   },
@@ -8466,7 +8901,7 @@
       }
     ],
     "hash": 1896102137,
-    "index": 99,
+    "index": 100,
     "redacted": false,
     "blacklisted": false
   },
@@ -8531,7 +8966,7 @@
       }
     ],
     "hash": 1896794556,
-    "index": 60,
+    "index": 61,
     "redacted": false,
     "blacklisted": false
   },
@@ -8562,7 +8997,7 @@
       }
     ],
     "hash": 1971272974,
-    "index": 87,
+    "index": 88,
     "redacted": false,
     "blacklisted": false
   },
@@ -8679,7 +9114,7 @@
       }
     ],
     "hash": 1997056772,
-    "index": 145,
+    "index": 150,
     "redacted": false,
     "blacklisted": false
   },
@@ -8710,7 +9145,7 @@
       }
     ],
     "hash": 1997056773,
-    "index": 143,
+    "index": 148,
     "redacted": false,
     "blacklisted": false
   },
@@ -8827,7 +9262,7 @@
       }
     ],
     "hash": 1997056775,
-    "index": 146,
+    "index": 151,
     "redacted": false,
     "blacklisted": false
   },
@@ -8871,7 +9306,7 @@
       }
     ],
     "hash": 1998167324,
-    "index": 148,
+    "index": 154,
     "redacted": false,
     "blacklisted": false
   },
@@ -8902,7 +9337,7 @@
       }
     ],
     "hash": 2040720591,
-    "index": 451,
+    "index": 475,
     "redacted": false,
     "blacklisted": false
   },
@@ -8933,7 +9368,7 @@
       }
     ],
     "hash": 2041242368,
-    "index": 261,
+    "index": 276,
     "redacted": false,
     "blacklisted": false
   },
@@ -8976,7 +9411,7 @@
       }
     ],
     "hash": 2054504926,
-    "index": 159,
+    "index": 165,
     "redacted": false,
     "blacklisted": false
   },
@@ -9029,7 +9464,38 @@
       }
     ],
     "hash": 2069950677,
-    "index": 187,
+    "index": 200,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2083676460": {
+    "vendorHash": 0,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 1729879943,
+        "activityHash": 1813752023,
+        "activityGraphHash": 1729879943,
+        "activityGraphNodeHash": 0,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "hash": 2083676460,
+    "index": 115,
     "redacted": false,
     "blacklisted": false
   },
@@ -9060,7 +9526,7 @@
       }
     ],
     "hash": 2091578320,
-    "index": 203,
+    "index": 216,
     "redacted": false,
     "blacklisted": false
   },
@@ -9091,7 +9557,7 @@
       }
     ],
     "hash": 2091578321,
-    "index": 202,
+    "index": 215,
     "redacted": false,
     "blacklisted": false
   },
@@ -9122,7 +9588,7 @@
       }
     ],
     "hash": 2091578322,
-    "index": 201,
+    "index": 214,
     "redacted": false,
     "blacklisted": false
   },
@@ -9153,7 +9619,7 @@
       }
     ],
     "hash": 2091578323,
-    "index": 200,
+    "index": 213,
     "redacted": false,
     "blacklisted": false
   },
@@ -9184,7 +9650,7 @@
       }
     ],
     "hash": 2091578327,
-    "index": 204,
+    "index": 217,
     "redacted": false,
     "blacklisted": false
   },
@@ -9228,7 +9694,51 @@
       }
     ],
     "hash": 2097628065,
-    "index": 49,
+    "index": 50,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2100650132": {
+    "vendorHash": 2100650132,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "Umbral Engram Focusing",
+          "name": "Prismatic Recaster",
+          "icon": "/common/destiny2_content/icons/b9bab7419a60b6bd5528f9bf7de40d36.png",
+          "iconSequences": [
+            {
+              "frames": [
+                "/common/destiny2_content/icons/b9bab7419a60b6bd5528f9bf7de40d36.png",
+                "/common/destiny2_content/icons/3598d79c7fe1d7b57b24d3f0c653aeef.png",
+                "/common/destiny2_content/icons/d8ebd4a85b80c1cd077a02b7ac2ff340.png"
+              ]
+            }
+          ],
+          "hasIcon": true
+        },
+        "smallTransparentIcon": "/common/destiny2_content/icons/b9bab7419a60b6bd5528f9bf7de40d36.png",
+        "mapIcon": "/common/destiny2_content/icons/3598d79c7fe1d7b57b24d3f0c653aeef.png",
+        "largeTransparentIcon": "/common/destiny2_content/icons/d8ebd4a85b80c1cd077a02b7ac2ff340.png",
+        "spawnPoint": 0,
+        "destinationHash": 3929841832,
+        "activityHash": 1771176108,
+        "activityGraphHash": 1737926756,
+        "activityGraphNodeHash": 3929841832,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          0,
+          56,
+          60,
+          0
+        ]
+      }
+    ],
+    "hash": 2100650132,
+    "index": 311,
     "redacted": false,
     "blacklisted": false
   },
@@ -9259,7 +9769,7 @@
       }
     ],
     "hash": 2149442768,
-    "index": 316,
+    "index": 340,
     "redacted": false,
     "blacklisted": false
   },
@@ -9290,7 +9800,7 @@
       }
     ],
     "hash": 2149442769,
-    "index": 318,
+    "index": 342,
     "redacted": false,
     "blacklisted": false
   },
@@ -9321,7 +9831,7 @@
       }
     ],
     "hash": 2149442771,
-    "index": 314,
+    "index": 338,
     "redacted": false,
     "blacklisted": false
   },
@@ -9352,7 +9862,7 @@
       }
     ],
     "hash": 2149442774,
-    "index": 320,
+    "index": 344,
     "redacted": false,
     "blacklisted": false
   },
@@ -9383,7 +9893,7 @@
       }
     ],
     "hash": 2149442775,
-    "index": 322,
+    "index": 346,
     "redacted": false,
     "blacklisted": false
   },
@@ -9414,7 +9924,7 @@
       }
     ],
     "hash": 2173451444,
-    "index": 125,
+    "index": 130,
     "redacted": false,
     "blacklisted": false
   },
@@ -9445,7 +9955,7 @@
       }
     ],
     "hash": 2173451445,
-    "index": 124,
+    "index": 129,
     "redacted": false,
     "blacklisted": false
   },
@@ -9476,7 +9986,38 @@
       }
     ],
     "hash": 2173451446,
-    "index": 123,
+    "index": 128,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2182230844": {
+    "vendorHash": 0,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 1729879943,
+        "activityHash": 3458232326,
+        "activityGraphHash": 1729879943,
+        "activityGraphNodeHash": 1228366033,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "hash": 2182230844,
+    "index": 114,
     "redacted": false,
     "blacklisted": false
   },
@@ -9511,7 +10052,7 @@
       }
     ],
     "hash": 2202879377,
-    "index": 29,
+    "index": 30,
     "redacted": false,
     "blacklisted": false
   },
@@ -9542,7 +10083,7 @@
       }
     ],
     "hash": 2234805021,
-    "index": 85,
+    "index": 86,
     "redacted": false,
     "blacklisted": false
   },
@@ -9573,7 +10114,7 @@
       }
     ],
     "hash": 2236580534,
-    "index": 452,
+    "index": 476,
     "redacted": false,
     "blacklisted": false
   },
@@ -9604,7 +10145,7 @@
       }
     ],
     "hash": 2240051299,
-    "index": 59,
+    "index": 60,
     "redacted": false,
     "blacklisted": false
   },
@@ -9635,7 +10176,7 @@
       }
     ],
     "hash": 2250776373,
-    "index": 227,
+    "index": 241,
     "redacted": false,
     "blacklisted": false
   },
@@ -9666,7 +10207,7 @@
       }
     ],
     "hash": 2263454261,
-    "index": 13,
+    "index": 14,
     "redacted": false,
     "blacklisted": false
   },
@@ -9697,7 +10238,7 @@
       }
     ],
     "hash": 2294422324,
-    "index": 427,
+    "index": 451,
     "redacted": false,
     "blacklisted": false
   },
@@ -9728,7 +10269,7 @@
       }
     ],
     "hash": 2294422325,
-    "index": 428,
+    "index": 452,
     "redacted": false,
     "blacklisted": false
   },
@@ -9759,7 +10300,7 @@
       }
     ],
     "hash": 2294422327,
-    "index": 426,
+    "index": 450,
     "redacted": false,
     "blacklisted": false
   },
@@ -9812,7 +10353,7 @@
       }
     ],
     "hash": 2295936397,
-    "index": 65,
+    "index": 66,
     "redacted": false,
     "blacklisted": false
   },
@@ -9843,7 +10384,7 @@
       }
     ],
     "hash": 2300386663,
-    "index": 83,
+    "index": 84,
     "redacted": false,
     "blacklisted": false
   },
@@ -9887,7 +10428,7 @@
       }
     ],
     "hash": 2305449281,
-    "index": 291,
+    "index": 306,
     "redacted": false,
     "blacklisted": false
   },
@@ -9932,7 +10473,7 @@
       }
     ],
     "hash": 2314423260,
-    "index": 53,
+    "index": 54,
     "redacted": false,
     "blacklisted": false
   },
@@ -9963,7 +10504,7 @@
       }
     ],
     "hash": 2369163715,
-    "index": 472,
+    "index": 496,
     "redacted": false,
     "blacklisted": false
   },
@@ -9994,7 +10535,7 @@
       }
     ],
     "hash": 2373565652,
-    "index": 142,
+    "index": 147,
     "redacted": false,
     "blacklisted": false
   },
@@ -10025,7 +10566,7 @@
       }
     ],
     "hash": 2393077940,
-    "index": 118,
+    "index": 123,
     "redacted": false,
     "blacklisted": false
   },
@@ -10056,7 +10597,7 @@
       }
     ],
     "hash": 2394976339,
-    "index": 196,
+    "index": 209,
     "redacted": false,
     "blacklisted": false
   },
@@ -10087,7 +10628,7 @@
       }
     ],
     "hash": 2412676702,
-    "index": 223,
+    "index": 237,
     "redacted": false,
     "blacklisted": false
   },
@@ -10118,7 +10659,7 @@
       }
     ],
     "hash": 2421660073,
-    "index": 302,
+    "index": 326,
     "redacted": false,
     "blacklisted": false
   },
@@ -10149,7 +10690,7 @@
       }
     ],
     "hash": 2421660074,
-    "index": 304,
+    "index": 328,
     "redacted": false,
     "blacklisted": false
   },
@@ -10180,7 +10721,7 @@
       }
     ],
     "hash": 2421660075,
-    "index": 306,
+    "index": 330,
     "redacted": false,
     "blacklisted": false
   },
@@ -10211,7 +10752,7 @@
       }
     ],
     "hash": 2421660076,
-    "index": 308,
+    "index": 332,
     "redacted": false,
     "blacklisted": false
   },
@@ -10242,7 +10783,60 @@
       }
     ],
     "hash": 2421660077,
-    "index": 310,
+    "index": 334,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2434916467": {
+    "vendorHash": 0,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 677774031,
+        "activityHash": 184186581,
+        "activityGraphHash": 677774031,
+        "activityGraphNodeHash": 0,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          -147,
+          -221,
+          12,
+          0
+        ]
+      },
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 677774031,
+        "activityHash": 184186578,
+        "activityGraphHash": 677774031,
+        "activityGraphNodeHash": 0,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          -147,
+          -221,
+          12,
+          0
+        ]
+      }
+    ],
+    "hash": 2434916467,
+    "index": 191,
     "redacted": false,
     "blacklisted": false
   },
@@ -10273,7 +10867,7 @@
       }
     ],
     "hash": 2437186100,
-    "index": 58,
+    "index": 59,
     "redacted": false,
     "blacklisted": false
   },
@@ -10304,7 +10898,7 @@
       }
     ],
     "hash": 2451053708,
-    "index": 450,
+    "index": 474,
     "redacted": false,
     "blacklisted": false
   },
@@ -10347,7 +10941,7 @@
       }
     ],
     "hash": 2454391228,
-    "index": 106,
+    "index": 107,
     "redacted": false,
     "blacklisted": false
   },
@@ -10584,7 +11178,7 @@
       }
     ],
     "hash": 2468607423,
-    "index": 269,
+    "index": 284,
     "redacted": false,
     "blacklisted": false
   },
@@ -10615,7 +11209,7 @@
       }
     ],
     "hash": 2483484143,
-    "index": 185,
+    "index": 195,
     "redacted": false,
     "blacklisted": false
   },
@@ -10646,7 +11240,7 @@
       }
     ],
     "hash": 2487518861,
-    "index": 57,
+    "index": 58,
     "redacted": false,
     "blacklisted": false
   },
@@ -10677,7 +11271,7 @@
       }
     ],
     "hash": 2489205018,
-    "index": 323,
+    "index": 347,
     "redacted": false,
     "blacklisted": false
   },
@@ -10708,7 +11302,7 @@
       }
     ],
     "hash": 2489205019,
-    "index": 321,
+    "index": 345,
     "redacted": false,
     "blacklisted": false
   },
@@ -10739,7 +11333,7 @@
       }
     ],
     "hash": 2489205020,
-    "index": 319,
+    "index": 343,
     "redacted": false,
     "blacklisted": false
   },
@@ -10770,7 +11364,7 @@
       }
     ],
     "hash": 2489205021,
-    "index": 317,
+    "index": 341,
     "redacted": false,
     "blacklisted": false
   },
@@ -10801,7 +11395,7 @@
       }
     ],
     "hash": 2489205022,
-    "index": 315,
+    "index": 339,
     "redacted": false,
     "blacklisted": false
   },
@@ -10832,7 +11426,7 @@
       }
     ],
     "hash": 2506874768,
-    "index": 359,
+    "index": 383,
     "redacted": false,
     "blacklisted": false
   },
@@ -10942,7 +11536,7 @@
       }
     ],
     "hash": 2525733280,
-    "index": 279,
+    "index": 294,
     "redacted": false,
     "blacklisted": false
   },
@@ -10973,7 +11567,7 @@
       }
     ],
     "hash": 2540732786,
-    "index": 260,
+    "index": 275,
     "redacted": false,
     "blacklisted": false
   },
@@ -11004,7 +11598,7 @@
       }
     ],
     "hash": 2544721025,
-    "index": 402,
+    "index": 426,
     "redacted": false,
     "blacklisted": false
   },
@@ -11035,7 +11629,7 @@
       }
     ],
     "hash": 2544721027,
-    "index": 401,
+    "index": 425,
     "redacted": false,
     "blacklisted": false
   },
@@ -11066,7 +11660,7 @@
       }
     ],
     "hash": 2544721030,
-    "index": 403,
+    "index": 427,
     "redacted": false,
     "blacklisted": false
   },
@@ -11097,7 +11691,7 @@
       }
     ],
     "hash": 2549471241,
-    "index": 226,
+    "index": 240,
     "redacted": false,
     "blacklisted": false
   },
@@ -11150,7 +11744,7 @@
       }
     ],
     "hash": 2555019573,
-    "index": 151,
+    "index": 157,
     "redacted": false,
     "blacklisted": false
   },
@@ -11181,7 +11775,7 @@
       }
     ],
     "hash": 2557676760,
-    "index": 163,
+    "index": 169,
     "redacted": false,
     "blacklisted": false
   },
@@ -11212,7 +11806,7 @@
       }
     ],
     "hash": 2590431318,
-    "index": 192,
+    "index": 205,
     "redacted": false,
     "blacklisted": false
   },
@@ -11243,7 +11837,7 @@
       }
     ],
     "hash": 2594984660,
-    "index": 328,
+    "index": 352,
     "redacted": false,
     "blacklisted": false
   },
@@ -11274,7 +11868,7 @@
       }
     ],
     "hash": 2600415221,
-    "index": 88,
+    "index": 89,
     "redacted": false,
     "blacklisted": false
   },
@@ -11305,7 +11899,7 @@
       }
     ],
     "hash": 2656240343,
-    "index": 181,
+    "index": 187,
     "redacted": false,
     "blacklisted": false
   },
@@ -11336,7 +11930,7 @@
       }
     ],
     "hash": 2666056073,
-    "index": 110,
+    "index": 111,
     "redacted": false,
     "blacklisted": false
   },
@@ -11380,7 +11974,7 @@
       }
     ],
     "hash": 2668644647,
-    "index": 252,
+    "index": 267,
     "redacted": false,
     "blacklisted": false
   },
@@ -11490,7 +12084,7 @@
       }
     ],
     "hash": 2673992126,
-    "index": 275,
+    "index": 290,
     "redacted": false,
     "blacklisted": false
   },
@@ -11534,7 +12128,7 @@
       }
     ],
     "hash": 2675479011,
-    "index": 289,
+    "index": 304,
     "redacted": false,
     "blacklisted": false
   },
@@ -11565,7 +12159,7 @@
       }
     ],
     "hash": 2679582081,
-    "index": 423,
+    "index": 447,
     "redacted": false,
     "blacklisted": false
   },
@@ -11596,7 +12190,7 @@
       }
     ],
     "hash": 2679582082,
-    "index": 424,
+    "index": 448,
     "redacted": false,
     "blacklisted": false
   },
@@ -11627,7 +12221,7 @@
       }
     ],
     "hash": 2679582083,
-    "index": 425,
+    "index": 449,
     "redacted": false,
     "blacklisted": false
   },
@@ -11658,7 +12252,7 @@
       }
     ],
     "hash": 2707682597,
-    "index": 50,
+    "index": 51,
     "redacted": false,
     "blacklisted": false
   },
@@ -11689,7 +12283,7 @@
       }
     ],
     "hash": 2723996533,
-    "index": 421,
+    "index": 445,
     "redacted": false,
     "blacklisted": false
   },
@@ -11720,7 +12314,7 @@
       }
     ],
     "hash": 2723996534,
-    "index": 422,
+    "index": 446,
     "redacted": false,
     "blacklisted": false
   },
@@ -11751,7 +12345,7 @@
       }
     ],
     "hash": 2730497976,
-    "index": 303,
+    "index": 327,
     "redacted": false,
     "blacklisted": false
   },
@@ -11782,7 +12376,7 @@
       }
     ],
     "hash": 2730497978,
-    "index": 307,
+    "index": 331,
     "redacted": false,
     "blacklisted": false
   },
@@ -11813,7 +12407,7 @@
       }
     ],
     "hash": 2730497979,
-    "index": 305,
+    "index": 329,
     "redacted": false,
     "blacklisted": false
   },
@@ -11844,7 +12438,7 @@
       }
     ],
     "hash": 2730497980,
-    "index": 311,
+    "index": 335,
     "redacted": false,
     "blacklisted": false
   },
@@ -11875,7 +12469,7 @@
       }
     ],
     "hash": 2730497981,
-    "index": 309,
+    "index": 333,
     "redacted": false,
     "blacklisted": false
   },
@@ -11906,7 +12500,7 @@
       }
     ],
     "hash": 2749682953,
-    "index": 458,
+    "index": 482,
     "redacted": false,
     "blacklisted": false
   },
@@ -11937,7 +12531,7 @@
       }
     ],
     "hash": 2749682954,
-    "index": 459,
+    "index": 483,
     "redacted": false,
     "blacklisted": false
   },
@@ -11968,7 +12562,7 @@
       }
     ],
     "hash": 2761511945,
-    "index": 216,
+    "index": 229,
     "redacted": false,
     "blacklisted": false
   },
@@ -12013,7 +12607,38 @@
       }
     ],
     "hash": 2781680271,
-    "index": 101,
+    "index": 102,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2839368797": {
+    "vendorHash": 0,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 3607432451,
+        "activityHash": 1754609040,
+        "activityGraphHash": 3607432451,
+        "activityGraphNodeHash": 1860024718,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          740,
+          430,
+          -37,
+          0
+        ]
+      }
+    ],
+    "hash": 2839368797,
+    "index": 197,
     "redacted": false,
     "blacklisted": false
   },
@@ -12044,7 +12669,7 @@
       }
     ],
     "hash": 2843335264,
-    "index": 242,
+    "index": 257,
     "redacted": false,
     "blacklisted": false
   },
@@ -12097,7 +12722,7 @@
       }
     ],
     "hash": 2846032608,
-    "index": 188,
+    "index": 201,
     "redacted": false,
     "blacklisted": false
   },
@@ -12128,7 +12753,7 @@
       }
     ],
     "hash": 2856932809,
-    "index": 25,
+    "index": 26,
     "redacted": false,
     "blacklisted": false
   },
@@ -12159,7 +12784,7 @@
       }
     ],
     "hash": 2868742740,
-    "index": 197,
+    "index": 210,
     "redacted": false,
     "blacklisted": false
   },
@@ -12190,7 +12815,7 @@
       }
     ],
     "hash": 2868742741,
-    "index": 198,
+    "index": 211,
     "redacted": false,
     "blacklisted": false
   },
@@ -12221,7 +12846,7 @@
       }
     ],
     "hash": 2868742742,
-    "index": 199,
+    "index": 212,
     "redacted": false,
     "blacklisted": false
   },
@@ -12265,7 +12890,7 @@
       }
     ],
     "hash": 2881687463,
-    "index": 19,
+    "index": 20,
     "redacted": false,
     "blacklisted": false
   },
@@ -12300,7 +12925,7 @@
       }
     ],
     "hash": 2882483866,
-    "index": 295,
+    "index": 319,
     "redacted": false,
     "blacklisted": false
   },
@@ -12331,7 +12956,7 @@
       }
     ],
     "hash": 2887180023,
-    "index": 81,
+    "index": 82,
     "redacted": false,
     "blacklisted": false
   },
@@ -12384,7 +13009,7 @@
       }
     ],
     "hash": 2890206946,
-    "index": 189,
+    "index": 202,
     "redacted": false,
     "blacklisted": false
   },
@@ -12415,7 +13040,7 @@
       }
     ],
     "hash": 2893983536,
-    "index": 399,
+    "index": 423,
     "redacted": false,
     "blacklisted": false
   },
@@ -12446,7 +13071,7 @@
       }
     ],
     "hash": 2893983537,
-    "index": 400,
+    "index": 424,
     "redacted": false,
     "blacklisted": false
   },
@@ -12477,7 +13102,7 @@
       }
     ],
     "hash": 2893983542,
-    "index": 398,
+    "index": 422,
     "redacted": false,
     "blacklisted": false
   },
@@ -12508,7 +13133,7 @@
       }
     ],
     "hash": 2895659844,
-    "index": 234,
+    "index": 248,
     "redacted": false,
     "blacklisted": false
   },
@@ -12539,7 +13164,7 @@
       }
     ],
     "hash": 2914361723,
-    "index": 463,
+    "index": 487,
     "redacted": false,
     "blacklisted": false
   },
@@ -12570,7 +13195,7 @@
       }
     ],
     "hash": 2914361724,
-    "index": 462,
+    "index": 486,
     "redacted": false,
     "blacklisted": false
   },
@@ -12601,7 +13226,7 @@
       }
     ],
     "hash": 2914361725,
-    "index": 461,
+    "index": 485,
     "redacted": false,
     "blacklisted": false
   },
@@ -12632,7 +13257,7 @@
       }
     ],
     "hash": 2914361726,
-    "index": 460,
+    "index": 484,
     "redacted": false,
     "blacklisted": false
   },
@@ -12677,7 +13302,7 @@
       }
     ],
     "hash": 2923315040,
-    "index": 103,
+    "index": 104,
     "redacted": false,
     "blacklisted": false
   },
@@ -12708,7 +13333,7 @@
       }
     ],
     "hash": 2928354096,
-    "index": 144,
+    "index": 149,
     "redacted": false,
     "blacklisted": false
   },
@@ -12752,7 +13377,7 @@
       }
     ],
     "hash": 2933926328,
-    "index": 280,
+    "index": 295,
     "redacted": false,
     "blacklisted": false
   },
@@ -12783,7 +13408,7 @@
       }
     ],
     "hash": 2980157056,
-    "index": 259,
+    "index": 274,
     "redacted": false,
     "blacklisted": false
   },
@@ -12814,7 +13439,7 @@
       }
     ],
     "hash": 2994201066,
-    "index": 166,
+    "index": 172,
     "redacted": false,
     "blacklisted": false
   },
@@ -12845,7 +13470,7 @@
       }
     ],
     "hash": 2999437600,
-    "index": 184,
+    "index": 194,
     "redacted": false,
     "blacklisted": false
   },
@@ -12898,7 +13523,7 @@
       }
     ],
     "hash": 2999697936,
-    "index": 282,
+    "index": 297,
     "redacted": false,
     "blacklisted": false
   },
@@ -12929,7 +13554,7 @@
       }
     ],
     "hash": 3003868915,
-    "index": 236,
+    "index": 250,
     "redacted": false,
     "blacklisted": false
   },
@@ -12964,6 +13589,50 @@
     "redacted": false,
     "blacklisted": false
   },
+  "3020182142": {
+    "vendorHash": 3020182142,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "Freelance Lightbearer",
+          "name": "The Crow",
+          "icon": "/common/destiny2_content/icons/f9246caf21cf5ec458b93bbea29aa152.png",
+          "iconSequences": [
+            {
+              "frames": [
+                "/common/destiny2_content/icons/f9246caf21cf5ec458b93bbea29aa152.png",
+                "/common/destiny2_content/icons/2247b7ff8abc7a1802dce93f0ca69f2f.png",
+                "/common/destiny2_content/icons/4d9d3274c15bcc2d2a53323a656eee90.png"
+              ]
+            }
+          ],
+          "hasIcon": true
+        },
+        "smallTransparentIcon": "/common/destiny2_content/icons/f9246caf21cf5ec458b93bbea29aa152.png",
+        "mapIcon": "/common/destiny2_content/icons/2247b7ff8abc7a1802dce93f0ca69f2f.png",
+        "largeTransparentIcon": "/common/destiny2_content/icons/4d9d3274c15bcc2d2a53323a656eee90.png",
+        "spawnPoint": 0,
+        "destinationHash": 3929841832,
+        "activityHash": 1771176108,
+        "activityGraphHash": 1737926756,
+        "activityGraphNodeHash": 3929841832,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          10,
+          11,
+          48,
+          0
+        ]
+      }
+    ],
+    "hash": 3020182142,
+    "index": 317,
+    "redacted": false,
+    "blacklisted": false
+  },
   "3024134604": {
     "vendorHash": 0,
     "locationReleases": [
@@ -12991,7 +13660,7 @@
       }
     ],
     "hash": 3024134604,
-    "index": 349,
+    "index": 373,
     "redacted": false,
     "blacklisted": false
   },
@@ -13022,7 +13691,7 @@
       }
     ],
     "hash": 3024134605,
-    "index": 350,
+    "index": 374,
     "redacted": false,
     "blacklisted": false
   },
@@ -13053,7 +13722,7 @@
       }
     ],
     "hash": 3024134607,
-    "index": 348,
+    "index": 372,
     "redacted": false,
     "blacklisted": false
   },
@@ -13115,7 +13784,7 @@
       }
     ],
     "hash": 3038460624,
-    "index": 453,
+    "index": 477,
     "redacted": false,
     "blacklisted": false
   },
@@ -13146,7 +13815,7 @@
       }
     ],
     "hash": 3049622711,
-    "index": 171,
+    "index": 177,
     "redacted": false,
     "blacklisted": false
   },
@@ -13177,7 +13846,95 @@
       }
     ],
     "hash": 3062646654,
-    "index": 224,
+    "index": 238,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3066256822": {
+    "vendorHash": 0,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 677774031,
+        "activityHash": 567131512,
+        "activityGraphHash": 677774031,
+        "activityGraphNodeHash": 0,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          -456,
+          -174,
+          4,
+          0
+        ]
+      },
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 677774031,
+        "activityHash": 567131519,
+        "activityGraphHash": 677774031,
+        "activityGraphNodeHash": 0,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          -456,
+          -174,
+          4,
+          0
+        ]
+      }
+    ],
+    "hash": 3066256822,
+    "index": 190,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3077484210": {
+    "vendorHash": 3450165804,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "Vanguard Operations",
+          "name": "War Table",
+          "icon": "/common/destiny2_content/icons/3510677d93f2f629cc9d1a6699b4e477.png",
+          "hasIcon": true
+        },
+        "smallTransparentIcon": "/common/destiny2_content/icons/3510677d93f2f629cc9d1a6699b4e477.png",
+        "mapIcon": "/img/misc/missing_icon_d2.png",
+        "largeTransparentIcon": "/img/misc/missing_icon_d2.png",
+        "spawnPoint": 0,
+        "destinationHash": 3929841832,
+        "activityHash": 1771176108,
+        "activityGraphHash": 1737926756,
+        "activityGraphNodeHash": 3929841832,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          1,
+          16,
+          61,
+          0
+        ]
+      }
+    ],
+    "hash": 3077484210,
+    "index": 316,
     "redacted": false,
     "blacklisted": false
   },
@@ -13208,7 +13965,7 @@
       }
     ],
     "hash": 3103357601,
-    "index": 326,
+    "index": 350,
     "redacted": false,
     "blacklisted": false
   },
@@ -13239,7 +13996,7 @@
       }
     ],
     "hash": 3118250534,
-    "index": 51,
+    "index": 52,
     "redacted": false,
     "blacklisted": false
   },
@@ -13270,7 +14027,7 @@
       }
     ],
     "hash": 3128405001,
-    "index": 155,
+    "index": 161,
     "redacted": false,
     "blacklisted": false
   },
@@ -13301,7 +14058,38 @@
       }
     ],
     "hash": 3157699820,
-    "index": 248,
+    "index": 263,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3187477897": {
+    "vendorHash": 0,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 3607432451,
+        "activityHash": 925348811,
+        "activityGraphHash": 3607432451,
+        "activityGraphNodeHash": 4030986110,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "hash": 3187477897,
+    "index": 198,
     "redacted": false,
     "blacklisted": false
   },
@@ -13332,7 +14120,7 @@
       }
     ],
     "hash": 3201934984,
-    "index": 14,
+    "index": 15,
     "redacted": false,
     "blacklisted": false
   },
@@ -13363,7 +14151,7 @@
       }
     ],
     "hash": 3201934985,
-    "index": 15,
+    "index": 16,
     "redacted": false,
     "blacklisted": false
   },
@@ -13394,7 +14182,7 @@
       }
     ],
     "hash": 3201934986,
-    "index": 16,
+    "index": 17,
     "redacted": false,
     "blacklisted": false
   },
@@ -13438,7 +14226,7 @@
       }
     ],
     "hash": 3206676663,
-    "index": 48,
+    "index": 49,
     "redacted": false,
     "blacklisted": false
   },
@@ -13502,7 +14290,7 @@
       }
     ],
     "hash": 3233671903,
-    "index": 299,
+    "index": 323,
     "redacted": false,
     "blacklisted": false
   },
@@ -13545,7 +14333,7 @@
       }
     ],
     "hash": 3244968380,
-    "index": 158,
+    "index": 164,
     "redacted": false,
     "blacklisted": false
   },
@@ -13576,7 +14364,7 @@
       }
     ],
     "hash": 3248923090,
-    "index": 116,
+    "index": 120,
     "redacted": false,
     "blacklisted": false
   },
@@ -13607,7 +14395,7 @@
       }
     ],
     "hash": 3260669829,
-    "index": 44,
+    "index": 45,
     "redacted": false,
     "blacklisted": false
   },
@@ -13717,7 +14505,7 @@
       }
     ],
     "hash": 3266454956,
-    "index": 271,
+    "index": 286,
     "redacted": false,
     "blacklisted": false
   },
@@ -13748,7 +14536,7 @@
       }
     ],
     "hash": 3293454435,
-    "index": 231,
+    "index": 245,
     "redacted": false,
     "blacklisted": false
   },
@@ -13779,7 +14567,7 @@
       }
     ],
     "hash": 3298481793,
-    "index": 262,
+    "index": 277,
     "redacted": false,
     "blacklisted": false
   },
@@ -13832,7 +14620,7 @@
       }
     ],
     "hash": 3308601142,
-    "index": 20,
+    "index": 21,
     "redacted": false,
     "blacklisted": false
   },
@@ -13885,7 +14673,7 @@
       }
     ],
     "hash": 3337096914,
-    "index": 64,
+    "index": 65,
     "redacted": false,
     "blacklisted": false
   },
@@ -13916,7 +14704,7 @@
       }
     ],
     "hash": 3377177374,
-    "index": 153,
+    "index": 159,
     "redacted": false,
     "blacklisted": false
   },
@@ -13960,7 +14748,7 @@
       }
     ],
     "hash": 3384391127,
-    "index": 277,
+    "index": 292,
     "redacted": false,
     "blacklisted": false
   },
@@ -14003,7 +14791,7 @@
       }
     ],
     "hash": 3385682186,
-    "index": 107,
+    "index": 108,
     "redacted": false,
     "blacklisted": false
   },
@@ -14034,7 +14822,7 @@
       }
     ],
     "hash": 3391101245,
-    "index": 126,
+    "index": 131,
     "redacted": false,
     "blacklisted": false
   },
@@ -14065,7 +14853,7 @@
       }
     ],
     "hash": 3391101246,
-    "index": 127,
+    "index": 132,
     "redacted": false,
     "blacklisted": false
   },
@@ -14096,7 +14884,7 @@
       }
     ],
     "hash": 3391101247,
-    "index": 128,
+    "index": 133,
     "redacted": false,
     "blacklisted": false
   },
@@ -14149,7 +14937,7 @@
       }
     ],
     "hash": 3404874802,
-    "index": 21,
+    "index": 22,
     "redacted": false,
     "blacklisted": false
   },
@@ -14180,7 +14968,7 @@
       }
     ],
     "hash": 3405195928,
-    "index": 112,
+    "index": 116,
     "redacted": false,
     "blacklisted": false
   },
@@ -14211,7 +14999,7 @@
       }
     ],
     "hash": 3410130760,
-    "index": 133,
+    "index": 138,
     "redacted": false,
     "blacklisted": false
   },
@@ -14242,7 +15030,7 @@
       }
     ],
     "hash": 3410130761,
-    "index": 132,
+    "index": 137,
     "redacted": false,
     "blacklisted": false
   },
@@ -14273,7 +15061,7 @@
       }
     ],
     "hash": 3410130762,
-    "index": 135,
+    "index": 140,
     "redacted": false,
     "blacklisted": false
   },
@@ -14304,7 +15092,7 @@
       }
     ],
     "hash": 3410130763,
-    "index": 134,
+    "index": 139,
     "redacted": false,
     "blacklisted": false
   },
@@ -14335,7 +15123,7 @@
       }
     ],
     "hash": 3425963543,
-    "index": 63,
+    "index": 64,
     "redacted": false,
     "blacklisted": false
   },
@@ -14370,7 +15158,7 @@
       }
     ],
     "hash": 3434682754,
-    "index": 30,
+    "index": 31,
     "redacted": false,
     "blacklisted": false
   },
@@ -14423,7 +15211,7 @@
       }
     ],
     "hash": 3463282808,
-    "index": 190,
+    "index": 203,
     "redacted": false,
     "blacklisted": false
   },
@@ -14467,7 +15255,7 @@
       }
     ],
     "hash": 3472507275,
-    "index": 288,
+    "index": 303,
     "redacted": false,
     "blacklisted": false
   },
@@ -14498,7 +15286,7 @@
       }
     ],
     "hash": 3494964652,
-    "index": 220,
+    "index": 234,
     "redacted": false,
     "blacklisted": false
   },
@@ -14529,7 +15317,7 @@
       }
     ],
     "hash": 3544030696,
-    "index": 383,
+    "index": 407,
     "redacted": false,
     "blacklisted": false
   },
@@ -14560,7 +15348,7 @@
       }
     ],
     "hash": 3544030697,
-    "index": 384,
+    "index": 408,
     "redacted": false,
     "blacklisted": false
   },
@@ -14591,7 +15379,7 @@
       }
     ],
     "hash": 3544030703,
-    "index": 385,
+    "index": 409,
     "redacted": false,
     "blacklisted": false
   },
@@ -14622,7 +15410,7 @@
       }
     ],
     "hash": 3554267452,
-    "index": 356,
+    "index": 380,
     "redacted": false,
     "blacklisted": false
   },
@@ -14653,7 +15441,7 @@
       }
     ],
     "hash": 3554267453,
-    "index": 355,
+    "index": 379,
     "redacted": false,
     "blacklisted": false
   },
@@ -14684,7 +15472,7 @@
       }
     ],
     "hash": 3554267454,
-    "index": 354,
+    "index": 378,
     "redacted": false,
     "blacklisted": false
   },
@@ -14715,7 +15503,7 @@
       }
     ],
     "hash": 3560244332,
-    "index": 186,
+    "index": 196,
     "redacted": false,
     "blacklisted": false
   },
@@ -14796,7 +15584,7 @@
       }
     ],
     "hash": 3561601879,
-    "index": 94,
+    "index": 95,
     "redacted": false,
     "blacklisted": false
   },
@@ -14811,7 +15599,7 @@
         },
         "spawnPoint": 0,
         "destinationHash": 697502628,
-        "activityHash": 0,
+        "activityHash": 1738383283,
         "activityGraphHash": 697502628,
         "activityGraphNodeHash": 3059991999,
         "activityBubbleName": 0,
@@ -14827,7 +15615,7 @@
       }
     ],
     "hash": 3591757308,
-    "index": 55,
+    "index": 56,
     "redacted": false,
     "blacklisted": false
   },
@@ -14858,7 +15646,7 @@
       }
     ],
     "hash": 3646395807,
-    "index": 431,
+    "index": 455,
     "redacted": false,
     "blacklisted": false
   },
@@ -14889,7 +15677,7 @@
       }
     ],
     "hash": 3651103610,
-    "index": 225,
+    "index": 239,
     "redacted": false,
     "blacklisted": false
   },
@@ -14920,7 +15708,7 @@
       }
     ],
     "hash": 3698639472,
-    "index": 371,
+    "index": 395,
     "redacted": false,
     "blacklisted": false
   },
@@ -14951,7 +15739,7 @@
       }
     ],
     "hash": 3698639474,
-    "index": 373,
+    "index": 397,
     "redacted": false,
     "blacklisted": false
   },
@@ -14982,7 +15770,7 @@
       }
     ],
     "hash": 3698639475,
-    "index": 372,
+    "index": 396,
     "redacted": false,
     "blacklisted": false
   },
@@ -15013,7 +15801,7 @@
       }
     ],
     "hash": 3698756362,
-    "index": 164,
+    "index": 170,
     "redacted": false,
     "blacklisted": false
   },
@@ -15057,7 +15845,7 @@
       }
     ],
     "hash": 3715499805,
-    "index": 254,
+    "index": 269,
     "redacted": false,
     "blacklisted": false
   },
@@ -15088,7 +15876,7 @@
       }
     ],
     "hash": 3737730002,
-    "index": 240,
+    "index": 254,
     "redacted": false,
     "blacklisted": false
   },
@@ -15198,7 +15986,7 @@
       }
     ],
     "hash": 3743451003,
-    "index": 266,
+    "index": 281,
     "redacted": false,
     "blacklisted": false
   },
@@ -15229,7 +16017,7 @@
       }
     ],
     "hash": 3806515694,
-    "index": 217,
+    "index": 230,
     "redacted": false,
     "blacklisted": false
   },
@@ -15260,7 +16048,7 @@
       }
     ],
     "hash": 3813443484,
-    "index": 374,
+    "index": 398,
     "redacted": false,
     "blacklisted": false
   },
@@ -15291,7 +16079,7 @@
       }
     ],
     "hash": 3813443486,
-    "index": 376,
+    "index": 400,
     "redacted": false,
     "blacklisted": false
   },
@@ -15322,7 +16110,7 @@
       }
     ],
     "hash": 3813443487,
-    "index": 375,
+    "index": 399,
     "redacted": false,
     "blacklisted": false
   },
@@ -15366,7 +16154,38 @@
       }
     ],
     "hash": 3813576139,
-    "index": 294,
+    "index": 309,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3825082289": {
+    "vendorHash": 0,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 3990611421,
+        "activityHash": 920521905,
+        "activityGraphHash": 3990611421,
+        "activityGraphNodeHash": 1019449318,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "hash": 3825082289,
+    "index": 6,
     "redacted": false,
     "blacklisted": false
   },
@@ -15410,7 +16229,7 @@
       }
     ],
     "hash": 3837481029,
-    "index": 293,
+    "index": 308,
     "redacted": false,
     "blacklisted": false
   },
@@ -15463,7 +16282,38 @@
       }
     ],
     "hash": 3843231946,
-    "index": 22,
+    "index": 23,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3856248489": {
+    "vendorHash": 0,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 3607432451,
+        "activityHash": 679234423,
+        "activityGraphHash": 3607432451,
+        "activityGraphNodeHash": 3597357790,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "hash": 3856248489,
+    "index": 199,
     "redacted": false,
     "blacklisted": false
   },
@@ -15573,7 +16423,7 @@
       }
     ],
     "hash": 3872181278,
-    "index": 264,
+    "index": 279,
     "redacted": false,
     "blacklisted": false
   },
@@ -15604,7 +16454,7 @@
       }
     ],
     "hash": 3876001209,
-    "index": 377,
+    "index": 401,
     "redacted": false,
     "blacklisted": false
   },
@@ -15635,7 +16485,7 @@
       }
     ],
     "hash": 3876001214,
-    "index": 378,
+    "index": 402,
     "redacted": false,
     "blacklisted": false
   },
@@ -15666,7 +16516,7 @@
       }
     ],
     "hash": 3876001215,
-    "index": 379,
+    "index": 403,
     "redacted": false,
     "blacklisted": false
   },
@@ -15697,7 +16547,7 @@
       }
     ],
     "hash": 3881748758,
-    "index": 86,
+    "index": 87,
     "redacted": false,
     "blacklisted": false
   },
@@ -15728,7 +16578,7 @@
       }
     ],
     "hash": 3886409882,
-    "index": 360,
+    "index": 384,
     "redacted": false,
     "blacklisted": false
   },
@@ -15763,15 +16613,15 @@
         "activityPathDestination": 0,
         "navPointType": 0,
         "worldPosition": [
-          -407,
-          -56,
+          -395,
+          -76,
           96,
           0
         ]
       }
     ],
     "hash": 3907057846,
-    "index": 108,
+    "index": 109,
     "redacted": false,
     "blacklisted": false
   },
@@ -15802,7 +16652,7 @@
       }
     ],
     "hash": 3909495041,
-    "index": 449,
+    "index": 473,
     "redacted": false,
     "blacklisted": false
   },
@@ -15833,7 +16683,7 @@
       }
     ],
     "hash": 3916139826,
-    "index": 409,
+    "index": 433,
     "redacted": false,
     "blacklisted": false
   },
@@ -15864,7 +16714,7 @@
       }
     ],
     "hash": 3916139829,
-    "index": 408,
+    "index": 432,
     "redacted": false,
     "blacklisted": false
   },
@@ -15895,7 +16745,7 @@
       }
     ],
     "hash": 3916139831,
-    "index": 407,
+    "index": 431,
     "redacted": false,
     "blacklisted": false
   },
@@ -15939,7 +16789,7 @@
       }
     ],
     "hash": 3920411203,
-    "index": 286,
+    "index": 301,
     "redacted": false,
     "blacklisted": false
   },
@@ -15970,7 +16820,7 @@
       }
     ],
     "hash": 3923575762,
-    "index": 245,
+    "index": 260,
     "redacted": false,
     "blacklisted": false
   },
@@ -16080,7 +16930,7 @@
       }
     ],
     "hash": 3939429058,
-    "index": 274,
+    "index": 289,
     "redacted": false,
     "blacklisted": false
   },
@@ -16145,7 +16995,7 @@
       }
     ],
     "hash": 3943397972,
-    "index": 61,
+    "index": 62,
     "redacted": false,
     "blacklisted": false
   },
@@ -16189,7 +17039,7 @@
       }
     ],
     "hash": 3953148451,
-    "index": 183,
+    "index": 189,
     "redacted": false,
     "blacklisted": false
   },
@@ -16220,7 +17070,7 @@
       }
     ],
     "hash": 3970222260,
-    "index": 243,
+    "index": 258,
     "redacted": false,
     "blacklisted": false
   },
@@ -16273,7 +17123,7 @@
       }
     ],
     "hash": 3972215877,
-    "index": 168,
+    "index": 174,
     "redacted": false,
     "blacklisted": false
   },
@@ -16304,7 +17154,7 @@
       }
     ],
     "hash": 3987344100,
-    "index": 344,
+    "index": 368,
     "redacted": false,
     "blacklisted": false
   },
@@ -16335,7 +17185,7 @@
       }
     ],
     "hash": 3987344101,
-    "index": 343,
+    "index": 367,
     "redacted": false,
     "blacklisted": false
   },
@@ -16366,7 +17216,7 @@
       }
     ],
     "hash": 3987344102,
-    "index": 342,
+    "index": 366,
     "redacted": false,
     "blacklisted": false
   },
@@ -16397,7 +17247,7 @@
       }
     ],
     "hash": 3988344739,
-    "index": 80,
+    "index": 81,
     "redacted": false,
     "blacklisted": false
   },
@@ -16428,7 +17278,7 @@
       }
     ],
     "hash": 4045498286,
-    "index": 68,
+    "index": 69,
     "redacted": false,
     "blacklisted": false
   },
@@ -16472,7 +17322,7 @@
       }
     ],
     "hash": 4051439462,
-    "index": 281,
+    "index": 296,
     "redacted": false,
     "blacklisted": false
   },
@@ -16503,7 +17353,7 @@
       }
     ],
     "hash": 4056314256,
-    "index": 156,
+    "index": 162,
     "redacted": false,
     "blacklisted": false
   },
@@ -16548,7 +17398,7 @@
       }
     ],
     "hash": 4069056491,
-    "index": 54,
+    "index": 55,
     "redacted": false,
     "blacklisted": false
   },
@@ -16610,7 +17460,7 @@
       }
     ],
     "hash": 4108142393,
-    "index": 35,
+    "index": 36,
     "redacted": false,
     "blacklisted": false
   },
@@ -16641,7 +17491,7 @@
       }
     ],
     "hash": 4108142394,
-    "index": 34,
+    "index": 35,
     "redacted": false,
     "blacklisted": false
   },
@@ -16672,7 +17522,7 @@
       }
     ],
     "hash": 4108142395,
-    "index": 33,
+    "index": 34,
     "redacted": false,
     "blacklisted": false
   },
@@ -16703,7 +17553,7 @@
       }
     ],
     "hash": 4117651453,
-    "index": 175,
+    "index": 181,
     "redacted": false,
     "blacklisted": false
   },
@@ -16734,7 +17584,7 @@
       }
     ],
     "hash": 4129120371,
-    "index": 312,
+    "index": 336,
     "redacted": false,
     "blacklisted": false
   },
@@ -16765,7 +17615,7 @@
       }
     ],
     "hash": 4144220062,
-    "index": 195,
+    "index": 208,
     "redacted": false,
     "blacklisted": false
   },
@@ -16796,7 +17646,7 @@
       }
     ],
     "hash": 4159425208,
-    "index": 71,
+    "index": 72,
     "redacted": false,
     "blacklisted": false
   },
@@ -16827,7 +17677,7 @@
       }
     ],
     "hash": 4159425209,
-    "index": 70,
+    "index": 71,
     "redacted": false,
     "blacklisted": false
   },
@@ -16858,7 +17708,7 @@
       }
     ],
     "hash": 4159425211,
-    "index": 72,
+    "index": 73,
     "redacted": false,
     "blacklisted": false
   },
@@ -16889,7 +17739,7 @@
       }
     ],
     "hash": 4165160736,
-    "index": 391,
+    "index": 415,
     "redacted": false,
     "blacklisted": false
   },
@@ -16920,7 +17770,7 @@
       }
     ],
     "hash": 4165160741,
-    "index": 389,
+    "index": 413,
     "redacted": false,
     "blacklisted": false
   },
@@ -16951,7 +17801,7 @@
       }
     ],
     "hash": 4165160742,
-    "index": 390,
+    "index": 414,
     "redacted": false,
     "blacklisted": false
   },
@@ -17004,7 +17854,7 @@
       }
     ],
     "hash": 4169515443,
-    "index": 66,
+    "index": 67,
     "redacted": false,
     "blacklisted": false
   },
@@ -17035,7 +17885,7 @@
       }
     ],
     "hash": 4169791343,
-    "index": 420,
+    "index": 444,
     "redacted": false,
     "blacklisted": false
   },
@@ -17079,7 +17929,7 @@
       }
     ],
     "hash": 4177855422,
-    "index": 292,
+    "index": 307,
     "redacted": false,
     "blacklisted": false
   },
@@ -17132,7 +17982,117 @@
       }
     ],
     "hash": 4188848520,
-    "index": 174,
+    "index": 180,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "4204300143": {
+    "vendorHash": 765357505,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "Legendary Titan",
+          "name": "Saint-14",
+          "icon": "/common/destiny2_content/icons/c3cb40c2b36cccd2f6cf462f14c89736.png",
+          "iconSequences": [
+            {
+              "frames": [
+                "/common/destiny2_content/icons/c3cb40c2b36cccd2f6cf462f14c89736.png",
+                "/common/destiny2_content/icons/6aab4b8703d33b6c0a4f90b7e351c2fb.png",
+                "/common/destiny2_content/icons/de9dd7c68bd31ec20a3fd28edc23ad11.png"
+              ]
+            }
+          ],
+          "hasIcon": true
+        },
+        "smallTransparentIcon": "/common/destiny2_content/icons/c3cb40c2b36cccd2f6cf462f14c89736.png",
+        "mapIcon": "/common/destiny2_content/icons/6aab4b8703d33b6c0a4f90b7e351c2fb.png",
+        "largeTransparentIcon": "/common/destiny2_content/icons/de9dd7c68bd31ec20a3fd28edc23ad11.png",
+        "spawnPoint": 0,
+        "destinationHash": 1272484305,
+        "activityHash": 2999697936,
+        "activityGraphHash": 1272484305,
+        "activityGraphNodeHash": 0,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          181,
+          71,
+          6,
+          0
+        ]
+      },
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 0,
+        "activityHash": 0,
+        "activityGraphHash": 0,
+        "activityGraphNodeHash": 0,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 0,
+        "activityHash": 0,
+        "activityGraphHash": 0,
+        "activityGraphNodeHash": 0,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 0,
+        "activityHash": 0,
+        "activityGraphHash": 0,
+        "activityGraphNodeHash": 0,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "hash": 4204300143,
+    "index": 310,
     "redacted": false,
     "blacklisted": false
   },
@@ -17163,7 +18123,7 @@
       }
     ],
     "hash": 4204419159,
-    "index": 361,
+    "index": 385,
     "redacted": false,
     "blacklisted": false
   },
@@ -17194,7 +18154,7 @@
       }
     ],
     "hash": 4222545800,
-    "index": 43,
+    "index": 44,
     "redacted": false,
     "blacklisted": false
   },
@@ -17304,7 +18264,7 @@
       }
     ],
     "hash": 4223298530,
-    "index": 265,
+    "index": 280,
     "redacted": false,
     "blacklisted": false
   },
@@ -17335,7 +18295,7 @@
       }
     ],
     "hash": 4236180969,
-    "index": 11,
+    "index": 12,
     "redacted": false,
     "blacklisted": false
   },
@@ -17366,7 +18326,7 @@
       }
     ],
     "hash": 4236180970,
-    "index": 10,
+    "index": 11,
     "redacted": false,
     "blacklisted": false
   },
@@ -17397,7 +18357,7 @@
       }
     ],
     "hash": 4236180971,
-    "index": 9,
+    "index": 10,
     "redacted": false,
     "blacklisted": false
   },
@@ -17428,7 +18388,7 @@
       }
     ],
     "hash": 4243493920,
-    "index": 162,
+    "index": 168,
     "redacted": false,
     "blacklisted": false
   },
@@ -17473,7 +18433,7 @@
       }
     ],
     "hash": 4270587938,
-    "index": 104,
+    "index": 105,
     "redacted": false,
     "blacklisted": false
   },
@@ -17574,7 +18534,7 @@
       }
     ],
     "hash": 4277715990,
-    "index": 182,
+    "index": 188,
     "redacted": false,
     "blacklisted": false
   },
@@ -17605,7 +18565,7 @@
       }
     ],
     "hash": 4278512353,
-    "index": 178,
+    "index": 184,
     "redacted": false,
     "blacklisted": false
   },
@@ -17702,7 +18662,7 @@
       }
     ],
     "hash": 4280275996,
-    "index": 297,
+    "index": 321,
     "redacted": false,
     "blacklisted": false
   },
@@ -17733,7 +18693,7 @@
       }
     ],
     "hash": 4288668521,
-    "index": 454,
+    "index": 478,
     "redacted": false,
     "blacklisted": false
   },
@@ -17764,7 +18724,7 @@
       }
     ],
     "hash": 4288668522,
-    "index": 455,
+    "index": 479,
     "redacted": false,
     "blacklisted": false
   },
@@ -17795,7 +18755,7 @@
       }
     ],
     "hash": 4288668523,
-    "index": 456,
+    "index": 480,
     "redacted": false,
     "blacklisted": false
   },
@@ -17826,7 +18786,7 @@
       }
     ],
     "hash": 4288668524,
-    "index": 457,
+    "index": 481,
     "redacted": false,
     "blacklisted": false
   },
@@ -17857,7 +18817,7 @@
       }
     ],
     "hash": 4289580032,
-    "index": 211,
+    "index": 224,
     "redacted": false,
     "blacklisted": false
   },
@@ -17888,7 +18848,7 @@
       }
     ],
     "hash": 4289580033,
-    "index": 210,
+    "index": 223,
     "redacted": false,
     "blacklisted": false
   },
@@ -17919,7 +18879,7 @@
       }
     ],
     "hash": 4289580035,
-    "index": 212,
+    "index": 225,
     "redacted": false,
     "blacklisted": false
   }
