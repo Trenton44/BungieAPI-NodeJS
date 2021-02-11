@@ -11,6 +11,9 @@ const axios = require('axios');
 const https = require("https");
 const fs = require('fs');
 const dotenv = require("dotenv");
+const crypto = require("crypto");
+
+const D2ManifestVersion = require(root+"/ManifestVersion.json");
 const D2Components = require(serverRoot+"/D2Components.js");
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
@@ -225,16 +228,35 @@ function parseProfileComponents(data){
 exports.parseProfileComponents = parseProfileComponents;
 //Used to overwrite token data currently stored inside the user's cookie.
 function saveTokenData(request, tokenData){
-  request.session.data.tokenData = tokenData;
-  request.session.data.tokenData.tokenExpiration = new Date().getTime()+((tokenData.expires_in)*1000); //took 5 minutes off the given expiration time to make sure it updated before actual expiration.
-  request.session.data.tokenData.refreshExpiration = new Date().getTime()+(tokenData.refresh_expires_in*1000);
-  request.session.cookie.maxAge = request.session.data.tokenData.refreshExpiration;
-  console.log("New token expiration date: "+new Date(request.session.data.tokenData.tokenExpiration));
-  console.log("New refresh expiration date: "+new Date(request.session.data.tokenData.refreshExpiration));
+  tokenData.tokenExpiration = new Date().getTime()+((tokenData.expires_in)*1000); //took 5 minutes off the given expiration time to make sure it updated before actual expiration.
+  tokenData.refreshExpiration = new Date().getTime()+(tokenData.refresh_expires_in*1000);
+  request.session.cookie.maxAge = tokenData.refreshExpiration;
+  request.session.data.tokenData = encryptData(tokenData);
   return true;
 }
 exports.saveTokenData = saveTokenData;
-
+function encryptData(data){
+  data = JSON.stringify(data);
+  var iv = Buffer.from(crypto.randomBytes(16));
+  let cipher = crypto.createCipheriv(process.env.CipherAlgorithm,Buffer.from(process.env.mongopvk,'hex'),iv);
+  let encryptedData = cipher.update(data);
+  encryptedData = Buffer.concat([encryptedData, cipher.final()]);
+  return { iv: iv.toString('hex'),data:encryptedData.toString('hex') };
+};
+function decryptData(data){
+  let iv = Buffer.from(data.iv,'hex');
+  let encrypted = Buffer.from(data.data,'hex');
+  let decipher = crypto.createDecipheriv(process.env.CipherAlgorithm, Buffer.from(process.env.mongopvk,'hex'), iv);
+  let result = decipher.update(encrypted);
+  result = Buffer.concat([result,decipher.final()]);
+  return result.toString();
+};
+function retrieveAccessToken(request){
+  console.log("Retrieving access token.");
+  var result = JSON.parse(decryptData(request.session.data.tokenData));
+  return result.access_token;
+};
+exports.retrieveAccessToken = retrieveAccessToken;
 //Loads the current d2 manifest from bungie api and saves to root.
 //Note: the manifest file as a whole is large enough to crash notepad,
 //so this splits each piece of the manifest into it's own json file so it can be
@@ -242,14 +264,20 @@ exports.saveTokenData = saveTokenData;
 async function loadManifest(){
   var path = bungieRoot+"/Destiny2/Manifest/";
   console.log("Obtaining Destiny Manifest from Bungie.");
-  var data = await getRequest(path);
-  console.log("proceeding to next request.");
-  var path = bungieCommon+data.data.Response.jsonWorldContentPaths.en;
-  var result = await getRequest(path);
-  console.log("both completed.");
+  var manifestversion;
   await getRequest(path).then(function(result){
-    var d2contentManifest = bungieCommon+result.data.Response.jsonWorldContentPaths.en;
-    return getRequest(d2contentManifest).then(function(result){
+    result = result.data;
+    console.log(result.Response.version);
+    console.log(D2ManifestVersion.version);
+    if(result.Response.version === D2ManifestVersion.version){
+      console.log("Versions are the same.");
+      return true;
+    }
+    manifestversion = result.Response.version;
+    console.log("new version of the manifest has been pushed, pulling changes.");
+    console.log(result.Response.jsonWorldContentPaths.en);
+    path = bungieCommon+result.Response.jsonWorldContentPaths.en;
+    return getRequest(path).then(function(result){
       var manifestItems = Object.keys(result.data);
       for(i in result.data){
         console.log("Iteration: "+i);
@@ -259,8 +287,12 @@ async function loadManifest(){
           console.error(error);
         });
       }
+      console.log("Manifest loading finished.");
+      fs.writeFileSync(root+"/ManifestVersion.json", JSON.stringify({version: manifestversion}), function(error){
+        console.error(error);
+      });
       return true;
-    });
-  });
+    }).catch(function(error){ console.error(error); return false;});
+  }).catch(function(error){ console.error(error); return false;});
 };
 exports.loadManifest = loadManifest;

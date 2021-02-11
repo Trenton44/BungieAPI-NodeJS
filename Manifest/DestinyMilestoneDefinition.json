@@ -63,7 +63,8 @@
     "displayProperties": {
       "description": "Complete Empire Hunts as part of a step on an Empire Hunt quest.",
       "name": "Empire Hunt Challenge",
-      "hasIcon": false
+      "icon": "/common/destiny2_content/icons/DestinyMilestoneDefinition_e81c57d2b901fe2570a6c9ab88975ab3.png",
+      "hasIcon": true
     },
     "milestoneType": 3,
     "recruitable": false,
@@ -289,7 +290,7 @@
     ],
     "defaultOrder": 2000,
     "hash": 291895718,
-    "index": 38,
+    "index": 39,
     "redacted": false,
     "blacklisted": false
   },
@@ -437,6 +438,76 @@
     "redacted": false,
     "blacklisted": false
   },
+  "825965416": {
+    "displayProperties": {
+      "description": "Defeat the Kell Echo.",
+      "name": "Weekly Completion Challenge",
+      "icon": "/common/destiny2_content/icons/DestinyMilestoneDefinition_7b2e832d6fa3513b3c3e55f69aaeee40.png",
+      "hasIcon": true
+    },
+    "milestoneType": 3,
+    "recruitable": false,
+    "friendlyName": "MILESTONE_WEEKLY_PROPHECY_DUNGEON_PINNACLE",
+    "showInExplorer": false,
+    "showInMilestones": true,
+    "explorePrioritizesActivityImage": false,
+    "hasPredictableDates": true,
+    "rewards": {
+      "326786556": {
+        "categoryHash": 326786556,
+        "categoryIdentifier": "ChallengeSourcedReward",
+        "displayProperties": {
+          "description": "",
+          "name": "Rewards",
+          "hasIcon": false
+        },
+        "rewardEntries": {
+          "326786556": {
+            "rewardEntryHash": 326786556,
+            "rewardEntryIdentifier": "ChallengeSourcedReward",
+            "items": [
+              {
+                "itemHash": 73143230,
+                "quantity": 0
+              }
+            ],
+            "displayProperties": {
+              "description": "Defeat the Kell Echo.",
+              "name": "Weekly Completion Challenge",
+              "hasIcon": false
+            },
+            "order": 0,
+            "earnedUnlockHash": 0,
+            "redeemedUnlockHash": 0
+          }
+        },
+        "order": 0
+      }
+    },
+    "isInGameMilestone": false,
+    "activities": [
+      {
+        "activityHash": 1077850348,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2252051608,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 1737926756,
+            "activityGraphNodeHash": 1553550479
+          }
+        ]
+      }
+    ],
+    "defaultOrder": 2000,
+    "hash": 825965416,
+    "index": 40,
+    "redacted": false,
+    "blacklisted": false
+  },
   "979073379": {
     "displayProperties": {
       "description": "Complete an Exo Challenge.",
@@ -502,6 +573,21 @@
         ]
       },
       {
+        "activityHash": 3959604832,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2112118065,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 1729879943,
+            "activityGraphNodeHash": 4193338934
+          }
+        ]
+      },
+      {
         "activityHash": 2361093350,
         "challenges": [
           {
@@ -534,7 +620,7 @@
     ],
     "defaultOrder": 2000,
     "hash": 979073379,
-    "index": 34,
+    "index": 35,
     "redacted": false,
     "blacklisted": false
   },
@@ -567,6 +653,77 @@
     "defaultOrder": 100,
     "hash": 1002733485,
     "index": 5,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1086730368": {
+    "displayProperties": {
+      "description": "Complete the Harbinger activity this week.",
+      "name": "Weekly Harbinger Challenge",
+      "icon": "/common/destiny2_content/icons/DestinyMilestoneDefinition_a9cbb874ef106481db95ae734b838aac.png",
+      "hasIcon": true
+    },
+    "image": "/img/destiny_content/pgcr/edz_exotic_harbinger.jpg",
+    "milestoneType": 3,
+    "recruitable": false,
+    "friendlyName": "MILESTONE_WEEKLY_HARBINGER_CHALLENGE",
+    "showInExplorer": false,
+    "showInMilestones": true,
+    "explorePrioritizesActivityImage": false,
+    "hasPredictableDates": true,
+    "rewards": {
+      "326786556": {
+        "categoryHash": 326786556,
+        "categoryIdentifier": "ChallengeSourcedReward",
+        "displayProperties": {
+          "description": "",
+          "name": "Rewards",
+          "hasIcon": false
+        },
+        "rewardEntries": {
+          "326786556": {
+            "rewardEntryHash": 326786556,
+            "rewardEntryIdentifier": "ChallengeSourcedReward",
+            "items": [
+              {
+                "itemHash": 73143230,
+                "quantity": 1
+              }
+            ],
+            "displayProperties": {
+              "description": "Complete the Harbinger activity this week.",
+              "name": "Weekly Harbinger Challenge",
+              "hasIcon": false
+            },
+            "order": 0,
+            "earnedUnlockHash": 0,
+            "redeemedUnlockHash": 0
+          }
+        },
+        "order": 0
+      }
+    },
+    "isInGameMilestone": false,
+    "activities": [
+      {
+        "activityHash": 1738383283,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 1259975935,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 697502628,
+            "activityGraphNodeHash": 3059991999
+          }
+        ]
+      }
+    ],
+    "defaultOrder": 2000,
+    "hash": 1086730368,
+    "index": 41,
     "redacted": false,
     "blacklisted": false
   },
@@ -684,7 +841,7 @@
     ],
     "defaultOrder": 2000,
     "hash": 1368032265,
-    "index": 26,
+    "index": 27,
     "redacted": false,
     "blacklisted": false
   },
@@ -755,7 +912,7 @@
     ],
     "defaultOrder": 2000,
     "hash": 1437935813,
-    "index": 28,
+    "index": 29,
     "redacted": false,
     "blacklisted": false
   },
@@ -763,7 +920,7 @@
     "displayProperties": {
       "description": "Complete an Exo Challenge.",
       "name": "Weekly Exo Challenge",
-      "icon": "/common/destiny2_content/icons/DestinyMilestoneDefinition_fbcc7a56cc959eb747185e6bae81caa0.png",
+      "icon": "/common/destiny2_content/icons/DestinyMilestoneDefinition_6d37f71f854148668a6e3233d5fa95da.png",
       "hasIcon": true
     },
     "image": "/img/destiny_content/pgcr/social_traveler.jpg",
@@ -824,6 +981,21 @@
         ]
       },
       {
+        "activityHash": 3959604832,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 4040851934,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 1729879943,
+            "activityGraphNodeHash": 4193338934
+          }
+        ]
+      },
+      {
         "activityHash": 2361093350,
         "challenges": [
           {
@@ -856,7 +1028,7 @@
     ],
     "defaultOrder": 2000,
     "hash": 1713200903,
-    "index": 35,
+    "index": 36,
     "redacted": false,
     "blacklisted": false
   },
@@ -932,7 +1104,7 @@
     ],
     "defaultOrder": 2000,
     "hash": 1762739032,
-    "index": 32,
+    "index": 33,
     "redacted": false,
     "blacklisted": false
   },
@@ -1098,12 +1270,187 @@
         "activityGraphNodes": [
           {
             "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 3160621859
+            "activityGraphNodeHash": 904388514
           }
         ]
       },
       {
         "activityHash": 3381711459,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": []
+      },
+      {
+        "activityHash": 1203950596,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 1203950599,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 1203950598,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 1203950593,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 1203950592,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 904388514
+          }
+        ]
+      },
+      {
+        "activityHash": 2112435491,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 2629153579
+          }
+        ]
+      },
+      {
+        "activityHash": 3293630128,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 3293630131,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 3293630130,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 3293630133,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 3293630132,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 904388514
+          }
+        ]
+      },
+      {
+        "activityHash": 676886831,
         "challenges": [
           {
             "challengeObjectiveHash": 2443315975,
@@ -1188,7 +1535,7 @@
         "activityGraphNodes": [
           {
             "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 3160621859
+            "activityGraphNodeHash": 904388514
           }
         ]
       },
@@ -1200,7 +1547,12 @@
             "completeUnlockHash": 0
           }
         ],
-        "activityGraphNodes": []
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 2629153579
+          }
+        ]
       },
       {
         "activityHash": 3812135455,
@@ -1273,7 +1625,7 @@
         "activityGraphNodes": [
           {
             "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 3160621859
+            "activityGraphNodeHash": 904388514
           }
         ]
       },
@@ -1285,12 +1637,7 @@
             "completeUnlockHash": 0
           }
         ],
-        "activityGraphNodes": [
-          {
-            "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 2629153579
-          }
-        ]
+        "activityGraphNodes": []
       },
       {
         "activityHash": 1495545952,
@@ -1363,7 +1710,7 @@
         "activityGraphNodes": [
           {
             "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 3160621859
+            "activityGraphNodeHash": 904388514
           }
         ]
       },
@@ -1375,12 +1722,7 @@
             "completeUnlockHash": 0
           }
         ],
-        "activityGraphNodes": [
-          {
-            "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 2629153579
-          }
-        ]
+        "activityGraphNodes": []
       },
       {
         "activityHash": 3029388708,
@@ -1453,7 +1795,7 @@
         "activityGraphNodes": [
           {
             "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 3160621859
+            "activityGraphNodeHash": 904388514
           }
         ]
       },
@@ -1465,7 +1807,12 @@
             "completeUnlockHash": 0
           }
         ],
-        "activityGraphNodes": []
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 2629153579
+          }
+        ]
       },
       {
         "activityHash": 2599001915,
@@ -1538,7 +1885,7 @@
         "activityGraphNodes": [
           {
             "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 3160621859
+            "activityGraphNodeHash": 904388514
           }
         ]
       },
@@ -1550,12 +1897,7 @@
             "completeUnlockHash": 0
           }
         ],
-        "activityGraphNodes": [
-          {
-            "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 2629153579
-          }
-        ]
+        "activityGraphNodes": []
       },
       {
         "activityHash": 3233498450,
@@ -1628,12 +1970,97 @@
         "activityGraphNodes": [
           {
             "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 3160621859
+            "activityGraphNodeHash": 904388514
           }
         ]
       },
       {
         "activityHash": 707920309,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": []
+      },
+      {
+        "activityHash": 2103025319,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 2103025316,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 2103025317,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 2103025314,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 2103025315,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 904388514
+          }
+        ]
+      },
+      {
+        "activityHash": 3418624832,
         "challenges": [
           {
             "challengeObjectiveHash": 2443315975,
@@ -1718,12 +2145,97 @@
         "activityGraphNodes": [
           {
             "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 3160621859
+            "activityGraphNodeHash": 904388514
           }
         ]
       },
       {
         "activityHash": 89113250,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": []
+      },
+      {
+        "activityHash": 557845330,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 557845329,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 557845328,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 557845335,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 557845334,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2443315975,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 904388514
+          }
+        ]
+      },
+      {
+        "activityHash": 3871967157,
         "challenges": [
           {
             "challengeObjectiveHash": 2443315975,
@@ -1736,71 +2248,11 @@
             "activityGraphNodeHash": 2629153579
           }
         ]
-      },
-      {
-        "activityHash": 557845330,
-        "challenges": [
-          {
-            "challengeObjectiveHash": 2443315975,
-            "completeUnlockHash": 0
-          }
-        ],
-        "activityGraphNodes": []
-      },
-      {
-        "activityHash": 557845329,
-        "challenges": [
-          {
-            "challengeObjectiveHash": 2443315975,
-            "completeUnlockHash": 0
-          }
-        ],
-        "activityGraphNodes": []
-      },
-      {
-        "activityHash": 557845328,
-        "challenges": [
-          {
-            "challengeObjectiveHash": 2443315975,
-            "completeUnlockHash": 0
-          }
-        ],
-        "activityGraphNodes": []
-      },
-      {
-        "activityHash": 557845335,
-        "challenges": [
-          {
-            "challengeObjectiveHash": 2443315975,
-            "completeUnlockHash": 0
-          }
-        ],
-        "activityGraphNodes": []
-      },
-      {
-        "activityHash": 557845334,
-        "challenges": [
-          {
-            "challengeObjectiveHash": 2443315975,
-            "completeUnlockHash": 0
-          }
-        ],
-        "activityGraphNodes": []
-      },
-      {
-        "activityHash": 3871967157,
-        "challenges": [
-          {
-            "challengeObjectiveHash": 2443315975,
-            "completeUnlockHash": 0
-          }
-        ],
-        "activityGraphNodes": []
       }
     ],
     "defaultOrder": 5000,
     "hash": 1942283261,
-    "index": 23,
+    "index": 24,
     "redacted": false,
     "blacklisted": false
   },
@@ -1924,12 +2376,187 @@
         "activityGraphNodes": [
           {
             "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 3160621859
+            "activityGraphNodeHash": 904388514
           }
         ]
       },
       {
         "activityHash": 3381711459,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": []
+      },
+      {
+        "activityHash": 1203950596,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 1203950599,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 1203950598,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 1203950593,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 1203950592,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 904388514
+          }
+        ]
+      },
+      {
+        "activityHash": 2112435491,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 2629153579
+          }
+        ]
+      },
+      {
+        "activityHash": 3293630128,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 3293630131,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 3293630130,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 3293630133,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 3293630132,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 904388514
+          }
+        ]
+      },
+      {
+        "activityHash": 676886831,
         "challenges": [
           {
             "challengeObjectiveHash": 2498962144,
@@ -2014,7 +2641,7 @@
         "activityGraphNodes": [
           {
             "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 3160621859
+            "activityGraphNodeHash": 904388514
           }
         ]
       },
@@ -2026,7 +2653,12 @@
             "completeUnlockHash": 0
           }
         ],
-        "activityGraphNodes": []
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 2629153579
+          }
+        ]
       },
       {
         "activityHash": 3812135455,
@@ -2099,7 +2731,7 @@
         "activityGraphNodes": [
           {
             "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 3160621859
+            "activityGraphNodeHash": 904388514
           }
         ]
       },
@@ -2111,12 +2743,7 @@
             "completeUnlockHash": 0
           }
         ],
-        "activityGraphNodes": [
-          {
-            "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 2629153579
-          }
-        ]
+        "activityGraphNodes": []
       },
       {
         "activityHash": 1495545952,
@@ -2189,7 +2816,7 @@
         "activityGraphNodes": [
           {
             "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 3160621859
+            "activityGraphNodeHash": 904388514
           }
         ]
       },
@@ -2201,12 +2828,7 @@
             "completeUnlockHash": 0
           }
         ],
-        "activityGraphNodes": [
-          {
-            "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 2629153579
-          }
-        ]
+        "activityGraphNodes": []
       },
       {
         "activityHash": 3029388708,
@@ -2279,7 +2901,7 @@
         "activityGraphNodes": [
           {
             "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 3160621859
+            "activityGraphNodeHash": 904388514
           }
         ]
       },
@@ -2291,7 +2913,12 @@
             "completeUnlockHash": 0
           }
         ],
-        "activityGraphNodes": []
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 2629153579
+          }
+        ]
       },
       {
         "activityHash": 2599001915,
@@ -2364,7 +2991,7 @@
         "activityGraphNodes": [
           {
             "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 3160621859
+            "activityGraphNodeHash": 904388514
           }
         ]
       },
@@ -2376,12 +3003,7 @@
             "completeUnlockHash": 0
           }
         ],
-        "activityGraphNodes": [
-          {
-            "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 2629153579
-          }
-        ]
+        "activityGraphNodes": []
       },
       {
         "activityHash": 3233498450,
@@ -2454,12 +3076,97 @@
         "activityGraphNodes": [
           {
             "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 3160621859
+            "activityGraphNodeHash": 904388514
           }
         ]
       },
       {
         "activityHash": 707920309,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": []
+      },
+      {
+        "activityHash": 2103025319,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 2103025316,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 2103025317,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 2103025314,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 2103025315,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 904388514
+          }
+        ]
+      },
+      {
+        "activityHash": 3418624832,
         "challenges": [
           {
             "challengeObjectiveHash": 2498962144,
@@ -2544,12 +3251,97 @@
         "activityGraphNodes": [
           {
             "activityGraphHash": 3129078390,
-            "activityGraphNodeHash": 3160621859
+            "activityGraphNodeHash": 904388514
           }
         ]
       },
       {
         "activityHash": 89113250,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": []
+      },
+      {
+        "activityHash": 557845330,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 557845329,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 557845328,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 557845335,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 3160621859
+          }
+        ]
+      },
+      {
+        "activityHash": 557845334,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 2498962144,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 904388514
+          }
+        ]
+      },
+      {
+        "activityHash": 3871967157,
         "challenges": [
           {
             "challengeObjectiveHash": 2498962144,
@@ -2562,71 +3354,11 @@
             "activityGraphNodeHash": 2629153579
           }
         ]
-      },
-      {
-        "activityHash": 557845330,
-        "challenges": [
-          {
-            "challengeObjectiveHash": 2498962144,
-            "completeUnlockHash": 0
-          }
-        ],
-        "activityGraphNodes": []
-      },
-      {
-        "activityHash": 557845329,
-        "challenges": [
-          {
-            "challengeObjectiveHash": 2498962144,
-            "completeUnlockHash": 0
-          }
-        ],
-        "activityGraphNodes": []
-      },
-      {
-        "activityHash": 557845328,
-        "challenges": [
-          {
-            "challengeObjectiveHash": 2498962144,
-            "completeUnlockHash": 0
-          }
-        ],
-        "activityGraphNodes": []
-      },
-      {
-        "activityHash": 557845335,
-        "challenges": [
-          {
-            "challengeObjectiveHash": 2498962144,
-            "completeUnlockHash": 0
-          }
-        ],
-        "activityGraphNodes": []
-      },
-      {
-        "activityHash": 557845334,
-        "challenges": [
-          {
-            "challengeObjectiveHash": 2498962144,
-            "completeUnlockHash": 0
-          }
-        ],
-        "activityGraphNodes": []
-      },
-      {
-        "activityHash": 3871967157,
-        "challenges": [
-          {
-            "challengeObjectiveHash": 2498962144,
-            "completeUnlockHash": 0
-          }
-        ],
-        "activityGraphNodes": []
       }
     ],
     "defaultOrder": 5000,
     "hash": 2029743966,
-    "index": 24,
+    "index": 25,
     "redacted": false,
     "blacklisted": false
   },
@@ -2727,7 +3459,7 @@
               "quantity": 1
             },
             {
-              "itemHash": 491261343,
+              "itemHash": 2246571627,
               "quantity": 1
             },
             {
@@ -2814,6 +3546,66 @@
     "defaultOrder": 6000,
     "hash": 2594202463,
     "index": 11,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2647205950": {
+    "displayProperties": {
+      "description": "Complete the Battleground: Behemoth activity on Nessus.",
+      "name": "Battleground: Behemoth",
+      "icon": "/common/destiny2_content/icons/8ca9cbc65ecf46b9d9c2dec2636a6a4d.png",
+      "hasIcon": true
+    },
+    "milestoneType": 1,
+    "recruitable": false,
+    "showInExplorer": false,
+    "showInMilestones": true,
+    "explorePrioritizesActivityImage": false,
+    "hasPredictableDates": false,
+    "quests": {
+      "2691512830": {
+        "questItemHash": 2691512830,
+        "displayProperties": {
+          "description": "Complete the Battleground: Behemoth activity on Nessus.",
+          "name": "Battleground: Behemoth",
+          "icon": "/common/destiny2_content/icons/8ca9cbc65ecf46b9d9c2dec2636a6a4d.png",
+          "hasIcon": true
+        },
+        "questRewards": {
+          "items": [
+            {
+              "itemHash": 3114385607,
+              "quantity": 1
+            },
+            {
+              "itemHash": 0,
+              "quantity": 0
+            },
+            {
+              "itemHash": 0,
+              "quantity": 0
+            },
+            {
+              "itemHash": 0,
+              "quantity": 0
+            },
+            {
+              "itemHash": 0,
+              "quantity": 0
+            },
+            {
+              "itemHash": 0,
+              "quantity": 0
+            }
+          ]
+        },
+        "trackingUnlockValueHash": 0
+      }
+    },
+    "isInGameMilestone": true,
+    "defaultOrder": 100,
+    "hash": 2647205950,
+    "index": 23,
     "redacted": false,
     "blacklisted": false
   },
@@ -2941,7 +3733,7 @@
     ],
     "defaultOrder": 2000,
     "hash": 2897662285,
-    "index": 36,
+    "index": 37,
     "redacted": false,
     "blacklisted": false
   },
@@ -2949,7 +3741,8 @@
     "displayProperties": {
       "description": "Complete Empire Hunts as part of a step on an Empire Hunt quest.",
       "name": "Empire Hunt Challenge",
-      "hasIcon": false
+      "icon": "/common/destiny2_content/icons/DestinyMilestoneDefinition_e81c57d2b901fe2570a6c9ab88975ab3.png",
+      "hasIcon": true
     },
     "milestoneType": 3,
     "recruitable": false,
@@ -3025,7 +3818,7 @@
     ],
     "defaultOrder": 2000,
     "hash": 3002126300,
-    "index": 37,
+    "index": 38,
     "redacted": false,
     "blacklisted": false
   },
@@ -3374,7 +4167,7 @@
     ],
     "defaultOrder": 2000,
     "hash": 3312774044,
-    "index": 27,
+    "index": 28,
     "redacted": false,
     "blacklisted": false
   },
@@ -3442,7 +4235,7 @@
     ],
     "defaultOrder": 5000,
     "hash": 3448738070,
-    "index": 25,
+    "index": 26,
     "redacted": false,
     "blacklisted": false
   },
@@ -3472,7 +4265,7 @@
           "items": [
             {
               "vendorHash": 3347378076,
-              "vendorItemIndex": 152,
+              "vendorItemIndex": 18,
               "itemHash": 1260977951,
               "quantity": 1
             }
@@ -3555,7 +4348,7 @@
     ],
     "defaultOrder": 2000,
     "hash": 3628293753,
-    "index": 31,
+    "index": 32,
     "redacted": false,
     "blacklisted": false
   },
@@ -3626,7 +4419,7 @@
     ],
     "defaultOrder": 2000,
     "hash": 3628293755,
-    "index": 30,
+    "index": 31,
     "redacted": false,
     "blacklisted": false
   },
@@ -3697,7 +4490,7 @@
     ],
     "defaultOrder": 2000,
     "hash": 3628293757,
-    "index": 29,
+    "index": 30,
     "redacted": false,
     "blacklisted": false
   },
@@ -3868,7 +4661,7 @@
     ],
     "defaultOrder": 2000,
     "hash": 3853463728,
-    "index": 33,
+    "index": 34,
     "redacted": false,
     "blacklisted": false
   },

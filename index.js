@@ -27,7 +27,7 @@ const bungieCommon = "https://www.bungie.net";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
 console.log("Finished index.js preload.");
-const d2api = require(serverRoot+"/D2APIfunctions");
+var d2api = require(serverRoot+"/D2APIfunctions");
 const d2components = require(serverRoot+"/D2Components.js");
 const ServerResponse = require(serverRoot+"/Server Responses.js");
 
@@ -171,7 +171,7 @@ app.post("/character/lockItem",async function(request, response){
     state: !request.body.item.lockState,
   }
   var body = JSON.stringify(body);
-  d2api.postRequest(path,body,request.session.data.tokenData.access_token).then(function(result){
+  d2api.postRequest(path,body,d2api.retrieveAccessToken(request)).then(function(result){
     response.status(200).json(result.data.Response);
   }).catch(function(error){
     console.log(error);
@@ -192,12 +192,12 @@ app.post("/character/transferItem",async function(request, response){
     membershipType: memType,
   };
   console.log(body);
-  d2api.postRequest(path,body,request.session.data.tokenData.access_token).then(async function(result){
+  d2api.postRequest(path,body,d2api.retrieveAccessToken(request)).then(async function(result){
     console.log(result.data);
     body.transferToVault = false;
     body.characterId = request.body.characterReceiving;
     await sleep(1000);
-    d2api.postRequest(path,body,request.session.data.tokenData.access_token).then(function(result){
+    d2api.postRequest(path,body,d2api.retrieveAccessToken(request)).then(function(result){
       console.log(result.data);
       response.status(200).json(result.data.Response);
     }).catch(function(error){
@@ -222,7 +222,7 @@ app.post("/character/equipItem",async function(request, response){
   };
   console.log(body);
   var body = JSON.stringify(body);
-  d2api.postRequest(path,body,request.session.data.tokenData.access_token).then(function(result){
+  d2api.postRequest(path,body,d2api.retrieveAccessToken(request)).then(function(result){
     response.status(200).json(result.data.Response);
   }).catch(function(error){
     console.log(error);
@@ -241,14 +241,24 @@ app.get("/character/equipItems",async function(request, response){
     membershipType: memType,
   };
   var body = JSON.stringify(body);
-  d2api.postRequest(path,body,request.session.data.tokenData.access_token).then(function(result){
+  d2api.postRequest(path,body,d2api.retrieveAccessToken(request)).then(function(result){
     response.status(200).json(result.data.Response);
   }).catch(function(error){
     console.log(error);
     response.status(400).json(error);
   });
 });
-httpsServer.listen(process.env.PORT);
+d2api.loadManifest().then(function(result){
+  console.log(result);
+  console.log("manifest retrieval was successful, engaging server responses.");
+  d2api = require(serverRoot+"/D2APIfunctions");
+  httpsServer.listen(process.env.PORT);
+
+}).catch(function(error){
+  console.error("Unable to load manifest.");
+  console.error(error);
+});
+
 
 function verifyState(request){
   if(request.query.state !== request.session.data.state){
@@ -264,7 +274,7 @@ function verifyState(request){
 //Makes bungie api requests, then parses and returns data.
 function characterComponentRequest(request, components,cID){
   var userdata =request.session.data.userdata;
-  var token = request.session.data.tokenData.access_token;
+  var token = d2api.retrieveAccessToken(request);
   var memType = userdata[userdata.primaryMembershipId].membershipType;
   var d2ID = userdata.primaryMembershipId;
   return d2api.getCharacterAuth(memType,d2ID,cID,components,token).then(function(result){
@@ -279,7 +289,7 @@ function characterComponentRequest(request, components,cID){
 };
 function profileComponentRequest(request, components){
   var userdata =request.session.data.userdata;
-  var token = request.session.data.tokenData.access_token;
+  var token = d2api.retrieveAccessToken(request);
   var memType = userdata[userdata.primaryMembershipId].membershipType;
   var d2ID = userdata.primaryMembershipId;
   return d2api.getDestinyProfileAuth(memType,d2ID,components,token).then(function(result){
@@ -293,7 +303,7 @@ function profileComponentRequest(request, components){
   });
 };
 function getBasicBnetInfo(request){
-  var token = request.session.data.tokenData.access_token;
+  var token = d2api.retrieveAccessToken(request);
   console.log("Accessing bnet user data");
   return d2api.getBungieCurrentUserData(token).then(function(result){
     console.log("obtained data");
@@ -344,6 +354,7 @@ function authorizationCheck(request,response,next){
   }
 }
 async function prepSessionData(request,response,next){
+  console.log(Buffer.from(crypto.randomBytes(32)).toString('hex'));
   var reset = false;
   switch(request.session.data){
     case undefined:

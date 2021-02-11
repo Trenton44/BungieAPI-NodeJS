@@ -2,7 +2,7 @@
   "546319": {
     "displayProperties": {
       "description": "The fastest completion time for \"Deep Stone Crypt\" this week.",
-      "name": "\"Deep Stone Crypt\" time",
+      "name": "Deep Stone Crypt Time Trial",
       "icon": "/common/destiny2_content/icons/4c08762f90f0da8216b744d316e6dae5.png",
       "iconSequences": [
         {
@@ -102,7 +102,7 @@
   "30426544": {
     "displayProperties": {
       "description": "The number of targets eliminated as a Dawnblade.\n\nTracks from Season 1 onward.",
-      "name": "Dawnblade Final Blows",
+      "name": "Dawnblade defeats",
       "icon": "/common/destiny2_content/icons/e7eadf253fdf8e1a60edd7fb9ec1e4af.png",
       "iconSequences": [
         {
@@ -157,7 +157,7 @@
       2755216039
     ],
     "hash": 40546883,
-    "index": 180,
+    "index": 183,
     "redacted": false,
     "blacklisted": false
   },
@@ -188,7 +188,7 @@
       2755216039
     ],
     "hash": 41075005,
-    "index": 170,
+    "index": 173,
     "redacted": false,
     "blacklisted": false
   },
@@ -254,6 +254,37 @@
     "redacted": false,
     "blacklisted": false
   },
+  "103014972": {
+    "displayProperties": {
+      "description": "The lifetime high score for \"The Devils' Lair\" in Nightfall: The Ordeal.\n\nTracks from Season 13 onward.",
+      "name": "Ordeal: The Devils' Lair Score",
+      "icon": "/common/destiny2_content/icons/26d4ae85dc1cd9418d0cffa6b4b638d8.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/26d4ae85dc1cd9418d0cffa6b4b638d8.png",
+            "/common/destiny2_content/icons/37f21032510e2c31ceb371a7808cce3c.png"
+          ]
+        }
+      ],
+      "hasIcon": true
+    },
+    "trackingObjectiveHash": 824082263,
+    "lowerValueIsBetter": false,
+    "presentationNodeType": 4,
+    "traitIds": [],
+    "traitHashes": [
+      1434215347,
+      4263853822
+    ],
+    "parentNodeHashes": [
+      2755216039
+    ],
+    "hash": 103014972,
+    "index": 194,
+    "redacted": false,
+    "blacklisted": false
+  },
   "105734892": {
     "displayProperties": {
       "description": "The total number of final blows with Fusion Rifles.\n\nTracks from Season 12 onward.",
@@ -315,7 +346,7 @@
       2259246873
     ],
     "hash": 122451876,
-    "index": 216,
+    "index": 222,
     "redacted": false,
     "blacklisted": false
   },
@@ -347,7 +378,7 @@
       2259246873
     ],
     "hash": 128083325,
-    "index": 211,
+    "index": 217,
     "redacted": false,
     "blacklisted": false
   },
@@ -378,7 +409,7 @@
       2755216039
     ],
     "hash": 136014172,
-    "index": 188,
+    "index": 191,
     "redacted": false,
     "blacklisted": false
   },
@@ -507,6 +538,68 @@
     "redacted": false,
     "blacklisted": false
   },
+  "256487441": {
+    "displayProperties": {
+      "description": "Highest rank achieved for Season of the Chosen.",
+      "name": "Season 13: Season Rank",
+      "icon": "/common/destiny2_content/icons/defb8ccfe5438ec63ca4bc4c94e78d8a.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/defb8ccfe5438ec63ca4bc4c94e78d8a.png",
+            "/common/destiny2_content/icons/792daed5904f632d5d36812f2cf642d3.png"
+          ]
+        }
+      ],
+      "hasIcon": true
+    },
+    "trackingObjectiveHash": 2416013052,
+    "lowerValueIsBetter": false,
+    "presentationNodeType": 4,
+    "traitIds": [],
+    "traitHashes": [
+      1434215347,
+      2230116619
+    ],
+    "parentNodeHashes": [
+      3844527950
+    ],
+    "hash": 256487441,
+    "index": 231,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "257921980": {
+    "displayProperties": {
+      "description": "The number of times strike \"Proving Grounds\" has been completed during Season of the Chosen.",
+      "name": "Season 13: Proving Grounds Completions",
+      "icon": "/common/destiny2_content/icons/3a484184ba35748d86650fe508f0b35b.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/3a484184ba35748d86650fe508f0b35b.png",
+            "/common/destiny2_content/icons/d6eb731c2dd07d3d59e7c6a5fcdfc6c1.png"
+          ]
+        }
+      ],
+      "hasIcon": true
+    },
+    "trackingObjectiveHash": 2811024573,
+    "lowerValueIsBetter": false,
+    "presentationNodeType": 4,
+    "traitIds": [],
+    "traitHashes": [
+      1434215347,
+      2230116619
+    ],
+    "parentNodeHashes": [
+      3844527950
+    ],
+    "hash": 257921980,
+    "index": 236,
+    "redacted": false,
+    "blacklisted": false
+  },
   "268448617": {
     "displayProperties": {
       "description": "The current Glory rank.",
@@ -566,7 +659,7 @@
       2872327703
     ],
     "hash": 301249970,
-    "index": 207,
+    "index": 213,
     "redacted": false,
     "blacklisted": false
   },
@@ -628,7 +721,7 @@
       2755216039
     ],
     "hash": 303954613,
-    "index": 201,
+    "index": 207,
     "redacted": false,
     "blacklisted": false
   },
@@ -691,7 +784,7 @@
       2755216039
     ],
     "hash": 326550718,
-    "index": 187,
+    "index": 190,
     "redacted": false,
     "blacklisted": false
   },
@@ -754,7 +847,7 @@
       2755216039
     ],
     "hash": 355692908,
-    "index": 200,
+    "index": 206,
     "redacted": false,
     "blacklisted": false
   },
@@ -785,7 +878,7 @@
       2755216039
     ],
     "hash": 356508148,
-    "index": 182,
+    "index": 185,
     "redacted": false,
     "blacklisted": false
   },
@@ -888,10 +981,41 @@
     "redacted": false,
     "blacklisted": false
   },
+  "443602641": {
+    "displayProperties": {
+      "description": "The number of players guided through mission \"Presage\" who had not completed it before during Season of the Chosen.",
+      "name": "Season 13: Presage Carries",
+      "icon": "/common/destiny2_content/icons/7227ca0ca5b82026ec7f146505ec35b0.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/7227ca0ca5b82026ec7f146505ec35b0.png",
+            "/common/destiny2_content/icons/593f5f61553bf6a9901412890854626c.png"
+          ]
+        }
+      ],
+      "hasIcon": true
+    },
+    "trackingObjectiveHash": 2859000228,
+    "lowerValueIsBetter": false,
+    "presentationNodeType": 4,
+    "traitIds": [],
+    "traitHashes": [
+      1434215347,
+      2230116619
+    ],
+    "parentNodeHashes": [
+      3844527950
+    ],
+    "hash": 443602641,
+    "index": 241,
+    "redacted": false,
+    "blacklisted": false
+  },
   "451582922": {
     "displayProperties": {
       "description": "The number of targets eliminated as a Nightstalker.\n\nTracks from Season 1 onward.",
-      "name": "Nightstalker Final Blows",
+      "name": "Nightstalker defeats",
       "icon": "/common/destiny2_content/icons/e7eadf253fdf8e1a60edd7fb9ec1e4af.png",
       "iconSequences": [
         {
@@ -953,7 +1077,7 @@
   "502216639": {
     "displayProperties": {
       "description": "The number of targets eliminated as a Gunslinger.\n\nTracks from Season 1 onward.",
-      "name": "Gunslinger Final Blows",
+      "name": "Gunslinger defeats",
       "icon": "/common/destiny2_content/icons/e7eadf253fdf8e1a60edd7fb9ec1e4af.png",
       "iconSequences": [
         {
@@ -1072,7 +1196,7 @@
       2872327703
     ],
     "hash": 610393611,
-    "index": 212,
+    "index": 218,
     "redacted": false,
     "blacklisted": false
   },
@@ -1110,7 +1234,7 @@
   "626613399": {
     "displayProperties": {
       "description": "Tracks the number of combatants defeated as a Titan using the Behemoth Stasis subclass.\n\nTracks from Season 12 onward.",
-      "name": "Behemoth final blows",
+      "name": "Behemoth defeats",
       "icon": "/common/destiny2_content/icons/e7eadf253fdf8e1a60edd7fb9ec1e4af.png",
       "iconSequences": [
         {
@@ -1190,13 +1314,13 @@
     "traitIds": [],
     "traitHashes": [
       1434215347,
-      2230116619
+      4263853822
     ],
     "parentNodeHashes": [
       3844527950
     ],
     "hash": 648698823,
-    "index": 223,
+    "index": 228,
     "redacted": false,
     "blacklisted": false
   },
@@ -1389,7 +1513,7 @@
       2755216039
     ],
     "hash": 793155718,
-    "index": 168,
+    "index": 171,
     "redacted": false,
     "blacklisted": false
   },
@@ -1427,7 +1551,7 @@
   "813571064": {
     "displayProperties": {
       "description": "Tracks the number of combatants defeated as a Warlock using the Shadebinder Stasis subclass.\n\nTracks from Season 12 onward.",
-      "name": "Shadebinder final blows",
+      "name": "Shadebinder defeats",
       "icon": "/common/destiny2_content/icons/e7eadf253fdf8e1a60edd7fb9ec1e4af.png",
       "iconSequences": [
         {
@@ -1677,7 +1801,7 @@
   "954805812": {
     "displayProperties": {
       "description": "The total number of completions of \"Deep Stone Crypt.\"\n\nTracks from Season 12 onward.",
-      "name": "\"Deep Stone Crypt\" completions",
+      "name": "Deep Stone Crypt Completions",
       "icon": "/common/destiny2_content/icons/3a484184ba35748d86650fe508f0b35b.png",
       "iconSequences": [
         {
@@ -1736,7 +1860,7 @@
       2259246873
     ],
     "hash": 957196641,
-    "index": 213,
+    "index": 219,
     "redacted": false,
     "blacklisted": false
   },
@@ -1837,7 +1961,7 @@
   "1045301756": {
     "displayProperties": {
       "description": "The number of targets eliminated as a Sentinel.\n\nTracks from Season 1 onward.",
-      "name": "Sentinel Final Blows",
+      "name": "Sentinel defeats",
       "icon": "/common/destiny2_content/icons/e7eadf253fdf8e1a60edd7fb9ec1e4af.png",
       "iconSequences": [
         {
@@ -1924,7 +2048,7 @@
       2259246873
     ],
     "hash": 1082901574,
-    "index": 206,
+    "index": 212,
     "redacted": false,
     "blacklisted": false
   },
@@ -1990,7 +2114,7 @@
       2259246873
     ],
     "hash": 1114483243,
-    "index": 209,
+    "index": 215,
     "redacted": false,
     "blacklisted": false
   },
@@ -2021,7 +2145,7 @@
       2755216039
     ],
     "hash": 1118387860,
-    "index": 177,
+    "index": 180,
     "redacted": false,
     "blacklisted": false
   },
@@ -2211,7 +2335,7 @@
       2872327703
     ],
     "hash": 1155098170,
-    "index": 219,
+    "index": 225,
     "redacted": false,
     "blacklisted": false
   },
@@ -2275,6 +2399,37 @@
     ],
     "hash": 1168279855,
     "index": 115,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1180972034": {
+    "displayProperties": {
+      "description": "The number of Hammer Charges spent to focus Umbral Engrams during Season of the Chosen.",
+      "name": "Season 13: Hammer Charges",
+      "icon": "/common/destiny2_content/icons/7689e34bdfbb5df228ca012bd204b0a2.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/7689e34bdfbb5df228ca012bd204b0a2.png",
+            "/common/destiny2_content/icons/3e8851e69f5caa836466fcf62ee9a95b.png"
+          ]
+        }
+      ],
+      "hasIcon": true
+    },
+    "trackingObjectiveHash": 3475957659,
+    "lowerValueIsBetter": false,
+    "presentationNodeType": 4,
+    "traitIds": [],
+    "traitHashes": [
+      1434215347,
+      2230116619
+    ],
+    "parentNodeHashes": [
+      3844527950
+    ],
+    "hash": 1180972034,
+    "index": 234,
     "redacted": false,
     "blacklisted": false
   },
@@ -2565,7 +2720,7 @@
   "1337769169": {
     "displayProperties": {
       "description": "The number of targets eliminated as a Sunbreaker.\n\nTracks from Season 1 onward.",
-      "name": "Sunbreaker Final Blows",
+      "name": "Sunbreaker defeats",
       "icon": "/common/destiny2_content/icons/e7eadf253fdf8e1a60edd7fb9ec1e4af.png",
       "iconSequences": [
         {
@@ -2691,7 +2846,38 @@
       2259246873
     ],
     "hash": 1365664208,
-    "index": 203,
+    "index": 209,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1367925861": {
+    "displayProperties": {
+      "description": "The fastest completion time achieved in the Exotic quest \"Presage\" on Master difficulty.",
+      "name": "Exotic Quest: Presage Master Difficulty Fastest Time",
+      "icon": "/common/destiny2_content/icons/4c08762f90f0da8216b744d316e6dae5.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/4c08762f90f0da8216b744d316e6dae5.png",
+            "/common/destiny2_content/icons/4adb35df06f36d0b0703917bd92a029c.png"
+          ]
+        }
+      ],
+      "hasIcon": true
+    },
+    "trackingObjectiveHash": 1751471114,
+    "lowerValueIsBetter": true,
+    "presentationNodeType": 4,
+    "traitIds": [],
+    "traitHashes": [
+      1434215347,
+      4263853822
+    ],
+    "parentNodeHashes": [
+      3844527950
+    ],
+    "hash": 1367925861,
+    "index": 169,
     "redacted": false,
     "blacklisted": false
   },
@@ -2856,8 +3042,8 @@
   },
   "1470603756": {
     "displayProperties": {
-      "description": "",
-      "name": "",
+      "description": "Fastest completion time for the Harbinger activity.\n\nExpires at the end of Season 15.",
+      "name": "Season 12: Fastest Harbinger Completion",
       "icon": "/common/destiny2_content/icons/4c08762f90f0da8216b744d316e6dae5.png",
       "iconSequences": [
         {
@@ -2881,14 +3067,14 @@
       3844527950
     ],
     "hash": 1470603756,
-    "index": 225,
+    "index": 230,
     "redacted": false,
     "blacklisted": false
   },
   "1482973648": {
     "displayProperties": {
       "description": "The fastest completion time for \"Deep Stone Crypt\" this Season.",
-      "name": "\"Deep Stone Crypt\" time",
+      "name": "Deep Stone Crypt Time Trial",
       "icon": "/common/destiny2_content/icons/4c08762f90f0da8216b744d316e6dae5.png",
       "iconSequences": [
         {
@@ -2969,13 +3155,13 @@
     "traitIds": [],
     "traitHashes": [
       1434215347,
-      2230116619
+      4263853822
     ],
     "parentNodeHashes": [
       3844527950
     ],
     "hash": 1530879351,
-    "index": 221,
+    "index": 227,
     "redacted": false,
     "blacklisted": false
   },
@@ -3006,7 +3192,7 @@
       2755216039
     ],
     "hash": 1535052089,
-    "index": 197,
+    "index": 203,
     "redacted": false,
     "blacklisted": false
   },
@@ -3161,7 +3347,7 @@
       2755216039
     ],
     "hash": 1622305658,
-    "index": 195,
+    "index": 201,
     "redacted": false,
     "blacklisted": false
   },
@@ -3192,7 +3378,7 @@
       2755216039
     ],
     "hash": 1666283222,
-    "index": 183,
+    "index": 186,
     "redacted": false,
     "blacklisted": false
   },
@@ -3288,7 +3474,7 @@
       2259246873
     ],
     "hash": 1765255052,
-    "index": 204,
+    "index": 210,
     "redacted": false,
     "blacklisted": false
   },
@@ -3386,6 +3572,37 @@
     "redacted": false,
     "blacklisted": false
   },
+  "1830928474": {
+    "displayProperties": {
+      "description": "The number of Battlegrounds Challenger Chests smashed with the Hammer of Proving this week.\n\nResets weekly during Season of the Chosen.",
+      "name": "Season 13: Challenger Chests (Weekly)",
+      "icon": "/common/destiny2_content/icons/7689e34bdfbb5df228ca012bd204b0a2.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/7689e34bdfbb5df228ca012bd204b0a2.png",
+            "/common/destiny2_content/icons/3e8851e69f5caa836466fcf62ee9a95b.png"
+          ]
+        }
+      ],
+      "hasIcon": true
+    },
+    "trackingObjectiveHash": 2210191153,
+    "lowerValueIsBetter": false,
+    "presentationNodeType": 4,
+    "traitIds": [],
+    "traitHashes": [
+      1434215347,
+      2356777566
+    ],
+    "parentNodeHashes": [
+      3844527950
+    ],
+    "hash": 1830928474,
+    "index": 233,
+    "redacted": false,
+    "blacklisted": false
+  },
   "1835852368": {
     "displayProperties": {
       "description": "The fastest completion time for \"Garden of Salvation.\"\n\nTracks from Season 10 onward.",
@@ -3415,6 +3632,68 @@
     ],
     "hash": 1835852368,
     "index": 136,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1849175961": {
+    "displayProperties": {
+      "description": "The number of times the \"Presage\" quest has been completed during Season of the Chosen.",
+      "name": "Season 13: Presage Completions",
+      "icon": "/common/destiny2_content/icons/3a484184ba35748d86650fe508f0b35b.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/3a484184ba35748d86650fe508f0b35b.png",
+            "/common/destiny2_content/icons/d6eb731c2dd07d3d59e7c6a5fcdfc6c1.png"
+          ]
+        }
+      ],
+      "hasIcon": true
+    },
+    "trackingObjectiveHash": 1480298876,
+    "lowerValueIsBetter": false,
+    "presentationNodeType": 4,
+    "traitIds": [],
+    "traitHashes": [
+      1434215347,
+      2230116619
+    ],
+    "parentNodeHashes": [
+      3844527950
+    ],
+    "hash": 1849175961,
+    "index": 237,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "1902642032": {
+    "displayProperties": {
+      "description": "The number of players guided through the Exotic quest \"Presage\" who had not completed it before.",
+      "name": "Exotic Quest: Presage Carries",
+      "icon": "/common/destiny2_content/icons/7227ca0ca5b82026ec7f146505ec35b0.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/7227ca0ca5b82026ec7f146505ec35b0.png",
+            "/common/destiny2_content/icons/593f5f61553bf6a9901412890854626c.png"
+          ]
+        }
+      ],
+      "hasIcon": true
+    },
+    "trackingObjectiveHash": 4042303721,
+    "lowerValueIsBetter": false,
+    "presentationNodeType": 4,
+    "traitIds": [],
+    "traitHashes": [
+      1434215347,
+      4263853822
+    ],
+    "parentNodeHashes": [
+      3844527950
+    ],
+    "hash": 1902642032,
+    "index": 170,
     "redacted": false,
     "blacklisted": false
   },
@@ -3507,7 +3786,7 @@
       2755216039
     ],
     "hash": 1970407090,
-    "index": 198,
+    "index": 204,
     "redacted": false,
     "blacklisted": false
   },
@@ -3538,7 +3817,7 @@
       2755216039
     ],
     "hash": 1995200959,
-    "index": 196,
+    "index": 202,
     "redacted": false,
     "blacklisted": false
   },
@@ -3570,6 +3849,37 @@
     ],
     "hash": 2012993124,
     "index": 22,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2029578999": {
+    "displayProperties": {
+      "description": "The number of Battlegrounds Challenger Chests smashed with the Hammer of Proving during Season of the Chosen.",
+      "name": "Season 13: Challenger Chests",
+      "icon": "/common/destiny2_content/icons/7689e34bdfbb5df228ca012bd204b0a2.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/7689e34bdfbb5df228ca012bd204b0a2.png",
+            "/common/destiny2_content/icons/3e8851e69f5caa836466fcf62ee9a95b.png"
+          ]
+        }
+      ],
+      "hasIcon": true
+    },
+    "trackingObjectiveHash": 3609618264,
+    "lowerValueIsBetter": false,
+    "presentationNodeType": 4,
+    "traitIds": [],
+    "traitHashes": [
+      1434215347,
+      2230116619
+    ],
+    "parentNodeHashes": [
+      3844527950
+    ],
+    "hash": 2029578999,
+    "index": 232,
     "redacted": false,
     "blacklisted": false
   },
@@ -3634,7 +3944,7 @@
       2259246873
     ],
     "hash": 2082314848,
-    "index": 205,
+    "index": 211,
     "redacted": false,
     "blacklisted": false
   },
@@ -3700,7 +4010,7 @@
       2259246873
     ],
     "hash": 2091173752,
-    "index": 217,
+    "index": 223,
     "redacted": false,
     "blacklisted": false
   },
@@ -3738,7 +4048,7 @@
   "2094083755": {
     "displayProperties": {
       "description": "The number of targets eliminated as a Stormcaller.\n\nTracks from Season 1 onward.",
-      "name": "Stormcaller Final Blows",
+      "name": "Stormcaller defeats",
       "icon": "/common/destiny2_content/icons/e7eadf253fdf8e1a60edd7fb9ec1e4af.png",
       "iconSequences": [
         {
@@ -3831,7 +4141,7 @@
   "2124794123": {
     "displayProperties": {
       "description": "The number of Guardians carried to their first ever completion of \"Deep Stone Crypt\" during this Season.",
-      "name": "\"Deep Stone Crypt\" carries",
+      "name": "Deep Stone Crypt Carries",
       "icon": "/common/destiny2_content/icons/7227ca0ca5b82026ec7f146505ec35b0.png",
       "iconSequences": [
         {
@@ -4105,7 +4415,7 @@
       2755216039
     ],
     "hash": 2326329668,
-    "index": 169,
+    "index": 172,
     "redacted": false,
     "blacklisted": false
   },
@@ -4143,7 +4453,7 @@
   "2330596844": {
     "displayProperties": {
       "description": "The total number of Guardians carried to their first completion of \"Deep Stone Crypt.\"\n\nTracks from Season 12 onward.",
-      "name": "\"Deep Stone Crypt\" carries",
+      "name": "Deep Stone Crypt Carries",
       "icon": "/common/destiny2_content/icons/7227ca0ca5b82026ec7f146505ec35b0.png",
       "iconSequences": [
         {
@@ -4296,14 +4606,14 @@
       2259246873
     ],
     "hash": 2367472811,
-    "index": 208,
+    "index": 214,
     "redacted": false,
     "blacklisted": false
   },
   "2387491484": {
     "displayProperties": {
       "description": "The number of targets eliminated as an Arcstrider.\n\nTracks from Season 1 onward.",
-      "name": "Arcstrider Final Blows",
+      "name": "Arcstrider defeats",
       "icon": "/common/destiny2_content/icons/e7eadf253fdf8e1a60edd7fb9ec1e4af.png",
       "iconSequences": [
         {
@@ -4328,6 +4638,37 @@
     ],
     "hash": 2387491484,
     "index": 4,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2423542041": {
+    "displayProperties": {
+      "description": "The number of Hammer Charges spent to focus Umbral Engrams this week.\n\nResets weekly during Season of the Chosen.",
+      "name": "Season 13: Hammer Charges (Weekly)",
+      "icon": "/common/destiny2_content/icons/7689e34bdfbb5df228ca012bd204b0a2.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/7689e34bdfbb5df228ca012bd204b0a2.png",
+            "/common/destiny2_content/icons/3e8851e69f5caa836466fcf62ee9a95b.png"
+          ]
+        }
+      ],
+      "hasIcon": true
+    },
+    "trackingObjectiveHash": 4114124672,
+    "lowerValueIsBetter": false,
+    "presentationNodeType": 4,
+    "traitIds": [],
+    "traitHashes": [
+      1434215347,
+      2356777566
+    ],
+    "parentNodeHashes": [
+      3844527950
+    ],
+    "hash": 2423542041,
+    "index": 235,
     "redacted": false,
     "blacklisted": false
   },
@@ -4358,7 +4699,7 @@
       2755216039
     ],
     "hash": 2457392818,
-    "index": 176,
+    "index": 179,
     "redacted": false,
     "blacklisted": false
   },
@@ -4396,7 +4737,7 @@
   "2466440160": {
     "displayProperties": {
       "description": "The total number of \"Deep Stone Crypt\" completions using Guided Games.\n\nTracks from Season 12 onward.",
-      "name": "\"Deep Stone Crypt\" Guided Games",
+      "name": "Deep Stone Crypt Guided Games",
       "icon": "/common/destiny2_content/icons/3a484184ba35748d86650fe508f0b35b.png",
       "iconSequences": [
         {
@@ -4582,7 +4923,7 @@
       2755216039
     ],
     "hash": 2585925315,
-    "index": 194,
+    "index": 200,
     "redacted": false,
     "blacklisted": false
   },
@@ -4770,7 +5111,7 @@
       2755216039
     ],
     "hash": 2700661427,
-    "index": 191,
+    "index": 197,
     "redacted": false,
     "blacklisted": false
   },
@@ -4836,6 +5177,37 @@
     "redacted": false,
     "blacklisted": false
   },
+  "2756634338": {
+    "displayProperties": {
+      "description": "The fastest completion time achieved in the quest \"Presage\" on Master difficulty during Season of the Chosen.",
+      "name": "Season 13: Presage Master Time",
+      "icon": "/common/destiny2_content/icons/4c08762f90f0da8216b744d316e6dae5.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/4c08762f90f0da8216b744d316e6dae5.png",
+            "/common/destiny2_content/icons/4adb35df06f36d0b0703917bd92a029c.png"
+          ]
+        }
+      ],
+      "hasIcon": true
+    },
+    "trackingObjectiveHash": 3591781193,
+    "lowerValueIsBetter": true,
+    "presentationNodeType": 4,
+    "traitIds": [],
+    "traitHashes": [
+      1434215347,
+      2230116619
+    ],
+    "parentNodeHashes": [
+      3844527950
+    ],
+    "hash": 2756634338,
+    "index": 239,
+    "redacted": false,
+    "blacklisted": false
+  },
   "2771330814": {
     "displayProperties": {
       "description": "The number of matches won this week while the \"Flawless Empyrean\" emblem is equipped and the player is holding a seven-win ticket.",
@@ -4864,7 +5236,7 @@
       2259246873
     ],
     "hash": 2771330814,
-    "index": 218,
+    "index": 224,
     "redacted": false,
     "blacklisted": false
   },
@@ -4895,7 +5267,7 @@
       2755216039
     ],
     "hash": 2778406657,
-    "index": 179,
+    "index": 182,
     "redacted": false,
     "blacklisted": false
   },
@@ -4995,7 +5367,7 @@
   "2839721658": {
     "displayProperties": {
       "description": "The number of targets eliminated as a Striker.\n\nTracks from Season 1 onward.",
-      "name": "Striker Final Blows",
+      "name": "Striker defeats",
       "icon": "/common/destiny2_content/icons/e7eadf253fdf8e1a60edd7fb9ec1e4af.png",
       "iconSequences": [
         {
@@ -5088,8 +5460,8 @@
   },
   "2881588237": {
     "displayProperties": {
-      "description": "",
-      "name": "",
+      "description": "Number of Hawkmoons acquired from the Harbinger activity.\n\nExpires at the end of Season 15.",
+      "name": "Season 12: Hawkmoons Acquired",
       "icon": "/common/destiny2_content/icons/7689e34bdfbb5df228ca012bd204b0a2.png",
       "iconSequences": [
         {
@@ -5113,7 +5485,7 @@
       3844527950
     ],
     "hash": 2881588237,
-    "index": 224,
+    "index": 229,
     "redacted": false,
     "blacklisted": false
   },
@@ -5144,7 +5516,7 @@
       2755216039
     ],
     "hash": 2883115929,
-    "index": 189,
+    "index": 192,
     "redacted": false,
     "blacklisted": false
   },
@@ -5175,7 +5547,38 @@
       2755216039
     ],
     "hash": 2894079898,
-    "index": 175,
+    "index": 178,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2894593528": {
+    "displayProperties": {
+      "description": "The lifetime high score for \"Fallen S.A.B.E.R.\" in Nightfall: The Ordeal.\n\nTracks from Season 13 onward.",
+      "name": "Ordeal: Fallen S.A.B.E.R. Score",
+      "icon": "/common/destiny2_content/icons/26d4ae85dc1cd9418d0cffa6b4b638d8.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/26d4ae85dc1cd9418d0cffa6b4b638d8.png",
+            "/common/destiny2_content/icons/37f21032510e2c31ceb371a7808cce3c.png"
+          ]
+        }
+      ],
+      "hasIcon": true
+    },
+    "trackingObjectiveHash": 3821654777,
+    "lowerValueIsBetter": false,
+    "presentationNodeType": 4,
+    "traitIds": [],
+    "traitHashes": [
+      1434215347,
+      4263853822
+    ],
+    "parentNodeHashes": [
+      2755216039
+    ],
+    "hash": 2894593528,
+    "index": 195,
     "redacted": false,
     "blacklisted": false
   },
@@ -5206,7 +5609,7 @@
       2755216039
     ],
     "hash": 2920064672,
-    "index": 186,
+    "index": 189,
     "redacted": false,
     "blacklisted": false
   },
@@ -5330,7 +5733,7 @@
       2755216039
     ],
     "hash": 2959623395,
-    "index": 184,
+    "index": 187,
     "redacted": false,
     "blacklisted": false
   },
@@ -5361,7 +5764,7 @@
       2755216039
     ],
     "hash": 3036740778,
-    "index": 172,
+    "index": 175,
     "redacted": false,
     "blacklisted": false
   },
@@ -5395,7 +5798,7 @@
       2259246873
     ],
     "hash": 3046315288,
-    "index": 215,
+    "index": 221,
     "redacted": false,
     "blacklisted": false
   },
@@ -5521,7 +5924,7 @@
       2755216039
     ],
     "hash": 3139878529,
-    "index": 185,
+    "index": 188,
     "redacted": false,
     "blacklisted": false
   },
@@ -5552,7 +5955,7 @@
       2755216039
     ],
     "hash": 3146366866,
-    "index": 173,
+    "index": 176,
     "redacted": false,
     "blacklisted": false
   },
@@ -5584,6 +5987,37 @@
     ],
     "hash": 3157801630,
     "index": 43,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3209483141": {
+    "displayProperties": {
+      "description": "The lifetime high score for \"Proving Grounds\" in Nightfall: The Ordeal.\n\nTracks from Season 13 onward.",
+      "name": "Ordeal: Proving Grounds Score",
+      "icon": "/common/destiny2_content/icons/26d4ae85dc1cd9418d0cffa6b4b638d8.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/26d4ae85dc1cd9418d0cffa6b4b638d8.png",
+            "/common/destiny2_content/icons/37f21032510e2c31ceb371a7808cce3c.png"
+          ]
+        }
+      ],
+      "hasIcon": true
+    },
+    "trackingObjectiveHash": 3785658672,
+    "lowerValueIsBetter": false,
+    "presentationNodeType": 4,
+    "traitIds": [],
+    "traitHashes": [
+      1434215347,
+      4263853822
+    ],
+    "parentNodeHashes": [
+      2755216039
+    ],
+    "hash": 3209483141,
+    "index": 193,
     "redacted": false,
     "blacklisted": false
   },
@@ -5645,7 +6079,7 @@
       2755216039
     ],
     "hash": 3212298862,
-    "index": 199,
+    "index": 205,
     "redacted": false,
     "blacklisted": false
   },
@@ -5840,7 +6274,7 @@
   "3343955936": {
     "displayProperties": {
       "description": "The number of Guardians carried to their first-ever completion of the \"Deep Stone Crypt\" during this week.",
-      "name": "\"Deep Stone Crypt\" carries",
+      "name": "Deep Stone Crypt Carries",
       "icon": "/common/destiny2_content/icons/7227ca0ca5b82026ec7f146505ec35b0.png",
       "iconSequences": [
         {
@@ -5899,7 +6333,38 @@
       2259246873
     ],
     "hash": 3364207969,
-    "index": 214,
+    "index": 220,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3395083346": {
+    "displayProperties": {
+      "description": "The number of times Exotic quest \"Presage\" has been completed this week.\n\nResets weekly during Season of the Chosen.",
+      "name": "Season 13: Exotic Quest: Presage Completions (Weekly)",
+      "icon": "/common/destiny2_content/icons/3a484184ba35748d86650fe508f0b35b.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/3a484184ba35748d86650fe508f0b35b.png",
+            "/common/destiny2_content/icons/d6eb731c2dd07d3d59e7c6a5fcdfc6c1.png"
+          ]
+        }
+      ],
+      "hasIcon": true
+    },
+    "trackingObjectiveHash": 699784135,
+    "lowerValueIsBetter": false,
+    "presentationNodeType": 4,
+    "traitIds": [],
+    "traitHashes": [
+      1434215347,
+      2356777566
+    ],
+    "parentNodeHashes": [
+      3844527950
+    ],
+    "hash": 3395083346,
+    "index": 238,
     "redacted": false,
     "blacklisted": false
   },
@@ -5930,7 +6395,38 @@
       2755216039
     ],
     "hash": 3399368522,
-    "index": 171,
+    "index": 174,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3420211110": {
+    "displayProperties": {
+      "description": "The number of players guided through Exotic quest \"Presage\" who had not completed it before this week.\n\nResets weekly during Season of the Chosen.",
+      "name": "Season 13: Presage Carries (Weekly)",
+      "icon": "/common/destiny2_content/icons/7227ca0ca5b82026ec7f146505ec35b0.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/7227ca0ca5b82026ec7f146505ec35b0.png",
+            "/common/destiny2_content/icons/593f5f61553bf6a9901412890854626c.png"
+          ]
+        }
+      ],
+      "hasIcon": true
+    },
+    "trackingObjectiveHash": 4220541075,
+    "lowerValueIsBetter": false,
+    "presentationNodeType": 4,
+    "traitIds": [],
+    "traitHashes": [
+      1434215347,
+      2356777566
+    ],
+    "parentNodeHashes": [
+      3844527950
+    ],
+    "hash": 3420211110,
+    "index": 242,
     "redacted": false,
     "blacklisted": false
   },
@@ -6024,7 +6520,7 @@
       2755216039
     ],
     "hash": 3466351705,
-    "index": 174,
+    "index": 177,
     "redacted": false,
     "blacklisted": false
   },
@@ -6058,7 +6554,7 @@
       2259246873
     ],
     "hash": 3481560625,
-    "index": 210,
+    "index": 216,
     "redacted": false,
     "blacklisted": false
   },
@@ -6182,7 +6678,7 @@
       2755216039
     ],
     "hash": 3543375894,
-    "index": 178,
+    "index": 181,
     "redacted": false,
     "blacklisted": false
   },
@@ -6313,7 +6809,7 @@
   "3679202587": {
     "displayProperties": {
       "description": "The fastest completion time for \"Deep Stone Crypt.\"\n\nTracks from Season 12 onward.",
-      "name": "\"Deep Stone Crypt\" time",
+      "name": "Deep Stone Crypt Time Trial",
       "icon": "/common/destiny2_content/icons/4c08762f90f0da8216b744d316e6dae5.png",
       "iconSequences": [
         {
@@ -6437,6 +6933,37 @@
     "redacted": false,
     "blacklisted": false
   },
+  "3782656199": {
+    "displayProperties": {
+      "description": "The fastest completion time achieved in Exotic quest \"Presage\" on Master difficulty this week.\n\nResets weekly during Season of the Chosen.",
+      "name": "Season 13: Presage Master Difficulty Fastest Time (Weekly)",
+      "icon": "/common/destiny2_content/icons/4c08762f90f0da8216b744d316e6dae5.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/4c08762f90f0da8216b744d316e6dae5.png",
+            "/common/destiny2_content/icons/4adb35df06f36d0b0703917bd92a029c.png"
+          ]
+        }
+      ],
+      "hasIcon": true
+    },
+    "trackingObjectiveHash": 2629861560,
+    "lowerValueIsBetter": true,
+    "presentationNodeType": 4,
+    "traitIds": [],
+    "traitHashes": [
+      1434215347,
+      2356777566
+    ],
+    "parentNodeHashes": [
+      3844527950
+    ],
+    "hash": 3782656199,
+    "index": 240,
+    "redacted": false,
+    "blacklisted": false
+  },
   "3787323274": {
     "displayProperties": {
       "description": "The highest consecutive Win Streak in Trials of Osiris this week.",
@@ -6467,7 +6994,7 @@
       2259246873
     ],
     "hash": 3787323274,
-    "index": 220,
+    "index": 226,
     "redacted": false,
     "blacklisted": false
   },
@@ -6503,6 +7030,37 @@
     "redacted": false,
     "blacklisted": false
   },
+  "3808431400": {
+    "displayProperties": {
+      "description": "The number of times the Exotic quest \"Presage\" has been completed.",
+      "name": "Exotic Quest: Presage Completions",
+      "icon": "/common/destiny2_content/icons/3a484184ba35748d86650fe508f0b35b.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/3a484184ba35748d86650fe508f0b35b.png",
+            "/common/destiny2_content/icons/d6eb731c2dd07d3d59e7c6a5fcdfc6c1.png"
+          ]
+        }
+      ],
+      "hasIcon": true
+    },
+    "trackingObjectiveHash": 3327077345,
+    "lowerValueIsBetter": false,
+    "presentationNodeType": 4,
+    "traitIds": [],
+    "traitHashes": [
+      1434215347,
+      4263853822
+    ],
+    "parentNodeHashes": [
+      3844527950
+    ],
+    "hash": 3808431400,
+    "index": 168,
+    "redacted": false,
+    "blacklisted": false
+  },
   "3857340681": {
     "displayProperties": {
       "description": "The average final blows per strike this Season.",
@@ -6530,7 +7088,7 @@
       2755216039
     ],
     "hash": 3857340681,
-    "index": 192,
+    "index": 198,
     "redacted": false,
     "blacklisted": false
   },
@@ -6561,7 +7119,7 @@
       2755216039
     ],
     "hash": 3907271222,
-    "index": 193,
+    "index": 199,
     "redacted": false,
     "blacklisted": false
   },
@@ -6716,38 +7274,7 @@
       2755216039
     ],
     "hash": 4002363378,
-    "index": 202,
-    "redacted": false,
-    "blacklisted": false
-  },
-  "4030729505": {
-    "displayProperties": {
-      "description": "The number of combatants defeated with Season 12 weapons.\n\nResets weekly.\n\nExpires at the end of Season 15.",
-      "name": "Season 12: Weekly Weapon Defeats",
-      "icon": "/common/destiny2_content/icons/e7eadf253fdf8e1a60edd7fb9ec1e4af.png",
-      "iconSequences": [
-        {
-          "frames": [
-            "/common/destiny2_content/icons/e7eadf253fdf8e1a60edd7fb9ec1e4af.png",
-            "/common/destiny2_content/icons/9662e47f74160f8142210bceb0874443.png"
-          ]
-        }
-      ],
-      "hasIcon": true
-    },
-    "trackingObjectiveHash": 1539093160,
-    "lowerValueIsBetter": false,
-    "presentationNodeType": 4,
-    "traitIds": [],
-    "traitHashes": [
-      1434215347,
-      2356777566
-    ],
-    "parentNodeHashes": [
-      3844527950
-    ],
-    "hash": 4030729505,
-    "index": 222,
+    "index": 208,
     "redacted": false,
     "blacklisted": false
   },
@@ -6840,7 +7367,7 @@
       2755216039
     ],
     "hash": 4053184151,
-    "index": 190,
+    "index": 196,
     "redacted": false,
     "blacklisted": false
   },
@@ -6910,7 +7437,7 @@
   "4114590251": {
     "displayProperties": {
       "description": "The number of targets eliminated as a Voidwalker.\n\nTracks from Season 1 onward.",
-      "name": "Voidwalker Final Blows",
+      "name": "Voidwalker defeats",
       "icon": "/common/destiny2_content/icons/e7eadf253fdf8e1a60edd7fb9ec1e4af.png",
       "iconSequences": [
         {
@@ -6997,7 +7524,7 @@
       2755216039
     ],
     "hash": 4140273235,
-    "index": 181,
+    "index": 184,
     "redacted": false,
     "blacklisted": false
   },

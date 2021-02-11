@@ -43,7 +43,9 @@
       3848691920,
       2571070278,
       951237008,
-      1629967954
+      1629967954,
+      962416439,
+      1635887355
     ],
     "traitIds": [
       "item_type.weapon",
@@ -66,7 +68,9 @@
       "item_type.boost",
       "item_type.weapon_ornament",
       "item_type.dark_subclass",
-      "item_type.light_subclass"
+      "item_type.light_subclass",
+      "item_type.aspect",
+      "item_type.fragment"
     ],
     "hash": 1281648863,
     "index": 4,

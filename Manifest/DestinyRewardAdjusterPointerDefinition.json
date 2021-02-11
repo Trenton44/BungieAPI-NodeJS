@@ -23,63 +23,70 @@
   "602233382": {
     "adjusterType": 0,
     "hash": 602233382,
-    "index": 15,
+    "index": 16,
     "redacted": false,
     "blacklisted": false
   },
   "712361276": {
     "adjusterType": 0,
     "hash": 712361276,
-    "index": 8,
+    "index": 9,
     "redacted": false,
     "blacklisted": false
   },
   "712361277": {
     "adjusterType": 0,
     "hash": 712361277,
-    "index": 7,
+    "index": 8,
     "redacted": false,
     "blacklisted": false
   },
   "712361278": {
     "adjusterType": 0,
     "hash": 712361278,
-    "index": 6,
+    "index": 7,
     "redacted": false,
     "blacklisted": false
   },
   "797714555": {
     "adjusterType": 0,
     "hash": 797714555,
-    "index": 19,
+    "index": 20,
     "redacted": false,
     "blacklisted": false
   },
   "943927993": {
     "adjusterType": 0,
     "hash": 943927993,
-    "index": 9,
+    "index": 10,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "944403903": {
+    "adjusterType": 0,
+    "hash": 944403903,
+    "index": 21,
     "redacted": false,
     "blacklisted": false
   },
   "987667555": {
     "adjusterType": 0,
     "hash": 987667555,
-    "index": 16,
+    "index": 17,
     "redacted": false,
     "blacklisted": false
   },
   "1059448116": {
     "adjusterType": 0,
     "hash": 1059448116,
-    "index": 10,
+    "index": 11,
     "redacted": false,
     "blacklisted": false
   },
   "1652129061": {
     "adjusterType": 0,
     "hash": 1652129061,
-    "index": 12,
+    "index": 13,
     "redacted": false,
     "blacklisted": false
   },
@@ -100,28 +107,35 @@
   "2799694335": {
     "adjusterType": 0,
     "hash": 2799694335,
-    "index": 18,
+    "index": 19,
     "redacted": false,
     "blacklisted": false
   },
   "2942808122": {
     "adjusterType": 0,
     "hash": 2942808122,
-    "index": 14,
+    "index": 15,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2975437176": {
+    "adjusterType": 0,
+    "hash": 2975437176,
+    "index": 6,
     "redacted": false,
     "blacklisted": false
   },
   "2989507250": {
     "adjusterType": 0,
     "hash": 2989507250,
-    "index": 11,
+    "index": 12,
     "redacted": false,
     "blacklisted": false
   },
   "3704212709": {
     "adjusterType": 0,
     "hash": 3704212709,
-    "index": 17,
+    "index": 18,
     "redacted": false,
     "blacklisted": false
   },
@@ -135,7 +149,7 @@
   "4216379951": {
     "adjusterType": 0,
     "hash": 4216379951,
-    "index": 13,
+    "index": 14,
     "redacted": false,
     "blacklisted": false
   }
