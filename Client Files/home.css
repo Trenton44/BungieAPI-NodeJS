@@ -127,7 +127,7 @@ body {
   margin: 0;
   background-color: rgba(20,20,20, 0.6);
 }
-#subclass-container {
+#Subclass-container {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -137,21 +137,21 @@ body {
   height: 95%;
   width: 30%;
 }
-#subclass-container:hover > div {
+#Subclass-container:hover > div {
   display: initial;
 }
-#subclass-primary-container:hover, #subclass-container >div {
+#Subclass-primary-container:hover, #Subclass-container >div {
   height: 100%;
 }
-#subclass-primary-container > img {
+#Subclass-primary-container > img {
   height: 100%;
 }
-#subclass-equipment {
+#Subclass-equipment {
   display: none;
   flex-grow: 2;
   height: 100%;
 }
-#subclass-equipment > img{
+#Subclass-equipment > img{
   height: 100%;
   margin: 0 2% 0 2%;
 }
