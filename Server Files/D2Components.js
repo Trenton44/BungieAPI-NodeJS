@@ -128,7 +128,7 @@ var itemComponents = function(data){
 exports.itemComponents = itemComponents;
 
 var kiosks = function(data){
-  var data = data.data;
+  //var data = data.data;
   return data;
 };
 exports.kiosks = kiosks;
@@ -209,7 +209,7 @@ var characterInventories = function(data){
 exports.characterInventories = characterInventories;
 
 var characterKiosks = function(data){
-  var data = data.data;
+  //var data = data.data;
   return data;
 };
 exports.characterKiosks = characterKiosks;
@@ -312,7 +312,7 @@ var profileInventory = function(data){
 exports.profileInventory = profileInventory;
 
 var profileKiosks = function(data){
-  var data = data.data;
+  //var data = data.data;
   return data;
 };
 exports.profileKiosks = profileKiosks;

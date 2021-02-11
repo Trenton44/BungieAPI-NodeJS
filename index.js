@@ -66,20 +66,6 @@ app.use(
       cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
 );
-
-app.get("/client/:id",function(request,response){
-  response.status(200).sendFile(webpageRoot+"/"+request.params.id);
-});
-app.get("/assets/:id",function(request,response){
-  response.status(200).sendFile(assetRoot+"/"+request.params.id);
-});
-app.use(prepSessionData);
-
-app.get("/login",function(request,response){
-  var url = buildAuthorizatonCodeRequest(request);
-  console.log("User has begun a login attempt to bungie.net");
-  response.redirect(url);
-});
 //when bungie API responds, this function gathers all initial player data required, then continues to root.
 app.get("/bapi", function(request,response){
   console.log("Response has been received from bungie, attempting to authorize using given parameters.");
@@ -102,6 +88,21 @@ app.get("/bapi", function(request,response){
     response.redirect("/login");
   }
 });
+
+app.get("/client/:id",function(request,response){
+  response.status(200).sendFile(webpageRoot+"/"+request.params.id);
+});
+app.get("/assets/:id",function(request,response){
+  response.status(200).sendFile(assetRoot+"/"+request.params.id);
+});
+app.use(prepSessionData);
+
+app.get("/login",function(request,response){
+  var url = buildAuthorizatonCodeRequest(request);
+  console.log("User has begun a login attempt to bungie.net");
+  response.redirect(url);
+});
+
 //Entry point for authorized personnel. Make all requests for API data here prior to serving webpage.
 app.use(authorizationCheck);
 app.get("/",async function(request,response){
@@ -151,14 +152,20 @@ app.get("/character/:id/inventory",async function(request,response){
   var returnData = ServerResponse.SortCharacterInventory(data.inventory);
   response.status(200).json(returnData);
 });
-app.get("/profile/inventory", async function(request,response){
+app.get("/profile/inventory/:id", async function(request,response){
   var components = ["102","103"];
+  var cID = request.params.id;
   var data = await profileComponentRequest(request, components);
   var returnData = {
     currency: data.profileCurrencies,
-    inventory: ServerResponse.SortCharacterInventory(data.profileInventory),
+    inventory: ServerResponse.SortProfileInventory(data.profileInventory),
   };
   response.status(200).json(returnData);
+});
+app.get("/vault",async function(request,response){
+  var components = ["102"];
+  var data = await profileComponentRequest(request, components);
+  response.status(200).json(ServerResponse.SortProfileInventory(data.profileInventory).Vault);
 });
 app.post("/character/lockItem",async function(request, response){
   var userdata = request.session.data.userdata;
@@ -279,6 +286,7 @@ function characterComponentRequest(request, components,cID){
   var d2ID = userdata.primaryMembershipId;
   return d2api.getCharacterAuth(memType,d2ID,cID,components,token).then(function(result){
     console.log("accessed");
+    console.log(result.data);
     var d2data = d2api.parseCharacterComponents(result.data.Response);
     console.log("Requested data retrieved from bungie.");
     return d2data;
@@ -354,7 +362,6 @@ function authorizationCheck(request,response,next){
   }
 }
 async function prepSessionData(request,response,next){
-  console.log(Buffer.from(crypto.randomBytes(32)).toString('hex'));
   var reset = false;
   switch(request.session.data){
     case undefined:

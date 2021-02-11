@@ -43,7 +43,9 @@ function updateCharacters(){
   Promise.all([playerCharacters[0].loadCharacter(),playerCharacters[1].loadCharacter(),playerCharacters[2].loadCharacter()]).then(function(values){
     for(i in playerCharacters) playerCharacters[i].update();
     playerCharacters[0].showStats();
+    playerCharacters[0].showBanner();
   });
+
 };
 function updateLoadout(characterID){
   slotController.fetchLoadout(characterID).then(function(result){
@@ -58,6 +60,7 @@ function updateLoadout(characterID){
 function character(){
   this.htmlIdentifier;
   this.element;
+  this.banner;
   this.setIdentifier = function(value){
     this.htmlIdentifier = value;
     this.element = window.document.getElementById("c"+this.htmlIdentifier);
@@ -81,6 +84,12 @@ function character(){
   this.emblemURL;
   this.setEmblem = function(value){
     if(value != null && value != undefined) this.emblemURL = value;
+  };
+  this.setBanner = function(value){
+    this.banner = "/assets/"+value+" Banner.png";
+  };
+  this.showBanner = function(){
+    window.document.getElementById("character-banner").src = this.banner;
   };
   this.stats = {};
   this.setStats = function(value){
@@ -113,6 +122,7 @@ function character(){
     this.setClass(data.class.name);
     this.setEmblem(data.emblem.emblemBackgroundPath);
     this.setStats(data.stats);
+    this.setBanner(data.class.name);
     return true;
   };
 };
@@ -192,6 +202,7 @@ function Item(){
   this.Initialize = function(slotName, index, data){
     this.slotName = slotName;
     this.index = index;
+    var localthis = this;
     if(index == 0){
       this.HTMLElement = window.document.getElementById(this.slotName);
     }
@@ -200,7 +211,6 @@ function Item(){
       this.HTMLElement.id = slotName+"-"+index;
       window.document.getElementById(slotName+"-equipment").append(this.HTMLElement);
       this.HTMLElement.draggable = true;
-      var localthis = this;
       this.HTMLElement.ondragend = function(ev){localthis.drop(ev);};
       this.HTMLElement.ondblclick = function(ev){ slotController.swapEquipped(localthis.slotName, localthis.index); };
     }
@@ -297,4 +307,8 @@ function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = t
     characterReceiving: rcID,
   };
   return postRequest(path, body);
+};
+function test(){
+  var path = "/profile/inventory/"+playerCharacters[0].characterID;
+  fetchRequest(path).then(function(result){console.log(result);}).catch(function(error){console.error(error);});
 };

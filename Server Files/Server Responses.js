@@ -19,6 +19,13 @@ const DestinyBucketCategory = {
   "3": "Equippable",
   "4": "Ignored",
 };
+const DestinyItemLocation = {
+  "0": "Unknown",
+  "1": "Inventory",
+  "2": "Vault",
+  "3": "Vendor",
+  "4": "Postmaster",
+};
 var EquippableItemResponse = function(item){
   return {
     bucketHash: item.bucketHash,
@@ -63,6 +70,19 @@ var CharacterResponse = function(item){
 exports.CharacterResponse = CharacterResponse;
 
 function SortProfileInventory(items){
+  var itemscopy = Array.from(items);
+  var location = {
+    Unknown: [],
+    Inventory: [],
+    Vault: [],
+    Vendor: [],
+    Postmaster: [],
+  };
+  for(i in itemscopy){
+    var locationindex = DestinyItemLocation[itemscopy[i].location];
+    location[locationindex].push(itemscopy[i]);
+  }
+  return location;
 };
 exports.SortProfileInventory = SortProfileInventory;
 function SortCharacterInventory(items){
@@ -91,12 +111,12 @@ function SortEquippablesBucket(items){
     bucketname = bucketname.split(" ").join("");
     if(sortedEquipment[bucketname] == undefined)
       { sortedEquipment[bucketname] = []; }
-    console.log(items[i]);
-    if(items[i].itemHashData.redacted == true){
-       console.log("Notice: Redacted Item identified. No guaruntees if it will respond well with the api currently.");
+    if(items[i].bucketHashData.location !== 1){
+      console.log("NOT IN INVENTORY:");
+      console.log(items[i]);
+      console.log(buckethash.location);
     }
     sortedEquipment[bucketname].push(EquippableItemResponse(items[i]));
-
   }
   return sortedEquipment;
 }
