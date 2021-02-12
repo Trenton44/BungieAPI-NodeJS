@@ -189,6 +189,36 @@ async function tokenRequest(request){
 };
 exports.tokenRequest = tokenRequest;
 
+function transferToVault(request){
+  var userdata = request.session.data.userdata;
+  var memType = userdata[userdata.primaryMembershipId].membershipType;
+  var path = bungieRoot+"/Destiny2/Actions/Items/TransferItem/";
+  var body = {
+    itemReferenceHash: request.body.item.itemHash,
+    ItemId: request.body.item.itemInstanceId,
+    stackSize:request.body.item.quantity,
+    transferToVault: true,
+    characterId: request.body.characterTransferring,
+    membershipType: memType,
+  };
+  return postRequest(path,body,retrieveAccessToken(request));
+};
+exports.transferToVault = transferToVault;
+function transferFromVault(request){
+  var userdata = request.session.data.userdata;
+  var memType = userdata[userdata.primaryMembershipId].membershipType;
+  var path = bungieRoot+"/Destiny2/Actions/Items/TransferItem/";
+  var body = {
+    itemReferenceHash: request.body.item.itemHash,
+    ItemId: request.body.item.itemInstanceId,
+    stackSize:request.body.item.quantity,
+    transferToVault: false,
+    characterId: request.body.characterReceiving,
+    membershipType: memType,
+  };
+  return postRequest(path,body,retrieveAccessToken(request));
+};
+exports.transferFromVault = transferFromVault;
 //Parses data of requests made to bungie API endpoints that return bnet user information.
 function parseBungieCurrentUserDataResponse(data){
   //console.log(data);

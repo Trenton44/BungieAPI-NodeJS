@@ -243,7 +243,7 @@ function Item(){
     var targetElementID = window.document.elementFromPoint(ev.clientX,ev.clientY).id.split("-")[0];
     var characterID = playerCharacters[targetElementID.slice(-1)].characterID;
     if(targetElementID == "c1" || targetElementID == "c2"){
-      transferRequest(localthis.data,characterID).then(function(result){
+      transferRequest(localthis.data,characterID,playerCharacters[0].characterID).then(function(result){
         console.log("transfer was successful.");
         localthis.destroy(false);
       }).catch(function(error){
@@ -304,12 +304,12 @@ function lockItemState(itemData, rcID){
   return postRequest(path, body);
 };
 function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = transferring character
-  if(tcID == null || tcID == undefined) tcID = playerCharacters[0].characterID;
   var path = "/character/transferItem/";
   var body = {
     item: itemData,
     characterTransferring: tcID,
     characterReceiving: rcID,
+    vaultTransfer: true,
   };
   return postRequest(path, body);
 };

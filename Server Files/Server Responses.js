@@ -116,12 +116,24 @@ function sortByBucketDefinition(items){
     var bucketname = DestinyInventoryBucketDefinition[buckethash].displayProperties.name;
     bucketname = bucketname.split(" ").join("");
     if(sortedEquipment[bucketname] == undefined)
-      { sortedEquipment[bucketname] = []; console.log("New category: "+bucketname); }
+      { sortedEquipment[bucketname] = []; }
     sortedEquipment[bucketname].push(items[i]);
   }
   return sortedEquipment;
 };
 exports.sortByBucketDefinition = sortByBucketDefinition;
+function sortByBucketTypeHash(items){
+  var sortedEquipment = {};
+  for(i in items){
+    var bucketTypeHash = items[i].itemHashData.inventory.bucketTypeHash;
+    var bucketHashResult = DestinyInventoryBucketDefinition[bucketTypeHash].displayProperties.name;
+    if(sortedEquipment[bucketHashResult] == undefined)
+      { sortedEquipment[bucketHashResult] = []; console.log("New category: "+bucketHashResult); }
+    sortedEquipment[bucketHashResult].push(items[i]);
+  }
+  return sortedEquipment;
+}
+exports.sortByBucketTypeHash = sortByBucketTypeHash;
 var CharactersResponse = function(items){
   var itemscopy = Array.from(items);
   for(i in itemscopy){

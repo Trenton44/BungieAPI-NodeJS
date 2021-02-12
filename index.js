@@ -171,14 +171,10 @@ app.get("/profile/inventory/:id", async function(request,response){
 app.get("/profile/vault",async function(request,response){
   var components = ["102"];
   var data = await profileComponentRequest(request, components);
-  console.log("Sorting 1.");
   data = ServerResponse.sortByLocation(data.profileInventory).Vault;
-  console.log("Sorting 2.");
-  data = ServerResponse.sortByBucketCategory(data);
-  console.log("Sorting 3.");
-  data.Item = ServerResponse.sortByBucketDefinition(data.Item);
-  data.Equippable = ServerResponse.sortByBucketDefinition(data.Equippable);
-  console.log("Returning.");
+  data = ServerResponse.sortByBucketTypeHash(data);
+  //data.Item = ServerResponse.sortByBucketTypeHash(data.Item);
+  //data.Equippable = ServerResponse.sortByBucketTypeHash(data.Equippable);
   response.status(200).json(data);
 });
 app.post("/character/lockItem",async function(request, response){
@@ -201,34 +197,30 @@ app.post("/character/lockItem",async function(request, response){
 });
 
 app.post("/character/transferItem",async function(request, response){
-  var userdata = request.session.data.userdata;
-  var memType = userdata[userdata.primaryMembershipId].membershipType;
-  var path = bungieRoot+"/Destiny2/Actions/Items/TransferItem/";
-  var body = {
-    itemReferenceHash: request.body.item.itemHash,
-    ItemId: request.body.item.itemInstanceId,
-    stackSize:request.body.item.quantity,
-    transferToVault: true,
-    characterId: request.body.characterTransferring,
-    membershipType: memType,
-  };
-  console.log(body);
-  d2api.postRequest(path,body,d2api.retrieveAccessToken(request)).then(async function(result){
-    console.log(result.data);
-    body.transferToVault = false;
-    body.characterId = request.body.characterReceiving;
-    await sleep(1000);
-    d2api.postRequest(path,body,d2api.retrieveAccessToken(request)).then(function(result){
-      console.log(result.data);
-      response.status(200).json(result.data.Response);
-    }).catch(function(error){
-      console.log(error);
-    });
-  }).catch(function(error){
-    console.log(error);
-    response.status(400).json(error);
-  });
-
+  var result;
+  if(request.body.characterTransferring !== undefined && request.body.characterReceiving !== undefined){
+    console.log("Item is being transferred between two characters.");
+    result = await d2api.transferToVault(request);
+    await sleep(500);
+    result = await d2api.transferFromVault(request);
+    console.log(result.data.Response);
+    response.status(200).json(result.data.Response);
+  }
+  else if(request.body.characterTransferring !== undefined && request.body.characterReceiving == undefined){
+    console.log("Item is being transferred to the vault.");
+    result = await d2api.transferToVault(request);
+    console.log(result.data.Response);
+    response.status(200).json(result.data.Response);
+  }
+  else if(request.body.characterTransferring == undefined && request.body.characterReceiving !== undefined){
+    console.log("Item is being transferred from the vault to a character.");
+    result = await d2api.transferFromVault(request);
+    console.log(result.data.Response);
+    response.status(200).json(result.data.Response);
+  }
+  else {
+    response.status(400).json({error: "Data needs to be corrected."});
+  }
 });
 
 //Sends a POST request to bungie API EquipItem endpoint, returns result of request.

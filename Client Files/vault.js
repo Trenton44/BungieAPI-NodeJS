@@ -87,11 +87,11 @@ function character(){
   };
 };
 function Vault(){
-  this.vaultItems = [];
+  this.vaultItems = {};
   this.wipe = function(){
     var length = this.vaultItems.length;
     for(var z = 0; z<length; z++){
-      this.vaultItems[0].destroy();
+      this.vaultItems[0].destroy(true);
       this.vaultItems.shift();
     }
   };
@@ -100,28 +100,38 @@ function Vault(){
     var path = "/profile/vault";
     var data = await fetchRequest(path);
     console.log(data);
-    for(i in data.Item){
-      for(z in data.Item[i]){
+    for(i in data){
+      console.log("New array: "+i);
+      console.log("Data in array: ");
+      console.log(data[i]);
+      if(this.vaultItems[i] == undefined){
+        var container = window.document.createElement("div");
+        container.id = i;
+        window.document.getElementById("vault-equipment").append(container);
+        this.vaultItems[i] = [];
+      }
+      for(z in data[i]){
         var newItem = new Item();
-        newItem.Initialize(this.vaultItems.length,data.Item[i][z]);
-        this.vaultItems.push(newItem);
+        newItem.Initialize(i,z,data[i][z]);
+        this.vaultItems[i].push(newItem);
       }
     }
+    console.log(this.vaultItems);
   };
 };
 function Item(){
   this.data;
   this.index;
+  this.slotName;
   this.HTMLElement;
-  this.container;
-  this.Initialize = function(index, data){
+  this.Initialize = function(slotName, index, data){
     this.index = index;
+    this.slotName = slotName;
     var localthis = this;
     this.container = window.document.createElement("div");
     this.HTMLElement = window.document.createElement("img");
     this.HTMLElement.id = "vault-item-"+index;
-    this.container.append(this.HTMLElement);
-    window.document.getElementById("vault-equipment").append(this.container);
+    window.document.getElementById(this.slotName).append(this.HTMLElement);
     this.HTMLElement.draggable = true;
     this.HTMLElement.ondragend = function(ev){localthis.drop(ev);};
     this.changeData(data);
@@ -133,22 +143,29 @@ function Item(){
   }
   this.destroy = function(isWipe){
       this.HTMLElement.remove();
-      this.container.remove();
       this.data = null;
+      if(isWipe) return true;
+      console.log(vaultController);
+      console.log(this.slotName);
+      vaultController.vaultItems[this.slotName].splice(this.index,1);
   };
   this.drop = function(ev){
     var localthis = this;
     var targetElementID = window.document.elementFromPoint(ev.clientX,ev.clientY).id.split("-")[0];
-    var characterID = playerCharacters[targetElementID.slice(-1)].characterID;
-    if(targetElementID == "c1" || targetElementID == "c2"){
-      transferRequest(localthis.data,characterID).then(function(result){
-        console.log("transfer was successful.");
-        localthis.destroy(false);
-      }).catch(function(error){
-        console.log("Transfer of item failed.");
-        console.error(error);
-      });
+    try{
+      var characterID = playerCharacters[targetElementID.slice(-1)].characterID;
     }
+    catch(TypeError){
+      console.error("That's not a character");
+      return false;
+    }
+    transferRequest(localthis.data,characterID).then(function(result){
+      console.log("transfer was successful.");
+      localthis.destroy(false);
+    }).catch(function(error){
+      console.log("Transfer of item failed.");
+      console.error(error);
+    });
   }
 };
 //Fetch Request function
@@ -201,7 +218,6 @@ function lockItemState(itemData, rcID){
   return postRequest(path, body);
 };
 function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = transferring character
-  if(tcID == null || tcID == undefined) tcID = playerCharacters[0].characterID;
   var path = "/character/transferItem/";
   var body = {
     item: itemData,
