@@ -105,15 +105,12 @@ app.get("/login",function(request,response){
 
 //Entry point for authorized personnel. Make all requests for API data here prior to serving webpage.
 app.use(authorizationCheck);
+app.use(getBasicBnetInfo);
 app.get("/",async function(request,response){
-  let userdata = await getBasicBnetInfo(request);
-  if(userdata !== null){
-    request.session.data.userdata = userdata
-    response.sendFile(webpageRoot+"/home.html");
-  }
-  else {
-    response.status(500).json({error: "fuck."});
-  }
+  response.sendFile(webpageRoot+"/home.html");
+});
+app.get("/vault",async function(request,response){
+  response.sendFile(webpageRoot+"/vault.html");
 });
 //Returns a list of the character ID's of the current d2 profile.
 app.get("/characterids",async function(request, response){
@@ -136,10 +133,18 @@ app.get("/character/:id/equipment",async function(request,response){
   var components = ["201", "205"];
   var cID = request.params.id;
   var data = await characterComponentRequest(request, components,cID);
-  //console.log(data.equipment);
+  data.equipment = ServerResponse.sortByBucketDefinition(data.equipment);
+  data.inventory = ServerResponse.sortByBucketCategory(data.inventory);
+  data.inventory = ServerResponse.sortByBucketDefinition(data.inventory.Equippable);
+  delete data.equipment.Emotes;
+  delete data.equipment.Finishers;
+  delete data.equipment.ClanBanners;
+  delete data.inventory.Emotes;
+  delete data.inventory.Finishers;
+  delete data.inventory.ClanBanners;
   var returnData = {
-    equipment: ServerResponse.SortCharacterInventory(data.equipment).Equippable,
-    inventory: ServerResponse.SortCharacterInventory(data.inventory).Equippable,
+    equipment: data.equipment,
+    inventory: data.inventory,
   };
   response.status(200).json(returnData);
 });
@@ -149,7 +154,7 @@ app.get("/character/:id/inventory",async function(request,response){
   var components = ["201"];
   var cID = request.params.id;
   var data = await characterComponentRequest(request, components,cID);
-  var returnData = ServerResponse.SortCharacterInventory(data.inventory);
+  var returnData = ServerResponse.sortByLocation(data.inventory);
   response.status(200).json(returnData);
 });
 app.get("/profile/inventory/:id", async function(request,response){
@@ -158,14 +163,23 @@ app.get("/profile/inventory/:id", async function(request,response){
   var data = await profileComponentRequest(request, components);
   var returnData = {
     currency: data.profileCurrencies,
-    inventory: ServerResponse.SortProfileInventory(data.profileInventory),
+    inventory: ServerResponse.sortByLocation(data.profileInventory),
   };
   response.status(200).json(returnData);
 });
-app.get("/vault",async function(request,response){
+
+app.get("/profile/vault",async function(request,response){
   var components = ["102"];
   var data = await profileComponentRequest(request, components);
-  response.status(200).json(ServerResponse.SortProfileInventory(data.profileInventory).Vault);
+  console.log("Sorting 1.");
+  data = ServerResponse.sortByLocation(data.profileInventory).Vault;
+  console.log("Sorting 2.");
+  data = ServerResponse.sortByBucketCategory(data);
+  console.log("Sorting 3.");
+  data.Item = ServerResponse.sortByBucketDefinition(data.Item);
+  data.Equippable = ServerResponse.sortByBucketDefinition(data.Equippable);
+  console.log("Returning.");
+  response.status(200).json(data);
 });
 app.post("/character/lockItem",async function(request, response){
   var userdata = request.session.data.userdata;
@@ -310,15 +324,16 @@ function profileComponentRequest(request, components){
     return false;
   });
 };
-function getBasicBnetInfo(request){
+function getBasicBnetInfo(request,response,next){
   var token = d2api.retrieveAccessToken(request);
   console.log("Accessing bnet user data");
   return d2api.getBungieCurrentUserData(token).then(function(result){
     console.log("obtained data");
-    return d2api.parseBungieCurrentUserDataResponse(result.data.Response);
+    request.session.data.userdata = d2api.parseBungieCurrentUserDataResponse(result.data.Response);
+    next();
   }).catch(function(error){
     console.error(error);
-    return null;
+    response.status(400).error({error: "unable to access bnet info."});
   });
 };
 function authorizationCheck(request,response,next){
@@ -338,10 +353,11 @@ function authorizationCheck(request,response,next){
           next();
         }).catch(function(error){
           console.log("There was an error refreshing the token.");
-          if(request.url == "/"){
+          if(request.url == "/" || request.url == "/vault"){
             response.redirect("/login");
           }
           else {
+            console.log(request);
             response.status(400).json({error:"requires login."});
           }
         });
@@ -353,7 +369,7 @@ function authorizationCheck(request,response,next){
   }
   else {
     console.log("user is not yet logged in, redirecting to login.");
-    if(request.url == "/"){
+    if(request.url == "/" || request.url == "/vault"){
       response.redirect("/login");
     }
     else {

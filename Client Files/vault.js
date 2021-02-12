@@ -1,61 +1,23 @@
 var window;
 var bungieCommon = "https://www.bungie.net";
 var playerCharacters = [];
-var slotController = new slotController();
-//A basic item so the reload() function inside of the equipment list doesn't lose it.
-function placeholderItem(){
-  return {
-    placeholder: true,
-    itemHashData:{
-      displayProperties: {
-        icon: "",
-      },
-    },
-  };
-};
+var vaultController = new Vault();
 async function Initialize(value){
   window = value;
   var path = "/characterids";
   var ids = await fetchRequest(path);
-  updateLoadout(ids[0]);
   for(i in ids) {
     playerCharacters.push(new character());
     playerCharacters[i].Initialize(i, ids[i]);
   }
-  updateCharacters();
-};
-function changeCharacter(characterlistLocation){
-  if(characterlistLocation == 0){console.log("Character is already loaded.");}
-  else{
-    var backup = Array.from(playerCharacters);
-    var temp = playerCharacters.splice(characterlistLocation,1);
-    playerCharacters.unshift(temp[0]);
-
-    for(i in playerCharacters) playerCharacters[i].setIdentifier(i);
-    console.log(playerCharacters);
-    console.log("done swapping places.");
-    updateCharacters();
-    updateLoadout(playerCharacters[0].characterID);
-  }
+  Promise.all([playerCharacters[0].loadCharacter(),playerCharacters[1].loadCharacter(),playerCharacters[2].loadCharacter()]).then(function(values){
+    for(i in playerCharacters) playerCharacters[i].update();
+    vaultController.fetchLoadout();
+  });
 };
 function updateCharacters(){
   console.log("loading characters");
-  Promise.all([playerCharacters[0].loadCharacter(),playerCharacters[1].loadCharacter(),playerCharacters[2].loadCharacter()]).then(function(values){
-    for(i in playerCharacters) playerCharacters[i].update();
-    playerCharacters[0].showStats();
-    playerCharacters[0].showBanner();
-  });
 
-};
-function updateLoadout(characterID){
-  slotController.fetchLoadout(characterID).then(function(result){
-    console.log("Loadout update was successful.");
-    return true;
-  }).catch(function(error){
-    console.error("Failed to update loadout");
-    console.error(error);
-    return false;
-  })
 };
 function character(){
   this.htmlIdentifier;
@@ -109,8 +71,6 @@ function character(){
   }
   this.Initialize = function(htmlID, characterID){
     this.setIdentifier(htmlID);
-    var localthis = this;
-    this.element.ondblclick = function(){changeCharacter(localthis.htmlIdentifier);};
     this.setCID(characterID);
   };
   this.loadCharacter = async function(){
@@ -126,98 +86,44 @@ function character(){
     return true;
   };
 };
-function slotController(){
-  this.slots = {
-    Subclass: [],
-    KineticWeapons: [],
-    EnergyWeapons: [],
-    PowerWeapons: [],
-    Helmet: [],
-    Gauntlets: [],
-    ChestArmor:[],
-    LegArmor: [],
-    ClassArmor: [],
-    Ghost: [],
-    Vehicle:[],
-    Ships: [],
-    Emblems: [],
-    SeasonalArtifact: [],
-  };
+function Vault(){
+  this.vaultItems = [];
   this.wipe = function(){
-    for(i in this.slots){
-      var length = this.slots[i].length;
-      if(length == 0) continue;
-      for(var z = 0; z<length; z++){
-        this.slots[i][0].destroy(true);
-        this.slots[i].shift();
-      }
+    var length = this.vaultItems.length;
+    for(var z = 0; z<length; z++){
+      this.vaultItems[0].destroy();
+      this.vaultItems.shift();
     }
   };
-  this.swapEquipped = function(slot, index){
-    var item = this.slots[slot];
-    item = item[index];
-    var localthis = this;
-    equipItem(item.data, playerCharacters[0].characterID).then(function(result){
-      var currentEquip = localthis.slots[slot][0];
-      var temp = Object.assign(currentEquip.data);
-      var temp2 = Object.assign(item.data);
-      item.changeData(temp);
-      currentEquip.changeData(temp2);
-      console.log("Equip request was successful.");
-    }).catch(function(error){
-      console.error("There was an error equipping this item.");
-      console.log(error);
-    });
-  }
-  this.fetchLoadout = async function(characterID){
+  this.fetchLoadout = async function(){
     this.wipe();
-    var localthis = this;
-    var path = "/character/"+characterID+"/equipment";
+    var path = "/profile/vault";
     var data = await fetchRequest(path);
     console.log(data);
-    var keys = Object.keys(data.equipment);
-    console.log("Equipment");
-    for(i in keys){
-      var newItem = new Item();
-      var newItemData = data.equipment[keys[i]];
-      console.log(keys[i]);
-      console.log(newItemData[0]);
-      newItem.Initialize(keys[i],0,newItemData[0]);
-      this.slots[keys[i]][0] = newItem;
-    }
-    console.log("Inventory");
-    for(i in keys){
-      var itemSlot = this.slots[keys[i]];
-      var inventoryArray = data.inventory[keys[i]];
-      for(z in inventoryArray){
+    for(i in data.Item){
+      for(z in data.Item[i]){
         var newItem = new Item();
-        newItem.Initialize(keys[i],itemSlot.length,inventoryArray[z]);
-        itemSlot[itemSlot.length] = newItem;
+        newItem.Initialize(this.vaultItems.length,data.Item[i][z]);
+        this.vaultItems.push(newItem);
       }
     }
   };
 };
-
 function Item(){
-  this.slotName;
   this.data;
   this.index;
   this.HTMLElement;
-  this.Initialize = function(slotName, index, data){
-    this.slotName = slotName;
+  this.container;
+  this.Initialize = function(index, data){
     this.index = index;
     var localthis = this;
-    if(index == 0){
-      this.HTMLElement = window.document.getElementById(this.slotName);
-    }
-    else {
-      this.HTMLElement = window.document.createElement("img");
-      this.HTMLElement.id = slotName+"-"+index;
-      window.document.getElementById(slotName+"-equipment").append(this.HTMLElement);
-      this.HTMLElement.draggable = true;
-      this.HTMLElement.ondragend = function(ev){localthis.drop(ev);};
-      this.HTMLElement.ondblclick = function(ev){ slotController.swapEquipped(localthis.slotName, localthis.index); };
-    }
+    this.container = window.document.createElement("div");
+    this.HTMLElement = window.document.createElement("img");
+    this.HTMLElement.id = "vault-item-"+index;
+    this.container.append(this.HTMLElement);
+    window.document.getElementById("vault-equipment").append(this.container);
+    this.HTMLElement.draggable = true;
+    this.HTMLElement.ondragend = function(ev){localthis.drop(ev);};
     this.changeData(data);
     if(this.data.state == "Masterwork") this.HTMLElement.style.border = "2px solid gold";
   };
@@ -226,17 +132,9 @@ function Item(){
     this.HTMLElement.src = bungieCommon+this.data.itemHashData.displayProperties.icon;
   }
   this.destroy = function(isWipe){
-    if(this.index == 0){
-      this.data = null;
-      this.HTMLElement.src = "";
-    }
-    else {
       this.HTMLElement.remove();
+      this.container.remove();
       this.data = null;
-      if(isWipe != true){
-        slotController.slots[this.slotName].splice(this.index,1);
-      }
-    }
   };
   this.drop = function(ev){
     var localthis = this;
@@ -253,7 +151,6 @@ function Item(){
     }
   }
 };
-
 //Fetch Request function
 async function fetchRequest(path){
   var request = new Request(path, {
@@ -312,8 +209,4 @@ function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = t
     characterReceiving: rcID,
   };
   return postRequest(path, body);
-};
-function test(){
-  var path = "/profile/inventory/"+playerCharacters[0].characterID;
-  fetchRequest(path).then(function(result){console.log(result);}).catch(function(error){console.error(error);});
 };

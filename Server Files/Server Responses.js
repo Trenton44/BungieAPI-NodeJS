@@ -75,7 +75,24 @@ var CharacterResponse = function(item){
 };
 exports.CharacterResponse = CharacterResponse;
 
-function SortProfileInventory(items){
+function sortByBucketCategory(items){
+  var itemscopy = Array.from(items);
+  var bucketCategory = {
+    Invisible:[],
+    Item:[],
+    Currency:[],
+    Equippable:[],
+    Ignored:[],
+  };
+  for(i in itemscopy){
+    var bucket = DestinyBucketCategory[itemscopy[i].bucketHashData.category];
+    bucketCategory[bucket].push(itemscopy[i]);
+  }
+  return bucketCategory;
+};
+exports.sortByBucketCategory = sortByBucketCategory;
+
+function sortByLocation(items){
   var itemscopy = Array.from(items);
   var location = {
     Unknown: [],
@@ -90,42 +107,21 @@ function SortProfileInventory(items){
   }
   return location;
 };
-exports.SortProfileInventory = SortProfileInventory;
-function SortCharacterInventory(items){
-  var itemscopy = Array.from(items);
-  var bucketCategory = {
-    Invisible:[],
-    Item:[],
-    Currency:[],
-    Equippable:[],
-    Ignored:[],
-  };
-  for(i in itemscopy){
-    var bucket = DestinyBucketCategory[itemscopy[i].bucketHashData.category];
-    bucketCategory[bucket].push(itemscopy[i]);
-  }
-  bucketCategory.Equippable = SortEquippablesBucket(bucketCategory.Equippable);
-  return bucketCategory;
-};
-exports.SortCharacterInventory = SortCharacterInventory;
+exports.sortByLocation = sortByLocation;
 
-function SortEquippablesBucket(items){
+function sortByBucketDefinition(items){
   var sortedEquipment = {};
   for(i in items){
     var buckethash = items[i].bucketHash;
     var bucketname = DestinyInventoryBucketDefinition[buckethash].displayProperties.name;
     bucketname = bucketname.split(" ").join("");
     if(sortedEquipment[bucketname] == undefined)
-      { sortedEquipment[bucketname] = []; }
-    if(items[i].bucketHashData.location !== 1){
-      console.log("NOT IN INVENTORY:");
-      console.log(items[i]);
-      console.log(buckethash.location);
-    }
-    sortedEquipment[bucketname].push(EquippableItemResponse(items[i]));
+      { sortedEquipment[bucketname] = []; console.log("New category: "+bucketname); }
+    sortedEquipment[bucketname].push(items[i]);
   }
   return sortedEquipment;
-}
+};
+exports.sortByBucketDefinition = sortByBucketDefinition;
 var CharactersResponse = function(items){
   var itemscopy = Array.from(items);
   for(i in itemscopy){
