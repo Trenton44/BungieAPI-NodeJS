@@ -101,14 +101,6 @@ app.get("/bnetresponse", async function(request, response){
 });
 
 app.use(accessAuthorizedEndpoints);
-app.use(D2API.getBnetInfo);
-
-app.get("/",async function(request,response){
-  response.sendFile(webpageRoot+"/home.html");
-});
-app.get("/vault",async function(request,response){
-  response.sendFile(webpageRoot+"/vault.html");
-});
 
 //Returns a list of the character ID's of the current d2 profile.
 app.get("/characterids",async function(request, response){
@@ -132,11 +124,10 @@ app.get("/character/:id/general",async function(request, response){
 //Sends request to GetProfile endpoint, cleans up result, and
 //returns list of equipment character currently has equipped.
 app.get("/character/:id/equipment",async function(request,response){
-  var components = ["201", "205"];
+  var components = ["201", "205", "300", "304"];
   var cID = request.params.id;
   var data = await D2API.characterComponentRequest(request, response, components, cID).catch(function(error){ return error; });
-  console.log("in character/:id/equipment");
-  if(data instanceof Error){ console.error(data);response.status(400).json({error: error});}
+  if(data instanceof Error){ console.error(data); response.status(400).json({error: error});}
   data.equipment = ServerResponse.sortByBucketDefinition(data.equipment);
   data.inventory = ServerResponse.sortByBucketCategory(data.inventory);
   data.inventory = ServerResponse.sortByBucketDefinition(data.inventory.Equippable);
@@ -160,7 +151,7 @@ app.get("/character/:id/inventory",async function(request,response){
 });
 
 app.get("/profile/inventory/:id", async function(request,response){
-  var components = ["102","103"];
+  var components = ["102", "103"];
   var cID = request.params.id;
   var data = await D2API.profileComponentRequest(request, response, components).catch(function(error){ return error; });
   console.log("in profile/inventory/:id");
@@ -173,7 +164,7 @@ app.get("/profile/inventory/:id", async function(request,response){
 });
 
 app.get("/profile/vault",async function(request, response){
-  var components = ["102"];
+  var components = ["102", "300", "304"];
   var data = await D2API.profileComponentRequest(request, response, components).catch(function(error){ return error; });
   console.log("in profile/vault");
   if(data instanceof Error){ console.error(data);response.status(400).json({error: error});}
@@ -193,16 +184,16 @@ app.post("/character/transferItem",async function(request, response){
   var result;
   if(request.body.characterTransferring === undefined){
     if(request.body.characterReceiving !== undefined)
-    { result =await D2API.transferFromVault(request, response).catch(function(error){ return error; }); }
+    { result = await D2API.transferFromVault(request, response).catch(function(error){ return error; }); }
   }
   if(request.body.characterTransferring !== undefined){
     if(request.body.characterReceiving === undefined)
-    { result =await D2API.transferToVault(request, response).catch(function(error){ return error; }); }
+    { result = await D2API.transferToVault(request, response).catch(function(error){ return error; }); }
     if(request.body.characterReceiving !== undefined)
-    { result =await D2API.transferToCharacter(request, response).catch(function(error){ return error; }); }
+    { result = await D2API.transferToCharacter(request, response).catch(function(error){ return error; }); }
   }
   console.log("end of character/transferItem.");
-  if(result instanceof Error){ console.error(result);response.status(400).json({error: error});}
+  if(result instanceof Error){ response.status(400).json({error: error});}
   response.status(200).json({result: true});
 });
 //Sends a POST request to bungie API EquipItem endpoint, returns result of request.
@@ -211,6 +202,14 @@ app.post("/character/equipItem",async function(request, response){
   console.log("in character/lockItem");
   if(result instanceof Error){ console.error(result);response.status(400).json({error: error});}
   response.status(200).json(result);
+});
+
+app.use(D2API.getBnetInfo);
+app.get("/",async function(request,response){
+  response.sendFile(webpageRoot+"/home.html");
+});
+app.get("/vault",async function(request,response){
+  response.sendFile(webpageRoot+"/vault.html");
 });
 httpsServer.listen(process.env.PORT);
 

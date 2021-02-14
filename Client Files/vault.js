@@ -126,21 +126,35 @@ function Item(){
   this.index;
   this.slotName;
   this.HTMLElement;
-  this.Initialize = function(slotName, index, data){
+  this.Initialize = function(slotName, index, itemData){
     this.index = index;
     this.slotName = slotName;
-    var localthis = this;
-
     this.container = window.document.createElement("div");
     this.container.className = "vault-item-container";
     this.HTMLElement = window.document.createElement("img");
     this.HTMLElement.id = "vault-item-"+index;
     this.container.append(this.HTMLElement);
+    this.changeData(itemData);
+    try{
+      if(this.data.itemInstanceData.primaryStat !== undefined){
+        var text = window.document.createElement("h1");
+        text.innerHTML = this.data.itemInstanceData.primaryStat.value;
+        text.className = "vault-item-power";
+        this.container.append(text);
+      }
+      if(this.data.itemHashData.iconWatermark !== undefined){
+        text = window.document.createElement("img");
+        text.src = "https://www.bungie.net"+this.data.itemHashData.iconWatermark;
+        text.className = "vault-item-seasonal-overlay";
+        this.container.append(text);
+      }
+    }
+    catch (Error){}
     window.document.getElementById(this.slotName).append(this.container);
+    var localthis = this;
     this.HTMLElement.draggable = true;
     this.HTMLElement.ondragend = function(ev){localthis.drop(ev);};
-    this.HTMLElement.onclick = function(ev){loadSideMenu(localthis.data);};
-    this.changeData(data);
+    this.container.onclick = function(ev){ console.log(localthis.data); loadSideMenu(localthis.data);};
     if(this.data.state == "Masterwork") this.HTMLElement.style.border = "2px solid gold";
   };
   this.changeData = function(value){
@@ -172,9 +186,10 @@ function Item(){
       console.log("Transfer of item failed.");
       console.error(error);
     });
-  }
+  };
 };
 function loadSideMenu(itemData){
+  console.log(itemData);
   window.document.getElementById("side-view").style.display= "none";
   window.document.getElementById("side-view").style.display= "initial";
   window.document.getElementById("item-name").innerHTML = itemData.itemHashData.displayProperties.name;
@@ -183,10 +198,32 @@ function loadSideMenu(itemData){
   window.document.getElementById("item-screenshot").src = bungieCommon+icon;
   window.document.getElementById("item-flavortext").innerHTML = itemData.itemHashData.flavorText;
   window.document.getElementById("item-preview-level").innerHTML;
-
+  for(i in itemData.itemStatData){
+    console.log(itemData.itemStatData[i].value);
+    var statcontainer = window.document.createElement("div");
+    var statname = window.document.createElement("h1");
+    var bar = window.document.createElement("div");
+    var barbackground = window.document.createElement("div");
+    var value = window.document.createElement("h1");
+    statcontainer.className = "stat-preview-content";
+    statname.innerHTML = i
+    bar.className = "stat-bar";
+    bar.style.width = itemData.itemStatData[i].value+"%";
+    barbackground.className = "stat-bar-background";
+    barbackground.append(bar);
+    value.innerHTML = itemData.itemStatData[i].value;
+    statcontainer.append(statname);
+    statcontainer.append(barbackground);
+    statcontainer.append(value);
+    window.document.getElementById("stat-preview-block").append(statcontainer);
+  }
 };
 function hideSideMenu(){
   window.document.getElementById("side-view").style.display= "none";
+  while(window.document.getElementById("stat-preview-block").hasChildNodes()){
+    window.document.getElementById("stat-preview-block").removeChild(window.document.getElementById("stat-preview-block").childNodes[0]);
+    console.log(window.document.getElementById("stat-preview-block"));
+  }
 };
 //Fetch Request function
 async function fetchRequest(path){

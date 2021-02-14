@@ -23,13 +23,11 @@ const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitT
 dotenv.config( { path: path.join(root,"process.env") } );
 
 async function getBnetInfo(request,response,next){
-  console.log("Requesting user's Bnet profile.");
   var path = bungieRoot+"/User/GetMembershipsForCurrentUser/";
   var access_token = decryptData(request.session.data.tokenData).access_token;
   let result = await getRequestAuth(path, access_token).catch(function(error){return error;});
   if(result instanceof Error) { return Promise.reject(result); }
   request.session.data.bnetInfo = parseBnetInfo(result.data.Response);
-  console.log("finished bnet profile.");
   next();
 };
 exports.getBnetInfo = getBnetInfo;
@@ -42,7 +40,6 @@ function parseBnetInfo(data){
   }
   info.primaryMembershipId = data.primaryMembershipId;
   info.bnetUser = data.bungieNetUser;
-  console.log("finished parsing bnet info");
   return info;
 };
 
@@ -54,8 +51,9 @@ async function characterComponentRequest(request, response, components, characte
   var access_token = decryptData(request.session.data.tokenData).access_token;
   let result = await getRequestAuth(path, access_token).catch(function(error){ return error; });
   if(result instanceof Error) { return Promise.reject(result); }
-  console.log("finished character component request.");
-  return parseComponents(result.data.Response);
+  result = parseComponents(result.data.Response);
+  if(components.find(value => value >= "300" && value <= "310") !== undefined) { return combineItemsInstanceData(result);}
+  return result;
 };
 exports.characterComponentRequest = characterComponentRequest;
 
@@ -67,8 +65,9 @@ async function profileComponentRequest(request, response, components){
   var access_token = decryptData(request.session.data.tokenData).access_token;
   let result = await getRequestAuth(path,access_token).catch(function(error){ return error; });
   if(result instanceof Error) { return Promise.reject(result); }
-  console.log("finished profile component request.");
-  return parseComponents(result.data.Response);
+  result = parseComponents(result.data.Response);
+  if(components.find(value => value === "300") !== undefined) { return combineItemsInstanceData(result);}
+  return result;
 };
 exports.profileComponentRequest = profileComponentRequest;
 function buildComponentPath(request){
@@ -76,7 +75,6 @@ function buildComponentPath(request){
   var membershipType = bnetInfo[bnetInfo.primaryMembershipId].membershipType;
   var profileID = bnetInfo.primaryMembershipId;
   var path = bungieRoot+"/Destiny2/"+membershipType+"/Profile/"+profileID+"/";
-  console.log("finished building component path.");
   return path;
 };
 //used to parse incoming component data from the bungie api.
@@ -141,10 +139,8 @@ async function transferToCharacter(request, response){
   body.transferToVault = false;
   body.characterId = request.body.characterReceiving;
   sleep(500);
-  console.log("Past sleep");
   let characterTransfer = await postRequest(path, body, access_token).catch(function(error){ return error; });
   if(characterTransfer instanceof Error) { return Promise.reject(characterTransfer); }
-  console.log("Past second transfer.");
   console.log(characterTransfer);
   return characterTransfer;
 };
@@ -285,6 +281,26 @@ function constructComponentString(value){
   return parameters.toString();
 };
 
+function combineItemsInstanceData(items){
+  for(i in items){
+    if(i == "itemComponents") { continue; }
+    for(z in items[i]){
+      if(items[i][z].itemInstanceId !== undefined){
+        if(items.itemComponents.instances !== undefined)
+        { items[i][z].itemInstanceData = items.itemComponents.instances[items[i][z].itemInstanceId]; }
+        if(items.itemComponents.stats !== undefined){
+          items[i][z].itemStatData = items.itemComponents.stats[items[i][z].itemInstanceId];
+          console.log(items[i][z].itemInstanceId);
+          console.log(items.itemComponents.stats[items[i][z].itemInstanceId]);
+          console.log(items[i][z].itemStatData);
+        }
+      }
+    }
+  }
+  delete items.itemComponents.instances;
+  delete items.itemComponents.stats;
+  return items;
+};
 //Loads the current d2 manifest from bungie api and saves to root.
 async function loadManifest(){
   console.log("Obtaining Manifest");

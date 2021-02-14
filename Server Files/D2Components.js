@@ -16,8 +16,8 @@ const DestinyRaceDefinition = require(manifestRoot+"/DestinyRaceDefinition.json"
 const DestinyStatDefinition = require(manifestRoot+"/DestinyStatDefinition.json");
 const DestinyInventoryItemDefinition = require(manifestRoot+"/DestinyInventoryItemDefinition.json");
 const DestinyInventoryBucketDefinition = require(manifestRoot+"/DestinyInventoryBucketDefinition.json");
-
-
+const DestinyPowerCapDefinition = require(manifestRoot+"/DestinyPowerCapDefinition.json");
+const DestinyDamageTypeDefinition = require(manifestRoot+"/DestinyDamageTypeDefinition.json");
 const components = {
   "100": "profile",
   "101": "vendorReceipts",
@@ -101,6 +101,26 @@ var equipment = function(data){
   for(z in itemlist){
     itemlist[z].itemHashData = DestinyInventoryItemDefinition[itemlist[z].itemHash];
     itemlist[z].bucketHashData = DestinyInventoryBucketDefinition[itemlist[z].bucketHash];
+    if(itemlist[z].overrideStyleItemHash !== undefined && itemlist[z].overrideStyleItemHash !== null)
+    { itemlist[z].overrideStyleItemHashData = DestinyInventoryItemDefinition[itemlist[z].overrideStyleItemHash];}
+    if(itemlist[z].itemHashData.inventory !== undefined && itemlist[z].inventory !== null)
+    { itemlist[z].itemHashData.inventory.bucketTypeHashData = DestinyInventoryBucketDefinition[itemlist[z].itemHashData.inventory.bucketTypeHash]; }
+    /*if(itemlist[z].itemHashData.stats !== undefined && itemlist[z].itemHashData.stats !== null){
+      itemlist[z].itemHashData.stats.statData = {};
+      for(i in itemlist[z].itemHashData.stats.stats){
+        var temp = DestinyStatDefinition[i];
+        itemlist[z].itemHashData.stats.statData[temp.displayProperties.name] = temp;
+        itemlist[z].itemHashData.stats.statData[temp.displayProperties.name].value = itemlist[z].itemHashData.stats.stats[i].value;
+      }
+    }
+    if(itemlist[z].itemHashData.quality !== undefined && itemlist[z].itemHashData.quality !== null){
+      var quality = itemlist[z].itemHashData.quality;
+      itemlist[z].itemHashData.seasonalOverlay = quality.displayVersionWatermarkIcons[quality.currentVersion];
+      itemlist[z].itemHashData.powerCapData = DestinyPowerCapDefinition[quality.versions[quality.currentVersion].powerCapHash];
+    }
+    if(itemlist[z].itemHashData.defaultDamageType !== undefined && itemlist[z].itemHashData.defaultDamageType !== null ){
+      itemlist[z].damageTypeData = DestinyDamageTypeDefinition[itemlist[z].itemHashData.defaultDamageTypeHash];
+    }*/
   }
   data = itemlist;
   console.log("all data for characterEquipment has been built.");
@@ -114,6 +134,26 @@ var inventory = function(data){
   for(z in itemlist){
     itemlist[z].itemHashData = DestinyInventoryItemDefinition[itemlist[z].itemHash];
     itemlist[z].bucketHashData = DestinyInventoryBucketDefinition[itemlist[z].bucketHash];
+    if(itemlist[z].overrideStyleItemHash !== undefined && itemlist[z].overrideStyleItemHash !== null)
+    { itemlist[z].overrideStyleItemHashData = DestinyInventoryItemDefinition[itemlist[z].overrideStyleItemHash];}
+    if(itemlist[z].itemHashData.inventory !== undefined && itemlist[z].inventory !== null)
+    { itemlist[z].itemHashData.inventory.bucketTypeHashData = DestinyInventoryBucketDefinition[itemlist[z].itemHashData.inventory.bucketTypeHash]; }
+    if(itemlist[z].itemHashData.stats !== undefined && itemlist[z].itemHashData.stats !== null){
+      itemlist[z].itemHashData.stats.statData = {};
+      for(i in itemlist[z].itemHashData.stats.stats){
+        var temp = DestinyStatDefinition[i];
+        itemlist[z].itemHashData.stats.statData[temp.displayProperties.name] = temp;
+      }
+    }
+    if(itemlist[z].itemHashData.quality !== undefined && itemlist[z].itemHashData.quality !== null){
+      var quality = itemlist[z].itemHashData.quality;
+      quality.infusionCategoryData = {};
+      itemlist[z].itemHashData.seasonalOverlay = quality.displayVersionWatermarkIcons[quality.currentVersion];
+      itemlist[z].itemHashData.powerCapData = DestinyPowerCapDefinition[quality.versions[quality.currentVersion].powerCapHash];
+    }
+    if(itemlist[z].itemHashData.defaultDamageType !== undefined && itemlist[z].itemHashData.defaultDamageType !== null ){
+      itemlist[z].DamageTypeData = DestinyDamageTypeDefinition[itemlist[z].itemHashData.defaultDamageType];
+    }
   }
   data = itemlist;
   console.log("character inventory component has been completed");
@@ -122,7 +162,26 @@ var inventory = function(data){
 exports.inventory = inventory;
 
 var itemComponents = function(data){
-  var data = data;
+  if(data.instances !== undefined){
+    data.instances = data.instances.data;
+    for(i in data.instances){
+      if(data.instances[i].primaryStat !== undefined)
+      { data.instances[i].primaryStat.data = DestinyStatDefinition[data.instances[i].primaryStat.statHash];  }
+    }
+  }
+  if(data.stats !== undefined){
+    data.stats = data.stats.data;
+    for(i in data.stats){
+      data.stats[i] = data.stats[i].stats;
+      var statData = {};
+      for(z in data.stats[i]){
+        var temp =  DestinyStatDefinition[data.stats[i][z].statHash];
+        statData[temp.displayProperties.name] = temp;
+        statData[temp.displayProperties.name].value = data.stats[i][z].value;
+      }
+      data.stats[i] = statData;
+    }
+  }
   return data;
 };
 exports.itemComponents = itemComponents;
@@ -258,12 +317,6 @@ var characters = function(data){
   return characterlist;
 };
 exports.characters = characters;
-
-var itemComponents = function(data){
-  var data = data;
-  return data;
-};
-exports.itemComponents = itemComponents;
 
 var metrics = function(data){
   var data = data.data;

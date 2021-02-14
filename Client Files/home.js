@@ -175,7 +175,8 @@ function slotController(){
     this.wipe();
     var localthis = this;
     var path = "/character/"+characterID+"/equipment";
-    var data = await fetchRequest(path);
+    var data = await fetchRequest(path).catch(function(error){ return error; });
+    if(data instanceof Error) {console.error(data); return false;}
     var keys = Object.keys(data.equipment);
     console.log(data);
     for(i in keys){
@@ -310,8 +311,4 @@ function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = t
     vaultTransfer: true,
   };
   return postRequest(path, body);
-};
-function test(){
-  var path = "/profile/inventory/"+playerCharacters[0].characterID;
-  fetchRequest(path).then(function(result){console.log(result);}).catch(function(error){console.error(error);});
 };

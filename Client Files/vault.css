@@ -75,17 +75,18 @@ body {
 }
 .stat-preview-content > h1 {
   color: white;
+  flex-grow: 1.5;
   margin: 0;
 }
 .stat-bar-background {
   height: 100%;
-  flex-grow: 2;
+  flex-basis: 70%;
   background-color: darkgrey;
 }
 .stat-bar {
+  align-self: flex-start;
   margin: 0;
   height: 100%;
-  width: 50%;
   background-color: green;
 }
 .space-filler {
@@ -241,4 +242,19 @@ body {
 .vault-item-container > img {
   width: 100%;
   height: 100%:
+}
+.vault-item-power {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  font-size: 80%;
+  margin: 0%;
+  color: white;
+}
+.vault-item-seasonal-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
 }

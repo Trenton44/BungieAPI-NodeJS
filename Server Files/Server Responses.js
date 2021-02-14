@@ -33,13 +33,25 @@ const DestinyItemState = {
   "2": "Tracked",
   "4": "Masterwork",
 };
+function formatEquippableItems(items){
+  for(i in items){ items[i] = EquippableItemResponse(items[i]); }
+  return items;
+};
 var EquippableItemResponse = function(item){
+  var stats = {};
+  for(i in item.stats.stats){
+    var statData = DestinyStatDefinition[i];
+    stats[statData.name] = statData;
+    stats[statData.name].values = item.stats.stats[i];
+    stats[statData.name].extrainfo = statData;
+  }
   return {
     bucketHash: item.bucketHash,
     itemHash: item.itemHash,
     quantity: item.quantity,
     itemInstanceId: item.itemInstanceId,
     state: DestinyItemState[item.state],
+    stats: stats,
     itemHashData: {
       damageType: DestinyDamageTypeDefinition[item.itemHashData.defaultDamageTypeHash],
       itemSource: item.itemHashData.displaySource,
@@ -123,13 +135,14 @@ function sortByBucketDefinition(items){
   return sortedEquipment;
 };
 exports.sortByBucketDefinition = sortByBucketDefinition;
+
 function sortByBucketTypeHash(items){
   var sortedEquipment = {};
   for(i in items){
     var bucketTypeHash = items[i].itemHashData.inventory.bucketTypeHash;
     var bucketHashResult = DestinyInventoryBucketDefinition[bucketTypeHash].displayProperties.name;
     if(sortedEquipment[bucketHashResult] == undefined)
-      { sortedEquipment[bucketHashResult] = []; console.log("New category: "+bucketHashResult); }
+      { sortedEquipment[bucketHashResult] = []; }
     sortedEquipment[bucketHashResult].push(items[i]);
   }
   return sortedEquipment;
