@@ -1,9 +1,97 @@
 body {
-  width: 100vw;
+  width: 99vw;
   height: 100vh;
-  margin: 0;
+  margin: auto;
   padding: 0;
   background-image: linear-gradient(45deg, rgba(9,9,121,1), rgba(45,14,52,1)), url("/assets/Traveler1.jpg");/*rgba(89,0,136,1)*/
+}
+#side-view {
+  z-index: 2;
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+#item-detail {
+  width: 30%;
+  height: 100%;
+  float: right;
+  background-color: rgba(40, 40, 40, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#item-detail > h1 {
+  font-style: italic;
+  font-size: 200%;
+  color: white;
+}
+.item-preview {
+  position: relative;
+  width: 100%;
+  height: 30%;
+}
+.item-preview > div {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 50%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.item-preview > div >h1,p{
+  margin: 0%;
+  color: white;
+  font-style: italic;
+}
+.item-preview > div >h1{
+  font-size: 200%;
+}
+.item-preview > div >p{
+  font-size: 100%;
+}
+.item-preview > img {
+  width: 100%;
+  height: 100%;
+}
+#stat-preview-block {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.stat-preview-content{
+  margin: 2% 0 2% 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+.stat-preview-content * {
+  margin: 0 2% 0 2%;
+}
+.stat-preview-content > h1 {
+  color: white;
+  margin: 0;
+}
+.stat-bar-background {
+  height: 100%;
+  flex-grow: 2;
+  background-color: darkgrey;
+}
+.stat-bar {
+  margin: 0;
+  height: 100%;
+  width: 50%;
+  background-color: green;
+}
+.space-filler {
+  width: 70%;
+  height: 100%;
+  background-color: rgba(40, 40, 40, 0.6);
 }
 #nav-framework {
   background-color: rgba(16,18,36,0.7);
@@ -98,12 +186,12 @@ body {
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  height: 85%;
+  height: 75%;
 }
 .vault > h1 {
   width: 100%;
   height: 5%;
-  background-color: rgba(20,20,20, 0.6);
+  background-color: rgba(20,20,20, 0.9);
   text-align: center;
   margin: 0;
   color: white;
@@ -111,23 +199,46 @@ body {
 }
 .vault-items {
   width: 100%;
-  height: 95%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
-  flex-basis: fit-content;
+  height: 90%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: rgba(40,40,40, 0.8);
 }
 .vault-items > div {
+  width: 95%;
+  padding: 0 2% 0 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.vault-items > div > h1{
+  width: 100%;
+  text-align: center;
+  background-color: rgba(20,20,20, 0.6);
+  font-style: italic;
+  font-size: 150%;
+  color: white;
+}
+.vault-items > div > div {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 100%;
-  margin: 10px 0 10px 0;
+  justify-content: center;
+  align-items: center;
 }
-.vault-items > div > img {
+.vault-item-container {
   margin: 5px 5px 5px 5px;
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0.5;
+  width: 60px;
+  height: 60px;
+  position: relative;
+}
+.vault-item-minipreview {
+  display: none;
+  width: 100%;
+  height: 20%;
+}
+.vault-item-container > img {
+  width: 100%;
+  height: 100%:
 }

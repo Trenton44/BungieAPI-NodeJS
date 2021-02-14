@@ -32,7 +32,6 @@ function changeCharacter(characterlistLocation){
     playerCharacters.unshift(temp[0]);
 
     for(i in playerCharacters) playerCharacters[i].setIdentifier(i);
-    console.log(playerCharacters);
     console.log("done swapping places.");
     updateCharacters();
     updateLoadout(playerCharacters[0].characterID);
@@ -64,6 +63,11 @@ function character(){
   this.setIdentifier = function(value){
     this.htmlIdentifier = value;
     this.element = window.document.getElementById("c"+this.htmlIdentifier);
+    var localthis = this;
+    this.element.ondblclick = function(){ changeCharacter(localthis.htmlIdentifier); };
+  };
+  this.gethtmlID = function(){
+    return this.htmlIdentifier;
   };
   this.characterID;
   this.setCID = function(value){
@@ -109,8 +113,6 @@ function character(){
   }
   this.Initialize = function(htmlID, characterID){
     this.setIdentifier(htmlID);
-    var localthis = this;
-    this.element.ondblclick = function(){changeCharacter(localthis.htmlIdentifier);};
     this.setCID(characterID);
   };
   this.loadCharacter = async function(){
@@ -174,18 +176,14 @@ function slotController(){
     var localthis = this;
     var path = "/character/"+characterID+"/equipment";
     var data = await fetchRequest(path);
-    console.log(data);
     var keys = Object.keys(data.equipment);
-    console.log("Equipment");
+    console.log(data);
     for(i in keys){
       var newItem = new Item();
       var newItemData = data.equipment[keys[i]];
-      console.log(keys[i]);
-      console.log(newItemData[0]);
       newItem.Initialize(keys[i],0,newItemData[0]);
       this.slots[keys[i]][0] = newItem;
     }
-    console.log("Inventory");
     for(i in keys){
       var itemSlot = this.slots[keys[i]];
       var inventoryArray = data.inventory[keys[i]];

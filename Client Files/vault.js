@@ -101,13 +101,15 @@ function Vault(){
     var data = await fetchRequest(path);
     console.log(data);
     for(i in data){
-      console.log("New array: "+i);
-      console.log("Data in array: ");
-      console.log(data[i]);
       if(this.vaultItems[i] == undefined){
+        var subMenu = window.document.createElement("div");
+        var descriptor = window.document.createElement("h1");
+        descriptor.innerHTML = i;
         var container = window.document.createElement("div");
         container.id = i;
-        window.document.getElementById("vault-equipment").append(container);
+        subMenu.append(descriptor);
+        subMenu.append(container);
+        window.document.getElementById("vault-equipment").append(subMenu);
         this.vaultItems[i] = [];
       }
       for(z in data[i]){
@@ -128,12 +130,16 @@ function Item(){
     this.index = index;
     this.slotName = slotName;
     var localthis = this;
+
     this.container = window.document.createElement("div");
+    this.container.className = "vault-item-container";
     this.HTMLElement = window.document.createElement("img");
     this.HTMLElement.id = "vault-item-"+index;
-    window.document.getElementById(this.slotName).append(this.HTMLElement);
+    this.container.append(this.HTMLElement);
+    window.document.getElementById(this.slotName).append(this.container);
     this.HTMLElement.draggable = true;
     this.HTMLElement.ondragend = function(ev){localthis.drop(ev);};
+    this.HTMLElement.onclick = function(ev){loadSideMenu(localthis.data);};
     this.changeData(data);
     if(this.data.state == "Masterwork") this.HTMLElement.style.border = "2px solid gold";
   };
@@ -142,7 +148,7 @@ function Item(){
     this.HTMLElement.src = bungieCommon+this.data.itemHashData.displayProperties.icon;
   }
   this.destroy = function(isWipe){
-      this.HTMLElement.remove();
+      this.container.remove();
       this.data = null;
       if(isWipe) return true;
       console.log(vaultController);
@@ -167,6 +173,20 @@ function Item(){
       console.error(error);
     });
   }
+};
+function loadSideMenu(itemData){
+  window.document.getElementById("side-view").style.display= "none";
+  window.document.getElementById("side-view").style.display= "initial";
+  window.document.getElementById("item-name").innerHTML = itemData.itemHashData.displayProperties.name;
+  var icon= itemData.itemHashData.screenshot;
+  if(icon == undefined) icon = itemData.itemHashData.displayProperties.icon;
+  window.document.getElementById("item-screenshot").src = bungieCommon+icon;
+  window.document.getElementById("item-flavortext").innerHTML = itemData.itemHashData.flavorText;
+  window.document.getElementById("item-preview-level").innerHTML;
+
+};
+function hideSideMenu(){
+  window.document.getElementById("side-view").style.display= "none";
 };
 //Fetch Request function
 async function fetchRequest(path){

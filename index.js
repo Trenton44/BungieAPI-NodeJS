@@ -1,4 +1,3 @@
-console.log("Starting index.js preload.");
 const path = require("path");
 const root = __dirname;
 const webpageRoot = root+"/Client Files";
@@ -26,9 +25,9 @@ const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
-console.log("Finished index.js preload.");
-var d2api = require(serverRoot+"/D2APIfunctions");
-const d2components = require(serverRoot+"/D2Components.js");
+
+const D2API = require(serverRoot+"/D2API.js");
+const D2Components = require(serverRoot+"/D2Components.js");
 const ServerResponse = require(serverRoot+"/Server Responses.js");
 
 dotenv.config( { path: path.join(root,"process.env") } );
@@ -66,73 +65,78 @@ app.use(
       cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
 );
-//when bungie API responds, this function gathers all initial player data required, then continues to root.
-app.get("/bapi", function(request,response){
-  console.log("Response has been received from bungie, attempting to authorize using given parameters.");
-  if(verifyState(request)){
-    request.session.data.authCode = request.query.code;
-    d2api.tokenRequest(request).then(function(result){
-        console.log("TOKEN REQUEST SUCCESSFUL");
-        d2api.saveTokenData(request, result.data);
-        request.session.data.authCode = null;
-        request.session.data.state = null;
-        response.redirect("/");
-    }).catch(function(error){
-      console.error("TOKEN REQUEST NOT successful");
-      console.error(error);
-      request.session.data = undefined;
-      response.redirect("/login");
-    });
-  }
-  else {
-    response.redirect("/login");
-  }
-});
-
 app.get("/client/:id",function(request,response){
   response.status(200).sendFile(webpageRoot+"/"+request.params.id);
 });
 app.get("/assets/:id",function(request,response){
   response.status(200).sendFile(assetRoot+"/"+request.params.id);
 });
-app.use(prepSessionData);
-
-app.get("/login",function(request,response){
-  var url = buildAuthorizatonCodeRequest(request);
-  console.log("User has begun a login attempt to bungie.net");
+app.use(constructSessionInstance);
+app.get("/bnetlogin", async function(request, response){
+  console.log("in bnet login.");
+  let state = crypto.randomBytes(16).toString("base64");
+  request.session.data.state = state;
+  var url = new URL(bungieAuthURL);
+  url.searchParams.append("client_id",process.env.Bungie_ClientID);
+  url.searchParams.append("response_type","code");
+  url.searchParams.append("state",state);
+  console.log("Sending to url.");
   response.redirect(url);
 });
 
-//Entry point for authorized personnel. Make all requests for API data here prior to serving webpage.
-app.use(authorizationCheck);
-app.use(getBasicBnetInfo);
+app.get("/bnetresponse", async function(request, response){
+  console.log(request.session.data.state);
+  console.log(request.query.state);
+  if(request.query.state !== request.session.data.state){
+    request.session.destroy();
+    response.status(400).json({error: "Unauthorized access."});
+  }
+  else {
+    console.log("states match, requesting token.");
+    request.session.data.authCode = request.query.code;
+    console.log(request.query.code);
+    await D2API.requestToken(request, response).catch(function(error){response.status(400).json({error: "There was an error."}); });
+    response.redirect("/");
+  }
+});
+
+app.use(accessAuthorizedEndpoints);
+app.use(D2API.getBnetInfo);
+
 app.get("/",async function(request,response){
   response.sendFile(webpageRoot+"/home.html");
 });
 app.get("/vault",async function(request,response){
   response.sendFile(webpageRoot+"/vault.html");
 });
+
 //Returns a list of the character ID's of the current d2 profile.
 app.get("/characterids",async function(request, response){
   var components = ["100"];
-  var data = await profileComponentRequest(request, components);
+  var data = await D2API.profileComponentRequest(request,response, components).catch(function(error){ return error; });
+  console.log("in characterids");
+  if(data instanceof Error){ console.error(data);response.status(400).json({error: error});}
   response.status(200).json(data.profile.characterIds);
 });
-//Sends request to GetProfile endpoint, cleans up result,
-//returns general information about the requested character
+
 app.get("/character/:id/general",async function(request, response){
   var components = ["200"];
   var cID = request.params.id;
-  var data = await characterComponentRequest(request, components,cID);
-  var returnData = ServerResponse.CharacterResponse(data.character);
-  response.status(200).json(returnData);
+  var data = await D2API.characterComponentRequest(request, response, components, cID).catch(function(error){ return error; });
+  console.log("in character/:id/general");
+  if(data instanceof Error){ console.error(data);response.status(400).json({error: error});}
+  data = ServerResponse.CharacterResponse(data.character);
+  response.status(200).json(data);
 });
+
 //Sends request to GetProfile endpoint, cleans up result, and
 //returns list of equipment character currently has equipped.
 app.get("/character/:id/equipment",async function(request,response){
   var components = ["201", "205"];
   var cID = request.params.id;
-  var data = await characterComponentRequest(request, components,cID);
+  var data = await D2API.characterComponentRequest(request, response, components, cID).catch(function(error){ return error; });
+  console.log("in character/:id/equipment");
+  if(data instanceof Error){ console.error(data);response.status(400).json({error: error});}
   data.equipment = ServerResponse.sortByBucketDefinition(data.equipment);
   data.inventory = ServerResponse.sortByBucketCategory(data.inventory);
   data.inventory = ServerResponse.sortByBucketDefinition(data.inventory.Equippable);
@@ -142,25 +146,25 @@ app.get("/character/:id/equipment",async function(request,response){
   delete data.inventory.Emotes;
   delete data.inventory.Finishers;
   delete data.inventory.ClanBanners;
-  var returnData = {
-    equipment: data.equipment,
-    inventory: data.inventory,
-  };
-  response.status(200).json(returnData);
+  response.status(200).json({equipment: data.equipment, inventory: data.inventory});
 });
-//sents request to GetProfile endpoint, cleans up result, and
-//returns entire character inventory
+
 app.get("/character/:id/inventory",async function(request,response){
   var components = ["201"];
   var cID = request.params.id;
-  var data = await characterComponentRequest(request, components,cID);
-  var returnData = ServerResponse.sortByLocation(data.inventory);
-  response.status(200).json(returnData);
+  var data = await D2API.characterComponentRequest(request, response, components,cID).catch(function(error){ return error; });
+  console.log("in character/:id/inventory");
+  if(data instanceof Error){ console.error(data);response.status(400).json({error: error});}
+  data = ServerResponse.sortByLocation(data.inventory);
+  response.status(200).json(data);
 });
+
 app.get("/profile/inventory/:id", async function(request,response){
   var components = ["102","103"];
   var cID = request.params.id;
-  var data = await profileComponentRequest(request, components);
+  var data = await D2API.profileComponentRequest(request, response, components).catch(function(error){ return error; });
+  console.log("in profile/inventory/:id");
+  if(data instanceof Error){ console.error(data);response.status(400).json({error: error});}
   var returnData = {
     currency: data.profileCurrencies,
     inventory: ServerResponse.sortByLocation(data.profileInventory),
@@ -168,167 +172,50 @@ app.get("/profile/inventory/:id", async function(request,response){
   response.status(200).json(returnData);
 });
 
-app.get("/profile/vault",async function(request,response){
+app.get("/profile/vault",async function(request, response){
   var components = ["102"];
-  var data = await profileComponentRequest(request, components);
+  var data = await D2API.profileComponentRequest(request, response, components).catch(function(error){ return error; });
+  console.log("in profile/vault");
+  if(data instanceof Error){ console.error(data);response.status(400).json({error: error});}
   data = ServerResponse.sortByLocation(data.profileInventory).Vault;
   data = ServerResponse.sortByBucketTypeHash(data);
-  //data.Item = ServerResponse.sortByBucketTypeHash(data.Item);
-  //data.Equippable = ServerResponse.sortByBucketTypeHash(data.Equippable);
   response.status(200).json(data);
 });
+
 app.post("/character/lockItem",async function(request, response){
-  var userdata = request.session.data.userdata;
-  var memType = userdata[userdata.primaryMembershipId].membershipType;
-  var path = bungieRoot+"/Destiny2/Actions/Items/SetLockState/";
-  var body = {
-    characterId: request.body.characterReceiving,
-    itemId: request.body.itemInstanceId,
-    membershipType: memType,
-    state: !request.body.item.lockState,
-  }
-  var body = JSON.stringify(body);
-  d2api.postRequest(path,body,d2api.retrieveAccessToken(request)).then(function(result){
-    response.status(200).json(result.data.Response);
-  }).catch(function(error){
-    console.log(error);
-    response.status(400).json(error);
-  });
+  let result = await D2API.lockCharacterItem(request, response).catch(function(error){ return error; });
+  console.log("in character/lockItem");
+  if(result instanceof Error){ console.error(result);response.status(400).json({error: error});}
+  response.status(200).json({result: true});
 });
 
 app.post("/character/transferItem",async function(request, response){
   var result;
-  if(request.body.characterTransferring !== undefined && request.body.characterReceiving !== undefined){
-    console.log("Item is being transferred between two characters.");
-    result = await d2api.transferToVault(request);
-    await sleep(500);
-    result = await d2api.transferFromVault(request);
-    console.log(result.data.Response);
-    response.status(200).json(result.data.Response);
+  if(request.body.characterTransferring === undefined){
+    if(request.body.characterReceiving !== undefined)
+    { result =await D2API.transferFromVault(request, response).catch(function(error){ return error; }); }
   }
-  else if(request.body.characterTransferring !== undefined && request.body.characterReceiving == undefined){
-    console.log("Item is being transferred to the vault.");
-    result = await d2api.transferToVault(request);
-    console.log(result.data.Response);
-    response.status(200).json(result.data.Response);
+  if(request.body.characterTransferring !== undefined){
+    if(request.body.characterReceiving === undefined)
+    { result =await D2API.transferToVault(request, response).catch(function(error){ return error; }); }
+    if(request.body.characterReceiving !== undefined)
+    { result =await D2API.transferToCharacter(request, response).catch(function(error){ return error; }); }
   }
-  else if(request.body.characterTransferring == undefined && request.body.characterReceiving !== undefined){
-    console.log("Item is being transferred from the vault to a character.");
-    result = await d2api.transferFromVault(request);
-    console.log(result.data.Response);
-    response.status(200).json(result.data.Response);
-  }
-  else {
-    response.status(400).json({error: "Data needs to be corrected."});
-  }
+  console.log("end of character/transferItem.");
+  if(result instanceof Error){ console.error(result);response.status(400).json({error: error});}
+  response.status(200).json({result: true});
 });
-
 //Sends a POST request to bungie API EquipItem endpoint, returns result of request.
 app.post("/character/equipItem",async function(request, response){
-  var userdata = request.session.data.userdata;
-  var memType = userdata[userdata.primaryMembershipId].membershipType;
-  var path = bungieRoot+"/Destiny2/Actions/Items/EquipItem/";
-  var body = {
-    characterId: request.body.characterReceiving,
-    itemId: request.body.item.itemInstanceId,
-    membershipType: memType,
-  };
-  console.log(body);
-  var body = JSON.stringify(body);
-  d2api.postRequest(path,body,d2api.retrieveAccessToken(request)).then(function(result){
-    response.status(200).json(result.data.Response);
-  }).catch(function(error){
-    console.log(error);
-    response.status(400).json(error);
-  });
+  let result = await D2API.equipItem(request, response).catch(function(error){ return error; });
+  console.log("in character/lockItem");
+  if(result instanceof Error){ console.error(result);response.status(400).json({error: error});}
+  response.status(200).json(result);
 });
-app.get("/character/equipItems",async function(request, response){
-  var userdata = request.session.data.userdata;
-  var memType = userdata[userdata.primaryMembershipId].membershipType;
-  var path = "/Destiny2/Actions/Items/EquipItems/";
-  var instanceIDs = [];
-  for(i in request.body.items){ instanceIDs.push(request.body.items[i].itemInstanceId); }
-  var body = {
-    itemIds: instanceIDs,
-    characterId: request.body.characterReceiving,
-    membershipType: memType,
-  };
-  var body = JSON.stringify(body);
-  d2api.postRequest(path,body,d2api.retrieveAccessToken(request)).then(function(result){
-    response.status(200).json(result.data.Response);
-  }).catch(function(error){
-    console.log(error);
-    response.status(400).json(error);
-  });
-});
-d2api.loadManifest().then(function(result){
-  console.log(result);
-  console.log("manifest retrieval was successful, engaging server responses.");
-  d2api = require(serverRoot+"/D2APIfunctions");
-  httpsServer.listen(process.env.PORT);
+httpsServer.listen(process.env.PORT);
 
-}).catch(function(error){
-  console.error("Unable to load manifest.");
-  console.error(error);
-});
-
-
-function verifyState(request){
-  if(request.query.state !== request.session.data.state){
-    console.error("State parameters DO NOT MATCH! ABORTING MISSION");
-    request.session.data = undefined;
-    return false;
-  }
-  else {
-    console.log("STATE PARAMETERS MATCH, therefore this login is valid and untampered. (we hope)");
-    return true;
-  }
-}
-//Makes bungie api requests, then parses and returns data.
-function characterComponentRequest(request, components,cID){
-  var userdata =request.session.data.userdata;
-  var token = d2api.retrieveAccessToken(request);
-  var memType = userdata[userdata.primaryMembershipId].membershipType;
-  var d2ID = userdata.primaryMembershipId;
-  return d2api.getCharacterAuth(memType,d2ID,cID,components,token).then(function(result){
-    console.log("accessed");
-    console.log(result.data);
-    var d2data = d2api.parseCharacterComponents(result.data.Response);
-    console.log("Requested data retrieved from bungie.");
-    return d2data;
-  }).catch(function(error){
-    console.log(error);
-    return false;
-  });
-};
-function profileComponentRequest(request, components){
-  var userdata =request.session.data.userdata;
-  var token = d2api.retrieveAccessToken(request);
-  var memType = userdata[userdata.primaryMembershipId].membershipType;
-  var d2ID = userdata.primaryMembershipId;
-  return d2api.getDestinyProfileAuth(memType,d2ID,components,token).then(function(result){
-    console.log("accessed");
-    var d2data = d2api.parseProfileComponents(result.data.Response);
-    console.log("Requested data retrieved from bungie.");
-    return d2data;
-  }).catch(function(error){
-    console.log(error);
-    return false;
-  });
-};
-function getBasicBnetInfo(request,response,next){
-  var token = d2api.retrieveAccessToken(request);
-  console.log("Accessing bnet user data");
-  return d2api.getBungieCurrentUserData(token).then(function(result){
-    console.log("obtained data");
-    request.session.data.userdata = d2api.parseBungieCurrentUserDataResponse(result.data.Response);
-    next();
-  }).catch(function(error){
-    console.error(error);
-    response.status(400).error({error: "unable to access bnet info."});
-  });
-};
-function authorizationCheck(request,response,next){
+//END OF EXPRESS FUNCTIONS.
+function accessAuthorizedEndpoints(request, response, next){
   console.log("__________________________________");
   console.log("BEGINNING OF AUTHRIZATION CHECK: ");
   console.log("Requested endpoint access: "+request.url);
@@ -361,15 +248,30 @@ function authorizationCheck(request,response,next){
   }
   else {
     console.log("user is not yet logged in, redirecting to login.");
-    if(request.url == "/" || request.url == "/vault"){
-      response.redirect("/login");
-    }
-    else {
-      response.status(400).json({error:"requires login."});
-    }
+    response.redirect("/bnetlogin");
   }
-}
-async function prepSessionData(request,response,next){
+  /*console.log("Session "+request.session.id+" has requested access to "+request._parsedUrl.path+" from "+request.originalURL);
+  var currentTime = new Date().getTime();
+  console.log(Object.keys(request.session.data.tokenData).length);
+  if(Object.keys(request.session.data.tokenData).length == 0){
+    console.error("No data exists for user. ");
+    response.redirect("/bnetlogin");
+    console.log("redirected.");
+  }
+  //var tokenData = D2API.decryptData(request.session.data.tokenData);
+  if(tokenData.refreshExpiration < currentTime){
+    console.log("The refresh token has expired, gonna need to login.");
+    response.redirect("/bnetlogin");
+  }
+  if(tokenData.tokenExpiration < currentTime){
+    console.log("Token has expired, user requires a new one.");
+    let data = D2API.tokenRefresh(request, response);
+    console.log("Token refresh completed.");
+  }
+  console.log("User seems good to go.");
+  next();*/
+};
+function constructSessionInstance(request, response, next){
   var reset = false;
   switch(request.session.data){
     case undefined:
@@ -394,13 +296,4 @@ async function prepSessionData(request,response,next){
     };
   }
   next();
-}
-function buildAuthorizatonCodeRequest(request){
-  let state = crypto.randomBytes(16).toString("base64");
-  request.session.data.state = state;
-  var url = new URL(bungieAuthURL);
-  url.searchParams.append("client_id",process.env.Bungie_ClientID);
-  url.searchParams.append("response_type","code");
-  url.searchParams.append("state",state);
-  return url;
-}
+};

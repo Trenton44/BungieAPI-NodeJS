@@ -12,6 +12,7 @@ const manifestRoot = root+"/Manifest";
 const DestinyDamageTypeDefinition = require(manifestRoot+"/DestinyDamageTypeDefinition.json");
 const DestinyEquipmentSlotDefinition = require(manifestRoot+"/DestinyEquipmentSlotDefinition.json");
 const DestinyInventoryBucketDefinition = require(manifestRoot+"/DestinyInventoryBucketDefinition.json");
+const DestinyStatDefinition = require(manifestRoot+"/DestinyStatDefinition.json");
 const DestinyBucketCategory = {
   "0": "Invisible",
   "1": "Item",
