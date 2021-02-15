@@ -154,7 +154,6 @@ app.get("/profile/inventory/:id", async function(request,response){
   var components = ["102", "103"];
   var cID = request.params.id;
   var data = await D2API.profileComponentRequest(request, response, components).catch(function(error){ return error; });
-  console.log("in profile/inventory/:id");
   if(data instanceof Error){ console.error(data);response.status(400).json({error: error});}
   var returnData = {
     currency: data.profileCurrencies,
@@ -166,7 +165,6 @@ app.get("/profile/inventory/:id", async function(request,response){
 app.get("/profile/vault",async function(request, response){
   var components = ["102", "300", "304"];
   var data = await D2API.profileComponentRequest(request, response, components).catch(function(error){ return error; });
-  console.log("in profile/vault");
   if(data instanceof Error){ console.error(data);response.status(400).json({error: error});}
   data = ServerResponse.sortByLocation(data.profileInventory).Vault;
   data = ServerResponse.sortByBucketTypeHash(data);
@@ -180,7 +178,7 @@ app.post("/character/lockItem",async function(request, response){
   response.status(200).json({result: true});
 });
 
-app.post("/character/transferItem",async function(request, response){
+app.post("/character/transferItem",async function(request, response, next){
   var result;
   if(request.body.characterTransferring === undefined){
     if(request.body.characterReceiving !== undefined)
@@ -193,25 +191,33 @@ app.post("/character/transferItem",async function(request, response){
     { result = await D2API.transferToCharacter(request, response).catch(function(error){ return error; }); }
   }
   console.log("end of character/transferItem.");
-  if(result instanceof Error){ response.status(400).json({error: error});}
-  response.status(200).json({result: true});
+  var status = 200;
+  var responseData = true;
+  if(result instanceof Error){ next(); }
+  console.log("past error return");
+  response.status(status).json({result: responseData});
 });
 //Sends a POST request to bungie API EquipItem endpoint, returns result of request.
 app.post("/character/equipItem",async function(request, response){
   let result = await D2API.equipItem(request, response).catch(function(error){ return error; });
-  console.log("in character/lockItem");
   if(result instanceof Error){ console.error(result);response.status(400).json({error: error});}
   response.status(200).json(result);
 });
 
 app.use(D2API.getBnetInfo);
+app.use(function(error, request, response, next){
+  response.status(400).json(error.data);
+});
 app.get("/",async function(request,response){
   response.sendFile(webpageRoot+"/home.html");
 });
 app.get("/vault",async function(request,response){
   response.sendFile(webpageRoot+"/vault.html");
 });
-httpsServer.listen(process.env.PORT);
+D2API.loadManifest().then(function(result){
+  httpsServer.listen(process.env.PORT);
+}).catch(function(error){ console.error(error); });
+
 
 //END OF EXPRESS FUNCTIONS.
 function accessAuthorizedEndpoints(request, response, next){

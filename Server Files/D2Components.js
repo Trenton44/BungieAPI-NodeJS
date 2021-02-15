@@ -18,6 +18,7 @@ const DestinyInventoryItemDefinition = require(manifestRoot+"/DestinyInventoryIt
 const DestinyInventoryBucketDefinition = require(manifestRoot+"/DestinyInventoryBucketDefinition.json");
 const DestinyPowerCapDefinition = require(manifestRoot+"/DestinyPowerCapDefinition.json");
 const DestinyDamageTypeDefinition = require(manifestRoot+"/DestinyDamageTypeDefinition.json");
+const DestinyEnergyTypeDefinition = require(manifestRoot+"/DestinyEnergyTypeDefinition.json");
 const components = {
   "100": "profile",
   "101": "vendorReceipts",
@@ -138,7 +139,7 @@ var inventory = function(data){
     { itemlist[z].overrideStyleItemHashData = DestinyInventoryItemDefinition[itemlist[z].overrideStyleItemHash];}
     if(itemlist[z].itemHashData.inventory !== undefined && itemlist[z].inventory !== null)
     { itemlist[z].itemHashData.inventory.bucketTypeHashData = DestinyInventoryBucketDefinition[itemlist[z].itemHashData.inventory.bucketTypeHash]; }
-    if(itemlist[z].itemHashData.stats !== undefined && itemlist[z].itemHashData.stats !== null){
+    /*if(itemlist[z].itemHashData.stats !== undefined && itemlist[z].itemHashData.stats !== null){
       itemlist[z].itemHashData.stats.statData = {};
       for(i in itemlist[z].itemHashData.stats.stats){
         var temp = DestinyStatDefinition[i];
@@ -153,7 +154,7 @@ var inventory = function(data){
     }
     if(itemlist[z].itemHashData.defaultDamageType !== undefined && itemlist[z].itemHashData.defaultDamageType !== null ){
       itemlist[z].DamageTypeData = DestinyDamageTypeDefinition[itemlist[z].itemHashData.defaultDamageType];
-    }
+    }*/
   }
   data = itemlist;
   console.log("character inventory component has been completed");
@@ -167,19 +168,21 @@ var itemComponents = function(data){
     for(i in data.instances){
       if(data.instances[i].primaryStat !== undefined)
       { data.instances[i].primaryStat.data = DestinyStatDefinition[data.instances[i].primaryStat.statHash];  }
+      if(data.instances[i].damageTypeHash !== undefined)
+      { data.instances[i].damageTypeData = DestinyDamageTypeDefinition[data.instances[i].damageTypeHash]; }
+      if(data.instances[i].energy !== undefined)
+      { data.instances[i].energy.data = DestinyEnergyTypeDefinition[data.instances[i].energy.energyTypeHash]; }
     }
   }
   if(data.stats !== undefined){
     data.stats = data.stats.data;
     for(i in data.stats){
       data.stats[i] = data.stats[i].stats;
-      var statData = {};
+    }
+    for(i in data.stats){
       for(z in data.stats[i]){
-        var temp =  DestinyStatDefinition[data.stats[i][z].statHash];
-        statData[temp.displayProperties.name] = temp;
-        statData[temp.displayProperties.name].value = data.stats[i][z].value;
+        data.stats[i][z].data = DestinyStatDefinition[z];
       }
-      data.stats[i] = statData;
     }
   }
   return data;

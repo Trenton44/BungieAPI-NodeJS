@@ -127,6 +127,7 @@ function Item(){
   this.slotName;
   this.HTMLElement;
   this.Initialize = function(slotName, index, itemData){
+
     this.index = index;
     this.slotName = slotName;
     this.container = window.document.createElement("div");
@@ -136,9 +137,9 @@ function Item(){
     this.container.append(this.HTMLElement);
     this.changeData(itemData);
     try{
-      if(this.data.itemInstanceData.primaryStat !== undefined){
+      if(this.data.instances.primaryStat !== undefined){
         var text = window.document.createElement("h1");
-        text.innerHTML = this.data.itemInstanceData.primaryStat.value;
+        text.innerHTML = this.data.instances.primaryStat.value;
         text.className = "vault-item-power";
         this.container.append(text);
       }
@@ -154,7 +155,7 @@ function Item(){
     var localthis = this;
     this.HTMLElement.draggable = true;
     this.HTMLElement.ondragend = function(ev){localthis.drop(ev);};
-    this.container.onclick = function(ev){ console.log(localthis.data); loadSideMenu(localthis.data);};
+    this.container.onclick = function(ev){ loadSideMenu(localthis.data);};
     if(this.data.state == "Masterwork") this.HTMLElement.style.border = "2px solid gold";
   };
   this.changeData = function(value){
@@ -197,24 +198,32 @@ function loadSideMenu(itemData){
   if(icon == undefined) icon = itemData.itemHashData.displayProperties.icon;
   window.document.getElementById("item-screenshot").src = bungieCommon+icon;
   window.document.getElementById("item-flavortext").innerHTML = itemData.itemHashData.flavorText;
-  window.document.getElementById("item-preview-level").innerHTML;
-  for(i in itemData.itemStatData){
-    console.log(itemData.itemStatData[i].value);
+  window.document.getElementById("item-preview-light").innerHTML = itemData.instances.primaryStat.value;
+  if(itemData.instances.damageType !== 0){
+    window.document.getElementById("item-preview-damageIcon").src = bungieCommon+itemData.instances.damageTypeData.displayProperties.icon;
+  }
+  else {
+    window.document.getElementById("item-preview-damageIcon").src = bungieCommon+itemData.instances.energy.data.displayProperties.icon;
+  }
+  for(i in itemData.stats){
     var statcontainer = window.document.createElement("div");
     var statname = window.document.createElement("h1");
     var bar = window.document.createElement("div");
     var barbackground = window.document.createElement("div");
     var value = window.document.createElement("h1");
+
     statcontainer.className = "stat-preview-content";
-    statname.innerHTML = i
+    statname.innerHTML = itemData.stats[i].data.displayProperties.name;
     bar.className = "stat-bar";
-    bar.style.width = itemData.itemStatData[i].value+"%";
+    bar.style.width = itemData.stats[i].value+"%";
     barbackground.className = "stat-bar-background";
+    value.innerHTML = itemData.stats[i].value;
+
     barbackground.append(bar);
-    value.innerHTML = itemData.itemStatData[i].value;
     statcontainer.append(statname);
     statcontainer.append(barbackground);
     statcontainer.append(value);
+
     window.document.getElementById("stat-preview-block").append(statcontainer);
   }
 };
@@ -222,8 +231,9 @@ function hideSideMenu(){
   window.document.getElementById("side-view").style.display= "none";
   while(window.document.getElementById("stat-preview-block").hasChildNodes()){
     window.document.getElementById("stat-preview-block").removeChild(window.document.getElementById("stat-preview-block").childNodes[0]);
-    console.log(window.document.getElementById("stat-preview-block"));
   }
+  window.document.getElementById("item-preview-light").innerHTML = "";
+  window.document.getElementById("item-preview-damageIcon").src = "";
 };
 //Fetch Request function
 async function fetchRequest(path){

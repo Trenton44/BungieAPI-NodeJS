@@ -52,7 +52,7 @@ async function characterComponentRequest(request, response, components, characte
   let result = await getRequestAuth(path, access_token).catch(function(error){ return error; });
   if(result instanceof Error) { return Promise.reject(result); }
   result = parseComponents(result.data.Response);
-  if(components.find(value => value >= "300" && value <= "310") !== undefined) { return combineItemsInstanceData(result);}
+  if(result.itemComponents !== undefined) { return combineItemsInstanceData(result); }
   return result;
 };
 exports.characterComponentRequest = characterComponentRequest;
@@ -66,7 +66,7 @@ async function profileComponentRequest(request, response, components){
   let result = await getRequestAuth(path,access_token).catch(function(error){ return error; });
   if(result instanceof Error) { return Promise.reject(result); }
   result = parseComponents(result.data.Response);
-  if(components.find(value => value === "300") !== undefined) { return combineItemsInstanceData(result);}
+  if(result.itemComponents !== undefined) { return combineItemsInstanceData(result); }
   return result;
 };
 exports.profileComponentRequest = profileComponentRequest;
@@ -135,13 +135,11 @@ async function transferToCharacter(request, response){
   body.characterId = request.body.characterTransferring;
   let vaultTransfer = await postRequest(path, body, access_token).catch(function(error){ return error; });
   if(vaultTransfer instanceof Error) { return Promise.reject(vaultTransfer); }
-  console.log("Past first transfer.");
   body.transferToVault = false;
   body.characterId = request.body.characterReceiving;
   sleep(500);
   let characterTransfer = await postRequest(path, body, access_token).catch(function(error){ return error; });
   if(characterTransfer instanceof Error) { return Promise.reject(characterTransfer); }
-  console.log(characterTransfer);
   return characterTransfer;
 };
 exports.transferToCharacter = transferToCharacter;
@@ -282,23 +280,15 @@ function constructComponentString(value){
 };
 
 function combineItemsInstanceData(items){
-  for(i in items){
-    if(i == "itemComponents") { continue; }
-    for(z in items[i]){
-      if(items[i][z].itemInstanceId !== undefined){
-        if(items.itemComponents.instances !== undefined)
-        { items[i][z].itemInstanceData = items.itemComponents.instances[items[i][z].itemInstanceId]; }
-        if(items.itemComponents.stats !== undefined){
-          items[i][z].itemStatData = items.itemComponents.stats[items[i][z].itemInstanceId];
-          console.log(items[i][z].itemInstanceId);
-          console.log(items.itemComponents.stats[items[i][z].itemInstanceId]);
-          console.log(items[i][z].itemStatData);
-        }
+  for(z in items.itemComponents){
+    for(i in items){
+      if(i == "itemComponents"){ continue; }
+      for(x in items[i]){
+        var currentComponent = items.itemComponents[z];
+        items[i][x][z] = currentComponent[items[i][x].itemInstanceId];
       }
     }
   }
-  delete items.itemComponents.instances;
-  delete items.itemComponents.stats;
   return items;
 };
 //Loads the current d2 manifest from bungie api and saves to root.
@@ -306,13 +296,12 @@ async function loadManifest(){
   console.log("Obtaining Manifest");
   var path = bungieRoot+"/Destiny2/Manifest/";
   var version = await getRequest(path).catch(function(error){ return error; });
-  if(result instanceof Error) { Promise.reject(result); }
-  version = version.Response;
-  console.log(version.version);
-  if(result.Response.version === D2ManifestVersion.version) { return true; }
+  if(version instanceof Error) { Promise.reject(version); }
+  version = version.data.Response;
+  if(version.version === D2ManifestVersion.version) { return true; }
   console.log("Pulling new manifest version.");
   path = bungieCommon+version.jsonWorldContentPaths.en;
-  var manifest = await getRequest(path).catch(function(error){ return error; });
+  var result = await getRequest(path).catch(function(error){ return error; });
   if(result instanceof Error) { Promise.reject(result); }
   for(i in result.data){
     console.log("Iteration: "+i);
