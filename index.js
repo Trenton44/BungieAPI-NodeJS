@@ -103,9 +103,8 @@ app.use(accessAuthorizedEndpoints);
 app.get("/characterids",async function(request, response){
   var components = ["100"];
   var data = await D2API.profileComponentRequest(request,response, components).catch(function(error){ return error; });
-  console.log("in characterids");
-  if(data instanceof Error){ console.error(data);response.status(400).json({error: error});}
-  response.status(200).json(data.profile.characterIds);
+  if(data instanceof Error){ console.error(data); response.status(400).json({error: error}); }
+  else{ console.log(data.profile.characterIds); response.status(200).json(data.profile.characterIds); }
 });
 
 app.get("/character/:id/general",async function(request, response){
@@ -125,9 +124,8 @@ app.get("/character/:id/equipment",async function(request,response){
   var data = await D2API.characterComponentRequest(request, response, components, cID).catch(function(error){ return error; });
   if(data instanceof Error){ console.error(data); response.status(400).json({error: error});}
   data.equipment = ServerResponse.sortByBucketDefinition(data.equipment);
-
   data.inventory = ServerResponse.sortByBucketCategory(data.inventory);
-  //data.inventory.Equippable = ServerResponse.InventoryItemsResponse(data.inventory.Equippable);
+  var engrams = data.inventory.Item;
   data.inventory = ServerResponse.sortByBucketDefinition(data.inventory.Equippable);
   delete data.equipment.Emotes;
   delete data.equipment.Finishers;
@@ -135,14 +133,17 @@ app.get("/character/:id/equipment",async function(request,response){
   delete data.inventory.Emotes;
   delete data.inventory.Finishers;
   delete data.inventory.ClanBanners;
-  console.log("At Inventory");
   for(i in data.inventory){
     data.inventory[i].unshift(data.equipment[i][0]);
+    console.log(i);
     for(z in data.inventory[i]){
       var temp = ServerResponse.DestinyItemTypes[i];
       data.inventory[i][z] = ServerResponse[temp](data.inventory[i][z],i,z);
     }
   }
+  data.inventory.engrams = engrams;
+  for(i in data.inventory.engrams)
+  { data.inventory.engrams[i] = ServerResponse.ItemResponseFormat(data.inventory.engrams[i],"engrams",i); }
   response.status(200).json({inventory: data.inventory});
 });
 
@@ -195,16 +196,18 @@ app.post("/character/lockItem",async function(request, response){
 
 app.post("/character/transferItem",async function(request, response, next){
   var result;
+  console.log(request.body);
   if(request.body.characterTransferring === undefined){
     if(request.body.characterReceiving !== undefined)
-    { result = await D2API.transferFromVault(request, response).catch(function(error){ return error; }); }
+    { result = await D2API.transferFromVault(request, response).catch(function(error){ console.error(error); return error; }); }
   }
   if(request.body.characterTransferring !== undefined){
     if(request.body.characterReceiving === undefined)
-    { result = await D2API.transferToVault(request, response).catch(function(error){ return error; }); }
+    { result = await D2API.transferToVault(request, response).catch(function(error){ console.error(error); return error; }); }
     if(request.body.characterReceiving !== undefined)
-    { result = await D2API.transferToCharacter(request, response).catch(function(error){ return error; }); }
+    { result = await D2API.transferToCharacter(request, response).catch(function(error){ console.error(error); return error; }); }
   }
+  if(result === undefined){ result = new Error(); }
   if(result instanceof Error) { response.status(400).json({error: result});}
   else { response.status(200).json({ result: result }); }
 });

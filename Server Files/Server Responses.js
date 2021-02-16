@@ -47,7 +47,7 @@ const DestinyItemTypes = {
   Ships: "CosmeticResponseFormat",
   Vehicle: "CosmeticResponseFormat",
   Emblems: "EmblemResponseFormat",
-  SeasonalArtifact: "CosmeticResponseFormat",
+  SeasonalArtifact: "ItemResponseFormat",
   default: "ItemResponseFormat",
 };
 exports.DestinyItemTypes = DestinyItemTypes;
@@ -150,7 +150,7 @@ exports.CharactersResponse = CharactersResponse;
 var SubclassResponseFormat = function(item,i,z){
   var format = ItemResponseFormat(item,i,z);
   format.equipped = item.instances.isEquipped;
-  format.HTMLTemplate = "<div class=subclass-capsule id="+format.htmlId+"><img subclass-icon src="+format.itemIcon+" /></div>";
+  format.HTMLTemplate = "<div class=subclass-capsule id="+format.htmlId+"><img subclass-icon src='"+format.itemIcon+"' /></div>";
   return format;
 };
 exports.SubclassResponseFormat = SubclassResponseFormat;
@@ -161,8 +161,9 @@ var WeaponResponseFormat = function(item,i,z){
   format.light = item.instances.primaryStat.value;
   format.stats = item.stats;
   format.equipped = item.instances.isEquipped;
+  format.flavorText = item.itemHashData.flavorText;
   format.overlay = bungieCommon+item.itemHashData.iconWatermark;
-  format.HTMLTemplate = "<div class=item-capsule id='"+format.htmlId+"'><img class=item-icon src="+format.itemIcon+" /><img class=item-overlay src="+format.overlay+" /><img class=item-type src="+format.energyIcon+" /><h1 class=item-light>"+format.light+"</h1></div>";
+  format.HTMLTemplate = "<div class=item-capsule id='"+format.htmlId+"'><img class=item-icon src='"+format.itemIcon+"' /><img class=item-overlay src='"+format.overlay+"' /><img class=item-type src='"+format.energyIcon+"' /><h1 class=item-light>"+format.light+"</h1></div>";
   return format;
 };
 exports.WeaponResponseFormat = WeaponResponseFormat;
@@ -176,17 +177,19 @@ var ArmorResponseFormat = function(item,i,z){
   if(item.instances.energy !== undefined)
   { format.energyIcon = bungieCommon+item.instances.energy.data.displayProperties.icon;}
   else { format.energyIcon = ""; }
+  format.flavorText = item.itemHashData.flavorText;
   format.equipped = item.instances.isEquipped;
   format.overlay = bungieCommon+item.itemHashData.iconWatermark;
-  format.HTMLTemplate = "<div class=item-capsule id='"+format.htmlId+"'><img class=item-icon src="+format.itemIcon+" /><img class=item-overlay src="+format.overlay+" /><img class=item-type src="+format.energyIcon+" /><h1 class=item-light>"+format.light+"</h1></div>";
+  format.HTMLTemplate = "<div class=item-capsule id='"+format.htmlId+"'><img class=item-icon src='"+format.itemIcon+"' /><img class=item-overlay src='"+format.overlay+"' /><img class=item-type src='"+format.energyIcon+"' /><h1 class=item-light>"+format.light+"</h1></div>";
   return format;
 };
 exports.ArmorResponseFormat = ArmorResponseFormat;
 
 var CosmeticResponseFormat = function(item,i,z){
   var format = ItemResponseFormat(item,i,z);
+  format.flavorText = item.itemHashData.flavorText;
   format.equipped = item.instances.isEquipped;
-  format.HTMLTemplate = "<div class=item-capsule id='"+format.htmlId+"'><img class=item-icon src="+format.itemIcon+" /></div>";
+  format.HTMLTemplate = "<div class=item-capsule id='"+format.htmlId+"'><img class=item-icon src='"+format.itemIcon+"' /></div>";
   return format;
 };
 exports.CosmeticResponseFormat = CosmeticResponseFormat;
@@ -194,28 +197,33 @@ exports.CosmeticResponseFormat = CosmeticResponseFormat;
 var EmblemResponseFormat = function(item,i,z){
   var format = ItemResponseFormat(item,i,z);
   format.equipped = item.instances.isEquipped;
-  format.HTMLTemplate = "<div class=item-capsule id='"+format.htmlId+"'><img class=item-icon src="+format.itemIcon+" /></div>";
+  format.HTMLTemplate = "<div class=item-capsule id='"+format.htmlId+"'><img class=item-icon src='"+format.itemIcon+"' /></div>";
   return format;
 
 };
 exports.EmblemResponseFormat = EmblemResponseFormat;
 
 var ItemResponseFormat = function(item,i,z){
+  var screenshot;
+  if(item.itemHashData.screenshot !== undefined){ screenshot = bungieCommon+item.itemHashData.screenshot; }
+  else{ screenshot = bungieCommon+item.itemHashData.displayProperties.icon; }
   return {
     htmlId: i+"-"+z,
     itemIcon: bungieCommon+item.itemHashData.displayProperties.icon,
     itemHash: item.itemHash,
+    flavorText: "",
     bucketHash: item.bucketHash,
     bucketCategory: item.bucketHashData.category,
     transferStatus: item.transferStatus,
-    name: item.bucketHashData.displayProperties.name,
+    name: item.itemHashData.displayProperties.name,
     itemInstanceId: item.itemInstanceId,
     location: item.location,
     lockable: item.lockable,
     quantity: item.quantity,
     state: item.state,
     flavortext: item.flavortext,
-    HTMLTemplate: "<div class=item-capsule id='"+i+"-"+z+"'><img class=item-icon src="+bungieCommon+item.itemHashData.displayProperties.icon+" /> </div>",
+    screenshot: screenshot,
+    HTMLTemplate: "<div class=item-capsule id='"+i+"-"+z+"'><img class=item-icon src='"+bungieCommon+item.itemHashData.displayProperties.icon+"' /> </div>",
   };
 };
 exports.ItemResponseFormat = ItemResponseFormat;

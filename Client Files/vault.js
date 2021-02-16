@@ -15,9 +15,9 @@ async function Initialize(value){
   updateCharacters();
 };
 async function updateCharacters(){
+  vaultController.fetchLoadout().catch(function(error){ console.error(error); });
   let result = await Promise.all([playerCharacters[0].loadCharacter(),playerCharacters[1].loadCharacter(),playerCharacters[2].loadCharacter()]).catch(function(error){ return error; });
   if(result instanceof Error) { console.error(result); return false; }
-  vaultController.fetchLoadout();
   updateGUI();
 };
 function updateGUI(){
@@ -29,11 +29,11 @@ function updateGUI(){
 function character(){
   this.id;
   this.element;
+  this.characterId;
   this.setID = function(value){
     this.id = value;
     this.element = window.document.getElementById("c"+this.id);
   };
-  this.characterId;
   this.light;
   this.race;
   this.class;
@@ -106,7 +106,6 @@ function Item(){
     this.slotName = slotName;
     var temp = window.document.createElement("div");
     temp.innerHTML = data.HTMLTemplate;
-    temp.id
     window.document.getElementById(this.slotName).append(temp.firstChild);
     this.changeData(data);
     this.HTMLTemplate = window.document.getElementById(this.data.htmlId);
@@ -119,9 +118,9 @@ function Item(){
     this.HTMLTemplate.innerHTML = value;
     var children = this.HTMLTemplate.children;
     var localthis = this;
-    children[0].draggable = true;
-    children[0].ondragend = function(ev){localthis.drop(ev);};
-    this.HTMLTemplate.ondblclick = function(ev){ console.log("clicked"); slotController.swapEquipped(localthis.slotName, localthis.index); };
+    this.HTMLTemplate.draggable = true;
+    this.HTMLTemplate.ondragend = function(ev){localthis.drop(ev);};
+    this.HTMLTemplate.ondblclick = function(ev){ loadSideMenu(localthis.data); };
   };
   this.destroy = function(isWipe){
       this.container.remove();
@@ -129,7 +128,7 @@ function Item(){
       if(isWipe) return true;
       vaultController.vaultItems[this.slotName].splice(this.index,1);
   };
-  this.drop = function(ev){
+  this.drop = async function(ev){
     var localthis = this;
     var targetElementID = window.document.elementFromPoint(ev.clientX,ev.clientY).id.split("-")[0];
     try{
@@ -139,31 +138,21 @@ function Item(){
       console.error("That's not a character");
       return false;
     }
-    transferRequest(localthis.data,characterID).then(function(result){
-      console.log("transfer was successful.");
-      localthis.destroy(false);
-    }).catch(function(error){
-      console.log("Transfer of item failed.");
-      console.error(error);
-    });
+    var result = await transferRequest(localthis.data,characterID);
+    if(result instanceof Error){ console.error(result); return false; }
+    console.log("transfer was successful.");
+    localthis.destroy(false);
   };
 };
 function loadSideMenu(itemData){
   console.log(itemData);
   window.document.getElementById("side-view").style.display= "none";
   window.document.getElementById("side-view").style.display= "initial";
-  window.document.getElementById("item-name").innerHTML = itemData.itemHashData.displayProperties.name;
-  var icon= itemData.itemHashData.screenshot;
-  if(icon == undefined) icon = itemData.itemHashData.displayProperties.icon;
-  window.document.getElementById("item-screenshot").src = bungieCommon+icon;
-  window.document.getElementById("item-flavortext").innerHTML = itemData.itemHashData.flavorText;
-  window.document.getElementById("item-preview-light").innerHTML = itemData.instances.primaryStat.value;
-  if(itemData.instances.damageType !== 0){
-    window.document.getElementById("item-preview-damageIcon").src = bungieCommon+itemData.instances.damageTypeData.displayProperties.icon;
-  }
-  else {
-    window.document.getElementById("item-preview-damageIcon").src = bungieCommon+itemData.instances.energy.data.displayProperties.icon;
-  }
+  window.document.getElementById("item-name").innerHTML = itemData.name;
+  window.document.getElementById("item-screenshot").src = itemData.screenshot;
+  window.document.getElementById("item-flavortext").innerHTML = itemData.flavorText;
+  window.document.getElementById("item-preview-light").innerHTML = itemData.light;
+  window.document.getElementById("item-preview-damageIcon").src = itemData.energyIcon;
   for(i in itemData.stats){
     var statcontainer = window.document.createElement("div");
     var statname = window.document.createElement("h1");

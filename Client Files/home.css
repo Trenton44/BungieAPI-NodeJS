@@ -187,31 +187,31 @@ body {
 .item-container > div{
   flex-basis: 10%;
 }
-.postmaster {
+.Engrams {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
   height: 15%;
 }
-.postmaster > h1 {
+.Engrams > h1 {
   background-color: rgba(20,20,20, 0.6);
   text-align: center;
   margin: 0;
   color: white;
   font-style: italic;
 }
-#postmaster-items {
-  width: 100%;
-  height: 90%;
+.Engrams > div {
   display: flex;
+  flex-basis: 10%;
+  flex-shrink: 1;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 .item-capsule {
-  width: 100%;
   height: 100%;
+  margin: 5px;
   position: relative;
 }
 .item-icon {

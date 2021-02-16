@@ -103,6 +103,7 @@ async function lockCharacterItem(request, response){
 exports.lockCharacterItem = lockCharacterItem;
 
 async function transferFromVault(request, response){
+  console.log("transferring to character from vault");
   var path = bungieRoot+"/Destiny2/Actions/Items/TransferItem/";
   var access_token = decryptData(request.session.data.tokenData).access_token;
   var body = buildTransferRequestBody(request);
@@ -114,6 +115,7 @@ async function transferFromVault(request, response){
 exports.transferFromVault = transferFromVault;
 
 async function transferToVault(request, response){
+  console.log("transferring to vault");
   var path = bungieRoot+"/Destiny2/Actions/Items/TransferItem/";
   var access_token = decryptData(request.session.data.tokenData).access_token;
   var body = buildTransferRequestBody(request);
@@ -125,6 +127,7 @@ async function transferToVault(request, response){
 exports.transferToVault = transferToVault;
 
 async function transferToCharacter(request, response){
+  console.log("transferring to character from character");
   var path = bungieRoot+"/Destiny2/Actions/Items/TransferItem/";
   var access_token = decryptData(request.session.data.tokenData).access_token;
   var body = buildTransferRequestBody(request);
@@ -132,6 +135,7 @@ async function transferToCharacter(request, response){
   body.characterId = request.body.characterTransferring;
   let vaultTransfer = await postRequest(path, body, access_token).catch(function(error){ return error; });
   if(vaultTransfer instanceof Error) { return vaultTransfer; }
+  console.log("Here.");
   body.transferToVault = false;
   body.characterId = request.body.characterReceiving;
   sleep(500);
@@ -144,9 +148,9 @@ function buildTransferRequestBody(request){
   var bnetInfo = request.session.data.bnetInfo;
   var membershipType = bnetInfo[bnetInfo.primaryMembershipId].membershipType;
   return {
-    itemReferenceHash: request.body.item.itemHash,
-    ItemId: request.body.item.itemInstanceId,
-    stackSize:request.body.item.quantity,
+    itemReferenceHash: request.body.itemHash,
+    ItemId: request.body.itemInstanceId,
+    stackSize:request.body.quantity,
     membershipType: membershipType,
   };
 };
