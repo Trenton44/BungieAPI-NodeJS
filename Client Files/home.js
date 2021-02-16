@@ -163,23 +163,21 @@ function Item(){
     this.slotName = slotName;
     this.index = index;
     var localthis = this;
+    var parent;
     if(index == 0){
-      this.HTMLElement = window.document.getElementById(this.slotName);
+      parent = window.document.getElementById(this.slotName+"-primary-container");
     }
     else {
-      this.HTMLElement = window.document.createElement("img");
-      this.HTMLElement.id = slotName+"-"+index;
-      window.document.getElementById(slotName+"-equipment").append(this.HTMLElement);
-      this.HTMLElement.draggable = true;
-      this.HTMLElement.ondragend = function(ev){localthis.drop(ev);};
-      this.HTMLElement.ondblclick = function(ev){ slotController.swapEquipped(localthis.slotName, localthis.index); };
+      parent = window.document.getElementById(this.slotName+"-equipment");
     }
     this.changeData(data);
-    if(this.data.state == "Masterwork") this.HTMLElement.style.border = "2px solid gold";
+    parent.innerHTML = this.data.HTMLTemplate;
+    /*this.HTMLElement.draggable = true;
+    this.HTMLElement.ondragend = function(ev){localthis.drop(ev);};
+    this.HTMLElement.ondblclick = function(ev){ slotController.swapEquipped(localthis.slotName, localthis.index); };*/
   };
   this.changeData = function(value){
     this.data = value;
-    this.HTMLElement.src = this.data.itemIcon;
   }
   this.destroy = function(isWipe){
     if(this.index == 0){

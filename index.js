@@ -92,7 +92,6 @@ app.get("/bnetresponse", async function(request, response){
   else {
     console.log("states match, requesting token.");
     request.session.data.authCode = request.query.code;
-    console.log(request.query.code);
     await D2API.requestToken(request, response).catch(function(error){response.status(400).json({error: "There was an error."}); });
     response.redirect("/");
   }
@@ -125,17 +124,29 @@ app.get("/character/:id/equipment",async function(request,response){
   var cID = request.params.id;
   var data = await D2API.characterComponentRequest(request, response, components, cID).catch(function(error){ return error; });
   if(data instanceof Error){ console.error(data); response.status(400).json({error: error});}
-  data.equipment = ServerResponse.InventoryItemsResponse(data.equipment);
   data.equipment = ServerResponse.sortByBucketDefinition(data.equipment);
-  data.inventory = ServerResponse.sortByBucketCategory(data.inventory);
-  data.inventory.Equippable = ServerResponse.InventoryItemsResponse(data.inventory.Equippable);
-  data.inventory = ServerResponse.sortByBucketDefinition(data.inventory.Equippable);
   delete data.equipment.Emotes;
   delete data.equipment.Finishers;
   delete data.equipment.ClanBanners;
+  for(i in data.equipment){
+    var temp = ServerResponse.DestinyItemTypes[i];
+    data.equipment[i][0] = ServerResponse[temp](data.equipment[i][0]);
+  }
+  data.inventory = ServerResponse.sortByBucketCategory(data.inventory);
+  //data.inventory.Equippable = ServerResponse.InventoryItemsResponse(data.inventory.Equippable);
+  data.inventory = ServerResponse.sortByBucketDefinition(data.inventory.Equippable);
   delete data.inventory.Emotes;
   delete data.inventory.Finishers;
   delete data.inventory.ClanBanners;
+  console.log("At Inventory");
+  for(i in data.inventory){
+    for(z in data.inventory[i]){
+      var temp = ServerResponse.DestinyItemTypes[i];
+      data.inventory[i][z] = ServerResponse[temp](data.inventory[i][z]);
+    }
+  }
+
+
   response.status(200).json({equipment: data.equipment, inventory: data.inventory});
 });
 

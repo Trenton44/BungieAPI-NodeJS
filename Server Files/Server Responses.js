@@ -33,52 +33,24 @@ const DestinyItemState = {
   "2": "Tracked",
   "4": "Masterwork",
 };
-function InventoryItemsResponse(items){
-  for(i in items){
-    items[i] = InventoryItemResponse(items[i]);
-  }
-  return items;
+const DestinyItemTypes = {
+  Subclass: "SubclassResponseFormat",
+  KineticWeapons: "WeaponResponseFormat",
+  EnergyWeapons: "WeaponResponseFormat",
+  PowerWeapons: "WeaponResponseFormat",
+  Helmet: "ArmorResponseFormat",
+  Gauntlets: "ArmorResponseFormat",
+  ChestArmor: "ArmorResponseFormat",
+  LegArmor: "ArmorResponseFormat",
+  ClassArmor: "ArmorResponseFormat",
+  Ghost: "CosmeticResponseFormat",
+  Ships: "CosmeticResponseFormat",
+  Vehicle: "CosmeticResponseFormat",
+  Emblems: "EmblemResponseFormat",
+  SeasonalArtifact: "CosmeticResponseFormat",
 };
-exports.InventoryItemsResponse = InventoryItemsResponse;
-function formatEquippableItems(items){
-  for(i in items){ items[i] = EquippableItemResponse(items[i]); }
-  return items;
-};
-var InventoryItemResponse = function(item){
-  var energyIcon;
-  if(item.instances.damageType !== 0){
-    if(item.instances.damageTypeData !== undefined)
-    { energyIcon = bungieCommon+item.instances.damageTypeData.displayProperties.icon; }
-  }
-  else {
-    if(item.instances.energy !== undefined)
-    { energyIcon = bungieCommon+item.instances.energy.data.transparentIconPath; }
-  }
-  var primaryStat = 0;
-  if(item.instances.primaryStat !== undefined)
-  { primaryStat = item.instances.primaryStat.value; }
-  return {
-    energyType: energyIcon,
-    light: primaryStat,
-    bucketHash: item.bucketHash,
-    itemInstanceId: item.itemInstanceId,
-    itemHash: item.itemHash,
-    stats: item.stats,
-    itemIcon: bungieCommon+item.itemHashData.displayProperties.icon,
-    itemName: item.itemHashData.displayProperties.name,
-    flavortext: item.itemHashData.flavorText,
-    seasonOverlay: bungieCommon+item.itemHashData.iconWatermark,
-    screenshot: bungieCommon+item.itemHashData.screenshot,
-    lockable: item.lockable,
-    state: item.state,
-    quantity: item.quantity,
-    location: item.location,
-    bucketHashData: {
-      category: item.bucketHashData.category,
-    },
-  }
-  return item;
-};
+exports.DestinyItemTypes = DestinyItemTypes;
+
 var CharacterResponse = function(item){
   return {
     level: item.baseCharacterLevel,
@@ -170,3 +142,67 @@ var CharactersResponse = function(items){
   }
 };
 exports.CharactersResponse = CharactersResponse;
+
+var SubclassResponseFormat = function(item){
+  var format = ItemResponseFormat(item);
+  format.HTMLTemplate = "<div class=subclass-capsule id="+format.itemInstanceId+"><img subclass-icon src="+format.itemIcon+" ></div>";
+  return format;
+};
+exports.SubclassResponseFormat = SubclassResponseFormat;
+
+var WeaponResponseFormat = function(item){
+  var format = ItemResponseFormat(item);
+  format.energyIcon = bungieCommon+item.instances.damageTypeData.displayProperties.icon;
+  format.light = item.instances.primaryStat.value;
+  format.stats = item.stats;
+  format.equipped = item.instances.isEquipped;
+  format.overlay = bungieCommon+item.itemHashData.iconWatermark;
+  format.HTMLTemplate = "<div class=item-capsule id="+format.itemInstanceId+"><img class=item-icon src="+format.itemIcon+" /><img class=item-overlay src="+format.overlay+" /><img item-type src="+format.energyIcon+" /><h1 class=item-light>"+format.light+"</h1></div>";
+  return format;
+};
+exports.WeaponResponseFormat = WeaponResponseFormat;
+
+var ArmorResponseFormat = function(item){
+  var format = ItemResponseFormat(item);
+  format.light = item.instances.primaryStat.value;
+  format.stats = item.stats;
+  format.energyIcon = bungieCommon+item.instances.energy.data.displayProperties.icon;
+  format.equipped = item.instances.isEquipped;
+  format.overlay = bungieCommon+item.itemHashData.iconWatermark;
+  format.HTMLTemplate = "<div class=item-capsule id="+format.itemInstanceId+"><img class=item-icon src="+format.itemIcon+" /><img class=item-overlay src="+format.overlay+" /><img item-type src="+format.energyIcon+" /><h1 class=item-light>"+format.light+"</h1></div>";
+  return format;
+};
+exports.ArmorResponseFormat = ArmorResponseFormat;
+
+var CosmeticResponseFormat = function(item){
+  var format = ItemResponseFormat(item);
+  format.equipped = item.instances.isEquipped;
+  format.HTMLTemplate = "<div item-capsule id="+format.itemInstanceId+"><img class=item-icon src="+format.itemIcon+" ></div>";
+  return format;
+};
+exports.CosmeticResponseFormat = CosmeticResponseFormat;
+
+var EmblemResponseFormat = function(item){
+  var format = ItemResponseFormat(item);
+  format.HTMLTemplate = "<div item-capsule id="+format.itemInstanceId+"><img class=item-icon src="+format.itemIcon+" ></div>";
+  return format;
+
+};
+exports.EmblemResponseFormat = EmblemResponseFormat;
+
+var ItemResponseFormat = function(item){
+  return {
+    itemIcon: bungieCommon+item.itemHashData.displayProperties.icon,
+    itemHash: item.itemHash,
+    bucketHash: item.bucketHash,
+    bucketCategory: item.bucketHashData.category,
+    transferStatus: item.transferStatus,
+    name: item.bucketHashData.displayProperties.name,
+    itemInstanceId: item.itemInstanceId,
+    location: item.location,
+    lockable: item.lockable,
+    quantity: item.quantity,
+    state: item.state,
+    flavortext: item.flavortext,
+  };
+};
