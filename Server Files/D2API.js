@@ -26,8 +26,8 @@ async function getBnetInfo(request,response,next){
   var path = bungieRoot+"/User/GetMembershipsForCurrentUser/";
   var access_token = decryptData(request.session.data.tokenData).access_token;
   let result = await getRequestAuth(path, access_token).catch(function(error){return error;});
-  if(result instanceof Error) { return Promise.reject(result); }
-  request.session.data.bnetInfo = parseBnetInfo(result.data.Response);
+  if(result instanceof Error) { next("There was an error."); }
+  request.session.data.bnetInfo = parseBnetInfo(result.Response);
   next();
 };
 exports.getBnetInfo = getBnetInfo;
@@ -50,8 +50,8 @@ async function characterComponentRequest(request, response, components, characte
   var path = path+"Character/"+characterID+"/"+"?"+params;
   var access_token = decryptData(request.session.data.tokenData).access_token;
   let result = await getRequestAuth(path, access_token).catch(function(error){ return error; });
-  if(result instanceof Error) { return Promise.reject(result); }
-  result = parseComponents(result.data.Response);
+  if(result instanceof Error) { return result; }
+  result = parseComponents(result.Response);
   if(result.itemComponents !== undefined) { return combineItemsInstanceData(result); }
   return result;
 };
@@ -64,8 +64,8 @@ async function profileComponentRequest(request, response, components){
   path = path+"?"+params;
   var access_token = decryptData(request.session.data.tokenData).access_token;
   let result = await getRequestAuth(path,access_token).catch(function(error){ return error; });
-  if(result instanceof Error) { return Promise.reject(result); }
-  result = parseComponents(result.data.Response);
+  if(result instanceof Error) { return result; }
+  result = parseComponents(result.Response);
   if(result.itemComponents !== undefined) { return combineItemsInstanceData(result); }
   return result;
 };
@@ -98,7 +98,6 @@ async function lockCharacterItem(request, response){
   });
   var access_token = decryptData(request.session.data.tokenData).access_token;
   let result = await postRequest(path, body, access_token).catch(function(error){ return error; });
-  if(result instanceof Error) { return Promise.reject(result); }
   return result;
 };
 exports.lockCharacterItem = lockCharacterItem;
@@ -110,7 +109,6 @@ async function transferFromVault(request, response){
   body.transferToVault = false;
   body.characterId = request.body.characterReceiving;
   let result = await postRequest(path, body, access_token).catch(function(error){ return error; });
-  if(result instanceof Error) { return Promise.reject(result); }
   return result;
 };
 exports.transferFromVault = transferFromVault;
@@ -122,7 +120,6 @@ async function transferToVault(request, response){
   body.transferToVault = true;
   body.characterId = request.body.characterTransferring;
   let result = await postRequest(path, body, access_token).catch(function(error){ return error; });
-  if(result instanceof Error) { return Promise.reject(result); }
   return result;
 };
 exports.transferToVault = transferToVault;
@@ -134,12 +131,11 @@ async function transferToCharacter(request, response){
   body.transferToVault = true;
   body.characterId = request.body.characterTransferring;
   let vaultTransfer = await postRequest(path, body, access_token).catch(function(error){ return error; });
-  if(vaultTransfer instanceof Error) { return Promise.reject(vaultTransfer); }
+  if(vaultTransfer instanceof Error) { return vaultTransfer; }
   body.transferToVault = false;
   body.characterId = request.body.characterReceiving;
   sleep(500);
   let characterTransfer = await postRequest(path, body, access_token).catch(function(error){ return error; });
-  if(characterTransfer instanceof Error) { return Promise.reject(characterTransfer); }
   return characterTransfer;
 };
 exports.transferToCharacter = transferToCharacter;
@@ -166,8 +162,7 @@ async function equipItem(request, response){
   };
   var access_token = decryptData(request.session.data.tokenData).access_token;
   let result = await postRequest(path, body, access_token).catch(function(error){ return error; });
-  if(result instanceof Error) { Promise.reject(result); }
-  return result.data;
+  return result;
 };
 exports.equipItem = equipItem;
 
@@ -183,15 +178,16 @@ async function requestToken(request, response){
     headers:{"Content-Type": "application/x-www-form-urlencoded"},
     data: body
   }).catch(function(error){ return error; });
-  if(token instanceof Error) { Promise.reject(token); }
+  if(token instanceof Error) { return token; }
   saveTokenData(request, token.data);
 };
 exports.requestToken = requestToken;
 
 async function tokenRefresh(request, response){
+  var tokenData = decryptData(request.session.data.tokenData);
   var body = new URLSearchParams();
   body.append("grant_type", "refresh_token");
-  body.append("refresh_token", refreshtoken);
+  body.append("refresh_token", tokenData.refresh_token);
   body.append("client_secret",process.env.Bungie_ClientSecret);
   body.append("client_id", process.env.Bungie_ClientID);
   let result = await axios({
@@ -200,14 +196,14 @@ async function tokenRefresh(request, response){
     headers: {"X-API-Key":process.env.Bungie_API_KEY},
     data: body,
   }).catch(function(error){ return error; });
-  if(result instanceof Error) { Promise.reject(result); }
+  if(result instanceof Error) { return result; }
   saveTokenData(request, result.data);
   return true;
 };
 exports.tokenRefresh = tokenRefresh;
 //Used to overwrite token data currently stored inside the user's cookie.
 function saveTokenData(request, tokenData){
-  tokenData.tokenExpiration = new Date().getTime()+((tokenData.expires_in)*1000); //took 5 minutes off the given expiration time to make sure it updated before actual expiration.
+  tokenData.tokenExpiration = new Date().getTime()+((tokenData.expires_in)*1000);
   tokenData.refreshExpiration = new Date().getTime()+(tokenData.refresh_expires_in*1000);
   request.session.cookie.maxAge = tokenData.refreshExpiration;
   request.session.data.tokenData = encryptData(tokenData);
@@ -241,8 +237,7 @@ async function postRequest(path, body, token){
     headers: {"X-API-Key":process.env.Bungie_API_KEY, "Authorization":"Bearer "+token},
     data: body,
   }).catch(function(error){ return error; });
-  if(result instanceof Error) { Promise.reject(result); }
-  return result;
+  return result.data;
 };
 
 async function getRequestAuth(path, token){
@@ -251,8 +246,7 @@ async function getRequestAuth(path, token){
     url: path,
     headers: {"X-API-Key":process.env.Bungie_API_KEY, "Authorization":"Bearer "+token},
   }).catch(function(error){ return error; });
-  if(result instanceof Error) { Promise.reject(result); }
-  return result;
+  return result.data;
 };
 async function getRequest(path){
   let result = await axios({
@@ -260,8 +254,7 @@ async function getRequest(path){
     url: path,
     headers: {"X-API-Key":process.env.Bungie_API_KEY},
   }).catch(function(error){ return error; });
-  if(result instanceof Error) { Promise.reject(result); }
-  return result;
+  return result.data;
 };
 
 //When a function takes a list of components as a parameter, this function is called to
@@ -296,8 +289,8 @@ async function loadManifest(){
   console.log("Obtaining Manifest");
   var path = bungieRoot+"/Destiny2/Manifest/";
   var version = await getRequest(path).catch(function(error){ return error; });
-  if(version instanceof Error) { Promise.reject(version); }
-  version = version.data.Response;
+  if(version instanceof Error) { return version; }
+  version = version.Response;
   if(version.version === D2ManifestVersion.version) { return true; }
   console.log("Pulling new manifest version.");
   path = bungieCommon+version.jsonWorldContentPaths.en;

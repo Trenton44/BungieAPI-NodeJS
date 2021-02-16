@@ -2,90 +2,65 @@ var window;
 var bungieCommon = "https://www.bungie.net";
 var playerCharacters = [];
 var vaultController = new Vault();
+
 async function Initialize(value){
   window = value;
   var path = "/characterids";
   var ids = await fetchRequest(path);
-  for(i in ids) {
+  if(ids instanceof Error){ console.log("Unable to obtain characters."); };
+  for(i in ids){
     playerCharacters.push(new character());
     playerCharacters[i].Initialize(i, ids[i]);
   }
-  Promise.all([playerCharacters[0].loadCharacter(),playerCharacters[1].loadCharacter(),playerCharacters[2].loadCharacter()]).then(function(values){
-    for(i in playerCharacters) playerCharacters[i].update();
-    vaultController.fetchLoadout();
-  });
+  updateCharacters();
 };
-function updateCharacters(){
-  console.log("loading characters");
+async function updateCharacters(){
+  let result = await Promise.all([playerCharacters[0].loadCharacter(),playerCharacters[1].loadCharacter(),playerCharacters[2].loadCharacter()]).catch(function(error){ return error; });
+  if(result instanceof Error) { console.error(result); return false; }
+  vaultController.fetchLoadout();
+  updateGUI();
+};
+function updateGUI(){
+  playerCharacters[0].update();
+  playerCharacters[1].update();
+  playerCharacters[2].update();
+};
 
-};
 function character(){
-  this.htmlIdentifier;
+  this.id;
   this.element;
-  this.banner;
-  this.setIdentifier = function(value){
-    this.htmlIdentifier = value;
-    this.element = window.document.getElementById("c"+this.htmlIdentifier);
+  this.setID = function(value){
+    this.id = value;
+    this.element = window.document.getElementById("c"+this.id);
   };
-  this.characterID;
-  this.setCID = function(value){
-    this.characterID = value;
-  };
+  this.characterId;
   this.light;
-  this.setLight = function(value){
-    if(value != null && value != undefined) this.light = value;
-  };
   this.race;
-  this.setRace = function(value){
-    if(value != null && value != undefined) this.race = value;
-  };
   this.class;
-  this.setClass = function(value){
-    if(value != null && value != undefined) this.class = value;
-  };
-  this.emblemURL;
-  this.setEmblem = function(value){
-    if(value != null && value != undefined) this.emblemURL = value;
-  };
-  this.setBanner = function(value){
-    this.banner = "/assets/"+value+" Banner.png";
-  };
-  this.showBanner = function(){
-    window.document.getElementById("character-banner").src = this.banner;
-  };
-  this.stats = {};
-  this.setStats = function(value){
-    for(z in value) this.stats[value[z].info.displayProperties.name] = value[z].value;
-  };
-  this.showStats = function(){
-    var keys = Object.keys(this.stats);
-    for(z in keys){
-      window.document.getElementById(keys[z]).innerHTML = this.stats[keys[z]];
-    }
-  };
+  this.emblem;
+  this.setEmblem = function(value){ this.emblem = bungieCommon+value; };
   this.update = function(){
-    window.document.getElementById("c"+this.htmlIdentifier+"-light").innerHTML = this.light;
-    window.document.getElementById("c"+this.htmlIdentifier+"-race").innerHTML = this.race;
-    window.document.getElementById("c"+this.htmlIdentifier+"-class").innerHTML = this.class;
-    window.document.getElementById("c"+this.htmlIdentifier+"-emblem").src = bungieCommon+this.emblemURL;
+    window.document.getElementById("c"+this.id+"-light").innerHTML = this.light;
+    window.document.getElementById("c"+this.id+"-race").innerHTML = this.race;
+    window.document.getElementById("c"+this.id+"-class").innerHTML = this.class;
+    window.document.getElementById("c"+this.id+"-emblem").src = this.emblem;
   }
-  this.Initialize = function(htmlID, characterID){
-    this.setIdentifier(htmlID);
-    this.setCID(characterID);
+  this.Initialize = function(id, characterId){
+    this.setID(id);
+    this.characterId = characterId;
   };
   this.loadCharacter = async function(){
-    var localthis = this;
-    var path = "/character/"+this.characterID+"/general";
-    var data = await fetchRequest(path);
-    this.setLight(data.light);
-    this.setRace(data.race.name);
-    this.setClass(data.class.name);
-    this.setEmblem(data.emblem.emblemBackgroundPath);
-    this.setStats(data.stats);
-    this.setBanner(data.class.name);
-    return true;
+    var path = "/character/"+this.characterId+"/general";
+    var data = await fetchRequest(path).catch(function(error){ return error; });
+    if(data instanceof Error){ Promise.reject(data); }
+    this.light = data.light;
+    this.race = data.race.displayProperties.name;
+    this.class = data.class.displayProperties.name;
+    this.setEmblem(data.emblemBackgroundPath);
+    return Promise.resolve(true);
   };
 };
+
 function Vault(){
   this.vaultItems = {};
   this.wipe = function(){
@@ -98,7 +73,7 @@ function Vault(){
   this.fetchLoadout = async function(){
     this.wipe();
     var path = "/profile/vault";
-    var data = await fetchRequest(path);
+    var data = await fetchRequest(path).catch(function(error){ return error; });
     console.log(data);
     for(i in data){
       if(this.vaultItems[i] == undefined){
@@ -118,7 +93,6 @@ function Vault(){
         this.vaultItems[i].push(newItem);
       }
     }
-    console.log(this.vaultItems);
   };
 };
 function Item(){
@@ -127,7 +101,6 @@ function Item(){
   this.slotName;
   this.HTMLElement;
   this.Initialize = function(slotName, index, itemData){
-
     this.index = index;
     this.slotName = slotName;
     this.container = window.document.createElement("div");

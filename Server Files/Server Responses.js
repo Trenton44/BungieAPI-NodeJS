@@ -33,37 +33,52 @@ const DestinyItemState = {
   "2": "Tracked",
   "4": "Masterwork",
 };
+function InventoryItemsResponse(items){
+  for(i in items){
+    items[i] = InventoryItemResponse(items[i]);
+  }
+  return items;
+};
+exports.InventoryItemsResponse = InventoryItemsResponse;
 function formatEquippableItems(items){
   for(i in items){ items[i] = EquippableItemResponse(items[i]); }
   return items;
 };
-var EquippableItemResponse = function(item){
-  var stats = {};
-  for(i in item.stats.stats){
-    var statData = DestinyStatDefinition[i];
-    stats[statData.name] = statData;
-    stats[statData.name].values = item.stats.stats[i];
-    stats[statData.name].extrainfo = statData;
+var InventoryItemResponse = function(item){
+  var energyIcon;
+  if(item.instances.damageType !== 0){
+    if(item.instances.damageTypeData !== undefined)
+    { energyIcon = bungieCommon+item.instances.damageTypeData.displayProperties.icon; }
   }
+  else {
+    if(item.instances.energy !== undefined)
+    { energyIcon = bungieCommon+item.instances.energy.data.transparentIconPath; }
+  }
+  var primaryStat = 0;
+  if(item.instances.primaryStat !== undefined)
+  { primaryStat = item.instances.primaryStat.value; }
   return {
+    energyType: energyIcon,
+    light: primaryStat,
     bucketHash: item.bucketHash,
-    itemHash: item.itemHash,
-    quantity: item.quantity,
     itemInstanceId: item.itemInstanceId,
-    state: DestinyItemState[item.state],
-    stats: stats,
-    itemHashData: {
-      damageType: DestinyDamageTypeDefinition[item.itemHashData.defaultDamageTypeHash],
-      itemSource: item.itemHashData.displaySource,
-      displayProperties: item.itemHashData.displayProperties,
-      defaultDamageType: item.itemHashData.defaultDamageType,
-      itemTypeDisplayName: item.itemHashData.itemTypeDisplayName,
-      redacted: item.itemHashData.redacted,
-      secondaryIcon: item.itemHashData.secondaryIcon,
+    itemHash: item.itemHash,
+    stats: item.stats,
+    itemIcon: bungieCommon+item.itemHashData.displayProperties.icon,
+    itemName: item.itemHashData.displayProperties.name,
+    flavortext: item.itemHashData.flavorText,
+    seasonOverlay: bungieCommon+item.itemHashData.iconWatermark,
+    screenshot: bungieCommon+item.itemHashData.screenshot,
+    lockable: item.lockable,
+    state: item.state,
+    quantity: item.quantity,
+    location: item.location,
+    bucketHashData: {
+      category: item.bucketHashData.category,
     },
-    lockState: item.lockable,
-  };
-}
+  }
+  return item;
+};
 var CharacterResponse = function(item){
   return {
     level: item.baseCharacterLevel,

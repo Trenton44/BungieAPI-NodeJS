@@ -1,4 +1,3 @@
-console.log("Starting D2Components.js preload.");
 const path = require("path");
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
@@ -19,6 +18,7 @@ const DestinyInventoryBucketDefinition = require(manifestRoot+"/DestinyInventory
 const DestinyPowerCapDefinition = require(manifestRoot+"/DestinyPowerCapDefinition.json");
 const DestinyDamageTypeDefinition = require(manifestRoot+"/DestinyDamageTypeDefinition.json");
 const DestinyEnergyTypeDefinition = require(manifestRoot+"/DestinyEnergyTypeDefinition.json");
+
 const components = {
   "100": "profile",
   "101": "vendorReceipts",
@@ -106,25 +106,8 @@ var equipment = function(data){
     { itemlist[z].overrideStyleItemHashData = DestinyInventoryItemDefinition[itemlist[z].overrideStyleItemHash];}
     if(itemlist[z].itemHashData.inventory !== undefined && itemlist[z].inventory !== null)
     { itemlist[z].itemHashData.inventory.bucketTypeHashData = DestinyInventoryBucketDefinition[itemlist[z].itemHashData.inventory.bucketTypeHash]; }
-    /*if(itemlist[z].itemHashData.stats !== undefined && itemlist[z].itemHashData.stats !== null){
-      itemlist[z].itemHashData.stats.statData = {};
-      for(i in itemlist[z].itemHashData.stats.stats){
-        var temp = DestinyStatDefinition[i];
-        itemlist[z].itemHashData.stats.statData[temp.displayProperties.name] = temp;
-        itemlist[z].itemHashData.stats.statData[temp.displayProperties.name].value = itemlist[z].itemHashData.stats.stats[i].value;
-      }
-    }
-    if(itemlist[z].itemHashData.quality !== undefined && itemlist[z].itemHashData.quality !== null){
-      var quality = itemlist[z].itemHashData.quality;
-      itemlist[z].itemHashData.seasonalOverlay = quality.displayVersionWatermarkIcons[quality.currentVersion];
-      itemlist[z].itemHashData.powerCapData = DestinyPowerCapDefinition[quality.versions[quality.currentVersion].powerCapHash];
-    }
-    if(itemlist[z].itemHashData.defaultDamageType !== undefined && itemlist[z].itemHashData.defaultDamageType !== null ){
-      itemlist[z].damageTypeData = DestinyDamageTypeDefinition[itemlist[z].itemHashData.defaultDamageTypeHash];
-    }*/
   }
   data = itemlist;
-  console.log("all data for characterEquipment has been built.");
   return data;
 };
 exports.equipment = equipment;
@@ -139,25 +122,8 @@ var inventory = function(data){
     { itemlist[z].overrideStyleItemHashData = DestinyInventoryItemDefinition[itemlist[z].overrideStyleItemHash];}
     if(itemlist[z].itemHashData.inventory !== undefined && itemlist[z].inventory !== null)
     { itemlist[z].itemHashData.inventory.bucketTypeHashData = DestinyInventoryBucketDefinition[itemlist[z].itemHashData.inventory.bucketTypeHash]; }
-    /*if(itemlist[z].itemHashData.stats !== undefined && itemlist[z].itemHashData.stats !== null){
-      itemlist[z].itemHashData.stats.statData = {};
-      for(i in itemlist[z].itemHashData.stats.stats){
-        var temp = DestinyStatDefinition[i];
-        itemlist[z].itemHashData.stats.statData[temp.displayProperties.name] = temp;
-      }
-    }
-    if(itemlist[z].itemHashData.quality !== undefined && itemlist[z].itemHashData.quality !== null){
-      var quality = itemlist[z].itemHashData.quality;
-      quality.infusionCategoryData = {};
-      itemlist[z].itemHashData.seasonalOverlay = quality.displayVersionWatermarkIcons[quality.currentVersion];
-      itemlist[z].itemHashData.powerCapData = DestinyPowerCapDefinition[quality.versions[quality.currentVersion].powerCapHash];
-    }
-    if(itemlist[z].itemHashData.defaultDamageType !== undefined && itemlist[z].itemHashData.defaultDamageType !== null ){
-      itemlist[z].DamageTypeData = DestinyDamageTypeDefinition[itemlist[z].itemHashData.defaultDamageType];
-    }*/
   }
   data = itemlist;
-  console.log("character inventory component has been completed");
   return data;
 };
 exports.inventory = inventory;
@@ -255,7 +221,6 @@ var characterEquipment = function(data){
   for(i in characterlist){
     characterlist[i] = equipment({data: characterlist[i]});
   }
-  console.log("all data for characterEquipment has been built.");
   return characterlist;
 };
 exports.characterEquipment = characterEquipment;
@@ -265,7 +230,6 @@ var characterInventories = function(data){
   for(i in characterlist){
     characterlist[i] = inventory({data: characterlist[i]});
   }
-  console.log("character inventory component has been completed");
   return characterlist;
 };
 exports.characterInventories = characterInventories;

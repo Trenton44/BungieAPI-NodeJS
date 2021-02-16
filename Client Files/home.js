@@ -17,117 +17,74 @@ async function Initialize(value){
   window = value;
   var path = "/characterids";
   var ids = await fetchRequest(path);
-  updateLoadout(ids[0]);
-  for(i in ids) {
+  if(ids instanceof Error){ console.log("Unable to obtain characters."); };
+  for(i in ids){
     playerCharacters.push(new character());
     playerCharacters[i].Initialize(i, ids[i]);
   }
   updateCharacters();
 };
-function changeCharacter(characterlistLocation){
-  if(characterlistLocation == 0){console.log("Character is already loaded.");}
-  else{
-    var backup = Array.from(playerCharacters);
-    var temp = playerCharacters.splice(characterlistLocation,1);
-    playerCharacters.unshift(temp[0]);
-
-    for(i in playerCharacters) playerCharacters[i].setIdentifier(i);
-    console.log("done swapping places.");
-    updateCharacters();
-    updateLoadout(playerCharacters[0].characterID);
-  }
+async function updateCharacters(){
+  let result = await Promise.all([playerCharacters[0].loadCharacter(),playerCharacters[1].loadCharacter(),playerCharacters[2].loadCharacter()]).catch(function(error){ return error; });
+  if(result instanceof Error) { console.error(result); return false; }
+  updateGUI();
 };
-function updateCharacters(){
-  console.log("loading characters");
-  Promise.all([playerCharacters[0].loadCharacter(),playerCharacters[1].loadCharacter(),playerCharacters[2].loadCharacter()]).then(function(values){
-    for(i in playerCharacters) playerCharacters[i].update();
-    playerCharacters[0].showStats();
-    playerCharacters[0].showBanner();
-  });
-
-};
-function updateLoadout(characterID){
-  slotController.fetchLoadout(characterID).then(function(result){
-    console.log("Loadout update was successful.");
-    return true;
-  }).catch(function(error){
-    console.error("Failed to update loadout");
-    console.error(error);
-    return false;
-  })
+function updateGUI(){
+  console.log(playerCharacters[0]);
+  console.log(playerCharacters[1]);
+  console.log(playerCharacters[2]);
+  playerCharacters[0].update();
+  playerCharacters[1].update();
+  playerCharacters[2].update();
+  slotController.fetchLoadout(playerCharacters[0].characterId)
 };
 function character(){
-  this.htmlIdentifier;
+  this.id;
   this.element;
-  this.banner;
-  this.setIdentifier = function(value){
-    this.htmlIdentifier = value;
-    this.element = window.document.getElementById("c"+this.htmlIdentifier);
-    var localthis = this;
-    this.element.ondblclick = function(){ changeCharacter(localthis.htmlIdentifier); };
+  this.setID = function(value){
+    this.id = value;
+    this.element = window.document.getElementById("c"+this.id);
   };
-  this.gethtmlID = function(){
-    return this.htmlIdentifier;
-  };
-  this.characterID;
-  this.setCID = function(value){
-    this.characterID = value;
-  };
+  this.characterId;
   this.light;
-  this.setLight = function(value){
-    if(value != null && value != undefined) this.light = value;
-  };
   this.race;
-  this.setRace = function(value){
-    if(value != null && value != undefined) this.race = value;
-  };
   this.class;
-  this.setClass = function(value){
-    if(value != null && value != undefined) this.class = value;
-  };
-  this.emblemURL;
-  this.setEmblem = function(value){
-    if(value != null && value != undefined) this.emblemURL = value;
-  };
-  this.setBanner = function(value){
-    this.banner = "/assets/"+value+" Banner.png";
-  };
-  this.showBanner = function(){
-    window.document.getElementById("character-banner").src = this.banner;
-  };
+  this.emblem;
+  this.setEmblem = function(value){ this.emblem = bungieCommon+value; };
+  this.banner;
+  this.setBanner = function(value){ this.banner = "/assets/"+value+" Banner.png"; };
   this.stats = {};
   this.setStats = function(value){
     for(z in value) this.stats[value[z].info.displayProperties.name] = value[z].value;
   };
-  this.showStats = function(){
-    var keys = Object.keys(this.stats);
-    for(z in keys){
-      window.document.getElementById(keys[z]).innerHTML = this.stats[keys[z]];
-    }
-  };
   this.update = function(){
-    window.document.getElementById("c"+this.htmlIdentifier+"-light").innerHTML = this.light;
-    window.document.getElementById("c"+this.htmlIdentifier+"-race").innerHTML = this.race;
-    window.document.getElementById("c"+this.htmlIdentifier+"-class").innerHTML = this.class;
-    window.document.getElementById("c"+this.htmlIdentifier+"-emblem").src = bungieCommon+this.emblemURL;
+    window.document.getElementById("c"+this.id+"-light").innerHTML = this.light;
+    window.document.getElementById("c"+this.id+"-race").innerHTML = this.race;
+    window.document.getElementById("c"+this.id+"-class").innerHTML = this.class;
+    window.document.getElementById("c"+this.id+"-emblem").src = this.emblem;
+    if(this.id == 0){
+      window.document.getElementById("character-banner").src = this.banner;
+      for(i in this.stats){ window.document.getElementById(i).innerHTML = this.stats[i]; }
+    }
   }
-  this.Initialize = function(htmlID, characterID){
-    this.setIdentifier(htmlID);
-    this.setCID(characterID);
+  this.Initialize = function(id, characterId){
+    this.setID(id);
+    this.characterId = characterId;
   };
   this.loadCharacter = async function(){
-    var localthis = this;
-    var path = "/character/"+this.characterID+"/general";
-    var data = await fetchRequest(path);
-    this.setLight(data.light);
-    this.setRace(data.race.name);
-    this.setClass(data.class.name);
-    this.setEmblem(data.emblem.emblemBackgroundPath);
+    var path = "/character/"+this.characterId+"/general";
+    var data = await fetchRequest(path).catch(function(error){ return error; });
+    if(data instanceof Error){ Promise.reject(data); }
+    this.light = data.light;
+    this.race = data.race.displayProperties.name;
+    this.class = data.class.displayProperties.name;
+    this.setEmblem(data.emblemBackgroundPath);
+    this.setBanner(data.class.displayProperties.name);
     this.setStats(data.stats);
-    this.setBanner(data.class.name);
-    return true;
+    return Promise.resolve(true);
   };
 };
+
 function slotController(){
   this.slots = {
     Subclass: [],
@@ -159,7 +116,7 @@ function slotController(){
     var item = this.slots[slot];
     item = item[index];
     var localthis = this;
-    equipItem(item.data, playerCharacters[0].characterID).then(function(result){
+    equipItem(item.data, playerCharacters[0].characterId).then(function(result){
       var currentEquip = localthis.slots[slot][0];
       var temp = Object.assign(currentEquip.data);
       var temp2 = Object.assign(item.data);
@@ -222,7 +179,7 @@ function Item(){
   };
   this.changeData = function(value){
     this.data = value;
-    this.HTMLElement.src = bungieCommon+this.data.itemHashData.displayProperties.icon;
+    this.HTMLElement.src = this.data.itemIcon;
   }
   this.destroy = function(isWipe){
     if(this.index == 0){

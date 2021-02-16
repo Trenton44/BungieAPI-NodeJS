@@ -85,8 +85,6 @@ app.get("/bnetlogin", async function(request, response){
 });
 
 app.get("/bnetresponse", async function(request, response){
-  console.log(request.session.data.state);
-  console.log(request.query.state);
   if(request.query.state !== request.session.data.state){
     request.session.destroy();
     response.status(400).json({error: "Unauthorized access."});
@@ -115,9 +113,8 @@ app.get("/character/:id/general",async function(request, response){
   var components = ["200"];
   var cID = request.params.id;
   var data = await D2API.characterComponentRequest(request, response, components, cID).catch(function(error){ return error; });
-  console.log("in character/:id/general");
   if(data instanceof Error){ console.error(data);response.status(400).json({error: error});}
-  data = ServerResponse.CharacterResponse(data.character);
+  data = data.character;
   response.status(200).json(data);
 });
 
@@ -128,8 +125,10 @@ app.get("/character/:id/equipment",async function(request,response){
   var cID = request.params.id;
   var data = await D2API.characterComponentRequest(request, response, components, cID).catch(function(error){ return error; });
   if(data instanceof Error){ console.error(data); response.status(400).json({error: error});}
+  data.equipment = ServerResponse.InventoryItemsResponse(data.equipment);
   data.equipment = ServerResponse.sortByBucketDefinition(data.equipment);
   data.inventory = ServerResponse.sortByBucketCategory(data.inventory);
+  data.inventory.Equippable = ServerResponse.InventoryItemsResponse(data.inventory.Equippable);
   data.inventory = ServerResponse.sortByBucketDefinition(data.inventory.Equippable);
   delete data.equipment.Emotes;
   delete data.equipment.Finishers;
@@ -145,7 +144,7 @@ app.get("/character/:id/inventory",async function(request,response){
   var cID = request.params.id;
   var data = await D2API.characterComponentRequest(request, response, components,cID).catch(function(error){ return error; });
   console.log("in character/:id/inventory");
-  if(data instanceof Error){ console.error(data);response.status(400).json({error: error});}
+  if(data instanceof Error){ response.status(400).json({error: error});}
   data = ServerResponse.sortByLocation(data.inventory);
   response.status(200).json(data);
 });
@@ -154,7 +153,7 @@ app.get("/profile/inventory/:id", async function(request,response){
   var components = ["102", "103"];
   var cID = request.params.id;
   var data = await D2API.profileComponentRequest(request, response, components).catch(function(error){ return error; });
-  if(data instanceof Error){ console.error(data);response.status(400).json({error: error});}
+  if(data instanceof Error){ response.status(400).json({error: error});}
   var returnData = {
     currency: data.profileCurrencies,
     inventory: ServerResponse.sortByLocation(data.profileInventory),
@@ -174,8 +173,8 @@ app.get("/profile/vault",async function(request, response){
 app.post("/character/lockItem",async function(request, response){
   let result = await D2API.lockCharacterItem(request, response).catch(function(error){ return error; });
   console.log("in character/lockItem");
-  if(result instanceof Error){ console.error(result);response.status(400).json({error: error});}
-  response.status(200).json({result: true});
+  if(result instanceof Error){ response.status(400).json({error: error});}
+  else{ response.status(200).json({result: true}); }
 });
 
 app.post("/character/transferItem",async function(request, response, next){
@@ -190,18 +189,14 @@ app.post("/character/transferItem",async function(request, response, next){
     if(request.body.characterReceiving !== undefined)
     { result = await D2API.transferToCharacter(request, response).catch(function(error){ return error; }); }
   }
-  console.log("end of character/transferItem.");
-  var status = 200;
-  var responseData = true;
-  if(result instanceof Error){ next(); }
-  console.log("past error return");
-  response.status(status).json({result: responseData});
+  if(result instanceof Error) { response.status(400).json({error: result});}
+  else { response.status(200).json({ result: result }); }
 });
 //Sends a POST request to bungie API EquipItem endpoint, returns result of request.
 app.post("/character/equipItem",async function(request, response){
   let result = await D2API.equipItem(request, response).catch(function(error){ return error; });
-  if(result instanceof Error){ console.error(result);response.status(400).json({error: error});}
-  response.status(200).json(result);
+  if(result instanceof Error){ response.status(400).json({error: result.data.Response });}
+  else { response.status(200).json(result); }
 });
 
 app.use(D2API.getBnetInfo);
@@ -215,47 +210,14 @@ app.get("/vault",async function(request,response){
   response.sendFile(webpageRoot+"/vault.html");
 });
 D2API.loadManifest().then(function(result){
+  if(result instanceof Error){ console.error(result); }
   httpsServer.listen(process.env.PORT);
 }).catch(function(error){ console.error(error); });
 
 
 //END OF EXPRESS FUNCTIONS.
 function accessAuthorizedEndpoints(request, response, next){
-  console.log("__________________________________");
-  console.log("BEGINNING OF AUTHRIZATION CHECK: ");
-  console.log("Requested endpoint access: "+request.url);
-  console.log("Session ID: "+request.session.id);
-  if(Object.keys(request.session.data.tokenData).length !== 0){
-    console.log("token data for user exists, no action necessary.");
-    console.log("Current time: "+ new Date().getTime());
-    console.log("Expiration of token: "+request.session.data.tokenData.tokenExpiration);
-    if(new Date().getTime() > request.session.data.tokenData.tokenExpiration){
-      console.log("ACCESS TOKEN HAS EXPIRED, CLIENT REQUIRES A NEW ONE.");
-        d2api.tokenRefresh(request.session.data.tokenData.refresh_token).then(function(result){
-          console.log("token refresh was successful.");
-          d2api.saveTokenData(request,result.data);
-          next();
-        }).catch(function(error){
-          console.log("There was an error refreshing the token.");
-          if(request.url == "/" || request.url == "/vault"){
-            response.redirect("/login");
-          }
-          else {
-            console.log(request);
-            response.status(400).json({error:"requires login."});
-          }
-        });
-    }
-    else {
-      console.log("access token still valid, so that's neat.");
-      next();
-    }
-  }
-  else {
-    console.log("user is not yet logged in, redirecting to login.");
-    response.redirect("/bnetlogin");
-  }
-  /*console.log("Session "+request.session.id+" has requested access to "+request._parsedUrl.path+" from "+request.originalURL);
+  console.log("Session "+request.session.id+" has requested access to "+request._parsedUrl.path);
   var currentTime = new Date().getTime();
   console.log(Object.keys(request.session.data.tokenData).length);
   if(Object.keys(request.session.data.tokenData).length == 0){
@@ -263,7 +225,10 @@ function accessAuthorizedEndpoints(request, response, next){
     response.redirect("/bnetlogin");
     console.log("redirected.");
   }
-  //var tokenData = D2API.decryptData(request.session.data.tokenData);
+  console.log(currentTime);
+  var tokenData = D2API.decryptData(request.session.data.tokenData);
+  console.log("token expiration: "+tokenData.tokenExpiration);
+  console.log("refresh expiration: "+tokenData.refreshExpiration);
   if(tokenData.refreshExpiration < currentTime){
     console.log("The refresh token has expired, gonna need to login.");
     response.redirect("/bnetlogin");
@@ -274,7 +239,7 @@ function accessAuthorizedEndpoints(request, response, next){
     console.log("Token refresh completed.");
   }
   console.log("User seems good to go.");
-  next();*/
+  next();
 };
 function constructSessionInstance(request, response, next){
   var reset = false;
