@@ -27,16 +27,14 @@ async function Initialize(value){
 async function updateCharacters(){
   let result = await Promise.all([playerCharacters[0].loadCharacter(),playerCharacters[1].loadCharacter(),playerCharacters[2].loadCharacter()]).catch(function(error){ return error; });
   if(result instanceof Error) { console.error(result); return false; }
+  slotController.fetchLoadout(playerCharacters[0].characterId);
   updateGUI();
 };
 function updateGUI(){
-  console.log(playerCharacters[0]);
-  console.log(playerCharacters[1]);
-  console.log(playerCharacters[2]);
   playerCharacters[0].update();
   playerCharacters[1].update();
   playerCharacters[2].update();
-  slotController.fetchLoadout(playerCharacters[0].characterId)
+
 };
 function character(){
   this.id;
@@ -86,22 +84,7 @@ function character(){
 };
 
 function slotController(){
-  this.slots = {
-    Subclass: [],
-    KineticWeapons: [],
-    EnergyWeapons: [],
-    PowerWeapons: [],
-    Helmet: [],
-    Gauntlets: [],
-    ChestArmor:[],
-    LegArmor: [],
-    ClassArmor: [],
-    Ghost: [],
-    Vehicle:[],
-    Ships: [],
-    Emblems: [],
-    SeasonalArtifact: [],
-  };
+  this.slots = {};
   this.wipe = function(){
     for(i in this.slots){
       var length = this.slots[i].length;
@@ -112,7 +95,7 @@ function slotController(){
       }
     }
   };
-  this.swapEquipped = function(slot, index){
+  this.swapEquipped = function(slot, index, html){
     var item = this.slots[slot];
     item = item[index];
     var localthis = this;
@@ -120,8 +103,14 @@ function slotController(){
       var currentEquip = localthis.slots[slot][0];
       var temp = Object.assign(currentEquip.data);
       var temp2 = Object.assign(item.data);
+      var tempH = currentEquip.HTMLTemplate.cloneNode(true).innerHTML;
+      var temp2H = item.HTMLTemplate.cloneNode(true).innerHTML;
       item.changeData(temp);
       currentEquip.changeData(temp2);
+      item.changeHTML(tempH);
+      currentEquip.changeHTML(temp2H);
+      console.log(localthis.slots[slot][0]);
+      console.log(localthis.slots[slot][index]);
       console.log("Equip request was successful.");
     }).catch(function(error){
       console.error("There was an error equipping this item.");
@@ -134,21 +123,13 @@ function slotController(){
     var path = "/character/"+characterID+"/equipment";
     var data = await fetchRequest(path).catch(function(error){ return error; });
     if(data instanceof Error) {console.error(data); return false;}
-    var keys = Object.keys(data.equipment);
     console.log(data);
-    for(i in keys){
-      var newItem = new Item();
-      var newItemData = data.equipment[keys[i]];
-      newItem.Initialize(keys[i],0,newItemData[0]);
-      this.slots[keys[i]][0] = newItem;
-    }
-    for(i in keys){
-      var itemSlot = this.slots[keys[i]];
-      var inventoryArray = data.inventory[keys[i]];
-      for(z in inventoryArray){
+    for(i in data.inventory){
+      if(this.slots[i] == undefined){ this.slots[i] = []; }
+      for(z in data.inventory[i]){
         var newItem = new Item();
-        newItem.Initialize(keys[i],itemSlot.length,inventoryArray[z]);
-        itemSlot[itemSlot.length] = newItem;
+        newItem.Initialize(i,this.slots[i].length,data.inventory[i][z]);
+        this.slots[i].push(newItem);
       }
     }
   };
@@ -158,38 +139,42 @@ function Item(){
   this.slotName;
   this.data;
   this.index;
-  this.HTMLElement;
+  this.HTMLTemplate;
   this.Initialize = function(slotName, index, data){
     this.slotName = slotName;
     this.index = index;
-    var localthis = this;
     var parent;
-    if(index == 0){
-      parent = window.document.getElementById(this.slotName+"-primary-container");
-    }
-    else {
-      parent = window.document.getElementById(this.slotName+"-equipment");
-    }
+    if(data.equipped){ parent = window.document.getElementById(this.slotName+"-primary-container"); }
+    else { parent = window.document.getElementById(this.slotName+"-equipment"); }
+    var temp = window.document.createElement("div");
+    temp.innerHTML = data.HTMLTemplate;
+    parent.append(temp.firstChild);
     this.changeData(data);
-    parent.innerHTML = this.data.HTMLTemplate;
-    /*this.HTMLElement.draggable = true;
-    this.HTMLElement.ondragend = function(ev){localthis.drop(ev);};
-    this.HTMLElement.ondblclick = function(ev){ slotController.swapEquipped(localthis.slotName, localthis.index); };*/
+    this.HTMLTemplate = window.document.getElementById(this.data.htmlId);
+    this.changeHTML(this.HTMLTemplate.innerHTML);
+
   };
   this.changeData = function(value){
     this.data = value;
-  }
+  };
+  this.changeHTML = function(value){
+    this.HTMLTemplate.innerHTML = value;
+    var children = this.HTMLTemplate.children;
+    var localthis = this;
+    children[0].draggable = true;
+    children[0].ondragend = function(ev){localthis.drop(ev);};
+    this.HTMLTemplate.ondblclick = function(ev){ console.log("clicked"); slotController.swapEquipped(localthis.slotName, localthis.index); };
+  };
   this.destroy = function(isWipe){
     if(this.index == 0){
       this.data = null;
-      this.HTMLElement.src = "";
+      this.HTMLElement.remove();
     }
     else {
       this.HTMLElement.remove();
       this.data = null;
-      if(isWipe != true){
-        slotController.slots[this.slotName].splice(this.index,1);
-      }
+      if(isWipe){ return true; }
+      slotController.slots[this.slotName].splice(this.index,1);
     }
   };
   this.drop = function(ev){

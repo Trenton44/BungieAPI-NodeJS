@@ -125,29 +125,25 @@ app.get("/character/:id/equipment",async function(request,response){
   var data = await D2API.characterComponentRequest(request, response, components, cID).catch(function(error){ return error; });
   if(data instanceof Error){ console.error(data); response.status(400).json({error: error});}
   data.equipment = ServerResponse.sortByBucketDefinition(data.equipment);
-  delete data.equipment.Emotes;
-  delete data.equipment.Finishers;
-  delete data.equipment.ClanBanners;
-  for(i in data.equipment){
-    var temp = ServerResponse.DestinyItemTypes[i];
-    data.equipment[i][0] = ServerResponse[temp](data.equipment[i][0]);
-  }
+
   data.inventory = ServerResponse.sortByBucketCategory(data.inventory);
   //data.inventory.Equippable = ServerResponse.InventoryItemsResponse(data.inventory.Equippable);
   data.inventory = ServerResponse.sortByBucketDefinition(data.inventory.Equippable);
+  delete data.equipment.Emotes;
+  delete data.equipment.Finishers;
+  delete data.equipment.ClanBanners;
   delete data.inventory.Emotes;
   delete data.inventory.Finishers;
   delete data.inventory.ClanBanners;
   console.log("At Inventory");
   for(i in data.inventory){
+    data.inventory[i].unshift(data.equipment[i][0]);
     for(z in data.inventory[i]){
       var temp = ServerResponse.DestinyItemTypes[i];
-      data.inventory[i][z] = ServerResponse[temp](data.inventory[i][z]);
+      data.inventory[i][z] = ServerResponse[temp](data.inventory[i][z],i,z);
     }
   }
-
-
-  response.status(200).json({equipment: data.equipment, inventory: data.inventory});
+  response.status(200).json({inventory: data.inventory});
 });
 
 app.get("/character/:id/inventory",async function(request,response){
@@ -178,6 +174,15 @@ app.get("/profile/vault",async function(request, response){
   if(data instanceof Error){ console.error(data);response.status(400).json({error: error});}
   data = ServerResponse.sortByLocation(data.profileInventory).Vault;
   data = ServerResponse.sortByBucketTypeHash(data);
+  var counter = 0;
+  for(i in data){
+    for(z in data[i]){
+      var temp = ServerResponse.DestinyItemTypes[i];
+      if(temp === undefined){ temp = ServerResponse.DestinyItemTypes["default"]; }
+      data[i][z] = ServerResponse[temp](data[i][z],i,counter);
+      counter += 1;
+    }
+  }
   response.status(200).json(data);
 });
 
@@ -222,6 +227,7 @@ app.get("/vault",async function(request,response){
 });
 D2API.loadManifest().then(function(result){
   if(result instanceof Error){ console.error(result); }
+  console.log("Manifest has been successfully loaded.");
   httpsServer.listen(process.env.PORT);
 }).catch(function(error){ console.error(error); });
 

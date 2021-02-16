@@ -74,6 +74,7 @@ function Vault(){
     this.wipe();
     var path = "/profile/vault";
     var data = await fetchRequest(path).catch(function(error){ return error; });
+    if(data instanceof Error){ return data; }
     console.log(data);
     for(i in data){
       if(this.vaultItems[i] == undefined){
@@ -99,48 +100,33 @@ function Item(){
   this.data;
   this.index;
   this.slotName;
-  this.HTMLElement;
-  this.Initialize = function(slotName, index, itemData){
+  this.HTMLTemplate;
+  this.Initialize = function(slotName, index, data){
     this.index = index;
     this.slotName = slotName;
-    this.container = window.document.createElement("div");
-    this.container.className = "vault-item-container";
-    this.HTMLElement = window.document.createElement("img");
-    this.HTMLElement.id = "vault-item-"+index;
-    this.container.append(this.HTMLElement);
-    this.changeData(itemData);
-    try{
-      if(this.data.instances.primaryStat !== undefined){
-        var text = window.document.createElement("h1");
-        text.innerHTML = this.data.instances.primaryStat.value;
-        text.className = "vault-item-power";
-        this.container.append(text);
-      }
-      if(this.data.itemHashData.iconWatermark !== undefined){
-        text = window.document.createElement("img");
-        text.src = "https://www.bungie.net"+this.data.itemHashData.iconWatermark;
-        text.className = "vault-item-seasonal-overlay";
-        this.container.append(text);
-      }
-    }
-    catch (Error){}
-    window.document.getElementById(this.slotName).append(this.container);
-    var localthis = this;
-    this.HTMLElement.draggable = true;
-    this.HTMLElement.ondragend = function(ev){localthis.drop(ev);};
-    this.container.onclick = function(ev){ loadSideMenu(localthis.data);};
-    if(this.data.state == "Masterwork") this.HTMLElement.style.border = "2px solid gold";
+    var temp = window.document.createElement("div");
+    temp.innerHTML = data.HTMLTemplate;
+    temp.id
+    window.document.getElementById(this.slotName).append(temp.firstChild);
+    this.changeData(data);
+    this.HTMLTemplate = window.document.getElementById(this.data.htmlId);
+    this.changeHTML(this.HTMLTemplate.innerHTML);
   };
   this.changeData = function(value){
     this.data = value;
-    this.HTMLElement.src = bungieCommon+this.data.itemHashData.displayProperties.icon;
-  }
+  };
+  this.changeHTML = function(value){
+    this.HTMLTemplate.innerHTML = value;
+    var children = this.HTMLTemplate.children;
+    var localthis = this;
+    children[0].draggable = true;
+    children[0].ondragend = function(ev){localthis.drop(ev);};
+    this.HTMLTemplate.ondblclick = function(ev){ console.log("clicked"); slotController.swapEquipped(localthis.slotName, localthis.index); };
+  };
   this.destroy = function(isWipe){
       this.container.remove();
       this.data = null;
       if(isWipe) return true;
-      console.log(vaultController);
-      console.log(this.slotName);
       vaultController.vaultItems[this.slotName].splice(this.index,1);
   };
   this.drop = function(ev){

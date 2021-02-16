@@ -196,7 +196,7 @@ async function tokenRefresh(request, response){
     headers: {"X-API-Key":process.env.Bungie_API_KEY},
     data: body,
   }).catch(function(error){ return error; });
-  if(result instanceof Error) { return result; }
+  if(result instanceof Error) { console.log(result); return result; }
   saveTokenData(request, result.data);
   return true;
 };
@@ -236,7 +236,7 @@ async function postRequest(path, body, token){
     url: path,
     headers: {"X-API-Key":process.env.Bungie_API_KEY, "Authorization":"Bearer "+token},
     data: body,
-  }).catch(function(error){ return error; });
+  }).catch(function(error){ console.log(result); return error; });
   return result.data;
 };
 
@@ -245,7 +245,7 @@ async function getRequestAuth(path, token){
     method:"GET",
     url: path,
     headers: {"X-API-Key":process.env.Bungie_API_KEY, "Authorization":"Bearer "+token},
-  }).catch(function(error){ return error; });
+  }).catch(function(error){ console.log(result); return error; });
   return result.data;
 };
 async function getRequest(path){
@@ -253,7 +253,7 @@ async function getRequest(path){
     method:"GET",
     url: path,
     headers: {"X-API-Key":process.env.Bungie_API_KEY},
-  }).catch(function(error){ return error; });
+  }).catch(function(error){ console.log(result); return error; });
   return result.data;
 };
 
@@ -306,7 +306,7 @@ async function loadManifest(){
     });
   }
   console.log("Manifest loading finished.");
-  fs.writeFileSync(root+"/ManifestVersion.json", JSON.stringify({version: manifestversion}), function(error){
+  fs.writeFileSync(root+"/ManifestVersion.json", JSON.stringify({version: version.version}), function(error){
     console.error(error);
     return false;
   });

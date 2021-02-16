@@ -48,6 +48,7 @@ const DestinyItemTypes = {
   Vehicle: "CosmeticResponseFormat",
   Emblems: "EmblemResponseFormat",
   SeasonalArtifact: "CosmeticResponseFormat",
+  default: "ItemResponseFormat",
 };
 exports.DestinyItemTypes = DestinyItemTypes;
 
@@ -115,6 +116,7 @@ function sortByBucketDefinition(items){
     var buckethash = items[i].bucketHash;
     var bucketname = DestinyInventoryBucketDefinition[buckethash].displayProperties.name;
     bucketname = bucketname.split(" ").join("");
+    bucketname = String(bucketname);
     if(sortedEquipment[bucketname] == undefined)
       { sortedEquipment[bucketname] = []; }
     sortedEquipment[bucketname].push(items[i]);
@@ -128,6 +130,8 @@ function sortByBucketTypeHash(items){
   for(i in items){
     var bucketTypeHash = items[i].itemHashData.inventory.bucketTypeHash;
     var bucketHashResult = DestinyInventoryBucketDefinition[bucketTypeHash].displayProperties.name;
+    bucketHashResult = String(bucketHashResult);
+    bucketHashResult = bucketHashResult.split(" ").join("");
     if(sortedEquipment[bucketHashResult] == undefined)
       { sortedEquipment[bucketHashResult] = []; }
     sortedEquipment[bucketHashResult].push(items[i]);
@@ -143,55 +147,62 @@ var CharactersResponse = function(items){
 };
 exports.CharactersResponse = CharactersResponse;
 
-var SubclassResponseFormat = function(item){
-  var format = ItemResponseFormat(item);
-  format.HTMLTemplate = "<div class=subclass-capsule id="+format.itemInstanceId+"><img subclass-icon src="+format.itemIcon+" ></div>";
+var SubclassResponseFormat = function(item,i,z){
+  var format = ItemResponseFormat(item,i,z);
+  format.equipped = item.instances.isEquipped;
+  format.HTMLTemplate = "<div class=subclass-capsule id="+format.htmlId+"><img subclass-icon src="+format.itemIcon+" /></div>";
   return format;
 };
 exports.SubclassResponseFormat = SubclassResponseFormat;
 
-var WeaponResponseFormat = function(item){
-  var format = ItemResponseFormat(item);
+var WeaponResponseFormat = function(item,i,z){
+  var format = ItemResponseFormat(item,i,z);
   format.energyIcon = bungieCommon+item.instances.damageTypeData.displayProperties.icon;
   format.light = item.instances.primaryStat.value;
   format.stats = item.stats;
   format.equipped = item.instances.isEquipped;
   format.overlay = bungieCommon+item.itemHashData.iconWatermark;
-  format.HTMLTemplate = "<div class=item-capsule id="+format.itemInstanceId+"><img class=item-icon src="+format.itemIcon+" /><img class=item-overlay src="+format.overlay+" /><img item-type src="+format.energyIcon+" /><h1 class=item-light>"+format.light+"</h1></div>";
+  format.HTMLTemplate = "<div class=item-capsule id='"+format.htmlId+"'><img class=item-icon src="+format.itemIcon+" /><img class=item-overlay src="+format.overlay+" /><img class=item-type src="+format.energyIcon+" /><h1 class=item-light>"+format.light+"</h1></div>";
   return format;
 };
 exports.WeaponResponseFormat = WeaponResponseFormat;
 
-var ArmorResponseFormat = function(item){
-  var format = ItemResponseFormat(item);
-  format.light = item.instances.primaryStat.value;
+var ArmorResponseFormat = function(item,i,z){
+  var format = ItemResponseFormat(item,i,z);
+  if(item.instances.primaryStat !== undefined)
+  { format.light = item.instances.primaryStat.value; }
+  else{ format.light = 0; }
   format.stats = item.stats;
-  format.energyIcon = bungieCommon+item.instances.energy.data.displayProperties.icon;
+  if(item.instances.energy !== undefined)
+  { format.energyIcon = bungieCommon+item.instances.energy.data.displayProperties.icon;}
+  else { format.energyIcon = ""; }
   format.equipped = item.instances.isEquipped;
   format.overlay = bungieCommon+item.itemHashData.iconWatermark;
-  format.HTMLTemplate = "<div class=item-capsule id="+format.itemInstanceId+"><img class=item-icon src="+format.itemIcon+" /><img class=item-overlay src="+format.overlay+" /><img item-type src="+format.energyIcon+" /><h1 class=item-light>"+format.light+"</h1></div>";
+  format.HTMLTemplate = "<div class=item-capsule id='"+format.htmlId+"'><img class=item-icon src="+format.itemIcon+" /><img class=item-overlay src="+format.overlay+" /><img class=item-type src="+format.energyIcon+" /><h1 class=item-light>"+format.light+"</h1></div>";
   return format;
 };
 exports.ArmorResponseFormat = ArmorResponseFormat;
 
-var CosmeticResponseFormat = function(item){
-  var format = ItemResponseFormat(item);
+var CosmeticResponseFormat = function(item,i,z){
+  var format = ItemResponseFormat(item,i,z);
   format.equipped = item.instances.isEquipped;
-  format.HTMLTemplate = "<div item-capsule id="+format.itemInstanceId+"><img class=item-icon src="+format.itemIcon+" ></div>";
+  format.HTMLTemplate = "<div class=item-capsule id='"+format.htmlId+"'><img class=item-icon src="+format.itemIcon+" /></div>";
   return format;
 };
 exports.CosmeticResponseFormat = CosmeticResponseFormat;
 
-var EmblemResponseFormat = function(item){
-  var format = ItemResponseFormat(item);
-  format.HTMLTemplate = "<div item-capsule id="+format.itemInstanceId+"><img class=item-icon src="+format.itemIcon+" ></div>";
+var EmblemResponseFormat = function(item,i,z){
+  var format = ItemResponseFormat(item,i,z);
+  format.equipped = item.instances.isEquipped;
+  format.HTMLTemplate = "<div class=item-capsule id='"+format.htmlId+"'><img class=item-icon src="+format.itemIcon+" /></div>";
   return format;
 
 };
 exports.EmblemResponseFormat = EmblemResponseFormat;
 
-var ItemResponseFormat = function(item){
+var ItemResponseFormat = function(item,i,z){
   return {
+    htmlId: i+"-"+z,
     itemIcon: bungieCommon+item.itemHashData.displayProperties.icon,
     itemHash: item.itemHash,
     bucketHash: item.bucketHash,
@@ -204,5 +215,7 @@ var ItemResponseFormat = function(item){
     quantity: item.quantity,
     state: item.state,
     flavortext: item.flavortext,
+    HTMLTemplate: "<div class=item-capsule id='"+i+"-"+z+"'><img class=item-icon src="+bungieCommon+item.itemHashData.displayProperties.icon+" /> </div>",
   };
 };
+exports.ItemResponseFormat = ItemResponseFormat;

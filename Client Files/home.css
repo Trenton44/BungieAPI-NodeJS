@@ -128,34 +128,6 @@ body {
   margin: 0;
   background-color: rgba(20,20,20, 0.6);
 }
-#Subclass-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
-  margin-right: 2%;
-  flex-shrink: 1;
-  height: 95%;
-  width: 30%;
-}
-#Subclass-container:hover > div {
-  display: initial;
-}
-#Subclass-primary-container:hover, #Subclass-container >div {
-  height: 100%;
-}
-#Subclass-primary-container > img {
-  height: 100%;
-}
-#Subclass-equipment {
-  display: none;
-  flex-grow: 2;
-  height: 100%;
-}
-#Subclass-equipment > img{
-  height: 100%;
-  margin: 0 2% 0 2%;
-}
 .character-stats {
   height: 70%;
   flex-grow: 1;
@@ -183,14 +155,10 @@ body {
   padding: 2% 0% 0 0;
   margin: 0 2% 0 2%;
 }
-.ce-right {
-  align-items: flex-end;
-}
 .item-slots:hover > div {
   display: flex;
 }
 .item-slots {
-  width: 90%;
   height: 20%;
   flex-shrink: 1;
   flex-grow: 1;
@@ -206,6 +174,7 @@ body {
 }
 .item-container {
   width: 100%;
+  height: 30%;
   top: 23%;
   padding-top: 1%;
   left: 0%;
@@ -215,8 +184,8 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 }
-.item-container > img{
-  max-height: 100%;
+.item-container > div{
+  flex-basis: 10%;
 }
 .postmaster {
   display: flex;
@@ -241,26 +210,30 @@ body {
   align-items: center;
 }
 .item-capsule {
-  margin: 0%;
-  width: 60px;
-  height: 60px;
+  width: 100%;
+  height: 100%;
   position: relative;
 }
-.item-power {
+.item-icon {
+  width: 100%;
+  height: 100%;
+  margin: 0%;
+}
+.item-light {
   position: absolute;
   top: 0%;
   right: 0%;
-  height: 10%
-  font-size: 80%;
+  height: 10%;
+  font-size: 120%;
   margin: 0%;
   color: white;
   background-color: rgba(40, 40, 40, 0.3);
 }
-.item-damage {
+.item-type {
   position: absolute;
   bottom: 0%;
   left: 0%;
-  height: 10%;
+  height: 30%;
 }
 .item-overlay {
   position: absolute;
@@ -268,4 +241,30 @@ body {
   height: 100%;
   top: 0%;
   left: 0%;
+}
+
+#Subclass-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  margin-right: 2%;
+  flex-shrink: 1;
+  height: 95%;
+  width: 30%;
+}
+#Subclass-container:hover > #Subclass-equipment {
+  display: flex;
+}
+.subclass-capsule {
+  height: 100%;
+  margin: 0 2% 0 2%;
+}
+.subclass-capsule > img{
+  height: 100%;
+}
+#Subclass-equipment {
+  display: none;
+  flex-grow: 2;
+  height: 100%;
 }
