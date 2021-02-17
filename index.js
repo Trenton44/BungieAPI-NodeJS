@@ -80,7 +80,6 @@ app.get("/bnetlogin", async function(request, response){
   url.searchParams.append("client_id",process.env.Bungie_ClientID);
   url.searchParams.append("response_type","code");
   url.searchParams.append("state",state);
-  console.log("Sending to url.");
   response.redirect(url);
 });
 
@@ -151,7 +150,6 @@ app.get("/character/:id/inventory",async function(request,response){
   var components = ["201"];
   var cID = request.params.id;
   var data = await D2API.characterComponentRequest(request, response, components,cID).catch(function(error){ return error; });
-  console.log("in character/:id/inventory");
   if(data instanceof Error){ response.status(400).json({error: "An error occurred retrieving character inventory."});}
   data = ServerResponse.sortByLocation(data.inventory);
   response.status(200).json(data);
@@ -245,10 +243,7 @@ function accessAuthorizedEndpoints(request, response, next){
     response.redirect("/bnetlogin");
     console.log("redirected.");
   }
-  console.log(currentTime);
   var tokenData = D2API.decryptData(request.session.data.tokenData);
-  console.log("token expiration: "+tokenData.tokenExpiration);
-  console.log("refresh expiration: "+tokenData.refreshExpiration);
   if(tokenData.refreshExpiration < currentTime){
     console.log("The refresh token has expired, gonna need to login.");
     response.redirect("/bnetlogin");
@@ -262,9 +257,6 @@ function accessAuthorizedEndpoints(request, response, next){
   next();
 };
 function constructSessionInstance(request, response, next){
-  console.log("============================");
-  console.log(request.session.data);
-  console.log("============================");
   var reset = false;
   switch(request.session.data){
     case undefined:
@@ -286,8 +278,6 @@ function constructSessionInstance(request, response, next){
       primaryMembershipId: null,
       userdata: null,
     };
-    console.log(request.session.data);
-    console.log("session data now has blueprint, proceeding to content.");
   }
   next();
 };
