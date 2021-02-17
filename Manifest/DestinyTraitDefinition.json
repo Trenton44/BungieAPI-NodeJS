@@ -14,13 +14,28 @@
           "frames": [
             "/common/destiny2_content/icons/244a04c4b4a0534dc422552c3d7ea38b.jpg"
           ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/c4299a8f9d7cdf09748193d1d5b9ed96.jpg"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/43ea7f8069075d85f923bd266f58b0b4.png"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/195ba95994b37ade1e5cd8834908171d.png"
+          ]
         }
       ],
       "hasIcon": true
     },
     "traitCategoryHash": 1801258597,
     "hash": 36667702,
-    "index": 51,
+    "index": 53,
     "redacted": false,
     "blacklisted": false
   },
@@ -128,7 +143,7 @@
     },
     "traitCategoryHash": 3942364280,
     "hash": 512274955,
-    "index": 64,
+    "index": 66,
     "redacted": false,
     "blacklisted": false
   },
@@ -147,13 +162,28 @@
           "frames": [
             "/common/destiny2_content/icons/df132182236c418a60d26396b103e3c5.jpg"
           ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/72c63c315739705eb5347c4325b76f0e.jpg"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/289da93c6041ff004b31cd29d5f41cc3.jpg"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/10cfce19182c1a086929d81b0f4a3fbd.png"
+          ]
         }
       ],
       "hasIcon": true
     },
     "traitCategoryHash": 1801258597,
     "hash": 829505015,
-    "index": 48,
+    "index": 50,
     "redacted": false,
     "blacklisted": false
   },
@@ -177,7 +207,7 @@
     },
     "traitCategoryHash": 3942364280,
     "hash": 906486325,
-    "index": 67,
+    "index": 69,
     "redacted": false,
     "blacklisted": false
   },
@@ -185,16 +215,31 @@
     "displayProperties": {
       "description": "Quests from the current season",
       "name": "Seasonal",
-      "icon": "/common/destiny2_content/icons/bed93d4836992c31f14bda4482e5835a.png",
+      "icon": "/common/destiny2_content/icons/691e3578666eef42a7ec74453248915e.png",
       "iconSequences": [
         {
           "frames": [
-            "/common/destiny2_content/icons/bed93d4836992c31f14bda4482e5835a.png"
+            "/common/destiny2_content/icons/691e3578666eef42a7ec74453248915e.png"
           ]
         },
         {
           "frames": [
-            "/common/destiny2_content/icons/1f87d24956ce903087b7b23c2a835f12.jpg"
+            "/common/destiny2_content/icons/9260c8c38cb9a8c4a08aac393117d555.jpg"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/380b41d754d05de1b9cd23016ffe6297.jpg"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/7dd11f79cbcadbfef1497032f95f4ee5.png"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/71a3bd32637c09d85fee0db58571ad86.png"
           ]
         }
       ],
@@ -202,7 +247,7 @@
     },
     "traitCategoryHash": 1801258597,
     "hash": 909987321,
-    "index": 49,
+    "index": 51,
     "redacted": false,
     "blacklisted": false
   },
@@ -211,11 +256,38 @@
       "description": "Quests related to New Light, tutorials and introductions",
       "name": "New Light",
       "icon": "/common/destiny2_content/icons/aa5c77e97a0661fac2f3b8f017829e16.jpg",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/aa5c77e97a0661fac2f3b8f017829e16.jpg"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/aa5c77e97a0661fac2f3b8f017829e16.jpg"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/b8b1dc70ce6e1a1b3d6ed7b49f596fb8.jpg"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/9924023c49fcb951ef16e79d60da14b6.png"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/101d2e1d52bbe6d0e9b67e728b4d6e2e.png"
+          ]
+        }
+      ],
       "hasIcon": true
     },
     "traitCategoryHash": 1801258597,
     "hash": 935046296,
-    "index": 47,
+    "index": 49,
     "redacted": false,
     "blacklisted": false
   },
@@ -228,6 +300,18 @@
     "traitCategoryHash": 1281648863,
     "hash": 951237008,
     "index": 45,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "962416439": {
+    "displayProperties": {
+      "description": "",
+      "name": "",
+      "hasIcon": false
+    },
+    "traitCategoryHash": 1281648863,
+    "hash": 962416439,
+    "index": 47,
     "redacted": false,
     "blacklisted": false
   },
@@ -263,7 +347,7 @@
     },
     "traitCategoryHash": 3942364280,
     "hash": 1117493175,
-    "index": 61,
+    "index": 63,
     "redacted": false,
     "blacklisted": false
   },
@@ -321,7 +405,7 @@
     },
     "traitCategoryHash": 1719443863,
     "hash": 1434215347,
-    "index": 73,
+    "index": 75,
     "redacted": false,
     "blacklisted": false
   },
@@ -357,7 +441,7 @@
     },
     "traitCategoryHash": 3942364280,
     "hash": 1513972773,
-    "index": 68,
+    "index": 70,
     "redacted": false,
     "blacklisted": false
   },
@@ -373,6 +457,18 @@
     "redacted": false,
     "blacklisted": false
   },
+  "1635887355": {
+    "displayProperties": {
+      "description": "",
+      "name": "",
+      "hasIcon": false
+    },
+    "traitCategoryHash": 1281648863,
+    "hash": 1635887355,
+    "index": 48,
+    "redacted": false,
+    "blacklisted": false
+  },
   "1714469987": {
     "displayProperties": {
       "description": "",
@@ -381,7 +477,7 @@
     },
     "traitCategoryHash": 3942364280,
     "hash": 1714469987,
-    "index": 72,
+    "index": 74,
     "redacted": false,
     "blacklisted": false
   },
@@ -453,7 +549,7 @@
     },
     "traitCategoryHash": 3942364280,
     "hash": 1893651977,
-    "index": 63,
+    "index": 65,
     "redacted": false,
     "blacklisted": false
   },
@@ -465,7 +561,7 @@
     },
     "traitCategoryHash": 3942364280,
     "hash": 2007318660,
-    "index": 65,
+    "index": 67,
     "redacted": false,
     "blacklisted": false
   },
@@ -477,7 +573,7 @@
     },
     "traitCategoryHash": 3942364280,
     "hash": 2161169688,
-    "index": 66,
+    "index": 68,
     "redacted": false,
     "blacklisted": false
   },
@@ -547,7 +643,7 @@
     },
     "traitCategoryHash": 1719443863,
     "hash": 2230116619,
-    "index": 75,
+    "index": 77,
     "redacted": false,
     "blacklisted": false
   },
@@ -569,7 +665,7 @@
     },
     "traitCategoryHash": 1719443863,
     "hash": 2356777566,
-    "index": 76,
+    "index": 78,
     "redacted": false,
     "blacklisted": false
   },
@@ -593,7 +689,7 @@
     },
     "traitCategoryHash": 3942364280,
     "hash": 2463632503,
-    "index": 60,
+    "index": 62,
     "redacted": false,
     "blacklisted": false
   },
@@ -629,7 +725,7 @@
     },
     "traitCategoryHash": 1960769354,
     "hash": 2712954769,
-    "index": 54,
+    "index": 56,
     "redacted": false,
     "blacklisted": false
   },
@@ -653,7 +749,7 @@
     },
     "traitCategoryHash": 3942364280,
     "hash": 2821919357,
-    "index": 71,
+    "index": 73,
     "redacted": false,
     "blacklisted": false
   },
@@ -684,13 +780,28 @@
           "frames": [
             "/common/destiny2_content/icons/d1115a04234905f8eb4214656db7861d.jpg"
           ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/da6578be07665e533f13be79432eb334.jpg"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/fa6c33f2a9885a316b4f17cdae85496b.png"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/eb7d99578c3e19ccbed2790cef01f81a.png"
+          ]
         }
       ],
       "hasIcon": true
     },
     "traitCategoryHash": 1801258597,
     "hash": 2842396901,
-    "index": 52,
+    "index": 54,
     "redacted": false,
     "blacklisted": false
   },
@@ -762,7 +873,7 @@
     },
     "traitCategoryHash": 1960769354,
     "hash": 3090596947,
-    "index": 55,
+    "index": 57,
     "redacted": false,
     "blacklisted": false
   },
@@ -774,7 +885,7 @@
     },
     "traitCategoryHash": 3942364280,
     "hash": 3102396114,
-    "index": 69,
+    "index": 71,
     "redacted": false,
     "blacklisted": false
   },
@@ -786,7 +897,7 @@
     },
     "traitCategoryHash": 3942364280,
     "hash": 3139631195,
-    "index": 62,
+    "index": 64,
     "redacted": false,
     "blacklisted": false
   },
@@ -822,7 +933,7 @@
     },
     "traitCategoryHash": 1960769354,
     "hash": 3460933757,
-    "index": 56,
+    "index": 58,
     "redacted": false,
     "blacklisted": false
   },
@@ -846,7 +957,7 @@
     },
     "traitCategoryHash": 3942364280,
     "hash": 3647376570,
-    "index": 70,
+    "index": 72,
     "redacted": false,
     "blacklisted": false
   },
@@ -894,7 +1005,7 @@
     },
     "traitCategoryHash": 1960769354,
     "hash": 3791840693,
-    "index": 53,
+    "index": 55,
     "redacted": false,
     "blacklisted": false
   },
@@ -930,7 +1041,7 @@
     },
     "traitCategoryHash": 3942364280,
     "hash": 3922299008,
-    "index": 57,
+    "index": 59,
     "redacted": false,
     "blacklisted": false
   },
@@ -949,13 +1060,28 @@
           "frames": [
             "/common/destiny2_content/icons/f1c78b6f72f4e0912641bbf687b69286.jpg"
           ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/8719847eb1de158ee05fd46913b6933b.jpg"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/53a199275d67786701ce6e7de709283b.png"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/37786155568f00d05b49cba1c8abf00b.png"
+          ]
         }
       ],
       "hasIcon": true
     },
     "traitCategoryHash": 1801258597,
     "hash": 3984093646,
-    "index": 50,
+    "index": 52,
     "redacted": false,
     "blacklisted": false
   },
@@ -991,7 +1117,7 @@
     },
     "traitCategoryHash": 3942364280,
     "hash": 4232286703,
-    "index": 59,
+    "index": 61,
     "redacted": false,
     "blacklisted": false
   },
@@ -1013,7 +1139,7 @@
     },
     "traitCategoryHash": 1719443863,
     "hash": 4263853822,
-    "index": 74,
+    "index": 76,
     "redacted": false,
     "blacklisted": false
   },
@@ -1025,7 +1151,7 @@
     },
     "traitCategoryHash": 3942364280,
     "hash": 4283176446,
-    "index": 58,
+    "index": 60,
     "redacted": false,
     "blacklisted": false
   }

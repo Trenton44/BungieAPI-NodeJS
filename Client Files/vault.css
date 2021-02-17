@@ -1,0 +1,285 @@
+body {
+  width: 99vw;
+  height: 100vh;
+  margin: auto;
+  padding: 0;
+  background-image: linear-gradient(45deg, rgba(9,9,121,1), rgba(45,14,52,1)), url("/assets/Traveler1.jpg");/*rgba(89,0,136,1)*/
+}
+#side-view {
+  z-index: 2;
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+#item-detail {
+  width: 30%;
+  height: 100%;
+  float: right;
+  background-color: rgba(40, 40, 40, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#item-detail > h1 {
+  font-style: italic;
+  font-size: 200%;
+  color: white;
+}
+.item-preview {
+  position: relative;
+  width: 100%;
+  height: 30%;
+}
+.item-preview > div {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 50%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.item-preview > div >h1,p{
+  margin: 0%;
+  color: white;
+  font-style: italic;
+}
+.item-preview > div >h1{
+  font-size: 200%;
+}
+.item-preview > div >p{
+  font-size: 100%;
+}
+.item-preview > img {
+  max-width: 100%;
+  max-height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  align-self: center;
+}
+.item-preview-light {
+  width: 100%;
+  height: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.item-preview-light > img {
+  height: 100%;
+  margin: 0;
+}
+.item-preview-light > h1 {
+  margin: 0%;
+  font-size: 150%;
+  font-style: italic;
+  color: white;
+}
+#stat-preview-block {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.stat-preview-content{
+  margin: 2% 0 2% 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.stat-preview-content * {
+  margin: 0 2% 0 2%;
+}
+.stat-preview-content > h1 {
+  color: white;
+  flex-grow: 1.5;
+  margin: 0;
+}
+.stat-bar-background {
+  height: 100%;
+  flex-basis: 70%;
+  background-color: darkgrey;
+}
+.stat-bar {
+  align-self: flex-start;
+  margin: 0;
+  height: 100%;
+  background-color: green;
+}
+.space-filler {
+  width: 70%;
+  height: 100%;
+  background-color: rgba(40, 40, 40, 0.6);
+}
+#nav-framework {
+  background-color: rgba(16,18,36,0.7);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+}
+.nav-element {
+  padding: 0 1% 0 1%;
+  margin: 0 4% 0 4%;
+}
+.nav-element:first-child {
+  margin: 0 5% 0 0;
+  width: 5%;
+}
+.nav-element > img {
+  width: 100%;
+}
+.nav-element > h1 {
+  color: white;
+}
+.nav-element:hover > h1 {
+  color: purple;
+}
+.nav-element:hover {
+  background-color: #222755;
+}
+.character-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 15%;
+}
+.character-nav div:nth-of-type(2) {
+  flex-grow: 2;
+  height: 80%;
+}
+.character-info {
+  position: relative;
+  margin: 0 2% 0 2%;
+  flex-basis: 25%;
+  height: 70%;
+  border: 5px solid black;
+}
+.character-nav > div:hover {
+  flex-basis: 26%;
+  height: 90%;
+}
+.character-info > img {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.character-info  h1 {
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+.character-info > div {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0%;
+  left: 20%;
+}
+.character-info > div > h1 {
+  font-size: 200%;
+}
+.character-info > div > div > h1 {
+  font-size: 90%;
+  padding-left: 2%;
+  font-style: italic;
+}
+.character-info > div > div {
+  display: flex;
+  flex-direction: row;
+  padding-left: 5%;
+}
+.character-nav div:nth-of-type(2) >div >h1 {
+  font-size: 300%;
+}
+.character-nav div:nth-of-type(2) > div > div >h1 {
+  font-size: 150%;
+}
+.vault {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 75%;
+}
+.vault > h1 {
+  width: 100%;
+  height: 5%;
+  background-color: rgba(20,20,20, 0.9);
+  text-align: center;
+  margin: 0;
+  color: white;
+  font-style: italic;
+}
+.vault-items {
+  width: 100%;
+  height: 90%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: rgba(40,40,40, 0.8);
+}
+.vault-items > div {
+  width: 95%;
+  padding: 0 2% 0 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.vault-items > div > h1{
+  width: 100%;
+  text-align: center;
+  background-color: rgba(20,20,20, 0.6);
+  font-style: italic;
+  font-size: 150%;
+  color: white;
+}
+.vault-items > div > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.item-capsule {
+  height: 100%;
+  margin: 5px;
+  position: relative;
+}
+.item-icon {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0%;
+}
+.item-light {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  height: 10%;
+  font-size: 120%;
+  margin: 0%;
+  color: white;
+  background-color: rgba(40, 40, 40, 0.3);
+}
+.item-type {
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  height: 30%;
+}
+.item-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+}

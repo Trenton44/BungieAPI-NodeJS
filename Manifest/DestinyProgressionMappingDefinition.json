@@ -53,7 +53,7 @@
       "name": "Valor Rank",
       "hasIcon": false
     },
-    "displayUnits": "Valor Rank Points",
+    "displayUnits": "Valor Rank Progress",
     "hash": 861118679,
     "index": 23,
     "redacted": false,
@@ -152,6 +152,15 @@
     "redacted": false,
     "blacklisted": false
   },
+  "2139865751": {
+    "displayProperties": {
+      "hasIcon": false
+    },
+    "hash": 2139865751,
+    "index": 35,
+    "redacted": false,
+    "blacklisted": false
+  },
   "2241197230": {
     "displayProperties": {
       "hasIcon": false
@@ -201,7 +210,7 @@
       "name": "Infamy Rank",
       "hasIcon": false
     },
-    "displayUnits": "Infamy Rank Points",
+    "displayUnits": "Infamy Rank Progress",
     "hash": 2670231327,
     "index": 24,
     "redacted": false,
@@ -240,7 +249,7 @@
       "name": "Valor Rank",
       "hasIcon": false
     },
-    "displayUnits": "Valor Rank Points",
+    "displayUnits": "Valor Rank Progress",
     "hash": 3074535586,
     "index": 22,
     "redacted": false,
@@ -331,6 +340,18 @@
     },
     "hash": 3859807381,
     "index": 19,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3954118869": {
+    "displayProperties": {
+      "description": "Increase your strategic acumen to become the ultimate challenger.",
+      "name": "Challenger's Tactics",
+      "hasIcon": false
+    },
+    "displayUnits": "Vanguard Operations",
+    "hash": 3954118869,
+    "index": 36,
     "redacted": false,
     "blacklisted": false
   },

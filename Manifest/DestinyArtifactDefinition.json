@@ -1,9 +1,9 @@
 {
   "2894222926": {
     "displayProperties": {
-      "description": "A relic from the Hive god of war, passed down to you from Osiris and his followers.",
-      "name": "Fang of Xivu Arath",
-      "icon": "/common/destiny2_content/icons/35295b62ea893a4495f1f2c1ce00840b.jpg",
+      "description": "Hear the seventh strike, calling blades to meet.",
+      "name": "Bell of Conquests",
+      "icon": "/common/destiny2_content/icons/1262427a882a5a892e0e84533194e205.jpg",
       "hasIcon": true
     },
     "translationBlock": {
@@ -11,15 +11,15 @@
       "defaultDyes": [
         {
           "channelHash": 373026848,
-          "dyeHash": 280016056
+          "dyeHash": 3550803935
         },
         {
           "channelHash": 373026849,
-          "dyeHash": 280016057
+          "dyeHash": 3550803934
         },
         {
           "channelHash": 373026850,
-          "dyeHash": 280016058
+          "dyeHash": 3550803933
         }
       ],
       "lockedDyes": [],
@@ -27,7 +27,7 @@
       "arrangements": [
         {
           "classHash": 0,
-          "artArrangementHash": 1645521766
+          "artArrangementHash": 2631256485
         }
       ],
       "hasGeometry": true
@@ -38,23 +38,23 @@
         "displayTitle": "Tier 1",
         "items": [
           {
-            "itemHash": 2950379997,
+            "itemHash": 2215945390,
             "activeUnlockHash": 0
           },
           {
-            "itemHash": 2950379998,
+            "itemHash": 2215945389,
             "activeUnlockHash": 0
           },
           {
-            "itemHash": 2950379999,
+            "itemHash": 2215945388,
             "activeUnlockHash": 0
           },
           {
-            "itemHash": 2950379992,
+            "itemHash": 2215945387,
             "activeUnlockHash": 0
           },
           {
-            "itemHash": 2950379993,
+            "itemHash": 2215945386,
             "activeUnlockHash": 0
           }
         ],
@@ -65,23 +65,23 @@
         "displayTitle": "Tier 2",
         "items": [
           {
-            "itemHash": 1397877686,
+            "itemHash": 1082186949,
             "activeUnlockHash": 0
           },
           {
-            "itemHash": 1397877685,
+            "itemHash": 1082186950,
             "activeUnlockHash": 0
           },
           {
-            "itemHash": 1397877684,
+            "itemHash": 1082186951,
             "activeUnlockHash": 0
           },
           {
-            "itemHash": 1397877683,
+            "itemHash": 1082186944,
             "activeUnlockHash": 0
           },
           {
-            "itemHash": 1397877682,
+            "itemHash": 1082186945,
             "activeUnlockHash": 0
           }
         ],
@@ -92,23 +92,23 @@
         "displayTitle": "Tier 3",
         "items": [
           {
-            "itemHash": 550475669,
+            "itemHash": 76553638,
             "activeUnlockHash": 0
           },
           {
-            "itemHash": 550475670,
+            "itemHash": 76553637,
             "activeUnlockHash": 0
           },
           {
-            "itemHash": 550475671,
+            "itemHash": 76553636,
             "activeUnlockHash": 0
           },
           {
-            "itemHash": 550475664,
+            "itemHash": 76553635,
             "activeUnlockHash": 0
           },
           {
-            "itemHash": 550475665,
+            "itemHash": 76553634,
             "activeUnlockHash": 0
           }
         ],
@@ -119,23 +119,23 @@
         "displayTitle": "Tier 4",
         "items": [
           {
-            "itemHash": 2689341528,
+            "itemHash": 1007628743,
             "activeUnlockHash": 0
           },
           {
-            "itemHash": 2689341531,
+            "itemHash": 1007628740,
             "activeUnlockHash": 0
           },
           {
-            "itemHash": 2689341530,
+            "itemHash": 1007628741,
             "activeUnlockHash": 0
           },
           {
-            "itemHash": 2689341533,
+            "itemHash": 1007628738,
             "activeUnlockHash": 0
           },
           {
-            "itemHash": 2689341532,
+            "itemHash": 1007628739,
             "activeUnlockHash": 0
           }
         ],
@@ -146,23 +146,23 @@
         "displayTitle": "Tier 5",
         "items": [
           {
-            "itemHash": 1878293399,
+            "itemHash": 792292104,
             "activeUnlockHash": 0
           },
           {
-            "itemHash": 1878293396,
+            "itemHash": 792292107,
             "activeUnlockHash": 0
           },
           {
-            "itemHash": 1878293397,
+            "itemHash": 792292106,
             "activeUnlockHash": 0
           },
           {
-            "itemHash": 1878293394,
+            "itemHash": 792292109,
             "activeUnlockHash": 0
           },
           {
-            "itemHash": 1878293395,
+            "itemHash": 792292108,
             "activeUnlockHash": 0
           }
         ],

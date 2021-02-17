@@ -3551,6 +3551,21 @@
     "redacted": false,
     "blacklisted": false
   },
+  "1119773799": {
+    "displayProperties": {
+      "description": "Keep it secret.  Keep it safe.",
+      "name": "Classified",
+      "icon": "/img/misc/missing_icon_d2.png",
+      "highResIcon": "/img/misc/missing_icon_d2.png",
+      "hasIcon": false
+    },
+    "placeHash": 0,
+    "defaultFreeroamActivityHash": 0,
+    "hash": 1119773799,
+    "index": 44,
+    "redacted": true,
+    "blacklisted": false
+  },
   "1124017683": {
     "displayProperties": {
       "description": "",
@@ -4793,7 +4808,7 @@
   },
   "1729879943": {
     "displayProperties": {
-      "description": "A frozen moon of Jupiter where shadowed secrets lie, half-buried in the snow.",
+      "description": "A desolate and frozen moon, testament to humanity's ambition and hubris.",
       "name": "Europa",
       "hasIcon": false
     },
@@ -5660,6 +5675,26 @@
     ],
     "hash": 1993421442,
     "index": 16,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "2004354453": {
+    "displayProperties": {
+      "description": "Join a fireteam of three and face the forces of Empress Caiatl.",
+      "name": "Battlegrounds Playlist",
+      "hasIcon": false
+    },
+    "placeHash": 3129078390,
+    "defaultFreeroamActivityHash": 0,
+    "activityGraphEntries": [
+      {
+        "activityGraphHash": 3129078390
+      }
+    ],
+    "bubbleSettings": [],
+    "bubbles": [],
+    "hash": 2004354453,
+    "index": 45,
     "redacted": false,
     "blacklisted": false
   },
@@ -8324,6 +8359,43 @@
     "bubbles": [],
     "hash": 3862550981,
     "index": 11,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3929841832": {
+    "displayProperties": {
+      "description": "",
+      "name": "",
+      "hasIcon": false
+    },
+    "placeHash": 3747705955,
+    "defaultFreeroamActivityHash": 0,
+    "activityGraphEntries": [
+      {
+        "activityGraphHash": 0
+      }
+    ],
+    "bubbleSettings": [
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "H.E.L.M.",
+          "hasIcon": false
+        }
+      }
+    ],
+    "bubbles": [
+      {
+        "hash": 646625282,
+        "displayProperties": {
+          "description": "",
+          "name": "H.E.L.M.",
+          "hasIcon": false
+        }
+      }
+    ],
+    "hash": 3929841832,
+    "index": 43,
     "redacted": false,
     "blacklisted": false
   },

@@ -671,6 +671,18 @@
     "redacted": false,
     "blacklisted": false
   },
+  "4151112093": {
+    "displayProperties": {
+      "description": "Meet other Guardians as they prepare for new adventures.",
+      "name": "Social",
+      "icon": "/common/destiny2_content/icons/0fa52de77ac582dd8d1ce976c32bfb5b.png",
+      "hasIcon": true
+    },
+    "hash": 4151112093,
+    "index": 24,
+    "redacted": false,
+    "blacklisted": false
+  },
   "4164571395": {
     "displayProperties": {
       "description": "Join a fireteam of three and face the most feared minions of the Darkness.",

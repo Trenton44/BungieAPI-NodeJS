@@ -331,7 +331,7 @@
     ],
     "overrides": {},
     "hash": 115153278,
-    "index": 62,
+    "index": 63,
     "redacted": false,
     "blacklisted": false
   },
@@ -483,7 +483,7 @@
     ],
     "overrides": {},
     "hash": 281393067,
-    "index": 47,
+    "index": 48,
     "redacted": false,
     "blacklisted": false
   },
@@ -1029,7 +1029,7 @@
     ],
     "overrides": {},
     "hash": 571274494,
-    "index": 56,
+    "index": 57,
     "redacted": false,
     "blacklisted": false
   },
@@ -1414,7 +1414,7 @@
     ],
     "overrides": {},
     "hash": 715017193,
-    "index": 60,
+    "index": 61,
     "redacted": false,
     "blacklisted": false
   },
@@ -1570,7 +1570,7 @@
     ],
     "overrides": {},
     "hash": 756359734,
-    "index": 51,
+    "index": 52,
     "redacted": false,
     "blacklisted": false
   },
@@ -1746,7 +1746,7 @@
     ],
     "overrides": {},
     "hash": 770484158,
-    "index": 48,
+    "index": 49,
     "redacted": false,
     "blacklisted": false
   },
@@ -2238,7 +2238,7 @@
     ],
     "overrides": {},
     "hash": 1069606838,
-    "index": 50,
+    "index": 51,
     "redacted": false,
     "blacklisted": false
   },
@@ -2651,7 +2651,7 @@
     ],
     "overrides": {},
     "hash": 1191503790,
-    "index": 52,
+    "index": 53,
     "redacted": false,
     "blacklisted": false
   },
@@ -3012,7 +3012,7 @@
     ],
     "overrides": {},
     "hash": 1237673852,
-    "index": 59,
+    "index": 60,
     "redacted": false,
     "blacklisted": false
   },
@@ -3676,7 +3676,7 @@
     ],
     "overrides": {},
     "hash": 1466988355,
-    "index": 54,
+    "index": 55,
     "redacted": false,
     "blacklisted": false
   },
@@ -3733,7 +3733,7 @@
     ],
     "overrides": {},
     "hash": 1499111337,
-    "index": 53,
+    "index": 54,
     "redacted": false,
     "blacklisted": false
   },
@@ -4216,7 +4216,7 @@
     ],
     "overrides": {},
     "hash": 1796732266,
-    "index": 55,
+    "index": 56,
     "redacted": false,
     "blacklisted": false
   },
@@ -4348,7 +4348,7 @@
     ],
     "overrides": {},
     "hash": 1931061385,
-    "index": 61,
+    "index": 62,
     "redacted": false,
     "blacklisted": false
   },
@@ -4519,7 +4519,7 @@
     ],
     "overrides": {},
     "hash": 2070712678,
-    "index": 66,
+    "index": 67,
     "redacted": false,
     "blacklisted": false
   },
@@ -4663,7 +4663,7 @@
     ],
     "overrides": {},
     "hash": 2286951474,
-    "index": 58,
+    "index": 59,
     "redacted": false,
     "blacklisted": false
   },
@@ -5096,7 +5096,7 @@
     ],
     "overrides": {},
     "hash": 2447032493,
-    "index": 63,
+    "index": 64,
     "redacted": false,
     "blacklisted": false
   },
@@ -6024,7 +6024,7 @@
     ],
     "overrides": {},
     "hash": 3097662501,
-    "index": 49,
+    "index": 50,
     "redacted": false,
     "blacklisted": false
   },
@@ -6442,7 +6442,7 @@
     ],
     "overrides": {},
     "hash": 3191205063,
-    "index": 67,
+    "index": 68,
     "redacted": false,
     "blacklisted": false
   },
@@ -7151,6 +7151,182 @@
     "redacted": false,
     "blacklisted": false
   },
+  "3568045548": {
+    "maximumValue": 100,
+    "uiPosition": 0,
+    "scaledStats": [
+      {
+        "statHash": 4284893193,
+        "maximumValue": 100,
+        "displayAsNumeric": true,
+        "displayInterpolation": [
+          {
+            "value": 0,
+            "weight": 120
+          },
+          {
+            "value": 20,
+            "weight": 150
+          },
+          {
+            "value": 60,
+            "weight": 180
+          },
+          {
+            "value": 80,
+            "weight": 200
+          },
+          {
+            "value": 100,
+            "weight": 260
+          }
+        ]
+      },
+      {
+        "statHash": 4043523819,
+        "maximumValue": 100,
+        "displayAsNumeric": false,
+        "displayInterpolation": [
+          {
+            "value": 0,
+            "weight": 45
+          },
+          {
+            "value": 20,
+            "weight": 60
+          },
+          {
+            "value": 40,
+            "weight": 62
+          },
+          {
+            "value": 80,
+            "weight": 67
+          },
+          {
+            "value": 100,
+            "weight": 100
+          }
+        ]
+      },
+      {
+        "statHash": 1240592695,
+        "maximumValue": 100,
+        "displayAsNumeric": false,
+        "displayInterpolation": [
+          {
+            "value": 0,
+            "weight": 10
+          },
+          {
+            "value": 100,
+            "weight": 100
+          }
+        ]
+      },
+      {
+        "statHash": 155624089,
+        "maximumValue": 100,
+        "displayAsNumeric": false,
+        "displayInterpolation": [
+          {
+            "value": 0,
+            "weight": 10
+          },
+          {
+            "value": 100,
+            "weight": 100
+          }
+        ]
+      },
+      {
+        "statHash": 943549884,
+        "maximumValue": 100,
+        "displayAsNumeric": false,
+        "displayInterpolation": [
+          {
+            "value": 0,
+            "weight": 10
+          },
+          {
+            "value": 100,
+            "weight": 100
+          }
+        ]
+      },
+      {
+        "statHash": 4188031367,
+        "maximumValue": 100,
+        "displayAsNumeric": false,
+        "displayInterpolation": [
+          {
+            "value": 0,
+            "weight": 10
+          },
+          {
+            "value": 100,
+            "weight": 100
+          }
+        ]
+      },
+      {
+        "statHash": 3871231066,
+        "maximumValue": 100,
+        "displayAsNumeric": true,
+        "displayInterpolation": [
+          {
+            "value": 0,
+            "weight": 10
+          },
+          {
+            "value": 10,
+            "weight": 11
+          },
+          {
+            "value": 20,
+            "weight": 12
+          },
+          {
+            "value": 30,
+            "weight": 13
+          },
+          {
+            "value": 40,
+            "weight": 14
+          },
+          {
+            "value": 50,
+            "weight": 15
+          },
+          {
+            "value": 60,
+            "weight": 16
+          },
+          {
+            "value": 70,
+            "weight": 17
+          },
+          {
+            "value": 80,
+            "weight": 18
+          },
+          {
+            "value": 90,
+            "weight": 19
+          },
+          {
+            "value": 100,
+            "weight": 20
+          }
+        ]
+      }
+    ],
+    "overrides": {},
+    "hash": 3568045548,
+    "index": 47,
+    "redacted": false,
+    "blacklisted": false
+  },
   "3568793270": {
     "maximumValue": 42,
     "uiPosition": 0,
@@ -7550,7 +7726,7 @@
     ],
     "overrides": {},
     "hash": 3832607053,
-    "index": 57,
+    "index": 58,
     "redacted": false,
     "blacklisted": false
   },
@@ -7769,7 +7945,7 @@
     ],
     "overrides": {},
     "hash": 4265987870,
-    "index": 65,
+    "index": 66,
     "redacted": false,
     "blacklisted": false
   },
@@ -7937,7 +8113,7 @@
     ],
     "overrides": {},
     "hash": 4289099473,
-    "index": 64,
+    "index": 65,
     "redacted": false,
     "blacklisted": false
   }
