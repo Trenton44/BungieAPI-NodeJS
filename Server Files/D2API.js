@@ -18,16 +18,17 @@ const crypto = require("crypto");
 
 const D2ManifestVersion = require(root+"/ManifestVersion.json");
 const D2Components = require(serverRoot+"/D2Components.js");
+const D2Responses = require(serverRoot+"/D2APIResponseObjects.js");
 
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 dotenv.config( { path: path.join(root,"process.env") } );
 
-async function getBnetInfo(request,response,next){
+async function getBnetInfo(request, response, next){
   var path = bungieRoot+"/User/GetMembershipsForCurrentUser/";
   var access_token = decryptData(request.session.data.tokenData).access_token;
-  let result = await getRequestAuth(path, access_token).catch(function(error){return error;});
-  if(result instanceof Error) { next("There was an error."); }
-  request.session.data.bnetInfo = parseBnetInfo(result.Response);
+  let result = await getRequestAuth(path, access_token).catch(function(error){ next(new D2Responses.APIError(error)); });
+  result = new D2Responses.APIResponse(result);
+  request.session.data.bnetInfo = parseBnetInfo(result.data);
   next();
 };
 exports.getBnetInfo = getBnetInfo;
@@ -43,33 +44,35 @@ function parseBnetInfo(data){
   return info;
 };
 
-async function characterComponentRequest(request, response, components, characterID){
+async function characterComponentRequest(request, components, characterID){
   var path = buildComponentPath(request);
   var params = constructComponentString(components);
 
   var path = path+"Character/"+characterID+"/"+"?"+params;
   var access_token = decryptData(request.session.data.tokenData).access_token;
-  let result = await getRequestAuth(path, access_token).catch(function(error){ return error; });
-  if(result instanceof Error) { return result; }
-  result = parseComponents(result.Response);
-  if(result.itemComponents !== undefined) { return combineItemsInstanceData(result); }
+  let result = await getRequestAuth(path, access_token).catch(function(error){ throw new D2Responses.APIError(error); });
+
+  result = new D2Responses.APIResponse(result);
+  result.data = parseComponents(result.data);
+  if(result.data.itemComponents !== undefined) { result.data = combineItemsInstanceData(result.data); }
   return result;
 };
 exports.characterComponentRequest = characterComponentRequest;
 
-async function profileComponentRequest(request, response, components){
+async function profileComponentRequest(request, components){
   var path = buildComponentPath(request);
   var params = constructComponentString(components);
 
   path = path+"?"+params;
   var access_token = decryptData(request.session.data.tokenData).access_token;
-  let result = await getRequestAuth(path,access_token).catch(function(error){ return error; });
-  if(result instanceof Error) { return result; }
-  result = parseComponents(result.Response);
-  if(result.itemComponents !== undefined) { return combineItemsInstanceData(result); }
+  let result = await getRequestAuth(path,access_token).catch(function(error){ throw new D2Responses.APIError(error); });
+  result = new D2Responses.APIResponse(result);
+  result.data = parseComponents(result.data);
+  if(result.data.itemComponents !== undefined) { result.data = combineItemsInstanceData(result.data); }
   return result;
 };
 exports.profileComponentRequest = profileComponentRequest;
+
 function buildComponentPath(request){
   var bnetInfo = request.session.data.bnetInfo;
   var membershipType = bnetInfo[bnetInfo.primaryMembershipId].membershipType;
@@ -86,7 +89,7 @@ function parseComponents(data){
   return parsedData;
 };
 
-async function lockCharacterItem(request, response){
+async function lockCharacterItem(request){
   var bnetInfo = request.session.data.bnetInfo;
   var membershipType = bnetInfo[bnetInfo.primaryMembershipId].membershipType;
   var path = bungieRoot+"/Destiny2/Actions/Items/SetLockState/";
@@ -97,63 +100,35 @@ async function lockCharacterItem(request, response){
     state: !request.body.item.lockState,
   });
   var access_token = decryptData(request.session.data.tokenData).access_token;
-  let result = await postRequest(path, body, access_token).catch(function(error){ return error; });
-  return result;
+  let result = await postRequest(path, body, access_token).catch(function(error){ throw new D2Responses.APIError(error); });
+  return "Successfully locked item.";
 };
 exports.lockCharacterItem = lockCharacterItem;
 
-async function transferFromVault(request, response){
+async function transferFromVault(request){
   console.log("transferring to character from vault");
   var path = bungieRoot+"/Destiny2/Actions/Items/TransferItem/";
   var access_token = decryptData(request.session.data.tokenData).access_token;
   var body = buildTransferRequestBody(request);
-  body.transferToVault = false;
   body.characterId = request.body.characterReceiving;
-  let result = await postRequest(path, body, access_token).catch(function(error){ return error; });
-  console.log(result);
-  if(result instanceof Error){ return 0; }
-  else{ return 2; }
+  body.transferToVault = false;
+  let result = await postRequest(path, body, access_token).catch(function(error){ throw new D2Responses.APIError(error); });
+  return "Successfully transferred item to character";
 };
 exports.transferFromVault = transferFromVault;
 
-async function transferToVault(request, response){
+async function transferToVault(request){
   console.log("transferring to vault");
   var path = bungieRoot+"/Destiny2/Actions/Items/TransferItem/";
   var access_token = decryptData(request.session.data.tokenData).access_token;
   var body = buildTransferRequestBody(request);
-  body.transferToVault = true;
   body.characterId = request.body.characterTransferring;
-  let result = await postRequest(path, body, access_token).catch(function(error){ return error; });
-  if(result instanceof Error){ return 0; }
-  else{ return 2; }
+  body.transferToVault = true;
+  let result = await postRequest(path, body, access_token).catch(function(error){ throw new D2Responses.APIError(error); });
+  console.log("Successfully transferred item to vault");
+  return "Successfully transferred item to vault";
 };
 exports.transferToVault = transferToVault;
-
-async function transferToCharacter(request, response){
-  console.log("transferring to character from character");
-  var path = bungieRoot+"/Destiny2/Actions/Items/TransferItem/";
-  var access_token = decryptData(request.session.data.tokenData).access_token;
-  var body = buildTransferRequestBody(request);
-  body.transferToVault = true;
-  body.characterId = request.body.characterTransferring;
-  let vaultTransfer = await postRequest(path, body, access_token).catch(function(error){ return error; });
-  if(vaultTransfer instanceof Error) {  return 0; }
-  body.transferToVault = false;
-  body.characterId = request.body.characterReceiving;
-  sleep(500);
-  let characterTransfer = await postRequest(path, body, access_token).catch(function(error){ return error; });
-  console.log(characterTransfer);
-  if(characterTransfer instanceof Error) {
-    console.log("Attempting to send back to original character");
-    body.characterId = request.body.characterTransferring;
-    let result = await postRequest(path, body, access_token).catch(function(error){ return error; });
-    if(result instanceof Error){ return 1; }
-    console.log("Item return was successful.");
-    return 0;
-  }
-  return 2;
-};
-exports.transferToCharacter = transferToCharacter;
 
 function buildTransferRequestBody(request){
   var bnetInfo = request.session.data.bnetInfo;
@@ -166,7 +141,7 @@ function buildTransferRequestBody(request){
   };
 };
 
-async function equipItem(request, response){
+async function equipItem(request){
   var bnetInfo = request.session.data.bnetInfo;
   var membershipType = bnetInfo[bnetInfo.primaryMembershipId].membershipType;
   var path = bungieRoot+"/Destiny2/Actions/Items/EquipItem/";
@@ -176,13 +151,12 @@ async function equipItem(request, response){
     membershipType: membershipType,
   };
   var access_token = decryptData(request.session.data.tokenData).access_token;
-  let result = await postRequest(path, body, access_token).catch(function(error){ return error; });
-  if(result instanceof Error){ return result; }
-  return true;
+  let result = await postRequest(path, body, access_token).catch(function(error){ throw new D2Responses.APIError(error); });
+  return "Item succesfully Equipped.";
 };
 exports.equipItem = equipItem;
 
-async function requestToken(request, response){
+async function requestToken(request){
   var body = new URLSearchParams();
   body.append("client_secret",process.env.Bungie_ClientSecret);
   body.append("client_id", process.env.Bungie_ClientID);
@@ -193,13 +167,12 @@ async function requestToken(request, response){
     url: bungieTokURL,
     headers:{"Content-Type": "application/x-www-form-urlencoded"},
     data: body
-  }).catch(function(error){ return error; });
-  if(token instanceof Error) { return token; }
+  }).catch(function(error){ throw error.response.data; });
   saveTokenData(request, token.data);
 };
 exports.requestToken = requestToken;
 
-async function tokenRefresh(request, response){
+async function tokenRefresh(request){
   var tokenData = decryptData(request.session.data.tokenData);
   var body = new URLSearchParams();
   body.append("grant_type", "refresh_token");
@@ -211,8 +184,7 @@ async function tokenRefresh(request, response){
     url: bungieTokURL,
     headers: {"X-API-Key":process.env.Bungie_API_KEY},
     data: body,
-  }).catch(function(error){ return error; });
-  if(result instanceof Error) { return result; }
+  }).catch(function(error){ throw error.response.data; });
   saveTokenData(request, result.data);
   return true;
 };
@@ -252,9 +224,8 @@ async function postRequest(path, body, token){
     url: path,
     headers: {"X-API-Key":process.env.Bungie_API_KEY, "Authorization":"Bearer "+token},
     data: body,
-  }).catch(function(error){ return error; });
-  if(result instanceof Error){ return result; }
-  return result.data;
+  }).catch(function(error){ throw error; });
+  return result;
 };
 
 async function getRequestAuth(path, token){
@@ -262,18 +233,16 @@ async function getRequestAuth(path, token){
     method:"GET",
     url: path,
     headers: {"X-API-Key":process.env.Bungie_API_KEY, "Authorization":"Bearer "+token},
-  }).catch(function(error){ return error; });
-  if(result instanceof Error){ return result; }
-  return result.data;
+  }).catch(function(error){ throw error; });
+  return result;
 };
 async function getRequest(path){
   let result = await axios({
     method:"GET",
     url: path,
     headers: {"X-API-Key":process.env.Bungie_API_KEY},
-  }).catch(function(error){ return error; });
-  if(result instanceof Error){ return result; }
-  return result.data;
+  }).catch(function(error){ throw error; });
+  return result;
 };
 
 //When a function takes a list of components as a parameter, this function is called to
@@ -290,6 +259,7 @@ function constructComponentString(value){
   parameters.set("components",params);
   return parameters.toString();
 };
+
 
 function combineItemsInstanceData(items){
   for(z in items.itemComponents){

@@ -235,6 +235,7 @@ function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = t
     itemInstanceId: itemData.itemInstanceId,
     characterTransferring: tcID,
     characterReceiving: rcID,
+    transferToVault: false,
   };
   console.log(body);
   return postRequest(path, body);
