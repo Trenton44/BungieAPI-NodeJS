@@ -123,7 +123,7 @@ function Item(){
     this.HTMLTemplate.ondblclick = function(ev){ loadSideMenu(localthis.data); };
   };
   this.destroy = function(isWipe){
-      this.container.remove();
+      this.HTMLTemplate.remove();
       this.data = null;
       if(isWipe) return true;
       vaultController.vaultItems[this.slotName].splice(this.index,1);
@@ -132,20 +132,19 @@ function Item(){
     var localthis = this;
     var targetElementID = window.document.elementFromPoint(ev.clientX,ev.clientY).id.split("-")[0];
     try{
-      var characterID = playerCharacters[targetElementID.slice(-1)].characterID;
+      var characterID = playerCharacters[targetElementID.slice(-1)].characterId;
     }
     catch(TypeError){
       console.error("That's not a character");
       return false;
     }
-    var result = await transferRequest(localthis.data,characterID);
-    if(result instanceof Error){ console.error(result); return false; }
-    console.log("transfer was successful.");
+    var result = await transferRequest(localthis.data, characterID);
+    if(result instanceof Error){ alert("Unable to transfer item."); return false; }
+    alert("transfer was successful.");
     localthis.destroy(false);
   };
 };
 function loadSideMenu(itemData){
-  console.log(itemData);
   window.document.getElementById("side-view").style.display= "none";
   window.document.getElementById("side-view").style.display= "initial";
   window.document.getElementById("item-name").innerHTML = itemData.name;
@@ -190,10 +189,8 @@ async function fetchRequest(path){
     headers: {"Content-Type":"application/json"},
   });
   let response = await fetch(request);
-  if(response.status >=200 && response.status < 300)
-  {return response.json();}
-  else
-  {return Promise.reject(new Error(response.statusText));}
+  if(response.status >=200 && response.status < 300){ return response.json(); }
+  else{ return new Error(); }
 };
 async function postRequest(path, body){
   var request = new Request(path, {
@@ -202,10 +199,8 @@ async function postRequest(path, body){
     body: JSON.stringify(body),
   });
   let response = await fetch(request);
-  if(response.status >=200 && response.status < 300)
-  {return response.json();}
-  else
-  {return Promise.reject(new Error(response.statusText));}
+  if(response.status >=200 && response.status < 300){ return response.json(); }
+  else{ return new Error(); }
 }
 //Makes requests to server for equipping new items from existing non-equipped items.
 function equipItem(itemData, rcID){
@@ -235,9 +230,12 @@ function lockItemState(itemData, rcID){
 function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = transferring character
   var path = "/character/transferItem/";
   var body = {
-    item: itemData,
+    quantity: itemData.quantity,
+    itemHash: itemData.itemHash,
+    itemInstanceId: itemData.itemInstanceId,
     characterTransferring: tcID,
     characterReceiving: rcID,
   };
+  console.log(body);
   return postRequest(path, body);
 };

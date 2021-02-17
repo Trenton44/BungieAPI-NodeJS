@@ -205,7 +205,7 @@ function Item(){
     if(targetElementID == "c1" || targetElementID == "c2"){
       var result = await transferRequest(localthis.data, characterID, playerCharacters[0].characterId);
       if(result instanceof Error){ alert("Unable to transfer item."); return false; }
-      console.log("transfer was successful.");
+      alert("transfer was successful.");
       localthis.destroy(false);
     }
   }
@@ -264,7 +264,6 @@ function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = t
     itemInstanceId: itemData.itemInstanceId,
     characterTransferring: tcID,
     characterReceiving: rcID,
-    vaultTransfer: true,
   };
   return postRequest(path, body);
 };
