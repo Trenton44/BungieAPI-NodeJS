@@ -62,7 +62,7 @@ app.use(
       resave: true,
       store: store,
       saveUninitialized: true,
-      cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
+      cookie: { httpOnly: true, secure: false, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
 );
 app.get("/client/:id",function(request,response){
@@ -271,7 +271,6 @@ function constructSessionInstance(request, response, next){
     case undefined:
       console.log("Session data does not exist, creating formatted data blueprint.");
       reset = true;
-      console.log("session data now has blueprint, proceeding to content.");
       break;
     case null:
       console.log("User has visited, but an error necessitated eliminating their stored data.");
@@ -288,6 +287,8 @@ function constructSessionInstance(request, response, next){
       primaryMembershipId: null,
       userdata: null,
     };
+    console.log(request.session.data);
+    console.log("session data now has blueprint, proceeding to content.");
   }
   next();
 };
