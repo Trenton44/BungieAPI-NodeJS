@@ -110,7 +110,9 @@ async function transferFromVault(request, response){
   body.transferToVault = false;
   body.characterId = request.body.characterReceiving;
   let result = await postRequest(path, body, access_token).catch(function(error){ return error; });
-  return result;
+  console.log(result);
+  if(result instanceof Error){ return 0; }
+  else{ return 2; }
 };
 exports.transferFromVault = transferFromVault;
 
@@ -122,7 +124,8 @@ async function transferToVault(request, response){
   body.transferToVault = true;
   body.characterId = request.body.characterTransferring;
   let result = await postRequest(path, body, access_token).catch(function(error){ return error; });
-  return result;
+  if(result instanceof Error){ return 0; }
+  else{ return 2; }
 };
 exports.transferToVault = transferToVault;
 
