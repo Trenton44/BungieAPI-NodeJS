@@ -263,6 +263,9 @@ function accessAuthorizedEndpoints(request, response, next){
   next();
 };
 function constructSessionInstance(request, response, next){
+  console.log("============================");
+  console.log(request.session.data);
+  console.log("============================");
   var reset = false;
   switch(request.session.data){
     case undefined:
