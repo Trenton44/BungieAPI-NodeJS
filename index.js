@@ -86,14 +86,16 @@ app.get("/bnetlogin", async function(request, response){
 
 app.get("/bnetresponse", async function(request, response){
   if(request.query.state !== request.session.data.state){
+    console.log("query state "+request.query.state +"and saved state "+request.session.data.state+" do not match. this session will be destroyed.");
     request.session.destroy();
     response.status(400).json({error: "Unauthorized access."});
   }
   else {
     console.log("states match, requesting token.");
     request.session.data.authCode = request.query.code;
-    await D2API.requestToken(request, response).catch(function(error){response.status(400).json({error: "There was an error."}); });
-    response.redirect("/");
+    let result = await D2API.requestToken(request, response).catch(function(error){ return error; });
+    if(result === undefined || result instanceof Error) {response.status(400).json({error: "unable to access page."}); }
+    else{ response.redirect("/"); }
   }
 });
 
