@@ -204,10 +204,11 @@ app.post("/character/transferItem",async function(request, response, next){
     if(request.body.characterReceiving !== undefined)
     { result = await D2API.transferToCharacter(request, response).catch(function(error){ console.error(error); return error; }); }
   }
+  console.log(result);
   if(result === undefined){ result = 0; }
   else if(result === 0){ response.status(400).json({error:"unable to transfer item."}); }
   else if(result === 1){ response.status(400).json({error:"unable to transfer item."}); }
-  else{ response.status(200); }
+  else{ response.status(200).json({data: "Success"}); }
 });
 //Sends a POST request to bungie API EquipItem endpoint, returns result of request.
 app.post("/character/equipItem",async function(request, response){
