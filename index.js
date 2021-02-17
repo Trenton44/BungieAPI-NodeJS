@@ -235,7 +235,7 @@ D2API.loadManifest().then(function(result){
 
 
 //END OF EXPRESS FUNCTIONS.
-function accessAuthorizedEndpoints(request, response, next){
+async function accessAuthorizedEndpoints(request, response, next){
   console.log("Session "+request.session.id+" has requested access to "+request._parsedUrl.path);
   var currentTime = new Date().getTime();
   console.log(Object.keys(request.session.data.tokenData).length);
@@ -251,7 +251,8 @@ function accessAuthorizedEndpoints(request, response, next){
   }
   if(tokenData.tokenExpiration < currentTime){
     console.log("Token has expired, user requires a new one.");
-    let data = D2API.tokenRefresh(request, response);
+    let data = await D2API.tokenRefresh(request, response);
+    if(data instanceof Error){console.error("Session could not aquire refresh token."); response.redirect("/bnetlogin"); }
     console.log("Token refresh completed.");
   }
   console.log("User seems good to go.");
