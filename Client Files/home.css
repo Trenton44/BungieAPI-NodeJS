@@ -155,7 +155,7 @@ body {
   padding: 2% 0% 0 0;
   margin: 0 2% 0 2%;
 }
-.item-slots:hover > div {
+.item-slots:hover > .item-container {
   display: flex;
 }
 .item-slots {

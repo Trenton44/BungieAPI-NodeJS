@@ -103,15 +103,15 @@ app.use(accessAuthorizedEndpoints);
 app.get("/characterids",async function(request, response){
   var components = ["100"];
   var data = await D2API.profileComponentRequest(request,response, components).catch(function(error){ return error; });
-  if(data instanceof Error){ console.error(data); response.status(400).json({error: error}); }
-  else{ console.log(data.profile.characterIds); response.status(200).json(data.profile.characterIds); }
+  if(data instanceof Error){ console.error(data); response.status(400).json({error: "Could not recieve character ids."}); }
+  else{ response.status(200).json(data.profile.characterIds); }
 });
 
 app.get("/character/:id/general",async function(request, response){
   var components = ["200"];
   var cID = request.params.id;
   var data = await D2API.characterComponentRequest(request, response, components, cID).catch(function(error){ return error; });
-  if(data instanceof Error){ console.error(data);response.status(400).json({error: error});}
+  if(data instanceof Error){ console.error(data);response.status(400).json({error: "An error occurred retrieving character info."});}
   data = data.character;
   response.status(200).json(data);
 });
@@ -122,7 +122,7 @@ app.get("/character/:id/equipment",async function(request,response){
   var components = ["201", "205", "300", "304"];
   var cID = request.params.id;
   var data = await D2API.characterComponentRequest(request, response, components, cID).catch(function(error){ return error; });
-  if(data instanceof Error){ console.error(data); response.status(400).json({error: error});}
+  if(data instanceof Error){ console.error(data); response.status(400).json({error: "An error occured retrieving character equipment. "});}
   data.equipment = ServerResponse.sortByBucketDefinition(data.equipment);
   data.inventory = ServerResponse.sortByBucketCategory(data.inventory);
   var engrams = data.inventory.Item;
@@ -135,7 +135,6 @@ app.get("/character/:id/equipment",async function(request,response){
   delete data.inventory.ClanBanners;
   for(i in data.inventory){
     data.inventory[i].unshift(data.equipment[i][0]);
-    console.log(i);
     for(z in data.inventory[i]){
       var temp = ServerResponse.DestinyItemTypes[i];
       data.inventory[i][z] = ServerResponse[temp](data.inventory[i][z],i,z);
@@ -152,7 +151,7 @@ app.get("/character/:id/inventory",async function(request,response){
   var cID = request.params.id;
   var data = await D2API.characterComponentRequest(request, response, components,cID).catch(function(error){ return error; });
   console.log("in character/:id/inventory");
-  if(data instanceof Error){ response.status(400).json({error: error});}
+  if(data instanceof Error){ response.status(400).json({error: "An error occurred retrieving character inventory."});}
   data = ServerResponse.sortByLocation(data.inventory);
   response.status(200).json(data);
 });
@@ -161,7 +160,7 @@ app.get("/profile/inventory/:id", async function(request,response){
   var components = ["102", "103"];
   var cID = request.params.id;
   var data = await D2API.profileComponentRequest(request, response, components).catch(function(error){ return error; });
-  if(data instanceof Error){ response.status(400).json({error: error});}
+  if(data instanceof Error){ response.status(400).json({error: "An error occurred retrieving profile inventory."});}
   var returnData = {
     currency: data.profileCurrencies,
     inventory: ServerResponse.sortByLocation(data.profileInventory),
@@ -172,7 +171,7 @@ app.get("/profile/inventory/:id", async function(request,response){
 app.get("/profile/vault",async function(request, response){
   var components = ["102", "300", "304"];
   var data = await D2API.profileComponentRequest(request, response, components).catch(function(error){ return error; });
-  if(data instanceof Error){ console.error(data);response.status(400).json({error: error});}
+  if(data instanceof Error){ console.error(data);response.status(400).json({error: "An error occurred retrieving vault data."});}
   data = ServerResponse.sortByLocation(data.profileInventory).Vault;
   data = ServerResponse.sortByBucketTypeHash(data);
   var counter = 0;
@@ -196,7 +195,6 @@ app.post("/character/lockItem",async function(request, response){
 
 app.post("/character/transferItem",async function(request, response, next){
   var result;
-  console.log(request.body);
   if(request.body.characterTransferring === undefined){
     if(request.body.characterReceiving !== undefined)
     { result = await D2API.transferFromVault(request, response).catch(function(error){ console.error(error); return error; }); }
@@ -207,14 +205,15 @@ app.post("/character/transferItem",async function(request, response, next){
     if(request.body.characterReceiving !== undefined)
     { result = await D2API.transferToCharacter(request, response).catch(function(error){ console.error(error); return error; }); }
   }
-  if(result === undefined){ result = new Error(); }
-  if(result instanceof Error) { response.status(400).json({error: result});}
-  else { response.status(200).json({ result: result }); }
+  if(result === undefined){ result = 0; }
+  else if(result === 0){ response.status(400).json({error:"unable to transfer item."}); }
+  else if(result === 1){ response.status(400).json({error:"unable to transfer item."}); }
+  else{ response.status(200); }
 });
 //Sends a POST request to bungie API EquipItem endpoint, returns result of request.
 app.post("/character/equipItem",async function(request, response){
   let result = await D2API.equipItem(request, response).catch(function(error){ return error; });
-  if(result instanceof Error){ response.status(400).json({error: result.data.Response });}
+  if(result instanceof Error){ response.status(400).json({error: "unable to equip item."}); }
   else { response.status(200).json(result); }
 });
 

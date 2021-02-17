@@ -134,13 +134,21 @@ async function transferToCharacter(request, response){
   body.transferToVault = true;
   body.characterId = request.body.characterTransferring;
   let vaultTransfer = await postRequest(path, body, access_token).catch(function(error){ return error; });
-  if(vaultTransfer instanceof Error) { return vaultTransfer; }
-  console.log("Here.");
+  if(vaultTransfer instanceof Error) {  return 0; }
   body.transferToVault = false;
   body.characterId = request.body.characterReceiving;
   sleep(500);
   let characterTransfer = await postRequest(path, body, access_token).catch(function(error){ return error; });
-  return characterTransfer;
+  console.log(characterTransfer);
+  if(characterTransfer instanceof Error) {
+    console.log("Attempting to send back to original character");
+    body.characterId = request.body.characterTransferring;
+    let result = await postRequest(path, body, access_token).catch(function(error){ return error; });
+    if(result instanceof Error){ return 1; }
+    console.log("Item return was successful.");
+    return 0;
+  }
+  return 2;
 };
 exports.transferToCharacter = transferToCharacter;
 
@@ -200,7 +208,7 @@ async function tokenRefresh(request, response){
     headers: {"X-API-Key":process.env.Bungie_API_KEY},
     data: body,
   }).catch(function(error){ return error; });
-  if(result instanceof Error) { console.log(result); return result; }
+  if(result instanceof Error) { return result; }
   saveTokenData(request, result.data);
   return true;
 };
@@ -240,7 +248,8 @@ async function postRequest(path, body, token){
     url: path,
     headers: {"X-API-Key":process.env.Bungie_API_KEY, "Authorization":"Bearer "+token},
     data: body,
-  }).catch(function(error){ console.log(result); return error; });
+  }).catch(function(error){ return error; });
+  if(result instanceof Error){ return result; }
   return result.data;
 };
 
@@ -249,7 +258,8 @@ async function getRequestAuth(path, token){
     method:"GET",
     url: path,
     headers: {"X-API-Key":process.env.Bungie_API_KEY, "Authorization":"Bearer "+token},
-  }).catch(function(error){ console.log(result); return error; });
+  }).catch(function(error){ return error; });
+  if(result instanceof Error){ return result; }
   return result.data;
 };
 async function getRequest(path){
@@ -257,7 +267,8 @@ async function getRequest(path){
     method:"GET",
     url: path,
     headers: {"X-API-Key":process.env.Bungie_API_KEY},
-  }).catch(function(error){ console.log(result); return error; });
+  }).catch(function(error){ return error; });
+  if(result instanceof Error){ return result; }
   return result.data;
 };
 

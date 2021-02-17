@@ -179,7 +179,10 @@ var ArmorResponseFormat = function(item,i,z){
   else { format.energyIcon = ""; }
   format.flavorText = item.itemHashData.flavorText;
   format.equipped = item.instances.isEquipped;
-  format.overlay = bungieCommon+item.itemHashData.iconWatermark;
+  if(item.itemHashData.iconWatermark !== undefined)
+  { format.overlay = bungieCommon+item.itemHashData.iconWatermark; }
+  else {format.overlay = ""; }
+
   format.HTMLTemplate = "<div class=item-capsule id='"+format.htmlId+"'><img class=item-icon src='"+format.itemIcon+"' /><img class=item-overlay src='"+format.overlay+"' /><img class=item-type src='"+format.energyIcon+"' /><h1 class=item-light>"+format.light+"</h1></div>";
   return format;
 };
