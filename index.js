@@ -214,8 +214,8 @@ app.post("/character/transferItem",async function(request, response, next){
 //Sends a POST request to bungie API EquipItem endpoint, returns result of request.
 app.post("/character/equipItem",async function(request, response){
   let result = await D2API.equipItem(request, response).catch(function(error){ return error; });
-  if(result instanceof Error){ response.status(400).json({error: "unable to equip item."}); }
-  else { response.status(200).json(result); }
+  if(result instanceof Error){ console.log(result); response.status(400).json({error: "unable to equip item."}); }
+  else { response.status(200).json({result:"item equipped."}); }
 });
 
 app.use(D2API.getBnetInfo);

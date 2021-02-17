@@ -11,10 +11,9 @@ async function Initialize(value){
   if(ids instanceof Error){ console.log("Unable to obtain characters."); };
   for(i in ids){
     playerCharacters.push(new character());
-    console.log(playerCharacters[i]);
-    console.log(i);
     playerCharacters[i].Initialize(i, ids[i]);
   }
+  console.log(playerCharacters);
   updateCharacters();
   updateTimer(30000);
 };
@@ -28,20 +27,24 @@ async function autoUpdate(timer){
   console.log("Page update finished.");
   updateTimer(timer);
 };
-function changeCharacter(characterlistLocation){
-  if(characterlistLocation == 0){ console.log("Character is already loaded."); return true; }
-  var temp = playerCharacters.splice(characterlistLocation,1);
-  var temp2 = playerCharacters.shift();
-  playerCharacters.unshift(temp2);
-  playerCharacters.push(temp[0]);
-  for(i in playerCharacters){ playerCharacters[i].setID(i); }
+function changeCharacter(b){
+  console.log(b);
+  if(b === 0){ console.log("Character is already loaded."); return true; }
+  var temp = playerCharacters.splice(b,1);
+  console.log(temp);
+  playerCharacters.unshift(temp[0]);
+  console.log(playerCharacters);
+  for(i in playerCharacters){  playerCharacters[i].setID(i); }
+
   updateCharacters();
 };
 async function updateCharacters(){
+  console.log("beginning to update characters.");
   slotController.fetchLoadout(playerCharacters[0].characterId).catch(function(error){ console.error(error); });
   let result = await Promise.all([playerCharacters[0].loadCharacter(),playerCharacters[1].loadCharacter(),playerCharacters[2].loadCharacter()]).catch(function(error){ return error; });
   if(result instanceof Error) { console.error(result); return false; }
   updateGUI();
+  console.log("Characters updated.");
   return true;
 };
 function updateGUI(){
@@ -55,6 +58,8 @@ function character(){
   this.setID = function(value){
     this.id = value;
     this.element = window.document.getElementById("c"+this.id);
+    var localthis = this;
+    this.element.ondblclick = function(){  changeCharacter(localthis.id); };
   };
   this.characterId;
   this.light;
@@ -81,8 +86,6 @@ function character(){
   this.Initialize = function(id, characterId){
     this.setID(id);
     this.characterId = characterId;
-    this.element.ondblclick = function(){ changeCharacter(this.id); };
-
   };
   this.loadCharacter = async function(){
     var path = "/character/"+this.characterId+"/general";
@@ -110,27 +113,23 @@ function slotController(){
       }
     }
   };
-  this.swapEquipped = function(slot, index, html){
+  this.swapEquipped = async function(slot, index, html){
     var item = this.slots[slot];
     item = item[index];
     var localthis = this;
-    equipItem(item.data, playerCharacters[0].characterId).then(function(result){
-      var currentEquip = localthis.slots[slot][0];
-      var temp = Object.assign(currentEquip.data);
-      var temp2 = Object.assign(item.data);
-      var tempH = currentEquip.HTMLTemplate.cloneNode(true).innerHTML;
-      var temp2H = item.HTMLTemplate.cloneNode(true).innerHTML;
-      item.changeData(temp);
-      currentEquip.changeData(temp2);
-      item.changeHTML(tempH);
-      currentEquip.changeHTML(temp2H);
-      console.log(localthis.slots[slot][0]);
-      console.log(localthis.slots[slot][index]);
-      console.log("Equip request was successful.");
-    }).catch(function(error){
-      console.error("There was an error equipping this item.");
-      console.log(error);
-    });
+    let result = await equipItem(item.data, playerCharacters[0].characterId);
+    if(result instanceof Error){ alert("Unable to equip item currently."); return false; }
+    console.log(result);
+    var currentEquip = localthis.slots[slot][0];
+    var temp = Object.assign(currentEquip.data);
+    var temp2 = Object.assign(item.data);
+    var tempH = currentEquip.HTMLTemplate.cloneNode(true).innerHTML;
+    var temp2H = item.HTMLTemplate.cloneNode(true).innerHTML;
+    item.changeData(temp);
+    currentEquip.changeData(temp2);
+    item.changeHTML(tempH);
+    currentEquip.changeHTML(temp2H);
+    return true;
   }
   this.fetchLoadout = async function(characterID){
     this.wipe();

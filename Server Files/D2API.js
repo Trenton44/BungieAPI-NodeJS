@@ -177,7 +177,8 @@ async function equipItem(request, response){
   };
   var access_token = decryptData(request.session.data.tokenData).access_token;
   let result = await postRequest(path, body, access_token).catch(function(error){ return error; });
-  return result;
+  if(result instanceof Error){ return result; }
+  return true;
 };
 exports.equipItem = equipItem;
 
