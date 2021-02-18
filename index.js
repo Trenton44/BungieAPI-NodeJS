@@ -5,10 +5,8 @@ const serverRoot = root+"/server_files";
 const assetRoot = root+"/asset_files";
 const manifestRoot = root+"/manifest_files";
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
-//const mongo = require('mongodb');
-//const MongoClient = require('mongodb').MongoClient;
-//const https = require('http');
-const https = require("https");
+
+//const https = require("https");
 const fs = require('fs');
 const express = require("express");
 const session = require("express-session");
@@ -19,8 +17,19 @@ const axios = require('axios');
 const dotenv = require("dotenv");
 const crypto = require("crypto");
 const helmet = require("helmet");
-//const MongoDBStore = require("connect-mongodb-session")(session);
-
+const mongo = require('mongodb');
+const MongoClient = require('mongodb').MongoClient;
+const https = require('http');
+const MongoDBStore = require("connect-mongodb-session")(session);
+var sessionConfig = {
+    name: "sAk3m3",
+    secret: "secreto!alabastro@",
+    genid: function(req){ return genuuid.v4(); },
+    resave: true,
+    store: store,
+    saveUninitialized: true,
+    cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
+};
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
@@ -47,26 +56,16 @@ if(process.env.NODE_ENV == "development"){
   httpsServer = https.createServer(app);
   app.use(sslRedirect());
  }
- /*var store = new MongoDBStore({
+ var store = new MongoDBStore({
    uri: process.env.Mongo_DB_URI,
    databaseName: "users",
    collection: "Sessions",
  });
  store.on("error", function(error){
    console.error(error);
- });*/
+ });
 app.use(express.json());
-app.use(
-  session({
-      name: "sAk3m3",
-      secret: "secreto!alabastro@",
-      genid: function(req){ return genuuid.v4(); },
-      resave: true,
-      //store: store,
-      saveUninitialized: true,
-      cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
-  })
-);
+app.use(session(sessionConfig));
 app.get("/client/:id",function(request,response){
   response.status(200).sendFile(webpageRoot+"/"+request.params.id);
 });
@@ -188,12 +187,24 @@ app.get("/profile/vault",async function(request, response, next){
   }
   response.status(result.status).json(data);
 });
-app.post("/test", async function(request, response, next){
-  console.log("in /test");
-  var data = await D2API.TESTequipItem(request).catch(function(error){ return error; });
+
+//note to future self, this was 2.085 seconds with no sorting.
+app.get("/homedata", async function(request, response, next){
+  var startTime = new Date().getTime();
+  var components = ["200", "201", "205", "300", "302", "304"];
+  let result = await D2API.profileComponentRequest(request, components).catch(function(error){ return error; });
   if(result instanceof Error){ next(result); return; }
-  response.status(200).json(data);
+  console.log(Object.keys(result.data));
+  result.data.itemComponents = combineItemInstanceData(result.data.itemComponents);
+  result.data.characterInventories = combineallcharacterEquipmentandInventory(result.data.characterEquipment, result.data.characterInventories);
+  result.data.characterInventories = combineItemswithInstanceData(result.data.characterInventories,result.data.itemComponents);
+  response.status(result.status).json({ data: result.data });
+  var endTime = new Date().getTime();
+  console.log("vault access took exactly "+(endTime-startTime)/1000+" seconds.");
+  console.log("Payload size.");
+  console.log(Buffer.byteLength(JSON.stringify(result.data)));
 });
+
 app.post("/character/lockItem",async function(request, response, next){
   let result = await D2API.lockCharacterItem(request).catch(function(error){ return error; });
   console.log("in character/lockItem");
@@ -279,6 +290,7 @@ function constructSessionInstance(request, response, next){
       tokenData: {},
       primaryMembershipId: null,
       userdata: null,
+      characters: {},
     };
   }
   next();
@@ -299,4 +311,44 @@ function handleServerErrors(error, request, response, next){
     console.log("Hey, I didn't build this error, so we just gonna give a default response.");
     response.status(500).json({ error: "Internal Server Error." });
   }
+}
+
+
+//ALl temporary until i'm confident i can move them into the main program.
+function combineItemInstanceData(data){
+  var longestcomponent;
+  var length = 0;
+  for(i in data){
+    var temp = Object.keys(data[i]).length;
+    if( temp > length){
+      length = temp;
+      longestcomponent = i;
+    }
+  }
+  var combinedItemComponents = {};
+  for(i in data[longestcomponent]){
+    combinedItemComponents[i] = {};
+    for(z in data){
+      combinedItemComponents[i][z] = data[z][i];
+    }
+  }
+  return combinedItemComponents;
+}
+function combineallcharacterEquipmentandInventory(equipment, inventory){
+  for(i in equipment){
+    for(z in equipment[i]){
+      inventory[i].push(equipment[i][z]);
+    }
+  }
+  return inventory;
+};
+function combineItemswithInstanceData(inventory, instancedata){
+  for(i in inventory){
+    for(z in inventory[i]){
+      if(inventory[i][z].itemInstanceId !== undefined){
+        inventory[i][z].instanceData = instancedata[inventory[i][z].itemInstanceId];
+      }
+    }
+  }
+  return inventory;
 }

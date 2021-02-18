@@ -68,7 +68,6 @@ async function profileComponentRequest(request, components){
   let result = await getRequestAuth(path,access_token).catch(function(error){ throw new D2Responses.APIError(error); });
   result = new D2Responses.APIResponse(result);
   result.parseDataComponents();
-  if(result.data.itemComponents !== undefined) { result.data = combineItemsInstanceData(result.data); }
   return result;
 };
 exports.profileComponentRequest = profileComponentRequest;
