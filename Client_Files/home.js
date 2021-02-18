@@ -15,7 +15,7 @@ async function Initialize(value){
   }
   console.log(playerCharacters);
   updateCharacters();
-  updateTimer(30000);
+  //updateTimer(30000);
 };
 function updateTimer(timer){
   console.log("starting auto update cycle.");
@@ -218,7 +218,7 @@ async function fetchRequest(path){
   });
   let response = await fetch(request);
   if(response.status >=200 && response.status < 300){ return response.json(); }
-  else{ return new Error(response.statusText); }
+  else{ throw response.error; }
 };
 async function postRequest(path, body){
   var request = new Request(path, {
@@ -228,7 +228,7 @@ async function postRequest(path, body){
   });
   let response = await fetch(request);
   if(response.status >=200 && response.status < 300){ return response.json(); }
-  else{ return new Error(response.statusText); }
+  else{ throw response.error; }
 }
 //Makes requests to server for equipping new items from existing non-equipped items.
 function equipItem(itemData, rcID){
@@ -266,3 +266,7 @@ function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = t
   };
   return postRequest(path, body);
 };
+function test(itemData, rcID){
+  var path = "/homedata";
+  fetchRequest(path).then(function(result){ console.log(result); }).catch(function(error){console.log(error);});
+}

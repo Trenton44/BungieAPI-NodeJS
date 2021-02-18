@@ -4,10 +4,12 @@ const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
 const bungieCommon = "https://www.bungie.net";
 const root = path.join(__dirname,'..');
-const webpageRoot = root+"/Client Files";
-const serverRoot = root+"/Server Files";
-const assetRoot = root+"/assets";
-const manifestRoot = root+"/Manifest";
+var SelfComponents;
+
+const serverRoot = root+"/Server_Files";
+const assetRoot = root+"/Asset_Files";
+const manifestRoot = root+"/Manifest_Files";
+
 const ServerResponse = require(serverRoot+"/Server Responses.js");
 const DestinyClassDefinition = require(manifestRoot+"/DestinyClassDefinition.json");
 const DestinyGenderDefinition = require(manifestRoot+"/DestinyGenderDefinition.json");
@@ -57,6 +59,14 @@ const components = {
   //unaccounted for: profilePlugSets
 };
 
+function getComponentObject(){
+
+}
+class Component {
+  constructor(){
+    console.log("I am alive!");
+  }
+}
 exports.components = components;
 
 //CHARACTER LEVEL COMPONENTS
@@ -149,6 +159,12 @@ var itemComponents = function(data){
       for(z in data.stats[i]){
         data.stats[i][z].data = DestinyStatDefinition[z];
       }
+    }
+  }
+  if(data.perks !== undefined){
+    data.perks = data.perks.data;
+    for(i in data.perks){
+      data.perks[i] = data.perks[i].perks;
     }
   }
   return data;
@@ -372,3 +388,4 @@ var vendorReceipts = function(data){
   return data;
 };
 exports.vendorReceipts = vendorReceipts;
+SelfComponents = this;

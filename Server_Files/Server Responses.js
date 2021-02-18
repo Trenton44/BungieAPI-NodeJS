@@ -5,10 +5,11 @@ const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
 const bungieCommon = "https://www.bungie.net";
 const root = path.join(__dirname,'..');
-const webpageRoot = root+"/Client Files";
-const serverRoot = root+"/Server Files";
-const assetRoot = root+"/assets";
-const manifestRoot = root+"/Manifest";
+
+const serverRoot = root+"/Server_Files";
+const assetRoot = root+"/Asset_Files";
+const manifestRoot = root+"/Manifest_Files";
+
 const DestinyDamageTypeDefinition = require(manifestRoot+"/DestinyDamageTypeDefinition.json");
 const DestinyEquipmentSlotDefinition = require(manifestRoot+"/DestinyEquipmentSlotDefinition.json");
 const DestinyInventoryBucketDefinition = require(manifestRoot+"/DestinyInventoryBucketDefinition.json");
