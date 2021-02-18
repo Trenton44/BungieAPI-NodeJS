@@ -1,9 +1,9 @@
 const path = require("path");
 const root = __dirname;
-const webpageRoot = root+"/client_files";
-const serverRoot = root+"/server_files";
-const assetRoot = root+"/asset_files";
-const manifestRoot = root+"/manifest_files";
+const webpageRoot = root+"/Client_Files";
+const serverRoot = root+"/Server_Files";
+const assetRoot = root+"/Asset_Files";
+const manifestRoot = root+"/Manifest_Files";
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 
 //const https = require("https");
