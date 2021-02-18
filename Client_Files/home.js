@@ -218,7 +218,7 @@ async function fetchRequest(path){
   });
   let response = await fetch(request);
   if(response.status >=200 && response.status < 300){ return response.json(); }
-  else{ return Error(response.error); }
+  else{ throw response.error; }
 };
 async function postRequest(path, body){
   var request = new Request(path, {
@@ -228,7 +228,7 @@ async function postRequest(path, body){
   });
   let response = await fetch(request);
   if(response.status >=200 && response.status < 300){ return response.json(); }
-  else{ return Error(response.error); }
+  else{ throw response.error; }
 }
 //Makes requests to server for equipping new items from existing non-equipped items.
 function equipItem(itemData, rcID){
@@ -267,10 +267,6 @@ function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = t
   return postRequest(path, body);
 };
 function test(itemData, rcID){
-  var path = "/character/equipItem";
-  var body = {
-    item: itemData,
-    characterReceiving: rcID,
-  };
-  return postRequest(path, body);
+  var path = "/homedata";
+  fetchRequest(path).then(function(result){ console.log(result); }).catch(function(error){console.log(error);});
 }
