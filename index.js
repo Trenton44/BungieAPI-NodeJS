@@ -1,9 +1,9 @@
 const path = require("path");
 const root = __dirname;
-const webpageRoot = root+"/Client Files";
-const serverRoot = root+"/Server Files";
-const assetRoot = root+"/assets";
-const manifestRoot = root+"/Manifest";
+const webpageRoot = root+"/client_files";
+const serverRoot = root+"/server_files";
+const assetRoot = root+"/asset_files";
+const manifestRoot = root+"/manifest_files";
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 //const mongo = require('mongodb');
 //const MongoClient = require('mongodb').MongoClient;

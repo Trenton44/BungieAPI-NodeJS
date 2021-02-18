@@ -4,10 +4,11 @@ const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
 const bungieCommon = "https://www.bungie.net";
 const root = path.join(__dirname,'..');
-const webpageRoot = root+"/Client Files";
-const serverRoot = root+"/Server Files";
-const assetRoot = root+"/assets";
-const manifestRoot = root+"/Manifest";
+
+const serverRoot = root+"/server_files";
+const assetRoot = root+"/asset_files";
+const manifestRoot = root+"/manifest_files";
+
 const ServerResponse = require(serverRoot+"/Server Responses.js");
 const DestinyClassDefinition = require(manifestRoot+"/DestinyClassDefinition.json");
 const DestinyGenderDefinition = require(manifestRoot+"/DestinyGenderDefinition.json");

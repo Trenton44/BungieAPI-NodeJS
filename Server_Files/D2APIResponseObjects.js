@@ -1,8 +1,10 @@
 const path = require("path");
 const root = path.join(__dirname,'..');
-const serverRoot = root+"/Server Files";
-const assetRoot = root+"/assets";
-const manifestRoot = root+"/Manifest";
+
+const serverRoot = root+"/server_files";
+const assetRoot = root+"/asset_files";
+const manifestRoot = root+"/manifest_files";
+
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
