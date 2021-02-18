@@ -65,7 +65,17 @@ if(process.env.NODE_ENV == "development"){
    console.error(error);
  });
 app.use(express.json());
-app.use(session(sessionConfig));
+app.use(
+  session({
+      name: "sAk3m3",
+      secret: "secreto!alabastro@",
+      genid: function(req){ return genuuid.v4(); },
+      resave: true,
+      store: store,
+      saveUninitialized: true,
+      cookie: { httpOnly: true, secure: false, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
+  })
+);
 app.get("/client/:id",function(request,response){
   response.status(200).sendFile(webpageRoot+"/"+request.params.id);
 });
@@ -81,12 +91,12 @@ app.get("/bnetlogin", async function(request, response){
   url.searchParams.append("client_id",process.env.Bungie_ClientID);
   url.searchParams.append("response_type","code");
   url.searchParams.append("state",state);
-  console.log("Sending to url.");
   response.redirect(url);
 });
 
 app.get("/bnetresponse", async function(request, response, next){
   if(request.query.state !== request.session.data.state){
+    console.log("query state "+request.query.state +"and saved state "+request.session.data.state+" do not match. this session will be destroyed.");
     request.session.destroy();
     next(Error());
     return;
@@ -274,7 +284,6 @@ function constructSessionInstance(request, response, next){
     case undefined:
       console.log("Session data does not exist, creating formatted data blueprint.");
       reset = true;
-      console.log("session data now has blueprint, proceeding to content.");
       break;
     case null:
       console.log("User has visited, but an error necessitated eliminating their stored data.");
