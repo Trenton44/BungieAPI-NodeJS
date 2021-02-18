@@ -90,13 +90,13 @@ app.get("/bnetresponse", async function(request, response, next){
   if(request.query.state !== request.session.data.state){
     request.session.destroy();
     next(Error());
+    return;
   }
-  else {
-    console.log("states match, requesting token.");
-    request.session.data.authCode = request.query.code;
-    await D2API.requestToken(request, response).catch(function(error){ next(error); });
-    response.redirect("/");
-  }
+  console.log("states match, requesting token.");
+  request.session.data.authCode = request.query.code;
+  let result = await D2API.requestToken(request, response).catch(function(error){ return });
+  if(result instanceof Error){ next(result); return; }
+  response.redirect("/");
 });
 
 app.use(accessAuthorizedEndpoints);
@@ -125,8 +125,6 @@ app.get("/character/:id/equipment",async function(request, response, next){
   var cID = request.params.id;
   var result = await D2API.characterComponentRequest(request, components, cID).catch(function(error){ return error; });
   if(result instanceof Error){ next(result); return; }
-  console.log(result.toString());
-  console.log("^^^^^^^^^^^^^^^^^^^^^^");
   var data = result.data;
   data.equipment = ServerResponse.sortByBucketDefinition(data.equipment);
   data.inventory = ServerResponse.sortByBucketCategory(data.inventory);
@@ -237,18 +235,15 @@ httpsServer.listen(process.env.PORT);
 
 
 //END OF EXPRESS FUNCTIONS.
-function accessAuthorizedEndpoints(request, response, next){
+async function accessAuthorizedEndpoints(request, response, next){
   console.log("Session "+request.session.id+" has requested access to "+request._parsedUrl.path);
   var currentTime = new Date().getTime();
-  console.log(Object.keys(request.session.data.tokenData).length);
   if(Object.keys(request.session.data.tokenData).length == 0){
     console.error("No data exists for user. ");
     response.redirect("/bnetlogin");
     return;
   }
   var tokenData = D2API.decryptData(request.session.data.tokenData);
-  console.log("token expiration: "+tokenData.tokenExpiration);
-  console.log("refresh expiration: "+tokenData.refreshExpiration);
   if(tokenData.refreshExpiration < currentTime){
     console.log("The refresh token has expired, gonna need to login.");
     response.redirect("/bnetlogin");
@@ -256,7 +251,7 @@ function accessAuthorizedEndpoints(request, response, next){
   }
   if(tokenData.tokenExpiration < currentTime){
     console.log("Token has expired, user requires a new one.");
-    let data = D2API.tokenRefresh(request, response);
+    let data = await D2API.tokenRefresh(request, response).catch(function(error){ next(error); });
     console.log("Token refresh completed.");
   }
   console.log("User seems good to go.");
@@ -289,14 +284,19 @@ function constructSessionInstance(request, response, next){
   next();
 };
 function handleServerErrors(error, request, response, next){
+  console.log(error);
   if(error instanceof D2Responses.APIError){
     console.log("Hey, i built this error object! ");
     console.error(error.toString());
     response.status(error.status).json({ error: error.toString() });
   }
+  else if(error instanceof D2Responses.TokenError){
+    console.log("Something went awry trying to obtain an access token.");
+    response.status(400).json({ error: "Something went awry trying to obtain an access token. Feel free to try again though." });
+  }
   else {
-    console.log("Hey, I didn't build this error, so we just gonna give a default response.");
     console.error(error);
-    response.status(400).json({ error: error });
+    console.log("Hey, I didn't build this error, so we just gonna give a default response.");
+    response.status(500).json({ error: "Internal Server Error." });
   }
 }

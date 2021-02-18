@@ -1,10 +1,32 @@
-class APIError extends Error {
-  constructor(data){
+const path = require("path");
+const root = path.join(__dirname,'..');
+const serverRoot = root+"/Server Files";
+const assetRoot = root+"/assets";
+const manifestRoot = root+"/Manifest";
+const bungieRoot = "https://www.bungie.net/Platform";
+const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
+const bungieTokURL = bungieRoot+"/app/oauth/token/";
+const bungieCommon = "https://www.bungie.net";
+const D2Components = require(serverRoot+"/D2Components.js");
+
+class TokenError extends Error {
+  constructor(error){
     super();
-    this.status = data.response.status;
-    this.errorStatus = data.response.data.ErrorStatus;
-    this.code = data.response.data.ErrorCode;
-    this.message = data.response.data.Message;
+    this.error = error;
+  }
+  toString(){
+    return "Something went wrong while trying to obtain an access token.";
+  }
+}
+exports.TokenError = TokenError;
+
+class APIError extends Error {
+  constructor(error){
+    super();
+    this.status = error.response.status;
+    this.errorStatus = error.response.data.ErrorStatus;
+    this.code = error.response.data.ErrorCode;
+    this.message = error.response.data.Message;
   }
   toString(){
     return "Error "+this.code+": "+this.message;
@@ -19,8 +41,13 @@ class APIResponse {
     this.message = info.data.Message;
     this.data = info.data.Response;
   }
-  toString(){
-    return "Status "+this.status+": "+this.message;
+  setData(value){
+    this.data = value;
   }
+  parseDataComponents(){
+    for(i in this.data)
+    { this.data[i] = D2Components[i](this.data[i]); }
+  }
+  toString(){ return "Status "+this.status+": "+this.message; }
 }
 exports.APIResponse = APIResponse;

@@ -27,8 +27,7 @@ async function getBnetInfo(request, response, next){
   var path = bungieRoot+"/User/GetMembershipsForCurrentUser/";
   var access_token = decryptData(request.session.data.tokenData).access_token;
   let result = await getRequestAuth(path, access_token).catch(function(error){ next(new D2Responses.APIError(error)); });
-  result = new D2Responses.APIResponse(result);
-  request.session.data.bnetInfo = parseBnetInfo(result.data);
+  request.session.data.bnetInfo = parseBnetInfo(result.data.Response);
   next();
 };
 exports.getBnetInfo = getBnetInfo;
@@ -53,7 +52,7 @@ async function characterComponentRequest(request, components, characterID){
   let result = await getRequestAuth(path, access_token).catch(function(error){ throw new D2Responses.APIError(error); });
 
   result = new D2Responses.APIResponse(result);
-  result.data = parseComponents(result.data);
+  result.parseDataComponents();
   if(result.data.itemComponents !== undefined) { result.data = combineItemsInstanceData(result.data); }
   return result;
 };
@@ -67,7 +66,7 @@ async function profileComponentRequest(request, components){
   var access_token = decryptData(request.session.data.tokenData).access_token;
   let result = await getRequestAuth(path,access_token).catch(function(error){ throw new D2Responses.APIError(error); });
   result = new D2Responses.APIResponse(result);
-  result.data = parseComponents(result.data);
+  result.parseDataComponents();
   if(result.data.itemComponents !== undefined) { result.data = combineItemsInstanceData(result.data); }
   return result;
 };
@@ -83,11 +82,6 @@ function buildComponentPath(request){
 //used to parse incoming component data from the bungie api.
 //Requires the list of components used in the api request, and the data returned from said request.
 //sends component data to prebuilt functions, which structure the data and return it here afterwards.
-function parseComponents(data){
-  var parsedData = {};
-  for(i in data){ parsedData[i] = D2Components[i](data[i]); }
-  return parsedData;
-};
 
 async function lockCharacterItem(request){
   var bnetInfo = request.session.data.bnetInfo;
@@ -167,7 +161,7 @@ async function requestToken(request){
     url: bungieTokURL,
     headers:{"Content-Type": "application/x-www-form-urlencoded"},
     data: body
-  }).catch(function(error){ throw error.response.data; });
+  }).catch(function(error){ throw new D2Responses.TokenError(error); });
   saveTokenData(request, token.data);
 };
 exports.requestToken = requestToken;
@@ -184,7 +178,7 @@ async function tokenRefresh(request){
     url: bungieTokURL,
     headers: {"X-API-Key":process.env.Bungie_API_KEY},
     data: body,
-  }).catch(function(error){ throw error.response.data; });
+  }).catch(function(error){ throw new D2Responses.TokenError(error); });
   saveTokenData(request, result.data);
   return true;
 };
