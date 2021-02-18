@@ -1,0 +1,177 @@
+{
+  "2894222926": {
+    "displayProperties": {
+      "description": "Hear the seventh strike, calling blades to meet.",
+      "name": "Bell of Conquests",
+      "icon": "/common/destiny2_content/icons/1262427a882a5a892e0e84533194e205.jpg",
+      "hasIcon": true
+    },
+    "translationBlock": {
+      "weaponPatternHash": 4023194814,
+      "defaultDyes": [
+        {
+          "channelHash": 373026848,
+          "dyeHash": 3550803935
+        },
+        {
+          "channelHash": 373026849,
+          "dyeHash": 3550803934
+        },
+        {
+          "channelHash": 373026850,
+          "dyeHash": 3550803933
+        }
+      ],
+      "lockedDyes": [],
+      "customDyes": [],
+      "arrangements": [
+        {
+          "classHash": 0,
+          "artArrangementHash": 2631256485
+        }
+      ],
+      "hasGeometry": true
+    },
+    "tiers": [
+      {
+        "tierHash": 3144670121,
+        "displayTitle": "Tier 1",
+        "items": [
+          {
+            "itemHash": 2215945390,
+            "activeUnlockHash": 0
+          },
+          {
+            "itemHash": 2215945389,
+            "activeUnlockHash": 0
+          },
+          {
+            "itemHash": 2215945388,
+            "activeUnlockHash": 0
+          },
+          {
+            "itemHash": 2215945387,
+            "activeUnlockHash": 0
+          },
+          {
+            "itemHash": 2215945386,
+            "activeUnlockHash": 0
+          }
+        ],
+        "minimumUnlockPointsUsedRequirement": 0
+      },
+      {
+        "tierHash": 3144670122,
+        "displayTitle": "Tier 2",
+        "items": [
+          {
+            "itemHash": 1082186949,
+            "activeUnlockHash": 0
+          },
+          {
+            "itemHash": 1082186950,
+            "activeUnlockHash": 0
+          },
+          {
+            "itemHash": 1082186951,
+            "activeUnlockHash": 0
+          },
+          {
+            "itemHash": 1082186944,
+            "activeUnlockHash": 0
+          },
+          {
+            "itemHash": 1082186945,
+            "activeUnlockHash": 0
+          }
+        ],
+        "minimumUnlockPointsUsedRequirement": 1
+      },
+      {
+        "tierHash": 3144670123,
+        "displayTitle": "Tier 3",
+        "items": [
+          {
+            "itemHash": 76553638,
+            "activeUnlockHash": 0
+          },
+          {
+            "itemHash": 76553637,
+            "activeUnlockHash": 0
+          },
+          {
+            "itemHash": 76553636,
+            "activeUnlockHash": 0
+          },
+          {
+            "itemHash": 76553635,
+            "activeUnlockHash": 0
+          },
+          {
+            "itemHash": 76553634,
+            "activeUnlockHash": 0
+          }
+        ],
+        "minimumUnlockPointsUsedRequirement": 4
+      },
+      {
+        "tierHash": 3144670124,
+        "displayTitle": "Tier 4",
+        "items": [
+          {
+            "itemHash": 1007628743,
+            "activeUnlockHash": 0
+          },
+          {
+            "itemHash": 1007628740,
+            "activeUnlockHash": 0
+          },
+          {
+            "itemHash": 1007628741,
+            "activeUnlockHash": 0
+          },
+          {
+            "itemHash": 1007628738,
+            "activeUnlockHash": 0
+          },
+          {
+            "itemHash": 1007628739,
+            "activeUnlockHash": 0
+          }
+        ],
+        "minimumUnlockPointsUsedRequirement": 7
+      },
+      {
+        "tierHash": 3144670125,
+        "displayTitle": "Tier 5",
+        "items": [
+          {
+            "itemHash": 792292104,
+            "activeUnlockHash": 0
+          },
+          {
+            "itemHash": 792292107,
+            "activeUnlockHash": 0
+          },
+          {
+            "itemHash": 792292106,
+            "activeUnlockHash": 0
+          },
+          {
+            "itemHash": 792292109,
+            "activeUnlockHash": 0
+          },
+          {
+            "itemHash": 792292108,
+            "activeUnlockHash": 0
+          }
+        ],
+        "minimumUnlockPointsUsedRequirement": 10
+      }
+    ],
+    "hash": 2894222926,
+    "index": 0,
+    "redacted": false,
+    "blacklisted": false
+  }
+}
