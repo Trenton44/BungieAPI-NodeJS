@@ -155,21 +155,20 @@ app.get("/home/update", async function(request, response, next){
   var temp = {};
   for(n in result.data.characterInventories){
     var splitdata = differentiateData(storedData[n], result.data.characterInventories[n]);
-    console.log("Saving "+n);
     temp[n] = splitdata;
   }
 
-  /*for(i in temp){ temp[i] = ServerResponse.sortByBucketCategory(temp[i]); }
+  for(i in temp){ temp[i] = ServerResponse.sortByBucketCategory(temp[i]); }
   for(z in temp){
     for(a in temp[z])
     { temp[z][a] = ServerResponse.sortByBucketTypeHash(temp[z][a]); }
-  }*/
+  }
   response.status(result.status).json(temp);
 
   var endTime = new Date().getTime();
   console.log("vault update took exactly "+(endTime-startTime)/1000+" seconds.");
   console.log("Payload size.");
-  //console.log(Buffer.byteLength(JSON.stringify(changedData)));
+  console.log(Buffer.byteLength(JSON.stringify(temp)));
 });
 
 app.get("/vault/data", async function(request, response, next){
@@ -343,12 +342,14 @@ function differentiateData(stored, data){
   var newstored = {};
   var newdata = {};
   for(i in stored){
-    if(stored[i].itemInstanceId !== undefined)
-    { newstored[stored[i].itemInstanceId] = stored[i]; }
+    if(stored[i].itemInstanceId !== undefined){
+      newstored[stored[i].itemInstanceId] = stored[i];
+    }
   }
   for(i in data){
-    if(data[i].itemInstanceId !== undefined)
-    { newdata[data[i].itemInstanceId] = data[i]; }
+    if(data[i].itemInstanceId !== undefined){
+      newdata[data[i].itemInstanceId] = data[i];
+    }
   }
   for(i in newstored){
     if(newdata[i] === undefined){
