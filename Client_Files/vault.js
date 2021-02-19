@@ -8,45 +8,40 @@ async function Initialize(value){
   var path = "/vault/data";
   let result = await fetchRequest(path).catch(function(error){ return error; });
   if(result instanceof Error){ return false; }
-  console.log(result);
   vaultController.Initialize(result.profileInventory);
-  console.log(result);
   var characters = result.characters;
   var keys = Object.keys(characters);
   for(i in keys){
     playerCharacters.push(new character());
     playerCharacters[i].Initialize(i,characters[keys[i]]);
   }
-  console.log(playerCharacters);
   updateTimer(25000);
 };
 
 function updateTimer(timer){
-  console.log("starting auto update cycle.");
+  console.log("restarting auto update cycle.");
   sleep(timer).then(function(){ autoUpdate(timer); });
 };
 async function autoUpdate(timer){
   console.log("Updating inventory...");
+  var startTime = new Date().getTime();
   await updateInventory();
-  sleep(500);
-  console.log("Page update finished.");
+  sleep(100);
+  var endTime = new Date().getTime();
+  console.log("Inventory updated in "+(endTime-startTime)+" milliseconds.");
   updateTimer(timer);
 };
 async function updateInventory(){
-  console.log(playerCharacters);
   var path = "/vault/update";
-  let result = await fetchRequest(path).catch(function(error){ return error; });
-  if(result instanceof Error){ return false; }
-  console.log(playerCharacters);
-  console.log(result);
+  let updateData = await fetchRequest(path).catch(function(error){ return error; });
+  if(updateData instanceof Error){ return false; }
 
-  vaultController.updateInventory(result.profileInventory);
-  for(i in result.characters){
+  vaultController.updateInventory(updateData.profileInventory);
+  for(i in updateData.characters){
     for(z in playerCharacters){
       var currentCheck = playerCharacters[z];
       if(currentCheck.data.characterId == i){
-        currentCheck.data = result[i];
-
+        currentCheck.data = updateData.characters[i];
         currentCheck.showCharacterUI();
       }
     }
@@ -111,7 +106,6 @@ function Vault(){
         if(this.vaultItems[z] == undefined){ this.vaultItems[z] = []; }
         for(y in data[i][z]){
           if(data[i][z][y].itemInstanceId === undefined){
-            console.log("uninstanced item, update it cause i said so.");
             for(n in this.vaultItems[z]){
               if(this.vaultItems[z][n].data.itemHash === data[i][z][y].itemHash){
                 this.vaultItems[z][n].data = data[i][z][y];
@@ -122,14 +116,12 @@ function Vault(){
           }
           if(data[i][z][y].changed == true){
             var localthis = this;
-            console.log("an item has been added to this category.");
             var newItem = new Item();
             newItem.Initialize(z,this.vaultItems[z].length,data[i][z][y]);
             newItem.element.ondblclick = function(ev){ localthis.swapEquipped(newItem); };
             this.vaultItems[z].push(newItem);
           }
           else if(data[i][z][y].changed == false){
-            console.log("this item has been removed from this category");
             for(n in this.vaultItems[z]){
               if(this.vaultItems[z][n].data.itemInstanceId === data[i][z][y].itemInstanceId)
               { this.vaultItems[z][n].destroy(); this.vaultItems[z].splice(n,1); }
@@ -137,7 +129,6 @@ function Vault(){
           }
         }
       }
-    console.log("Finished checking inventory for updates.");
     this.updateItemIndexes();
   };
   this.updateItemIndexes = function(){
@@ -197,12 +188,10 @@ function Item(){
       console.error("That's not a character");
       return false;
     }
-    console.log(playerCharacters);
     var result = await transferRequest(localthis.data, characterID, playerCharacters[0].data.characterId).catch(function(error){ return error; });
     if(result instanceof Error){ alert("Unable to transfer item."); return false; }
     console.log("transfer was successful.");
     await sleep(500);
-    console.log(playerCharacters);
     updateInventory();
   };
 };
@@ -255,7 +244,7 @@ async function postRequest(path, body){
     body: JSON.stringify(body),
   });
   let response = await fetch(request);
-  if(response.status >=200 && response.status < 300){ console.log(response.status); return response.json(); }
+  if(response.status >=200 && response.status < 300){ return response.json(); }
   else{ Promise.reject(response.json().error); }
 }
 //Makes requests to server for equipping new items from existing non-equipped items.

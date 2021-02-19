@@ -21,8 +21,11 @@ function updateTimer(timer){
 };
 async function autoUpdate(timer){
   console.log("Updating inventory...");
+  var startTime = new Date().getTime();
   await updateData();
-  console.log("Page update finished.");
+  sleep(100);
+  var endTime = new Date().getTime();
+  console.log("Inventory updated in "+(endTime-startTime)+" milliseconds.");
   updateTimer(timer);
 };
 function changeCharacter(b){
@@ -37,7 +40,6 @@ async function updateData(){
   var path = "/home/update";
   let result = await fetchRequest(path).catch(function(error){ return error; });
   if(result instanceof Error){ return false; }
-  console.log(result);
   for(i in result){
     for(z in playerCharacters){
       var currentCheck = playerCharacters[z];
@@ -59,7 +61,6 @@ async function updateData(){
   }
   await sleep(500);
   playerCharacters[0].showInventoryUI(true);
-  console.log("finished updating inventory.");
   return Promise.resolve(true);
 };
 function itemEquip(item){
@@ -98,7 +99,6 @@ function character(){
     else { this.showInventoryUI(false); }
   };
   this.updateCharacterUI = function(data){
-    console.log(data);
     for(i in data){
       this.data[i] = data[i];
     }
@@ -167,7 +167,6 @@ function slotController(){
           }
         }
         else if(data.Equippable[i][z].changed == null){
-          console.log("an item's data has been altered.");
           for(n in this.slots[i]){
             if(this.slots[i][n].data.itemInstanceId === data.Equippable[i][z].itemInstanceId){
               this.slots[i][n].data = data.Equippable[i][z];
