@@ -157,12 +157,16 @@ app.get("/home/update", async function(request, response, next){
     var temp = differentiateData(storedData[n], result.data.characterInventories[n]);
     changedData[n] = temp[1].concat(temp[0]);
   }
-  //request.session.data.gamedata.characterInventories = changedData;
+  request.session.data.gamedata.characterInventories = Object.assign({}, result.data.characterInventories);
   for(i in changedData){ changedData[i] = ServerResponse.sortByBucketCategory(changedData[i]); }
   for(z in changedData){
     for(a in changedData[z])
     { changedData[z][a] = ServerResponse.sortByBucketTypeHash(changedData[z][a]); }
+    delete changedData[z].Equippable.Finishers;
+    delete changedData[z].Equippable.SeasonalArtifact;
   }
+
+
   response.status(result.status).json(changedData);
 
   var endTime = new Date().getTime();
@@ -192,15 +196,14 @@ app.get("/vault/data", async function(request, response, next){
 
 app.get("/vault/update", async function(request, response, next){
   var startTime = new Date().getTime();
-  var storedData = request.session.data.gamedata.vault;
+  var storedData = request.session.data.gamedata.vault.profileInventory;
   var components = ["102", "200", "300", "302", "304"];
   let result = await D2API.profileComponentRequest(request, components).catch(function(error){ return error; });
   if(result instanceof Error){ next(result); return; }
   result.data.profileInventory = combineItemswithInstanceData({ profileInventory: result.data.profileInventory },result.data.itemComponents).profileInventory;
-  var temp = differentiateData(storedData.profileInventory, result.data.profileInventory);
+  var temp = differentiateData(storedData, result.data.profileInventory);
   changedData = temp[1].concat(temp[0]);
-  console.log(changeData);
-  //request.session.data.gamedata.vault = Object.assign({},changedData);
+  request.session.data.gamedata.vault.profileInventory = Object.assign({},result.data.profileInventory);
 
   changedData = ServerResponse.sortByBucketCategory(changedData);
   for(b in changedData){ changedData[b] = ServerResponse.sortByBucketTypeHash(changedData[b]); }
@@ -362,19 +365,25 @@ function differentiateData(stored, data){
   }
   for(i in newstored){
     if(newdata[i] === undefined){
-      console.log("Item has been removed from character: ");
       var temp = Object.assign({},newstored[i]);
       temp.changed = false;
       changedData.push(temp);
     }
+    else {
+      if(JSON.stringify(newdata[i]) !== JSON.stringify(newstored[i])){
+        var temp = Object.assign({},newdata[i]);
+        temp.changed = null;
+        changedData.push(temp);
+      }
+    }
   }
   for(i in newdata){
     if(newstored[i] === undefined){
-      console.log("Item has been added to character: ");
       var temp = Object.assign({},newdata[i]);
       temp.changed = true;
       changedData.push(temp);
     }
+
   }
   return [uninstanced, changedData];
 }

@@ -40,7 +40,7 @@ async function updateInventory(){
     for(z in playerCharacters){
       if(playerCharacters[z].data.characterId == i){ playerCharacters[z].slotController.updateInventory(result[i]); }
     }
-  }
+  };
   await sleep(500);
   playerCharacters[0].showInventoryUI(true);
   console.log("finished updating inventory.");
@@ -141,13 +141,21 @@ function slotController(){
         if(data.Equippable[i][z].changed == true){
           var newItem = new Item();
           newItem.Initialize(i,this.slots[i].length,data.Equippable[i][z]);
-
           this.slots[i].push(newItem);
         }
         else if(data.Equippable[i][z].changed == false){
           for(n in this.slots[i]){
             if(this.slots[i][n].data.itemInstanceId === data.Equippable[i][z].itemInstanceId)
             { this.slots[i][n].destroy(); this.slots[i].splice(n,1); }
+          }
+        }
+        else if(data.Equippable[i][z].changed == null){
+          console.log("an item's data has been altered.");
+          for(n in this.slots[i]){
+            if(this.slots[i][n].data.itemInstanceId === data.Equippable[i][z].itemInstanceId){
+              this.slots[i][n].data = data.Equippable[i][z];
+              this.slots[i][n].destroy();
+              this.slots[i][n].changeParent(); }
           }
         }
       }
@@ -200,7 +208,6 @@ function Item(){
     else{ this.element.remove();}
   };
   this.changeParent = function(){
-    this.destroy();
     if(this.data.instanceData.instances.isEquipped)
     { this.parentElement = window.document.getElementById(this.slotName+"-primary-container"); }
     else
