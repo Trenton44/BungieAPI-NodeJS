@@ -106,6 +106,7 @@ async function transferFromVault(request){
   var body = buildTransferRequestBody(request);
   body.characterId = request.body.characterReceiving;
   body.transferToVault = false;
+  console.log(body);
   let result = await postRequest(path, body, access_token).catch(function(error){ throw new D2Responses.APIError(error); });
   return "Successfully transferred item to character";
 };
@@ -118,6 +119,7 @@ async function transferToVault(request){
   var body = buildTransferRequestBody(request);
   body.characterId = request.body.characterTransferring;
   body.transferToVault = true;
+  console.log(body);
   let result = await postRequest(path, body, access_token).catch(function(error){ throw new D2Responses.APIError(error); });
   console.log("Successfully transferred item to vault");
   return "Successfully transferred item to vault";

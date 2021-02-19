@@ -13,7 +13,7 @@ async function Initialize(value){
     playerCharacters.push(new character());
     playerCharacters[i].Initialize(i,result[keys[i]]);
   }
-  updateTimer(15000);
+  updateTimer(25000);
 };
 function updateTimer(timer){
   console.log("starting auto update cycle.");
@@ -46,6 +46,10 @@ async function updateInventory(){
   playerCharacters[0].showInventoryUI(true);
   console.log("finished updating inventory.");
   return Promise.resolve(true);
+};
+async function transferItem(ev, item){
+  console.log(ev);
+  console.log(item);
 };
 function character(){
   this.data;
@@ -99,6 +103,7 @@ function slotController(){
     for(i in data.Equippable){
       if(this.slots[i] == undefined){ this.slots[i] = [];}
       for(z in data.Equippable[i]){
+        localthis = this;
         var newItem = new Item();
         newItem.Initialize(i,this.slots[i].length,data.Equippable[i][z]);
         this.slots[i].push(newItem);
@@ -107,6 +112,9 @@ function slotController(){
     this.specialslots.postmaster = data.Invisible.LostItems;
     this.specialslots.engrams = data.Item.Engrams;
     this.specialslots.currency = data.Currency;
+  };
+  this.swapEquipped = function(item){
+    console.log(item);
   };
   this.wipe = function(){
     for(i in this.slots){
@@ -125,6 +133,7 @@ function slotController(){
           console.log("an item has been added to this category.");
           var newItem = new Item();
           newItem.Initialize(i,this.slots[i].length,data.Equippable[i][z]);
+          newItem.element.ondblclick = function(ev){ localthis.swapEquipped(newItem); };
           this.slots[i].push(newItem);
         }
         else if(data.Equippable[i][z].changed == false){
@@ -144,7 +153,7 @@ function slotController(){
         this.slots[i][z].index = z;
       }
     }
-  }
+  };
   this.show = function(bool){
     for(i in this.slots){
       for(z in this.slots[i]){
@@ -171,6 +180,9 @@ function Item(){
     this.element = window.document.createElement("img");
     this.element.id = this.data.itemInstanceId;
     this.element.src = bungieCommon+this.data.itemHashData.displayProperties.icon;
+    var localthis = this;
+    this.element.draggable = true;
+    this.element.ondragend = function(ev){ localthis.itemTransfer(ev); }
   };
   this.destroy = function(isWipe){
     this.element.remove();
@@ -178,6 +190,25 @@ function Item(){
   this.show = function(bool){
     if(bool){ this.parentElement.append(this.element); }
     else{ this.element.remove();}
+  };
+  this.itemTransfer = async function(ev){
+    var localthis = this;
+    var targetElementID = window.document.elementFromPoint(ev.clientX,ev.clientY).id.split("-")[0];
+    var characterID;
+    try{
+      characterID = playerCharacters[targetElementID.slice(-1)].data.characterId;
+    }
+    catch(TypeError){
+      console.error("That's not a character");
+      return false;
+    }
+    if(targetElementID == "c1" || targetElementID == "c2"){
+      var result = await transferRequest(localthis.data, characterID, playerCharacters[0].data.characterId).catch(function(error){ return error; });
+      if(result instanceof Error){ alert("Unable to transfer item."); return false; }
+      console.log("transfer was successful.");
+      await sleep(500);
+      updateInventory();
+    }
   };
 };
 //Fetch Request function
@@ -188,7 +219,7 @@ async function fetchRequest(path){
   });
   let response = await fetch(request);
   if(response.status >=200 && response.status < 300){ return response.json(); }
-  else{ throw response.error; }
+  else{ Promise.reject(response.json().error); }
 };
 async function postRequest(path, body){
   var request = new Request(path, {
@@ -197,8 +228,8 @@ async function postRequest(path, body){
     body: JSON.stringify(body),
   });
   let response = await fetch(request);
-  if(response.status >=200 && response.status < 300){ return response.json(); }
-  else{ throw response.error; }
+  if(response.status >=200 && response.status < 300){ console.log(response.status); return response.json(); }
+  else{ Promise.reject(response.json().error); }
 }
 //Makes requests to server for equipping new items from existing non-equipped items.
 function equipItem(itemData, rcID){
@@ -227,6 +258,8 @@ function lockItemState(itemData, rcID){
 };
 function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = transferring character
   var path = "/character/transferItem/";
+  console.log(rcID);
+  console.log(tcID);
   var body = {
     quantity: itemData.quantity,
     itemHash: itemData.itemHash,

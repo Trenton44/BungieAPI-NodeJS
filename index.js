@@ -154,8 +154,8 @@ app.get("/home/update", async function(request, response, next){
   delete result.data.itemComponents;
   var temp = {};
   for(n in result.data.characterInventories){
-    var splitdata = differentiateData(storedData[n], result.data.characterInventories[n]);
-    temp[n] = splitdata;
+    var changedData = differentiateData(storedData[n], result.data.characterInventories[n]);
+    temp[n] = changedData;
   }
 
   for(i in temp){ temp[i] = ServerResponse.sortByBucketCategory(temp[i]); }
@@ -173,7 +173,7 @@ app.get("/home/update", async function(request, response, next){
 
 app.get("/vault/data", async function(request, response, next){
   var startTime = new Date().getTime();
-  var components = ["102", "300", "302", "304"];
+  var components = ["102", "200", "300", "302", "304"];
   let result = await D2API.profileComponentRequest(request, components).catch(function(error){ return error; });
   if(result instanceof Error){ next(result); return; }
   result.data.profileInventory = combineItemswithInstanceData({ profileInventory: result.data.profileInventory },result.data.itemComponents).profileInventory;
@@ -183,7 +183,7 @@ app.get("/vault/data", async function(request, response, next){
 
   result.data.profileInventory = ServerResponse.sortByBucketCategory(result.data.profileInventory);
   for(b in result.data.profileInventory){ result.data.profileInventory[b] = ServerResponse.sortByBucketTypeHash(result.data.profileInventory[b]); }
-  response.status(result.status).json({ data: result.data });
+  response.status(result.status).json(result.data);
   var endTime = new Date().getTime();
   console.log("vault access took exactly "+(endTime-startTime)/1000+" seconds.");
   console.log("Payload size.");
@@ -193,17 +193,17 @@ app.get("/vault/data", async function(request, response, next){
 app.get("/vault/update", async function(request, response, next){
   var startTime = new Date().getTime();
   var storedData = request.session.data.gamedata.vault;
-  var components = ["102", "300", "302", "304"];
+  var components = ["102", "200", "300", "302", "304"];
   let result = await D2API.profileComponentRequest(request, components).catch(function(error){ return error; });
   if(result instanceof Error){ next(result); return; }
   result.data.profileInventory = combineItemswithInstanceData({ profileInventory: result.data.profileInventory },result.data.itemComponents).profileInventory;
   var changedData = differentiateData(storedData.profileInventory, result.data.profileInventory);
-  request.session.data.gamedata.vault = Object.assign({},changedData.newData);
+  //request.session.data.gamedata.vault = Object.assign({},changedData.newData);
 
-  changedData.changed = ServerResponse.sortByBucketCategory(changedData.changed);
-  for(b in changedData.changed){ changedData.changed[b] = ServerResponse.sortByBucketTypeHash(changedData.changed[b]); }
-
-  response.status(result.status).json({ data: changedData.changed });
+  changedData = ServerResponse.sortByBucketCategory(changedData);
+  for(b in changedData){ changedData[b] = ServerResponse.sortByBucketTypeHash(changedData[b]); }
+  
+  response.status(result.status).json(changedData);
   var endTime = new Date().getTime();
   console.log("vault update took exactly "+(endTime-startTime)/1000+" seconds.");
   console.log("Payload size.");
@@ -219,10 +219,11 @@ app.post("/character/lockItem",async function(request, response, next){
 
 app.post("/character/transferItem",async function(request, response, next){
   var result;
+  console.log(request.body);
   if(request.body.characterTransferring !== undefined){
     console.log("The item is being transferred to the vault");
     result = await D2API.transferToVault(request).catch(function(error){ return error; });
-    if(result instanceof Error){ next(result); return; }
+    if(result instanceof Error){ result.message = "Your vault is full"; next(result); return; }
   }
   if(request.body.characterReceiving !== undefined){
     console.log("The item is being transferred to a character.");
@@ -230,6 +231,7 @@ app.post("/character/transferItem",async function(request, response, next){
     if(result instanceof Error){ next(result); return; }
   }
   console.log("result: "+result);
+  if(result === undefined){ throw undefined; }
   response.status(200).json({result: result});
 });
 //Sends a POST request to bungie API EquipItem endpoint, returns result of request.

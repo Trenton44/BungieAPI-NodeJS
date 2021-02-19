@@ -2,67 +2,124 @@ var window;
 var bungieCommon = "https://www.bungie.net";
 var playerCharacters = [];
 var vaultController = new Vault();
-
+const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 async function Initialize(value){
   window = value;
-  var path = "/characterids";
-  var ids = await fetchRequest(path);
-  if(ids instanceof Error){ console.log("Unable to obtain characters."); };
-  for(i in ids){
+  var path = "/vault/data";
+  let result = await fetchRequest(path).catch(function(error){ return error; });
+  if(result instanceof Error){ return false; }
+  vaultController.Initialize(result.profileInventory);
+  console.log(result);
+  var characters = result.characters;
+  var keys = Object.keys(characters);
+  for(i in keys){
     playerCharacters.push(new character());
-    playerCharacters[i].Initialize(i, ids[i]);
+    playerCharacters[i].Initialize(i,characters[keys[i]]);
   }
-  updateCharacters();
-};
-async function updateCharacters(){
-  vaultController.fetchLoadout().catch(function(error){ console.error(error); });
-  let result = await Promise.all([playerCharacters[0].loadCharacter(),playerCharacters[1].loadCharacter(),playerCharacters[2].loadCharacter()]).catch(function(error){ return error; });
-  if(result instanceof Error) { console.error(result); return false; }
-  updateGUI();
-};
-function updateGUI(){
-  playerCharacters[0].update();
-  playerCharacters[1].update();
-  playerCharacters[2].update();
+  updateTimer(25000);
 };
 
+function updateTimer(timer){
+  console.log("starting auto update cycle.");
+  sleep(timer).then(function(){ autoUpdate(timer); });
+};
+async function autoUpdate(timer){
+  console.log("Updating inventory...");
+  await updateInventory();
+  sleep(500);
+  console.log("Page update finished.");
+  updateTimer(timer);
+};
+async function updateInventory(){
+  var path = "/vault/update";
+  let result = await fetchRequest(path).catch(function(error){ return error; });
+  if(result instanceof Error){ return false; }
+  vaultController.updateInventory(result);
+  await sleep(500);
+  vaultController.show(true);
+  return Promise.resolve(true);
+};
 function character(){
+  this.data;
+  this.inventory;
+  this.banner;
   this.id;
   this.element;
-  this.characterId;
   this.setID = function(value){
     this.id = value;
+    var localthis = this;
     this.element = window.document.getElementById("c"+this.id);
+    this.showCharacterUI();
   };
-  this.light;
-  this.race;
-  this.class;
-  this.emblem;
-  this.setEmblem = function(value){ this.emblem = bungieCommon+value; };
-  this.update = function(){
-    window.document.getElementById("c"+this.id+"-light").innerHTML = this.light;
-    window.document.getElementById("c"+this.id+"-race").innerHTML = this.race;
-    window.document.getElementById("c"+this.id+"-class").innerHTML = this.class;
-    window.document.getElementById("c"+this.id+"-emblem").src = this.emblem;
+  this.Initialize = function(index, data){
+    this.data = data;
+    this.setID(index);
   }
-  this.Initialize = function(id, characterId){
-    this.setID(id);
-    this.characterId = characterId;
-  };
-  this.loadCharacter = async function(){
-    var path = "/character/"+this.characterId+"/general";
-    var data = await fetchRequest(path).catch(function(error){ return error; });
-    if(data instanceof Error){ Promise.reject(data); }
-    this.light = data.light;
-    this.race = data.race.displayProperties.name;
-    this.class = data.class.displayProperties.name;
-    this.setEmblem(data.emblemBackgroundPath);
-    return Promise.resolve(true);
+  this.showCharacterUI = function(){
+    window.document.getElementById("c"+this.id+"-light").innerHTML = this.data.light;
+    window.document.getElementById("c"+this.id+"-race").innerHTML = this.data.race.displayProperties.name;
+    window.document.getElementById("c"+this.id+"-class").innerHTML = this.data.class.displayProperties.name;
+    window.document.getElementById("c"+this.id+"-emblem").src = bungieCommon+this.data.emblemBackgroundPath;
   };
 };
-
 function Vault(){
   this.vaultItems = {};
+  this.Initialize = async function(data){
+    for(i in data){
+      for(z in data[i]){
+        if(this.vaultItems[z] == undefined){
+          var subMenu = window.document.createElement("div");
+          var descriptor = window.document.createElement("h1");
+          descriptor.innerHTML = z;
+          var container = window.document.createElement("div");
+          container.id = z;
+          subMenu.append(descriptor);
+          subMenu.append(container);
+          window.document.getElementById("vault-equipment").append(subMenu);
+          this.vaultItems[z] = [];
+        }
+        for(y in data[i][z]){
+          var newItem = new Item();
+          newItem.Initialize(z,y,data[i][z][y]);
+          newItem.element.ondblclick = function(ev){ localthis.swapEquipped(newItem); };
+          this.vaultItems[z].push(newItem);
+        }
+      }
+    }
+    this.show(true);
+  };
+  this.updateInventory = function(data){
+    console.log(data);
+    for(i in data){
+      for(z in data[i]){
+        for(y in data[i][z]){
+          if(data[i][z][y].changed == true){
+            console.log("an item has been added to this category.");
+            var newItem = new Item();
+            newItem.Initialize(z,this.vaultItems[z].length,data[i][z][y]);
+            newItem.element.ondblclick = function(ev){ localthis.swapEquipped(newItem); };
+            this.vaultItems[z].push(newItem);
+          }
+          else if(data[i][z][y].changed == false){
+            console.log("this item has been removed from this category");
+            for(n in this.vaultItems[z]){
+              if(this.vaultItems[z][n].data.itemInstanceId === data[i][z][y].itemInstanceId)
+              { this.vaultItems[z][n].destroy(); this.vaultItems[z].splice(n,1); }
+            }
+          }
+        }
+      }
+    }
+    console.log("Finished checking inventory for updates.");
+    this.updateItemIndexes();
+  };
+  this.updateItemIndexes = function(){
+    for(i in this.vaultItems){
+      for(z in this.vaultItems[i]){
+        this.vaultItems[i][z].index = z;
+      }
+    }
+  }
   this.wipe = function(){
     var length = this.vaultItems.length;
     for(var z = 0; z<length; z++){
@@ -70,80 +127,58 @@ function Vault(){
       this.vaultItems.shift();
     }
   };
-  this.fetchLoadout = async function(){
-    this.wipe();
-    var path = "/profile/vault";
-    var data = await fetchRequest(path).catch(function(error){ return error; });
-    if(data instanceof Error){ return data; }
-    console.log(data);
-    for(i in data){
-      if(this.vaultItems[i] == undefined){
-        var subMenu = window.document.createElement("div");
-        var descriptor = window.document.createElement("h1");
-        descriptor.innerHTML = i;
-        var container = window.document.createElement("div");
-        container.id = i;
-        subMenu.append(descriptor);
-        subMenu.append(container);
-        window.document.getElementById("vault-equipment").append(subMenu);
-        this.vaultItems[i] = [];
-      }
-      for(z in data[i]){
-        var newItem = new Item();
-        newItem.Initialize(i,z,data[i][z]);
-        this.vaultItems[i].push(newItem);
+  this.show = function(bool){
+    for(i in this.vaultItems){
+      for(z in this.vaultItems[i]){
+        this.vaultItems[i][z].show(bool);
       }
     }
   };
 };
 function Item(){
+  this.slotName;
   this.data;
   this.index;
-  this.slotName;
-  this.HTMLTemplate;
+  this.element;
+  this.parentElement;
   this.Initialize = function(slotName, index, data){
-    this.index = index;
     this.slotName = slotName;
-    var temp = window.document.createElement("div");
-    temp.innerHTML = data.HTMLTemplate;
-    window.document.getElementById(this.slotName).append(temp.firstChild);
-    this.changeData(data);
-    this.HTMLTemplate = window.document.getElementById(this.data.htmlId);
-    this.changeHTML(this.HTMLTemplate.innerHTML);
-  };
-  this.changeData = function(value){
-    this.data = value;
-  };
-  this.changeHTML = function(value){
-    this.HTMLTemplate.innerHTML = value;
-    var children = this.HTMLTemplate.children;
+    this.index = index;
+    this.data = data;
+    this.parentElement = window.document.getElementById(this.slotName);
+    this.element = window.document.createElement("img");
+    this.element.id = this.data.itemInstanceId;
+    this.element.src = bungieCommon+this.data.itemHashData.displayProperties.icon;
     var localthis = this;
-    this.HTMLTemplate.draggable = true;
-    this.HTMLTemplate.ondragend = function(ev){localthis.drop(ev);};
-    this.HTMLTemplate.ondblclick = function(ev){ loadSideMenu(localthis.data); };
+    this.element.draggable = true;
+    this.element.ondragend = function(ev){ localthis.itemTransfer(ev); };
   };
   this.destroy = function(isWipe){
-      this.HTMLTemplate.remove();
-      this.data = null;
-      if(isWipe) return true;
-      vaultController.vaultItems[this.slotName].splice(this.index,1);
+    this.element.remove();
   };
-  this.drop = async function(ev){
+  this.show = function(bool){
+    if(bool){ this.parentElement.append(this.element); }
+    else{ this.element.remove();}
+  };
+  this.itemTransfer = async function(ev){
     var localthis = this;
     var targetElementID = window.document.elementFromPoint(ev.clientX,ev.clientY).id.split("-")[0];
+    var characterID;
     try{
-      var characterID = playerCharacters[targetElementID.slice(-1)].characterId;
+      characterID = playerCharacters[targetElementID.slice(-1)].data.characterId;
     }
     catch(TypeError){
       console.error("That's not a character");
       return false;
     }
-    var result = await transferRequest(localthis.data, characterID);
+    var result = await transferRequest(localthis.data, characterID, playerCharacters[0].data.characterId).catch(function(error){ return error; });
     if(result instanceof Error){ alert("Unable to transfer item."); return false; }
-    alert("transfer was successful.");
-    localthis.destroy(false);
+    console.log("transfer was successful.");
+    await sleep(500);
+    updateInventory();
   };
 };
+
 function loadSideMenu(itemData){
   window.document.getElementById("side-view").style.display= "none";
   window.document.getElementById("side-view").style.display= "initial";
@@ -174,14 +209,7 @@ function loadSideMenu(itemData){
     window.document.getElementById("stat-preview-block").append(statcontainer);
   }
 };
-function hideSideMenu(){
-  window.document.getElementById("side-view").style.display= "none";
-  while(window.document.getElementById("stat-preview-block").hasChildNodes()){
-    window.document.getElementById("stat-preview-block").removeChild(window.document.getElementById("stat-preview-block").childNodes[0]);
-  }
-  window.document.getElementById("item-preview-light").innerHTML = "";
-  window.document.getElementById("item-preview-damageIcon").src = "";
-};
+
 //Fetch Request function
 async function fetchRequest(path){
   var request = new Request(path, {
@@ -190,7 +218,7 @@ async function fetchRequest(path){
   });
   let response = await fetch(request);
   if(response.status >=200 && response.status < 300){ return response.json(); }
-  else{ return new Error(); }
+  else{ Promise.reject(response.json().error); }
 };
 async function postRequest(path, body){
   var request = new Request(path, {
@@ -199,8 +227,8 @@ async function postRequest(path, body){
     body: JSON.stringify(body),
   });
   let response = await fetch(request);
-  if(response.status >=200 && response.status < 300){ return response.json(); }
-  else{ return new Error(); }
+  if(response.status >=200 && response.status < 300){ console.log(response.status); return response.json(); }
+  else{ Promise.reject(response.json().error); }
 }
 //Makes requests to server for equipping new items from existing non-equipped items.
 function equipItem(itemData, rcID){
@@ -227,31 +255,14 @@ function lockItemState(itemData, rcID){
   };
   return postRequest(path, body);
 };
-function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = transferring character
+function transferRequest(itemData, rcID){ //rc=receiveing character, tc = transferring character
   var path = "/character/transferItem/";
   var body = {
     quantity: itemData.quantity,
     itemHash: itemData.itemHash,
     itemInstanceId: itemData.itemInstanceId,
-    characterTransferring: tcID,
     characterReceiving: rcID,
     transferToVault: false,
   };
   return postRequest(path, body);
 };
-async function test(){
-  var startTime = new Date().getTime();
-  var path = "/vault/data";
-  let result = await fetchRequest(path).catch(function(error){ console.error(error); return false; });
-  console.log(result);
-  var endTime = new Date().getTime();
-  console.log("vault access took exactly "+(endTime-startTime)/1000+" seconds.");
-}
-async function test2(){
-  var startTime = new Date().getTime();
-  var path = "/vault/update";
-  let result = await fetchRequest(path).catch(function(error){ console.error(error); return false; });
-  console.log(result);
-  var endTime = new Date().getTime();
-  console.log("vault access took exactly "+(endTime-startTime)/1000+" seconds.");
-}
