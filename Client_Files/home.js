@@ -136,7 +136,7 @@ function slotController(){
   };
   this.updateInventory = function(data){
     for(i in data.Equippable){
-      if(this.slots[i] == undefined){ this.slots[i] = [];}
+      if(this.slots[i] == undefined){ this.slots[i] = []; }
       for(z in data.Equippable[i]){
         if(data.Equippable[i][z].changed == true){
           var newItem = new Item();

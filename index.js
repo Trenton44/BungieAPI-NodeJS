@@ -187,6 +187,8 @@ app.get("/vault/data", async function(request, response, next){
 
   result.data.profileInventory = ServerResponse.sortByBucketCategory(result.data.profileInventory);
   for(b in result.data.profileInventory){ result.data.profileInventory[b] = ServerResponse.sortByBucketTypeHash(result.data.profileInventory[b]); }
+  delete result.data.profileInventory.Ignored;
+  delete result.data.profileInventory.Invisible;
   response.status(result.status).json(result.data);
   var endTime = new Date().getTime();
   console.log("vault access took exactly "+(endTime-startTime)/1000+" seconds.");
@@ -207,7 +209,8 @@ app.get("/vault/update", async function(request, response, next){
 
   changedData = ServerResponse.sortByBucketCategory(changedData);
   for(b in changedData){ changedData[b] = ServerResponse.sortByBucketTypeHash(changedData[b]); }
-
+  delete changedData.Ignored;
+  delete changedData.Invisible;
   response.status(result.status).json(changedData);
   var endTime = new Date().getTime();
   console.log("vault update took exactly "+(endTime-startTime)/1000+" seconds.");
@@ -365,12 +368,14 @@ function differentiateData(stored, data){
   }
   for(i in newstored){
     if(newdata[i] === undefined){
+      console.log("item has been removed");
       var temp = Object.assign({},newstored[i]);
       temp.changed = false;
       changedData.push(temp);
     }
     else {
       if(JSON.stringify(newdata[i]) !== JSON.stringify(newstored[i])){
+        console.log("item has been altered");
         var temp = Object.assign({},newdata[i]);
         temp.changed = null;
         changedData.push(temp);
@@ -379,6 +384,7 @@ function differentiateData(stored, data){
   }
   for(i in newdata){
     if(newstored[i] === undefined){
+      console.log("item has been added");
       var temp = Object.assign({},newdata[i]);
       temp.changed = true;
       changedData.push(temp);

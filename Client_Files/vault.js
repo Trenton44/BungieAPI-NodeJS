@@ -35,6 +35,7 @@ async function updateInventory(){
   var path = "/vault/update";
   let result = await fetchRequest(path).catch(function(error){ return error; });
   if(result instanceof Error){ return false; }
+  console.log(result);
   vaultController.updateInventory(result);
   await sleep(500);
   vaultController.show(true);
@@ -90,10 +91,20 @@ function Vault(){
     this.show(true);
   };
   this.updateInventory = function(data){
-    console.log(data);
     for(i in data){
       for(z in data[i]){
+        if(this.vaultItems[z] == undefined){ this.vaultItems[z] = []; }
         for(y in data[i][z]){
+          if(data[i][z][y].itemInstanceId === undefined){
+            console.log("uninstanced item, update it cause i said so.");
+            for(n in this.vaultItems[z]){
+              if(this.vaultItems[z][n].data.itemHash === data[i][z][y].itemHash){
+                this.vaultItems[z][n].data = data[i][z][y];
+                this.vaultItems[z][n].destroy();
+                }
+              }
+            }
+          }
           if(data[i][z][y].changed == true){
             console.log("an item has been added to this category.");
             var newItem = new Item();
@@ -110,7 +121,6 @@ function Vault(){
           }
         }
       }
-    }
     console.log("Finished checking inventory for updates.");
     this.updateItemIndexes();
   };
@@ -120,12 +130,11 @@ function Vault(){
         this.vaultItems[i][z].index = z;
       }
     }
-  }
+  };
   this.wipe = function(){
     var length = this.vaultItems.length;
     for(var z = 0; z<length; z++){
       this.vaultItems[0].destroy(true);
-      this.vaultItems.shift();
     }
   };
   this.show = function(bool){
