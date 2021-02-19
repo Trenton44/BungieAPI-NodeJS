@@ -7,6 +7,7 @@ async function Initialize(value){
   var path = "/home/data";
   let result = await fetchRequest(path).catch(function(error){ return error; });
   if(result instanceof Error){ return false; }
+  console.log(result);
   var keys = Object.keys(result);
   for(i in keys){
     playerCharacters.push(new character());
@@ -20,7 +21,7 @@ function updateTimer(timer){
 };
 async function autoUpdate(timer){
   console.log("Updating inventory...");
-  await updateInventory();
+  await updateData();
   console.log("Page update finished.");
   updateTimer(timer);
 };
@@ -32,15 +33,30 @@ function changeCharacter(b){
     playerCharacters[i].setID(i);
   }
 };
-async function updateInventory(){
+async function updateData(){
   var path = "/home/update";
   let result = await fetchRequest(path).catch(function(error){ return error; });
   if(result instanceof Error){ return false; }
+  console.log(result);
   for(i in result){
     for(z in playerCharacters){
-      if(playerCharacters[z].data.characterId == i){ playerCharacters[z].slotController.updateInventory(result[i]); }
+      var currentCheck = playerCharacters[z];
+      if(currentCheck.data.characterId == i){
+        currentCheck.slotController.updateInventory(result[i].itemInventory);
+
+      }
     }
-  };
+  }
+  for(i in result){
+    delete result[i].itemInventory;
+    for(z in playerCharacters){
+      var currentCheck = playerCharacters[z];
+      if(currentCheck.data.characterId == i){
+        currentCheck.updateCharacterUI(result[i]);
+        currentCheck.showCharacterUI();
+      }
+    }
+  }
   await sleep(500);
   playerCharacters[0].showInventoryUI(true);
   console.log("finished updating inventory.");
@@ -79,12 +95,13 @@ function character(){
       //for(i in this.data.stats){ window.document.getElementById(i).innerHTML = this.data.stats[i]; }
       this.showInventoryUI(true);
     }
-    else {
-      this.showInventoryUI(false);
-    }
+    else { this.showInventoryUI(false); }
   };
-  this.updateCharacterUI = function(){
-
+  this.updateCharacterUI = function(data){
+    console.log(data);
+    for(i in data){
+      this.data[i] = data[i];
+    }
   };
   this.showInventoryUI = function(bool){
     this.slotController.show(bool);
@@ -229,7 +246,7 @@ function Item(){
       if(result instanceof Error){ alert("Unable to transfer item."); return false; }
       console.log("transfer was successful.");
       await sleep(500);
-      updateInventory();
+      updateData();
     }
   };
 };

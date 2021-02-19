@@ -162,12 +162,14 @@ app.get("/home/update", async function(request, response, next){
   for(z in changedData){
     for(a in changedData[z])
     { changedData[z][a] = ServerResponse.sortByBucketTypeHash(changedData[z][a]); }
-    delete changedData[z].Equippable.Finishers;
-    delete changedData[z].Equippable.SeasonalArtifact;
+  }
+  for(i in result.data.characters){
+    result.data.characters[i].itemInventory = changedData[i];
+    delete result.data.characters[i].itemInventory.Equippable.Finishers;
+    delete result.data.characters[i].itemInventory.Equippable.SeasonalArtifact;
   }
 
-
-  response.status(result.status).json(changedData);
+  response.status(result.status).json(result.data.characters);
 
   var endTime = new Date().getTime();
   console.log("vault update took exactly "+(endTime-startTime)/1000+" seconds.");
@@ -211,7 +213,11 @@ app.get("/vault/update", async function(request, response, next){
   for(b in changedData){ changedData[b] = ServerResponse.sortByBucketTypeHash(changedData[b]); }
   delete changedData.Ignored;
   delete changedData.Invisible;
-  response.status(result.status).json(changedData);
+  var data = {
+    characters: result.data.characters,
+    profileInventory: changedData,
+  };
+  response.status(result.status).json(data);
   var endTime = new Date().getTime();
   console.log("vault update took exactly "+(endTime-startTime)/1000+" seconds.");
   console.log("Payload size.");

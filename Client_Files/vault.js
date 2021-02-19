@@ -17,6 +17,7 @@ async function Initialize(value){
     playerCharacters.push(new character());
     playerCharacters[i].Initialize(i,characters[keys[i]]);
   }
+  console.log(playerCharacters);
   updateTimer(25000);
 };
 
@@ -32,11 +33,24 @@ async function autoUpdate(timer){
   updateTimer(timer);
 };
 async function updateInventory(){
+  console.log(playerCharacters);
   var path = "/vault/update";
   let result = await fetchRequest(path).catch(function(error){ return error; });
   if(result instanceof Error){ return false; }
+  console.log(playerCharacters);
   console.log(result);
-  vaultController.updateInventory(result);
+
+  vaultController.updateInventory(result.profileInventory);
+  for(i in result.characters){
+    for(z in playerCharacters){
+      var currentCheck = playerCharacters[z];
+      if(currentCheck.data.characterId == i){
+        currentCheck.data = result[i];
+
+        currentCheck.showCharacterUI();
+      }
+    }
+  }
   await sleep(500);
   vaultController.show(true);
   return Promise.resolve(true);
@@ -183,10 +197,12 @@ function Item(){
       console.error("That's not a character");
       return false;
     }
+    console.log(playerCharacters);
     var result = await transferRequest(localthis.data, characterID, playerCharacters[0].data.characterId).catch(function(error){ return error; });
     if(result instanceof Error){ alert("Unable to transfer item."); return false; }
     console.log("transfer was successful.");
     await sleep(500);
+    console.log(playerCharacters);
     updateInventory();
   };
 };
