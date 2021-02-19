@@ -197,7 +197,7 @@ function Item(){
     this.element.src = bungieCommon+this.data.itemHashData.displayProperties.icon;
     var localthis = this;
     this.element.draggable = true;
-    this.element.ondragend = function(){ localthis.itemTransfer(ev); }
+    this.element.ondragend = function(ev){ localthis.itemTransfer(ev); }
     this.element.ondblclick = function(){ itemEquip(localthis); };
   };
   this.destroy = function(isWipe){

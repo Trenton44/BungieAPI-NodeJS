@@ -81,6 +81,7 @@ function Vault(){
           this.vaultItems[z] = [];
         }
         for(y in data[i][z]){
+          var localthis = this;
           var newItem = new Item();
           newItem.Initialize(z,y,data[i][z][y]);
           newItem.element.ondblclick = function(ev){ localthis.swapEquipped(newItem); };
@@ -106,6 +107,7 @@ function Vault(){
             }
           }
           if(data[i][z][y].changed == true){
+            var localthis = this;
             console.log("an item has been added to this category.");
             var newItem = new Item();
             newItem.Initialize(z,this.vaultItems[z].length,data[i][z][y]);
