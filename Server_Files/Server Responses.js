@@ -14,6 +14,8 @@ const DestinyDamageTypeDefinition = require(manifestRoot+"/DestinyDamageTypeDefi
 const DestinyEquipmentSlotDefinition = require(manifestRoot+"/DestinyEquipmentSlotDefinition.json");
 const DestinyInventoryBucketDefinition = require(manifestRoot+"/DestinyInventoryBucketDefinition.json");
 const DestinyStatDefinition = require(manifestRoot+"/DestinyStatDefinition.json");
+const DestinyVendorDefinition = require(manifestRoot+"/DestinyVendorDefinition.json");
+const DestinyInventoryItemDefinition = require(manifestRoot+"/DestinyInventoryItemDefinition.json");
 const DestinyBucketCategory = {
   "0": "Invisible",
   "1": "Item",
@@ -126,16 +128,41 @@ function sortByBucketDefinition(items){
 };
 exports.sortByBucketDefinition = sortByBucketDefinition;
 
+function bucketHashSort(items){
+  var sortedEquipment = {};
+  for(i in items){
+    var buckethash = items[i].bucketHash;
+    var bucketname = DestinyInventoryBucketDefinition[buckethash].displayProperties.name;
+    if(bucketname === undefined){
+      bucketname = buckethash;
+    }
+    else {
+      bucketname = bucketname.split(" ").join("");
+      bucketname = String(bucketname);
+    }
+    if(sortedEquipment[bucketname] == undefined)
+      { sortedEquipment[bucketname] = []; }
+    sortedEquipment[bucketname].push(items[i]);
+  }
+  return sortedEquipment;
+};
+exports.bucketHashSort = bucketHashSort;
+
 function sortByBucketTypeHash(items){
   var sortedEquipment = {};
   for(i in items){
     var bucketTypeHash = items[i].itemHashData.inventory.bucketTypeHash;
-    var bucketHashResult = DestinyInventoryBucketDefinition[bucketTypeHash].displayProperties.name;
-    bucketHashResult = String(bucketHashResult);
-    bucketHashResult = bucketHashResult.split(" ").join("");
-    if(sortedEquipment[bucketHashResult] == undefined)
-      { sortedEquipment[bucketHashResult] = []; }
-    sortedEquipment[bucketHashResult].push(items[i]);
+    var bucketname = DestinyInventoryBucketDefinition[bucketTypeHash].displayProperties.name;
+    if(bucketname === undefined){
+      bucketname = bucketTypeHash;
+    }
+    else {
+      bucketname = bucketname.split(" ").join("");
+      bucketname = String(bucketname);
+    }
+    if(sortedEquipment[bucketname] == undefined)
+      { sortedEquipment[bucketname] = []; }
+    sortedEquipment[bucketname].push(items[i]);
   }
   return sortedEquipment;
 }
@@ -158,7 +185,7 @@ exports.SubclassResponseFormat = SubclassResponseFormat;
 
 var WeaponResponseFormat = function(item,i,z){
   var format = ItemResponseFormat(item,i,z);
-  format.energyIcon = bungieCommon+item.instances.damageTypeData.displayProperties.icon;
+  //format.energyIcon = bungieCommon+item.instances.damageTypeData.displayProperties.icon;
   format.light = item.instances.primaryStat.value;
   format.stats = item.stats;
   format.equipped = item.instances.isEquipped;

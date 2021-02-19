@@ -237,6 +237,21 @@ function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = t
     characterReceiving: rcID,
     transferToVault: false,
   };
-  console.log(body);
   return postRequest(path, body);
 };
+async function test(){
+  var startTime = new Date().getTime();
+  var path = "/vault/data";
+  let result = await fetchRequest(path).catch(function(error){ console.error(error); return false; });
+  console.log(result);
+  var endTime = new Date().getTime();
+  console.log("vault access took exactly "+(endTime-startTime)/1000+" seconds.");
+}
+async function test2(){
+  var startTime = new Date().getTime();
+  var path = "/vault/update";
+  let result = await fetchRequest(path).catch(function(error){ console.error(error); return false; });
+  console.log(result);
+  var endTime = new Date().getTime();
+  console.log("vault access took exactly "+(endTime-startTime)/1000+" seconds.");
+}

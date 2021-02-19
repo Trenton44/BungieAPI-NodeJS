@@ -1227,19 +1227,54 @@
   },
   "15917031": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "Defeat combatants using Dead Man's Tale.",
+      "name": "Dead Man's Tale Catalyst",
+      "icon": "/common/destiny2_content/icons/44c851a53be2f7666ae847e6d3917374.png",
+      "hasIcon": true
     },
     "scope": 0,
+    "objectiveHashes": [
+      3122496419
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 0,
+      "shouldFireToast": true,
+      "toastStyle": 1
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": ""
+    },
+    "expirationInfo": {
+      "hasExpiration": false,
+      "description": ""
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 1,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      2538646043
+    ],
     "hash": 15917031,
     "index": 143,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "18623236": {
@@ -6220,7 +6255,7 @@
       2817430389
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -6713,7 +6748,7 @@
       17100554
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -8517,7 +8552,7 @@
       104920869
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -10155,19 +10190,59 @@
   },
   "307334360": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "Leave no stone unturned aboard the Glykon.",
+      "name": "Captain's Log",
+      "icon": "/common/destiny2_content/icons/4022f72f50d94a4b6432fa2914615e78.png",
+      "hasIcon": true
     },
-    "scope": 0,
+    "scope": 1,
+    "objectiveHashes": [
+      2642349237
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 0,
+      "shouldFireToast": true,
+      "toastStyle": 6
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": ""
+    },
+    "expirationInfo": {
+      "hasExpiration": false,
+      "description": ""
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [
+      {
+        "itemHash": 2211488305,
+        "quantity": 1
+      }
+    ],
+    "presentationNodeType": 1,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      1371596490
+    ],
     "hash": 307334360,
     "index": 193,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "308529477": {
@@ -13067,7 +13142,7 @@
       2109478496
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -16076,7 +16151,7 @@
       289301925
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -22100,7 +22175,7 @@
       2380545641
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -26970,19 +27045,199 @@
   },
   "952432579": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "Find all the pages of the captain's log.",
+      "name": "Bound in Memory",
+      "icon": "/common/destiny2_content/icons/4022f72f50d94a4b6432fa2914615e78.png",
+      "hasIcon": true
     },
     "scope": 0,
+    "objectiveHashes": [],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 0,
+      "shouldFireToast": true,
+      "toastStyle": 1
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": ""
+    },
+    "expirationInfo": {
+      "hasExpiration": true,
+      "description": "Expires at the end of Season 15"
+    },
+    "intervalInfo": {
+      "intervalObjectives": [
+        {
+          "intervalObjectiveHash": 161784312,
+          "intervalScoreValue": 2
+        },
+        {
+          "intervalObjectiveHash": 161784313,
+          "intervalScoreValue": 2
+        },
+        {
+          "intervalObjectiveHash": 161784314,
+          "intervalScoreValue": 2
+        },
+        {
+          "intervalObjectiveHash": 161784315,
+          "intervalScoreValue": 2
+        },
+        {
+          "intervalObjectiveHash": 161784316,
+          "intervalScoreValue": 2
+        },
+        {
+          "intervalObjectiveHash": 161784317,
+          "intervalScoreValue": 2
+        },
+        {
+          "intervalObjectiveHash": 161784318,
+          "intervalScoreValue": 2
+        },
+        {
+          "intervalObjectiveHash": 161784319,
+          "intervalScoreValue": 2
+        },
+        {
+          "intervalObjectiveHash": 161784304,
+          "intervalScoreValue": 2
+        },
+        {
+          "intervalObjectiveHash": 161784305,
+          "intervalScoreValue": 2
+        },
+        {
+          "intervalObjectiveHash": 657128139,
+          "intervalScoreValue": 2
+        },
+        {
+          "intervalObjectiveHash": 657128138,
+          "intervalScoreValue": 3
+        }
+      ],
+      "intervalRewards": [
+        {
+          "intervalRewardItems": [
+            {
+              "itemHash": 2238134125,
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "intervalRewardItems": [
+            {
+              "itemHash": 2238134125,
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "intervalRewardItems": [
+            {
+              "itemHash": 2238134125,
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "intervalRewardItems": [
+            {
+              "itemHash": 2238134125,
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "intervalRewardItems": [
+            {
+              "itemHash": 2238134125,
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "intervalRewardItems": [
+            {
+              "itemHash": 2238134125,
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "intervalRewardItems": [
+            {
+              "itemHash": 2238134125,
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "intervalRewardItems": [
+            {
+              "itemHash": 2238134125,
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "intervalRewardItems": [
+            {
+              "itemHash": 2238134125,
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "intervalRewardItems": [
+            {
+              "itemHash": 2238134125,
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "intervalRewardItems": [
+            {
+              "itemHash": 2238134125,
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "intervalRewardItems": [
+            {
+              "itemHash": 2238134125,
+              "quantity": 1
+            }
+          ]
+        }
+      ],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      3108806378,
+      1321008462
+    ],
     "hash": 952432579,
     "index": 868,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "955571927": {
@@ -37017,7 +37272,7 @@
       1400562722
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": true,
       "titlesByGender": {
@@ -37962,19 +38217,54 @@
   },
   "1314161610": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "Complete the Dead Man's Tale catalyst quest.",
+      "name": "Dead Man's Epilogue",
+      "icon": "/common/destiny2_content/icons/4022f72f50d94a4b6432fa2914615e78.png",
+      "hasIcon": true
     },
     "scope": 0,
+    "objectiveHashes": [
+      12260851
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 10,
+      "shouldFireToast": true,
+      "toastStyle": 1
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": ""
+    },
+    "expirationInfo": {
+      "hasExpiration": true,
+      "description": "Expires at the end of Season 15"
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      3108806378
+    ],
     "hash": 1314161610,
     "index": 873,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "1314438298": {
@@ -39033,7 +39323,7 @@
       223470151
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -40883,53 +41173,166 @@
   },
   "1437052812": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "With access to the mainframe, uncover the final set of clues aboard the Glykon.",
+      "name": "All the Scattered Pieces",
+      "icon": "/common/destiny2_content/icons/4022f72f50d94a4b6432fa2914615e78.png",
+      "hasIcon": true
     },
     "scope": 0,
+    "objectiveHashes": [
+      916729041,
+      916729040
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 10,
+      "shouldFireToast": true,
+      "toastStyle": 1
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": ""
+    },
+    "expirationInfo": {
+      "hasExpiration": true,
+      "description": "Expires at the end of Season 15"
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [
+      {
+        "itemHash": 1249788648,
+        "quantity": 1
+      }
+    ],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      3108806378
+    ],
     "hash": 1437052812,
     "index": 876,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "1437052814": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "Uncover clues aboard the Glykon.",
+      "name": "Figments of an Answer",
+      "icon": "/common/destiny2_content/icons/4022f72f50d94a4b6432fa2914615e78.png",
+      "hasIcon": true
     },
     "scope": 0,
+    "objectiveHashes": [
+      3838695215,
+      3838695214
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 10,
+      "shouldFireToast": true,
+      "toastStyle": 1
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": ""
+    },
+    "expirationInfo": {
+      "hasExpiration": true,
+      "description": "Expires at the end of Season 15"
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      3108806378
+    ],
     "hash": 1437052814,
     "index": 874,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "1437052815": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "With tentative aid, uncover new clues aboard the Glykon.",
+      "name": "Another Link in the Chain",
+      "icon": "/common/destiny2_content/icons/4022f72f50d94a4b6432fa2914615e78.png",
+      "hasIcon": true
     },
     "scope": 0,
+    "objectiveHashes": [
+      10959788,
+      10959789
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 10,
+      "shouldFireToast": true,
+      "toastStyle": 1
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": ""
+    },
+    "expirationInfo": {
+      "hasExpiration": true,
+      "description": "Expires at the end of Season 15"
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      3108806378
+    ],
     "hash": 1437052815,
     "index": 875,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "1438116414": {
@@ -42755,7 +43158,7 @@
       964792589
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -44617,19 +45020,54 @@
   },
   "1622888137": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "Complete Exotic quest \"Presage.\"",
+      "name": "The Sights I've Seen",
+      "icon": "/common/destiny2_content/icons/4022f72f50d94a4b6432fa2914615e78.png",
+      "hasIcon": true
     },
     "scope": 0,
+    "objectiveHashes": [
+      834596138
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 15,
+      "shouldFireToast": true,
+      "toastStyle": 1
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": ""
+    },
+    "expirationInfo": {
+      "hasExpiration": true,
+      "description": "Expires at the end of Season 15"
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      3108806378
+    ],
     "hash": 1622888137,
     "index": 866,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "1627455393": {
@@ -44895,7 +45333,7 @@
       905462170
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -45091,19 +45529,55 @@
   },
   "1642574513": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "Uncover the Dead Man's Tale.",
+      "name": "Graven Tales",
+      "icon": "/common/destiny2_content/icons/4022f72f50d94a4b6432fa2914615e78.png",
+      "hasIcon": true
     },
     "scope": 0,
+    "objectiveHashes": [
+      3888135330
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 30,
+      "shouldFireToast": true,
+      "toastStyle": 1
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": ""
+    },
+    "expirationInfo": {
+      "hasExpiration": true,
+      "description": "Expires at the end of Season 15"
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      3108806378,
+      1321008462
+    ],
     "hash": 1642574513,
     "index": 872,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "1643715182": {
@@ -47304,7 +47778,7 @@
       3841382658
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": true,
       "titlesByGender": {
@@ -49480,7 +49954,7 @@
       3227551574
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -52879,53 +53353,197 @@
   },
   "1868136556": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "",
+      "name": "ENTRY 10 - Blood in the Barrel",
+      "icon": "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/0b46982ef6f6df9a75e527e3a9eca7d8.png"
+          ]
+        }
+      ],
+      "hasIcon": true
     },
     "scope": 0,
+    "loreHash": 4064244884,
+    "objectiveHashes": [
+      2278517553
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 0,
+      "shouldFireToast": true,
+      "toastStyle": 2
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": "Requires Season Pass: Season of the Chosen"
+    },
+    "expirationInfo": {
+      "hasExpiration": false,
+      "description": ""
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      1428811610
+    ],
     "hash": 1868136556,
     "index": 1156,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "1868136557": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "",
+      "name": "ENTRY 11 - Sullen",
+      "icon": "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/0b46982ef6f6df9a75e527e3a9eca7d8.png"
+          ]
+        }
+      ],
+      "hasIcon": true
     },
     "scope": 0,
+    "loreHash": 4064244885,
+    "objectiveHashes": [
+      939465190
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 0,
+      "shouldFireToast": true,
+      "toastStyle": 2
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": "Requires Season Pass: Season of the Chosen"
+    },
+    "expirationInfo": {
+      "hasExpiration": false,
+      "description": ""
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      1428811610
+    ],
     "hash": 1868136557,
     "index": 1157,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "1868136558": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "",
+      "name": "ENTRY 12 - Debtor's Knife",
+      "icon": "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/0b46982ef6f6df9a75e527e3a9eca7d8.png"
+          ]
+        }
+      ],
+      "hasIcon": true
     },
     "scope": 0,
+    "loreHash": 4064244886,
+    "objectiveHashes": [
+      2254155407
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 0,
+      "shouldFireToast": true,
+      "toastStyle": 2
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": "Requires Season Pass: Season of the Chosen"
+    },
+    "expirationInfo": {
+      "hasExpiration": false,
+      "description": ""
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      1428811610
+    ],
     "hash": 1868136558,
     "index": 1158,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "1869129580": {
@@ -53234,7 +53852,7 @@
       3444189218
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -54956,155 +55574,587 @@
   },
   "1968777136": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "",
+      "name": "ENTRY 5 - Feast Your Eyes",
+      "icon": "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/0b46982ef6f6df9a75e527e3a9eca7d8.png"
+          ]
+        }
+      ],
+      "hasIcon": true
     },
     "scope": 0,
+    "loreHash": 2404855624,
+    "objectiveHashes": [
+      91033309
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 0,
+      "shouldFireToast": true,
+      "toastStyle": 2
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": "Requires Season Pass: Season of the Chosen"
+    },
+    "expirationInfo": {
+      "hasExpiration": false,
+      "description": ""
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      1428811610
+    ],
     "hash": 1968777136,
     "index": 1151,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "1968777137": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "",
+      "name": "ENTRY 4 - Well of Absence",
+      "icon": "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/0b46982ef6f6df9a75e527e3a9eca7d8.png"
+          ]
+        }
+      ],
+      "hasIcon": true
     },
     "scope": 0,
+    "loreHash": 2404855625,
+    "objectiveHashes": [
+      598631330
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 0,
+      "shouldFireToast": true,
+      "toastStyle": 2
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": "Requires Season Pass: Season of the Chosen"
+    },
+    "expirationInfo": {
+      "hasExpiration": false,
+      "description": ""
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      1428811610
+    ],
     "hash": 1968777137,
     "index": 1150,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "1968777138": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "",
+      "name": "ENTRY 7 -  Ire",
+      "icon": "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/0b46982ef6f6df9a75e527e3a9eca7d8.png"
+          ]
+        }
+      ],
+      "hasIcon": true
     },
     "scope": 0,
+    "loreHash": 2404855626,
+    "objectiveHashes": [
+      2463768267
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 0,
+      "shouldFireToast": true,
+      "toastStyle": 2
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": "Requires Season Pass: Season of the Chosen"
+    },
+    "expirationInfo": {
+      "hasExpiration": false,
+      "description": ""
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      1428811610
+    ],
     "hash": 1968777138,
     "index": 1153,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "1968777139": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "",
+      "name": "ENTRY 6 - Excess of Avarice",
+      "icon": "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/0b46982ef6f6df9a75e527e3a9eca7d8.png"
+          ]
+        }
+      ],
+      "hasIcon": true
     },
     "scope": 0,
+    "loreHash": 2404855627,
+    "objectiveHashes": [
+      1145019048
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 0,
+      "shouldFireToast": true,
+      "toastStyle": 2
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": "Requires Season Pass: Season of the Chosen"
+    },
+    "expirationInfo": {
+      "hasExpiration": false,
+      "description": ""
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      1428811610
+    ],
     "hash": 1968777139,
     "index": 1152,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "1968777140": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "",
+      "name": "ENTRY 1 - Charon's Silhouette",
+      "icon": "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/0b46982ef6f6df9a75e527e3a9eca7d8.png"
+          ]
+        }
+      ],
+      "hasIcon": true
     },
     "scope": 0,
+    "loreHash": 2404855628,
+    "objectiveHashes": [
+      1999332329
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 0,
+      "shouldFireToast": true,
+      "toastStyle": 2
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": "Requires Season Pass: Season of the Chosen"
+    },
+    "expirationInfo": {
+      "hasExpiration": false,
+      "description": ""
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      1428811610
+    ],
     "hash": 1968777140,
     "index": 1147,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "1968777142": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "",
+      "name": "ENTRY 3 - Lust and Reappropriation Pt. II",
+      "icon": "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/0b46982ef6f6df9a75e527e3a9eca7d8.png"
+          ]
+        }
+      ],
+      "hasIcon": true
     },
     "scope": 0,
+    "loreHash": 2404855630,
+    "objectiveHashes": [
+      3225655271
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 0,
+      "shouldFireToast": true,
+      "toastStyle": 2
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": "Requires Season Pass: Season of the Chosen"
+    },
+    "expirationInfo": {
+      "hasExpiration": false,
+      "description": ""
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      1428811610
+    ],
     "hash": 1968777142,
     "index": 1149,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "1968777143": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "",
+      "name": "ENTRY 2 - Lust and Reappropriation Pt. I",
+      "icon": "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/0b46982ef6f6df9a75e527e3a9eca7d8.png"
+          ]
+        }
+      ],
+      "hasIcon": true
     },
     "scope": 0,
+    "loreHash": 2404855631,
+    "objectiveHashes": [
+      4178994820
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 0,
+      "shouldFireToast": true,
+      "toastStyle": 2
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": "Requires Season Pass: Season of the Chosen"
+    },
+    "expirationInfo": {
+      "hasExpiration": false,
+      "description": ""
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      1428811610
+    ],
     "hash": 1968777143,
     "index": 1148,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "1968777148": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "",
+      "name": "ENTRY 9 - Heretical Flesh",
+      "icon": "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/0b46982ef6f6df9a75e527e3a9eca7d8.png"
+          ]
+        }
+      ],
+      "hasIcon": true
     },
     "scope": 0,
+    "loreHash": 2404855620,
+    "objectiveHashes": [
+      2250278849
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 0,
+      "shouldFireToast": true,
+      "toastStyle": 2
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": "Requires Season Pass: Season of the Chosen"
+    },
+    "expirationInfo": {
+      "hasExpiration": false,
+      "description": ""
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      1428811610
+    ],
     "hash": 1968777148,
     "index": 1155,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "1968777149": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "",
+      "name": "ENTRY 8 - Acheron's Wall",
+      "icon": "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/0b46982ef6f6df9a75e527e3a9eca7d8.png"
+          ]
+        }
+      ],
+      "hasIcon": true
     },
     "scope": 0,
+    "loreHash": 2404855621,
+    "objectiveHashes": [
+      382350262
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 0,
+      "shouldFireToast": true,
+      "toastStyle": 2
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": "Requires Season Pass: Season of the Chosen"
+    },
+    "expirationInfo": {
+      "hasExpiration": false,
+      "description": ""
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      1428811610
+    ],
     "hash": 1968777149,
     "index": 1154,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "1972046984": {
@@ -58909,7 +59959,7 @@
       3661055810
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -64540,19 +65590,54 @@
   },
   "2335417976": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "Complete \"Presage\" on Master difficulty without dying.",
+      "name": "Tale Told",
+      "icon": "/common/destiny2_content/icons/4022f72f50d94a4b6432fa2914615e78.png",
+      "hasIcon": true
     },
     "scope": 0,
+    "objectiveHashes": [
+      2901899989
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 5,
+      "shouldFireToast": true,
+      "toastStyle": 1
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": ""
+    },
+    "expirationInfo": {
+      "hasExpiration": true,
+      "description": "Expires at the end of Season 15"
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      3108806378
+    ],
     "hash": 2335417976,
     "index": 870,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "2342176915": {
@@ -65088,7 +66173,7 @@
       1566997684
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -65774,19 +66859,54 @@
   },
   "2396534184": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "Complete \"Presage\" on Master difficulty.",
+      "name": "Cure for the Itch",
+      "icon": "/common/destiny2_content/icons/4022f72f50d94a4b6432fa2914615e78.png",
+      "hasIcon": true
     },
     "scope": 0,
+    "objectiveHashes": [
+      3053434117
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 5,
+      "shouldFireToast": true,
+      "toastStyle": 1
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": ""
+    },
+    "expirationInfo": {
+      "hasExpiration": true,
+      "description": "Expires at the end of Season 15"
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      3108806378
+    ],
     "hash": 2396534184,
     "index": 867,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "2399129006": {
@@ -67934,7 +69054,7 @@
       1875846875
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -68773,7 +69893,7 @@
       755803451
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": true,
       "titlesByGender": {
@@ -70555,7 +71675,7 @@
       4185664009
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -72580,7 +73700,7 @@
       62443648
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -74190,7 +75310,7 @@
       1861955738
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -77491,7 +78611,7 @@
       3080331444
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": true,
       "titlesByGender": {
@@ -83986,19 +85106,54 @@
   },
   "3081075834": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "Discover each of the Glykon's smuggling compartments.",
+      "name": "Tucked Away",
+      "icon": "/common/destiny2_content/icons/4022f72f50d94a4b6432fa2914615e78.png",
+      "hasIcon": true
     },
     "scope": 0,
+    "objectiveHashes": [
+      2954790115
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 5,
+      "shouldFireToast": true,
+      "toastStyle": 1
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": ""
+    },
+    "expirationInfo": {
+      "hasExpiration": true,
+      "description": "Expires at the end of Season 15"
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      3108806378
+    ],
     "hash": 3081075834,
     "index": 869,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "3081776353": {
@@ -86742,7 +87897,7 @@
       3464088010
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -91782,19 +92937,59 @@
   },
   "3337796590": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "Complete Exotic quest \"Presage\" on Normal or Master difficulty.",
+      "name": "Dire Portents",
+      "icon": "/common/destiny2_content/icons/4022f72f50d94a4b6432fa2914615e78.png",
+      "hasIcon": true
     },
-    "scope": 0,
+    "scope": 1,
+    "objectiveHashes": [
+      851045647
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 0,
+      "shouldFireToast": true,
+      "toastStyle": 6
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": ""
+    },
+    "expirationInfo": {
+      "hasExpiration": false,
+      "description": ""
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [
+      {
+        "itemHash": 2211488305,
+        "quantity": 1
+      }
+    ],
+    "presentationNodeType": 1,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      1371596480
+    ],
     "hash": 3337796590,
     "index": 198,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "3337964454": {
@@ -91809,7 +93004,7 @@
       2751151639
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -99177,7 +100372,7 @@
       4271029092
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -99281,7 +100476,7 @@
       3644001928
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -113212,7 +114407,7 @@
       1968136808
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -114461,7 +115656,7 @@
       2104341049
     ],
     "recordValueStyle": 0,
-    "forTitleGilding": false,
+    "forTitleGilding": true,
     "titleInfo": {
       "hasTitle": false
     },
@@ -115341,19 +116536,54 @@
   },
   "4206923617": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "Complete Presage Solo without dying.",
+      "name": "Lone Gun in a Dark Place",
+      "icon": "/common/destiny2_content/icons/4022f72f50d94a4b6432fa2914615e78.png",
+      "hasIcon": true
     },
     "scope": 0,
+    "objectiveHashes": [
+      595483346
+    ],
     "recordValueStyle": 0,
     "forTitleGilding": false,
-    "presentationNodeType": 0,
+    "titleInfo": {
+      "hasTitle": false
+    },
+    "completionInfo": {
+      "partialCompletionObjectiveCountThreshold": 0,
+      "ScoreValue": 5,
+      "shouldFireToast": true,
+      "toastStyle": 1
+    },
+    "stateInfo": {
+      "featuredPriority": 2147483647,
+      "completeUnlockHash": 0,
+      "claimedUnlockHash": 0
+    },
+    "requirements": {
+      "entitlementUnavailableMessage": ""
+    },
+    "expirationInfo": {
+      "hasExpiration": true,
+      "description": "Expires at the end of Season 15"
+    },
+    "intervalInfo": {
+      "intervalObjectives": [],
+      "intervalRewards": [],
+      "originalObjectiveArrayInsertionIndex": 0,
+      "isIntervalVersionedFromNormalRecord": false
+    },
+    "rewardItems": [],
+    "presentationNodeType": 3,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      3108806378
+    ],
     "hash": 4206923617,
     "index": 871,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "4209066563": {

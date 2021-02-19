@@ -15,6 +15,8 @@ async function Initialize(value){
   }
   console.log(playerCharacters);
   updateCharacters();
+  test();
+  console.log("past test.");
   //updateTimer(30000);
 };
 function updateTimer(timer){
@@ -266,7 +268,19 @@ function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = t
   };
   return postRequest(path, body);
 };
-function test(itemData, rcID){
-  var path = "/homedata";
-  fetchRequest(path).then(function(result){ console.log(result); }).catch(function(error){console.log(error);});
+async function test(){
+  var startTime = new Date().getTime();
+  var path = "/home/data";
+  let result = await fetchRequest(path).catch(function(error){ console.error(error); return false; });
+  console.log(result);
+  var endTime = new Date().getTime();
+  console.log("vault access took exactly "+(endTime-startTime)/1000+" seconds.");
+}
+async function test2(){
+  var startTime = new Date().getTime();
+  var path = "/home/update";
+  let result = await fetchRequest(path).catch(function(error){ console.error(error); return false; });
+  console.log(result);
+  var endTime = new Date().getTime();
+  console.log("vault access took exactly "+(endTime-startTime)/1000+" seconds.");
 }

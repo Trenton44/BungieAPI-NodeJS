@@ -24330,23 +24330,88 @@
   },
   "1428811610": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "",
+      "name": "Captain's Log",
+      "icon": "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png",
+      "iconSequences": [
+        {
+          "frames": [
+            "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png"
+          ]
+        },
+        {
+          "frames": [
+            "/common/destiny2_content/icons/0b46982ef6f6df9a75e527e3a9eca7d8.png"
+          ]
+        }
+      ],
+      "hasIcon": true
     },
-    "nodeType": 0,
+    "originalIcon": "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png",
+    "rootViewIcon": "/common/destiny2_content/icons/e06bb41ababa8fa5a45c2ccc1939f90b.png",
+    "nodeType": 1,
     "scope": 0,
+    "objectiveHash": 4107092752,
+    "children": {
+      "presentationNodes": [],
+      "collectibles": [],
+      "records": [
+        {
+          "recordHash": 1968777140
+        },
+        {
+          "recordHash": 1968777143
+        },
+        {
+          "recordHash": 1968777142
+        },
+        {
+          "recordHash": 1968777137
+        },
+        {
+          "recordHash": 1968777136
+        },
+        {
+          "recordHash": 1968777139
+        },
+        {
+          "recordHash": 1968777138
+        },
+        {
+          "recordHash": 1968777149
+        },
+        {
+          "recordHash": 1968777148
+        },
+        {
+          "recordHash": 1868136556
+        },
+        {
+          "recordHash": 1868136557
+        },
+        {
+          "recordHash": 1868136558
+        }
+      ],
+      "metrics": []
+    },
     "displayStyle": 0,
     "screenStyle": 0,
+    "requirements": {
+      "entitlementUnavailableMessage": "Requires Season Pass: Season of the Chosen"
+    },
     "disableChildSubscreenNavigation": false,
     "categoryScoreUnlockValueHash": 0,
     "maxCategoryRecordScore": 0,
-    "presentationNodeType": 0,
+    "presentationNodeType": 1,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      3188244430
+    ],
     "hash": 1428811610,
     "index": 849,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "1432280520": {
@@ -54254,23 +54319,70 @@
   },
   "3108806378": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
+      "description": "",
+      "name": "Exotic Quest",
       "hasIcon": false
     },
-    "nodeType": 0,
+    "nodeType": 1,
     "scope": 0,
+    "objectiveHash": 1386772960,
+    "children": {
+      "presentationNodes": [],
+      "collectibles": [],
+      "records": [
+        {
+          "recordHash": 1622888137
+        },
+        {
+          "recordHash": 2396534184
+        },
+        {
+          "recordHash": 952432579
+        },
+        {
+          "recordHash": 3081075834
+        },
+        {
+          "recordHash": 2335417976
+        },
+        {
+          "recordHash": 4206923617
+        },
+        {
+          "recordHash": 1642574513
+        },
+        {
+          "recordHash": 1314161610
+        },
+        {
+          "recordHash": 1437052814
+        },
+        {
+          "recordHash": 1437052815
+        },
+        {
+          "recordHash": 1437052812
+        }
+      ],
+      "metrics": []
+    },
     "displayStyle": 0,
     "screenStyle": 0,
+    "requirements": {
+      "entitlementUnavailableMessage": ""
+    },
     "disableChildSubscreenNavigation": false,
     "categoryScoreUnlockValueHash": 0,
-    "maxCategoryRecordScore": 0,
-    "presentationNodeType": 0,
+    "maxCategoryRecordScore": 130,
+    "presentationNodeType": 1,
+    "traitIds": [],
+    "traitHashes": [],
+    "parentNodeHashes": [
+      2221333470
+    ],
     "hash": 3108806378,
     "index": 912,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "3110461398": {

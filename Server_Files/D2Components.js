@@ -167,7 +167,24 @@ var itemComponents = function(data){
       data.perks[i] = data.perks[i].perks;
     }
   }
-  return data;
+  var longestcomponent;
+  var length = 0;
+  for(i in data){
+    var temp = Object.keys(data[i]).length;
+    if( temp > length){
+      length = temp;
+      longestcomponent = i;
+    }
+  }
+  var combinedItemComponents = {};
+  for(i in data[longestcomponent]){
+    combinedItemComponents[i] = {};
+    for(z in data){
+      combinedItemComponents[i][z] = data[z][i];
+    }
+  }
+  return combinedItemComponents;
+  //return data;
 };
 exports.itemComponents = itemComponents;
 
