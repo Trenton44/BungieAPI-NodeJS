@@ -152,18 +152,18 @@ app.get("/home/update", async function(request, response, next){
   delete result.data.characterEquipment;
   result.data.characterInventories = combineItemswithInstanceData(result.data.characterInventories,result.data.itemComponents);
   delete result.data.itemComponents;
-  var temp = {};
+  var changedData = {};
   for(n in result.data.characterInventories){
-    var changedData = differentiateData(storedData[n], result.data.characterInventories[n]);
-    temp[n] = changedData;
+    var temp = differentiateData(storedData[n], result.data.characterInventories[n]);
+    changedData[n] = temp[1].concat(temp[0]);
   }
-
-  for(i in temp){ temp[i] = ServerResponse.sortByBucketCategory(temp[i]); }
-  for(z in temp){
-    for(a in temp[z])
-    { temp[z][a] = ServerResponse.sortByBucketTypeHash(temp[z][a]); }
+  //request.session.data.gamedata.characterInventories = changedData;
+  for(i in changedData){ changedData[i] = ServerResponse.sortByBucketCategory(changedData[i]); }
+  for(z in changedData){
+    for(a in changedData[z])
+    { changedData[z][a] = ServerResponse.sortByBucketTypeHash(changedData[z][a]); }
   }
-  response.status(result.status).json(temp);
+  response.status(result.status).json(changedData);
 
   var endTime = new Date().getTime();
   console.log("vault update took exactly "+(endTime-startTime)/1000+" seconds.");
@@ -197,12 +197,14 @@ app.get("/vault/update", async function(request, response, next){
   let result = await D2API.profileComponentRequest(request, components).catch(function(error){ return error; });
   if(result instanceof Error){ next(result); return; }
   result.data.profileInventory = combineItemswithInstanceData({ profileInventory: result.data.profileInventory },result.data.itemComponents).profileInventory;
-  var changedData = differentiateData(storedData.profileInventory, result.data.profileInventory);
-  //request.session.data.gamedata.vault = Object.assign({},changedData.newData);
+  var temp = differentiateData(storedData.profileInventory, result.data.profileInventory);
+  changedData = temp[1].concat(temp[0]);
+  console.log(changeData);
+  //request.session.data.gamedata.vault = Object.assign({},changedData);
 
   changedData = ServerResponse.sortByBucketCategory(changedData);
   for(b in changedData){ changedData[b] = ServerResponse.sortByBucketTypeHash(changedData[b]); }
-  
+
   response.status(result.status).json(changedData);
   var endTime = new Date().getTime();
   console.log("vault update took exactly "+(endTime-startTime)/1000+" seconds.");
@@ -306,7 +308,8 @@ function handleServerErrors(error, request, response, next){
   if(error instanceof D2Responses.APIError){
     console.log("Hey, i built this error object! ");
     console.error(error.toString());
-    response.status(error.status).json({ error: error.toString() });
+    error.statusText = error.toString();
+    response.status(error.status);
   }
   else if(error instanceof D2Responses.TokenError){
     console.log("Something went awry trying to obtain an access token.");
@@ -341,6 +344,7 @@ function combineItemswithInstanceData(inventory, instancedata){
 }
 function differentiateData(stored, data){
   var changedData = [];
+  var uninstanced = [];
   var newstored = {};
   var newdata = {};
   for(i in stored){
@@ -351,6 +355,9 @@ function differentiateData(stored, data){
   for(i in data){
     if(data[i].itemInstanceId !== undefined){
       newdata[data[i].itemInstanceId] = data[i];
+    }
+    else {
+      uninstanced.push(data[i]);
     }
   }
   for(i in newstored){
@@ -369,5 +376,5 @@ function differentiateData(stored, data){
       changedData.push(temp);
     }
   }
-  return changedData;
+  return [uninstanced, changedData];
 }

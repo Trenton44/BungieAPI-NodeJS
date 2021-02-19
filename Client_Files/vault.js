@@ -8,6 +8,7 @@ async function Initialize(value){
   var path = "/vault/data";
   let result = await fetchRequest(path).catch(function(error){ return error; });
   if(result instanceof Error){ return false; }
+  console.log(result);
   vaultController.Initialize(result.profileInventory);
   console.log(result);
   var characters = result.characters;

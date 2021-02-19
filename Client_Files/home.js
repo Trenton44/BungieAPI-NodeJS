@@ -8,7 +8,6 @@ async function Initialize(value){
   let result = await fetchRequest(path).catch(function(error){ return error; });
   if(result instanceof Error){ return false; }
   var keys = Object.keys(result);
-  console.log(keys);
   for(i in keys){
     playerCharacters.push(new character());
     playerCharacters[i].Initialize(i,result[keys[i]]);
@@ -47,10 +46,9 @@ async function updateInventory(){
   console.log("finished updating inventory.");
   return Promise.resolve(true);
 };
-async function transferItem(ev, item){
-  console.log(ev);
-  console.log(item);
-};
+function itemEquip(item){
+  playerCharacters[0].slotController.swapEquipped(item);
+}
 function character(){
   this.data;
   this.inventory;
@@ -59,7 +57,6 @@ function character(){
   this.element;
   this.setID = function(value){
     this.id = value;
-    console.log(this.id);
     var localthis = this;
     this.element = window.document.getElementById("c"+this.id);
     this.element.ondblclick = function(){  changeCharacter(localthis.id); };
@@ -113,8 +110,20 @@ function slotController(){
     this.specialslots.engrams = data.Item.Engrams;
     this.specialslots.currency = data.Currency;
   };
-  this.swapEquipped = function(item){
-    console.log(item);
+  this.swapEquipped = async function(item){
+    var localthis = this;
+    var slot = this.slots[item.slotName];
+    let result = await equipItem(item.data, playerCharacters[0].data.characterId).catch(function(error){ return error; });
+    if(result instanceof Error){ console.error(result.statusText); return false; }
+    var currentEquip;
+    for(i in slot)
+    { if(slot[i].data.instanceData.instances.isEquipped){ currentEquip = slot[i];  }}
+    currentEquip.data.instanceData.instances.isEquipped = false;
+    item.data.instanceData.instances.isEquipped = true;
+    item.changeParent();
+    currentEquip.changeParent();
+    console.log("Item has successfully been swapped.");
+    this.show(true);
   };
   this.wipe = function(){
     for(i in this.slots){
@@ -130,14 +139,12 @@ function slotController(){
       if(this.slots[i] == undefined){ this.slots[i] = [];}
       for(z in data.Equippable[i]){
         if(data.Equippable[i][z].changed == true){
-          console.log("an item has been added to this category.");
           var newItem = new Item();
           newItem.Initialize(i,this.slots[i].length,data.Equippable[i][z]);
-          newItem.element.ondblclick = function(ev){ localthis.swapEquipped(newItem); };
+
           this.slots[i].push(newItem);
         }
         else if(data.Equippable[i][z].changed == false){
-          console.log("this item has been removed from this category");
           for(n in this.slots[i]){
             if(this.slots[i][n].data.itemInstanceId === data.Equippable[i][z].itemInstanceId)
             { this.slots[i][n].destroy(); this.slots[i].splice(n,1); }
@@ -145,6 +152,9 @@ function slotController(){
         }
       }
     }
+    this.specialslots.postmaster = data.Invisible.LostItems;
+    this.specialslots.engrams = data.Item.Engrams;
+    this.specialslots.currency = data.Currency;
     this.updateItemIndexes();
   };
   this.updateItemIndexes = function(){
@@ -173,16 +183,14 @@ function Item(){
     this.slotName = slotName;
     this.index = index;
     this.data = data;
-    if(this.data.instanceData.instances.isEquipped)
-    { this.parentElement = window.document.getElementById(this.slotName+"-primary-container"); }
-    else
-    { this.parentElement = window.document.getElementById(this.slotName+"-equipment"); }
     this.element = window.document.createElement("img");
+    this.changeParent();
     this.element.id = this.data.itemInstanceId;
     this.element.src = bungieCommon+this.data.itemHashData.displayProperties.icon;
     var localthis = this;
     this.element.draggable = true;
-    this.element.ondragend = function(ev){ localthis.itemTransfer(ev); }
+    this.element.ondragend = function(){ localthis.itemTransfer(ev); }
+    this.element.ondblclick = function(){ itemEquip(localthis); };
   };
   this.destroy = function(isWipe){
     this.element.remove();
@@ -190,6 +198,13 @@ function Item(){
   this.show = function(bool){
     if(bool){ this.parentElement.append(this.element); }
     else{ this.element.remove();}
+  };
+  this.changeParent = function(){
+    this.destroy();
+    if(this.data.instanceData.instances.isEquipped)
+    { this.parentElement = window.document.getElementById(this.slotName+"-primary-container"); }
+    else
+    { this.parentElement = window.document.getElementById(this.slotName+"-equipment"); }
   };
   this.itemTransfer = async function(ev){
     var localthis = this;
@@ -217,9 +232,10 @@ async function fetchRequest(path){
     method: "GET",
     headers: {"Content-Type":"application/json"},
   });
-  let response = await fetch(request);
-  if(response.status >=200 && response.status < 300){ return response.json(); }
-  else{ Promise.reject(response.json().error); }
+  let response = await fetch(request).catch(function(error){ return Error(); });
+  console.log(response);
+  if(response.status >=200 && response.status <= 300){ return response.json(); }
+  else{ throw new Error(response.json()); }
 };
 async function postRequest(path, body){
   var request = new Request(path, {
@@ -227,9 +243,10 @@ async function postRequest(path, body){
     headers: {"Content-Type":"application/json"},
     body: JSON.stringify(body),
   });
-  let response = await fetch(request);
-  if(response.status >=200 && response.status < 300){ console.log(response.status); return response.json(); }
-  else{ Promise.reject(response.json().error); }
+  let response = await fetch(request).catch(function(error){ return Error(); });
+  console.log(response);
+  if(response.status >=200 && response.status <= 300){ return response.json(); }
+  else{ console.log(response.statusText); Promise.reject(new Error(response.statusText)); }
 }
 //Makes requests to server for equipping new items from existing non-equipped items.
 function equipItem(itemData, rcID){
