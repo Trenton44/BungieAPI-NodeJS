@@ -112,6 +112,7 @@ exports.EmblemResponseFormat = EmblemResponseFormat;
 
 var ItemResponseFormat = function(item){
   var itemIcon = bungieCommon+item.itemHashData.displayProperties.icon;
-  return "<div class=item-capsule id='"+item.itemHash+"'><img class=item-icon src='"+itemIcon+"' /></div>";
+  if(item.quantity == undefined){ item.quantity = 1; }
+  return "<div class=item-capsule id='"+item.itemHash+"'><img class=item-icon src='"+itemIcon+"' /><h1 class=item-light>"+item.quantity+"</h1></div>";
 };
 exports.ItemResponseFormat = ItemResponseFormat;

@@ -418,7 +418,17 @@ function bucketHashSort(items){
     }
     if(sortedEquipment[bucketname] == undefined)
       { sortedEquipment[bucketname] = []; }
-    var template = ServerResponses.DestinyItemTypes[bucketname];
+    var template;
+    if(bucketname == "LostItems"){
+      var hashforTemplate =items[i].itemHashData.inventory.bucketTypeHash;
+      var nameforTemplate = DestinyInventoryBucketDefinition[hashforTemplate].displayProperties.name;
+      nameforTemplate = nameforTemplate.split(" ").join("");
+      nameforTemplate = String(nameforTemplate);
+      template = ServerResponses.DestinyItemTypes[nameforTemplate];
+    }
+    else {
+      template = ServerResponses.DestinyItemTypes[bucketname];
+    }
     if(template == undefined){ template = ServerResponses.DestinyItemTypes.default; }
     items[i].HTMLTemplate = ServerResponses[template](items[i]);
     sortedEquipment[bucketname].push(items[i]);

@@ -119,7 +119,8 @@ function character(){
 
 function slotController(){
   this.slots;
-  this.specialslots;
+  this.postmaster = [];
+  this.engrams = [];
   this.Initialize = function(data){
     this.slots = {};
     this.specialslots = {};
@@ -132,9 +133,11 @@ function slotController(){
         this.slots[i].push(newItem);
       }
     }
-    this.specialslots.postmaster = data.Invisible.LostItems;
-    this.specialslots.engrams = data.Item.Engrams;
-    this.specialslots.currency = data.Currency;
+    for(i in data.Invisible.LostItems){
+      var newItem = new Item();
+      newItem.Initialize("postmaster",this.postmaster.length,data.Invisible.LostItems[i]);
+      this.postmaster.push(newItem);
+    }
   };
   this.swapEquipped = async function(item){
     var localthis = this;
@@ -203,6 +206,9 @@ function slotController(){
         this.slots[i][z].show(bool);
       }
     }
+    for(i in this.postmaster){
+      this.postmaster[i].show(bool);
+    }
   };
 };
 
@@ -238,6 +244,10 @@ function Item(){
     else{ this.element.remove();}
   };
   this.changeParent = function(){
+    if(this.data.itemInstanceId == undefined){
+      this.parentElement = window.document.getElementById(this.slotName+"-equipment");
+      return true;
+    }
     if(this.data.instanceData.instances.isEquipped)
     { this.parentElement = window.document.getElementById(this.slotName+"-primary-container"); }
     else

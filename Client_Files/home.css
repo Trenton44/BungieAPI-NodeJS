@@ -196,21 +196,21 @@ body {
   flex-shrink: 1;
   transform: translate(-35%, 0%);
 }
-.Engrams {
+.postmaster {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
   height: 15%;
 }
-.Engrams > h1 {
+.postmaster > h1 {
   background-color: rgba(20,20,20, 0.6);
   text-align: center;
   margin: 0;
   color: white;
   font-style: italic;
 }
-.Engrams > div {
+.postmaster > div {
   display: flex;
   flex-basis: 10%;
   flex-shrink: 1;
