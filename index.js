@@ -37,7 +37,7 @@ const bungieTokURL = bungieRoot+"/app/oauth/token/";
 
 const D2API = require(serverRoot+"/D2API.js");
 const D2Components = require(serverRoot+"/D2Components.js");
-const ServerResponse = require(serverRoot+"/Server Responses.js");
+const ServerResponse = require(serverRoot+"/Server_Responses.js");
 const D2Responses = require(serverRoot+"/D2APIResponseObjects.js");
 
 
@@ -162,7 +162,7 @@ app.get("/home/update", async function(request, response, next){
   for(i in changedData){ changedData[i] = D2API.sortByBucketCategory(changedData[i]); }
   for(z in changedData){
     for(a in changedData[z])
-    { changedData[z][a] = D2API.sortByBucketTypeHash(changedData[z][a]); }
+    { changedData[z][a] = D2API.bucketHashSort(changedData[z][a]); }
   }
   for(i in result.data.characters){
     result.data.characters[i].itemInventory = changedData[i];
@@ -227,16 +227,16 @@ app.get("/vault/update", async function(request, response, next){
 /*app.get("/historical/general/account",async function(request, response, next){
 
 });*/
-/*app.get("/historical/stats/specific/:character/:mode",async function(request, response, next){
+app.get("/historical/stats/specific/:character/:mode",async function(request, response, next){
   let result = await D2API.specificHistoricalStats(request).catch(function(error){ return error; });
   if(result instanceof Error){ next(result); return; }
   response.status(result.status).json(result.data);
-});*/
-/*app.get("/historical/activity/specific/:character/:mode",async function(request, response, next){
+});
+app.get("/historical/activity/specific/:character/:mode/:page",async function(request, response, next){
   let result = await D2API.getActivityHistory(request).catch(function(error){ return error; });
   if(result instanceof Error){ next(result); return; }
   response.status(result.status).json(result.data);
-});*/
+});
 app.post("/character/lockItem",async function(request, response, next){
   let result = await D2API.lockCharacterItem(request).catch(function(error){ return error; });
   console.log("in character/lockItem");

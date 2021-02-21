@@ -10,7 +10,7 @@ const serverRoot = root+"/Server_Files";
 const assetRoot = root+"/Asset_Files";
 const manifestRoot = root+"/Manifest_Files";
 
-const ServerResponse = require(serverRoot+"/Server Responses.js");
+const ServerResponse = require(serverRoot+"/Server_Responses.js");
 const DestinyClassDefinition = require(manifestRoot+"/DestinyClassDefinition.json");
 const DestinyGenderDefinition = require(manifestRoot+"/DestinyGenderDefinition.json");
 const DestinyRaceDefinition = require(manifestRoot+"/DestinyRaceDefinition.json");

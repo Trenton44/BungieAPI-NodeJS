@@ -22,6 +22,7 @@ const D2Components = require(serverRoot+"/D2Components.js");
 const D2Responses = require(serverRoot+"/D2APIResponseObjects.js");
 const DestinyInventoryBucketDefinition = require(manifestRoot+"/DestinyInventoryBucketDefinition.json");
 const D2Enums = require(serverRoot+"/D2Enums.js");
+const ServerResponses = require(serverRoot+"/Server_Responses.js");
 
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 dotenv.config( { path: path.join(root,"process.env") } );
@@ -115,7 +116,6 @@ async function specificHistoricalStats(request){
   var path = bungieRoot+"/Destiny2/"+membershipType+"/Account/"+profileID+"/Character/"+request.params.character+"/Stats/?"+params.toString();
   var access_token = decryptData(request.session.data.tokenData).access_token;
   let result = await getRequestAuth(path, access_token).catch(function(error){ console.log(error); throw new D2Responses.APIError(error); });
-  result = new D2Responses.APIResponse(result);
   return result;
 }
 exports.specificHistoricalStats = specificHistoricalStats;
@@ -125,13 +125,12 @@ async function getActivityHistory(request){
   var profileID = bnetInfo.primaryMembershipId;
   var membershipType = bnetInfo[bnetInfo.primaryMembershipId].membershipType;
   var params = new URLSearchParams();
-  params.set("count", "300");
+  params.set("count", "100");
   params.set("mode",D2Enums.ActivityModeType[request.params.mode]);
-  params.set("page", "0");
+  params.set("page", request.params.page);
   var path = bungieRoot+"/Destiny2/"+membershipType+"/Account/"+profileID+"/Character/"+request.params.character+"/Stats/Activities/?"+params.toString();
   var access_token = decryptData(request.session.data.tokenData).access_token;
   let result = await getRequestAuth(path, access_token).catch(function(error){ console.log(error); throw new D2Responses.APIError(error); });
-  result = new D2Responses.APIResponse(result);
   return result;
 };
 exports.getActivityHistory = getActivityHistory;
@@ -422,6 +421,9 @@ function bucketHashSort(items){
     }
     if(sortedEquipment[bucketname] == undefined)
       { sortedEquipment[bucketname] = []; }
+    var template = ServerResponses.DestinyItemTypes[bucketname];
+    if(template == undefined){ template = ServerResponses.DestinyItemTypes.default; }
+    items[i].HTMLTemplate = ServerResponses[template](items[i]);
     sortedEquipment[bucketname].push(items[i]);
   }
   return sortedEquipment;

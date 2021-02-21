@@ -13,7 +13,7 @@ async function Initialize(value){
     playerCharacters.push(new character());
     playerCharacters[i].Initialize(i,result[keys[i]]);
   }
-  updateTimer(25000);
+  //updateTimer(25000);
 };
 function updateTimer(timer){
   console.log("starting auto update cycle.");
@@ -207,10 +207,10 @@ function Item(){
     this.slotName = slotName;
     this.index = index;
     this.data = data;
-    this.element = window.document.createElement("img");
+    var temp = window.document.createElement("div");
+    temp.innerHTML = this.data.HTMLTemplate;
+    this.element = temp.firstChild;
     this.changeParent();
-    this.element.id = this.data.itemInstanceId;
-    this.element.src = bungieCommon+this.data.itemHashData.displayProperties.icon;
     var localthis = this;
     this.element.draggable = true;
     this.element.ondragend = function(ev){ localthis.itemTransfer(ev); }
@@ -308,6 +308,12 @@ function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = t
   return postRequest(path, body);
 };
 async function test(cID, gamemode){
-  var path = "/historical/activity/specific/"+cID+"/"+gamemode;
+  for(var i = 0; i < 10; i+= 1){
+    var path = "/historical/activity/specific/"+cID+"/"+gamemode+"/"+i;
+    fetchRequest(path).then(function(result){ console.log(result); });
+  }
+}
+async function test2(cID, gamemode){
+  var path = "/historical/stats/specific/"+cID+"/"+gamemode;
   fetchRequest(path).then(function(result){ console.log(result); });
 }
