@@ -93,7 +93,7 @@ function character(){
     window.document.getElementById("c"+this.id+"-emblem").src = bungieCommon+this.data.emblemBackgroundPath;
     if(this.id == 0){
       window.document.getElementById("character-banner").src = this.banner;
-      //for(i in this.data.stats){ window.document.getElementById(i).innerHTML = this.data.stats[i]; }
+      for(i in this.data.stats){ window.document.getElementById(this.data.stats[i].info.displayProperties.name).innerHTML = this.data.stats[i].value; }
       this.showInventoryUI(true);
     }
     else { this.showInventoryUI(false); }
