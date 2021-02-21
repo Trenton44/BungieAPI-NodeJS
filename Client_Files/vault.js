@@ -162,10 +162,10 @@ function Item(){
     this.slotName = slotName;
     this.index = index;
     this.data = data;
+    var temp = window.document.createElement("div");
+    temp.innerHTML = this.data.HTMLTemplate;
+    this.element = temp.firstChild;
     this.parentElement = window.document.getElementById(this.slotName);
-    this.element = window.document.createElement("img");
-    this.element.id = this.data.itemInstanceId;
-    this.element.src = bungieCommon+this.data.itemHashData.displayProperties.icon;
     var localthis = this;
     this.element.draggable = true;
     this.element.ondragend = function(ev){ localthis.itemTransfer(ev); };

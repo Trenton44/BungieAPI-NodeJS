@@ -461,6 +461,9 @@ function sortByBucketTypeHash(items){
     }
     if(sortedEquipment[bucketname] == undefined)
       { sortedEquipment[bucketname] = []; }
+      var template = ServerResponses.DestinyItemTypes[bucketname];
+      if(template == undefined){ template = ServerResponses.DestinyItemTypes.default; }
+      items[i].HTMLTemplate = ServerResponses[template](items[i]);
     sortedEquipment[bucketname].push(items[i]);
   }
   return sortedEquipment;
