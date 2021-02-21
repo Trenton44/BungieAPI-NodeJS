@@ -71,7 +71,9 @@ exports.SubclassResponseFormat = SubclassResponseFormat;
 var WeaponResponseFormat = function(item){
   var energyIcon = bungieCommon+item.instanceData.instances.damageTypeData.displayProperties.icon;
   var light = item.instanceData.instances.primaryStat.value;
-  var overlay = bungieCommon+item.itemHashData.iconWatermark;
+  if(item.itemHashData.iconWatermark !== undefined)
+  { overlay = bungieCommon+item.itemHashData.iconWatermark; }
+  else {overlay = "https://www.bungie.net/common/destiny2_content/icons/0dac2f181f0245cfc64494eccb7db9f7.png"; }
   var itemIcon = bungieCommon+item.itemHashData.displayProperties.icon;
   return "<div class=item-capsule id='"+item.itemInstanceId+"'><img class=item-icon src='"+itemIcon+"' /><img class=item-overlay src='"+overlay+"' /><img class=item-type src='"+energyIcon+"' /><h1 class=item-light>"+light+"</h1></div>";
 };
@@ -89,7 +91,7 @@ var ArmorResponseFormat = function(item){
   var overlay;
   if(item.itemHashData.iconWatermark !== undefined)
   { overlay = bungieCommon+item.itemHashData.iconWatermark; }
-  else {overlay = ""; }
+  else {overlay = "https://www.bungie.net/common/destiny2_content/icons/0dac2f181f0245cfc64494eccb7db9f7.png"; }
   var itemIcon = bungieCommon+item.itemHashData.displayProperties.icon;
   return "<div class=item-capsule id='"+item.itemInstanceId+"'><img class=item-icon src='"+itemIcon+"' /><img class=item-overlay src='"+overlay+"' /><img class=item-type src='"+energyIcon+"' /><h1 class=item-light>"+light+"</h1></div>";
 };

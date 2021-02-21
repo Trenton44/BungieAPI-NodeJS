@@ -35,6 +35,7 @@ function changeCharacter(b){
   for(i in playerCharacters){
     playerCharacters[i].setID(i);
   }
+  updateData();
 };
 async function updateData(){
   var path = "/home/update";
@@ -76,7 +77,7 @@ function character(){
     this.id = value;
     var localthis = this;
     this.element = window.document.getElementById("c"+this.id);
-    this.element.ondblclick = function(){  changeCharacter(localthis.id); };
+    this.element.onclick = function(){  changeCharacter(localthis.id); };
     this.showCharacterUI();
   };
   this.Initialize = function(index, data){

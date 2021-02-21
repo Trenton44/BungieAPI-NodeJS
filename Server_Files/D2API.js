@@ -364,14 +364,12 @@ function filterAlteredData(stored, data){
   }
   for(i in newstored){
     if(newdata[i] === undefined){
-      console.log("item has been removed");
       var temp = Object.assign({},newstored[i]);
       temp.changed = false;
       changedData.push(temp);
     }
     else {
       if(JSON.stringify(newdata[i]) !== JSON.stringify(newstored[i])){
-        console.log("item has been altered");
         var temp = Object.assign({},newdata[i]);
         temp.changed = null;
         changedData.push(temp);
@@ -380,7 +378,6 @@ function filterAlteredData(stored, data){
   }
   for(i in newdata){
     if(newstored[i] === undefined){
-      console.log("item has been added");
       var temp = Object.assign({},newdata[i]);
       temp.changed = true;
       changedData.push(temp);
