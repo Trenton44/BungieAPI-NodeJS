@@ -108,7 +108,7 @@ function Vault(){
           if(data[i][z][y].itemInstanceId === undefined){
             for(n in this.vaultItems[z]){
               if(this.vaultItems[z][n].data.itemHash === data[i][z][y].itemHash){
-                this.vaultItems[z][n].data = data[i][z][y];
+                this.vaultItems[z][n].changeData(data[i][z][y]);
                 this.vaultItems[z][n].destroy();
                 }
               }
@@ -161,14 +161,19 @@ function Item(){
   this.Initialize = function(slotName, index, data){
     this.slotName = slotName;
     this.index = index;
-    this.data = data;
     var temp = window.document.createElement("div");
-    temp.innerHTML = this.data.HTMLTemplate;
+    temp.innerHTML = data.HTMLTemplate;
     this.element = temp.firstChild;
+    this.changeData(data);
     this.parentElement = window.document.getElementById(this.slotName);
     var localthis = this;
     this.element.draggable = true;
     this.element.ondragend = function(ev){ localthis.itemTransfer(ev); };
+  };
+  this.changeData = function(data){
+    this.data = data;
+    if(this.data.state == 4){this.element.style.outline = "2px solid gold"; }
+
   };
   this.destroy = function(isWipe){
     this.element.remove();

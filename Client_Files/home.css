@@ -183,6 +183,7 @@ body {
   width: 340%;
   left: 0%;
   top: 100%;
+  padding-top: 10px;
   display: none;
   flex-direction: row;
   position: absolute;
@@ -214,7 +215,6 @@ body {
   align-items: center;
 }
 .item-capsule {
-  height: 100%;
   margin: 5px;
   position: relative;
 }

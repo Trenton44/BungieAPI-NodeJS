@@ -170,7 +170,7 @@ function slotController(){
         else if(data.Equippable[i][z].changed == null){
           for(n in this.slots[i]){
             if(this.slots[i][n].data.itemInstanceId === data.Equippable[i][z].itemInstanceId){
-              this.slots[i][n].data = data.Equippable[i][z];
+              this.slots[i][n].changeData(data.Equippable[i][z]);
               this.slots[i][n].destroy();
               this.slots[i][n].changeParent(); }
           }
@@ -207,11 +207,12 @@ function Item(){
   this.Initialize = function(slotName, index, data){
     this.slotName = slotName;
     this.index = index;
-    this.data = data;
     var temp = window.document.createElement("div");
-    temp.innerHTML = this.data.HTMLTemplate;
+    temp.innerHTML = data.HTMLTemplate;
     this.element = temp.firstChild;
+    this.changeData(data);
     this.changeParent();
+
     var localthis = this;
     this.element.draggable = true;
     this.element.ondragend = function(ev){ localthis.itemTransfer(ev); }
@@ -219,6 +220,10 @@ function Item(){
   };
   this.destroy = function(isWipe){
     this.element.remove();
+  };
+  this.changeData = function(data){
+    this.data = data;
+    if(this.data.state == 4){this.element.style.outline = "2px solid gold"; }
   };
   this.show = function(bool){
     if(bool){ this.parentElement.append(this.element); }
