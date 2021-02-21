@@ -1,6 +1,7 @@
 var window;
 var bungieCommon = "https://www.bungie.net";
 var playerCharacters = [];
+var updateinprogress = false;
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 async function Initialize(value){
   window = value;
@@ -38,15 +39,20 @@ function changeCharacter(b){
   updateData();
 };
 async function updateData(){
+  if(updateinprogress){
+    console.log("Page update is already in progress, please wait before trying again.");
+    return false;
+  }
+  window.document.getElementById("updateStatus").innerHTML = "Updating page...";
+  updateinprogress = true;
   var path = "/home/update";
   let result = await fetchRequest(path).catch(function(error){ return error; });
-  if(result instanceof Error){ return false; }
+  if(result instanceof Error){ updateinprogress = false; return false; }
   for(i in result){
     for(z in playerCharacters){
       var currentCheck = playerCharacters[z];
       if(currentCheck.data.characterId == i){
         currentCheck.slotController.updateInventory(result[i].itemInventory);
-
       }
     }
   }
@@ -62,6 +68,8 @@ async function updateData(){
   }
   await sleep(500);
   playerCharacters[0].showInventoryUI(true);
+  updateinprogress = false;
+  window.document.getElementById("updateStatus").innerHTML = "Refresh";
   return Promise.resolve(true);
 };
 function itemEquip(item){

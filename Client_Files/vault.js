@@ -2,6 +2,7 @@ var window;
 var bungieCommon = "https://www.bungie.net";
 var playerCharacters = [];
 var vaultController = new Vault();
+var updateinprogress = false;
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 async function Initialize(value){
   window = value;
@@ -25,13 +26,19 @@ function updateTimer(timer){
 async function autoUpdate(timer){
   console.log("Updating inventory...");
   var startTime = new Date().getTime();
-  await updateInventory();
+  await updateData();
   sleep(100);
   var endTime = new Date().getTime();
   console.log("Inventory updated in "+(endTime-startTime)+" milliseconds.");
   updateTimer(timer);
 };
-async function updateInventory(){
+async function updateData(){
+  if(updateinprogress){
+    console.log("Page update is already in progress, please wait before trying again.");
+    return false;
+  }
+  window.document.getElementById("updateStatus").innerHTML = "Updating page...";
+  updateinprogress = true;
   var path = "/vault/update";
   let updateData = await fetchRequest(path).catch(function(error){ return error; });
   if(updateData instanceof Error){ return false; }
@@ -48,6 +55,8 @@ async function updateInventory(){
   }
   await sleep(500);
   vaultController.show(true);
+  updateinprogress = false;
+  window.document.getElementById("updateStatus").innerHTML = "Refresh";
   return Promise.resolve(true);
 };
 function character(){
@@ -93,7 +102,6 @@ function Vault(){
           var localthis = this;
           var newItem = new Item();
           newItem.Initialize(z,y,data[i][z][y]);
-          newItem.element.ondblclick = function(ev){ localthis.swapEquipped(newItem); };
           this.vaultItems[z].push(newItem);
         }
       }
@@ -118,7 +126,6 @@ function Vault(){
             var localthis = this;
             var newItem = new Item();
             newItem.Initialize(z,this.vaultItems[z].length,data[i][z][y]);
-            newItem.element.ondblclick = function(ev){ localthis.swapEquipped(newItem); };
             this.vaultItems[z].push(newItem);
           }
           else if(data[i][z][y].changed == false){
@@ -197,7 +204,7 @@ function Item(){
     if(result instanceof Error){ alert("Unable to transfer item."); return false; }
     console.log("transfer was successful.");
     await sleep(500);
-    updateInventory();
+    updateData();
   };
 };
 
