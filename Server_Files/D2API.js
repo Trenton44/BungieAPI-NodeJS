@@ -20,6 +20,8 @@ const crypto = require("crypto");
 const D2ManifestVersion = require(root+"/ManifestVersion.json");
 const D2Components = require(serverRoot+"/D2Components.js");
 const D2Responses = require(serverRoot+"/D2APIResponseObjects.js");
+const DestinyInventoryBucketDefinition = require(manifestRoot+"/DestinyInventoryBucketDefinition.json");
+const D2Enums = require(serverRoot+"/D2Enums.js");
 
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 dotenv.config( { path: path.join(root,"process.env") } );
@@ -53,7 +55,7 @@ async function characterComponentRequest(request, components, characterID){
   let result = await getRequestAuth(path, access_token).catch(function(error){ throw new D2Responses.APIError(error); });
 
   result = new D2Responses.APIResponse(result);
-  result.parseDataComponents();
+  result.data = parseDataComponents(result.data);
   if(result.data.itemComponents !== undefined) { result.data = combineItemsInstanceData(result.data); }
   return result;
 };
@@ -65,12 +67,18 @@ async function profileComponentRequest(request, components){
 
   path = path+"?"+params;
   var access_token = decryptData(request.session.data.tokenData).access_token;
-  let result = await getRequestAuth(path,access_token).catch(function(error){ throw new D2Responses.APIError(error); });
+  let result = await getRequestAuth(path, access_token).catch(function(error){ throw new D2Responses.APIError(error); });
   result = new D2Responses.APIResponse(result);
-  result.parseDataComponents();
+  result.data = parseDataComponents(result.data);
   return result;
 };
 exports.profileComponentRequest = profileComponentRequest;
+
+function parseDataComponents(data){
+  for(i in data){ data[i] = D2Components[i](data[i]); }
+  return data;
+}
+exports.parseDataComponents = parseDataComponents;
 
 function buildComponentPath(request){
   var bnetInfo = request.session.data.bnetInfo;
@@ -82,6 +90,51 @@ function buildComponentPath(request){
 //used to parse incoming component data from the bungie api.
 //Requires the list of components used in the api request, and the data returned from said request.
 //sends component data to prebuilt functions, which structure the data and return it here afterwards.
+async function generalHistoricalStats(request){
+  var bnetInfo = request.session.data.bnetInfo;
+  var profileID = bnetInfo.primaryMembershipId;
+  var membershipType = bnetInfo[bnetInfo.primaryMembershipId].membershipType;
+  var parameters = new URLSearchParams();
+  parameters.set("groups", "General");
+  var path = bungieRoot+"/Destiny2/"+membershipType+"/Account/"+profileID+"/Stats/"+"?"+parameters.toString();
+  var access_token = decryptData(request.session.data.tokenData).access_token;
+  let result = await getRequestAuth(path, access_token).catch(function(error){ throw new D2Responses.APIError(error); });
+  result = new D2Responses.APIResponse(result);
+  return result;
+}
+exports.generalHistoricalStats = generalHistoricalStats;
+async function specificHistoricalStats(request){
+  var bnetInfo = request.session.data.bnetInfo;
+  var profileID = bnetInfo.primaryMembershipId;
+  var membershipType = bnetInfo[bnetInfo.primaryMembershipId].membershipType;
+  var params = new URLSearchParams();
+  params.set("dayend","2018-09-13");
+  params.set("daystart","2018-08-13");
+  params.set("groups","General");
+  params.set("modes", D2Enums.ActivityModeType[request.params.mode]); //
+  var path = bungieRoot+"/Destiny2/"+membershipType+"/Account/"+profileID+"/Character/"+request.params.character+"/Stats/?"+params.toString();
+  var access_token = decryptData(request.session.data.tokenData).access_token;
+  let result = await getRequestAuth(path, access_token).catch(function(error){ console.log(error); throw new D2Responses.APIError(error); });
+  result = new D2Responses.APIResponse(result);
+  return result;
+}
+exports.specificHistoricalStats = specificHistoricalStats;
+
+async function getActivityHistory(request){
+  var bnetInfo = request.session.data.bnetInfo;
+  var profileID = bnetInfo.primaryMembershipId;
+  var membershipType = bnetInfo[bnetInfo.primaryMembershipId].membershipType;
+  var params = new URLSearchParams();
+  params.set("count", "300");
+  params.set("mode",D2Enums.ActivityModeType[request.params.mode]);
+  params.set("page", "0");
+  var path = bungieRoot+"/Destiny2/"+membershipType+"/Account/"+profileID+"/Character/"+request.params.character+"/Stats/Activities/?"+params.toString();
+  var access_token = decryptData(request.session.data.tokenData).access_token;
+  let result = await getRequestAuth(path, access_token).catch(function(error){ console.log(error); throw new D2Responses.APIError(error); });
+  result = new D2Responses.APIResponse(result);
+  return result;
+};
+exports.getActivityHistory = getActivityHistory;
 
 async function lockCharacterItem(request){
   var bnetInfo = request.session.data.bnetInfo;
@@ -190,6 +243,7 @@ function saveTokenData(request, tokenData){
   tokenData.tokenExpiration = new Date().getTime()+((tokenData.expires_in)*1000);
   tokenData.refreshExpiration = new Date().getTime()+(tokenData.refresh_expires_in*1000);
   request.session.cookie.maxAge = tokenData.refreshExpiration;
+  request.session.data.membership_id = tokenData.membership_id;
   request.session.data.tokenData = encryptData(tokenData);
   return true;
 }
@@ -256,6 +310,15 @@ function constructComponentString(value){
   return parameters.toString();
 };
 
+function appendEquipmentToInventory(equipment, inventory){
+  for(i in equipment){
+    for(z in equipment[i]){
+      inventory[i].push(equipment[i][z]);
+    }
+  }
+  return inventory;
+};
+exports.appendEquipmentToInventory = appendEquipmentToInventory;
 
 function combineItemsInstanceData(items){
   for(z in items.itemComponents){
@@ -269,33 +332,135 @@ function combineItemsInstanceData(items){
   }
   return items;
 };
-//Loads the current d2 manifest from bungie api and saves to root.
-async function loadManifest(){
-  console.log("Obtaining Manifest");
-  var path = bungieRoot+"/Destiny2/Manifest/";
-  var version = await getRequest(path).catch(function(error){ return error; });
-  if(version instanceof Error) { return version; }
-  version = version.Response;
-  if(version.version === D2ManifestVersion.version) { return true; }
-  console.log("Pulling new manifest version.");
-  path = bungieCommon+version.jsonWorldContentPaths.en;
-  var result = await getRequest(path).catch(function(error){ return error; });
-  if(result instanceof Error) { Promise.reject(result); }
-  for(i in result.data){
-    console.log("Iteration: "+i);
-    let data = JSON.stringify(result.data[i], null, 2);
-    console.log("Now writing item "+i+" to  file "+i+".json");
-    fs.writeFileSync(manifestRoot+"/"+i+".json", data, function(error){
-      console.error(error);
-      return false;
-    });
+exports.combineItemsInstanceData = combineItemsInstanceData;
+function appendInstanceData(inventory, instancedata){
+  for(i in inventory){
+    for(z in inventory[i]){
+      if(inventory[i][z].itemInstanceId !== undefined){
+        inventory[i][z].instanceData = instancedata[inventory[i][z].itemInstanceId];
+      }
+    }
   }
-  console.log("Manifest loading finished.");
-  fs.writeFileSync(root+"/ManifestVersion.json", JSON.stringify({version: version.version}), function(error){
-    console.error(error);
-    return false;
-  });
-  console.log("Manifest version updated.");
-  return true;
+  return inventory;
+}
+exports.appendInstanceData = appendInstanceData;
+
+function filterAlteredData(stored, data){
+  var changedData = [];
+  var uninstanced = [];
+  var newstored = {};
+  var newdata = {};
+  for(i in stored){
+    if(stored[i].itemInstanceId !== undefined){
+      newstored[stored[i].itemInstanceId] = stored[i];
+    }
+  }
+  for(i in data){
+    if(data[i].itemInstanceId !== undefined){
+      newdata[data[i].itemInstanceId] = data[i];
+    }
+    else {
+      uninstanced.push(data[i]);
+    }
+  }
+  for(i in newstored){
+    if(newdata[i] === undefined){
+      console.log("item has been removed");
+      var temp = Object.assign({},newstored[i]);
+      temp.changed = false;
+      changedData.push(temp);
+    }
+    else {
+      if(JSON.stringify(newdata[i]) !== JSON.stringify(newstored[i])){
+        console.log("item has been altered");
+        var temp = Object.assign({},newdata[i]);
+        temp.changed = null;
+        changedData.push(temp);
+      }
+    }
+  }
+  for(i in newdata){
+    if(newstored[i] === undefined){
+      console.log("item has been added");
+      var temp = Object.assign({},newdata[i]);
+      temp.changed = true;
+      changedData.push(temp);
+    }
+
+  }
+  return [uninstanced, changedData];
+}
+exports.filterAlteredData = filterAlteredData;
+function sortByBucketCategory(items){
+  var itemscopy = Array.from(items);
+  var bucketCategory = {
+    Invisible:[],
+    Item:[],
+    Currency:[],
+    Equippable:[],
+    Ignored:[],
+  };
+  for(i in itemscopy){
+    var bucket = D2Enums.BucketCategory[itemscopy[i].bucketHashData.category];
+    bucketCategory[bucket].push(itemscopy[i]);
+  }
+  return bucketCategory;
 };
-exports.loadManifest = loadManifest;
+exports.sortByBucketCategory = sortByBucketCategory;
+
+function bucketHashSort(items){
+  var sortedEquipment = {};
+  for(i in items){
+    var buckethash = items[i].bucketHash;
+    var bucketname = DestinyInventoryBucketDefinition[buckethash].displayProperties.name;
+    if(bucketname === undefined){
+      bucketname = buckethash;
+    }
+    else {
+      bucketname = bucketname.split(" ").join("");
+      bucketname = String(bucketname);
+    }
+    if(sortedEquipment[bucketname] == undefined)
+      { sortedEquipment[bucketname] = []; }
+    sortedEquipment[bucketname].push(items[i]);
+  }
+  return sortedEquipment;
+};
+exports.bucketHashSort = bucketHashSort;
+
+function sortByLocation(items){
+  var itemscopy = Array.from(items);
+  var location = {
+    Unknown: [],
+    Inventory: [],
+    Vault: [],
+    Vendor: [],
+    Postmaster: [],
+  };
+  for(i in itemscopy){
+    var locationindex = D2Enums.ItemLocation[itemscopy[i].location];
+    location[locationindex].push(itemscopy[i]);
+  }
+  return location;
+};
+exports.sortByLocation = sortByLocation;
+
+function sortByBucketTypeHash(items){
+  var sortedEquipment = {};
+  for(i in items){
+    var bucketTypeHash = items[i].itemHashData.inventory.bucketTypeHash;
+    var bucketname = DestinyInventoryBucketDefinition[bucketTypeHash].displayProperties.name;
+    if(bucketname === undefined){
+      bucketname = bucketTypeHash;
+    }
+    else {
+      bucketname = bucketname.split(" ").join("");
+      bucketname = String(bucketname);
+    }
+    if(sortedEquipment[bucketname] == undefined)
+      { sortedEquipment[bucketname] = []; }
+    sortedEquipment[bucketname].push(items[i]);
+  }
+  return sortedEquipment;
+}
+exports.sortByBucketTypeHash = sortByBucketTypeHash;

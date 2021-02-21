@@ -298,8 +298,6 @@ function lockItemState(itemData, rcID){
 };
 function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = transferring character
   var path = "/character/transferItem/";
-  console.log(rcID);
-  console.log(tcID);
   var body = {
     quantity: itemData.quantity,
     itemHash: itemData.itemHash,
@@ -309,3 +307,7 @@ function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = t
   };
   return postRequest(path, body);
 };
+async function test(cID, gamemode){
+  var path = "/historical/activity/specific/"+cID+"/"+gamemode;
+  fetchRequest(path).then(function(result){ console.log(result); });
+}

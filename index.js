@@ -17,7 +17,6 @@ const axios = require('axios');
 const dotenv = require("dotenv");
 const crypto = require("crypto");
 const helmet = require("helmet");
-const _ = require("loadsh");
 //const mongo = require('mongodb');
 //const MongoClient = require('mongodb').MongoClient;
 //const https = require('http');
@@ -92,10 +91,12 @@ app.get("/bnetlogin", async function(request, response){
   url.searchParams.append("client_id",process.env.Bungie_ClientID);
   url.searchParams.append("response_type","code");
   url.searchParams.append("state",state);
+  console.log("Sending to url.");
   response.redirect(url);
 });
 
 app.get("/bnetresponse", async function(request, response, next){
+  console.log("in bnet response.");
   if(request.query.state !== request.session.data.state){
     console.log("query state "+request.query.state +"and saved state "+request.session.data.state+" do not match. this session will be destroyed.");
     request.session.destroy();
@@ -117,16 +118,16 @@ app.get("/home/data", async function(request, response, next){
   var components = ["200", "201", "205", "300", "302", "304"];
   let result = await D2API.profileComponentRequest(request, components).catch(function(error){ return error; });
   if(result instanceof Error){ next(result); return; }
-  result.data.characterInventories = combineallcharacterEquipmentandInventory(result.data.characterEquipment, result.data.characterInventories);
+  result.data.characterInventories = D2API.appendEquipmentToInventory(result.data.characterEquipment, result.data.characterInventories);
   delete result.data.characterEquipment;
-  result.data.characterInventories = combineItemswithInstanceData(result.data.characterInventories,result.data.itemComponents);
+  result.data.characterInventories = D2API.appendInstanceData(result.data.characterInventories,result.data.itemComponents);
 
   request.session.data.gamedata.characterInventories = Object.assign({},result.data.characterInventories);
   delete result.data.itemComponents;
-  for(i in result.data.characterInventories){ result.data.characterInventories[i] = ServerResponse.sortByBucketCategory(result.data.characterInventories[i]); }
+  for(i in result.data.characterInventories){ result.data.characterInventories[i] = D2API.sortByBucketCategory(result.data.characterInventories[i]); }
   for(z in result.data.characterInventories){
     for(a in result.data.characterInventories[z])
-    { result.data.characterInventories[z][a] = ServerResponse.bucketHashSort(result.data.characterInventories[z][a]); }
+    { result.data.characterInventories[z][a] = D2API.bucketHashSort(result.data.characterInventories[z][a]); }
   }
   for(i in result.data.characters){
     result.data.characters[i].itemInventory = result.data.characterInventories[i];
@@ -148,20 +149,20 @@ app.get("/home/update", async function(request, response, next){
   var components = ["200", "201", "205", "300", "302", "304"];
   let result = await D2API.profileComponentRequest(request, components).catch(function(error){ return error; });
   if(result instanceof Error){ next(result); return; }
-  result.data.characterInventories = combineallcharacterEquipmentandInventory(result.data.characterEquipment, result.data.characterInventories);
+  result.data.characterInventories = D2API.appendEquipmentToInventory(result.data.characterEquipment, result.data.characterInventories);
   delete result.data.characterEquipment;
-  result.data.characterInventories = combineItemswithInstanceData(result.data.characterInventories,result.data.itemComponents);
+  result.data.characterInventories = D2API.appendInstanceData(result.data.characterInventories,result.data.itemComponents);
   delete result.data.itemComponents;
   var changedData = {};
   for(n in result.data.characterInventories){
-    var temp = differentiateData(storedData[n], result.data.characterInventories[n]);
+    var temp = D2API.filterAlteredData(storedData[n], result.data.characterInventories[n]);
     changedData[n] = temp[1].concat(temp[0]);
   }
   request.session.data.gamedata.characterInventories = Object.assign({}, result.data.characterInventories);
-  for(i in changedData){ changedData[i] = ServerResponse.sortByBucketCategory(changedData[i]); }
+  for(i in changedData){ changedData[i] = D2API.sortByBucketCategory(changedData[i]); }
   for(z in changedData){
     for(a in changedData[z])
-    { changedData[z][a] = ServerResponse.sortByBucketTypeHash(changedData[z][a]); }
+    { changedData[z][a] = D2API.sortByBucketTypeHash(changedData[z][a]); }
   }
   for(i in result.data.characters){
     result.data.characters[i].itemInventory = changedData[i];
@@ -182,13 +183,13 @@ app.get("/vault/data", async function(request, response, next){
   var components = ["102", "200", "300", "302", "304"];
   let result = await D2API.profileComponentRequest(request, components).catch(function(error){ return error; });
   if(result instanceof Error){ next(result); return; }
-  result.data.profileInventory = combineItemswithInstanceData({ profileInventory: result.data.profileInventory },result.data.itemComponents).profileInventory;
+  result.data.profileInventory = D2API.appendInstanceData({ profileInventory: result.data.profileInventory },result.data.itemComponents).profileInventory;
 
   request.session.data.gamedata.vault = Object.assign({},result.data);
   delete result.data.itemComponents;
 
-  result.data.profileInventory = ServerResponse.sortByBucketCategory(result.data.profileInventory);
-  for(b in result.data.profileInventory){ result.data.profileInventory[b] = ServerResponse.sortByBucketTypeHash(result.data.profileInventory[b]); }
+  result.data.profileInventory = D2API.sortByBucketCategory(result.data.profileInventory);
+  for(b in result.data.profileInventory){ result.data.profileInventory[b] = D2API.sortByBucketTypeHash(result.data.profileInventory[b]); }
   delete result.data.profileInventory.Ignored;
   delete result.data.profileInventory.Invisible;
   response.status(result.status).json(result.data);
@@ -204,13 +205,13 @@ app.get("/vault/update", async function(request, response, next){
   var components = ["102", "200", "300", "302", "304"];
   let result = await D2API.profileComponentRequest(request, components).catch(function(error){ return error; });
   if(result instanceof Error){ next(result); return; }
-  result.data.profileInventory = combineItemswithInstanceData({ profileInventory: result.data.profileInventory },result.data.itemComponents).profileInventory;
-  var temp = differentiateData(storedData, result.data.profileInventory);
+  result.data.profileInventory = D2API.appendInstanceData({ profileInventory: result.data.profileInventory },result.data.itemComponents).profileInventory;
+  var temp = D2API.filterAlteredData(storedData, result.data.profileInventory);
   changedData = temp[1].concat(temp[0]);
   request.session.data.gamedata.vault.profileInventory = Object.assign({},result.data.profileInventory);
 
-  changedData = ServerResponse.sortByBucketCategory(changedData);
-  for(b in changedData){ changedData[b] = ServerResponse.sortByBucketTypeHash(changedData[b]); }
+  changedData = D2API.sortByBucketCategory(changedData);
+  for(b in changedData){ changedData[b] = D2API.sortByBucketTypeHash(changedData[b]); }
   delete changedData.Ignored;
   delete changedData.Invisible;
   var data = {
@@ -222,8 +223,20 @@ app.get("/vault/update", async function(request, response, next){
   console.log("vault update took exactly "+(endTime-startTime)/1000+" seconds.");
   console.log("Payload size.");
   console.log(Buffer.byteLength(JSON.stringify(changedData)));
-
 });
+/*app.get("/historical/general/account",async function(request, response, next){
+
+});*/
+/*app.get("/historical/stats/specific/:character/:mode",async function(request, response, next){
+  let result = await D2API.specificHistoricalStats(request).catch(function(error){ return error; });
+  if(result instanceof Error){ next(result); return; }
+  response.status(result.status).json(result.data);
+});*/
+/*app.get("/historical/activity/specific/:character/:mode",async function(request, response, next){
+  let result = await D2API.getActivityHistory(request).catch(function(error){ return error; });
+  if(result instanceof Error){ next(result); return; }
+  response.status(result.status).json(result.data);
+});*/
 app.post("/character/lockItem",async function(request, response, next){
   let result = await D2API.lockCharacterItem(request).catch(function(error){ return error; });
   console.log("in character/lockItem");
@@ -332,70 +345,4 @@ function handleServerErrors(error, request, response, next){
     console.log("Hey, I didn't build this error, so we just gonna give a default response.");
     response.status(500).json({ error: "Internal Server Error." });
   }
-}
-
-
-//ALl temporary until i'm confident i can move them into the main program.
-function combineallcharacterEquipmentandInventory(equipment, inventory){
-  for(i in equipment){
-    for(z in equipment[i]){
-      inventory[i].push(equipment[i][z]);
-    }
-  }
-  return inventory;
-};
-function combineItemswithInstanceData(inventory, instancedata){
-  for(i in inventory){
-    for(z in inventory[i]){
-      if(inventory[i][z].itemInstanceId !== undefined){
-        inventory[i][z].instanceData = instancedata[inventory[i][z].itemInstanceId];
-      }
-    }
-  }
-  return inventory;
-}
-function differentiateData(stored, data){
-  var changedData = [];
-  var uninstanced = [];
-  var newstored = {};
-  var newdata = {};
-  for(i in stored){
-    if(stored[i].itemInstanceId !== undefined){
-      newstored[stored[i].itemInstanceId] = stored[i];
-    }
-  }
-  for(i in data){
-    if(data[i].itemInstanceId !== undefined){
-      newdata[data[i].itemInstanceId] = data[i];
-    }
-    else {
-      uninstanced.push(data[i]);
-    }
-  }
-  for(i in newstored){
-    if(newdata[i] === undefined){
-      console.log("item has been removed");
-      var temp = Object.assign({},newstored[i]);
-      temp.changed = false;
-      changedData.push(temp);
-    }
-    else {
-      if(JSON.stringify(newdata[i]) !== JSON.stringify(newstored[i])){
-        console.log("item has been altered");
-        var temp = Object.assign({},newdata[i]);
-        temp.changed = null;
-        changedData.push(temp);
-      }
-    }
-  }
-  for(i in newdata){
-    if(newstored[i] === undefined){
-      console.log("item has been added");
-      var temp = Object.assign({},newdata[i]);
-      temp.changed = true;
-      changedData.push(temp);
-    }
-
-  }
-  return [uninstanced, changedData];
 }
