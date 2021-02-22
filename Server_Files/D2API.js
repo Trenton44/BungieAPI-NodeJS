@@ -135,6 +135,22 @@ async function getActivityHistory(request){
 };
 exports.getActivityHistory = getActivityHistory;
 
+async function pullFromPostmaster(request){
+  var bnetInfo = request.session.data.bnetInfo;
+  var membershipType = bnetInfo[bnetInfo.primaryMembershipId].membershipType;
+  var path = bungieRoot+"/Destiny2/Actions/Items/PullFromPostmaster/";
+  var body = {
+    itemReferenceHash: request.body.hash,
+    stackSize: request.body.quantity,
+    characterId: request.body.characterId,
+    membershipType: membershipType,
+  };
+  if(request.body.itemId !== undefined){ body.itemId = request.body.itemId; }
+  var access_token = decryptData(request.session.data.tokenData).access_token;
+  let result = await postRequest(path, body, access_token).catch(function(error){ console.log(error); throw new D2Responses.APIError(error); });
+  return new D2Responses.APIResponse(result);
+};
+exports.pullFromPostmaster = pullFromPostmaster;
 async function lockCharacterItem(request){
   var bnetInfo = request.session.data.bnetInfo;
   var membershipType = bnetInfo[bnetInfo.primaryMembershipId].membershipType;

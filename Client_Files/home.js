@@ -5,10 +5,13 @@ var updateinprogress = false;
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 async function Initialize(value){
   window = value;
+  window.document.getElementById('/character').onclick= function(){ window.location.href = "/"; };
+  window.document.getElementById('/vault').onclick= function(){ window.location.href = "/vault"; };
+  window.document.getElementById('Refresh').onclick= function(){ updateData(); };
+  window.document.getElementById('PostmasterActivate').onclick= function(){ pullPostmaster(); };
   var path = "/home/data";
   let result = await fetchRequest(path).catch(function(error){ return error; });
   if(result instanceof Error){ return false; }
-  console.log(result);
   var keys = Object.keys(result);
   for(i in keys){
     playerCharacters.push(new character());
@@ -39,7 +42,7 @@ function changeCharacter(b){
   updateData();
 };
 function pullPostmaster(){
-  playerCharacters[0].slotController.pullPostmaster();
+  playerCharacters[0].slotController.pullFromPostmaster(playerCharacters[0].data.characterId);
 }
 async function updateData(){
   if(updateinprogress){
@@ -124,7 +127,9 @@ function slotController(){
   this.slots;
   this.postmaster = [];
   this.engrams = [];
-  this.Initialize = function(data){
+  this.characterId;
+  this.Initialize = function(data, id){
+    this.characterId = id;
     this.slots = {};
     this.specialslots = {};
     for(i in data.Equippable){
@@ -142,8 +147,22 @@ function slotController(){
       this.postmaster.push(newItem);
     }
   };
-  this.pullPostmaster = function(){
-    j
+  this.pullFromPostmaster = async function(characterId){
+    var path = "/postmaster";
+    var results = [];
+    for(i in this.postmaster){
+      console.log(this.postmaster[i]);
+      console.log(characterId);
+      var body = {
+        hash: this.postmaster[i].data.itemHash,
+        quantity: this.postmaster[i].data.quantity,
+        itemId: this.postmaster[i].data.itemInstanceId,
+        characterId: characterId,
+      };
+      var request = await postRequest(path, body).catch(function(error){ return error; });
+      results.push(request);
+    }
+    console.log(results);
   }
   this.swapEquipped = async function(item){
     var localthis = this;

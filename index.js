@@ -11,7 +11,6 @@ const fs = require('fs');
 const express = require("express");
 const session = require("express-session");
 const genuuid = require("uuid");
-var sslRedirect = require("heroku-ssl-redirect").default;
 const app = new express();
 const axios = require('axios');
 const dotenv = require("dotenv");
@@ -54,7 +53,6 @@ if(process.env.NODE_ENV == "development"){
  }
  else {
   httpsServer = https.createServer(app);
-  app.use(sslRedirect());
  }
  /*var store = new MongoDBStore({
    uri: process.env.Mongo_DB_URI,
@@ -64,6 +62,16 @@ if(process.env.NODE_ENV == "development"){
  store.on("error", function(error){
    console.error(error);
  });*/
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+      "script-src": ["'self'","'sha256-cdNxkst/MKzgvqZUhCrx6TILhuQGW1jtZ3LqlgWOtKg='","",""],
+      "script-src-attr": ["'self'"],
+      "img-src": ["'self'","https://www.bungie.net/common/"],
+    },
+  }
+}));
 app.use(express.json());
 app.use(
   session({
@@ -236,6 +244,11 @@ app.get("/historical/activity/specific/:character/:mode/:page",async function(re
   let result = await D2API.getActivityHistory(request).catch(function(error){ return error; });
   if(result instanceof Error){ next(result); return; }
   response.status(result.status).json(result.data);
+});
+app.post("/postmaster",async function(request, response, next){
+  let result = await D2API.pullFromPostmaster(request).catch(function(error){ return error; });
+  if(result instanceof Error){ next(result); return; }
+  response.json(result.status).json(result.data);
 });
 app.post("/character/lockItem",async function(request, response, next){
   let result = await D2API.lockCharacterItem(request).catch(function(error){ return error; });

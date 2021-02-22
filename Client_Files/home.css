@@ -171,7 +171,7 @@ body {
   margin: 0 !important;
 }
 .dummy-item {
-  height: 40%;
+  height: 50%;
 }
 .character-equipment > div:first-child > .item-container {
   left: 0%;
@@ -201,7 +201,7 @@ body {
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  height: 15%;
+  height: 30%;
 }
 .postmaster > h1 {
   background-color: rgba(20,20,20, 0.6);

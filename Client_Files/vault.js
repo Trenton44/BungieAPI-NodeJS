@@ -6,6 +6,9 @@ var updateinprogress = false;
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 async function Initialize(value){
   window = value;
+  window.document.getElementById('/character').onclick= function(){ window.location.href = "/"; };
+  window.document.getElementById('/vault').onclick= function(){ window.location.href = "/vault"; };
+  window.document.getElementById('Refresh').onclick= function(){ updateData(); };
   var path = "/vault/data";
   let result = await fetchRequest(path).catch(function(error){ return error; });
   if(result instanceof Error){ return false; }
