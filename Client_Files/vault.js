@@ -59,6 +59,7 @@ async function updateData(){
   window.document.getElementById("updateStatus").innerHTML = "Refresh";
   return Promise.resolve(true);
 };
+
 function character(){
   this.data;
   this.inventory;

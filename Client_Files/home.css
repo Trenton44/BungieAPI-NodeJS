@@ -210,10 +210,30 @@ body {
   color: white;
   font-style: italic;
 }
+
 .postmaster > div {
   display: flex;
   flex-basis: 10%;
-  flex-shrink: 1;
+  height: 100%;
+  font-size: 80%;
+  flex-direction: row;
+  text-align: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+.postmaster > div > h1 {
+  background-color: rgba(20,20,20,0.7);
+  margin: 5px;
+  flex-basis: 100px;
+  text-align: center;
+  color: white;
+}
+#postmaster-equipment {
+  display: flex;
+  flex-basis: 10%;
+  height: 100%;
+  flex-grow: 2;
+  margin-left: 30px;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;

@@ -38,6 +38,9 @@ function changeCharacter(b){
   }
   updateData();
 };
+function pullPostmaster(){
+  playerCharacters[0].slotController.pullPostmaster();
+}
 async function updateData(){
   if(updateinprogress){
     console.log("Page update is already in progress, please wait before trying again.");
@@ -139,11 +142,14 @@ function slotController(){
       this.postmaster.push(newItem);
     }
   };
+  this.pullPostmaster = function(){
+    j
+  }
   this.swapEquipped = async function(item){
     var localthis = this;
     var slot = this.slots[item.slotName];
     let result = await equipItem(item.data, playerCharacters[0].data.characterId).catch(function(error){ return error; });
-    if(result instanceof Error){ console.error(result.statusText); return false; }
+    if(result instanceof Error){ alert("Unable to equip item."); return false; }
     var currentEquip;
     for(i in slot)
     { if(slot[i].data.instanceData.instances.isEquipped){ currentEquip = slot[i];  }}
@@ -266,6 +272,7 @@ function Item(){
     }
     if(targetElementID == "c1" || targetElementID == "c2"){
       var result = await transferRequest(localthis.data, characterID, playerCharacters[0].data.characterId).catch(function(error){ return error; });
+      console.log(result);
       if(result instanceof Error){ alert("Unable to transfer item."); return false; }
       console.log("transfer was successful.");
       await sleep(500);
@@ -279,10 +286,9 @@ async function fetchRequest(path){
     method: "GET",
     headers: {"Content-Type":"application/json"},
   });
-  let response = await fetch(request).catch(function(error){ return Error(); });
-  console.log(response);
-  if(response.status >=200 && response.status <= 300){ return response.json(); }
-  else{ throw new Error(response.json()); }
+  let response = await fetch(request).catch(function(error){ return error; });
+  if(response.ok){ return response.json(); }
+  return Error();
 };
 async function postRequest(path, body){
   var request = new Request(path, {
@@ -290,10 +296,9 @@ async function postRequest(path, body){
     headers: {"Content-Type":"application/json"},
     body: JSON.stringify(body),
   });
-  let response = await fetch(request).catch(function(error){ return Error(); });
-  console.log(response);
-  if(response.status >=200 && response.status <= 300){ return response.json(); }
-  else{ console.log(response.statusText); Promise.reject(new Error(response.statusText)); }
+  let response = await fetch(request).catch(function(error){ return error; });
+  if(response.ok){ return response.json(); }
+  return Error();
 }
 //Makes requests to server for equipping new items from existing non-equipped items.
 function equipItem(itemData, rcID){
