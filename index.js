@@ -248,7 +248,7 @@ app.get("/historical/activity/specific/:character/:mode/:page",async function(re
 app.post("/postmaster",async function(request, response, next){
   let result = await D2API.pullFromPostmaster(request).catch(function(error){ return error; });
   if(result instanceof Error){ next(result); return; }
-  response.json(result.status).json(result.data);
+  response.status(result.status).send("Success");
 });
 app.post("/character/lockItem",async function(request, response, next){
   let result = await D2API.lockCharacterItem(request).catch(function(error){ return error; });

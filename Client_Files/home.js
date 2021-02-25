@@ -151,18 +151,18 @@ function slotController(){
     var path = "/postmaster";
     var results = [];
     for(i in this.postmaster){
-      console.log(this.postmaster[i]);
-      console.log(characterId);
       var body = {
         hash: this.postmaster[i].data.itemHash,
         quantity: this.postmaster[i].data.quantity,
         itemId: this.postmaster[i].data.itemInstanceId,
         characterId: characterId,
       };
-      var request = await postRequest(path, body).catch(function(error){ return error; });
-      results.push(request);
+      var result = await postRequest(path, body).catch(function(error){ return error; });
+      if(result instanceof Error){ continue; }
+      console.log(request);
+      this.postmaster[i].destroy();
+      this.postmaster.splice(i,1);
     }
-    console.log(results);
   }
   this.swapEquipped = async function(item){
     var localthis = this;
