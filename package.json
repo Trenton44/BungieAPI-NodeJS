@@ -19,6 +19,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "create-env": "printenv > .env",
     "prestart": "node manifest.js",
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
