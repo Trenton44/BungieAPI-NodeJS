@@ -6,27 +6,26 @@ const assetRoot = root+"/Asset_Files";
 const manifestRoot = root+"/Manifest_Files";
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 
-//const https = require("https");
+const https = require("https");
 const fs = require('fs');
 const express = require("express");
 const session = require("express-session");
 const genuuid = require("uuid");
-var sslRedirect = require("heroku-ssl-redirect").default;
 const app = new express();
 const axios = require('axios');
 const dotenv = require("dotenv");
 const crypto = require("crypto");
 const helmet = require("helmet");
-const mongo = require('mongodb');
-const MongoClient = require('mongodb').MongoClient;
-const https = require('http');
-const MongoDBStore = require("connect-mongodb-session")(session);
+//const mongo = require('mongodb');
+//const MongoClient = require('mongodb').MongoClient;
+//const https = require('http');
+//const MongoDBStore = require("connect-mongodb-session")(session);
 var sessionConfig = {
     name: "sAk3m3",
     secret: "secreto!alabastro@",
     genid: function(req){ return genuuid.v4(); },
     resave: true,
-    store: store,
+    //store: store,
     saveUninitialized: true,
     cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
 };
@@ -37,7 +36,7 @@ const bungieTokURL = bungieRoot+"/app/oauth/token/";
 
 const D2API = require(serverRoot+"/D2API.js");
 const D2Components = require(serverRoot+"/D2Components.js");
-const ServerResponse = require(serverRoot+"/Server Responses.js");
+const ServerResponse = require(serverRoot+"/Server_Responses.js");
 const D2Responses = require(serverRoot+"/D2APIResponseObjects.js");
 
 
@@ -54,16 +53,25 @@ if(process.env.NODE_ENV == "development"){
  }
  else {
   httpsServer = https.createServer(app);
-  app.use(sslRedirect());
  }
- var store = new MongoDBStore({
+ /*var store = new MongoDBStore({
    uri: process.env.Mongo_DB_URI,
    databaseName: "users",
    collection: "Sessions",
  });
  store.on("error", function(error){
    console.error(error);
- });
+ });*/
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+      "script-src": ["'self'","'sha256-cdNxkst/MKzgvqZUhCrx6TILhuQGW1jtZ3LqlgWOtKg='","",""],
+      "script-src-attr": ["'self'"],
+      "img-src": ["'self'","https://www.bungie.net/common/"],
+    },
+  }
+}));
 app.use(express.json());
 app.use(
   session({
@@ -71,7 +79,7 @@ app.use(
       secret: "secreto!alabastro@",
       genid: function(req){ return genuuid.v4(); },
       resave: true,
-      store: store,
+      //store: store,
       saveUninitialized: true,
       cookie: { httpOnly: true, secure: false, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
@@ -91,10 +99,12 @@ app.get("/bnetlogin", async function(request, response){
   url.searchParams.append("client_id",process.env.Bungie_ClientID);
   url.searchParams.append("response_type","code");
   url.searchParams.append("state",state);
+  console.log("Sending to url.");
   response.redirect(url);
 });
 
 app.get("/bnetresponse", async function(request, response, next){
+  console.log("in bnet response.");
   if(request.query.state !== request.session.data.state){
     console.log("query state "+request.query.state +"and saved state "+request.session.data.state+" do not match. this session will be destroyed.");
     request.session.destroy();
@@ -110,111 +120,136 @@ app.get("/bnetresponse", async function(request, response, next){
 
 app.use(accessAuthorizedEndpoints);
 
-//Returns a list of the character ID's of the current d2 profile.
-app.get("/characterids",async function(request, response, next){
-  var components = ["100"];
-  var result = await D2API.profileComponentRequest(request, components).catch(function(error){ return error; });
-  if(result instanceof Error){ next(result); return; }
-  response.status(result.status).json(result.data.profile.characterIds);
-});
-
-app.get("/character/:id/general",async function(request, response, next){
-  var components = ["200"];
-  var cID = request.params.id;
-  var result = await D2API.characterComponentRequest(request, components, cID).catch(function(error){ return error; });
-  if(result instanceof Error){ next(result); return; }
-  result.data = result.data.character;
-  response.status(result.status).json(result.data);
-});
-
-//Sends request to GetProfile endpoint, cleans up result, and
-//returns list of equipment character currently has equipped.
-app.get("/character/:id/equipment",async function(request, response, next){
-  var components = ["201", "205", "300", "304"];
-  var cID = request.params.id;
-  var result = await D2API.characterComponentRequest(request, components, cID).catch(function(error){ return error; });
-  if(result instanceof Error){ next(result); return; }
-  var data = result.data;
-  data.equipment = ServerResponse.sortByBucketDefinition(data.equipment);
-  data.inventory = ServerResponse.sortByBucketCategory(data.inventory);
-  var engrams = data.inventory.Item;
-  data.inventory = ServerResponse.sortByBucketDefinition(data.inventory.Equippable);
-  delete data.equipment.Emotes;
-  delete data.equipment.Finishers;
-  delete data.equipment.ClanBanners;
-  delete data.inventory.Emotes;
-  delete data.inventory.Finishers;
-  delete data.inventory.ClanBanners;
-  for(i in data.inventory){
-    data.inventory[i].unshift(data.equipment[i][0]);
-    for(z in data.inventory[i]){
-      var temp = ServerResponse.DestinyItemTypes[i];
-      data.inventory[i][z] = ServerResponse[temp](data.inventory[i][z],i,z);
-    }
-  }
-  data.inventory.engrams = engrams;
-  for(i in data.inventory.engrams)
-  { data.inventory.engrams[i] = ServerResponse.ItemResponseFormat(data.inventory.engrams[i],"engrams",i); }
-  response.status(200).json({inventory: data.inventory});
-});
-
-app.get("/character/:id/inventory",async function(request, response, next){
-  var components = ["201"];
-  var cID = request.params.id;
-  var result = await D2API.characterComponentRequest(request, components,cID).catch(function(error){ return error; });
-  if(result instanceof Error){ next(result); return; }
-  result.data = ServerResponse.sortByLocation(data.inventory);
-  response.status(result.status).json(result.data);
-});
-
-app.get("/profile/inventory/:id", async function(request, response, next){
-  var components = ["102", "103"];
-  var cID = request.params.id;
-  var result = await D2API.profileComponentRequest(request, components).catch(function(error){ return error; });
-  if(result instanceof Error){ next(result); return; }
-  var returnData = {
-    currency: result.data.profileCurrencies,
-    inventory: ServerResponse.sortByLocation(result.data.profileInventory),
-  };
-  response.status(200).json(returnData);
-});
-
-app.get("/profile/vault",async function(request, response, next){
-  var components = ["102", "300", "304"];
-  var result = await D2API.profileComponentRequest(request, components).catch(function(error){ return error; });
-  if(result instanceof Error){ next(result); return; }
-  var data = result.data;
-  data = ServerResponse.sortByLocation(data.profileInventory).Vault;
-  data = ServerResponse.sortByBucketTypeHash(data);
-  var counter = 0;
-  for(i in data){
-    for(z in data[i]){
-      var temp = ServerResponse.DestinyItemTypes[i];
-      if(temp === undefined){ temp = ServerResponse.DestinyItemTypes["default"]; }
-      data[i][z] = ServerResponse[temp](data[i][z],i,counter);
-      counter += 1;
-    }
-  }
-  response.status(result.status).json(data);
-});
-
-//note to future self, this was 2.085 seconds with no sorting.
-app.get("/homedata", async function(request, response, next){
+app.get("/home/data", async function(request, response, next){
   var startTime = new Date().getTime();
+
   var components = ["200", "201", "205", "300", "302", "304"];
   let result = await D2API.profileComponentRequest(request, components).catch(function(error){ return error; });
   if(result instanceof Error){ next(result); return; }
-  console.log(Object.keys(result.data));
-  result.data.itemComponents = combineItemInstanceData(result.data.itemComponents);
-  result.data.characterInventories = combineallcharacterEquipmentandInventory(result.data.characterEquipment, result.data.characterInventories);
-  result.data.characterInventories = combineItemswithInstanceData(result.data.characterInventories,result.data.itemComponents);
-  response.status(result.status).json({ data: result.data });
+  result.data.characterInventories = D2API.appendEquipmentToInventory(result.data.characterEquipment, result.data.characterInventories);
+  delete result.data.characterEquipment;
+  result.data.characterInventories = D2API.appendInstanceData(result.data.characterInventories,result.data.itemComponents);
+
+  request.session.data.gamedata.characterInventories = Object.assign({},result.data.characterInventories);
+  delete result.data.itemComponents;
+  for(i in result.data.characterInventories){ result.data.characterInventories[i] = D2API.sortByBucketCategory(result.data.characterInventories[i]); }
+  for(z in result.data.characterInventories){
+    for(a in result.data.characterInventories[z])
+    { result.data.characterInventories[z][a] = D2API.bucketHashSort(result.data.characterInventories[z][a]); }
+  }
+  for(i in result.data.characters){
+    result.data.characters[i].itemInventory = result.data.characterInventories[i];
+    delete result.data.characters[i].itemInventory.Equippable.Finishers;
+    delete result.data.characters[i].itemInventory.Equippable.SeasonalArtifact;
+  }
+
+  response.status(result.status).json(result.data.characters);
+
+  var endTime = new Date().getTime();
+  console.log("access took exactly "+(endTime-startTime)/1000+" seconds.");
+  console.log("Payload size.");
+  console.log(Buffer.byteLength(JSON.stringify(result.data)));
+});
+
+app.get("/home/update", async function(request, response, next){
+  var startTime = new Date().getTime();
+  var storedData = request.session.data.gamedata.characterInventories;
+  var components = ["200", "201", "205", "300", "302", "304"];
+  let result = await D2API.profileComponentRequest(request, components).catch(function(error){ return error; });
+  if(result instanceof Error){ next(result); return; }
+  result.data.characterInventories = D2API.appendEquipmentToInventory(result.data.characterEquipment, result.data.characterInventories);
+  delete result.data.characterEquipment;
+  result.data.characterInventories = D2API.appendInstanceData(result.data.characterInventories,result.data.itemComponents);
+  delete result.data.itemComponents;
+  var changedData = {};
+  for(n in result.data.characterInventories){
+    var temp = D2API.filterAlteredData(storedData[n], result.data.characterInventories[n]);
+    changedData[n] = temp[1].concat(temp[0]);
+  }
+  request.session.data.gamedata.characterInventories = Object.assign({}, result.data.characterInventories);
+  for(i in changedData){ changedData[i] = D2API.sortByBucketCategory(changedData[i]); }
+  for(z in changedData){
+    for(a in changedData[z])
+    { changedData[z][a] = D2API.bucketHashSort(changedData[z][a]); }
+  }
+  for(i in result.data.characters){
+    result.data.characters[i].itemInventory = changedData[i];
+    delete result.data.characters[i].itemInventory.Equippable.Finishers;
+    delete result.data.characters[i].itemInventory.Equippable.SeasonalArtifact;
+  }
+
+  response.status(result.status).json(result.data.characters);
+
+  var endTime = new Date().getTime();
+  console.log("vault update took exactly "+(endTime-startTime)/1000+" seconds.");
+  console.log("Payload size.");
+  console.log(Buffer.byteLength(JSON.stringify(temp)));
+});
+
+app.get("/vault/data", async function(request, response, next){
+  var startTime = new Date().getTime();
+  var components = ["102", "200", "300", "302", "304"];
+  let result = await D2API.profileComponentRequest(request, components).catch(function(error){ return error; });
+  if(result instanceof Error){ next(result); return; }
+  result.data.profileInventory = D2API.appendInstanceData({ profileInventory: result.data.profileInventory },result.data.itemComponents).profileInventory;
+
+  request.session.data.gamedata.vault = Object.assign({},result.data);
+  delete result.data.itemComponents;
+
+  result.data.profileInventory = D2API.sortByBucketCategory(result.data.profileInventory);
+  for(b in result.data.profileInventory){ result.data.profileInventory[b] = D2API.sortByBucketTypeHash(result.data.profileInventory[b]); }
+  delete result.data.profileInventory.Ignored;
+  delete result.data.profileInventory.Invisible;
+  response.status(result.status).json(result.data);
   var endTime = new Date().getTime();
   console.log("vault access took exactly "+(endTime-startTime)/1000+" seconds.");
   console.log("Payload size.");
   console.log(Buffer.byteLength(JSON.stringify(result.data)));
 });
 
+app.get("/vault/update", async function(request, response, next){
+  var startTime = new Date().getTime();
+  var storedData = request.session.data.gamedata.vault.profileInventory;
+  var components = ["102", "200", "300", "302", "304"];
+  let result = await D2API.profileComponentRequest(request, components).catch(function(error){ return error; });
+  if(result instanceof Error){ next(result); return; }
+  result.data.profileInventory = D2API.appendInstanceData({ profileInventory: result.data.profileInventory },result.data.itemComponents).profileInventory;
+  var temp = D2API.filterAlteredData(storedData, result.data.profileInventory);
+  changedData = temp[1].concat(temp[0]);
+  request.session.data.gamedata.vault.profileInventory = Object.assign({},result.data.profileInventory);
+
+  changedData = D2API.sortByBucketCategory(changedData);
+  for(b in changedData){ changedData[b] = D2API.sortByBucketTypeHash(changedData[b]); }
+  delete changedData.Ignored;
+  delete changedData.Invisible;
+  var data = {
+    characters: result.data.characters,
+    profileInventory: changedData,
+  };
+  response.status(result.status).json(data);
+  var endTime = new Date().getTime();
+  console.log("vault update took exactly "+(endTime-startTime)/1000+" seconds.");
+  console.log("Payload size.");
+  console.log(Buffer.byteLength(JSON.stringify(changedData)));
+});
+/*app.get("/historical/general/account",async function(request, response, next){
+
+});*/
+app.get("/historical/stats/specific/:character/:mode",async function(request, response, next){
+  let result = await D2API.specificHistoricalStats(request).catch(function(error){ return error; });
+  if(result instanceof Error){ next(result); return; }
+  response.status(result.status).json(result.data);
+});
+app.get("/historical/activity/specific/:character/:mode/:page",async function(request, response, next){
+  let result = await D2API.getActivityHistory(request).catch(function(error){ return error; });
+  if(result instanceof Error){ next(result); return; }
+  response.status(result.status).json(result.data);
+});
+app.post("/postmaster",async function(request, response, next){
+  let result = await D2API.pullFromPostmaster(request).catch(function(error){ return error; });
+  if(result instanceof Error){ next(result); return; }
+  response.status(result.status).send("Success");
+});
 app.post("/character/lockItem",async function(request, response, next){
   let result = await D2API.lockCharacterItem(request).catch(function(error){ return error; });
   console.log("in character/lockItem");
@@ -224,10 +259,11 @@ app.post("/character/lockItem",async function(request, response, next){
 
 app.post("/character/transferItem",async function(request, response, next){
   var result;
+  console.log(request.body);
   if(request.body.characterTransferring !== undefined){
     console.log("The item is being transferred to the vault");
     result = await D2API.transferToVault(request).catch(function(error){ return error; });
-    if(result instanceof Error){ next(result); return; }
+    if(result instanceof Error){ result.message = "Your vault is full"; next(result); return; }
   }
   if(request.body.characterReceiving !== undefined){
     console.log("The item is being transferred to a character.");
@@ -235,6 +271,7 @@ app.post("/character/transferItem",async function(request, response, next){
     if(result instanceof Error){ next(result); return; }
   }
   console.log("result: "+result);
+  if(result === undefined){ throw undefined; }
   response.status(200).json({result: result});
 });
 //Sends a POST request to bungie API EquipItem endpoint, returns result of request.
@@ -298,8 +335,8 @@ function constructSessionInstance(request, response, next){
       state: null,
       tokenData: {},
       primaryMembershipId: null,
-      userdata: null,
-      characters: {},
+      bnetInfo: null,
+      gamedata: {},
     };
   }
   next();
@@ -309,55 +346,17 @@ function handleServerErrors(error, request, response, next){
   if(error instanceof D2Responses.APIError){
     console.log("Hey, i built this error object! ");
     console.error(error.toString());
-    response.status(error.status).json({ error: error.toString() });
+    error.statusText = error.toString();
+    console.log(error.status);
+    response.status(400).send(Error(error.statusText));
   }
   else if(error instanceof D2Responses.TokenError){
     console.log("Something went awry trying to obtain an access token.");
-    response.status(400).json({ error: "Something went awry trying to obtain an access token. Feel free to try again though." });
+    response.status(400).send("Something went awry trying to obtain an access token. Feel free to try again though.");
   }
   else {
     console.error(error);
     console.log("Hey, I didn't build this error, so we just gonna give a default response.");
-    response.status(500).json({ error: "Internal Server Error." });
+    response.status(500).send("Internal Server Error.");
   }
-}
-
-
-//ALl temporary until i'm confident i can move them into the main program.
-function combineItemInstanceData(data){
-  var longestcomponent;
-  var length = 0;
-  for(i in data){
-    var temp = Object.keys(data[i]).length;
-    if( temp > length){
-      length = temp;
-      longestcomponent = i;
-    }
-  }
-  var combinedItemComponents = {};
-  for(i in data[longestcomponent]){
-    combinedItemComponents[i] = {};
-    for(z in data){
-      combinedItemComponents[i][z] = data[z][i];
-    }
-  }
-  return combinedItemComponents;
-}
-function combineallcharacterEquipmentandInventory(equipment, inventory){
-  for(i in equipment){
-    for(z in equipment[i]){
-      inventory[i].push(equipment[i][z]);
-    }
-  }
-  return inventory;
-};
-function combineItemswithInstanceData(inventory, instancedata){
-  for(i in inventory){
-    for(z in inventory[i]){
-      if(inventory[i][z].itemInstanceId !== undefined){
-        inventory[i][z].instanceData = instancedata[inventory[i][z].itemInstanceId];
-      }
-    }
-  }
-  return inventory;
 }

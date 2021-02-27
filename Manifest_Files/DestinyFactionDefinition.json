@@ -83,8 +83,8 @@
     "tokenValues": {
       "3899548068": 100
     },
-    "rewardItemHash": 3578462974,
-    "rewardVendorHash": 3578462974,
+    "rewardItemHash": 1508358933,
+    "rewardVendorHash": 0,
     "vendors": [
       {
         "vendorHash": 69482069,
@@ -149,11 +149,8 @@
       "hasIcon": true
     },
     "progressionHash": 2626549951,
-    "tokenValues": {
-      "183980811": 100
-    },
-    "rewardItemHash": 1368565477,
-    "rewardVendorHash": 1368565477,
+    "rewardItemHash": 834753572,
+    "rewardVendorHash": 0,
     "vendors": [
       {
         "vendorHash": 3603221665,
@@ -188,7 +185,7 @@
       "hasIcon": true
     },
     "progressionHash": 2772425241,
-    "rewardItemHash": 0,
+    "rewardItemHash": 3853268581,
     "rewardVendorHash": 0,
     "vendors": [
       {
@@ -282,8 +279,8 @@
       "685157381": 25,
       "685157383": 30
     },
-    "rewardItemHash": 3531414277,
-    "rewardVendorHash": 3531414277,
+    "rewardItemHash": 2502860484,
+    "rewardVendorHash": 0,
     "vendors": [
       {
         "vendorHash": 672118013,
@@ -457,8 +454,8 @@
     "tokenValues": {
       "1873857625": 100
     },
-    "rewardItemHash": 1762796941,
-    "rewardVendorHash": 1762796941,
+    "rewardItemHash": 3806471180,
+    "rewardVendorHash": 0,
     "vendors": [
       {
         "vendorHash": 895295461,

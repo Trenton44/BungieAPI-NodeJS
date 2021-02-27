@@ -1,150 +1,238 @@
 var window;
 var bungieCommon = "https://www.bungie.net";
 var playerCharacters = [];
-var slotController = new slotController();
+var updateinprogress = false;
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 async function Initialize(value){
   window = value;
-  var path = "/characterids";
-  var ids = await fetchRequest(path);
-  console.log(ids);
-  if(ids instanceof Error){ console.log("Unable to obtain characters."); };
-  for(i in ids){
+  window.document.getElementById('/character').onclick= function(){ window.location.href = "/"; };
+  window.document.getElementById('/vault').onclick= function(){ window.location.href = "/vault"; };
+  window.document.getElementById('Refresh').onclick= function(){ updateData(); };
+  window.document.getElementById('PostmasterActivate').onclick= function(){ pullPostmaster(); };
+  var path = "/home/data";
+  let result = await fetchRequest(path).catch(function(error){ return error; });
+  if(result instanceof Error){ return false; }
+  var keys = Object.keys(result);
+  for(i in keys){
     playerCharacters.push(new character());
-    playerCharacters[i].Initialize(i, ids[i]);
+    playerCharacters[i].Initialize(i,result[keys[i]]);
   }
-  console.log(playerCharacters);
-  updateCharacters();
-  //updateTimer(30000);
+  //updateTimer(25000);
 };
 function updateTimer(timer){
   console.log("starting auto update cycle.");
   sleep(timer).then(function(){ autoUpdate(timer); });
 };
 async function autoUpdate(timer){
-  console.log("Updating page...");
-  await updateCharacters();
-  console.log("Page update finished.");
+  console.log("Updating inventory...");
+  var startTime = new Date().getTime();
+  await updateData();
+  sleep(100);
+  var endTime = new Date().getTime();
+  console.log("Inventory updated in "+(endTime-startTime)+" milliseconds.");
   updateTimer(timer);
 };
 function changeCharacter(b){
-  console.log(b);
   if(b === 0){ console.log("Character is already loaded."); return true; }
   var temp = playerCharacters.splice(b,1);
-  console.log(temp);
   playerCharacters.unshift(temp[0]);
-  console.log(playerCharacters);
-  for(i in playerCharacters){  playerCharacters[i].setID(i); }
-
-  updateCharacters();
+  for(i in playerCharacters){
+    playerCharacters[i].setID(i);
+  }
+  updateData();
 };
-async function updateCharacters(){
-  console.log("beginning to update characters.");
-  slotController.fetchLoadout(playerCharacters[0].characterId).catch(function(error){ console.error(error); });
-  let result = await Promise.all([playerCharacters[0].loadCharacter(),playerCharacters[1].loadCharacter(),playerCharacters[2].loadCharacter()]).catch(function(error){ return error; });
-  if(result instanceof Error) { console.error(result); return false; }
-  updateGUI();
-  console.log("Characters updated.");
-  return true;
+function pullPostmaster(){
+  playerCharacters[0].slotController.pullFromPostmaster(playerCharacters[0].data.characterId);
+}
+async function updateData(){
+  if(updateinprogress){
+    console.log("Page update is already in progress, please wait before trying again.");
+    return false;
+  }
+  window.document.getElementById("updateStatus").innerHTML = "Updating page...";
+  updateinprogress = true;
+  var path = "/home/update";
+  let result = await fetchRequest(path).catch(function(error){ return error; });
+  if(result instanceof Error){ updateinprogress = false; return false; }
+  for(i in result){
+    for(z in playerCharacters){
+      var currentCheck = playerCharacters[z];
+      if(currentCheck.data.characterId == i){
+        currentCheck.slotController.updateInventory(result[i].itemInventory);
+      }
+    }
+  }
+  for(i in result){
+    delete result[i].itemInventory;
+    for(z in playerCharacters){
+      var currentCheck = playerCharacters[z];
+      if(currentCheck.data.characterId == i){
+        currentCheck.updateCharacterUI(result[i]);
+        currentCheck.showCharacterUI();
+      }
+    }
+  }
+  await sleep(500);
+  playerCharacters[0].showInventoryUI(true);
+  updateinprogress = false;
+  window.document.getElementById("updateStatus").innerHTML = "Refresh";
+  return Promise.resolve(true);
 };
-function updateGUI(){
-  playerCharacters[0].update();
-  playerCharacters[1].update();
-  playerCharacters[2].update();
-};
+function itemEquip(item){
+  playerCharacters[0].slotController.swapEquipped(item);
+}
 function character(){
+  this.data;
+  this.inventory;
+  this.banner;
   this.id;
   this.element;
   this.setID = function(value){
     this.id = value;
-    this.element = window.document.getElementById("c"+this.id);
     var localthis = this;
-    this.element.ondblclick = function(){  changeCharacter(localthis.id); };
+    this.element = window.document.getElementById("c"+this.id);
+    this.element.onclick = function(){  changeCharacter(localthis.id); };
+    this.showCharacterUI();
   };
-  this.characterId;
-  this.light;
-  this.race;
-  this.class;
-  this.emblem;
-  this.setEmblem = function(value){ this.emblem = bungieCommon+value; };
-  this.banner;
-  this.setBanner = function(value){ this.banner = "/assets/"+value+" Banner.png"; };
-  this.stats = {};
-  this.setStats = function(value){
-    for(z in value) this.stats[value[z].info.displayProperties.name] = value[z].value;
-  };
-  this.update = function(){
-    window.document.getElementById("c"+this.id+"-light").innerHTML = this.light;
-    window.document.getElementById("c"+this.id+"-race").innerHTML = this.race;
-    window.document.getElementById("c"+this.id+"-class").innerHTML = this.class;
-    window.document.getElementById("c"+this.id+"-emblem").src = this.emblem;
+  this.Initialize = function(index, data){
+    this.data = data;
+    this.slotController = new slotController();
+    this.slotController.Initialize(this.data.itemInventory);
+    this.banner = "/assets/"+this.data.class.displayProperties.name+" Banner.png";
+    this.setID(index);
+  }
+  this.showCharacterUI = function(){
+    window.document.getElementById("c"+this.id+"-light").innerHTML = this.data.light;
+    window.document.getElementById("c"+this.id+"-race").innerHTML = this.data.race.displayProperties.name;
+    window.document.getElementById("c"+this.id+"-class").innerHTML = this.data.class.displayProperties.name;
+    window.document.getElementById("c"+this.id+"-emblem").src = bungieCommon+this.data.emblemBackgroundPath;
     if(this.id == 0){
       window.document.getElementById("character-banner").src = this.banner;
-      for(i in this.stats){ window.document.getElementById(i).innerHTML = this.stats[i]; }
+      for(i in this.data.stats){ window.document.getElementById(this.data.stats[i].info.displayProperties.name).innerHTML = this.data.stats[i].value; }
+      this.showInventoryUI(true);
     }
-  }
-  this.Initialize = function(id, characterId){
-    this.setID(id);
-    this.characterId = characterId;
+    else { this.showInventoryUI(false); }
   };
-  this.loadCharacter = async function(){
-    var path = "/character/"+this.characterId+"/general";
-    var data = await fetchRequest(path).catch(function(error){ return error; });
-    if(data instanceof Error){ Promise.reject(data); }
-    this.light = data.light;
-    this.race = data.race.displayProperties.name;
-    this.class = data.class.displayProperties.name;
-    this.setEmblem(data.emblemBackgroundPath);
-    this.setBanner(data.class.displayProperties.name);
-    this.setStats(data.stats);
-    return Promise.resolve(true);
+  this.updateCharacterUI = function(data){
+    for(i in data){
+      this.data[i] = data[i];
+    }
+  };
+  this.showInventoryUI = function(bool){
+    this.slotController.show(bool);
   };
 };
 
 function slotController(){
-  this.slots = {};
+  this.slots;
+  this.postmaster = [];
+  this.engrams = [];
+  this.characterId;
+  this.Initialize = function(data, id){
+    this.characterId = id;
+    this.slots = {};
+    this.specialslots = {};
+    for(i in data.Equippable){
+      if(this.slots[i] == undefined){ this.slots[i] = [];}
+      for(z in data.Equippable[i]){
+        localthis = this;
+        var newItem = new Item();
+        newItem.Initialize(i,this.slots[i].length,data.Equippable[i][z]);
+        this.slots[i].push(newItem);
+      }
+    }
+    for(i in data.Invisible.LostItems){
+      var newItem = new Item();
+      newItem.Initialize("postmaster",this.postmaster.length,data.Invisible.LostItems[i]);
+      this.postmaster.push(newItem);
+    }
+  };
+  this.pullFromPostmaster = async function(characterId){
+    var path = "/postmaster";
+    var results = [];
+    for(i in this.postmaster){
+      var body = {
+        hash: this.postmaster[i].data.itemHash,
+        quantity: this.postmaster[i].data.quantity,
+        itemId: this.postmaster[i].data.itemInstanceId,
+        characterId: characterId,
+      };
+      var result = await postRequest(path, body).catch(function(error){ return error; });
+      if(result instanceof Error){ continue; }
+      console.log(request);
+      this.postmaster[i].destroy();
+      this.postmaster.splice(i,1);
+    }
+  }
+  this.swapEquipped = async function(item){
+    var localthis = this;
+    var slot = this.slots[item.slotName];
+    let result = await equipItem(item.data, playerCharacters[0].data.characterId).catch(function(error){ return error; });
+    if(result instanceof Error){ alert("Unable to equip item."); return false; }
+    var currentEquip;
+    for(i in slot)
+    { if(slot[i].data.instanceData.instances.isEquipped){ currentEquip = slot[i];  }}
+    currentEquip.data.instanceData.instances.isEquipped = false;
+    item.data.instanceData.instances.isEquipped = true;
+    item.changeParent();
+    currentEquip.changeParent();
+    console.log("Item has successfully been swapped.");
+    this.show(true);
+  };
   this.wipe = function(){
     for(i in this.slots){
       var length = this.slots[i].length;
       if(length == 0) continue;
       for(var z = 0; z<length; z++){
-        this.slots[i][0].destroy(true);
-        this.slots[i].shift();
+        this.slots[i][0].destroy();
       }
     }
   };
-  this.swapEquipped = async function(slot, index, html){
-    var item = this.slots[slot];
-    item = item[index];
-    var localthis = this;
-    let result = await equipItem(item.data, playerCharacters[0].characterId);
-    if(result instanceof Error){ alert("Unable to equip item currently."); return false; }
-    console.log(result);
-    var currentEquip = localthis.slots[slot][0];
-    var temp = Object.assign(currentEquip.data);
-    var temp2 = Object.assign(item.data);
-    var tempH = currentEquip.HTMLTemplate.cloneNode(true).innerHTML;
-    var temp2H = item.HTMLTemplate.cloneNode(true).innerHTML;
-    item.changeData(temp);
-    currentEquip.changeData(temp2);
-    item.changeHTML(tempH);
-    currentEquip.changeHTML(temp2H);
-    return true;
-  }
-  this.fetchLoadout = async function(characterID){
-    this.wipe();
-    var localthis = this;
-    var path = "/character/"+characterID+"/equipment";
-    var data = await fetchRequest(path).catch(function(error){ return error; });
-    if(data instanceof Error) {console.error(data); return false;}
-    console.log(data);
-    for(i in data.inventory){
+  this.updateInventory = function(data){
+    for(i in data.Equippable){
       if(this.slots[i] == undefined){ this.slots[i] = []; }
-      for(z in data.inventory[i]){
-        var newItem = new Item();
-        newItem.Initialize(i,this.slots[i].length,data.inventory[i][z]);
-        this.slots[i].push(newItem);
+      for(z in data.Equippable[i]){
+        if(data.Equippable[i][z].changed == true){
+          var newItem = new Item();
+          newItem.Initialize(i,this.slots[i].length,data.Equippable[i][z]);
+          this.slots[i].push(newItem);
+        }
+        else if(data.Equippable[i][z].changed == false){
+          for(n in this.slots[i]){
+            if(this.slots[i][n].data.itemInstanceId === data.Equippable[i][z].itemInstanceId)
+            { this.slots[i][n].destroy(); this.slots[i].splice(n,1); }
+          }
+        }
+        else if(data.Equippable[i][z].changed == null){
+          for(n in this.slots[i]){
+            if(this.slots[i][n].data.itemInstanceId === data.Equippable[i][z].itemInstanceId){
+              this.slots[i][n].changeData(data.Equippable[i][z]);
+              this.slots[i][n].destroy();
+              this.slots[i][n].changeParent(); }
+          }
+        }
       }
+    }
+    this.specialslots.postmaster = data.Invisible.LostItems;
+    this.specialslots.engrams = data.Item.Engrams;
+    this.specialslots.currency = data.Currency;
+    this.updateItemIndexes();
+  };
+  this.updateItemIndexes = function(){
+    for(i in this.slots){
+      for(z in this.slots[i]){
+        this.slots[i][z].index = z;
+      }
+    }
+  };
+  this.show = function(bool){
+    for(i in this.slots){
+      for(z in this.slots[i]){
+        this.slots[i][z].show(bool);
+      }
+    }
+    for(i in this.postmaster){
+      this.postmaster[i].show(bool);
     }
   };
 };
@@ -153,72 +241,73 @@ function Item(){
   this.slotName;
   this.data;
   this.index;
-  this.HTMLTemplate;
+  this.element;
+  this.parentElement;
   this.Initialize = function(slotName, index, data){
     this.slotName = slotName;
     this.index = index;
-    var parent;
-    if(data.equipped){ parent = window.document.getElementById(this.slotName+"-primary-container"); }
-    else { parent = window.document.getElementById(this.slotName+"-equipment"); }
     var temp = window.document.createElement("div");
     temp.innerHTML = data.HTMLTemplate;
-    parent.append(temp.firstChild);
+    this.element = temp.firstChild;
     this.changeData(data);
-    this.HTMLTemplate = window.document.getElementById(this.data.htmlId);
-    this.changeHTML(this.HTMLTemplate.innerHTML);
-  };
-  this.changeData = function(value){
-    this.data = value;
-  };
-  this.changeHTML = function(value){
-    this.HTMLTemplate.innerHTML = value;
-    var children = this.HTMLTemplate.children;
+    this.changeParent();
+
     var localthis = this;
-    this.HTMLTemplate.draggable = true;
-    this.HTMLTemplate.ondragend = function(ev){localthis.drop(ev);};
-    this.HTMLTemplate.ondblclick = function(ev){ slotController.swapEquipped(localthis.slotName, localthis.index); };
+    this.element.draggable = true;
+    this.element.ondragend = function(ev){ localthis.itemTransfer(ev); }
+    this.element.ondblclick = function(){ itemEquip(localthis); };
   };
   this.destroy = function(isWipe){
-    if(this.index == 0){
-      this.data = null;
-      this.HTMLTemplate.remove();
-    }
-    else {
-      this.HTMLTemplate.remove();
-      this.data = null;
-      if(isWipe){ return true; }
-      slotController.slots[this.slotName].splice(this.index,1);
-    }
+    this.element.remove();
   };
-  this.drop = async function(ev){
+  this.changeData = function(data){
+    this.data = data;
+    if(this.data.state == 4){this.element.style.outline = "2px solid gold"; }
+  };
+  this.show = function(bool){
+    if(bool){ this.parentElement.append(this.element); }
+    else{ this.element.remove();}
+  };
+  this.changeParent = function(){
+    if(this.data.itemInstanceId == undefined){
+      this.parentElement = window.document.getElementById(this.slotName+"-equipment");
+      return true;
+    }
+    if(this.data.instanceData.instances.isEquipped)
+    { this.parentElement = window.document.getElementById(this.slotName+"-primary-container"); }
+    else
+    { this.parentElement = window.document.getElementById(this.slotName+"-equipment"); }
+  };
+  this.itemTransfer = async function(ev){
     var localthis = this;
     var targetElementID = window.document.elementFromPoint(ev.clientX,ev.clientY).id.split("-")[0];
     var characterID;
     try{
-      characterID = playerCharacters[targetElementID.slice(-1)].characterId;
+      characterID = playerCharacters[targetElementID.slice(-1)].data.characterId;
     }
     catch(TypeError){
       console.error("That's not a character");
       return false;
     }
     if(targetElementID == "c1" || targetElementID == "c2"){
-      var result = await transferRequest(localthis.data, characterID, playerCharacters[0].characterId);
+      var result = await transferRequest(localthis.data, characterID, playerCharacters[0].data.characterId).catch(function(error){ return error; });
+      console.log(result);
       if(result instanceof Error){ alert("Unable to transfer item."); return false; }
-      alert("transfer was successful.");
-      localthis.destroy(false);
+      console.log("transfer was successful.");
+      await sleep(500);
+      updateData();
     }
-  }
+  };
 };
-
 //Fetch Request function
 async function fetchRequest(path){
   var request = new Request(path, {
     method: "GET",
     headers: {"Content-Type":"application/json"},
   });
-  let response = await fetch(request);
-  if(response.status >=200 && response.status < 300){ return response.json(); }
-  else{ throw response.error; }
+  let response = await fetch(request).catch(function(error){ return error; });
+  if(response.ok){ return response.json(); }
+  return Error();
 };
 async function postRequest(path, body){
   var request = new Request(path, {
@@ -226,9 +315,9 @@ async function postRequest(path, body){
     headers: {"Content-Type":"application/json"},
     body: JSON.stringify(body),
   });
-  let response = await fetch(request);
-  if(response.status >=200 && response.status < 300){ return response.json(); }
-  else{ throw response.error; }
+  let response = await fetch(request).catch(function(error){ return error; });
+  if(response.ok){ return response.json(); }
+  return Error();
 }
 //Makes requests to server for equipping new items from existing non-equipped items.
 function equipItem(itemData, rcID){
@@ -266,7 +355,13 @@ function transferRequest(itemData, rcID,tcID){ //rc=receiveing character, tc = t
   };
   return postRequest(path, body);
 };
-function test(itemData, rcID){
-  var path = "/homedata";
-  fetchRequest(path).then(function(result){ console.log(result); }).catch(function(error){console.log(error);});
+async function test(cID, gamemode){
+  for(var i = 0; i < 10; i+= 1){
+    var path = "/historical/activity/specific/"+cID+"/"+gamemode+"/"+i;
+    fetchRequest(path).then(function(result){ console.log(result); });
+  }
+}
+async function test2(cID, gamemode){
+  var path = "/historical/stats/specific/"+cID+"/"+gamemode;
+  fetchRequest(path).then(function(result){ console.log(result); });
 }

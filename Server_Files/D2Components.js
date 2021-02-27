@@ -10,7 +10,7 @@ const serverRoot = root+"/Server_Files";
 const assetRoot = root+"/Asset_Files";
 const manifestRoot = root+"/Manifest_Files";
 
-const ServerResponse = require(serverRoot+"/Server Responses.js");
+const ServerResponse = require(serverRoot+"/Server_Responses.js");
 const DestinyClassDefinition = require(manifestRoot+"/DestinyClassDefinition.json");
 const DestinyGenderDefinition = require(manifestRoot+"/DestinyGenderDefinition.json");
 const DestinyRaceDefinition = require(manifestRoot+"/DestinyRaceDefinition.json");
@@ -167,7 +167,24 @@ var itemComponents = function(data){
       data.perks[i] = data.perks[i].perks;
     }
   }
-  return data;
+  var longestcomponent;
+  var length = 0;
+  for(i in data){
+    var temp = Object.keys(data[i]).length;
+    if( temp > length){
+      length = temp;
+      longestcomponent = i;
+    }
+  }
+  var combinedItemComponents = {};
+  for(i in data[longestcomponent]){
+    combinedItemComponents[i] = {};
+    for(z in data){
+      combinedItemComponents[i][z] = data[z][i];
+    }
+  }
+  return combinedItemComponents;
+  //return data;
 };
 exports.itemComponents = itemComponents;
 

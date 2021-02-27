@@ -46,10 +46,6 @@ class APIResponse {
   setData(value){
     this.data = value;
   }
-  parseDataComponents(){
-    for(i in this.data)
-    { this.data[i] = D2Components[i](this.data[i]); }
-  }
   toString(){ return "Status "+this.status+": "+this.message; }
 }
 exports.APIResponse = APIResponse;

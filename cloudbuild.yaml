@@ -1,0 +1,17 @@
+steps:
+  - name: node:10.14
+  entrypoint: npm
+  args: ["install"]
+  - name: node:10.14
+  entrypoint: npm
+  args: ["run", "create-env"]
+  env:
+    - 'BUNGIE_API_KEY=${_BUNGIE_API_KEY}'
+    - 'BUNGIE_CLIENT_ID=${_BUNGIE_CLIENT_ID}'
+    - 'BUNGIE_CLIENT_SECRET=${_BUNGIE_CLIENT_SECRET}'
+    - 'CIPHER_ALGORITHM=${_CIPHER_ALGORITHM}'
+    - 'MONGO_DB_URI=${_MONGO_DB_URI}'
+    - 'MONGOPVK=${_MONGOPVK}'
+  - name: "gcr.io/cloud-builders-gcloud"
+  args: ["app","deploy"]
+  timeout: "1600s"

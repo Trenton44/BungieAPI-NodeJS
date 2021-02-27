@@ -3553,17 +3553,22 @@
   },
   "1119773799": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
+      "description": "",
+      "name": "",
       "hasIcon": false
     },
-    "placeHash": 0,
+    "placeHash": 3821439926,
     "defaultFreeroamActivityHash": 0,
+    "activityGraphEntries": [
+      {
+        "activityGraphHash": 0
+      }
+    ],
+    "bubbleSettings": [],
+    "bubbles": [],
     "hash": 1119773799,
     "index": 44,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "1124017683": {

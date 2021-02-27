@@ -881,7 +881,7 @@
     "displayProperties": {
       "description": "Complete strikes using the same subclass element as the currently active elemental burn.",
       "name": "Weekly Vanguard Strikes",
-      "icon": "/common/destiny2_content/icons/f2154b781b36b19760efcb23695c66fe.png",
+      "icon": "/common/destiny2_content/icons/DestinyMilestoneDefinition_9ae2b7eb8de97deecdf564226de15d44.png",
       "hasIcon": true
     },
     "image": "/img/destiny_content/pgcr/vanguard_strike_playlist.jpg",
@@ -3737,6 +3737,76 @@
     "redacted": false,
     "blacklisted": false
   },
+  "2953722265": {
+    "displayProperties": {
+      "description": "Complete Battlegrounds Playlist activities.",
+      "name": "Battle Hardened",
+      "icon": "/common/destiny2_content/icons/DestinyMilestoneDefinition_efb607d5d0bf521833cd067a99834979.png",
+      "hasIcon": true
+    },
+    "milestoneType": 3,
+    "recruitable": false,
+    "friendlyName": "MILESTONE_WEEKLY_BATTLEGROUNDS_SECOND",
+    "showInExplorer": false,
+    "showInMilestones": true,
+    "explorePrioritizesActivityImage": false,
+    "hasPredictableDates": true,
+    "rewards": {
+      "326786556": {
+        "categoryHash": 326786556,
+        "categoryIdentifier": "ChallengeSourcedReward",
+        "displayProperties": {
+          "description": "",
+          "name": "Rewards",
+          "hasIcon": false
+        },
+        "rewardEntries": {
+          "326786556": {
+            "rewardEntryHash": 326786556,
+            "rewardEntryIdentifier": "ChallengeSourcedReward",
+            "items": [
+              {
+                "itemHash": 3114385606,
+                "quantity": 1
+              }
+            ],
+            "displayProperties": {
+              "description": "Complete Battlegrounds Playlist activities.",
+              "name": "Battle Hardened",
+              "hasIcon": false
+            },
+            "order": 0,
+            "earnedUnlockHash": 0,
+            "redeemedUnlockHash": 0
+          }
+        },
+        "order": 0
+      }
+    },
+    "isInGameMilestone": false,
+    "activities": [
+      {
+        "activityHash": 3207968872,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 1117876708,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 2595090906
+          }
+        ]
+      }
+    ],
+    "defaultOrder": 2000,
+    "hash": 2953722265,
+    "index": 43,
+    "redacted": false,
+    "blacklisted": false
+  },
   "3002126300": {
     "displayProperties": {
       "description": "Complete Empire Hunts as part of a step on an Empire Hunt quest.",
@@ -3819,6 +3889,76 @@
     "defaultOrder": 2000,
     "hash": 3002126300,
     "index": 38,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3031052508": {
+    "displayProperties": {
+      "description": "Complete Battlegrounds Playlist activities.",
+      "name": "Battle Hardened",
+      "icon": "/common/destiny2_content/icons/DestinyMilestoneDefinition_efb607d5d0bf521833cd067a99834979.png",
+      "hasIcon": true
+    },
+    "milestoneType": 3,
+    "recruitable": false,
+    "friendlyName": "MILESTONE_WEEKLY_BATTLEGROUNDS_THIRD",
+    "showInExplorer": false,
+    "showInMilestones": true,
+    "explorePrioritizesActivityImage": false,
+    "hasPredictableDates": true,
+    "rewards": {
+      "326786556": {
+        "categoryHash": 326786556,
+        "categoryIdentifier": "ChallengeSourcedReward",
+        "displayProperties": {
+          "description": "",
+          "name": "Rewards",
+          "hasIcon": false
+        },
+        "rewardEntries": {
+          "326786556": {
+            "rewardEntryHash": 326786556,
+            "rewardEntryIdentifier": "ChallengeSourcedReward",
+            "items": [
+              {
+                "itemHash": 3114385607,
+                "quantity": 1
+              }
+            ],
+            "displayProperties": {
+              "description": "Complete Battlegrounds Playlist activities.",
+              "name": "Battle Hardened",
+              "hasIcon": false
+            },
+            "order": 0,
+            "earnedUnlockHash": 0,
+            "redeemedUnlockHash": 0
+          }
+        },
+        "order": 0
+      }
+    },
+    "isInGameMilestone": false,
+    "activities": [
+      {
+        "activityHash": 3207968872,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 1850228384,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 2595090906
+          }
+        ]
+      }
+    ],
+    "defaultOrder": 2000,
+    "hash": 3031052508,
+    "index": 44,
     "redacted": false,
     "blacklisted": false
   },
@@ -4491,6 +4631,76 @@
     "defaultOrder": 2000,
     "hash": 3628293757,
     "index": 30,
+    "redacted": false,
+    "blacklisted": false
+  },
+  "3632712541": {
+    "displayProperties": {
+      "description": "Complete Battlegrounds Playlist activities.",
+      "name": "Battle Hardened",
+      "icon": "/common/destiny2_content/icons/DestinyMilestoneDefinition_efb607d5d0bf521833cd067a99834979.png",
+      "hasIcon": true
+    },
+    "milestoneType": 3,
+    "recruitable": false,
+    "friendlyName": "MILESTONE_WEEKLY_BATTLEGROUNDS_FIRST",
+    "showInExplorer": false,
+    "showInMilestones": true,
+    "explorePrioritizesActivityImage": false,
+    "hasPredictableDates": true,
+    "rewards": {
+      "326786556": {
+        "categoryHash": 326786556,
+        "categoryIdentifier": "ChallengeSourcedReward",
+        "displayProperties": {
+          "description": "",
+          "name": "Rewards",
+          "hasIcon": false
+        },
+        "rewardEntries": {
+          "326786556": {
+            "rewardEntryHash": 326786556,
+            "rewardEntryIdentifier": "ChallengeSourcedReward",
+            "items": [
+              {
+                "itemHash": 3114385606,
+                "quantity": 1
+              }
+            ],
+            "displayProperties": {
+              "description": "Complete Battlegrounds Playlist activities.",
+              "name": "Battle Hardened",
+              "hasIcon": false
+            },
+            "order": 0,
+            "earnedUnlockHash": 0,
+            "redeemedUnlockHash": 0
+          }
+        },
+        "order": 0
+      }
+    },
+    "isInGameMilestone": false,
+    "activities": [
+      {
+        "activityHash": 3207968872,
+        "challenges": [
+          {
+            "challengeObjectiveHash": 252439031,
+            "completeUnlockHash": 0
+          }
+        ],
+        "activityGraphNodes": [
+          {
+            "activityGraphHash": 3129078390,
+            "activityGraphNodeHash": 2595090906
+          }
+        ]
+      }
+    ],
+    "defaultOrder": 2000,
+    "hash": 3632712541,
+    "index": 42,
     "redacted": false,
     "blacklisted": false
   },

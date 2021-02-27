@@ -12,6 +12,10 @@ body {
   justify-content: flex-start;
   width: 100%;
 }
+#nav-framework >div:last-child {
+  margin-left: auto;
+  margin-right: 10px;
+}
 .nav-element {
   padding: 0 1% 0 1%;
   margin: 0 4% 0 4%;
@@ -48,6 +52,9 @@ body {
   width: 30%;
   margin-right: 2%;
 }
+#character-render:hover {
+  transform: scale(1.05,1.05);
+}
 #character-content {
   height: 100%;
   width: 70%;
@@ -78,8 +85,7 @@ body {
   border: 5px solid black;
 }
 .character-nav > div:hover {
-  flex-basis: 26%;
-  height: 90%;
+  transform: scale(1.1,1.1);
 }
 .character-info > img {
   margin: 0;
@@ -87,7 +93,7 @@ body {
   height: 100%;
   position: absolute;
 }
-.character-info  h1 {
+.character-info h1 {
   margin: 0;
   padding: 0;
   color: white;
@@ -113,7 +119,7 @@ body {
   padding-left: 5%;
 }
 .character-nav div:nth-of-type(2) >div >h1 {
-  font-size: 300%;
+  font-size: 280%;
 }
 .character-nav div:nth-of-type(2) > div > div >h1 {
   font-size: 150%;
@@ -125,7 +131,7 @@ body {
   align-items: center;
   height: 10%;
   width: 98%;
-  margin: 0;
+  margin: 0 0 2% 0;
   background-color: rgba(20,20,20, 0.6);
 }
 .character-stats {
@@ -151,79 +157,103 @@ body {
   justify-content: space-between;
   align-items: flex-start;
   width: 98%;
-  height: 50%;
-  padding: 2% 0% 0 0;
   margin: 0 2% 0 2%;
 }
+
 .item-slots:hover > .item-container {
   display: flex;
 }
 .item-slots {
-  height: 20%;
+  position: relative;
   flex-shrink: 1;
-  flex-grow: 1;
 }
-.primary-item {
-  width: 100%;
-  height: 100%;
-  border-style: 10px solid white;
+.primary-item > div {
+  margin: 0 !important;
 }
-.primary-item > img {
-  max-width: 100%;
-  max-height: 100%;
+.dummy-item {
+  height: 50%;
+}
+.character-equipment > div:first-child > .item-container {
+  left: 0%;
+  right: auto;
+  transform: translate(0%,0%);
+}
+.character-equipment > div:last-child > .item-container{
+  right: 0%;
+  left: auto;
+  transform: translate(0%,0%);
 }
 .item-container {
-  width: 100%;
-  height: 30%;
-  top: 23%;
-  padding-top: 1%;
+  width: 340%;
   left: 0%;
+  top: 100%;
+  padding-top: 10px;
   display: none;
   flex-direction: row;
   position: absolute;
   flex-wrap: wrap;
   justify-content: center;
+  flex-shrink: 1;
+  transform: translate(-35%, 0%);
 }
-.item-container > div{
-  flex-basis: 10%;
-}
-.Engrams {
+.postmaster {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  height: 15%;
+  height: 30%;
 }
-.Engrams > h1 {
+.postmaster > h1 {
   background-color: rgba(20,20,20, 0.6);
   text-align: center;
   margin: 0;
   color: white;
   font-style: italic;
 }
-.Engrams > div {
+
+.postmaster > div {
   display: flex;
   flex-basis: 10%;
-  flex-shrink: 1;
+  height: 100%;
+  font-size: 80%;
+  flex-direction: row;
+  text-align: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+.postmaster > div > h1 {
+  background-color: rgba(20,20,20,0.7);
+  margin: 5px;
+  flex-basis: 100px;
+  text-align: center;
+  color: white;
+}
+#postmaster-equipment {
+  display: flex;
+  flex-basis: 10%;
+  height: 100%;
+  flex-grow: 2;
+  margin-left: 30px;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
 }
 .item-capsule {
-  height: 100%;
   margin: 5px;
   position: relative;
 }
+.item-capsule:hover {
+  transform: scale(1.1,1.1);
+}
 .item-icon {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   margin: 0%;
 }
 .item-light {
   position: absolute;
   top: 0%;
   right: 0%;
-  height: 10%;
   font-size: 120%;
   margin: 0%;
   color: white;
@@ -233,7 +263,7 @@ body {
   position: absolute;
   bottom: 0%;
   left: 0%;
-  height: 30%;
+  height: 25%;
 }
 .item-overlay {
   position: absolute;
@@ -262,6 +292,9 @@ body {
 }
 .subclass-capsule > img{
   height: 100%;
+}
+.subclass-capsule:hover {
+  transform: scale(1.1);
 }
 #Subclass-equipment {
   display: none;

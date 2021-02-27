@@ -572,9 +572,33 @@
   },
   "290073973": {
     "vendorHash": 0,
+    "locationReleases": [
+      {
+        "displayProperties": {
+          "description": "",
+          "name": "",
+          "hasIcon": false
+        },
+        "spawnPoint": 0,
+        "destinationHash": 3821439926,
+        "activityHash": 2124066889,
+        "activityGraphHash": 3821439926,
+        "activityGraphNodeHash": 3767990203,
+        "activityBubbleName": 0,
+        "activityPathBundle": 0,
+        "activityPathDestination": 0,
+        "navPointType": 0,
+        "worldPosition": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
     "hash": 290073973,
     "index": 256,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "291130968": {

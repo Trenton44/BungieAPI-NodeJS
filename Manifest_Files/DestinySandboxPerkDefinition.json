@@ -10340,17 +10340,16 @@
   },
   "1216977222": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "Increased hipfire rate of fire and removes hipfire accuracy penalties.",
+      "name": "Dark-Forged Trigger",
+      "icon": "/common/destiny2_content/icons/aff2015ef8362ff510e7ce0b46097404.png",
+      "hasIcon": true
     },
-    "isDisplayable": false,
+    "isDisplayable": true,
     "damageType": 0,
     "hash": 1216977222,
     "index": 2132,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "1218146070": {
@@ -23263,17 +23262,16 @@
   },
   "2789354755": {
     "displayProperties": {
-      "description": "Keep it secret.  Keep it safe.",
-      "name": "Classified",
-      "icon": "/img/misc/missing_icon_d2.png",
-      "highResIcon": "/img/misc/missing_icon_d2.png",
-      "hasIcon": false
+      "description": "Precision hits grant bonus damage.",
+      "name": "Cranial Spike",
+      "icon": "/common/destiny2_content/icons/0e171b3269c4796acad0c0b11c7fbc27.png",
+      "hasIcon": true
     },
-    "isDisplayable": false,
+    "isDisplayable": true,
     "damageType": 0,
     "hash": 2789354755,
     "index": 2119,
-    "redacted": true,
+    "redacted": false,
     "blacklisted": false
   },
   "2790774320": {
@@ -30893,7 +30891,7 @@
     "displayProperties": {
       "description": "Improves targeting for Scout Rifles and Sniper Rifles.",
       "name": "Scout and Sniper Rifle Targeting",
-      "icon": "/common/destiny2_content/icons/ca157de8b75447308b50c58836ba0360.png",
+      "icon": "/common/destiny2_content/icons/d09f487678e6c3c3c41cd9d67e1fbe28.png",
       "hasIcon": true
     },
     "isDisplayable": true,
