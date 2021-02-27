@@ -12,4 +12,6 @@ steps:
     - 'CIPHER_ALGORITHM=${_CIPHER_ALGORITHM}'
     - 'MONGO_DB_URI=${_MONGO_DB_URI}'
     - 'MONGOPVK=${_MONGOPVK}'
+-name: "gcr.io/cloud-builders/gcloud"
+  args: ["app", "deploy"]
 timeout: "1600s"
