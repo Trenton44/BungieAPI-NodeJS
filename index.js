@@ -6,7 +6,7 @@ const assetRoot = root+"/Asset_Files";
 const manifestRoot = root+"/Manifest_Files";
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 
-const https = require("https");
+//const https = require("https");
 const fs = require('fs');
 const express = require("express");
 const session = require("express-session");
@@ -18,7 +18,7 @@ const crypto = require("crypto");
 const helmet = require("helmet");
 const mongo = require('mongodb');
 const MongoClient = require('mongodb').MongoClient;
-//const https = require('http');
+const https = require('http');
 const MongoDBStore = require("connect-mongodb-session")(session);
 var sessionConfig = {
     name: "sAk3m3",
@@ -27,7 +27,7 @@ var sessionConfig = {
     resave: true,
     store: store,
     saveUninitialized: true,
-    cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
+    cookie: { httpOnly: true, secure: false, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
 };
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
