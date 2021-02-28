@@ -81,6 +81,7 @@ app.use(
   })
 );
 app.get("/_ah/start",function(request,response){
+  console.log("THE AH START HAS BEEN DETECTED.");
   response.status(404);
   return;
 });
