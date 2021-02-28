@@ -45,7 +45,10 @@ app.use(
 );
 dotenv.config( { path: path.join(root,"process.env") } );
 app.get("/_ah/start",function(request, response){
-  response.status(404);
+  console.log("hey, it detected the /_ah/start endpoint.");
+  console.log(request.hostname);
+  console.log(request.ips);
+  response.status(404).end();
 })
 app.use(constructSessionInstance);
 app.get("/bnetlogin", async function(request, response){
