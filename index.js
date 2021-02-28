@@ -62,6 +62,7 @@ if(process.env.NODE_ENV == "development"){
  store.on("error", function(error){
    console.error(error);
  });*/
+app.set('trust proxy', true);
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
@@ -70,7 +71,10 @@ app.use(helmet({
       "script-src-attr": ["'self'"],
       "img-src": ["'self'","https://www.bungie.net/common/"],
     },
-  }
+  },
+  hsts:{
+    includeSubDomains: true,
+  },
 }));
 app.use(express.json());
 app.use(
@@ -81,7 +85,7 @@ app.use(
       resave: true,
       //store: store,
       saveUninitialized: true,
-      cookie: { httpOnly: true, secure: false, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
+      cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
 );
 app.get("/client/:id",function(request,response){
