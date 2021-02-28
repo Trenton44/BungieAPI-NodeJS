@@ -23,7 +23,18 @@ const bungieCommon = "https://www.bungie.net";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
 
-
+app.use(express.json());
+app.use(
+  session({
+      name: "sAk3m3",
+      secret: "secreto!alabastro@",
+      genid: function(req){ return genuuid.v4(); },
+      resave: true,
+      //store: store,
+      saveUninitialized: true,
+      cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
+  })
+);
 dotenv.config( { path: path.join(root,"process.env") } );
 
 app.get("/",async function(request, response){
