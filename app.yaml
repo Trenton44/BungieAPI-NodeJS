@@ -4,8 +4,10 @@ instance_class: B4
 manual_scaling:
   instances: 1
 handlers:
+- url: /_ah/start
+  script: node ah_endpoint
+  redirect_http_response_code: 302
 - url: /
   script: auto
   secure: always
-- url: /_ah/start
   redirect_http_response_code: 302
