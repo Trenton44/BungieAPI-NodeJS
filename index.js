@@ -86,11 +86,6 @@ app.get("/client/:id",function(request,response){
 app.get("/assets/:id",function(request,response){
   response.status(200).sendFile(assetRoot+"/"+request.params.id);
 });
-app.get("/_ah/start",function(request,response,next){
-  console.log("GAE Backend has requested access, responding with 200");
-  response.status(200).send("Facts");
-  console.log("Response has been sent");
-})
 app.use(constructSessionInstance);
 app.get("/bnetlogin", async function(request, response){
   console.log("in bnet login.");
