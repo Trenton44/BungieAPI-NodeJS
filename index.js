@@ -37,7 +37,7 @@ dotenv.config( { path: path.join(root,"process.env") } );
  store.on("error", function(error){
    console.error(error);
  });*/
-//app.set('trust proxy', true);
+app.set('trust proxy', true);
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
@@ -63,6 +63,10 @@ app.use(
       cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
 );
+app.get("/",async function(request, response){
+  console.log("Hello World!");
+  response.sendFile(webpageRoot+"/home.html");
+});
 app.get("/_ah/start",function(request,response){
   console.log(request);
   console.log("THE AH START HAS BEEN DETECTED.");
@@ -267,10 +271,7 @@ app.post("/character/equipItem",async function(request, response, next){
 
 app.use(D2API.getBnetInfo);
 app.use(handleServerErrors);
-app.get("/",async function(request, response){
-  console.log("Hello World!");
-  response.sendFile(webpageRoot+"/home.html");
-});
+
 app.get("/vault",async function(request, response){
   response.sendFile(webpageRoot+"/vault.html");
 });
