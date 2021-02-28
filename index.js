@@ -274,6 +274,10 @@ app.get("/",async function(request, response){
 app.get("/vault",async function(request, response){
   response.sendFile(webpageRoot+"/vault.html");
 });
+app.get("*", function(request, response){
+  console.log("You have made a request to an endpoint i am too lazy to define. error coded.");
+  response.status(404).send("No.").end();
+})
 app.listen(process.env.PORT || 8080, () => console.log(`Listening on port ${process.env.PORT || 8080}!`));
 
 
