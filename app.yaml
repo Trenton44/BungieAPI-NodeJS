@@ -5,4 +5,4 @@ manual_scaling:
   instances: 1
 handlers:
 - url: /
-  script: index.js
+  script: auto

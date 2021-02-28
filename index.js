@@ -286,7 +286,7 @@ app.get("/vault",async function(request, response){
   response.sendFile(webpageRoot+"/vault.html");
 });
 console.log("Server loading finished, the next line is the listen function.");
-httpsServer.listen(process.env.PORT);
+httpsServer.listen(process.env.PORT, "0.0.0.0");
 console.log("Server listening.");
 
 
