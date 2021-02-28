@@ -2,3 +2,8 @@ runtime: nodejs14
 instance_class: B4
 manual_scaling:
   instances: 1
+handlers:
+-url: /assets
+  static_dir: Asset_Files
+-url: /client
+  static_dir: Client_Files
