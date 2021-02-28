@@ -9,7 +9,7 @@ dotenv.config( { path: path.join(root,"process.env") } );
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
 var manifestRoot;
-if(process.env.NODE_ENV == "PRODUCTION"){ manifestRoot = root+"/tmp/Manifest_Files"; }
+if(process.env.NODE_ENV == "production"){ console.log("manifest location is in production mode."); console.log("root: "+root);manifestRoot = root+"/tmp/Manifest_Files"; }
 else{ manifestRoot = root+"/Manifest_Files"; }
 
 
