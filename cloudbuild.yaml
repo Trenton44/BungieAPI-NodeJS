@@ -13,6 +13,7 @@ steps:
     - 'MONGO_DB_URI=${_MONGO_DB_URI}'
     - 'MONGOPVK=${_MONGOPVK}'
     - 'NODE_ENV=PRODUCTION'
+    - 'PORT=8080'
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy"]
 timeout: "1600s"
