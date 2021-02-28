@@ -6,7 +6,7 @@ const assetRoot = root+"/Asset_Files";
 const manifestRoot = root+"/Manifest_Files";
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 
-const https = require("https");
+//const https = require("https");
 const fs = require('fs');
 const express = require("express");
 const session = require("express-session");
@@ -18,7 +18,7 @@ const crypto = require("crypto");
 const helmet = require("helmet");
 //const mongo = require('mongodb');
 //const MongoClient = require('mongodb').MongoClient;
-//const https = require('http');
+const https = require('http');
 //const MongoDBStore = require("connect-mongodb-session")(session);
 
 const bungieRoot = "https://www.bungie.net/Platform";
@@ -83,7 +83,6 @@ app.use(
 app.get("/_ah/start",function(request,response){
   console.log("THE AH START HAS BEEN DETECTED.");
   response.status(404);
-  return;
 });
 app.get("/client/:id",function(request,response){
   response.status(200).sendFile(webpageRoot+"/"+request.params.id);
