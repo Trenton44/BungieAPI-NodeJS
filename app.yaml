@@ -8,4 +8,4 @@ handlers:
   script: auto
   secure: always
 - url: /_ah/.*
-  redirect_http_response_code: 200
+  redirect_http_response_code: 302
