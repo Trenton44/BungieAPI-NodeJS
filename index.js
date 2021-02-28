@@ -6,7 +6,7 @@ const assetRoot = root+"/Asset_Files";
 const manifestRoot = root+"/Manifest_Files";
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 
-const https = require("https");
+//const https = require("https");
 const fs = require('fs');
 const express = require("express");
 const session = require("express-session");
@@ -18,7 +18,7 @@ const crypto = require("crypto");
 const helmet = require("helmet");
 //const mongo = require('mongodb');
 //const MongoClient = require('mongodb').MongoClient;
-//const https = require('http');
+const https = require('http');
 //const MongoDBStore = require("connect-mongodb-session")(session);
 
 const bungieRoot = "https://www.bungie.net/Platform";
@@ -291,7 +291,7 @@ app.get("/vault",async function(request, response){
   response.sendFile(webpageRoot+"/vault.html");
 });
 console.log("Server loading finished, the next line is the listen function.");
-httpsServer.listen(process.env.PORT, "0.0.0.0");
+httpsServer.listen(process.env.PORT, "127.0.0.1");
 console.log("Server listening.");
 
 
