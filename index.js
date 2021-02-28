@@ -6,8 +6,6 @@ const assetRoot = root+"/Asset_Files";
 const manifestRoot = root+"/Manifest_Files";
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 
-//const https = require("https");
-const fs = require('fs');
 const express = require("express");
 const session = require("express-session");
 const genuuid = require("uuid");
@@ -18,7 +16,6 @@ const crypto = require("crypto");
 const helmet = require("helmet");
 //const mongo = require('mongodb');
 //const MongoClient = require('mongodb').MongoClient;
-const https = require('http');
 //const MongoDBStore = require("connect-mongodb-session")(session);
 
 const bungieRoot = "https://www.bungie.net/Platform";
@@ -32,20 +29,6 @@ const ServerResponse = require(serverRoot+"/Server_Responses.js");
 const D2Responses = require(serverRoot+"/D2APIResponseObjects.js");
 
 dotenv.config( { path: path.join(root,"process.env") } );
-var httpsServer;
-console.log("All modules loaded, env path set.");
-console.log(process.env.NODE_ENV);
-if(process.env.NODE_ENV == "development"){
-   console.log("I'll allow it.");
-   process.env['NODE_TLS_REJECT_UNAUTHORIZED']=0;
-   var privatekey = fs.readFileSync(path.join(root,"key.pem"));
-   var certificate = fs.readFileSync(path.join(root,"cert.pem"));
-   var credentials = {key: privatekey, cert: certificate};
-  httpsServer = https.createServer(credentials,app);
- }
- else {
-  httpsServer = https.createServer(app);
- }
  /*var store = new MongoDBStore({
    uri: process.env.Mongo_DB_URI,
    databaseName: "users",
@@ -54,7 +37,7 @@ if(process.env.NODE_ENV == "development"){
  store.on("error", function(error){
    console.error(error);
  });*/
-app.set('trust proxy', true);
+//app.set('trust proxy', true);
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
@@ -284,6 +267,7 @@ app.post("/character/equipItem",async function(request, response, next){
 app.use(D2API.getBnetInfo);
 app.use(handleServerErrors);
 app.get("/",async function(request, response){
+  console.log("Hello World!");
   response.sendFile(webpageRoot+"/home.html");
 });
 app.get("/vault",async function(request, response){
