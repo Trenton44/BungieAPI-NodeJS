@@ -7,5 +7,5 @@ handlers:
 - url: /
   script: auto
   secure: always
-- url: /_ah/.*
+- url: /_ah/start
   redirect_http_response_code: 302
