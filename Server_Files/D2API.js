@@ -222,8 +222,8 @@ exports.equipItem = equipItem;
 
 async function requestToken(request){
   var body = new URLSearchParams();
-  body.append("client_secret",process.env.Bungie_ClientSecret);
-  body.append("client_id", process.env.Bungie_ClientID);
+  body.append("client_secret",process.env.BUNGIE_CLIENT_SECRET);
+  body.append("client_id", process.env.BUNGIE_CLIENT_ID);
   body.append("grant_type", "authorization_code");
   body.append("code",request.session.data.authCode);
   let token = await axios({
@@ -241,8 +241,8 @@ async function tokenRefresh(request){
   var body = new URLSearchParams();
   body.append("grant_type", "refresh_token");
   body.append("refresh_token", tokenData.refresh_token);
-  body.append("client_secret",process.env.Bungie_ClientSecret);
-  body.append("client_id", process.env.Bungie_ClientID);
+  body.append("client_secret",process.env.BUNGIE_CLIENT_SECRET);
+  body.append("client_id", process.env.BUNGIE_CLIENT_ID);
   let result = await axios({
     method:"POST",
     url: bungieTokURL,
@@ -267,7 +267,7 @@ exports.saveTokenData = saveTokenData;
 function encryptData(data){
   data = JSON.stringify(data);
   var iv = Buffer.from(crypto.randomBytes(16));
-  let cipher = crypto.createCipheriv(process.env.CipherAlgorithm,Buffer.from(process.env.mongopvk,'hex'),iv);
+  let cipher = crypto.createCipheriv(process.env.CIPHER_ALGORITHM,Buffer.from(process.env.MONGOPVK,'hex'),iv);
   let encryptedData = cipher.update(data);
   encryptedData = Buffer.concat([encryptedData, cipher.final()]);
   return { iv: iv.toString('hex'),data:encryptedData.toString('hex') };
@@ -276,7 +276,7 @@ function encryptData(data){
 function decryptData(data){
   let iv = Buffer.from(data.iv,'hex');
   let encrypted = Buffer.from(data.data,'hex');
-  let decipher = crypto.createDecipheriv(process.env.CipherAlgorithm, Buffer.from(process.env.mongopvk,'hex'), iv);
+  let decipher = crypto.createDecipheriv(process.env.CIPHER_ALGORITHM, Buffer.from(process.env.MONGOPVK,'hex'), iv);
   let result = decipher.update(encrypted);
   result = Buffer.concat([result,decipher.final()]);
   return JSON.parse(result.toString());

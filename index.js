@@ -20,15 +20,7 @@ const mongo = require('mongodb');
 const MongoClient = require('mongodb').MongoClient;
 const https = require('http');
 const MongoDBStore = require("connect-mongodb-session")(session);
-var sessionConfig = {
-    name: "sAk3m3",
-    secret: "secreto!alabastro@",
-    genid: function(req){ return genuuid.v4(); },
-    resave: true,
-    store: store,
-    saveUninitialized: true,
-    cookie: { httpOnly: true, secure: false, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
-};
+
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
@@ -103,7 +95,7 @@ app.get("/bnetlogin", async function(request, response){
   let state = crypto.randomBytes(16).toString("base64");
   request.session.data.state = state;
   var url = new URL(bungieAuthURL);
-  url.searchParams.append("client_id",process.env.Bungie_ClientID);
+  url.searchParams.append("client_id",process.env.BUNGIE_CLIENT_ID);
   url.searchParams.append("response_type","code");
   url.searchParams.append("state",state);
   console.log("Sending to url.");
