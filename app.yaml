@@ -3,8 +3,3 @@ entrypoint: node index.js
 instance_class: B4
 manual_scaling:
   instances: 1
-handlers:
-- url: /
-  script: auto
-  secure: always
-  redirect_http_response_code: 302
