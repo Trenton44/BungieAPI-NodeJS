@@ -291,7 +291,7 @@ app.get("/vault",async function(request, response){
 });
 console.log("Server loading finished, the next line is the listen function.");
 httpsServer.listen(process.env.PORT, "127.0.0.1");
-console.log("Server listening.");
+console.log("Server listening at port "+process.env.PORT);
 
 
 //END OF EXPRESS FUNCTIONS.
