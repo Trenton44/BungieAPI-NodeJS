@@ -23,7 +23,7 @@ app.get("/",async function(request, response){
   response.status(200).send("Hello World!");
 });
 
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
+app.listen(process.env.PORT, () => {
+  console.log(`App listening on port ${process.env.PORT}`);
   console.log('Press Ctrl+C to quit.');
 });
