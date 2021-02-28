@@ -80,6 +80,10 @@ app.use(
       cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
 );
+app.get("/_ah/start",function(request,response){
+  response.status(404);
+  return;
+});
 app.get("/client/:id",function(request,response){
   response.status(200).sendFile(webpageRoot+"/"+request.params.id);
 });
