@@ -8,8 +8,9 @@ dotenv.config( { path: path.join(root,"process.env") } );
 
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
-if(process.env.NODE_ENV == "PRODUCTION"){ const manifestRoot = root+"/tmp/Manifest_Files"; }
-else{ const manifestRoot = root+"/Manifest_Files"; }
+var manifestRoot;
+if(process.env.NODE_ENV == "PRODUCTION"){ manifestRoot = root+"/tmp/Manifest_Files"; }
+else{ manifestRoot = root+"/Manifest_Files"; }
 
 
 const D2ManifestVersion = require(root+"/ManifestVersion.json");
