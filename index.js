@@ -318,6 +318,7 @@ async function accessAuthorizedEndpoints(request, response, next){
   next();
 };
 function constructSessionInstance(request, response, next){
+  console.log("Constructing instance.");
   var reset = false;
   switch(request.session.data){
     case undefined:
