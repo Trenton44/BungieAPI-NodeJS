@@ -94,6 +94,9 @@ app.get("/client/:id",function(request,response){
 app.get("/assets/:id",function(request,response){
   response.status(200).sendFile(assetRoot+"/"+request.params.id);
 });
+app.get("/_ah/start",function(request,response,next){
+  response.status(200);
+})
 app.use(constructSessionInstance);
 app.get("/bnetlogin", async function(request, response){
   console.log("in bnet login.");
