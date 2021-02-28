@@ -18,8 +18,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "ah_/endpoint": "exit 0",
     "create-env": "printenv > process.env",
+    "load-manifest": "node manifest.js",
     "prestart": "node manifest.js",
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"

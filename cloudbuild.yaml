@@ -14,6 +14,9 @@ steps:
     - 'MONGOPVK=${_MONGOPVK}'
     - 'NODE_ENV=PRODUCTION'
     - 'PORT=8080'
+- name: node:10.14
+  entrypoint: npm
+  args: ["load-manifest"]
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy"]
 timeout: "1600s"
