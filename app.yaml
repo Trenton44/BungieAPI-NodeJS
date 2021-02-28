@@ -7,3 +7,7 @@ handlers:
   static_dir: Asset_Files
 -url: /client
   static_dir: Client_Files
+-url: /.*
+  secure: always
+  redirect_http_response_code: 301
+  script: auto

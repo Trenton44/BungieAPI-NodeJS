@@ -24,6 +24,8 @@ const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
 app.set('trust proxy', true);
 app.use(express.json());
+app.use("/assets", express.static('Asset_Files'));
+app.use("/client", express.static('Client_Files'));
 app.use(
   session({
       name: "sAk3m3",
