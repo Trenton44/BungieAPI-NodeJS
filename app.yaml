@@ -1,4 +1,5 @@
 runtime: nodejs14
+entrypoint: node index.js
 instance_class: B4
 manual_scaling:
   instances: 1
