@@ -8,7 +8,7 @@ dotenv.config( { path: path.join(root,"process.env") } );
 
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
-var manifestRoot = root+"/tmp";
+var manifestRoot = path.parse(__dirname).root+"/tmp";
 
 const D2ManifestVersion = require(root+"/ManifestVersion.json");
 //Loads the current d2 manifest from bungie api and saves to root.
