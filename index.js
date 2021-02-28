@@ -39,10 +39,10 @@ const D2Components = require(serverRoot+"/D2Components.js");
 const ServerResponse = require(serverRoot+"/Server_Responses.js");
 const D2Responses = require(serverRoot+"/D2APIResponseObjects.js");
 
-console.log("Oh boy, here i go testing again.");
 dotenv.config( { path: path.join(root,"process.env") } );
 var httpsServer;
-
+console.log("All modules loaded, env path set.");
+console.log(process.env.NODE_ENV);
 if(process.env.NODE_ENV == "development"){
    console.log("I'll allow it.");
    process.env['NODE_TLS_REJECT_UNAUTHORIZED']=0;
@@ -293,7 +293,9 @@ app.get("/",async function(request, response){
 app.get("/vault",async function(request, response){
   response.sendFile(webpageRoot+"/vault.html");
 });
+console.log("Server loading finished, the next line is the listen function.");
 httpsServer.listen(process.env.PORT);
+console.log("Server listening.");
 
 
 //END OF EXPRESS FUNCTIONS.
