@@ -36,7 +36,7 @@ app.use(
   })
 );
 dotenv.config( { path: path.join(root,"process.env") } );
-
+app.use(constructSessionInstance);
 app.get("/",async function(request, response){
   console.log("Hello World!");
   response.status(200).sendFile(webpageRoot+"/home.html");
@@ -46,3 +46,30 @@ app.listen(process.env.PORT, () => {
   console.log(`App listening on port ${process.env.PORT}`);
   console.log('Press Ctrl+C to quit.');
 });
+function constructSessionInstance(request, response, next){
+  console.log("Constructing instance.");
+  var reset = false;
+  switch(request.session.data){
+    case undefined:
+      console.log("Session data does not exist, creating formatted data blueprint.");
+      reset = true;
+      break;
+    case null:
+      console.log("User has visited, but an error necessitated eliminating their stored data.");
+      reset = true;
+      break;
+    default:
+      console.log("There doesn't seem to be anything wrong here....");
+  }
+  if(reset){
+    request.session.data = {
+      authCode: null,
+      state: null,
+      tokenData: {},
+      primaryMembershipId: null,
+      bnetInfo: null,
+      gamedata: {},
+    };
+  }
+  next();
+};
