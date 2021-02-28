@@ -46,8 +46,34 @@ app.listen(process.env.PORT, () => {
   console.log(`App listening on port ${process.env.PORT}`);
   console.log('Press Ctrl+C to quit.');
 });
+//END OF EXPRESS FUNCTIONS.
+async function accessAuthorizedEndpoints(request, response, next){
+  console.log("Session "+request.session.id+" has requested access to "+request._parsedUrl.path);
+  var currentTime = new Date().getTime();
+  if(Object.keys(request.session.data.tokenData).length == 0){
+    console.error("No data exists for user. ");
+    response.redirect("/bnetlogin");
+    return;
+  }
+  var tokenData = D2API.decryptData(request.session.data.tokenData);
+  if(tokenData.refreshExpiration < currentTime){
+    console.log("The refresh token has expired, gonna need to login.");
+    response.redirect("/bnetlogin");
+    return;
+  }
+  if(tokenData.tokenExpiration < currentTime){
+    console.log("Token has expired, user requires a new one.");
+    let data = await D2API.tokenRefresh(request, response).catch(function(error){ next(error); });
+    console.log("Token refresh completed.");
+  }
+  console.log("User seems good to go.");
+  next();
+};
+
 function constructSessionInstance(request, response, next){
   console.log("Constructing instance.");
+  console.log(request.session);
+  console.log(request.header.Forwarded);
   var reset = false;
   switch(request.session.data){
     case undefined:
@@ -73,3 +99,22 @@ function constructSessionInstance(request, response, next){
   }
   next();
 };
+function handleServerErrors(error, request, response, next){
+  console.log(error);
+  if(error instanceof D2Responses.APIError){
+    console.log("Hey, i built this error object! ");
+    console.error(error.toString());
+    error.statusText = error.toString();
+    console.log(error.status);
+    response.status(400).send(Error(error.statusText));
+  }
+  else if(error instanceof D2Responses.TokenError){
+    console.log("Something went awry trying to obtain an access token.");
+    response.status(400).send("Something went awry trying to obtain an access token. Feel free to try again though.");
+  }
+  else {
+    console.error(error);
+    console.log("Hey, I didn't build this error, so we just gonna give a default response.");
+    response.status(500).send("Internal Server Error.");
+  }
+}
