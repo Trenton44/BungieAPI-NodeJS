@@ -16,7 +16,7 @@ steps:
     - 'PORT=8080'
 - name: node:10.14
   entrypoint: npm
-  args: ["load-manifest"]
+  args: ["run", "load-manifest"]
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy"]
 timeout: "1600s"
