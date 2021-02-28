@@ -22,7 +22,7 @@ const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
-
+app.set('trust proxy', true);
 app.use(express.json());
 app.use(
   session({
@@ -72,8 +72,7 @@ async function accessAuthorizedEndpoints(request, response, next){
 
 function constructSessionInstance(request, response, next){
   console.log("Constructing instance.");
-  console.log(request.session);
-  console.log(request.header.Forwarded);
+  console.log(request);
   var reset = false;
   switch(request.session.data){
     case undefined:
