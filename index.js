@@ -44,6 +44,9 @@ app.use(
   })
 );
 dotenv.config( { path: path.join(root,"process.env") } );
+app.get("/_ah/start",function(request, response){
+  response.status(404);
+})
 app.use(constructSessionInstance);
 app.get("/bnetlogin", async function(request, response){
   console.log("in bnet login.");
@@ -274,6 +277,7 @@ async function accessAuthorizedEndpoints(request, response, next){
 
 function constructSessionInstance(request, response, next){
   console.log("Constructing instance.");
+  console.log(request.ips);
   var reset = false;
   switch(request.session.data){
     case undefined:
