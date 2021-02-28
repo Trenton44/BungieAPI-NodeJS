@@ -290,8 +290,8 @@ app.get("/vault",async function(request, response){
   response.sendFile(webpageRoot+"/vault.html");
 });
 console.log("Server loading finished, the next line is the listen function.");
-httpsServer.listen(process.env.PORT, "127.0.0.1");
-console.log("Server listening at port "+process.env.PORT);
+app.listen(process.env.PORT || 8080, () => console.log(`Listening on port ${process.env.PORT || 8080}!`));
+
 
 
 //END OF EXPRESS FUNCTIONS.
