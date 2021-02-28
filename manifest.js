@@ -31,10 +31,10 @@ function loadManifest(){
         });
       }
       console.log("Manifest loading finished.");
-      fs.writeFileSync(root+"/ManifestVersion.json", JSON.stringify({version: result.version}), function(error){
+      /*fs.writeFileSync(root+"/ManifestVersion.json", JSON.stringify({version: result.version}), function(error){
         console.error(error);
         return false;
-      });
+      });*/
       console.log("Manifest version updated.");
       return true;
     }).catch(function(error){ console.log(error); return error; });
