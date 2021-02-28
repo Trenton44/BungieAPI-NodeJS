@@ -3,3 +3,6 @@ entrypoint: npm start
 instance_class: B4
 manual_scaling:
   instances: 1
+handlers:
+- url: /
+  script: index.js
