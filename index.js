@@ -64,6 +64,7 @@ app.use(
   })
 );
 app.get("/_ah/start",function(request,response){
+  console.log(request);
   console.log("THE AH START HAS BEEN DETECTED.");
   response.status(404);
 });
@@ -273,7 +274,6 @@ app.get("/",async function(request, response){
 app.get("/vault",async function(request, response){
   response.sendFile(webpageRoot+"/vault.html");
 });
-console.log("Server loading finished, the next line is the listen function.");
 app.listen(process.env.PORT || 8080, () => console.log(`Listening on port ${process.env.PORT || 8080}!`));
 
 
