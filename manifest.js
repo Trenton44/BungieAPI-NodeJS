@@ -45,7 +45,7 @@ function getRequest(path){
   return axios({
     method:"GET",
     url: path,
-    headers: {"X-API-Key":process.env.Bungie_API_KEY},
+    headers: {"X-API-Key":process.env.BUNGIE_API_KEY},
   }).catch(function(error){ throw error; });
 };
 
