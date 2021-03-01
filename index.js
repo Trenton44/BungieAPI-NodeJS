@@ -74,7 +74,7 @@ app.get("/bnetresponse", async function(request, response, next){
   }
   console.log("states match, requesting token.");
   request.session.data.authCode = request.query.code;
-  let result = await D2API.requestToken(request, response).catch(function(error){ return });
+  let result = await D2API.requestToken(request, response).catch(function(error){ return error; });
   console.log(result);
   if(result instanceof Error){ next(result); return; }
   response.redirect("/");

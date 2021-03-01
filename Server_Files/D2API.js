@@ -248,7 +248,7 @@ async function tokenRefresh(request){
   let result = await axios({
     method:"POST",
     url: bungieTokURL,
-    headers: {"X-API-Key":process.env.Bungie_API_KEY},
+    headers: {"X-API-Key":process.env.BUNGIE_API_KEY},
     data: body,
   }).catch(function(error){ throw new D2Responses.TokenError(error); });
   saveTokenData(request, result.data);
@@ -289,7 +289,7 @@ async function postRequest(path, body, token){
   let result = await axios({
     method:"POST",
     url: path,
-    headers: {"X-API-Key":process.env.Bungie_API_KEY, "Authorization":"Bearer "+token},
+    headers: {"X-API-Key":process.env.BUNGIE_API_KEY, "Authorization":"Bearer "+token},
     data: body,
   }).catch(function(error){ throw error; });
   return result;
@@ -299,7 +299,7 @@ async function getRequestAuth(path, token){
   let result = await axios({
     method:"GET",
     url: path,
-    headers: {"X-API-Key":process.env.Bungie_API_KEY, "Authorization":"Bearer "+token},
+    headers: {"X-API-Key":process.env.BUNGIE_API_KEY, "Authorization":"Bearer "+token},
   }).catch(function(error){ throw error; });
   return result;
 };
@@ -307,7 +307,7 @@ async function getRequest(path){
   let result = await axios({
     method:"GET",
     url: path,
-    headers: {"X-API-Key":process.env.Bungie_API_KEY},
+    headers: {"X-API-Key":process.env.BUNGIE_API_KEY},
   }).catch(function(error){ throw error; });
   return result;
 };
