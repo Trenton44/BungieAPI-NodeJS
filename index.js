@@ -80,7 +80,7 @@ app.get("/bnetresponse", async function(request, response, next){
   response.redirect("/");
 });
 
-app.use(accessAuthorizedEndpoints);
+//app.use(accessAuthorizedEndpoints);
 
 app.get("/home/data", async function(request, response, next){
   var startTime = new Date().getTime();
@@ -262,18 +262,18 @@ async function accessAuthorizedEndpoints(request, response, next){
   var currentTime = new Date().getTime();
   if(Object.keys(request.session.data.tokenData).length == 0){
     console.error("No data exists for user. ");
-    //response.redirect("/bnetlogin");
+    response.redirect("/bnetlogin");
     return;
   }
   var tokenData = D2API.decryptData(request.session.data.tokenData);
   if(tokenData.refreshExpiration < currentTime){
     console.log("The refresh token has expired, gonna need to login.");
-    //response.redirect("/bnetlogin");
+    response.redirect("/bnetlogin");
     return;
   }
   if(tokenData.tokenExpiration < currentTime){
     console.log("Token has expired, user requires a new one.");
-    //let data = await D2API.tokenRefresh(request, response).catch(function(error){ next(error); });
+    let data = await D2API.tokenRefresh(request, response).catch(function(error){ next(error); });
     console.log("Token refresh completed.");
   }
   console.log("User seems good to go.");
