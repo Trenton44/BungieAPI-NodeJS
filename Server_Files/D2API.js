@@ -1,6 +1,6 @@
 const path = require("path");
 const root = path.join(__dirname,'..');
-
+console.log(root);
 const webpageRoot = root+"/Client_Files";
 const serverRoot = root+"/Server_Files";
 const assetRoot = root+"/Asset_Files";
@@ -28,10 +28,12 @@ const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitT
 dotenv.config( { path: path.join(root,"process.env") } );
 
 async function getBnetInfo(request, response, next){
+  console.log("requesting bnet info");
   var path = bungieRoot+"/User/GetMembershipsForCurrentUser/";
   var access_token = decryptData(request.session.data.tokenData).access_token;
   let result = await getRequestAuth(path, access_token).catch(function(error){ next(new D2Responses.APIError(error)); });
   request.session.data.bnetInfo = parseBnetInfo(result.data.Response);
+  console.log("bnet info aquired.");
   next();
 };
 exports.getBnetInfo = getBnetInfo;

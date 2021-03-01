@@ -22,8 +22,9 @@ const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
-
+console.log(root);
 const D2API = require(serverRoot+"/D2API.js");
+console.log(D2API);
 const D2Components = require(serverRoot+"/D2Components.js");
 const ServerResponse = require(serverRoot+"/Server_Responses.js");
 const D2Responses = require(serverRoot+"/D2APIResponseObjects.js");
