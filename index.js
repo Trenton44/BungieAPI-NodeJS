@@ -243,7 +243,7 @@ app.post("/character/equipItem",async function(request, response, next){
   response.status(200).json({ result:result });
 });
 
-//app.use(D2API.getBnetInfo);
+app.use(D2API.getBnetInfo);
 app.use(handleServerErrors);
 app.get("/",async function(request, response){
   console.log("Hello World!");
