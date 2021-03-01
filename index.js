@@ -14,9 +14,9 @@ const axios = require('axios');
 const dotenv = require("dotenv");
 const crypto = require("crypto");
 const helmet = require("helmet");
-//const mongo = require('mongodb');
-//const MongoClient = require('mongodb').MongoClient;
-//const MongoDBStore = require("connect-mongodb-session")(session);
+const mongo = require('mongodb');
+const MongoClient = require('mongodb').MongoClient;
+const MongoDBStore = require("connect-mongodb-session")(session);
 
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
@@ -29,6 +29,15 @@ const D2Components = require(serverRoot+"/D2Components.js");
 const ServerResponse = require(serverRoot+"/Server_Responses.js");
 const D2Responses = require(serverRoot+"/D2APIResponseObjects.js");
 
+var store = new MongoDBStore({
+  uri: process.env.Mongo_DB_URI,
+  databaseName: "users",
+  collection: "Sessions",
+});
+store.on("error", function(error){
+  console.error(error);
+});
+
 app.set('trust proxy', true);
 app.use(express.json());
 app.use("/assets", express.static('Asset_Files'));
@@ -39,7 +48,7 @@ app.use(
       secret: "secreto!alabastro@",
       genid: function(req){ return genuuid.v4(); },
       resave: true,
-      //store: store,
+      store: store,
       saveUninitialized: true,
       cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
