@@ -4,6 +4,8 @@
   "description": "A personal project implementing the API used by Bungie for their Destiny IP",
   "main": "index.js",
   "dependencies": {
+    "@google-cloud/connect-firestore": "^2.0.1",
+    "@google-cloud/firestore": "^4.0.0",
     "axios": "^0.21.1",
     "connect-mongodb-session": "^2.4.1",
     "cookie-session": "^1.4.0",

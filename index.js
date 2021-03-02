@@ -14,29 +14,18 @@ const axios = require('axios');
 const dotenv = require("dotenv");
 const crypto = require("crypto");
 const helmet = require("helmet");
-const mongo = require('mongodb');
-const MongoClient = require('mongodb').MongoClient;
-const MongoDBStore = require("connect-mongodb-session")(session);
+const Firestore = require('@google-cloud/firestore');
+const FireStorage = require('@google-cloud/connect-firestore');
 
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
 const bungieTokURL = bungieRoot+"/app/oauth/token/";
-console.log(root);
+
 const D2API = require(serverRoot+"/D2API.js");
-console.log(D2API);
 const D2Components = require(serverRoot+"/D2Components.js");
 const ServerResponse = require(serverRoot+"/Server_Responses.js");
 const D2Responses = require(serverRoot+"/D2APIResponseObjects.js");
-
-var store = new MongoDBStore({
-  uri: process.env.Mongo_DB_URI,
-  databaseName: "users",
-  collection: "Sessions",
-});
-store.on("error", function(error){
-  console.error(error);
-});
 
 app.set('trust proxy', true);
 app.use(express.json());
@@ -48,7 +37,10 @@ app.use(
       secret: "secreto!alabastro@",
       genid: function(req){ return genuuid.v4(); },
       resave: true,
-      store: store,
+      store: new FireStorage({
+        dataset: new Firestore(),
+        kind: 'express-sessions',
+      }),
       saveUninitialized: true,
       cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
