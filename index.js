@@ -14,8 +14,8 @@ const axios = require('axios');
 const dotenv = require("dotenv");
 const crypto = require("crypto");
 const helmet = require("helmet");
-const Firestore = require('@google-cloud/firestore');
-const FireStorage = require('@google-cloud/connect-firestore');
+const {Firestore} = require('@google-cloud/firestore');
+const {FirestoreStore} = require('@google-cloud/connect-firestore');
 
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
@@ -37,7 +37,7 @@ app.use(
       secret: "secreto!alabastro@",
       genid: function(req){ return genuuid.v4(); },
       resave: true,
-      store: new FireStorage({
+      store: new FirestoreStore({
         dataset: new Firestore(),
         kind: 'express-sessions',
       }),
