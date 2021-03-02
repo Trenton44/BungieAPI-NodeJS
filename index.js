@@ -40,10 +40,10 @@ app.use(
       secret: "secreto!alabastro@",
       genid: function(req){ return genuuid.v4(); },
       resave: true,
-      /*store: new FirestoreStore({
+      store: new FirestoreStore({
         dataset: new Firestore(),
         kind: 'express-sessions',
-      }),*/
+      }),
       saveUninitialized: true,
       cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
