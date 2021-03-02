@@ -4,6 +4,8 @@
   "description": "A personal project implementing the API used by Bungie for their Destiny IP",
   "main": "index.js",
   "dependencies": {
+    "@google-cloud/connect-firestore": "^2.0.1",
+    "@google-cloud/firestore": "^4.0.0",
     "axios": "^0.21.1",
     "connect-mongodb-session": "^2.4.1",
     "cookie-session": "^1.4.0",
@@ -12,14 +14,14 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "helmet": "^4.4.1",
-    "heroku-ssl-redirect": "^0.1.1",
     "loadsh": "0.0.4",
     "mongodb": "^3.6.4",
     "uuid": "^8.3.2"
   },
   "devDependencies": {},
   "scripts": {
-    "create-env": "printenv > .env",
+    "create-env": "printenv > process.env",
+    "load-manifest": "node manifest.js",
     "prestart": "node manifest.js",
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"

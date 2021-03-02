@@ -28,10 +28,12 @@ const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitT
 dotenv.config( { path: path.join(root,"process.env") } );
 
 async function getBnetInfo(request, response, next){
+  console.log("requesting bnet info");
   var path = bungieRoot+"/User/GetMembershipsForCurrentUser/";
   var access_token = decryptData(request.session.data.tokenData).access_token;
-  let result = await getRequestAuth(path, access_token).catch(function(error){ next(new D2Responses.APIError(error)); });
+  let result = await getRequestAuth(path, access_token).catch(function(error){ next(error); });
   request.session.data.bnetInfo = parseBnetInfo(result.data.Response);
+  console.log("bnet info aquired.");
   next();
 };
 exports.getBnetInfo = getBnetInfo;
@@ -222,8 +224,8 @@ exports.equipItem = equipItem;
 
 async function requestToken(request){
   var body = new URLSearchParams();
-  body.append("client_secret",process.env.Bungie_ClientSecret);
-  body.append("client_id", process.env.Bungie_ClientID);
+  body.append("client_secret",process.env.BUNGIE_CLIENT_SECRET);
+  body.append("client_id", process.env.BUNGIE_CLIENT_ID);
   body.append("grant_type", "authorization_code");
   body.append("code",request.session.data.authCode);
   let token = await axios({
@@ -241,12 +243,12 @@ async function tokenRefresh(request){
   var body = new URLSearchParams();
   body.append("grant_type", "refresh_token");
   body.append("refresh_token", tokenData.refresh_token);
-  body.append("client_secret",process.env.Bungie_ClientSecret);
-  body.append("client_id", process.env.Bungie_ClientID);
+  body.append("client_secret",process.env.BUNGIE_CLIENT_SECRET);
+  body.append("client_id", process.env.BUNGIE_CLIENT_ID);
   let result = await axios({
     method:"POST",
     url: bungieTokURL,
-    headers: {"X-API-Key":process.env.Bungie_API_KEY},
+    headers: {"X-API-Key":process.env.BUNGIE_API_KEY},
     data: body,
   }).catch(function(error){ throw new D2Responses.TokenError(error); });
   saveTokenData(request, result.data);
@@ -267,7 +269,7 @@ exports.saveTokenData = saveTokenData;
 function encryptData(data){
   data = JSON.stringify(data);
   var iv = Buffer.from(crypto.randomBytes(16));
-  let cipher = crypto.createCipheriv(process.env.CipherAlgorithm,Buffer.from(process.env.mongopvk,'hex'),iv);
+  let cipher = crypto.createCipheriv(process.env.CIPHER_ALGORITHM,Buffer.from(process.env.MONGOPVK,'hex'),iv);
   let encryptedData = cipher.update(data);
   encryptedData = Buffer.concat([encryptedData, cipher.final()]);
   return { iv: iv.toString('hex'),data:encryptedData.toString('hex') };
@@ -276,7 +278,7 @@ function encryptData(data){
 function decryptData(data){
   let iv = Buffer.from(data.iv,'hex');
   let encrypted = Buffer.from(data.data,'hex');
-  let decipher = crypto.createDecipheriv(process.env.CipherAlgorithm, Buffer.from(process.env.mongopvk,'hex'), iv);
+  let decipher = crypto.createDecipheriv(process.env.CIPHER_ALGORITHM, Buffer.from(process.env.MONGOPVK,'hex'), iv);
   let result = decipher.update(encrypted);
   result = Buffer.concat([result,decipher.final()]);
   return JSON.parse(result.toString());
@@ -287,7 +289,7 @@ async function postRequest(path, body, token){
   let result = await axios({
     method:"POST",
     url: path,
-    headers: {"X-API-Key":process.env.Bungie_API_KEY, "Authorization":"Bearer "+token},
+    headers: {"X-API-Key":process.env.BUNGIE_API_KEY, "Authorization":"Bearer "+token},
     data: body,
   }).catch(function(error){ throw error; });
   return result;
@@ -297,7 +299,7 @@ async function getRequestAuth(path, token){
   let result = await axios({
     method:"GET",
     url: path,
-    headers: {"X-API-Key":process.env.Bungie_API_KEY, "Authorization":"Bearer "+token},
+    headers: {"X-API-Key":process.env.BUNGIE_API_KEY, "Authorization":"Bearer "+token},
   }).catch(function(error){ throw error; });
   return result;
 };
@@ -305,7 +307,7 @@ async function getRequest(path){
   let result = await axios({
     method:"GET",
     url: path,
-    headers: {"X-API-Key":process.env.Bungie_API_KEY},
+    headers: {"X-API-Key":process.env.BUNGIE_API_KEY},
   }).catch(function(error){ throw error; });
   return result;
 };

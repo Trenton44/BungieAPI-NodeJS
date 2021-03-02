@@ -1,8 +1,8 @@
 steps:
-  - name: node:10.14
+- name: node:10.14
   entrypoint: npm
   args: ["install"]
-  - name: node:10.14
+- name: node:10.14
   entrypoint: npm
   args: ["run", "create-env"]
   env:
@@ -12,6 +12,11 @@ steps:
     - 'CIPHER_ALGORITHM=${_CIPHER_ALGORITHM}'
     - 'MONGO_DB_URI=${_MONGO_DB_URI}'
     - 'MONGOPVK=${_MONGOPVK}'
-  - name: "gcr.io/cloud-builders-gcloud"
-  args: ["app","deploy"]
-  timeout: "1600s"
+    - 'NODE_ENV=PRODUCTION'
+    - 'PORT=8080'
+- name: node:10.14
+  entrypoint: npm
+  args: ["run", "load-manifest"]
+- name: "gcr.io/cloud-builders/gcloud"
+  args: ["app", "deploy"]
+timeout: "1600s"

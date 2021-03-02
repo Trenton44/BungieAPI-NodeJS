@@ -14,8 +14,9 @@ const axios = require('axios');
 const dotenv = require("dotenv");
 const crypto = require("crypto");
 const helmet = require("helmet");
-const {Firestore} = require('@google-cloud/firestore');
-const {FirestoreStore} = require('@google-cloud/connect-firestore');
+//const mongo = require('mongodb');
+//const MongoClient = require('mongodb').MongoClient;
+//const MongoDBStore = require("connect-mongodb-session")(session);
 
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
@@ -27,31 +28,56 @@ const D2Components = require(serverRoot+"/D2Components.js");
 const ServerResponse = require(serverRoot+"/Server_Responses.js");
 const D2Responses = require(serverRoot+"/D2APIResponseObjects.js");
 
+dotenv.config( { path: path.join(root,"process.env") } );
+ /*var store = new MongoDBStore({
+   uri: process.env.Mongo_DB_URI,
+   databaseName: "users",
+   collection: "Sessions",
+ });
+ store.on("error", function(error){
+   console.error(error);
+ });*/
 app.set('trust proxy', true);
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+      "script-src": ["'self'","'sha256-cdNxkst/MKzgvqZUhCrx6TILhuQGW1jtZ3LqlgWOtKg='","",""],
+      "script-src-attr": ["'self'"],
+      "img-src": ["'self'","https://www.bungie.net/common/"],
+    },
+  },
+  hsts:{
+    includeSubDomains: true,
+  },
+}));
 app.use(express.json());
-app.use("/assets", express.static('Asset_Files'));
-app.use("/client", express.static('Client_Files'));
 app.use(
   session({
       name: "sAk3m3",
       secret: "secreto!alabastro@",
       genid: function(req){ return genuuid.v4(); },
       resave: true,
-      store: new FirestoreStore({
-        dataset: new Firestore(),
-        kind: 'express-sessions',
-      }),
+      //store: store,
       saveUninitialized: true,
       cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
 );
-dotenv.config( { path: path.join(root,"process.env") } );
-app.get("/_ah/start",function(request, response){
-  console.log("hey, it detected the /_ah/start endpoint.");
-  console.log(request.hostname);
-  console.log(request.ips);
-  response.status(404).end();
-})
+app.get("/",async function(request, response){
+  console.log("Hello World!");
+  response.sendFile(webpageRoot+"/home.html");
+});
+app.get("/_ah/start",function(request,response){
+  console.log(request);
+  console.log("THE AH START HAS BEEN DETECTED.");
+  response.status(404);
+});
+app.get("/client/:id",function(request,response){
+  response.status(200).sendFile(webpageRoot+"/"+request.params.id);
+});
+app.get("/assets/:id",function(request,response){
+  response.status(200).sendFile(assetRoot+"/"+request.params.id);
+});
 app.use(constructSessionInstance);
 app.get("/bnetlogin", async function(request, response){
   console.log("in bnet login.");
@@ -75,8 +101,7 @@ app.get("/bnetresponse", async function(request, response, next){
   }
   console.log("states match, requesting token.");
   request.session.data.authCode = request.query.code;
-  let result = await D2API.requestToken(request, response).catch(function(error){ return error; });
-  console.log(result);
+  let result = await D2API.requestToken(request, response).catch(function(error){ return });
   if(result instanceof Error){ next(result); return; }
   response.redirect("/");
 });
@@ -246,30 +271,31 @@ app.post("/character/equipItem",async function(request, response, next){
 
 app.use(D2API.getBnetInfo);
 app.use(handleServerErrors);
-app.get("/",async function(request, response){
-  console.log("Hello World!");
-  response.status(200).sendFile(webpageRoot+"/home.html");
-});
+
 app.get("/vault",async function(request, response){
   response.sendFile(webpageRoot+"/vault.html");
 });
-app.listen(process.env.PORT, () => {
-  console.log(`App listening on port ${process.env.PORT}`);
-  console.log('Press Ctrl+C to quit.');
-});
+app.get("*", function(request, response){
+  console.log("You have made a request to an endpoint i am too lazy to define. error coded.");
+  response.status(404).send("No.").end();
+})
+app.listen(process.env.PORT || 8080, () => console.log(`Listening on port ${process.env.PORT || 8080}!`));
+
+
+
 //END OF EXPRESS FUNCTIONS.
 async function accessAuthorizedEndpoints(request, response, next){
   console.log("Session "+request.session.id+" has requested access to "+request._parsedUrl.path);
   var currentTime = new Date().getTime();
   if(Object.keys(request.session.data.tokenData).length == 0){
     console.error("No data exists for user. ");
-    response.sendFile(webpageRoot+"/loginpage.html");
+    response.redirect("/bnetlogin");
     return;
   }
   var tokenData = D2API.decryptData(request.session.data.tokenData);
   if(tokenData.refreshExpiration < currentTime){
     console.log("The refresh token has expired, gonna need to login.");
-    response.sendFile(webpageRoot+"/loginpage.html");
+    response.redirect("/bnetlogin");
     return;
   }
   if(tokenData.tokenExpiration < currentTime){
@@ -280,10 +306,8 @@ async function accessAuthorizedEndpoints(request, response, next){
   console.log("User seems good to go.");
   next();
 };
-
 function constructSessionInstance(request, response, next){
   console.log("Constructing instance.");
-  console.log(request.ips);
   var reset = false;
   switch(request.session.data){
     case undefined:
@@ -325,6 +349,6 @@ function handleServerErrors(error, request, response, next){
   else {
     console.error(error);
     console.log("Hey, I didn't build this error, so we just gonna give a default response.");
-    response.status(404).send("Not Found.");
+    response.status(500).send("Internal Server Error.");
   }
 }

@@ -8,7 +8,7 @@ dotenv.config( { path: path.join(root,"process.env") } );
 
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
-const manifestRoot = root+"/Manifest_Files";
+var manifestRoot = path.parse(__dirname).root+"/tmp";
 
 const D2ManifestVersion = require(root+"/ManifestVersion.json");
 //Loads the current d2 manifest from bungie api and saves to root.
@@ -31,10 +31,10 @@ function loadManifest(){
         });
       }
       console.log("Manifest loading finished.");
-      fs.writeFileSync(root+"/ManifestVersion.json", JSON.stringify({version: result.version}), function(error){
+      /*fs.writeFileSync(root+"/ManifestVersion.json", JSON.stringify({version: result.version}), function(error){
         console.error(error);
         return false;
-      });
+      });*/
       console.log("Manifest version updated.");
       return true;
     }).catch(function(error){ console.log(error); return error; });
@@ -45,7 +45,7 @@ function getRequest(path){
   return axios({
     method:"GET",
     url: path,
-    headers: {"X-API-Key":process.env.Bungie_API_KEY},
+    headers: {"X-API-Key":process.env.BUNGIE_API_KEY},
   }).catch(function(error){ throw error; });
 };
 
