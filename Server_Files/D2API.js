@@ -30,9 +30,9 @@ dotenv.config( { path: path.join(root,"process.env") } );
 async function getBnetInfo(request, response, next){
   console.log("requesting bnet info");
   var path = bungieRoot+"/User/GetMembershipsForCurrentUser/";
-  var access_token = decryptData(request.session.data.tokenData).access_token;
+  var access_token = decryptData(request.session.tokenData).access_token;
   let result = await getRequestAuth(path, access_token).catch(function(error){ next(error); });
-  request.session.data.bnetInfo = parseBnetInfo(result.data.Response);
+  request.session.bnetInfo = parseBnetInfo(result.data.Response);
   console.log("bnet info aquired.");
   next();
 };
@@ -54,7 +54,7 @@ async function characterComponentRequest(request, components, characterID){
   var params = constructComponentString(components);
 
   var path = path+"Character/"+characterID+"/"+"?"+params;
-  var access_token = decryptData(request.session.data.tokenData).access_token;
+  var access_token = decryptData(request.session.tokenData).access_token;
   let result = await getRequestAuth(path, access_token).catch(function(error){ throw new D2Responses.APIError(error); });
 
   result = new D2Responses.APIResponse(result);
@@ -69,7 +69,7 @@ async function profileComponentRequest(request, components){
   var params = constructComponentString(components);
 
   path = path+"?"+params;
-  var access_token = decryptData(request.session.data.tokenData).access_token;
+  var access_token = decryptData(request.session.tokenData).access_token;
   let result = await getRequestAuth(path, access_token).catch(function(error){ throw new D2Responses.APIError(error); });
   result = new D2Responses.APIResponse(result);
   result.data = parseDataComponents(result.data);
@@ -84,7 +84,7 @@ function parseDataComponents(data){
 exports.parseDataComponents = parseDataComponents;
 
 function buildComponentPath(request){
-  var bnetInfo = request.session.data.bnetInfo;
+  var bnetInfo = request.session.bnetInfo;
   var membershipType = bnetInfo[bnetInfo.primaryMembershipId].membershipType;
   var profileID = bnetInfo.primaryMembershipId;
   var path = bungieRoot+"/Destiny2/"+membershipType+"/Profile/"+profileID+"/";
@@ -94,20 +94,20 @@ function buildComponentPath(request){
 //Requires the list of components used in the api request, and the data returned from said request.
 //sends component data to prebuilt functions, which structure the data and return it here afterwards.
 async function generalHistoricalStats(request){
-  var bnetInfo = request.session.data.bnetInfo;
+  var bnetInfo = request.session.bnetInfo;
   var profileID = bnetInfo.primaryMembershipId;
   var membershipType = bnetInfo[bnetInfo.primaryMembershipId].membershipType;
   var parameters = new URLSearchParams();
   parameters.set("groups", "General");
   var path = bungieRoot+"/Destiny2/"+membershipType+"/Account/"+profileID+"/Stats/"+"?"+parameters.toString();
-  var access_token = decryptData(request.session.data.tokenData).access_token;
+  var access_token = decryptData(request.session.tokenData).access_token;
   let result = await getRequestAuth(path, access_token).catch(function(error){ throw new D2Responses.APIError(error); });
   result = new D2Responses.APIResponse(result);
   return result;
 }
 exports.generalHistoricalStats = generalHistoricalStats;
 async function specificHistoricalStats(request){
-  var bnetInfo = request.session.data.bnetInfo;
+  var bnetInfo = request.session.bnetInfo;
   var profileID = bnetInfo.primaryMembershipId;
   var membershipType = bnetInfo[bnetInfo.primaryMembershipId].membershipType;
   var params = new URLSearchParams();
@@ -116,14 +116,14 @@ async function specificHistoricalStats(request){
   params.set("groups","General");
   params.set("modes", D2Enums.ActivityModeType[request.params.mode]); //
   var path = bungieRoot+"/Destiny2/"+membershipType+"/Account/"+profileID+"/Character/"+request.params.character+"/Stats/?"+params.toString();
-  var access_token = decryptData(request.session.data.tokenData).access_token;
+  var access_token = decryptData(request.session.tokenData).access_token;
   let result = await getRequestAuth(path, access_token).catch(function(error){ console.log(error); throw new D2Responses.APIError(error); });
   return result;
 }
 exports.specificHistoricalStats = specificHistoricalStats;
 
 async function getActivityHistory(request){
-  var bnetInfo = request.session.data.bnetInfo;
+  var bnetInfo = request.session.bnetInfo;
   var profileID = bnetInfo.primaryMembershipId;
   var membershipType = bnetInfo[bnetInfo.primaryMembershipId].membershipType;
   var params = new URLSearchParams();
@@ -131,14 +131,14 @@ async function getActivityHistory(request){
   params.set("mode",D2Enums.ActivityModeType[request.params.mode]);
   params.set("page", request.params.page);
   var path = bungieRoot+"/Destiny2/"+membershipType+"/Account/"+profileID+"/Character/"+request.params.character+"/Stats/Activities/?"+params.toString();
-  var access_token = decryptData(request.session.data.tokenData).access_token;
+  var access_token = decryptData(request.session.tokenData).access_token;
   let result = await getRequestAuth(path, access_token).catch(function(error){ console.log(error); throw new D2Responses.APIError(error); });
   return result;
 };
 exports.getActivityHistory = getActivityHistory;
 
 async function pullFromPostmaster(request){
-  var bnetInfo = request.session.data.bnetInfo;
+  var bnetInfo = request.session.bnetInfo;
   var membershipType = bnetInfo[bnetInfo.primaryMembershipId].membershipType;
   var path = bungieRoot+"/Destiny2/Actions/Items/PullFromPostmaster/";
   var body = {
@@ -148,13 +148,13 @@ async function pullFromPostmaster(request){
     membershipType: membershipType,
   };
   if(request.body.itemId !== undefined){ body.itemId = request.body.itemId; }
-  var access_token = decryptData(request.session.data.tokenData).access_token;
+  var access_token = decryptData(request.session.tokenData).access_token;
   let result = await postRequest(path, body, access_token).catch(function(error){ console.log(error); throw new D2Responses.APIError(error); });
   return new D2Responses.APIResponse(result);
 };
 exports.pullFromPostmaster = pullFromPostmaster;
 async function lockCharacterItem(request){
-  var bnetInfo = request.session.data.bnetInfo;
+  var bnetInfo = request.session.bnetInfo;
   var membershipType = bnetInfo[bnetInfo.primaryMembershipId].membershipType;
   var path = bungieRoot+"/Destiny2/Actions/Items/SetLockState/";
   var body = JSON.stringify({
@@ -163,7 +163,7 @@ async function lockCharacterItem(request){
     membershipType: memType,
     state: !request.body.item.lockState,
   });
-  var access_token = decryptData(request.session.data.tokenData).access_token;
+  var access_token = decryptData(request.session.tokenData).access_token;
   let result = await postRequest(path, body, access_token).catch(function(error){ throw new D2Responses.APIError(error); });
   return "Successfully locked item.";
 };
@@ -172,7 +172,7 @@ exports.lockCharacterItem = lockCharacterItem;
 async function transferFromVault(request){
   console.log("transferring to character from vault");
   var path = bungieRoot+"/Destiny2/Actions/Items/TransferItem/";
-  var access_token = decryptData(request.session.data.tokenData).access_token;
+  var access_token = decryptData(request.session.tokenData).access_token;
   var body = buildTransferRequestBody(request);
   body.characterId = request.body.characterReceiving;
   body.transferToVault = false;
@@ -185,7 +185,7 @@ exports.transferFromVault = transferFromVault;
 async function transferToVault(request){
   console.log("transferring to vault");
   var path = bungieRoot+"/Destiny2/Actions/Items/TransferItem/";
-  var access_token = decryptData(request.session.data.tokenData).access_token;
+  var access_token = decryptData(request.session.tokenData).access_token;
   var body = buildTransferRequestBody(request);
   body.characterId = request.body.characterTransferring;
   body.transferToVault = true;
@@ -197,7 +197,7 @@ async function transferToVault(request){
 exports.transferToVault = transferToVault;
 
 function buildTransferRequestBody(request){
-  var bnetInfo = request.session.data.bnetInfo;
+  var bnetInfo = request.session.bnetInfo;
   var membershipType = bnetInfo[bnetInfo.primaryMembershipId].membershipType;
   return {
     itemReferenceHash: request.body.itemHash,
@@ -208,7 +208,7 @@ function buildTransferRequestBody(request){
 };
 
 async function equipItem(request){
-  var bnetInfo = request.session.data.bnetInfo;
+  var bnetInfo = request.session.bnetInfo;
   var membershipType = bnetInfo[bnetInfo.primaryMembershipId].membershipType;
   var path = bungieRoot+"/Destiny2/Actions/Items/EquipItem/";
   var body = {
@@ -216,7 +216,7 @@ async function equipItem(request){
     itemId: request.body.item.itemInstanceId,
     membershipType: membershipType,
   };
-  var access_token = decryptData(request.session.data.tokenData).access_token;
+  var access_token = decryptData(request.session.tokenData).access_token;
   let result = await postRequest(path, body, access_token).catch(function(error){ throw new D2Responses.APIError(error); });
   return "Item succesfully Equipped.";
 };
@@ -227,7 +227,7 @@ async function requestToken(request){
   body.append("client_secret",process.env.BUNGIE_CLIENT_SECRET);
   body.append("client_id", process.env.BUNGIE_CLIENT_ID);
   body.append("grant_type", "authorization_code");
-  body.append("code",request.session.data.authCode);
+  body.append("code",request.session.authCode);
   let token = await axios({
     method:"POST",
     url: bungieTokURL,
@@ -239,7 +239,7 @@ async function requestToken(request){
 exports.requestToken = requestToken;
 
 async function tokenRefresh(request){
-  var tokenData = decryptData(request.session.data.tokenData);
+  var tokenData = decryptData(request.session.tokenData);
   var body = new URLSearchParams();
   body.append("grant_type", "refresh_token");
   body.append("refresh_token", tokenData.refresh_token);
@@ -260,8 +260,8 @@ function saveTokenData(request, tokenData){
   tokenData.tokenExpiration = new Date().getTime()+((tokenData.expires_in)*1000);
   tokenData.refreshExpiration = new Date().getTime()+(tokenData.refresh_expires_in*1000);
   request.session.cookie.maxAge = tokenData.refreshExpiration;
-  request.session.data.membership_id = tokenData.membership_id;
-  request.session.data.tokenData = encryptData(tokenData);
+  request.session.membership_id = tokenData.membership_id;
+  request.session.tokenData = encryptData(tokenData);
   return true;
 }
 exports.saveTokenData = saveTokenData;

@@ -6,6 +6,8 @@ const assetRoot = root+"/Asset_Files";
 const manifestRoot = root+"/Manifest_Files";
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 
+const fs = require('fs');
+const https = require("https");
 const express = require("express");
 const session = require("express-session");
 const genuuid = require("uuid");
@@ -16,6 +18,7 @@ const crypto = require("crypto");
 const helmet = require("helmet");
 const {Firestore} = require('@google-cloud/firestore');
 const {FirestoreStore} = require('@google-cloud/connect-firestore');
+const FirestoreFieldLimit = 1048487;
 
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
@@ -37,15 +40,24 @@ app.use(
       secret: "secreto!alabastro@",
       genid: function(req){ return genuuid.v4(); },
       resave: true,
-      store: new FirestoreStore({
+      /*store: new FirestoreStore({
         dataset: new Firestore(),
         kind: 'express-sessions',
-      }),
+      }),*/
       saveUninitialized: true,
       cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
 );
 dotenv.config( { path: path.join(root,"process.env") } );
+
+var httpsServer;
+if(process.env.NODE_ENV == "development"){
+  process.env['NODE_TLS_REJECT_UNAUTHORIZED']=0;
+   var privatekey = fs.readFileSync(path.join(root,"key.pem"));
+   var certificate = fs.readFileSync(path.join(root,"cert.pem"));
+   var credentials = {key: privatekey, cert: certificate};
+  httpsServer = https.createServer(credentials,app);
+}
 app.get("/_ah/start",function(request, response){
   console.log("hey, it detected the /_ah/start endpoint.");
   console.log(request.hostname);
@@ -56,7 +68,7 @@ app.use(constructSessionInstance);
 app.get("/bnetlogin", async function(request, response){
   console.log("in bnet login.");
   let state = crypto.randomBytes(16).toString("base64");
-  request.session.data.state = state;
+  request.session.state = state;
   var url = new URL(bungieAuthURL);
   url.searchParams.append("client_id",process.env.BUNGIE_CLIENT_ID);
   url.searchParams.append("response_type","code");
@@ -67,14 +79,14 @@ app.get("/bnetlogin", async function(request, response){
 
 app.get("/bnetresponse", async function(request, response, next){
   console.log("in bnet response.");
-  if(request.query.state !== request.session.data.state){
-    console.log("query state "+request.query.state +"and saved state "+request.session.data.state+" do not match. this session will be destroyed.");
+  if(request.query.state !== request.session.state){
+    console.log("query state "+request.query.state +"and saved state "+request.session.state+" do not match. this session will be destroyed.");
     request.session.destroy();
     next(Error());
     return;
   }
   console.log("states match, requesting token.");
-  request.session.data.authCode = request.query.code;
+  request.session.authCode = request.query.code;
   let result = await D2API.requestToken(request, response).catch(function(error){ return error; });
   console.log(result);
   if(result instanceof Error){ next(result); return; }
@@ -93,7 +105,7 @@ app.get("/home/data", async function(request, response, next){
   delete result.data.characterEquipment;
   result.data.characterInventories = D2API.appendInstanceData(result.data.characterInventories,result.data.itemComponents);
 
-  request.session.data.gamedata.characterInventories = Object.assign({},result.data.characterInventories);
+  request.session.characterInventories = Object.assign({},result.data.characterInventories);
   delete result.data.itemComponents;
   for(i in result.data.characterInventories){ result.data.characterInventories[i] = D2API.sortByBucketCategory(result.data.characterInventories[i]); }
   for(z in result.data.characterInventories){
@@ -116,7 +128,7 @@ app.get("/home/data", async function(request, response, next){
 
 app.get("/home/update", async function(request, response, next){
   var startTime = new Date().getTime();
-  var storedData = request.session.data.gamedata.characterInventories;
+  var storedData = request.session.characterInventories;
   var components = ["200", "201", "205", "300", "302", "304"];
   let result = await D2API.profileComponentRequest(request, components).catch(function(error){ return error; });
   if(result instanceof Error){ next(result); return; }
@@ -129,7 +141,7 @@ app.get("/home/update", async function(request, response, next){
     var temp = D2API.filterAlteredData(storedData[n], result.data.characterInventories[n]);
     changedData[n] = temp[1].concat(temp[0]);
   }
-  request.session.data.gamedata.characterInventories = Object.assign({}, result.data.characterInventories);
+  request.session.characterInventories = Object.assign({}, result.data.characterInventories);
   for(i in changedData){ changedData[i] = D2API.sortByBucketCategory(changedData[i]); }
   for(z in changedData){
     for(a in changedData[z])
@@ -156,7 +168,7 @@ app.get("/vault/data", async function(request, response, next){
   if(result instanceof Error){ next(result); return; }
   result.data.profileInventory = D2API.appendInstanceData({ profileInventory: result.data.profileInventory },result.data.itemComponents).profileInventory;
 
-  request.session.data.gamedata.vault = Object.assign({},result.data);
+  request.session.vault = Object.assign({},result.data);
   delete result.data.itemComponents;
 
   result.data.profileInventory = D2API.sortByBucketCategory(result.data.profileInventory);
@@ -172,14 +184,14 @@ app.get("/vault/data", async function(request, response, next){
 
 app.get("/vault/update", async function(request, response, next){
   var startTime = new Date().getTime();
-  var storedData = request.session.data.gamedata.vault.profileInventory;
+  var storedData = request.session.vault.profileInventory;
   var components = ["102", "200", "300", "302", "304"];
   let result = await D2API.profileComponentRequest(request, components).catch(function(error){ return error; });
   if(result instanceof Error){ next(result); return; }
   result.data.profileInventory = D2API.appendInstanceData({ profileInventory: result.data.profileInventory },result.data.itemComponents).profileInventory;
   var temp = D2API.filterAlteredData(storedData, result.data.profileInventory);
   changedData = temp[1].concat(temp[0]);
-  request.session.data.gamedata.vault.profileInventory = Object.assign({},result.data.profileInventory);
+  request.session.vault.profileInventory = Object.assign({},result.data.profileInventory);
 
   changedData = D2API.sortByBucketCategory(changedData);
   for(b in changedData){ changedData[b] = D2API.sortByBucketTypeHash(changedData[b]); }
@@ -253,20 +265,20 @@ app.get("/",async function(request, response){
 app.get("/vault",async function(request, response){
   response.sendFile(webpageRoot+"/vault.html");
 });
-app.listen(process.env.PORT, () => {
-  console.log(`App listening on port ${process.env.PORT}`);
-  console.log('Press Ctrl+C to quit.');
-});
+if(process.env.NODE_ENV == "production")
+{ console.log("here"); app.listen(process.env.PORT); }
+else
+{ console.log("here"); httpsServer.listen(process.env.PORT); }
 //END OF EXPRESS FUNCTIONS.
 async function accessAuthorizedEndpoints(request, response, next){
   console.log("Session "+request.session.id+" has requested access to "+request._parsedUrl.path);
   var currentTime = new Date().getTime();
-  if(Object.keys(request.session.data.tokenData).length == 0){
+  if(Object.keys(request.session.tokenData).length == 0){
     console.error("No data exists for user. ");
     response.sendFile(webpageRoot+"/loginpage.html");
     return;
   }
-  var tokenData = D2API.decryptData(request.session.data.tokenData);
+  var tokenData = D2API.decryptData(request.session.tokenData);
   if(tokenData.refreshExpiration < currentTime){
     console.log("The refresh token has expired, gonna need to login.");
     response.sendFile(webpageRoot+"/loginpage.html");
@@ -285,7 +297,7 @@ function constructSessionInstance(request, response, next){
   console.log("Constructing instance.");
   console.log(request.ips);
   var reset = false;
-  switch(request.session.data){
+  switch(request.session.tokenData){
     case undefined:
       console.log("Session data does not exist, creating formatted data blueprint.");
       reset = true;
@@ -298,16 +310,16 @@ function constructSessionInstance(request, response, next){
       console.log("There doesn't seem to be anything wrong here....");
   }
   if(reset){
-    request.session.data = {
-      authCode: null,
-      state: null,
-      tokenData: {},
-      primaryMembershipId: null,
-      bnetInfo: null,
-      gamedata: {},
-    };
+    request.session.authCode = null;
+    request.session.state = null;
+    request.session.tokenData = {};
+    request.session.primaryMembershipId = null;
+    request.session.bnetInfo = null;
   }
   next();
+  for(i in request.session){
+    console.log(i+": "+Buffer.byteLength(JSON.stringify(request.session[i])));
+  }
 };
 function handleServerErrors(error, request, response, next){
   console.log(error);
