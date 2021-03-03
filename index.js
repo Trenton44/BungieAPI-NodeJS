@@ -20,7 +20,7 @@ const redis = require('redis');
 let RedisStore = require('connect-redis')(session);
 let RedisClient = redis.createClient({
   host: "10.122.230.19",
-  port: "6379",
+  port: 6379,
 });
 /*const MongoClient = require('mongodb').MongoClient;
 const MongoDBStore = require("connect-mongodb-session")(session);
