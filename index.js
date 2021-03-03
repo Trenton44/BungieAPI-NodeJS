@@ -20,7 +20,7 @@ const MongoClient = require('mongodb').MongoClient;
 const MongoDBStore = require("connect-mongodb-session")(session);
 var store = new MongoDBStore({
   uri: process.env.Mongo_DB_URI,
-  databaseName: "express-sessions",
+  databaseName: "sessions",
   collection: "users",
 });
 store.on("error", function(error){
