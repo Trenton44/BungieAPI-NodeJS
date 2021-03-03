@@ -16,10 +16,16 @@ const axios = require('axios');
 const dotenv = require("dotenv");
 const crypto = require("crypto");
 const helmet = require("helmet");
-const {Firestore} = require('@google-cloud/firestore');
-const {FirestoreStore} = require('@google-cloud/connect-firestore');
-const FirestoreFieldLimit = 1048487;
-
+const MongoClient = require('mongodb').MongoClient;
+const MongoDBStore = require("connect-mongodb-session")(session);
+var store = new MongoDBStore({
+  uri: process.env.Mongo_DB_URI,
+  databaseName: "users",
+  collection: "Sessions",
+});
+store.on("error", function(error){
+  console.error(error);
+});
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
@@ -40,10 +46,7 @@ app.use(
       secret: "secreto!alabastro@",
       genid: function(req){ return genuuid.v4(); },
       resave: true,
-      store: new FirestoreStore({
-        dataset: new Firestore(),
-        kind: 'express-sessions',
-      }),
+      store: store,
       saveUninitialized: true,
       cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
@@ -295,7 +298,7 @@ async function accessAuthorizedEndpoints(request, response, next){
 
 function constructSessionInstance(request, response, next){
   console.log("Constructing instance.");
-  console.log(request.ips);
+  console.log(Buffer.byteLength(JSON.stringify(request.session)));
   var reset = false;
   switch(request.session.tokenData){
     case undefined:
