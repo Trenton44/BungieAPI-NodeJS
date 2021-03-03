@@ -5,8 +5,11 @@ vpc_access_connector:
 network:
   name: glimmer-net-vpcnet
   subnetwork_name: glimmer-net-subnet
-  PORT: 27015-27017
-
+  forwarded_ports:
+    - 27015/tcp
+    - 27016/tcp
+    - 27017/tcp
+    - 27018/tcp
 manual_scaling:
   instances: 1
 handlers:
