@@ -22,16 +22,6 @@ let RedisClient = redis.createClient({
   host: "10.122.230.19",
   port: 6379,
 });
-/*const MongoClient = require('mongodb').MongoClient;
-const MongoDBStore = require("connect-mongodb-session")(session);
-var store = new MongoDBStore({
-  uri: process.env.Mongo_DB_URI,
-  databaseName: "sessions",
-  collection: "users",
-});
-store.on("error", function(error){
-  console.error(error);
-});*/
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
