@@ -2,14 +2,7 @@ runtime: nodejs14
 instance_class: B4
 vpc_access_connector:
   name: projects/glimmer-net-project/locations/us-central1/connectors/vpcconnect-app-engine
-network:
-  name: glimmer-net-vpcnet
-  subnetwork_name: glimmer-net-subnet
-  forwarded_ports:
-    - 27015/tcp
-    - 27016/tcp
-    - 27017/tcp
-    - 27018/tcp
+
 manual_scaling:
   instances: 1
 handlers:

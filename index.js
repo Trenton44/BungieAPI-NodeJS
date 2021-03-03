@@ -16,7 +16,15 @@ const axios = require('axios');
 const dotenv = require("dotenv");
 const crypto = require("crypto");
 const helmet = require("helmet");
-const MongoClient = require('mongodb').MongoClient;
+const redis = require('redis');
+const session = require('express-session');
+let RedisStore = require('connect-redis')(session);
+var redisOptions = {
+  host: 10.122.230.19,
+  port: 6379,
+};
+let RedisClient = redis.createClient(redisOptions);
+/*const MongoClient = require('mongodb').MongoClient;
 const MongoDBStore = require("connect-mongodb-session")(session);
 var store = new MongoDBStore({
   uri: process.env.Mongo_DB_URI,
@@ -25,7 +33,7 @@ var store = new MongoDBStore({
 });
 store.on("error", function(error){
   console.error(error);
-});
+});*/
 const bungieRoot = "https://www.bungie.net/Platform";
 const bungieCommon = "https://www.bungie.net";
 const bungieAuthURL = "https://www.bungie.net/en/OAuth/Authorize";
@@ -46,7 +54,7 @@ app.use(
       secret: "secreto!alabastro@",
       genid: function(req){ return genuuid.v4(); },
       resave: true,
-      store: store,
+      store: new RedisStore({ client: RedisClient }),
       saveUninitialized: true,
       cookie: { httpOnly: true, secure: true, maxAge: 24*60*60*100,}, //maxAge set to 24 hours.
   })
