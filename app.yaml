@@ -1,7 +1,8 @@
 runtime: nodejs14
 instance_class: B4
 vpc_access_connector:
-  name: projects/glimmer-net-project/locations/us-central1/connectors/glimmer-net-vpc-connerctr
+  name: projects/glimmer-net-project/locations/us-central1/connectors/vpcconnect-app-engine
+network:
 manual_scaling:
   instances: 1
 handlers:
