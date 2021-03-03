@@ -17,7 +17,6 @@ const dotenv = require("dotenv");
 const crypto = require("crypto");
 const helmet = require("helmet");
 const redis = require('redis');
-const session = require('express-session');
 let RedisStore = require('connect-redis')(session);
 var redisOptions = {
   host: 10.122.230.19,
