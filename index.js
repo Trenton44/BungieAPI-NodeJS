@@ -18,7 +18,10 @@ const crypto = require("crypto");
 const helmet = require("helmet");
 const redis = require('redis');
 let RedisStore = require('connect-redis')(session);
-let RedisClient = redis.createClient(["6379", "10.122.230.19"]]);
+let RedisClient = redis.createClient({
+  host: "10.122.230.19",
+  port: "6379",
+});
 /*const MongoClient = require('mongodb').MongoClient;
 const MongoDBStore = require("connect-mongodb-session")(session);
 var store = new MongoDBStore({
